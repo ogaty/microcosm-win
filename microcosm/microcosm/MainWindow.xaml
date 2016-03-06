@@ -1,0 +1,109 @@
+﻿<Window x:Name="mainWindow" x:Class="microcosm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:microcosm"
+        mc:Ignorable="d"
+        Title="microcosm" Height="700" Width="1200" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="310"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="0" Grid.Column="0">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,100,0">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock Name="natalName" Text="現在時刻"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="natalDate" Text="2016/1/1 12:00:00"></TextBlock>
+                        <TextBlock Name="natalTimezone" Text="JST" Margin="30,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Name="natalPlace" Text="東京都千代田区"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="natalLat" Text="38.0"></TextBlock>
+                        <TextBlock Name="natalLng" Text="137.0" Margin="30,0,0,0"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <ListView Name="planetList" Margin="0,10,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="" Width="40"></GridViewColumn>
+                        <GridViewColumn Header="N" Width="80"></GridViewColumn>
+                        <GridViewColumn Header="P" Width="80"></GridViewColumn>
+                        <GridViewColumn Header="T" Width="80"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView Name="cuspList" Margin="0,10,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="" Width="40"></GridViewColumn>
+                        <GridViewColumn Header="N" Width="80"></GridViewColumn>
+                        <GridViewColumn Header="P" Width="80"></GridViewColumn>
+                        <GridViewColumn Header="T" Width="80"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <TextBlock Name="centric" Text="geoCentric"></TextBlock>
+            <TextBlock Name="tropical" Text="tropical"></TextBlock>
+            <TextBlock Name="houseCalc" Text="placidus"></TextBlock>
+            <TextBlock Name="progressCalc" Text="一日一年法"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="0" Grid.Column="2">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock Name="transitName" Text="現在時刻"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="transitDate" Text="2016/1/1 12:00:00"></TextBlock>
+                        <TextBlock Name="transitTimezone" Text="JST" Margin="30,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Name="transitPlace" Text="東京都千代田区"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="transitLat" Text="38.0"></TextBlock>
+                        <TextBlock Name="transitLng" Text="137.0" Margin="30,0,0,0"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <ComboBox Name="dispSettingBox" Margin="0,10,0,0">
+                <ComboBoxItem>設定0</ComboBoxItem>
+                <ComboBoxItem>設定1</ComboBoxItem>
+                <ComboBoxItem>設定2</ComboBoxItem>
+                <ComboBoxItem>設定3</ComboBoxItem>
+                <ComboBoxItem>設定4</ComboBoxItem>
+                <ComboBoxItem>設定5</ComboBoxItem>
+                <ComboBoxItem>設定6</ComboBoxItem>
+                <ComboBoxItem>設定7</ComboBoxItem>
+                <ComboBoxItem>設定8</ComboBoxItem>
+                <ComboBoxItem>設定9</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1">
+            <TextBlock x:Name="explanation" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <TabControl x:Name="tabControl" Height="100">
+                <TabItem Header="分布">
+                    <Grid>
+                        <StackPanel>
+                            
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
