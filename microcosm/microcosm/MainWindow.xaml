@@ -5,7 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="microcosm" Height="700" Width="1200" SizeToContent="WidthAndHeight">
+        Title="microcosm" SizeToContent="WidthAndHeight"
+        MinWidth="680"
+        MinHeight="360">
+    <Window.Resources>
+        <BitmapImage x:Key="CircleBottom" UriSource="Resources/half_circle_bottom.png"></BitmapImage>
+        <BitmapImage x:Key="CircleLeft" UriSource="Resources/half_circle_left.png"></BitmapImage>
+        <BitmapImage x:Key="CircleRight" UriSource="Resources/half_circle_right.png"></BitmapImage>
+        <BitmapImage x:Key="CircleTop" UriSource="Resources/half_circle_top.png"></BitmapImage>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="310"></ColumnDefinition>
@@ -13,22 +21,23 @@
             <ColumnDefinition Width="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="140"></RowDefinition>
         </Grid.RowDefinitions>
+        <Menu Grid.ColumnSpan="3">
+            <MenuItem Header="ヘルプ(_H)"></MenuItem>
+        </Menu>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="0" Grid.Column="0">
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,100,0">
                 <StackPanel Orientation="Vertical" Margin="10">
-                    <TextBlock Name="natalName" Text="現在時刻"></TextBlock>
+                    <TextBlock Name="natalName" Text="{Binding userName}"></TextBlock>
+                    <TextBlock Name="natalDate" Text="{Binding userBirthStr}" ></TextBlock>
+                    <TextBlock Name="natalPlace" Text="{Binding userBirthPlace}"></TextBlock>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Name="natalDate" Text="2016/1/1 12:00:00"></TextBlock>
-                        <TextBlock Name="natalTimezone" Text="JST" Margin="30,0,0,0"></TextBlock>
-                    </StackPanel>
-                    <TextBlock Name="natalPlace" Text="東京都千代田区"></TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Name="natalLat" Text="38.0"></TextBlock>
-                        <TextBlock Name="natalLng" Text="137.0" Margin="30,0,0,0"></TextBlock>
+                        <TextBlock Name="natalLat" Text="{Binding userLat}"></TextBlock>
+                        <TextBlock Name="natalLng" Text="{Binding userLng}" Margin="30,0,0,0"></TextBlock>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -61,7 +70,7 @@
             <TextBlock Name="progressCalc" Text="一日一年法"></TextBlock>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="0" Grid.Column="2">
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock Name="transitName" Text="現在時刻"></TextBlock>
@@ -91,18 +100,76 @@
             </ComboBox>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1">
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="2" Grid.Column="1">
             <TextBlock x:Name="explanation" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
             <TabControl x:Name="tabControl" Height="100">
                 <TabItem Header="分布">
                     <Grid>
-                        <StackPanel>
-                            
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <Image Source="Resources/half_circle_bottom.png" Width="32" Height="32" VerticalAlignment="Top"></Image>
+                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <Image Source="Resources/half_circle_right.png" Width="32" Height="32" VerticalAlignment="Top" Margin="5,0,0,0"></Image>
+                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <Image Source="Resources/half_circle_top.png" Width="32" Height="32" VerticalAlignment="Top" Margin="5,0,0,0"></Image>
+                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <Image Source="Resources/half_circle_left.png" Width="32" Height="32" VerticalAlignment="Top" Margin="5,0,0,0"></Image>
+                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Fire"></TextBlock>
+                                    <TextBlock Text="Earth"></TextBlock>
+                                    <TextBlock Text="Air"></TextBlock>
+                                    <TextBlock Text="Water"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock Text="0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                                    <TextBlock Text="Cardinal"></TextBlock>
+                                    <TextBlock Text="Fixed"></TextBlock>
+                                    <TextBlock Text="Mutable"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock Text="0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                                    <TextBlock Text="Angular"></TextBlock>
+                                    <TextBlock Text="Succedent"></TextBlock>
+                                    <TextBlock Text="Cadent"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock Text="0"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
                 </TabItem>
             </TabControl>
 
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1">
+            <StackPanel.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
+            </StackPanel.Background>
+            <Viewbox Stretch="Uniform" MinWidth="100" MinHeight="100" MaxWidth="600" MaxHeight="600">
+                <Ellipse Stroke="Black" Stretch="Fill" Width="100" Height="100" MouseEnter="Ellipse_MouseEnter" Fill="White"/>
+            </Viewbox>
         </StackPanel>
 
     </Grid>

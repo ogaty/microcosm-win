@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using microcosm.DB;
 
 namespace microcosm
 {
@@ -23,6 +24,22 @@ namespace microcosm
         public MainWindow()
         {
             InitializeComponent();
+
+            UserData initUser = new UserData();
+            UserBinding ub = new UserBinding(initUser);
+
+            this.DataContext = new
+            {
+                userName = initUser.name,
+                userBirthStr = ub.birthStr,
+                userBirthPlace = initUser.birth_place,
+                userLat = String.Format("{0:f4}", initUser.lat),
+                userLng = String.Format("{0:f4}", initUser.lng)
+            };
+        }
+
+        private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
+        {
         }
     }
 }
