@@ -99,5 +99,41 @@ namespace microcosm.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   JST(日本標準) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TIMEZONE_JST_STR_LONG {
+            get {
+                return ResourceManager.GetString("TIMEZONE_JST_STR_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   JST に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TIMEZONE_JST_STR_SHORT {
+            get {
+                return ResourceManager.GetString("TIMEZONE_JST_STR_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   UTC(世界標準) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TIMEZONE_UTC_STR_LONG {
+            get {
+                return ResourceManager.GetString("TIMEZONE_UTC_STR_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   UTC に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TIMEZONE_UTC_STR_SHORT {
+            get {
+                return ResourceManager.GetString("TIMEZONE_UTC_STR_SHORT", resourceCulture);
+            }
+        }
     }
 }

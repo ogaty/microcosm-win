@@ -42,13 +42,13 @@
                 </StackPanel>
             </Border>
 
-            <ListView Name="planetList" Margin="0,10,0,0">
+            <ListView Name="planetList" Margin="0,10,0,0" Height="111" ItemsSource="{Binding pList}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="" Width="40"></GridViewColumn>
-                        <GridViewColumn Header="N" Width="80"></GridViewColumn>
-                        <GridViewColumn Header="P" Width="80"></GridViewColumn>
-                        <GridViewColumn Header="T" Width="80"></GridViewColumn>
+                        <GridViewColumn Header="" Width="40" DisplayMemberBinding="{Binding pName}"></GridViewColumn>
+                        <GridViewColumn Header="N" Width="80" DisplayMemberBinding="{Binding firstData}"></GridViewColumn>
+                        <GridViewColumn Header="P" Width="80" DisplayMemberBinding="{Binding secondData}"></GridViewColumn>
+                        <GridViewColumn Header="T" Width="80" DisplayMemberBinding="{Binding thirdData}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

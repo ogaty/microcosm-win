@@ -60,6 +60,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Aspect\AspectInfo.cs" />
+    <Compile Include="Common\CommonData.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="PersonalViewModel.cs" />
+    <Compile Include="Planet\PlanetData.cs" />
+    <Compile Include="TestClass.cs" />
+    <Compile Include="ViewModel\PlanetList.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using microcosm.DB;
+using microcosm.ViewModel;
 
 namespace microcosm
 {
@@ -21,6 +22,7 @@ namespace microcosm
     /// </summary>
     public partial class MainWindow : Window
     {
+        public PlanetListViewModel firstPList;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +38,15 @@ namespace microcosm
                 userLat = String.Format("{0:f4}", initUser.lat),
                 userLng = String.Format("{0:f4}", initUser.lng)
             };
+
+            DataInit();
+        }
+
+        private void DataInit()
+        {
+            firstPList = new PlanetListViewModel();
+            planetList.DataContext = firstPList;
+            Console.Write("aaa");
         }
 
         private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
