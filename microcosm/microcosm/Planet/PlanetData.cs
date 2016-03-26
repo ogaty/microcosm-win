@@ -120,7 +120,7 @@ namespace microcosm.Planet
                     speed = 0.0;
                     sensitive = true;
                     break;
-                case CommonData.ZODIAC_TRUENODE:
+                case CommonData.ZODIAC_DH_TRUENODE:
                     no = 1;
                     absolute_position = 0.0;
                     speed = 0.0;

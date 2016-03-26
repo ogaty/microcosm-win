@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 namespace microcosm.Config
 {
+    // 共通設定
+    // クラスは一つだけ
+
     public enum ECentric
     {
         GEO_CENTRIC = 0,

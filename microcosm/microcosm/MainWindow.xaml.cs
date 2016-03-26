@@ -12,8 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+
+using System.Xml.Serialization;
 using microcosm.DB;
 using microcosm.ViewModel;
+using microcosm.Config;
 
 namespace microcosm
 {
@@ -23,6 +27,7 @@ namespace microcosm
     public partial class MainWindow : Window
     {
         public PlanetListViewModel firstPList;
+        public SettingData[] settings = new SettingData[10];
         public MainWindow()
         {
             InitializeComponent();
@@ -46,6 +51,21 @@ namespace microcosm
         {
             firstPList = new PlanetListViewModel();
             planetList.DataContext = firstPList;
+
+            Enumerable.Range(0, 10).ToList().ForEach(i =>
+            {
+                string s = "表示設定" + i;
+                string filename = "setting" + i + ".csm";
+                settings[i] = new SettingData(s);
+                XmlSerializer serializer = new XmlSerializer(typeof(SettingData));
+                FileStream fs = new FileStream(filename, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+                serializer.Serialize(sw, settings[i]);
+                sw.Close();
+                fs.Close();
+            });
+
+
             Console.Write("aaa");
         }
 

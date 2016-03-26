@@ -61,10 +61,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Aspect\AspectInfo.cs" />
+    <Compile Include="Calc\AstroCalc.cs" />
     <Compile Include="Common\CommonData.cs" />
+    <Compile Include="Config\ConfigData.cs" />
+    <Compile Include="Config\SettingData.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonalViewModel.cs" />
     <Compile Include="Planet\PlanetData.cs" />
+    <Compile Include="Setting\AspectSetting.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="ViewModel\PlanetList.cs" />
     <Page Include="MainWindow.xaml">

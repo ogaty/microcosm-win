@@ -13,6 +13,7 @@ using microcosm.Setting;
 
 namespace microcosm.Calc
 {
+    // 天体およびハウスの計算をする
     public class AstroCalc
     {
         public ConfigData config;

@@ -21,7 +21,7 @@ namespace microcosm.Common
         public const int ZODIAC_URANUS = 7;
         public const int ZODIAC_NEPTUNE = 8;
         public const int ZODIAC_PLUTO = 9;
-        public const int ZODIAC_TRUENODE = 11;
+        public const int ZODIAC_DH_TRUENODE = 11;
         public const int ZODIAC_EARTH = 14;
         public const int ZODIAC_CHIRON = 15;
         public const int ZODIAC_ASC = 10000;
@@ -112,9 +112,10 @@ namespace microcosm.Common
                     return "\u2647";
                 // 外部フォントだと天文学用のPLUTOになっているのが困りどころ
                 // return "J";
-                case ZODIAC_TRUENODE:
+                case ZODIAC_DH_TRUENODE:
                     return "\u260a";
-
+                case ZODIAC_EARTH:
+                    return "u2641";
             }
             return "";
         }
@@ -194,7 +195,7 @@ namespace microcosm.Common
                 case ZODIAC_MC:
                     return "Mc";
                 // return "L";
-                case ZODIAC_TRUENODE:
+                case ZODIAC_DH_TRUENODE:
                     return "\u260a";
                     // return "M";
             }
@@ -210,7 +211,7 @@ namespace microcosm.Common
                     return "ASC";
                 case ZODIAC_MC:
                     return "MC";
-                case ZODIAC_TRUENODE:
+                case ZODIAC_DH_TRUENODE:
                     return "D.H.";
             }
             return "";
