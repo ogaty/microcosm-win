@@ -54,13 +54,12 @@ namespace microcosm
 
             Enumerable.Range(0, 10).ToList().ForEach(i =>
             {
-                string s = "表示設定" + i;
                 string filename = "setting" + i + ".csm";
-                settings[i] = new SettingData(s);
-                XmlSerializer serializer = new XmlSerializer(typeof(SettingData));
+                settings[i] = new SettingData(i);
+                XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
                 FileStream fs = new FileStream(filename, FileMode.Create);
                 StreamWriter sw = new StreamWriter(fs);
-                serializer.Serialize(sw, settings[i]);
+                serializer.Serialize(sw, settings[i].xmlData);
                 sw.Close();
                 fs.Close();
             });

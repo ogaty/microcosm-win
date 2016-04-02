@@ -12,84 +12,51 @@ namespace microcosm.Config
 
     public class SettingData
     {
-        [XmlElement("dispname")]
+        public SettingXml xmlData;
         public string dispname;
 
-        [XmlElement("orb_sun_soft_1st")]
+        // nn np nt n4 n5 n6
+        // pn pp pt p4 p5 p6
+        // tn tp tt t4 t5 t6 
+        // 4n 4p 4t 44 45 46
+        // 5n 5p 5t 54 55 56
+        // 6n 6p 6t 64 65 66
+        // 7重円サポートはいらないだろ
         public double[,] orb_sun_soft_1st;
-
-        [XmlElement("orb_sun_hard_1st")]
         public double[,] orb_sun_hard_1st;
-
-        [XmlElement("orb_moon_soft_1st")]
         public double[,] orb_moon_soft_1st;
-
-        [XmlElement("orb_moon_hard_1st")]
         public double[,] orb_moon_hard_1st;
-
-        [XmlElement("orb_other_soft_1st")]
         public double[,] orb_other_soft_1st;
-
-        [XmlElement("orb_other_hard_1st")]
         public double[,] orb_other_hard_1st;
-
-        [XmlElement("orb_other_soft_2nd")]
         public double[,] orb_sun_soft_2nd;
-
-        [XmlElement("orb_other_hard_2nd")]
         public double[,] orb_sun_hard_2nd;
-
-        [XmlElement("orb_moon_soft_2nd")]
         public double[,] orb_moon_soft_2nd;
-
-        [XmlElement("orb_moon_hard_2nd")]
         public double[,] orb_moon_hard_2nd;
-
-        [XmlElement("orb_other_soft_2nd")]
         public double[,] orb_other_soft_2nd;
-
-        [XmlElement("orb_other_hard_2nd")]
         public double[,] orb_other_hard_2nd;
-
-        [XmlElement("orb_sun_soft_150")]
         public double[,] orb_sun_soft_150;
-
-        [XmlElement("orb_sun_hard_150")]
         public double[,] orb_sun_hard_150;
-
-        [XmlElement("orb_moon_soft_150")]
         public double[,] orb_moon_soft_150;
-
-        [XmlElement("orb_moon_hard_150")]
         public double[,] orb_moon_hard_150;
-
-        [XmlElement("orb_other_soft_150")]
         public double[,] orb_other_soft_150;
-
-        [XmlElement("orb_other_hard_150")]
         public double[,] orb_other_hard_150;
 
-        [XmlElement("dispCircle")]
         public bool[] dispCircle = new bool[] {
             true, false, false, false, false, false
         };
-        [XmlElement("dispPlanet")]
         public List<Dictionary<int, bool>> dispPlanet;
 
-        [XmlElement("dispAspect")]
         public bool[,] dispAspect;
 
-        public SettingData()
+        public SettingData(int no)
         {
-            init();
+            init(no);
         }
-        public SettingData(string name)
+        public void init(int no)
         {
-            init(name);
-        }
-        public void init(string name = "表示設定")
-        {
-            this.dispname = name;
+            xmlData = new SettingXml();
+
+            this.dispname = "表示設定" + no.ToString();
             orb_sun_soft_1st = new double[6, 6] {
                 { 8.0, 8.0, 8.0, 8.0, 8.0, 8.0 },
                 { 8.0, 8.0, 8.0, 8.0, 8.0, 8.0 },
