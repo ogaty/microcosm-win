@@ -72,6 +72,7 @@
     <Compile Include="Setting\AspectSetting.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="ViewModel\PlanetList.cs" />
+    <Compile Include="ViewModel\RingCanvas.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

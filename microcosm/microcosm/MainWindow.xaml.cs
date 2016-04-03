@@ -28,6 +28,8 @@ namespace microcosm
     {
         public PlanetListViewModel firstPList;
         public SettingData[] settings = new SettingData[10];
+        public RingCanvas rcanvas = new RingCanvas();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -64,12 +66,19 @@ namespace microcosm
                 fs.Close();
             });
 
-
-            Console.Write("aaa");
+            outerRing.DataContext = rcanvas;
         }
 
         private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
         {
+        }
+
+        private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            rcanvas.outerWidth = ringCanvas.ActualWidth;
+            rcanvas.outerHeight = ringCanvas.ActualHeight;
+            
+            Console.WriteLine(ringCanvas.ActualWidth.ToString());
         }
     }
 }
