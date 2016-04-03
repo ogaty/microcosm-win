@@ -33,6 +33,7 @@ namespace microcosm
         public SettingData[] settings = new SettingData[10];
         public ConfigData config = new ConfigData();
         public AstroCalc calc;
+        public RingCanvas rcanvas = new RingCanvas();
 
         public MainWindow()
         {
@@ -127,10 +128,19 @@ namespace microcosm
             houseList = new HouseListViewModel();
             cuspList.DataContext = houseList;
 
+            outerRing.DataContext = rcanvas;
         }
 
         private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
         {
+        }
+
+        private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            rcanvas.outerWidth = ringCanvas.ActualWidth;
+            rcanvas.outerHeight = ringCanvas.ActualHeight;
+            
+            Console.WriteLine(ringCanvas.ActualWidth.ToString());
         }
     }
 }

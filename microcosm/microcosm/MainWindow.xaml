@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="microcosm" SizeToContent="WidthAndHeight"
         MinWidth="680"
-        MinHeight="360">
+        MinHeight="360" SizeChanged="mainWindow_SizeChanged">
     <Window.Resources>
         <BitmapImage x:Key="CircleBottom" UriSource="Resources/half_circle_bottom.png"></BitmapImage>
         <BitmapImage x:Key="CircleLeft" UriSource="Resources/half_circle_left.png"></BitmapImage>
@@ -25,11 +25,11 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="140"></RowDefinition>
         </Grid.RowDefinitions>
-        <Menu Grid.ColumnSpan="3">
+        <Menu Grid.ColumnSpan="4">
             <MenuItem Header="ヘルプ(_H)"></MenuItem>
         </Menu>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+        <StackPanel Orientation="Vertical" Margin="10,10,1,10" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,100,0">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock Name="natalName" Text="{Binding userName}"></TextBlock>
@@ -70,7 +70,7 @@
             <TextBlock Name="progressCalc" Text="一日一年法"></TextBlock>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2">
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock Name="transitName" Text="{Binding transitName}"></TextBlock>
@@ -160,12 +160,21 @@
 
         </StackPanel>
 
-        <StackPanel x:Name="ringCanvas" Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1">
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1" MinHeight="367" Name="ringStack">
             <StackPanel.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
             </StackPanel.Background>
-            <Canvas MinWidth="100" MinHeight="100" MaxWidth="600" MaxHeight="600">
-                <Ellipse Stroke="Black" Stretch="Fill" MouseEnter="Ellipse_MouseEnter" Fill="White" Width="{Binding outerWidth}" Height="{Binding outerHeight}"/>
+            <Canvas Name="ringCanvas" Height="370">
+                <Ellipse x:Name="outerRing" StrokeThickness="3" Width="{Binding outerWidth}" Height="{Binding outerHeight}">
+                    <Ellipse.Stroke>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoTextColorKey}}"/>
+                    </Ellipse.Stroke>
+                </Ellipse>
+                <Ellipse x:Name="innerRing" StrokeThickness="3" Width="330" Height="330" Canvas.Left="20" Canvas.Top="20">
+                    <Ellipse.Stroke>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoTextColorKey}}"/>
+                    </Ellipse.Stroke>
+                </Ellipse>
             </Canvas>
         </StackPanel>
 
