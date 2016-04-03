@@ -42,7 +42,7 @@
                 </StackPanel>
             </Border>
 
-            <ListView Name="planetList" Margin="0,10,0,0" Height="111" ItemsSource="{Binding pList}">
+            <ListView Name="planetList" Margin="0,10,0,0" Height="260" ItemsSource="{Binding pList}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="" Width="40" DisplayMemberBinding="{Binding pName}"></GridViewColumn>
@@ -53,13 +53,13 @@
                 </ListView.View>
             </ListView>
 
-            <ListView Name="cuspList" Margin="0,10,0,0">
+            <ListView Name="cuspList" Margin="0,10,0,0" Height="280" ItemsSource="{Binding hList}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="" Width="40"></GridViewColumn>
-                        <GridViewColumn Header="N" Width="80"></GridViewColumn>
-                        <GridViewColumn Header="P" Width="80"></GridViewColumn>
-                        <GridViewColumn Header="T" Width="80"></GridViewColumn>
+                        <GridViewColumn Header="" Width="40" DisplayMemberBinding="{Binding hName}"></GridViewColumn>
+                        <GridViewColumn Header="N" Width="80" DisplayMemberBinding="{Binding firstData}"></GridViewColumn>
+                        <GridViewColumn Header="P" Width="80" DisplayMemberBinding="{Binding secondData}"></GridViewColumn>
+                        <GridViewColumn Header="T" Width="80" DisplayMemberBinding="{Binding thirdData}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -73,15 +73,12 @@
         <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2">
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Vertical" Margin="10">
-                    <TextBlock Name="transitName" Text="現在時刻"></TextBlock>
+                    <TextBlock Name="transitName" Text="{Binding transitName}"></TextBlock>
+                    <TextBlock Name="transitDate"  Text="{Binding transitBirthStr}"></TextBlock>
+                    <TextBlock Name="transitPlace" Text="{Binding transitPlace}"></TextBlock>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Name="transitDate" Text="2016/1/1 12:00:00"></TextBlock>
-                        <TextBlock Name="transitTimezone" Text="JST" Margin="30,0,0,0"></TextBlock>
-                    </StackPanel>
-                    <TextBlock Name="transitPlace" Text="東京都千代田区"></TextBlock>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Name="transitLat" Text="38.0"></TextBlock>
-                        <TextBlock Name="transitLng" Text="137.0" Margin="30,0,0,0"></TextBlock>
+                        <TextBlock Name="transitLat" Text="{Binding transitLat}"></TextBlock>
+                        <TextBlock Name="transitLng" Text="{Binding transitLng}" Margin="30,0,0,0"></TextBlock>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -163,13 +160,13 @@
 
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1">
+        <StackPanel x:Name="ringCanvas" Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1">
             <StackPanel.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
             </StackPanel.Background>
-            <Viewbox Stretch="Uniform" MinWidth="100" MinHeight="100" MaxWidth="600" MaxHeight="600">
-                <Ellipse Stroke="Black" Stretch="Fill" Width="100" Height="100" MouseEnter="Ellipse_MouseEnter" Fill="White"/>
-            </Viewbox>
+            <Canvas MinWidth="100" MinHeight="100" MaxWidth="600" MaxHeight="600">
+                <Ellipse Stroke="Black" Stretch="Fill" MouseEnter="Ellipse_MouseEnter" Fill="White" Width="{Binding outerWidth}" Height="{Binding outerHeight}"/>
+            </Canvas>
         </StackPanel>
 
     </Grid>

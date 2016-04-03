@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
+using microcosm.Config;
+
 namespace microcosm.DB
 {
     [XmlRoot("userdata")]
@@ -40,7 +42,7 @@ namespace microcosm.DB
         [XmlArrayItem("event")]
         public List<UserEvent> userevent { get; set; }
 
-        public UserData()
+        public UserData(ConfigData config)
         {
             this.name = "現在時刻";
             this.furigana = "";
@@ -50,10 +52,9 @@ namespace microcosm.DB
             this.birth_hour = DateTime.Now.Hour;
             this.birth_minute = DateTime.Now.Minute;
             this.birth_second = DateTime.Now.Second;
-            // TODO
-            this.birth_place = "東京都千代田区";
-            this.lat = 38.0;
-            this.lng = 137.0;
+            this.birth_place = config.defaultPlace;
+            this.lat = config.lat;
+            this.lng = config.lng;
             this.memo = "";
             this.timezone = "JST";
         }

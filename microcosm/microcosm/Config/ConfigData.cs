@@ -20,6 +20,13 @@ namespace microcosm.Config
         TROPICAL = 0,
         SIDEREAL = 1
     }
+    public enum HouseCalc
+    {
+        PLACIDUS = 0,
+        KOCH  = 1,
+        CAMPANUS = 2,
+        EQUAL = 3
+    }
     public class ConfigData
     {
         // 天文データパス
@@ -60,8 +67,14 @@ namespace microcosm.Config
 
         public ConfigData()
         {
+            ephepath = @"\ephe";
             centric = ECentric.GEO_CENTRIC;
             sidereal = Esidereal.TROPICAL;
+            defaultPlace = "東京都中央区";
+            lat = 35.670587;
+            lng = 139.772003;
+            houseCalc = (int)HouseCalc.PLACIDUS;
+            dispPattern = 0;
         }
 
     }
