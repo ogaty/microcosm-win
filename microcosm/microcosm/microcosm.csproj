@@ -74,6 +74,7 @@
     <Compile Include="TestClass.cs" />
     <Compile Include="ViewModel\HouseList.cs" />
     <Compile Include="ViewModel\PlanetList.cs" />
+    <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\RingCanvas.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

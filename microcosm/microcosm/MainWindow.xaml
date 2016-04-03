@@ -84,7 +84,7 @@
             </Border>
 
             <ComboBox Name="dispSettingBox" Margin="0,10,0,0">
-                <ComboBoxItem>設定0</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">設定0</ComboBoxItem>
                 <ComboBoxItem>設定1</ComboBoxItem>
                 <ComboBoxItem>設定2</ComboBoxItem>
                 <ComboBoxItem>設定3</ComboBoxItem>
@@ -106,19 +106,19 @@
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical">
                                     <Image Source="Resources/half_circle_bottom.png" Width="32" Height="32" VerticalAlignment="Top"></Image>
-                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock x:Name="houseDown" Text="{Binding houseDown}" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <Image Source="Resources/half_circle_right.png" Width="32" Height="32" VerticalAlignment="Top" Margin="5,0,0,0"></Image>
-                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock x:Name="houseRight" Text="{Binding houseRight}" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <Image Source="Resources/half_circle_top.png" Width="32" Height="32" VerticalAlignment="Top" Margin="5,0,0,0"></Image>
-                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock x:Name="houseUp" Text="{Binding houseUp}" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <Image Source="Resources/half_circle_left.png" Width="32" Height="32" VerticalAlignment="Top" Margin="5,0,0,0"></Image>
-                                    <TextBlock Text="0" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock x:Name="houseLeft" Text="{Binding houseLeft}" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Text="Fire"></TextBlock>
@@ -127,10 +127,10 @@
                                     <TextBlock Text="Water"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <TextBlock Text="0"></TextBlock>
-                                    <TextBlock Text="0"></TextBlock>
-                                    <TextBlock Text="0"></TextBlock>
-                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock x:Name="signFire" Text="{Binding signFire}"></TextBlock>
+                                    <TextBlock x:Name="signEarth" Text="{Binding signEarth}"></TextBlock>
+                                    <TextBlock x:Name="signAir" Text="{Binding signAir}"></TextBlock>
+                                    <TextBlock x:Name="signWater" Text="{Binding signWater}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                                     <TextBlock Text="Cardinal"></TextBlock>
@@ -138,19 +138,19 @@
                                     <TextBlock Text="Mutable"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <TextBlock Text="0"></TextBlock>
-                                    <TextBlock Text="0"></TextBlock>
-                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock x:Name="signCardinal" Text="{Binding signCardinal}"></TextBlock>
+                                    <TextBlock x:Name="signFixed" Text="{Binding signFixed}"></TextBlock>
+                                    <TextBlock x:Name="signMutable" Text="{Binding signMutable}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                                     <TextBlock Text="Angular"></TextBlock>
-                                    <TextBlock Text="Succedent"></TextBlock>
                                     <TextBlock Text="Cadent"></TextBlock>
+                                    <TextBlock Text="Succedent"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <TextBlock Text="0"></TextBlock>
-                                    <TextBlock Text="0"></TextBlock>
-                                    <TextBlock Text="0"></TextBlock>
+                                    <TextBlock x:Name="houseAngular" Text="{Binding houseAngular}"></TextBlock>
+                                    <TextBlock x:Name="houseCadent" Text="{Binding houseCadent}"></TextBlock>
+                                    <TextBlock x:Name="houseSuccedent" Text="{Binding houseSuccedent}"></TextBlock>
                                 </StackPanel>
                                 <StackPanel Margin="70,0"></StackPanel>
                             </StackPanel>
