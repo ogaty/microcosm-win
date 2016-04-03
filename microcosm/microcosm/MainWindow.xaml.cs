@@ -33,7 +33,7 @@ namespace microcosm
         public SettingData[] settings = new SettingData[10];
         public ConfigData config = new ConfigData();
         public AstroCalc calc;
-        public RingCanvas rcanvas = new RingCanvas();
+        public RingCanvas rcanvas;
 
         public MainWindow()
         {
@@ -88,6 +88,8 @@ namespace microcosm
                     fs.Close();
                 }
             }
+
+            rcanvas = new RingCanvas(config);
         }
 
         private void DataCalc()
@@ -115,8 +117,6 @@ namespace microcosm
                 transitPlace = initUser.birth_place,
                 transitLat = String.Format("{0:f4}", initUser.lat),
                 transitLng = String.Format("{0:f4}", initUser.lng),
-                outerWidth = 368,
-                outerHeight = 368
             };
 
 
@@ -129,6 +129,8 @@ namespace microcosm
             cuspList.DataContext = houseList;
 
             outerRing.DataContext = rcanvas;
+            innerRing.DataContext = rcanvas;
+            centerRing.DataContext = rcanvas;
         }
 
         private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
@@ -137,10 +139,29 @@ namespace microcosm
 
         private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            rcanvas.outerWidth = ringCanvas.ActualWidth;
-            rcanvas.outerHeight = ringCanvas.ActualHeight;
-            
-            Console.WriteLine(ringCanvas.ActualWidth.ToString());
+            rcanvas.innerLeft = config.zodiacWidth / 2;
+            rcanvas.innerTop = config.zodiacWidth / 2;
+            if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+            {
+                rcanvas.outerWidth = ringStack.ActualHeight;
+                rcanvas.outerHeight = ringStack.ActualHeight;
+                rcanvas.innerWidth = ringStack.ActualHeight - config.zodiacWidth;
+                rcanvas.innerHeight = ringStack.ActualHeight - config.zodiacWidth;
+                rcanvas.centerLeft = ringStack.ActualHeight / 2 - config.zodiacCenter / 2;
+                rcanvas.centerTop = ringStack.ActualHeight / 2 - config.zodiacCenter / 2;
+            }
+            else
+            {
+                rcanvas.outerWidth = ringCanvas.ActualWidth;
+                rcanvas.outerHeight = ringCanvas.ActualWidth;
+                rcanvas.innerWidth = ringCanvas.ActualWidth - config.zodiacWidth;
+                rcanvas.innerHeight = ringCanvas.ActualWidth - config.zodiacWidth;
+                rcanvas.centerLeft = ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2;
+                rcanvas.centerTop = ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2;
+            }
+
+
+            Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
         }
     }
 }

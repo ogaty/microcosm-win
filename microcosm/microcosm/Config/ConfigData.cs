@@ -61,6 +61,18 @@ namespace microcosm.Config
         [XmlElement("house")]
         public int houseCalc { get; set; }
 
+        // 獣帯外側幅
+        [XmlElement("zodiacOuterWidth")]
+        public int zodiacOuterWidth { get; set; }
+
+        // 獣帯幅
+        [XmlElement("zodiacWidth")]
+        public int zodiacWidth { get; set; }
+
+        // 中心円
+        [XmlElement("zodiacCenter")]
+        public int zodiacCenter { get; set; }
+
         // SolarFireっぽく表示orAMATERUっぽく表示
         [XmlElement("dispPattern")]
         public int dispPattern { get; set; }
@@ -74,6 +86,9 @@ namespace microcosm.Config
             lat = 35.670587;
             lng = 139.772003;
             houseCalc = (int)HouseCalc.PLACIDUS;
+            zodiacOuterWidth = 470;
+            zodiacWidth = 60;
+            zodiacCenter = 100;
             dispPattern = 0;
         }
 

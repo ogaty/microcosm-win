@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="microcosm" SizeToContent="WidthAndHeight"
         MinWidth="680"
-        MinHeight="360" SizeChanged="mainWindow_SizeChanged">
+        MinHeight="400" SizeChanged="mainWindow_SizeChanged">
     <Window.Resources>
         <BitmapImage x:Key="CircleBottom" UriSource="Resources/half_circle_bottom.png"></BitmapImage>
         <BitmapImage x:Key="CircleLeft" UriSource="Resources/half_circle_left.png"></BitmapImage>
@@ -23,7 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="140"></RowDefinition>
+            <RowDefinition Height="180"></RowDefinition>
         </Grid.RowDefinitions>
         <Menu Grid.ColumnSpan="4">
             <MenuItem Header="ヘルプ(_H)"></MenuItem>
@@ -42,7 +42,7 @@
                 </StackPanel>
             </Border>
 
-            <ListView Name="planetList" Margin="0,10,0,0" Height="260" ItemsSource="{Binding pList}">
+            <ListView Name="planetList" Margin="0,10,0,0" Height="260" ItemsSource="{Binding pList}" FontSize="13.333">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="" Width="40" DisplayMemberBinding="{Binding pName}"></GridViewColumn>
@@ -152,6 +152,7 @@
                                     <TextBlock Text="0"></TextBlock>
                                     <TextBlock Text="0"></TextBlock>
                                 </StackPanel>
+                                <StackPanel Margin="70,0"></StackPanel>
                             </StackPanel>
                         </StackPanel>
                     </Grid>
@@ -160,17 +161,22 @@
 
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1" MinHeight="367" Name="ringStack">
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1" Name="ringStack">
             <StackPanel.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionColorKey}}"/>
             </StackPanel.Background>
-            <Canvas Name="ringCanvas" Height="370">
+            <Canvas Name="ringCanvas">
                 <Ellipse x:Name="outerRing" StrokeThickness="3" Width="{Binding outerWidth}" Height="{Binding outerHeight}">
                     <Ellipse.Stroke>
                         <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoTextColorKey}}"/>
                     </Ellipse.Stroke>
                 </Ellipse>
-                <Ellipse x:Name="innerRing" StrokeThickness="3" Width="330" Height="330" Canvas.Left="20" Canvas.Top="20">
+                <Ellipse x:Name="innerRing" StrokeThickness="3" Width="{Binding innerWidth}" Height="{Binding innerHeight}" Canvas.Left="{Binding innerLeft}" Canvas.Top="{Binding innerTop}">
+                    <Ellipse.Stroke>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoTextColorKey}}"/>
+                    </Ellipse.Stroke>
+                </Ellipse>
+                <Ellipse x:Name="centerRing" StrokeThickness="3" Width="{Binding centerWidth}" Height="{Binding centerHeight}" Canvas.Left="{Binding centerLeft}" Canvas.Top="{Binding centerTop}">
                     <Ellipse.Stroke>
                         <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoTextColorKey}}"/>
                     </Ellipse.Stroke>
