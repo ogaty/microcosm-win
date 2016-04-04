@@ -63,7 +63,7 @@ namespace microcosm.ViewModel
                 {
                     newList[i] += 360;
                 }
-                Console.WriteLine(list1[i].ToString());
+//                Console.WriteLine(list1[i].ToString());
             });
 
             double target;
@@ -78,7 +78,7 @@ namespace microcosm.ViewModel
                     (newList[1] <= target && target < newList[2])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target +  ":1");
+//                    Console.WriteLine(i.ToString() + " " + target +  ":1");
                     down++;
                     left++;
                 }
@@ -86,7 +86,7 @@ namespace microcosm.ViewModel
                     (newList[2] <= target && target < newList[3])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":2");
+//                    Console.WriteLine(i.ToString() + " " + target + ":2");
                     down++;
                     left++;
                 }
@@ -94,7 +94,7 @@ namespace microcosm.ViewModel
                     (newList[3] <= target && target < newList[4])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":3");
+//                    Console.WriteLine(i.ToString() + " " + target + ":3");
                     down++;
                     left++;
                 }
@@ -102,7 +102,7 @@ namespace microcosm.ViewModel
                     (newList[4] <= target && target < newList[5])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":4");
+//                    Console.WriteLine(i.ToString() + " " + target + ":4");
                     down++;
                     right++;
                 }
@@ -110,7 +110,7 @@ namespace microcosm.ViewModel
                     (newList[5] <= target && target < newList[6])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":5");
+//                    Console.WriteLine(i.ToString() + " " + target + ":5");
                     down++;
                     right++;
                 }
@@ -118,7 +118,7 @@ namespace microcosm.ViewModel
                     (newList[6] <= target && target < newList[7])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":6");
+//                    Console.WriteLine(i.ToString() + " " + target + ":6");
                     down++;
                     right++;
                 }
@@ -126,7 +126,7 @@ namespace microcosm.ViewModel
                     (newList[7] <= target && target < newList[8])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":7");
+//                    Console.WriteLine(i.ToString() + " " + target + ":7");
                     up++;
                     right++;
                 }
@@ -134,7 +134,7 @@ namespace microcosm.ViewModel
                     (newList[8] <= target && target < newList[9])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":8");
+//                    Console.WriteLine(i.ToString() + " " + target + ":8");
                     up++;
                     right++;
                 }
@@ -142,7 +142,7 @@ namespace microcosm.ViewModel
                     (newList[9] <= target && target < newList[10])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":9");
+//                    Console.WriteLine(i.ToString() + " " + target + ":9");
                     up++;
                     right++;
                 }
@@ -150,7 +150,7 @@ namespace microcosm.ViewModel
                     (newList[10] <= target && target < newList[11])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":10");
+//                    Console.WriteLine(i.ToString() + " " + target + ":10");
                     up++;
                     left++;
                 }
@@ -158,13 +158,13 @@ namespace microcosm.ViewModel
                     (newList[11] <= target && target < newList[12])
                 )
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":11");
+//                    Console.WriteLine(i.ToString() + " " + target + ":11");
                     up++;
                     left++;
                 }
                 else
                 {
-                    Console.WriteLine(i.ToString() + " " + target + ":12");
+//                    Console.WriteLine(i.ToString() + " " + target + ":12");
                     up++;
                     left++;
                 }

@@ -66,16 +66,22 @@
     <Compile Include="Config\ConfigData.cs" />
     <Compile Include="Config\SettingData.cs" />
     <Compile Include="Config\SettingXml.cs" />
+    <Compile Include="DatabaseWindow.xaml.cs">
+      <DependentUpon>DatabaseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\TransitBinding.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="PersonalViewModel.cs" />
     <Compile Include="Planet\PlanetData.cs" />
     <Compile Include="Setting\AspectSetting.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="ViewModel\DatabaseWindowViewModel.cs" />
     <Compile Include="ViewModel\HouseList.cs" />
     <Compile Include="ViewModel\PlanetList.cs" />
     <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\RingCanvas.cs" />
+    <Page Include="DatabaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

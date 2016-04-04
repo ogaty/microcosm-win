@@ -26,6 +26,9 @@
             <RowDefinition Height="180"></RowDefinition>
         </Grid.RowDefinitions>
         <Menu Grid.ColumnSpan="4">
+            <MenuItem Header="ファイル(_F)">
+                <MenuItem Header="データベースを開く(_O)" Click="OpenDatabase_Click"></MenuItem>
+            </MenuItem>
             <MenuItem Header="ヘルプ(_H)"></MenuItem>
         </Menu>
 

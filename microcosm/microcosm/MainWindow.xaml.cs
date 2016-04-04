@@ -205,5 +205,11 @@ namespace microcosm
 
             Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
         }
+
+        private void OpenDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseWindow dbwin = new DatabaseWindow();
+            dbwin.Show();
+        }
     }
 }
