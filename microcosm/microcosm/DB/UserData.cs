@@ -42,6 +42,40 @@ namespace microcosm.DB
         [XmlArrayItem("event")]
         public List<UserEvent> userevent { get; set; }
 
+        public string birth_str
+        {
+            get
+            {
+                return birth_year.ToString("0000") + "/" + birth_month.ToString("00") + "/" + birth_day.ToString("00") + " " +
+                    birth_hour.ToString("00") + ":" + birth_minute.ToString("00") + ":" + birth_second.ToString("00");
+            }
+        }
+
+        public string lat_lng
+        {
+            get
+            {
+                return lat.ToString("00.000") + "/" + lng.ToString("000.000");
+            }
+        }
+
+        public UserData()
+        {
+            this.name = "現在時刻";
+            this.furigana = "";
+            this.birth_year = DateTime.Now.Year;
+            this.birth_month = DateTime.Now.Month;
+            this.birth_day = DateTime.Now.Day;
+            this.birth_hour = DateTime.Now.Hour;
+            this.birth_minute = DateTime.Now.Minute;
+            this.birth_second = DateTime.Now.Second;
+            this.birth_place = "東京都中央区";
+            this.lat = 35.685175;
+            this.lng = 139.7528;
+            this.memo = "";
+            this.timezone = "JST";
+        }
+
         public UserData(ConfigData config)
         {
             this.name = "現在時刻";
@@ -126,6 +160,11 @@ namespace microcosm.DB
             return new UserEvent(val.name, val.birth_year, val.birth_month, val.birth_day,
                 val.birth_hour, val.birth_minute, val.birth_second, val.birth_place,
                 val.lat, val.lng, val.timezone, val.memo);
+        }
+
+        public override string ToString()
+        {
+            return this.name;
         }
     }
 }

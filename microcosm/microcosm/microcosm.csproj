@@ -70,6 +70,7 @@
       <DependentUpon>DatabaseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DB\TransitBinding.cs" />
+    <Compile Include="DB\XMLDBManager.cs" />
     <Compile Include="Planet\PlanetData.cs" />
     <Compile Include="Setting\AspectSetting.cs" />
     <Compile Include="TestClass.cs" />

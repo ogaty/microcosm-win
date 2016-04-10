@@ -24,8 +24,14 @@ namespace microcosm
         {
             InitializeComponent();
 
-            DatabaseWindowViewModel window = new DatabaseWindowViewModel();
+            DatabaseWindowViewModel window = new DatabaseWindowViewModel(this);
             this.DataContext = window;
+        }
+
+        private void UserTree_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            UserTree usertree = (UserTree)sender;
+            MessageBox.Show(usertree.dirpath);
         }
     }
 }

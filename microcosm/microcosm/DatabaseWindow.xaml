@@ -5,21 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="DatabaseWindow" Height="300" Width="600">
+        Title="DatabaseWindow" Height="380" Width="720">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"></ColumnDefinition>
-            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="220"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="10">
-            <TreeView x:Name="UserDir" ItemsSource="{Binding UserDir}">
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding items}">
-                        <TextBlock Text="{Binding name}"></TextBlock>
-                    </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
+            <TreeView x:Name="UserDirTree" ItemsSource="{Binding UItems}" Height="196">
+                <TreeView.Resources>
+                    <Style TargetType="TreeViewItem">
+                    </Style>
+                </TreeView.Resources>
             </TreeView>
         </StackPanel>
-        
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
+            <ListView Height="200" x:Name="UserEvent" ItemsSource="{Binding UserEventList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="" Width="100" DisplayMemberBinding="{Binding name}"></GridViewColumn>
+                        <GridViewColumn Header="" Width="140" DisplayMemberBinding="{Binding birth_str}"></GridViewColumn>
+                        <GridViewColumn Header="" Width="100" DisplayMemberBinding="{Binding birth_place}"></GridViewColumn>
+                        <GridViewColumn Header="" Width="150" DisplayMemberBinding="{Binding lat_lng}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            
+            <TextBox Height="100" Margin="0,20,0,0" x:Name="UserMemo">
+                
+            </TextBox>
+        </StackPanel>
     </Grid>
 </Window>
