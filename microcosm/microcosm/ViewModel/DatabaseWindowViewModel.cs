@@ -58,8 +58,8 @@ namespace microcosm.ViewModel
             }
         }
 
-        public List<UserData> _UserEventList;
-        public List<UserData> UserEventList
+        public List<UserEventData> _UserEventList;
+        public List<UserEventData> UserEventList
         {
             get
             {
@@ -69,6 +69,20 @@ namespace microcosm.ViewModel
             {
                 _UserEventList = value;
                 OnPropertyChanged("UserEventList");
+            }
+        }
+
+        public string _Memo;
+        public string Memo
+        {
+            get
+            {
+                return _Memo;
+            }
+            set
+            {
+                _Memo = value;
+                OnPropertyChanged("Memo");
             }
         }
 
@@ -115,15 +129,65 @@ namespace microcosm.ViewModel
             dbwindow.UserDirTree.Items.Add(CreateDirectoryNode(rootDirectoryInfo));
         }
 
+        // ツリー選択
         private void UserItem_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
             TreeViewItem item = (TreeViewItem)sender;
             XMLDBManager DBMgr = new XMLDBManager(item.Tag.ToString());
             UserData data = DBMgr.getObject();
+            UserEventData udata = new UserEventData()
+            {
+                name = data.name,
+                birth_str = data.birth_str,
+                birth_place = data.birth_place,
+                lat_lng = data.lat_lng,
+                memo = data.memo,
+                fullpath = item.Tag.ToString()
+            };
 
             dbwindow.UserEvent.Items.Clear();
-            dbwindow.UserEvent.Items.Add(data);
+            dbwindow.UserEvent.Items.Add(udata);
+
+            if (data.userevent == null)
+            {
+                return;
+            }
+
+            int i = 0;
+            data.userevent.ForEach(ev =>
+            {
+                dbwindow.UserEvent.Items.Add(createEventData(ev, item.Tag.ToString(), i));
+                i++;
+            });
         }
+
+        private void UserEvent_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            UserEventData udata = (UserEventData)sender;
+            Memo = udata.memo;
+            Console.WriteLine("memo");
+        }
+
+        private UserEventData createEventData(UserEvent uevent, string filename, int index)
+        {
+            return new UserEventData()
+            {
+                name = "- " + uevent.event_name,
+                birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                        uevent.event_year,
+                        uevent.event_month,
+                        uevent.event_day,
+                        uevent.event_hour,
+                        uevent.event_minute,
+                        uevent.event_second
+                    ),
+                birth_place = uevent.event_place,
+                lat_lng = String.Format("({0},{1})", uevent.event_lat, uevent.event_lng),
+                memo = uevent.event_memo,
+                fullpath = filename
+            };
+        }
+
 
         private void UserDir_Selected(object sender, System.Windows.RoutedEventArgs e)
         {

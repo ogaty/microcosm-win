@@ -21,6 +21,11 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
             <ListView Height="200" x:Name="UserEvent" ItemsSource="{Binding UserEventList}">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        
+                    </Style>
+                </ListView.Resources>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="" Width="100" DisplayMemberBinding="{Binding name}"></GridViewColumn>
