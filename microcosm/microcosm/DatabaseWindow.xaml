@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="DatabaseWindow" Height="380" Width="720">
+        Title="DatabaseWindow" Height="410" Width="720">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"></ColumnDefinition>
@@ -20,7 +20,7 @@
             </TreeView>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
-            <ListView Height="200" x:Name="UserEvent" ItemsSource="{Binding UserEventList}">
+            <ListView Height="200" x:Name="UserEvent" ItemsSource="{Binding UserEventList}" SelectionChanged="UserEvent_SelectionChanged">
                 <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
                         
@@ -36,9 +36,10 @@
                 </ListView.View>
             </ListView>
             
-            <TextBox Height="100" Margin="0,20,0,0" x:Name="UserMemo">
+            <TextBox Height="100" Margin="0,20,0,0" x:Name="UserMemo" Text="{Binding Memo}">
                 
             </TextBox>
+            <Button x:Name="SubmitBtn" Content="決定" Margin="0,10,0,0" Width="100" HorizontalAlignment="Right" Click="Submit_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

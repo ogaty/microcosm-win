@@ -37,6 +37,8 @@ namespace microcosm
         public RingCanvas rcanvas;
         public ReportViewModel reportVM;
 
+        public UserEventData userdata;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -206,10 +208,20 @@ namespace microcosm
             Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
         }
 
+        public void UsernameRefresh()
+        {
+
+        }
+
         private void OpenDatabase_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseWindow dbwin = new DatabaseWindow();
+            DatabaseWindow dbwin = new DatabaseWindow(this);
             dbwin.Show();
+        }
+
+        private void mainWindow_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
