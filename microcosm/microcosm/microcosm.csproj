@@ -66,6 +66,7 @@
     <Compile Include="Config\ConfigData.cs" />
     <Compile Include="Config\SettingData.cs" />
     <Compile Include="Config\SettingXml.cs" />
+    <Compile Include="Config\TempSetting.cs" />
     <Compile Include="DatabaseWindow.xaml.cs">
       <DependentUpon>DatabaseWindow.xaml</DependentUpon>
     </Compile>
@@ -77,9 +78,10 @@
     <Compile Include="TestClass.cs" />
     <Compile Include="ViewModel\DatabaseWindowViewModel.cs" />
     <Compile Include="ViewModel\HouseList.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PlanetList.cs" />
     <Compile Include="ViewModel\Report.cs" />
-    <Compile Include="ViewModel\RingCanvas.cs" />
+    <Compile Include="ViewModel\RingCanvasViewModel.cs" />
     <Page Include="DatabaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

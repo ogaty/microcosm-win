@@ -1,0 +1,1370 @@
+﻿using microcosm.Config;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace microcosm.ViewModel
+{
+    public class RingCanvasViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public RingCanvasViewModel(ConfigData config)
+        {
+            outerWidth = config.zodiacOuterWidth;
+            outerHeight = config.zodiacOuterWidth;
+            innerWidth = outerWidth - config.zodiacWidth;
+            innerHeight = outerHeight - config.zodiacWidth;
+            innerLeft = config.zodiacWidth / 2;
+            innerTop = config.zodiacWidth / 2;
+            centerWidth = config.zodiacCenter;
+            centerHeight = config.zodiacCenter;
+            centerLeft = config.zodiacOuterWidth / 2 - config.zodiacCenter / 2;
+            centerTop = config.zodiacOuterWidth / 2 - config.zodiacCenter / 2;
+        }
+
+        // 獣帯外側
+        #region
+        private double _outerWidth;
+        public double outerWidth
+        {
+            get
+            {
+                return _outerWidth;
+            }
+            set
+            {
+                _outerWidth = value;
+                OnPropertyChanged("outerWidth");
+            }
+        }
+        private double _outerHeight;
+        public double outerHeight
+        {
+            get
+            {
+                return _outerHeight;
+            }
+            set
+            {
+                _outerHeight = value;
+                OnPropertyChanged("outerHeight");
+            }
+        }
+        #endregion
+
+        // 獣帯内側
+        #region
+        private double _innerWidth;
+        public double innerWidth
+        {
+            get
+            {
+                return _innerWidth;
+            }
+            set
+            {
+                _innerWidth = value;
+                OnPropertyChanged("innerWidth");
+            }
+        }
+        private double _innerHeight;
+        public double innerHeight
+        {
+            get
+            {
+                return _innerHeight;
+            }
+            set
+            {
+                _innerHeight = value;
+                OnPropertyChanged("innerHeight");
+            }
+        }
+        private double _innerLeft;
+        public double innerLeft
+        {
+            get
+            {
+                return _innerLeft;
+            }
+            set
+            {
+                _innerLeft = value;
+                OnPropertyChanged("innerLeft");
+            }
+        }
+        private double _innerTop;
+        public double innerTop
+        {
+            get
+            {
+                return _innerTop;
+            }
+            set
+            {
+                _innerTop = value;
+                OnPropertyChanged("innerTop");
+            }
+        }
+        #endregion
+
+        // 中心
+        #region
+        private double _centerWidth;
+        public double centerWidth
+        {
+            get
+            {
+                return _centerWidth;
+            }
+            set
+            {
+                _centerWidth = value;
+                OnPropertyChanged("centerWidth");
+            }
+        }
+
+        private double _centerHeight;
+        public double centerHeight
+        {
+            get
+            {
+                return _centerHeight;
+            }
+            set
+            {
+                _centerHeight = value;
+                OnPropertyChanged("centerHeight");
+            }
+        }
+        private double _centerLeft;
+        public double centerLeft
+        {
+            get
+            {
+                return _centerLeft;
+            }
+            set
+            {
+                _centerLeft = value;
+                OnPropertyChanged("centerLeft");
+            }
+        }
+        private double _centerTop;
+        public double centerTop
+        {
+            get
+            {
+                return _centerTop;
+            }
+            set
+            {
+                _centerTop = value;
+                OnPropertyChanged("centerTop");
+            }
+        }
+        #endregion
+
+        // カスプ1
+        #region
+        private double _cusp1x1;
+        public double cusp1x1
+        {
+            get
+            {
+                return _cusp1x1;
+            }
+            set
+            {
+                _cusp1x1 = value;
+                OnPropertyChanged("cusp1x1");
+            }
+        }
+
+        private double _cusp1y1;
+        public double cusp1y1
+        {
+            get
+            {
+                return _cusp1y1;
+            }
+            set
+            {
+                _cusp1y1 = value;
+                OnPropertyChanged("cusp1y1");
+            }
+        }
+
+        private double _cusp1x2;
+        public double cusp1x2
+        {
+            get
+            {
+                return _cusp1x2;
+            }
+            set
+            {
+                _cusp1x2 = value;
+                OnPropertyChanged("cusp1x2");
+            }
+        }
+
+        private double _cusp1y2;
+        public double cusp1y2
+        {
+            get
+            {
+                return _cusp1y2;
+            }
+            set
+            {
+                _cusp1y2 = value;
+                OnPropertyChanged("cusp1y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ2
+        #region
+        private double _cusp2x1;
+        public double cusp2x1
+        {
+            get
+            {
+                return _cusp2x1;
+            }
+            set
+            {
+                _cusp2x1 = value;
+                OnPropertyChanged("cusp2x1");
+            }
+        }
+
+        private double _cusp2y1;
+        public double cusp2y1
+        {
+            get
+            {
+                return _cusp2y1;
+            }
+            set
+            {
+                _cusp2y1 = value;
+                OnPropertyChanged("cusp2y1");
+            }
+        }
+
+        private double _cusp2x2;
+        public double cusp2x2
+        {
+            get
+            {
+                return _cusp2x2;
+            }
+            set
+            {
+                _cusp2x2 = value;
+                OnPropertyChanged("cusp2x2");
+            }
+        }
+
+        private double _cusp2y2;
+        public double cusp2y2
+        {
+            get
+            {
+                return _cusp2y2;
+            }
+            set
+            {
+                _cusp2y2 = value;
+                OnPropertyChanged("cusp2y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ3
+        #region
+        private double _cusp3x1;
+        public double cusp3x1
+        {
+            get
+            {
+                return _cusp3x1;
+            }
+            set
+            {
+                _cusp3x1 = value;
+                OnPropertyChanged("cusp3x1");
+            }
+        }
+
+        private double _cusp3y1;
+        public double cusp3y1
+        {
+            get
+            {
+                return _cusp3y1;
+            }
+            set
+            {
+                _cusp3y1 = value;
+                OnPropertyChanged("cusp3y1");
+            }
+        }
+
+        private double _cusp3x2;
+        public double cusp3x2
+        {
+            get
+            {
+                return _cusp3x2;
+            }
+            set
+            {
+                _cusp3x2 = value;
+                OnPropertyChanged("cusp3x2");
+            }
+        }
+
+        private double _cusp3y2;
+        public double cusp3y2
+        {
+            get
+            {
+                return _cusp3y2;
+            }
+            set
+            {
+                _cusp3y2 = value;
+                OnPropertyChanged("cusp3y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ4
+        #region
+        private double _cusp4x1;
+        public double cusp4x1
+        {
+            get
+            {
+                return _cusp4x1;
+            }
+            set
+            {
+                _cusp4x1 = value;
+                OnPropertyChanged("cusp4x1");
+            }
+        }
+
+        private double _cusp4y1;
+        public double cusp4y1
+        {
+            get
+            {
+                return _cusp4y1;
+            }
+            set
+            {
+                _cusp4y1 = value;
+                OnPropertyChanged("cusp4y1");
+            }
+        }
+
+        private double _cusp4x2;
+        public double cusp4x2
+        {
+            get
+            {
+                return _cusp4x2;
+            }
+            set
+            {
+                _cusp4x2 = value;
+                OnPropertyChanged("cusp4x2");
+            }
+        }
+
+        private double _cusp4y2;
+        public double cusp4y2
+        {
+            get
+            {
+                return _cusp4y2;
+            }
+            set
+            {
+                _cusp4y2 = value;
+                OnPropertyChanged("cusp4y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ5
+        #region
+        private double _cusp5x1;
+        public double cusp5x1
+        {
+            get
+            {
+                return _cusp5x1;
+            }
+            set
+            {
+                _cusp5x1 = value;
+                OnPropertyChanged("cusp5x1");
+            }
+        }
+
+        private double _cusp5y1;
+        public double cusp5y1
+        {
+            get
+            {
+                return _cusp5y1;
+            }
+            set
+            {
+                _cusp5y1 = value;
+                OnPropertyChanged("cusp5y1");
+            }
+        }
+
+        private double _cusp5x2;
+        public double cusp5x2
+        {
+            get
+            {
+                return _cusp5x2;
+            }
+            set
+            {
+                _cusp5x2 = value;
+                OnPropertyChanged("cusp5x2");
+            }
+        }
+
+        private double _cusp5y2;
+        public double cusp5y2
+        {
+            get
+            {
+                return _cusp5y2;
+            }
+            set
+            {
+                _cusp5y2 = value;
+                OnPropertyChanged("cusp5y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ6
+        #region
+        private double _cusp6x1;
+        public double cusp6x1
+        {
+            get
+            {
+                return _cusp6x1;
+            }
+            set
+            {
+                _cusp6x1 = value;
+                OnPropertyChanged("cusp6x1");
+            }
+        }
+
+        private double _cusp6y1;
+        public double cusp6y1
+        {
+            get
+            {
+                return _cusp6y1;
+            }
+            set
+            {
+                _cusp6y1 = value;
+                OnPropertyChanged("cusp6y1");
+            }
+        }
+
+        private double _cusp6x2;
+        public double cusp6x2
+        {
+            get
+            {
+                return _cusp6x2;
+            }
+            set
+            {
+                _cusp6x2 = value;
+                OnPropertyChanged("cusp6x2");
+            }
+        }
+
+        private double _cusp6y2;
+        public double cusp6y2
+        {
+            get
+            {
+                return _cusp6y2;
+            }
+            set
+            {
+                _cusp6y2 = value;
+                OnPropertyChanged("cusp6y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ7
+        #region
+        private double _cusp7x1;
+        public double cusp7x1
+        {
+            get
+            {
+                return _cusp7x1;
+            }
+            set
+            {
+                _cusp7x1 = value;
+                OnPropertyChanged("cusp7x1");
+            }
+        }
+
+        private double _cusp7y1;
+        public double cusp7y1
+        {
+            get
+            {
+                return _cusp7y1;
+            }
+            set
+            {
+                _cusp7y1 = value;
+                OnPropertyChanged("cusp7y1");
+            }
+        }
+
+        private double _cusp7x2;
+        public double cusp7x2
+        {
+            get
+            {
+                return _cusp7x2;
+            }
+            set
+            {
+                _cusp7x2 = value;
+                OnPropertyChanged("cusp7x2");
+            }
+        }
+
+        private double _cusp7y2;
+        public double cusp7y2
+        {
+            get
+            {
+                return _cusp7y2;
+            }
+            set
+            {
+                _cusp7y2 = value;
+                OnPropertyChanged("cusp7y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ8
+        #region
+        private double _cusp8x1;
+        public double cusp8x1
+        {
+            get
+            {
+                return _cusp8x1;
+            }
+            set
+            {
+                _cusp8x1 = value;
+                OnPropertyChanged("cusp8x1");
+            }
+        }
+
+        private double _cusp8y1;
+        public double cusp8y1
+        {
+            get
+            {
+                return _cusp8y1;
+            }
+            set
+            {
+                _cusp8y1 = value;
+                OnPropertyChanged("cusp8y1");
+            }
+        }
+
+        private double _cusp8x2;
+        public double cusp8x2
+        {
+            get
+            {
+                return _cusp8x2;
+            }
+            set
+            {
+                _cusp8x2 = value;
+                OnPropertyChanged("cusp8x2");
+            }
+        }
+
+        private double _cusp8y2;
+        public double cusp8y2
+        {
+            get
+            {
+                return _cusp8y2;
+            }
+            set
+            {
+                _cusp8y2 = value;
+                OnPropertyChanged("cusp8y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ9
+        #region
+        private double _cusp9x1;
+        public double cusp9x1
+        {
+            get
+            {
+                return _cusp9x1;
+            }
+            set
+            {
+                _cusp9x1 = value;
+                OnPropertyChanged("cusp9x1");
+            }
+        }
+
+        private double _cusp9y1;
+        public double cusp9y1
+        {
+            get
+            {
+                return _cusp9y1;
+            }
+            set
+            {
+                _cusp9y1 = value;
+                OnPropertyChanged("cusp9y1");
+            }
+        }
+
+        private double _cusp9x2;
+        public double cusp9x2
+        {
+            get
+            {
+                return _cusp9x2;
+            }
+            set
+            {
+                _cusp9x2 = value;
+                OnPropertyChanged("cusp9x2");
+            }
+        }
+
+        private double _cusp9y2;
+        public double cusp9y2
+        {
+            get
+            {
+                return _cusp9y2;
+            }
+            set
+            {
+                _cusp9y2 = value;
+                OnPropertyChanged("cusp9y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ10
+        #region
+        private double _cusp10x1;
+        public double cusp10x1
+        {
+            get
+            {
+                return _cusp10x1;
+            }
+            set
+            {
+                _cusp10x1 = value;
+                OnPropertyChanged("cusp10x1");
+            }
+        }
+
+        private double _cusp10y1;
+        public double cusp10y1
+        {
+            get
+            {
+                return _cusp10y1;
+            }
+            set
+            {
+                _cusp10y1 = value;
+                OnPropertyChanged("cusp10y1");
+            }
+        }
+
+        private double _cusp10x2;
+        public double cusp10x2
+        {
+            get
+            {
+                return _cusp10x2;
+            }
+            set
+            {
+                _cusp10x2 = value;
+                OnPropertyChanged("cusp10x2");
+            }
+        }
+
+        private double _cusp10y2;
+        public double cusp10y2
+        {
+            get
+            {
+                return _cusp10y2;
+            }
+            set
+            {
+                _cusp10y2 = value;
+                OnPropertyChanged("cusp10y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ11
+        #region
+        private double _cusp11x1;
+        public double cusp11x1
+        {
+            get
+            {
+                return _cusp11x1;
+            }
+            set
+            {
+                _cusp11x1 = value;
+                OnPropertyChanged("cusp11x1");
+            }
+        }
+
+        private double _cusp11y1;
+        public double cusp11y1
+        {
+            get
+            {
+                return _cusp11y1;
+            }
+            set
+            {
+                _cusp11y1 = value;
+                OnPropertyChanged("cusp11y1");
+            }
+        }
+
+        private double _cusp11x2;
+        public double cusp11x2
+        {
+            get
+            {
+                return _cusp11x2;
+            }
+            set
+            {
+                _cusp11x2 = value;
+                OnPropertyChanged("cusp11x2");
+            }
+        }
+
+        private double _cusp11y2;
+        public double cusp11y2
+        {
+            get
+            {
+                return _cusp11y2;
+            }
+            set
+            {
+                _cusp11y2 = value;
+                OnPropertyChanged("cusp11y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ12
+        #region
+        private double _cusp12x1;
+        public double cusp12x1
+        {
+            get
+            {
+                return _cusp12x1;
+            }
+            set
+            {
+                _cusp12x1 = value;
+                OnPropertyChanged("cusp12x1");
+            }
+        }
+
+        private double _cusp12y1;
+        public double cusp12y1
+        {
+            get
+            {
+                return _cusp12y1;
+            }
+            set
+            {
+                _cusp12y1 = value;
+                OnPropertyChanged("cusp12y1");
+            }
+        }
+
+        private double _cusp12x2;
+        public double cusp12x2
+        {
+            get
+            {
+                return _cusp12x2;
+            }
+            set
+            {
+                _cusp12x2 = value;
+                OnPropertyChanged("cusp12x2");
+            }
+        }
+
+        private double _cusp12y2;
+        public double cusp12y2
+        {
+            get
+            {
+                return _cusp12y2;
+            }
+            set
+            {
+                _cusp12y2 = value;
+                OnPropertyChanged("cusp12y2");
+            }
+        }
+
+        #endregion
+
+        // 牡羊座
+        #region
+        private double _ariesx;
+        public double ariesx
+        {
+            get
+            {
+                return _ariesx;
+            }
+            set
+            {
+                _ariesx = value;
+                OnPropertyChanged("ariesx");
+            }
+        }
+
+        private double _ariesy;
+        public double ariesy
+        {
+            get
+            {
+                return _ariesy;
+            }
+            set
+            {
+                _ariesy = value;
+                OnPropertyChanged("ariesy");
+            }
+        }
+
+        private string _ariestxt;
+        public string ariestxt
+        {
+            get
+            {
+                return _ariestxt;
+            }
+            set
+            {
+                _ariestxt = value;
+                OnPropertyChanged("ariestxt");
+            }
+        }
+
+        #endregion
+
+        // 牡牛座
+        #region
+        private double _taurusx;
+        public double taurusx
+        {
+            get
+            {
+                return _taurusx;
+            }
+            set
+            {
+                _taurusx = value;
+                OnPropertyChanged("taurusx");
+            }
+        }
+
+        private double _taurusy;
+        public double taurusy
+        {
+            get
+            {
+                return _taurusy;
+            }
+            set
+            {
+                _taurusy = value;
+                OnPropertyChanged("taurusy");
+            }
+        }
+        private string _taurustxt;
+        public string taurustxt
+        {
+            get
+            {
+                return _taurustxt;
+            }
+            set
+            {
+                _taurustxt = value;
+                OnPropertyChanged("taurustxt");
+            }
+        }
+
+        #endregion
+
+        // 双子座
+        #region
+        private double _geminix;
+        public double geminix
+        {
+            get
+            {
+                return _geminix;
+            }
+            set
+            {
+                _geminix = value;
+                OnPropertyChanged("geminix");
+            }
+        }
+
+        private double _geminiy;
+        public double geminiy
+        {
+            get
+            {
+                return _geminiy;
+            }
+            set
+            {
+                _geminiy = value;
+                OnPropertyChanged("geminiy");
+            }
+        }
+        private string _geminitxt;
+        public string geminitxt
+        {
+            get
+            {
+                return _geminitxt;
+            }
+            set
+            {
+                _geminitxt = value;
+                OnPropertyChanged("geminitxt");
+            }
+        }
+
+
+        #endregion
+
+        // 蟹座
+        #region
+        private double _cancerx;
+        public double cancerx
+        {
+            get
+            {
+                return _cancerx;
+            }
+            set
+            {
+                _cancerx = value;
+                OnPropertyChanged("cancerx");
+            }
+        }
+
+        private double _cancery;
+        public double cancery
+        {
+            get
+            {
+                return _cancery;
+            }
+            set
+            {
+                _cancery = value;
+                OnPropertyChanged("cancery");
+            }
+        }
+
+        private double _cancertxt;
+        public double cancertxt
+        {
+            get
+            {
+                return _cancertxt;
+            }
+            set
+            {
+                _cancertxt = value;
+                OnPropertyChanged("cancertxt");
+            }
+        }
+
+        #endregion
+
+        // 獅子座
+        #region
+        private double _leox;
+        public double leox
+        {
+            get
+            {
+                return _leox;
+            }
+            set
+            {
+                _leox = value;
+                OnPropertyChanged("leox");
+            }
+        }
+
+        private double _leoy;
+        public double leoy
+        {
+            get
+            {
+                return _leoy;
+            }
+            set
+            {
+                _leoy = value;
+                OnPropertyChanged("leoy");
+            }
+        }
+
+        private double _leotxt;
+        public double leotxt
+        {
+            get
+            {
+                return _leotxt;
+            }
+            set
+            {
+                _leotxt = value;
+                OnPropertyChanged("leotxt");
+            }
+        }
+
+        #endregion
+
+        // 乙女座
+        #region
+        private double _virgox;
+        public double virgox
+        {
+            get
+            {
+                return _virgox;
+            }
+            set
+            {
+                _virgox = value;
+                OnPropertyChanged("virgox");
+            }
+        }
+
+        private double _virgoy;
+        public double virgoy
+        {
+            get
+            {
+                return _virgoy;
+            }
+            set
+            {
+                _virgoy = value;
+                OnPropertyChanged("virgoy");
+            }
+        }
+
+        private double _virgotxt;
+        public double virgotxt
+        {
+            get
+            {
+                return _virgotxt;
+            }
+            set
+            {
+                _virgotxt = value;
+                OnPropertyChanged("virgotxt");
+            }
+        }
+
+        #endregion
+
+        // 天秤座
+        #region
+        private double _librax;
+        public double librax
+        {
+            get
+            {
+                return _librax;
+            }
+            set
+            {
+                _librax = value;
+                OnPropertyChanged("librax");
+            }
+        }
+
+        private double _libray;
+        public double libray
+        {
+            get
+            {
+                return _libray;
+            }
+            set
+            {
+                _libray = value;
+                OnPropertyChanged("libray");
+            }
+        }
+
+        #endregion
+
+        // 蠍座
+        #region
+        private double _scorpionx;
+        public double scorpionx
+        {
+            get
+            {
+                return _scorpionx;
+            }
+            set
+            {
+                _scorpionx = value;
+                OnPropertyChanged("scorpionx");
+            }
+        }
+
+        private double _scorpiony;
+        public double scorpiony
+        {
+            get
+            {
+                return _scorpiony;
+            }
+            set
+            {
+                _scorpiony = value;
+                OnPropertyChanged("scorpiony");
+            }
+        }
+
+        #endregion
+
+        // 射手座
+        #region
+        private double _sagittariusx;
+        public double sagittariusx
+        {
+            get
+            {
+                return _sagittariusx;
+            }
+            set
+            {
+                _sagittariusx = value;
+                OnPropertyChanged("sagittariusx");
+            }
+        }
+
+        private double _sagittariusy;
+        public double sagittariusy
+        {
+            get
+            {
+                return _sagittariusy;
+            }
+            set
+            {
+                _sagittariusy = value;
+                OnPropertyChanged("sagittariusy");
+            }
+        }
+
+        #endregion
+
+        // 山羊座
+        #region
+        private double _capricornx;
+        public double capricornx
+        {
+            get
+            {
+                return _capricornx;
+            }
+            set
+            {
+                _capricornx = value;
+                OnPropertyChanged("capricornx");
+            }
+        }
+
+        private double _capricorny;
+        public double capricorny
+        {
+            get
+            {
+                return _capricorny;
+            }
+            set
+            {
+                _capricorny = value;
+                OnPropertyChanged("capricorny");
+            }
+        }
+
+        #endregion
+
+        // 水瓶座
+        #region
+        private double _aquariusx;
+        public double aquariusx
+        {
+            get
+            {
+                return _aquariusx;
+            }
+            set
+            {
+                _aquariusx = value;
+                OnPropertyChanged("aquariusx");
+            }
+        }
+
+        private double _aquariusy;
+        public double aquariusy
+        {
+            get
+            {
+                return _aquariusy;
+            }
+            set
+            {
+                _aquariusy = value;
+                OnPropertyChanged("aquariusy");
+            }
+        }
+
+        #endregion
+
+        // 魚座
+        #region
+        private double _piscesx;
+        public double piscesx
+        {
+            get
+            {
+                return _piscesx;
+            }
+            set
+            {
+                _piscesx = value;
+                OnPropertyChanged("piscesx");
+            }
+        }
+
+        private double _piscesy;
+        public double piscesy
+        {
+            get
+            {
+                return _piscesy;
+            }
+            set
+            {
+                _piscesy = value;
+                OnPropertyChanged("piscesy");
+            }
+        }
+
+        #endregion
+
+
+        protected void OnPropertyChanged(string propertyname)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+
+        }
+    }
+}

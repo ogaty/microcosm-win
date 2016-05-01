@@ -57,6 +57,10 @@ namespace microcosm.Config
         [XmlElement("progression")]
         public int progression { get; set; }
 
+        // デフォルト表示
+        [XmlElement("defaultbands")]
+        public int defaultBands { get; set; }
+
         // ハウス
         [XmlElement("house")]
         public int houseCalc { get; set; }

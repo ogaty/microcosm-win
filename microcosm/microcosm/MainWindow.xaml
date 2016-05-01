@@ -25,7 +25,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="180"></RowDefinition>
         </Grid.RowDefinitions>
-        <Menu Grid.ColumnSpan="4">
+        <Menu x:Name="menuBar" Grid.ColumnSpan="4">
             <MenuItem Header="ファイル(_F)">
                 <MenuItem Header="データベースを開く(_O)" Click="OpenDatabase_Click"></MenuItem>
             </MenuItem>
@@ -184,6 +184,32 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoTextColorKey}}"/>
                     </Ellipse.Stroke>
                 </Ellipse>
+                <Line x:Name="cusp1" StrokeThickness="1" X1="{Binding cusp1x1}" Y1="{Binding cusp1y1}" Y2="{Binding cusp1y2}" X2="{Binding cusp1x2}" Stroke="#FF909090"/>
+                <Line x:Name="cusp2" StrokeThickness="1" X1="{Binding cusp2x1}" Y1="{Binding cusp2y1}" Y2="{Binding cusp2y2}" X2="{Binding cusp2x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp3" StrokeThickness="1" X1="{Binding cusp3x1}" Y1="{Binding cusp3y1}" Y2="{Binding cusp3y2}" X2="{Binding cusp3x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp4" StrokeThickness="1" X1="{Binding cusp4x1}" Y1="{Binding cusp4y1}" Y2="{Binding cusp4y2}" X2="{Binding cusp4x2}" Stroke="#FF909090"/>
+                <Line x:Name="cusp5" StrokeThickness="1" X1="{Binding cusp5x1}" Y1="{Binding cusp5y1}" Y2="{Binding cusp5y2}" X2="{Binding cusp5x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp6" StrokeThickness="1" X1="{Binding cusp6x1}" Y1="{Binding cusp6y1}" Y2="{Binding cusp6y2}" X2="{Binding cusp6x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp7" StrokeThickness="1" X1="{Binding cusp7x1}" Y1="{Binding cusp7y1}" Y2="{Binding cusp7y2}" X2="{Binding cusp7x2}" Stroke="#FF909090"/>
+                <Line x:Name="cusp8" StrokeThickness="1" X1="{Binding cusp8x1}" Y1="{Binding cusp8y1}" Y2="{Binding cusp8y2}" X2="{Binding cusp8x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp9" StrokeThickness="1" X1="{Binding cusp9x1}" Y1="{Binding cusp9y1}" Y2="{Binding cusp9y2}" X2="{Binding cusp9x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp10" StrokeThickness="1" X1="{Binding cusp10x1}" Y1="{Binding cusp10y1}" Y2="{Binding cusp10y2}" X2="{Binding cusp10x2}" Stroke="#FF909090"/>
+                <Line x:Name="cusp11" StrokeThickness="1" X1="{Binding cusp11x1}" Y1="{Binding cusp11y1}" Y2="{Binding cusp11y2}" X2="{Binding cusp11x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp12" StrokeThickness="1" X1="{Binding cusp12x1}" Y1="{Binding cusp12y1}" Y2="{Binding cusp12y2}" X2="{Binding cusp12x2}" Stroke="#FFAAAAAA"/>
+                <ContentControl x:Name="ariesSymbol" Canvas.Left="{Binding ariesx}" Canvas.Top="{Binding ariesy}">
+                    <Label Content="♈" />
+                </ContentControl>
+                <Label x:Name="taurusSymbol" />
+                <Label x:Name="geminiSymbol" />
+                <Label x:Name="cancerSymbol" />
+                <Label x:Name="leoSymbol" />
+                <Label x:Name="virgoSymbol" />
+                <Label x:Name="libraSymbol" />
+                <Label x:Name="scorpionSymbol" />
+                <Label x:Name="sagittariusSymbol" />
+                <Label x:Name="capricornSymbol" />
+                <Label x:Name="aquariusSymbol" />
+                <Label x:Name="piscesSymbol" />
             </Canvas>
         </StackPanel>
 

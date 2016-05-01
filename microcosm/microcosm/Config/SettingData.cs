@@ -22,6 +22,7 @@ namespace microcosm.Config
         // 5n 5p 5t 54 55 56
         // 6n 6p 6t 64 65 66
         // 7重円サポートはいらないだろ
+        // いやどうせなら？
         public double[,] orb_sun_soft_1st;
         public double[,] orb_sun_hard_1st;
         public double[,] orb_moon_soft_1st;

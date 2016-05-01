@@ -10,6 +10,8 @@ namespace microcosm.ViewModel
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        // 左上ユーザー
         public string _userName;
         public string userName
         {
@@ -88,18 +90,86 @@ namespace microcosm.ViewModel
                 OnPropertyChanged("userLng");
             }
         }
+
+        // 右上イベント
         public string _transitName;
-        public string transitName;
+        public string transitName
+        {
+            get
+            {
+                return _transitName;
+            }
+            set
+            {
+                _transitName = value;
+                OnPropertyChanged("transitName");
+            }
+        }
         public string _transitBirthStr;
-        public string transitBirthStr;
+        public string transitBirthStr
+        {
+            get
+            {
+                return _transitBirthStr;
+            }
+            set
+            {
+                _transitBirthStr = value;
+                OnPropertyChanged("transitBirthStr");
+            }
+        }
         public string _transitTimezone;
-        public string transitTimezone;
+        public string transitTimezone
+        {
+            get
+            {
+                    return _transitTimezone;
+            }
+            set
+            {
+                _transitTimezone = value;
+                OnPropertyChanged("transitTimezone");
+            }
+        }
         public string _transitPlace;
-        public string transitPlace;
+        public string transitPlace
+        {
+            get
+            {
+                return _transitPlace;
+            }
+            set
+            {
+                _transitPlace = value;
+                OnPropertyChanged("transitPlace");
+            }
+        }
         public string _transitLat;
-        public string transitLat;
+        public string transitLat
+        {
+            get
+            {
+                return _transitLat;
+            }
+            set
+            {
+                _transitLat = value;
+                OnPropertyChanged("transitLat");
+            }
+        }
         public string _transitLng;
-        public string transitLng;
+        public string transitLng
+        {
+            get
+            {
+                return _transitLng;
+            }
+            set
+            {
+                _transitLng = value;
+                OnPropertyChanged("transitLng");
+            }
+        }
 
         protected void OnPropertyChanged(string propertyname)
         {
