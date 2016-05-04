@@ -184,32 +184,46 @@
                         <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoTextColorKey}}"/>
                     </Ellipse.Stroke>
                 </Ellipse>
-                <Line x:Name="cusp1" StrokeThickness="1" X1="{Binding cusp1x1}" Y1="{Binding cusp1y1}" Y2="{Binding cusp1y2}" X2="{Binding cusp1x2}" Stroke="#FF909090"/>
-                <Line x:Name="cusp2" StrokeThickness="1" X1="{Binding cusp2x1}" Y1="{Binding cusp2y1}" Y2="{Binding cusp2y2}" X2="{Binding cusp2x2}" Stroke="#FFAAAAAA"/>
-                <Line x:Name="cusp3" StrokeThickness="1" X1="{Binding cusp3x1}" Y1="{Binding cusp3y1}" Y2="{Binding cusp3y2}" X2="{Binding cusp3x2}" Stroke="#FFAAAAAA"/>
-                <Line x:Name="cusp4" StrokeThickness="1" X1="{Binding cusp4x1}" Y1="{Binding cusp4y1}" Y2="{Binding cusp4y2}" X2="{Binding cusp4x2}" Stroke="#FF909090"/>
-                <Line x:Name="cusp5" StrokeThickness="1" X1="{Binding cusp5x1}" Y1="{Binding cusp5y1}" Y2="{Binding cusp5y2}" X2="{Binding cusp5x2}" Stroke="#FFAAAAAA"/>
-                <Line x:Name="cusp6" StrokeThickness="1" X1="{Binding cusp6x1}" Y1="{Binding cusp6y1}" Y2="{Binding cusp6y2}" X2="{Binding cusp6x2}" Stroke="#FFAAAAAA"/>
-                <Line x:Name="cusp7" StrokeThickness="1" X1="{Binding cusp7x1}" Y1="{Binding cusp7y1}" Y2="{Binding cusp7y2}" X2="{Binding cusp7x2}" Stroke="#FF909090"/>
-                <Line x:Name="cusp8" StrokeThickness="1" X1="{Binding cusp8x1}" Y1="{Binding cusp8y1}" Y2="{Binding cusp8y2}" X2="{Binding cusp8x2}" Stroke="#FFAAAAAA"/>
-                <Line x:Name="cusp9" StrokeThickness="1" X1="{Binding cusp9x1}" Y1="{Binding cusp9y1}" Y2="{Binding cusp9y2}" X2="{Binding cusp9x2}" Stroke="#FFAAAAAA"/>
-                <Line x:Name="cusp10" StrokeThickness="1" X1="{Binding cusp10x1}" Y1="{Binding cusp10y1}" Y2="{Binding cusp10y2}" X2="{Binding cusp10x2}" Stroke="#FF909090"/>
-                <Line x:Name="cusp11" StrokeThickness="1" X1="{Binding cusp11x1}" Y1="{Binding cusp11y1}" Y2="{Binding cusp11y2}" X2="{Binding cusp11x2}" Stroke="#FFAAAAAA"/>
-                <Line x:Name="cusp12" StrokeThickness="1" X1="{Binding cusp12x1}" Y1="{Binding cusp12y1}" Y2="{Binding cusp12y2}" X2="{Binding cusp12x2}" Stroke="#FFAAAAAA"/>
-                <ContentControl x:Name="ariesSymbol" Canvas.Left="{Binding ariesx}" Canvas.Top="{Binding ariesy}">
-                    <Label Content="♈" />
-                </ContentControl>
-                <Label x:Name="taurusSymbol" />
-                <Label x:Name="geminiSymbol" />
-                <Label x:Name="cancerSymbol" />
-                <Label x:Name="leoSymbol" />
-                <Label x:Name="virgoSymbol" />
-                <Label x:Name="libraSymbol" />
-                <Label x:Name="scorpionSymbol" />
-                <Label x:Name="sagittariusSymbol" />
-                <Label x:Name="capricornSymbol" />
-                <Label x:Name="aquariusSymbol" />
-                <Label x:Name="piscesSymbol" />
+                <Line x:Name="cusp1" StrokeThickness="1" X1="{Binding scusp1x1}" Y1="{Binding scusp1y1}" Y2="{Binding scusp1y2}" X2="{Binding scusp1x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp2" StrokeThickness="1" X1="{Binding scusp2x1}" Y1="{Binding scusp2y1}" Y2="{Binding scusp2y2}" X2="{Binding scusp2x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp3" StrokeThickness="1" X1="{Binding scusp3x1}" Y1="{Binding scusp3y1}" Y2="{Binding scusp3y2}" X2="{Binding scusp3x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp4" StrokeThickness="1" X1="{Binding scusp4x1}" Y1="{Binding scusp4y1}" Y2="{Binding scusp4y2}" X2="{Binding scusp4x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp5" StrokeThickness="1" X1="{Binding scusp5x1}" Y1="{Binding scusp5y1}" Y2="{Binding scusp5y2}" X2="{Binding scusp5x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp6" StrokeThickness="1" X1="{Binding scusp6x1}" Y1="{Binding scusp6y1}" Y2="{Binding scusp6y2}" X2="{Binding scusp6x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp7" StrokeThickness="1" X1="{Binding scusp7x1}" Y1="{Binding scusp7y1}" Y2="{Binding scusp7y2}" X2="{Binding scusp7x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp8" StrokeThickness="1" X1="{Binding scusp8x1}" Y1="{Binding scusp8y1}" Y2="{Binding scusp8y2}" X2="{Binding scusp8x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp9" StrokeThickness="1" X1="{Binding scusp9x1}" Y1="{Binding scusp9y1}" Y2="{Binding scusp9y2}" X2="{Binding scusp9x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp10" StrokeThickness="1" X1="{Binding scusp10x1}" Y1="{Binding scusp10y1}" Y2="{Binding scusp10y2}" X2="{Binding scusp10x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp11" StrokeThickness="1" X1="{Binding scusp11x1}" Y1="{Binding scusp11y1}" Y2="{Binding scusp11y2}" X2="{Binding scusp11x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="cusp12" StrokeThickness="1" X1="{Binding scusp12x1}" Y1="{Binding scusp12y1}" Y2="{Binding scusp12y2}" X2="{Binding scusp12x2}" Stroke="#FFAAAAAA"/>
+
+                <Line x:Name="scusp1" StrokeThickness="1" X1="{Binding cusp1x1}" Y1="{Binding cusp1y1}" Y2="{Binding cusp1y2}" X2="{Binding cusp1x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp2" StrokeThickness="1" X1="{Binding cusp2x1}" Y1="{Binding cusp2y1}" Y2="{Binding cusp2y2}" X2="{Binding cusp2x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp3" StrokeThickness="1" X1="{Binding cusp3x1}" Y1="{Binding cusp3y1}" Y2="{Binding cusp3y2}" X2="{Binding cusp3x2}" Stroke="#FF909090"/>
+                <Line x:Name="scusp4" StrokeThickness="1" X1="{Binding cusp4x1}" Y1="{Binding cusp4y1}" Y2="{Binding cusp4y2}" X2="{Binding cusp4x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp5" StrokeThickness="1" X1="{Binding cusp5x1}" Y1="{Binding cusp5y1}" Y2="{Binding cusp5y2}" X2="{Binding cusp5x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp6" StrokeThickness="1" X1="{Binding cusp6x1}" Y1="{Binding cusp6y1}" Y2="{Binding cusp6y2}" X2="{Binding cusp6x2}" Stroke="#FF909090"/>
+                <Line x:Name="scusp7" StrokeThickness="1" X1="{Binding cusp7x1}" Y1="{Binding cusp7y1}" Y2="{Binding cusp7y2}" X2="{Binding cusp7x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp8" StrokeThickness="1" X1="{Binding cusp8x1}" Y1="{Binding cusp8y1}" Y2="{Binding cusp8y2}" X2="{Binding cusp8x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp9" StrokeThickness="1" X1="{Binding cusp9x1}" Y1="{Binding cusp9y1}" Y2="{Binding cusp9y2}" X2="{Binding cusp9x2}" Stroke="#FF909090"/>
+                <Line x:Name="scusp10" StrokeThickness="1" X1="{Binding cusp10x1}" Y1="{Binding cusp10y1}" Y2="{Binding cusp10y2}" X2="{Binding cusp10x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp11" StrokeThickness="1" X1="{Binding cusp11x1}" Y1="{Binding cusp11y1}" Y2="{Binding cusp11y2}" X2="{Binding cusp11x2}" Stroke="#FFAAAAAA"/>
+                <Line x:Name="scusp12" StrokeThickness="1" X1="{Binding cusp12x1}" Y1="{Binding cusp12y1}" Y2="{Binding cusp12y2}" X2="{Binding cusp12x2}" Stroke="#FF909090"/>
+
+                <Label x:Name="ariesSymbol" Content="{Binding ariestxt}" Canvas.Left="{Binding ariesx}" Canvas.Top="{Binding ariesy}"></Label>
+                <Label x:Name="taurusSymbol" Content="{Binding taurustxt}" Canvas.Left="{Binding taurusx}" Canvas.Top="{Binding taurusy}" />
+                <Label x:Name="geminiSymbol" Content="{Binding geminitxt}" Canvas.Left="{Binding geminix}" Canvas.Top="{Binding geminiy}" />
+                <Label x:Name="cancerSymbol" Content="{Binding cancertxt}" Canvas.Left="{Binding cancerx}" Canvas.Top="{Binding cancery}" />
+                <Label x:Name="leoSymbol" Content="{Binding leotxt}" Canvas.Left="{Binding leox}" Canvas.Top="{Binding leoy}" />
+                <Label x:Name="virgoSymbol" Content="{Binding virgotxt}" Canvas.Left="{Binding virgox}" Canvas.Top="{Binding virgoy}" />
+                <Label x:Name="libraSymbol" Content="{Binding libratxt}" Canvas.Left="{Binding librax}" Canvas.Top="{Binding libray}" />
+                <Label x:Name="scorpionSymbol" Content="{Binding scorpiontxt}" Canvas.Left="{Binding scorpionx}" Canvas.Top="{Binding scorpiony}" />
+                <Label x:Name="sagittariusSymbol" Content="{Binding sagittariustxt}" Canvas.Left="{Binding sagittariusx}" Canvas.Top="{Binding sagittariusy}" />
+                <Label x:Name="capricornSymbol"  Content="{Binding capricorntxt}" Canvas.Left="{Binding capricornx}" Canvas.Top="{Binding capricorny}" />
+                <Label x:Name="aquariusSymbol"  Content="{Binding aquariustxt}" Canvas.Left="{Binding aquariusx}" Canvas.Top="{Binding aquariusy}" />
+                <Label x:Name="piscesSymbol"  Content="{Binding piscestxt}" Canvas.Left="{Binding piscesx}" Canvas.Top="{Binding piscesy}" />
+
+                <Label x:Name="natalSunSymbol" Content="{Binding natalsuntxt}" Canvas.Left="{Binding natalsunx}" Canvas.Top="{Binding natalsuny}"></Label>
             </Canvas>
         </StackPanel>
 

@@ -889,6 +889,726 @@ namespace microcosm.ViewModel
 
         #endregion
 
+        // カスプ1
+        #region
+        private double _scusp1x1;
+        public double scusp1x1
+        {
+            get
+            {
+                return _scusp1x1;
+            }
+            set
+            {
+                _scusp1x1 = value;
+                OnPropertyChanged("scusp1x1");
+            }
+        }
+
+        private double _scusp1y1;
+        public double scusp1y1
+        {
+            get
+            {
+                return _scusp1y1;
+            }
+            set
+            {
+                _scusp1y1 = value;
+                OnPropertyChanged("scusp1y1");
+            }
+        }
+
+        private double _scusp1x2;
+        public double scusp1x2
+        {
+            get
+            {
+                return _scusp1x2;
+            }
+            set
+            {
+                _scusp1x2 = value;
+                OnPropertyChanged("scusp1x2");
+            }
+        }
+
+        private double _scusp1y2;
+        public double scusp1y2
+        {
+            get
+            {
+                return _scusp1y2;
+            }
+            set
+            {
+                _scusp1y2 = value;
+                OnPropertyChanged("scusp1y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ2
+        #region
+        private double _scusp2x1;
+        public double scusp2x1
+        {
+            get
+            {
+                return _scusp2x1;
+            }
+            set
+            {
+                _scusp2x1 = value;
+                OnPropertyChanged("scusp2x1");
+            }
+        }
+
+        private double _scusp2y1;
+        public double scusp2y1
+        {
+            get
+            {
+                return _scusp2y1;
+            }
+            set
+            {
+                _scusp2y1 = value;
+                OnPropertyChanged("scusp2y1");
+            }
+        }
+
+        private double _scusp2x2;
+        public double scusp2x2
+        {
+            get
+            {
+                return _scusp2x2;
+            }
+            set
+            {
+                _scusp2x2 = value;
+                OnPropertyChanged("scusp2x2");
+            }
+        }
+
+        private double _scusp2y2;
+        public double scusp2y2
+        {
+            get
+            {
+                return _scusp2y2;
+            }
+            set
+            {
+                _scusp2y2 = value;
+                OnPropertyChanged("scusp2y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ3
+        #region
+        private double _scusp3x1;
+        public double scusp3x1
+        {
+            get
+            {
+                return _scusp3x1;
+            }
+            set
+            {
+                _scusp3x1 = value;
+                OnPropertyChanged("scusp3x1");
+            }
+        }
+
+        private double _scusp3y1;
+        public double scusp3y1
+        {
+            get
+            {
+                return _scusp3y1;
+            }
+            set
+            {
+                _scusp3y1 = value;
+                OnPropertyChanged("scusp3y1");
+            }
+        }
+
+        private double _scusp3x2;
+        public double scusp3x2
+        {
+            get
+            {
+                return _scusp3x2;
+            }
+            set
+            {
+                _scusp3x2 = value;
+                OnPropertyChanged("scusp3x2");
+            }
+        }
+
+        private double _scusp3y2;
+        public double scusp3y2
+        {
+            get
+            {
+                return _scusp3y2;
+            }
+            set
+            {
+                _scusp3y2 = value;
+                OnPropertyChanged("scusp3y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ4
+        #region
+        private double _scusp4x1;
+        public double scusp4x1
+        {
+            get
+            {
+                return _scusp4x1;
+            }
+            set
+            {
+                _scusp4x1 = value;
+                OnPropertyChanged("scusp4x1");
+            }
+        }
+
+        private double _scusp4y1;
+        public double scusp4y1
+        {
+            get
+            {
+                return _scusp4y1;
+            }
+            set
+            {
+                _scusp4y1 = value;
+                OnPropertyChanged("scusp4y1");
+            }
+        }
+
+        private double _scusp4x2;
+        public double scusp4x2
+        {
+            get
+            {
+                return _scusp4x2;
+            }
+            set
+            {
+                _scusp4x2 = value;
+                OnPropertyChanged("scusp4x2");
+            }
+        }
+
+        private double _scusp4y2;
+        public double scusp4y2
+        {
+            get
+            {
+                return _scusp4y2;
+            }
+            set
+            {
+                _scusp4y2 = value;
+                OnPropertyChanged("scusp4y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ5
+        #region
+        private double _scusp5x1;
+        public double scusp5x1
+        {
+            get
+            {
+                return _scusp5x1;
+            }
+            set
+            {
+                _scusp5x1 = value;
+                OnPropertyChanged("scusp5x1");
+            }
+        }
+
+        private double _scusp5y1;
+        public double scusp5y1
+        {
+            get
+            {
+                return _scusp5y1;
+            }
+            set
+            {
+                _scusp5y1 = value;
+                OnPropertyChanged("scusp5y1");
+            }
+        }
+
+        private double _scusp5x2;
+        public double scusp5x2
+        {
+            get
+            {
+                return _scusp5x2;
+            }
+            set
+            {
+                _scusp5x2 = value;
+                OnPropertyChanged("scusp5x2");
+            }
+        }
+
+        private double _scusp5y2;
+        public double scusp5y2
+        {
+            get
+            {
+                return _scusp5y2;
+            }
+            set
+            {
+                _scusp5y2 = value;
+                OnPropertyChanged("scusp5y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ6
+        #region
+        private double _scusp6x1;
+        public double scusp6x1
+        {
+            get
+            {
+                return _scusp6x1;
+            }
+            set
+            {
+                _scusp6x1 = value;
+                OnPropertyChanged("scusp6x1");
+            }
+        }
+
+        private double _scusp6y1;
+        public double scusp6y1
+        {
+            get
+            {
+                return _scusp6y1;
+            }
+            set
+            {
+                _scusp6y1 = value;
+                OnPropertyChanged("scusp6y1");
+            }
+        }
+
+        private double _scusp6x2;
+        public double scusp6x2
+        {
+            get
+            {
+                return _scusp6x2;
+            }
+            set
+            {
+                _scusp6x2 = value;
+                OnPropertyChanged("scusp6x2");
+            }
+        }
+
+        private double _scusp6y2;
+        public double scusp6y2
+        {
+            get
+            {
+                return _scusp6y2;
+            }
+            set
+            {
+                _scusp6y2 = value;
+                OnPropertyChanged("scusp6y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ7
+        #region
+        private double _scusp7x1;
+        public double scusp7x1
+        {
+            get
+            {
+                return _scusp7x1;
+            }
+            set
+            {
+                _scusp7x1 = value;
+                OnPropertyChanged("scusp7x1");
+            }
+        }
+
+        private double _scusp7y1;
+        public double scusp7y1
+        {
+            get
+            {
+                return _scusp7y1;
+            }
+            set
+            {
+                _scusp7y1 = value;
+                OnPropertyChanged("scusp7y1");
+            }
+        }
+
+        private double _scusp7x2;
+        public double scusp7x2
+        {
+            get
+            {
+                return _scusp7x2;
+            }
+            set
+            {
+                _scusp7x2 = value;
+                OnPropertyChanged("scusp7x2");
+            }
+        }
+
+        private double _scusp7y2;
+        public double scusp7y2
+        {
+            get
+            {
+                return _scusp7y2;
+            }
+            set
+            {
+                _scusp7y2 = value;
+                OnPropertyChanged("scusp7y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ8
+        #region
+        private double _scusp8x1;
+        public double scusp8x1
+        {
+            get
+            {
+                return _scusp8x1;
+            }
+            set
+            {
+                _scusp8x1 = value;
+                OnPropertyChanged("scusp8x1");
+            }
+        }
+
+        private double _scusp8y1;
+        public double scusp8y1
+        {
+            get
+            {
+                return _scusp8y1;
+            }
+            set
+            {
+                _scusp8y1 = value;
+                OnPropertyChanged("scusp8y1");
+            }
+        }
+
+        private double _scusp8x2;
+        public double scusp8x2
+        {
+            get
+            {
+                return _scusp8x2;
+            }
+            set
+            {
+                _scusp8x2 = value;
+                OnPropertyChanged("scusp8x2");
+            }
+        }
+
+        private double _scusp8y2;
+        public double scusp8y2
+        {
+            get
+            {
+                return _scusp8y2;
+            }
+            set
+            {
+                _scusp8y2 = value;
+                OnPropertyChanged("scusp8y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ9
+        #region
+        private double _scusp9x1;
+        public double scusp9x1
+        {
+            get
+            {
+                return _scusp9x1;
+            }
+            set
+            {
+                _scusp9x1 = value;
+                OnPropertyChanged("scusp9x1");
+            }
+        }
+
+        private double _scusp9y1;
+        public double scusp9y1
+        {
+            get
+            {
+                return _scusp9y1;
+            }
+            set
+            {
+                _scusp9y1 = value;
+                OnPropertyChanged("scusp9y1");
+            }
+        }
+
+        private double _scusp9x2;
+        public double scusp9x2
+        {
+            get
+            {
+                return _scusp9x2;
+            }
+            set
+            {
+                _scusp9x2 = value;
+                OnPropertyChanged("scusp9x2");
+            }
+        }
+
+        private double _scusp9y2;
+        public double scusp9y2
+        {
+            get
+            {
+                return _scusp9y2;
+            }
+            set
+            {
+                _scusp9y2 = value;
+                OnPropertyChanged("scusp9y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ10
+        #region
+        private double _scusp10x1;
+        public double scusp10x1
+        {
+            get
+            {
+                return _scusp10x1;
+            }
+            set
+            {
+                _scusp10x1 = value;
+                OnPropertyChanged("scusp10x1");
+            }
+        }
+
+        private double _scusp10y1;
+        public double scusp10y1
+        {
+            get
+            {
+                return _scusp10y1;
+            }
+            set
+            {
+                _scusp10y1 = value;
+                OnPropertyChanged("scusp10y1");
+            }
+        }
+
+        private double _scusp10x2;
+        public double scusp10x2
+        {
+            get
+            {
+                return _scusp10x2;
+            }
+            set
+            {
+                _scusp10x2 = value;
+                OnPropertyChanged("scusp10x2");
+            }
+        }
+
+        private double _scusp10y2;
+        public double scusp10y2
+        {
+            get
+            {
+                return _scusp10y2;
+            }
+            set
+            {
+                _scusp10y2 = value;
+                OnPropertyChanged("scusp10y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ11
+        #region
+        private double _scusp11x1;
+        public double scusp11x1
+        {
+            get
+            {
+                return _scusp11x1;
+            }
+            set
+            {
+                _scusp11x1 = value;
+                OnPropertyChanged("scusp11x1");
+            }
+        }
+
+        private double _scusp11y1;
+        public double scusp11y1
+        {
+            get
+            {
+                return _scusp11y1;
+            }
+            set
+            {
+                _scusp11y1 = value;
+                OnPropertyChanged("scusp11y1");
+            }
+        }
+
+        private double _scusp11x2;
+        public double scusp11x2
+        {
+            get
+            {
+                return _scusp11x2;
+            }
+            set
+            {
+                _scusp11x2 = value;
+                OnPropertyChanged("scusp11x2");
+            }
+        }
+
+        private double _scusp11y2;
+        public double scusp11y2
+        {
+            get
+            {
+                return _scusp11y2;
+            }
+            set
+            {
+                _scusp11y2 = value;
+                OnPropertyChanged("scusp11y2");
+            }
+        }
+
+        #endregion
+
+        // カスプ12
+        #region
+        private double _scusp12x1;
+        public double scusp12x1
+        {
+            get
+            {
+                return _scusp12x1;
+            }
+            set
+            {
+                _scusp12x1 = value;
+                OnPropertyChanged("scusp12x1");
+            }
+        }
+
+        private double _scusp12y1;
+        public double scusp12y1
+        {
+            get
+            {
+                return _scusp12y1;
+            }
+            set
+            {
+                _scusp12y1 = value;
+                OnPropertyChanged("scusp12y1");
+            }
+        }
+
+        private double _scusp12x2;
+        public double scusp12x2
+        {
+            get
+            {
+                return _scusp12x2;
+            }
+            set
+            {
+                _scusp12x2 = value;
+                OnPropertyChanged("scusp12x2");
+            }
+        }
+
+        private double _scusp12y2;
+        public double scusp12y2
+        {
+            get
+            {
+                return _scusp12y2;
+            }
+            set
+            {
+                _scusp12y2 = value;
+                OnPropertyChanged("scusp12y2");
+            }
+        }
+
+        #endregion
+
         // 牡羊座
         #region
         private double _ariesx;
@@ -1056,8 +1776,8 @@ namespace microcosm.ViewModel
             }
         }
 
-        private double _cancertxt;
-        public double cancertxt
+        private string _cancertxt;
+        public string cancertxt
         {
             get
             {
@@ -1102,8 +1822,8 @@ namespace microcosm.ViewModel
             }
         }
 
-        private double _leotxt;
-        public double leotxt
+        private string _leotxt;
+        public string leotxt
         {
             get
             {
@@ -1148,8 +1868,8 @@ namespace microcosm.ViewModel
             }
         }
 
-        private double _virgotxt;
-        public double virgotxt
+        private string _virgotxt;
+        public string virgotxt
         {
             get
             {
@@ -1194,6 +1914,20 @@ namespace microcosm.ViewModel
             }
         }
 
+        private string _libratxt;
+        public string libratxt
+        {
+            get
+            {
+                return _libratxt;
+            }
+            set
+            {
+                _libratxt = value;
+                OnPropertyChanged("libratxt");
+            }
+        }
+
         #endregion
 
         // 蠍座
@@ -1226,6 +1960,19 @@ namespace microcosm.ViewModel
             }
         }
 
+        private string _scorpiontxt;
+        public string scorpiontxt
+        {
+            get
+            {
+                return _scorpiontxt;
+            }
+            set
+            {
+                _scorpiontxt = value;
+                OnPropertyChanged("scorpiontxt");
+            }
+        }
         #endregion
 
         // 射手座
@@ -1258,6 +2005,19 @@ namespace microcosm.ViewModel
             }
         }
 
+        private string _sagittariustxt;
+        public string sagittariustxt
+        {
+            get
+            {
+                return _sagittariustxt;
+            }
+            set
+            {
+                _sagittariustxt = value;
+                OnPropertyChanged("sagittariustxt");
+            }
+        }
         #endregion
 
         // 山羊座
@@ -1287,6 +2047,19 @@ namespace microcosm.ViewModel
             {
                 _capricorny = value;
                 OnPropertyChanged("capricorny");
+            }
+        }
+        private string _capricorntxt;
+        public string capricorntxt
+        {
+            get
+            {
+                return _capricorntxt;
+            }
+            set
+            {
+                _capricorntxt = value;
+                OnPropertyChanged("capricorntxt");
             }
         }
 
@@ -1321,6 +2094,19 @@ namespace microcosm.ViewModel
                 OnPropertyChanged("aquariusy");
             }
         }
+        private string _aquariustxt;
+        public string aquariustxt
+        {
+            get
+            {
+                return _aquariustxt;
+            }
+            set
+            {
+                _aquariustxt = value;
+                OnPropertyChanged("aquariustxt");
+            }
+        }
 
         #endregion
 
@@ -1353,9 +2139,66 @@ namespace microcosm.ViewModel
                 OnPropertyChanged("piscesy");
             }
         }
+        private string _piscestxt;
+        public string piscestxt
+        {
+            get
+            {
+                return _piscestxt;
+            }
+            set
+            {
+                _piscestxt = value;
+                OnPropertyChanged("piscestxt");
+            }
+        }
 
         #endregion
 
+        // 太陽
+        #region
+        private double _natalsunx;
+        public double natalsunx
+        {
+            get
+            {
+                return _natalsunx;
+            }
+            set
+            {
+                _natalsunx = value;
+                OnPropertyChanged("natalsunx");
+            }
+        }
+
+        private double _natalsuny;
+        public double natalsuny
+        {
+            get
+            {
+                return _natalsuny;
+            }
+            set
+            {
+                _natalsuny = value;
+                OnPropertyChanged("natalsuny");
+            }
+        }
+        private string _natalsuntxt;
+        public string natalsuntxt
+        {
+            get
+            {
+                return _natalsuntxt;
+            }
+            set
+            {
+                _natalsuntxt = value;
+                OnPropertyChanged("natalsuntxt");
+            }
+        }
+
+        #endregion
 
         protected void OnPropertyChanged(string propertyname)
         {

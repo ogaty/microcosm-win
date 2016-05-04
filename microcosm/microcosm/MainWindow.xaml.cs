@@ -43,6 +43,7 @@ namespace microcosm
 
         public UserEventData userdata;
         public Line[] cusps = new Line[12];
+        public Line[] scusps = new Line[12];
 
         List<PlanetData> list1;
         List<PlanetData> list2;
@@ -127,6 +128,18 @@ namespace microcosm
             cusps[9] = cusp10;
             cusps[10] = cusp11;
             cusps[11] = cusp12;
+            scusps[0] = scusp1;
+            scusps[1] = scusp2;
+            scusps[2] = scusp3;
+            scusps[3] = scusp4;
+            scusps[4] = scusp5;
+            scusps[5] = scusp6;
+            scusps[6] = scusp7;
+            scusps[7] = scusp8;
+            scusps[8] = scusp9;
+            scusps[9] = scusp10;
+            scusps[10] = scusp11;
+            scusps[11] = scusp12;
 
         }
 
@@ -193,7 +206,31 @@ namespace microcosm
             cusps[9].DataContext = rcanvas;
             cusps[10].DataContext = rcanvas;
             cusps[11].DataContext = rcanvas;
+            scusps[0].DataContext = rcanvas;
+            scusps[1].DataContext = rcanvas;
+            scusps[2].DataContext = rcanvas;
+            scusps[3].DataContext = rcanvas;
+            scusps[4].DataContext = rcanvas;
+            scusps[5].DataContext = rcanvas;
+            scusps[6].DataContext = rcanvas;
+            scusps[7].DataContext = rcanvas;
+            scusps[8].DataContext = rcanvas;
+            scusps[9].DataContext = rcanvas;
+            scusps[10].DataContext = rcanvas;
+            scusps[11].DataContext = rcanvas;
             ariesSymbol.DataContext = rcanvas;
+            taurusSymbol.DataContext = rcanvas;
+            geminiSymbol.DataContext = rcanvas;
+            cancerSymbol.DataContext = rcanvas;
+            leoSymbol.DataContext = rcanvas;
+            virgoSymbol.DataContext = rcanvas;
+            libraSymbol.DataContext = rcanvas;
+            scorpionSymbol.DataContext = rcanvas;
+            sagittariusSymbol.DataContext = rcanvas;
+            capricornSymbol.DataContext = rcanvas;
+            aquariusSymbol.DataContext = rcanvas;
+            piscesSymbol.DataContext = rcanvas;
+            natalSunSymbol.DataContext = rcanvas;
 
             reportVM = new ReportViewModel(
                 list1,
@@ -253,7 +290,8 @@ namespace microcosm
             }
 
             houseCuspRender(houseList1);
-            zodiacRender(houseList1[0]);
+            signCuspRender(houseList1[1]);
+            zodiacRender(houseList1[1]);
             planetRender(houseList1[0], list1, list2, list3);
 
             Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
@@ -264,7 +302,7 @@ namespace microcosm
         {
             //内側がstart, 外側がend
             double startX = config.zodiacCenter / 2;
-            double endX = rcanvas.outerWidth / 2;
+            double endX = rcanvas.innerWidth / 2;
 
             double startY = 0;
             double endY = 0;
@@ -357,7 +395,7 @@ namespace microcosm
         // サインカスプレンダリング
         private void signCuspRender(double startdegree)
         {
-            double startX = config.zodiacCenter / 2;
+            double startX = rcanvas.innerWidth / 2;
             double endX = rcanvas.outerWidth / 2;
 
             double startY = 0;
@@ -386,65 +424,65 @@ namespace microcosm
                 pList.Add(pointList);
             });
 
-            rcanvas.cusp1x1 = pList[0][0].X;
-            rcanvas.cusp1y1 = pList[0][0].Y;
-            rcanvas.cusp1x2 = pList[0][1].X;
-            rcanvas.cusp1y2 = pList[0][1].Y;
+            rcanvas.scusp1x1 = pList[0][0].X;
+            rcanvas.scusp1y1 = pList[0][0].Y;
+            rcanvas.scusp1x2 = pList[0][1].X;
+            rcanvas.scusp1y2 = pList[0][1].Y;
 
-            rcanvas.cusp2x1 = pList[1][0].X;
-            rcanvas.cusp2y1 = pList[1][0].Y;
-            rcanvas.cusp2x2 = pList[1][1].X;
-            rcanvas.cusp2y2 = pList[1][1].Y;
+            rcanvas.scusp2x1 = pList[1][0].X;
+            rcanvas.scusp2y1 = pList[1][0].Y;
+            rcanvas.scusp2x2 = pList[1][1].X;
+            rcanvas.scusp2y2 = pList[1][1].Y;
 
-            rcanvas.cusp3x1 = pList[2][0].X;
-            rcanvas.cusp3y1 = pList[2][0].Y;
-            rcanvas.cusp3x2 = pList[2][1].X;
-            rcanvas.cusp3y2 = pList[2][1].Y;
+            rcanvas.scusp3x1 = pList[2][0].X;
+            rcanvas.scusp3y1 = pList[2][0].Y;
+            rcanvas.scusp3x2 = pList[2][1].X;
+            rcanvas.scusp3y2 = pList[2][1].Y;
 
-            rcanvas.cusp4x1 = pList[3][0].X;
-            rcanvas.cusp4y1 = pList[3][0].Y;
-            rcanvas.cusp4x2 = pList[3][1].X;
-            rcanvas.cusp4y2 = pList[3][1].Y;
+            rcanvas.scusp4x1 = pList[3][0].X;
+            rcanvas.scusp4y1 = pList[3][0].Y;
+            rcanvas.scusp4x2 = pList[3][1].X;
+            rcanvas.scusp4y2 = pList[3][1].Y;
 
-            rcanvas.cusp5x1 = pList[4][0].X;
-            rcanvas.cusp5y1 = pList[4][0].Y;
-            rcanvas.cusp5x2 = pList[4][1].X;
-            rcanvas.cusp5y2 = pList[4][1].Y;
+            rcanvas.scusp5x1 = pList[4][0].X;
+            rcanvas.scusp5y1 = pList[4][0].Y;
+            rcanvas.scusp5x2 = pList[4][1].X;
+            rcanvas.scusp5y2 = pList[4][1].Y;
 
-            rcanvas.cusp6x1 = pList[5][0].X;
-            rcanvas.cusp6y1 = pList[5][0].Y;
-            rcanvas.cusp6x2 = pList[5][1].X;
-            rcanvas.cusp6y2 = pList[5][1].Y;
+            rcanvas.scusp6x1 = pList[5][0].X;
+            rcanvas.scusp6y1 = pList[5][0].Y;
+            rcanvas.scusp6x2 = pList[5][1].X;
+            rcanvas.scusp6y2 = pList[5][1].Y;
 
-            rcanvas.cusp7x1 = pList[6][0].X;
-            rcanvas.cusp7y1 = pList[6][0].Y;
-            rcanvas.cusp7x2 = pList[6][1].X;
-            rcanvas.cusp7y2 = pList[6][1].Y;
+            rcanvas.scusp7x1 = pList[6][0].X;
+            rcanvas.scusp7y1 = pList[6][0].Y;
+            rcanvas.scusp7x2 = pList[6][1].X;
+            rcanvas.scusp7y2 = pList[6][1].Y;
 
-            rcanvas.cusp8x1 = pList[7][0].X;
-            rcanvas.cusp8y1 = pList[7][0].Y;
-            rcanvas.cusp8x2 = pList[7][1].X;
-            rcanvas.cusp8y2 = pList[7][1].Y;
+            rcanvas.scusp8x1 = pList[7][0].X;
+            rcanvas.scusp8y1 = pList[7][0].Y;
+            rcanvas.scusp8x2 = pList[7][1].X;
+            rcanvas.scusp8y2 = pList[7][1].Y;
 
-            rcanvas.cusp9x1 = pList[8][0].X;
-            rcanvas.cusp9y1 = pList[8][0].Y;
-            rcanvas.cusp9x2 = pList[8][1].X;
-            rcanvas.cusp9y2 = pList[8][1].Y;
+            rcanvas.scusp9x1 = pList[8][0].X;
+            rcanvas.scusp9y1 = pList[8][0].Y;
+            rcanvas.scusp9x2 = pList[8][1].X;
+            rcanvas.scusp9y2 = pList[8][1].Y;
 
-            rcanvas.cusp10x1 = pList[9][0].X;
-            rcanvas.cusp10y1 = pList[9][0].Y;
-            rcanvas.cusp10x2 = pList[9][1].X;
-            rcanvas.cusp10y2 = pList[9][1].Y;
+            rcanvas.scusp10x1 = pList[9][0].X;
+            rcanvas.scusp10y1 = pList[9][0].Y;
+            rcanvas.scusp10x2 = pList[9][1].X;
+            rcanvas.scusp10y2 = pList[9][1].Y;
 
-            rcanvas.cusp11x1 = pList[10][0].X;
-            rcanvas.cusp11y1 = pList[10][0].Y;
-            rcanvas.cusp11x2 = pList[10][1].X;
-            rcanvas.cusp11y2 = pList[10][1].Y;
+            rcanvas.scusp11x1 = pList[10][0].X;
+            rcanvas.scusp11y1 = pList[10][0].Y;
+            rcanvas.scusp11x2 = pList[10][1].X;
+            rcanvas.scusp11y2 = pList[10][1].Y;
 
-            rcanvas.cusp12x1 = pList[11][0].X;
-            rcanvas.cusp12y1 = pList[11][0].Y;
-            rcanvas.cusp12x2 = pList[11][1].X;
-            rcanvas.cusp12y2 = pList[11][1].Y;
+            rcanvas.scusp12x1 = pList[11][0].X;
+            rcanvas.scusp12y1 = pList[11][0].Y;
+            rcanvas.scusp12x2 = pList[11][1].X;
+            rcanvas.scusp12y2 = pList[11][1].Y;
 
         }
 
@@ -454,18 +492,51 @@ namespace microcosm
             List<PointF> pList = new List<PointF>();
             Enumerable.Range(0, 12).ToList().ForEach(i =>
             {
-                PointF point = rotate(rcanvas.outerWidth / 2 - 20, 0, (30 * (i + 1)) - startdegree - 15.0);
-                point.X += (float)rcanvas.outerWidth / 2;
+                PointF point = rotate(rcanvas.outerWidth / 2 - 18, 0, (30 * (i + 1)) - startdegree - 15.0);
+                point.X += (float)rcanvas.outerWidth / 2 - 10;
 //                point.X -= (float)rcanvas.outerWidth - (float)rcanvas.innerWidth;
                 point.Y *= -1;
-                point.Y += (float)rcanvas.outerHeight / 2;
+                point.Y += (float)rcanvas.outerHeight / 2 - 12;
 //                point.Y -= (float)rcanvas.outerHeight - (float)rcanvas.innerHeight;
                 pList.Add(point);
             });
 
-            rcanvas.ariestxt = CommonData.getSignText(0);
+            rcanvas.ariestxt = CommonData.getSignSymbol(0);
             rcanvas.ariesx = pList[0].X;
             rcanvas.ariesy = pList[0].Y;
+            rcanvas.taurustxt = CommonData.getSignSymbol(1);
+            rcanvas.taurusx = pList[1].X;
+            rcanvas.taurusy = pList[1].Y;
+            rcanvas.geminitxt = CommonData.getSignSymbol(2);
+            rcanvas.geminix = pList[2].X;
+            rcanvas.geminiy = pList[2].Y;
+            rcanvas.cancertxt = CommonData.getSignSymbol(3);
+            rcanvas.cancerx = pList[3].X;
+            rcanvas.cancery = pList[3].Y;
+            rcanvas.leotxt = CommonData.getSignSymbol(4);
+            rcanvas.leox = pList[4].X;
+            rcanvas.leoy = pList[4].Y;
+            rcanvas.virgotxt = CommonData.getSignSymbol(5);
+            rcanvas.virgox = pList[5].X;
+            rcanvas.virgoy = pList[5].Y;
+            rcanvas.libratxt = CommonData.getSignSymbol(6);
+            rcanvas.librax = pList[6].X;
+            rcanvas.libray = pList[6].Y;
+            rcanvas.scorpiontxt = CommonData.getSignSymbol(7);
+            rcanvas.scorpionx = pList[7].X;
+            rcanvas.scorpiony = pList[7].Y;
+            rcanvas.sagittariustxt = CommonData.getSignSymbol(8);
+            rcanvas.sagittariusx = pList[8].X;
+            rcanvas.sagittariusy = pList[8].Y;
+            rcanvas.capricorntxt = CommonData.getSignSymbol(9);
+            rcanvas.capricornx = pList[9].X;
+            rcanvas.capricorny = pList[9].Y;
+            rcanvas.aquariustxt = CommonData.getSignSymbol(10);
+            rcanvas.aquariusx = pList[10].X;
+            rcanvas.aquariusy = pList[10].Y;
+            rcanvas.piscestxt = CommonData.getSignSymbol(11);
+            rcanvas.piscesx = pList[11].X;
+            rcanvas.piscesy = pList[11].Y;
         }
 
         // 天体の表示
@@ -486,23 +557,18 @@ namespace microcosm
                         return;
                     }
 
-                    int offset = 0;
-                    if (0 < degreeList.Find(p => p < planet.absolute_position + 4 && p > planet.absolute_position - 4))
-                    {
-                        offset = 15;
-                    }
                     PointF point;
                     if (tempsettings.bands == 1)
                     {
-                        point = rotate(rcanvas.outerWidth - offset, 0, planet.absolute_position - startdegree);
+                        point = rotate(rcanvas.outerWidth / 3 - 0, 0, planet.absolute_position - startdegree);
                     }
                     else if (tempsettings.bands == 2)
                     {
-                        point = rotate(rcanvas.outerWidth - offset, 0, planet.absolute_position - startdegree);
+                        point = rotate(rcanvas.outerWidth / 2 - rcanvas.innerWidth / 2, 0, planet.absolute_position - startdegree);
                     }
                     else
                     {
-                        point = rotate(rcanvas.outerWidth - offset, 0, planet.absolute_position - startdegree);
+                        point = rotate(rcanvas.outerWidth / 2 - rcanvas.innerWidth / 2, 0, planet.absolute_position - startdegree);
                     }
                     degreeList.Add(planet.absolute_position);
                     point.X += (float)rcanvas.outerWidth / 2;
@@ -515,11 +581,13 @@ namespace microcosm
                     Console.WriteLine(planet.absolute_position - startdegree);
                 });
 
-                rcanvas.ariestxt = CommonData.getSignText(0);
-                rcanvas.ariesx = pList[0].X;
-                rcanvas.ariesy = pList[0].Y;
+                rcanvas.natalsuntxt = CommonData.getPlanetSymbol(0);
+                rcanvas.natalsunx = pList[0].X;
+                rcanvas.natalsuny = pList[0].Y;
+                /*
                 rcanvas.taurusx = pList[1].X;
                 rcanvas.taurusy = pList[1].Y;
+                */
             }
             else if (tempsettings.bands == 2)
             {
