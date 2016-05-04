@@ -231,6 +231,25 @@ namespace microcosm
             aquariusSymbol.DataContext = rcanvas;
             piscesSymbol.DataContext = rcanvas;
             natalSunSymbol.DataContext = rcanvas;
+            natalSunDegree.DataContext = rcanvas;
+            natalSunSign.DataContext = rcanvas;
+            natalSunMinute.DataContext = rcanvas;
+            natalMoonSymbol.DataContext = rcanvas;
+            natalMoonDegree.DataContext = rcanvas;
+            natalMoonSign.DataContext = rcanvas;
+            natalMoonMinute.DataContext = rcanvas;
+            natalMercurySymbol.DataContext = rcanvas;
+            natalMercuryDegree.DataContext = rcanvas;
+            natalMercurySign.DataContext = rcanvas;
+            natalMercuryMinute.DataContext = rcanvas;
+            natalVenusSymbol.DataContext = rcanvas;
+            natalVenusDegree.DataContext = rcanvas;
+            natalVenusSign.DataContext = rcanvas;
+            natalVenusMinute.DataContext = rcanvas;
+            natalMarsSymbol.DataContext = rcanvas;
+            natalMarsDegree.DataContext = rcanvas;
+            natalMarsSign.DataContext = rcanvas;
+            natalMarsMinute.DataContext = rcanvas;
 
             reportVM = new ReportViewModel(
                 list1,
@@ -292,7 +311,7 @@ namespace microcosm
             houseCuspRender(houseList1);
             signCuspRender(houseList1[1]);
             zodiacRender(houseList1[1]);
-            planetRender(houseList1[0], list1, list2, list3);
+            planetRender(houseList1[1], list1, list2, list3);
 
             Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
         }
@@ -546,6 +565,9 @@ namespace microcosm
         {
             List<double> degreeList = new List<double>();
             List<PointF> pList = new List<PointF>();
+            List<PointF> pDegList = new List<PointF>();
+            List<PointF> pSymbolList = new List<PointF>();
+            List<PointF> pMinuteList = new List<PointF>();
 
             if (tempsettings.bands == 1)
             {
@@ -558,36 +580,125 @@ namespace microcosm
                     }
 
                     PointF point;
+                    PointF pointdegree;
+                    PointF pointsymbol;
+                    PointF pointminute;
                     if (tempsettings.bands == 1)
                     {
-                        point = rotate(rcanvas.outerWidth / 3 - 0, 0, planet.absolute_position - startdegree);
+                        point = rotate(rcanvas.outerWidth / 3 + 20, 0, planet.absolute_position - startdegree);
+                        pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
+                        pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, planet.absolute_position - startdegree);
+                        pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, planet.absolute_position - startdegree);
                     }
                     else if (tempsettings.bands == 2)
                     {
-                        point = rotate(rcanvas.outerWidth / 2 - rcanvas.innerWidth / 2, 0, planet.absolute_position - startdegree);
+                        point = rotate(rcanvas.outerWidth / 2 + 20 - rcanvas.innerWidth / 2, 0, planet.absolute_position - startdegree);
+                        pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
+                        pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, planet.absolute_position - startdegree);
+                        pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, planet.absolute_position - startdegree);
                     }
                     else
                     {
-                        point = rotate(rcanvas.outerWidth / 2 - rcanvas.innerWidth / 2, 0, planet.absolute_position - startdegree);
+                        point = rotate(rcanvas.outerWidth / 2 + 20 - rcanvas.innerWidth / 2, 0, planet.absolute_position - startdegree);
+                        pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
+                        pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, planet.absolute_position - startdegree);
+                        pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, planet.absolute_position - startdegree);
                     }
                     degreeList.Add(planet.absolute_position);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
+                    pointdegree.X += (float)rcanvas.outerWidth / 2;
+                    pointdegree.X -= 8;
+                    pointsymbol.X += (float)rcanvas.outerWidth / 2;
+                    pointsymbol.X -= 8;
+                    pointminute.X += (float)rcanvas.outerWidth / 2;
+                    pointminute.X -= 8;
+
                     point.Y *= -1;
                     point.Y += (float)rcanvas.outerHeight / 2;
                     point.Y -= 15;
+                    pointdegree.Y *= -1;
+                    pointdegree.Y += (float)rcanvas.outerHeight / 2;
+                    pointdegree.Y -= 15;
+                    pointsymbol.Y *= -1;
+                    pointsymbol.Y += (float)rcanvas.outerHeight / 2;
+                    pointsymbol.Y -= 15;
+                    pointminute.Y *= -1;
+                    pointminute.Y += (float)rcanvas.outerHeight / 2;
+                    pointminute.Y -= 15;
+
                     pList.Add(point);
-//                    g.DrawString(CommonData.getPlanetSymbol(planet.no), fnt, brush, point.X, point.Y);
+                    pDegList.Add(pointdegree);
+                    pSymbolList.Add(pointsymbol);
+                    pMinuteList.Add(pointminute);
+                    //                    g.DrawString(CommonData.getPlanetSymbol(planet.no), fnt, brush, point.X, point.Y);
                     Console.WriteLine(planet.absolute_position - startdegree);
                 });
 
-                rcanvas.natalsuntxt = CommonData.getPlanetSymbol(0);
-                rcanvas.natalsunx = pList[0].X;
-                rcanvas.natalsuny = pList[0].Y;
-                /*
-                rcanvas.taurusx = pList[1].X;
-                rcanvas.taurusy = pList[1].Y;
-                */
+                rcanvas.natalSuntxt = CommonData.getPlanetSymbol(0);
+                rcanvas.natalSunx = pList[0].X;
+                rcanvas.natalSuny = pList[0].Y;
+                rcanvas.natalSundegreetxt = (degreeList[0] % 30).ToString("00°");
+                rcanvas.natalSundegreex = pDegList[0].X;
+                rcanvas.natalSundegreey = pDegList[0].Y;
+                rcanvas.natalSunsigntxt = CommonData.getSignText(degreeList[0]);
+                rcanvas.natalSunsignx = pSymbolList[0].X;
+                rcanvas.natalSunsigny = pSymbolList[0].Y;
+                rcanvas.natalSunMinutetxt = ((degreeList[0] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalSunMinutex = pMinuteList[0].X;
+                rcanvas.natalSunMinutey = pMinuteList[0].Y;
+
+                rcanvas.natalMoontxt = CommonData.getPlanetSymbol(1);
+                rcanvas.natalMoonx = pList[1].X;
+                rcanvas.natalMoony = pList[1].Y;
+                rcanvas.natalMoondegreetxt = (degreeList[1] % 30).ToString("00°");
+                rcanvas.natalMoondegreex = pDegList[1].X;
+                rcanvas.natalMoondegreey = pDegList[1].Y;
+                rcanvas.natalMoonsigntxt = CommonData.getSignText(degreeList[1]);
+                rcanvas.natalMoonsignx = pSymbolList[1].X;
+                rcanvas.natalMoonsigny = pSymbolList[1].Y;
+                rcanvas.natalMoonMinutetxt = ((degreeList[1] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalMoonMinutex = pMinuteList[1].X;
+                rcanvas.natalMoonMinutey = pMinuteList[1].Y;
+
+                rcanvas.natalMercurytxt = CommonData.getPlanetSymbol(2);
+                rcanvas.natalMercuryx = pList[2].X;
+                rcanvas.natalMercuryy = pList[2].Y;
+                rcanvas.natalMercurydegreetxt = (degreeList[2] % 30).ToString("00°");
+                rcanvas.natalMercurydegreex = pDegList[2].X;
+                rcanvas.natalMercurydegreey = pDegList[2].Y;
+                rcanvas.natalMercurysigntxt = CommonData.getSignText(degreeList[2]);
+                rcanvas.natalMercurysignx = pSymbolList[2].X;
+                rcanvas.natalMercurysigny = pSymbolList[2].Y;
+                rcanvas.natalMercuryMinutetxt = ((degreeList[2] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalMercuryMinutex = pMinuteList[2].X;
+                rcanvas.natalMercuryMinutey = pMinuteList[2].Y;
+
+                rcanvas.natalVenustxt = CommonData.getPlanetSymbol(3);
+                rcanvas.natalVenusx = pList[3].X;
+                rcanvas.natalVenusy = pList[3].Y;
+                rcanvas.natalVenusdegreetxt = (degreeList[3] % 30).ToString("00°");
+                rcanvas.natalVenusdegreex = pDegList[3].X;
+                rcanvas.natalVenusdegreey = pDegList[3].Y;
+                rcanvas.natalVenussigntxt = CommonData.getSignText(degreeList[3]);
+                rcanvas.natalVenussignx = pSymbolList[3].X;
+                rcanvas.natalVenussigny = pSymbolList[3].Y;
+                rcanvas.natalVenusMinutetxt = ((degreeList[3] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalVenusMinutex = pMinuteList[3].X;
+                rcanvas.natalVenusMinutey = pMinuteList[3].Y;
+
+                rcanvas.natalMarstxt = CommonData.getPlanetSymbol(4);
+                rcanvas.natalMarsx = pList[4].X;
+                rcanvas.natalMarsy = pList[4].Y;
+                rcanvas.natalMarsdegreetxt = (degreeList[4] % 30).ToString("00°");
+                rcanvas.natalMarsdegreex = pDegList[4].X;
+                rcanvas.natalMarsdegreey = pDegList[4].Y;
+                rcanvas.natalMarssigntxt = CommonData.getSignText(degreeList[4]);
+                rcanvas.natalMarssignx = pSymbolList[4].X;
+                rcanvas.natalMarssigny = pSymbolList[4].Y;
+                rcanvas.natalMarsMinutetxt = ((degreeList[4] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalMarsMinutex = pMinuteList[4].X;
+                rcanvas.natalMarsMinutey = pMinuteList[4].Y;
             }
             else if (tempsettings.bands == 2)
             {

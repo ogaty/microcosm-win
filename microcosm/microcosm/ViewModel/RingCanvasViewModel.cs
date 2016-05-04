@@ -2157,49 +2157,893 @@ namespace microcosm.ViewModel
 
         // 太陽
         #region
-        private double _natalsunx;
-        public double natalsunx
+        private double _natalSunx;
+        public double natalSunx
         {
             get
             {
-                return _natalsunx;
+                return _natalSunx;
             }
             set
             {
-                _natalsunx = value;
-                OnPropertyChanged("natalsunx");
+                _natalSunx = value;
+                OnPropertyChanged("natalSunx");
             }
         }
 
-        private double _natalsuny;
-        public double natalsuny
+        private double _natalSuny;
+        public double natalSuny
         {
             get
             {
-                return _natalsuny;
+                return _natalSuny;
             }
             set
             {
-                _natalsuny = value;
-                OnPropertyChanged("natalsuny");
+                _natalSuny = value;
+                OnPropertyChanged("natalSuny");
             }
         }
-        private string _natalsuntxt;
-        public string natalsuntxt
+        private string _natalSuntxt;
+        public string natalSuntxt
         {
             get
             {
-                return _natalsuntxt;
+                return _natalSuntxt;
             }
             set
             {
-                _natalsuntxt = value;
-                OnPropertyChanged("natalsuntxt");
+                _natalSuntxt = value;
+                OnPropertyChanged("natalSuntxt");
+            }
+        }
+        private double _natalSundegreex;
+        public double natalSundegreex
+        {
+            get
+            {
+                return _natalSundegreex;
+            }
+            set
+            {
+                _natalSundegreex = value;
+                OnPropertyChanged("natalSundegreex");
+            }
+        }
+
+        private double _natalSundegreey;
+        public double natalSundegreey
+        {
+            get
+            {
+                return _natalSundegreey;
+            }
+            set
+            {
+                _natalSundegreey = value;
+                OnPropertyChanged("natalSundegreey");
+            }
+        }
+        private string _natalSundegreetxt;
+        public string natalSundegreetxt
+        {
+            get
+            {
+                return _natalSundegreetxt;
+            }
+            set
+            {
+                _natalSundegreetxt = value;
+                OnPropertyChanged("natalSundegreetxt");
+            }
+        }
+        private double _natalSunsignx;
+        public double natalSunsignx
+        {
+            get
+            {
+                return _natalSunsignx;
+            }
+            set
+            {
+                _natalSunsignx = value;
+                OnPropertyChanged("natalSunsignx");
+            }
+        }
+
+        private double _natalSunsigny;
+        public double natalSunsigny
+        {
+            get
+            {
+                return _natalSunsigny;
+            }
+            set
+            {
+                _natalSunsigny = value;
+                OnPropertyChanged("natalSunsigny");
+            }
+        }
+        private string _natalSunsigntxt;
+        public string natalSunsigntxt
+        {
+            get
+            {
+                return _natalSunsigntxt;
+            }
+            set
+            {
+                _natalSunsigntxt = value;
+                OnPropertyChanged("natalSunsigntxt");
+            }
+        }
+        private double _natalSunMinutex;
+        public double natalSunMinutex
+        {
+            get
+            {
+                return _natalSunMinutex;
+            }
+            set
+            {
+                _natalSunMinutex = value;
+                OnPropertyChanged("natalSunMinutex");
+            }
+        }
+
+        private double _natalSunMinutey;
+        public double natalSunMinutey
+        {
+            get
+            {
+                return _natalSunMinutey;
+            }
+            set
+            {
+                _natalSunMinutey = value;
+                OnPropertyChanged("natalSunMinutey");
+            }
+        }
+        private string _natalSunMinutetxt;
+        public string natalSunMinutetxt
+        {
+            get
+            {
+                return _natalSunMinutetxt;
+            }
+            set
+            {
+                _natalSunMinutetxt = value;
+                OnPropertyChanged("natalSunMinutetxt");
+            }
+        }
+        private double _natalSunangle;
+        public double natalSunangle
+        {
+            get
+            {
+                return _natalSunangle;
+            }
+            set
+            {
+                _natalSunangle = value;
+                OnPropertyChanged("natalSunangle");
             }
         }
 
         #endregion
 
+        // 月
+        #region
+        private double _natalMoonx;
+        public double natalMoonx
+        {
+            get
+            {
+                return _natalMoonx;
+            }
+            set
+            {
+                _natalMoonx = value;
+                OnPropertyChanged("natalMoonx");
+            }
+        }
+
+        private double _natalMoony;
+        public double natalMoony
+        {
+            get
+            {
+                return _natalMoony;
+            }
+            set
+            {
+                _natalMoony = value;
+                OnPropertyChanged("natalMoony");
+            }
+        }
+        private string _natalMoontxt;
+        public string natalMoontxt
+        {
+            get
+            {
+                return _natalMoontxt;
+            }
+            set
+            {
+                _natalMoontxt = value;
+                OnPropertyChanged("natalMoontxt");
+            }
+        }
+        private double _natalMoondegreex;
+        public double natalMoondegreex
+        {
+            get
+            {
+                return _natalMoondegreex;
+            }
+            set
+            {
+                _natalMoondegreex = value;
+                OnPropertyChanged("natalMoondegreex");
+            }
+        }
+
+        private double _natalMoondegreey;
+        public double natalMoondegreey
+        {
+            get
+            {
+                return _natalMoondegreey;
+            }
+            set
+            {
+                _natalMoondegreey = value;
+                OnPropertyChanged("natalMoondegreey");
+            }
+        }
+        private string _natalMoondegreetxt;
+        public string natalMoondegreetxt
+        {
+            get
+            {
+                return _natalMoondegreetxt;
+            }
+            set
+            {
+                _natalMoondegreetxt = value;
+                OnPropertyChanged("natalMoondegreetxt");
+            }
+        }
+        private double _natalMoonsignx;
+        public double natalMoonsignx
+        {
+            get
+            {
+                return _natalMoonsignx;
+            }
+            set
+            {
+                _natalMoonsignx = value;
+                OnPropertyChanged("natalMoonsignx");
+            }
+        }
+
+        private double _natalMoonsigny;
+        public double natalMoonsigny
+        {
+            get
+            {
+                return _natalMoonsigny;
+            }
+            set
+            {
+                _natalMoonsigny = value;
+                OnPropertyChanged("natalMoonsigny");
+            }
+        }
+        private string _natalMoonsigntxt;
+        public string natalMoonsigntxt
+        {
+            get
+            {
+                return _natalMoonsigntxt;
+            }
+            set
+            {
+                _natalMoonsigntxt = value;
+                OnPropertyChanged("natalMoonsigntxt");
+            }
+        }
+        private double _natalMoonMinutex;
+        public double natalMoonMinutex
+        {
+            get
+            {
+                return _natalMoonMinutex;
+            }
+            set
+            {
+                _natalMoonMinutex = value;
+                OnPropertyChanged("natalMoonMinutex");
+            }
+        }
+
+        private double _natalMoonMinutey;
+        public double natalMoonMinutey
+        {
+            get
+            {
+                return _natalMoonMinutey;
+            }
+            set
+            {
+                _natalMoonMinutey = value;
+                OnPropertyChanged("natalMoonMinutey");
+            }
+        }
+        private string _natalMoonMinutetxt;
+        public string natalMoonMinutetxt
+        {
+            get
+            {
+                return _natalMoonMinutetxt;
+            }
+            set
+            {
+                _natalMoonMinutetxt = value;
+                OnPropertyChanged("natalMoonMinutetxt");
+            }
+        }
+        private double _natalMoonangle;
+        public double natalMoonangle
+        {
+            get
+            {
+                return _natalMoonangle;
+            }
+            set
+            {
+                _natalMoonangle = value;
+                OnPropertyChanged("natalMoonangle");
+            }
+        }
+
+        #endregion
+
+        // 水星
+        #region
+        private double _natalMercuryx;
+        public double natalMercuryx
+        {
+            get
+            {
+                return _natalMercuryx;
+            }
+            set
+            {
+                _natalMercuryx = value;
+                OnPropertyChanged("natalMercuryx");
+            }
+        }
+
+        private double _natalMercuryy;
+        public double natalMercuryy
+        {
+            get
+            {
+                return _natalMercuryy;
+            }
+            set
+            {
+                _natalMercuryy = value;
+                OnPropertyChanged("natalMercuryy");
+            }
+        }
+        private string _natalMercurytxt;
+        public string natalMercurytxt
+        {
+            get
+            {
+                return _natalMercurytxt;
+            }
+            set
+            {
+                _natalMercurytxt = value;
+                OnPropertyChanged("natalMercurytxt");
+            }
+        }
+        private double _natalMercurydegreex;
+        public double natalMercurydegreex
+        {
+            get
+            {
+                return _natalMercurydegreex;
+            }
+            set
+            {
+                _natalMercurydegreex = value;
+                OnPropertyChanged("natalMercurydegreex");
+            }
+        }
+
+        private double _natalMercurydegreey;
+        public double natalMercurydegreey
+        {
+            get
+            {
+                return _natalMercurydegreey;
+            }
+            set
+            {
+                _natalMercurydegreey = value;
+                OnPropertyChanged("natalMercurydegreey");
+            }
+        }
+        private string _natalMercurydegreetxt;
+        public string natalMercurydegreetxt
+        {
+            get
+            {
+                return _natalMercurydegreetxt;
+            }
+            set
+            {
+                _natalMercurydegreetxt = value;
+                OnPropertyChanged("natalMercurydegreetxt");
+            }
+        }
+        private double _natalMercurysignx;
+        public double natalMercurysignx
+        {
+            get
+            {
+                return _natalMercurysignx;
+            }
+            set
+            {
+                _natalMercurysignx = value;
+                OnPropertyChanged("natalMercurysignx");
+            }
+        }
+
+        private double _natalMercurysigny;
+        public double natalMercurysigny
+        {
+            get
+            {
+                return _natalMercurysigny;
+            }
+            set
+            {
+                _natalMercurysigny = value;
+                OnPropertyChanged("natalMercurysigny");
+            }
+        }
+        private string _natalMercurysigntxt;
+        public string natalMercurysigntxt
+        {
+            get
+            {
+                return _natalMercurysigntxt;
+            }
+            set
+            {
+                _natalMercurysigntxt = value;
+                OnPropertyChanged("natalMercurysigntxt");
+            }
+        }
+        private double _natalMercuryMinutex;
+        public double natalMercuryMinutex
+        {
+            get
+            {
+                return _natalMercuryMinutex;
+            }
+            set
+            {
+                _natalMercuryMinutex = value;
+                OnPropertyChanged("natalMercuryMinutex");
+            }
+        }
+
+        private double _natalMercuryMinutey;
+        public double natalMercuryMinutey
+        {
+            get
+            {
+                return _natalMercuryMinutey;
+            }
+            set
+            {
+                _natalMercuryMinutey = value;
+                OnPropertyChanged("natalMercuryMinutey");
+            }
+        }
+        private string _natalMercuryMinutetxt;
+        public string natalMercuryMinutetxt
+        {
+            get
+            {
+                return _natalMercuryMinutetxt;
+            }
+            set
+            {
+                _natalMercuryMinutetxt = value;
+                OnPropertyChanged("natalMercuryMinutetxt");
+            }
+        }
+        private double _natalMercuryangle;
+        public double natalMercuryangle
+        {
+            get
+            {
+                return _natalMercuryangle;
+            }
+            set
+            {
+                _natalMercuryangle = value;
+                OnPropertyChanged("natalMercuryangle");
+            }
+        }
+
+        #endregion
+
+        // 金星
+        #region
+        private double _natalVenusx;
+        public double natalVenusx
+        {
+            get
+            {
+                return _natalVenusx;
+            }
+            set
+            {
+                _natalVenusx = value;
+                OnPropertyChanged("natalVenusx");
+            }
+        }
+
+        private double _natalVenusy;
+        public double natalVenusy
+        {
+            get
+            {
+                return _natalVenusy;
+            }
+            set
+            {
+                _natalVenusy = value;
+                OnPropertyChanged("natalVenusy");
+            }
+        }
+        private string _natalVenustxt;
+        public string natalVenustxt
+        {
+            get
+            {
+                return _natalVenustxt;
+            }
+            set
+            {
+                _natalVenustxt = value;
+                OnPropertyChanged("natalVenustxt");
+            }
+        }
+        private double _natalVenusdegreex;
+        public double natalVenusdegreex
+        {
+            get
+            {
+                return _natalVenusdegreex;
+            }
+            set
+            {
+                _natalVenusdegreex = value;
+                OnPropertyChanged("natalVenusdegreex");
+            }
+        }
+
+        private double _natalVenusdegreey;
+        public double natalVenusdegreey
+        {
+            get
+            {
+                return _natalVenusdegreey;
+            }
+            set
+            {
+                _natalVenusdegreey = value;
+                OnPropertyChanged("natalVenusdegreey");
+            }
+        }
+        private string _natalVenusdegreetxt;
+        public string natalVenusdegreetxt
+        {
+            get
+            {
+                return _natalVenusdegreetxt;
+            }
+            set
+            {
+                _natalVenusdegreetxt = value;
+                OnPropertyChanged("natalVenusdegreetxt");
+            }
+        }
+        private double _natalVenussignx;
+        public double natalVenussignx
+        {
+            get
+            {
+                return _natalVenussignx;
+            }
+            set
+            {
+                _natalVenussignx = value;
+                OnPropertyChanged("natalVenussignx");
+            }
+        }
+
+        private double _natalVenussigny;
+        public double natalVenussigny
+        {
+            get
+            {
+                return _natalVenussigny;
+            }
+            set
+            {
+                _natalVenussigny = value;
+                OnPropertyChanged("natalVenussigny");
+            }
+        }
+        private string _natalVenussigntxt;
+        public string natalVenussigntxt
+        {
+            get
+            {
+                return _natalVenussigntxt;
+            }
+            set
+            {
+                _natalVenussigntxt = value;
+                OnPropertyChanged("natalVenussigntxt");
+            }
+        }
+        private double _natalVenusMinutex;
+        public double natalVenusMinutex
+        {
+            get
+            {
+                return _natalVenusMinutex;
+            }
+            set
+            {
+                _natalVenusMinutex = value;
+                OnPropertyChanged("natalVenusMinutex");
+            }
+        }
+
+        private double _natalVenusMinutey;
+        public double natalVenusMinutey
+        {
+            get
+            {
+                return _natalVenusMinutey;
+            }
+            set
+            {
+                _natalVenusMinutey = value;
+                OnPropertyChanged("natalVenusMinutey");
+            }
+        }
+        private string _natalVenusMinutetxt;
+        public string natalVenusMinutetxt
+        {
+            get
+            {
+                return _natalVenusMinutetxt;
+            }
+            set
+            {
+                _natalVenusMinutetxt = value;
+                OnPropertyChanged("natalVenusMinutetxt");
+            }
+        }
+        private double _natalVenusangle;
+        public double natalVenusangle
+        {
+            get
+            {
+                return _natalVenusangle;
+            }
+            set
+            {
+                _natalVenusangle = value;
+                OnPropertyChanged("natalVenusangle");
+            }
+        }
+
+        #endregion
+
+        // 火星
+        #region
+        private double _natalMarsx;
+        public double natalMarsx
+        {
+            get
+            {
+                return _natalMarsx;
+            }
+            set
+            {
+                _natalMarsx = value;
+                OnPropertyChanged("natalMarsx");
+            }
+        }
+
+        private double _natalMarsy;
+        public double natalMarsy
+        {
+            get
+            {
+                return _natalMarsy;
+            }
+            set
+            {
+                _natalMarsy = value;
+                OnPropertyChanged("natalMarsy");
+            }
+        }
+        private string _natalMarstxt;
+        public string natalMarstxt
+        {
+            get
+            {
+                return _natalMarstxt;
+            }
+            set
+            {
+                _natalMarstxt = value;
+                OnPropertyChanged("natalMarstxt");
+            }
+        }
+        private double _natalMarsdegreex;
+        public double natalMarsdegreex
+        {
+            get
+            {
+                return _natalMarsdegreex;
+            }
+            set
+            {
+                _natalMarsdegreex = value;
+                OnPropertyChanged("natalMarsdegreex");
+            }
+        }
+
+        private double _natalMarsdegreey;
+        public double natalMarsdegreey
+        {
+            get
+            {
+                return _natalMarsdegreey;
+            }
+            set
+            {
+                _natalMarsdegreey = value;
+                OnPropertyChanged("natalMarsdegreey");
+            }
+        }
+        private string _natalMarsdegreetxt;
+        public string natalMarsdegreetxt
+        {
+            get
+            {
+                return _natalMarsdegreetxt;
+            }
+            set
+            {
+                _natalMarsdegreetxt = value;
+                OnPropertyChanged("natalMarsdegreetxt");
+            }
+        }
+        private double _natalMarssignx;
+        public double natalMarssignx
+        {
+            get
+            {
+                return _natalMarssignx;
+            }
+            set
+            {
+                _natalMarssignx = value;
+                OnPropertyChanged("natalMarssignx");
+            }
+        }
+
+        private double _natalMarssigny;
+        public double natalMarssigny
+        {
+            get
+            {
+                return _natalMarssigny;
+            }
+            set
+            {
+                _natalMarssigny = value;
+                OnPropertyChanged("natalMarssigny");
+            }
+        }
+        private string _natalMarssigntxt;
+        public string natalMarssigntxt
+        {
+            get
+            {
+                return _natalMarssigntxt;
+            }
+            set
+            {
+                _natalMarssigntxt = value;
+                OnPropertyChanged("natalMarssigntxt");
+            }
+        }
+        private double _natalMarsMinutex;
+        public double natalMarsMinutex
+        {
+            get
+            {
+                return _natalMarsMinutex;
+            }
+            set
+            {
+                _natalMarsMinutex = value;
+                OnPropertyChanged("natalMarsMinutex");
+            }
+        }
+
+        private double _natalMarsMinutey;
+        public double natalMarsMinutey
+        {
+            get
+            {
+                return _natalMarsMinutey;
+            }
+            set
+            {
+                _natalMarsMinutey = value;
+                OnPropertyChanged("natalMarsMinutey");
+            }
+        }
+        private string _natalMarsMinutetxt;
+        public string natalMarsMinutetxt
+        {
+            get
+            {
+                return _natalMarsMinutetxt;
+            }
+            set
+            {
+                _natalMarsMinutetxt = value;
+                OnPropertyChanged("natalMarsMinutetxt");
+            }
+        }
+        private double _natalMarsangle;
+        public double natalMarsangle
+        {
+            get
+            {
+                return _natalMarsangle;
+            }
+            set
+            {
+                _natalMarsangle = value;
+                OnPropertyChanged("natalMarsangle");
+            }
+        }
+
+        #endregion
         protected void OnPropertyChanged(string propertyname)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
