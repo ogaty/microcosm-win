@@ -59,6 +59,8 @@ namespace microcosm
         public double[] houseList5;
         public double[] houseList6;
 
+        public CommonConfigWindow configWindow;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -75,7 +77,7 @@ namespace microcosm
             tempsettings = new TempSetting(config);
             Enumerable.Range(0, 10).ToList().ForEach(i =>
             {
-                string filename = "setting" + i + ".csm";
+                string filename = @"system\setting" + i + ".csm";
                 settings[i] = new SettingData(i);
 
                 if (!File.Exists(filename))
@@ -97,9 +99,10 @@ namespace microcosm
             });
 
             {
-                string filename = "config.csm";
+                string filename = @"system\config.csm";
                 if (!File.Exists(filename))
                 {
+                    // 生成も
                     XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
                     FileStream fs = new FileStream(filename, FileMode.Create);
                     StreamWriter sw = new StreamWriter(fs);
@@ -108,6 +111,7 @@ namespace microcosm
                     fs.Close();
                 } else
                 {
+                    // 読み込み
                     XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
                     FileStream fs = new FileStream(filename, FileMode.Open);
                     config = (ConfigData)serializer.Deserialize(fs);
@@ -234,22 +238,52 @@ namespace microcosm
             natalSunDegree.DataContext = rcanvas;
             natalSunSign.DataContext = rcanvas;
             natalSunMinute.DataContext = rcanvas;
+            natalSunRetrograde.DataContext = rcanvas;
             natalMoonSymbol.DataContext = rcanvas;
             natalMoonDegree.DataContext = rcanvas;
             natalMoonSign.DataContext = rcanvas;
             natalMoonMinute.DataContext = rcanvas;
+            natalMoonRetrograde.DataContext = rcanvas;
             natalMercurySymbol.DataContext = rcanvas;
             natalMercuryDegree.DataContext = rcanvas;
             natalMercurySign.DataContext = rcanvas;
             natalMercuryMinute.DataContext = rcanvas;
+            natalMercuryRetrograde.DataContext = rcanvas;
             natalVenusSymbol.DataContext = rcanvas;
             natalVenusDegree.DataContext = rcanvas;
             natalVenusSign.DataContext = rcanvas;
             natalVenusMinute.DataContext = rcanvas;
+            natalVenusRetrograde.DataContext = rcanvas;
             natalMarsSymbol.DataContext = rcanvas;
             natalMarsDegree.DataContext = rcanvas;
             natalMarsSign.DataContext = rcanvas;
             natalMarsMinute.DataContext = rcanvas;
+            natalMarsRetrograde.DataContext = rcanvas;
+            natalJupiterSymbol.DataContext = rcanvas;
+            natalJupiterDegree.DataContext = rcanvas;
+            natalJupiterSign.DataContext = rcanvas;
+            natalJupiterMinute.DataContext = rcanvas;
+            natalJupiterRetrograde.DataContext = rcanvas;
+            natalSaturnSymbol.DataContext = rcanvas;
+            natalSaturnDegree.DataContext = rcanvas;
+            natalSaturnSign.DataContext = rcanvas;
+            natalSaturnMinute.DataContext = rcanvas;
+            natalSaturnRetrograde.DataContext = rcanvas;
+            natalUranusSymbol.DataContext = rcanvas;
+            natalUranusDegree.DataContext = rcanvas;
+            natalUranusSign.DataContext = rcanvas;
+            natalUranusMinute.DataContext = rcanvas;
+            natalUranusRetrograde.DataContext = rcanvas;
+            natalNeptuneSymbol.DataContext = rcanvas;
+            natalNeptuneDegree.DataContext = rcanvas;
+            natalNeptuneSign.DataContext = rcanvas;
+            natalNeptuneMinute.DataContext = rcanvas;
+            natalNeptuneRetrograde.DataContext = rcanvas;
+            natalPlutoSymbol.DataContext = rcanvas;
+            natalPlutoDegree.DataContext = rcanvas;
+            natalPlutoSign.DataContext = rcanvas;
+            natalPlutoMinute.DataContext = rcanvas;
+            natalPlutoRetrograde.DataContext = rcanvas;
 
             reportVM = new ReportViewModel(
                 list1,
@@ -564,10 +598,12 @@ namespace microcosm
             List<PlanetData> transitlist)
         {
             List<double> degreeList = new List<double>();
+            List<double> retrogradeList = new List<double>();
             List<PointF> pList = new List<PointF>();
             List<PointF> pDegList = new List<PointF>();
             List<PointF> pSymbolList = new List<PointF>();
             List<PointF> pMinuteList = new List<PointF>();
+            List<PointF> pRetrogradeList = new List<PointF>();
 
             if (tempsettings.bands == 1)
             {
@@ -583,12 +619,14 @@ namespace microcosm
                     PointF pointdegree;
                     PointF pointsymbol;
                     PointF pointminute;
+                    PointF pointretrograde;
                     if (tempsettings.bands == 1)
                     {
                         point = rotate(rcanvas.outerWidth / 3 + 20, 0, planet.absolute_position - startdegree);
                         pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
                         pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, planet.absolute_position - startdegree);
                         pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, planet.absolute_position - startdegree);
+                        pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, planet.absolute_position - startdegree);
                     }
                     else if (tempsettings.bands == 2)
                     {
@@ -596,6 +634,7 @@ namespace microcosm
                         pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
                         pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, planet.absolute_position - startdegree);
                         pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, planet.absolute_position - startdegree);
+                        pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, planet.absolute_position - startdegree);
                     }
                     else
                     {
@@ -603,6 +642,7 @@ namespace microcosm
                         pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
                         pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, planet.absolute_position - startdegree);
                         pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, planet.absolute_position - startdegree);
+                        pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, planet.absolute_position - startdegree);
                     }
                     degreeList.Add(planet.absolute_position);
                     point.X += (float)rcanvas.outerWidth / 2;
@@ -613,6 +653,8 @@ namespace microcosm
                     pointsymbol.X -= 8;
                     pointminute.X += (float)rcanvas.outerWidth / 2;
                     pointminute.X -= 8;
+                    pointretrograde.X += (float)rcanvas.outerWidth / 2;
+                    pointretrograde.X -= 8;
 
                     point.Y *= -1;
                     point.Y += (float)rcanvas.outerHeight / 2;
@@ -626,11 +668,16 @@ namespace microcosm
                     pointminute.Y *= -1;
                     pointminute.Y += (float)rcanvas.outerHeight / 2;
                     pointminute.Y -= 15;
+                    pointretrograde.Y *= -1;
+                    pointretrograde.Y += (float)rcanvas.outerHeight / 2;
+                    pointretrograde.Y -= 15;
 
+                    retrogradeList.Add(planet.speed);
                     pList.Add(point);
                     pDegList.Add(pointdegree);
                     pSymbolList.Add(pointsymbol);
                     pMinuteList.Add(pointminute);
+                    pRetrogradeList.Add(pointretrograde);
                     //                    g.DrawString(CommonData.getPlanetSymbol(planet.no), fnt, brush, point.X, point.Y);
                     Console.WriteLine(planet.absolute_position - startdegree);
                 });
@@ -647,6 +694,9 @@ namespace microcosm
                 rcanvas.natalSunMinutetxt = ((degreeList[0] % 1) / 100 * 60 * 100).ToString("00") + "'";
                 rcanvas.natalSunMinutex = pMinuteList[0].X;
                 rcanvas.natalSunMinutey = pMinuteList[0].Y;
+                rcanvas.natalSunRetrogradetxt = CommonData.getRetrograde(retrogradeList[0]);
+                rcanvas.natalSunRetrogradex = pRetrogradeList[1].X;
+                rcanvas.natalSunRetrogradey = pRetrogradeList[1].Y;
 
                 rcanvas.natalMoontxt = CommonData.getPlanetSymbol(1);
                 rcanvas.natalMoonx = pList[1].X;
@@ -660,6 +710,9 @@ namespace microcosm
                 rcanvas.natalMoonMinutetxt = ((degreeList[1] % 1) / 100 * 60 * 100).ToString("00") + "'";
                 rcanvas.natalMoonMinutex = pMinuteList[1].X;
                 rcanvas.natalMoonMinutey = pMinuteList[1].Y;
+                rcanvas.natalMoonRetrogradetxt = CommonData.getRetrograde(retrogradeList[1]);
+                rcanvas.natalMoonRetrogradex = pRetrogradeList[1].X;
+                rcanvas.natalMoonRetrogradey = pRetrogradeList[1].Y;
 
                 rcanvas.natalMercurytxt = CommonData.getPlanetSymbol(2);
                 rcanvas.natalMercuryx = pList[2].X;
@@ -673,6 +726,9 @@ namespace microcosm
                 rcanvas.natalMercuryMinutetxt = ((degreeList[2] % 1) / 100 * 60 * 100).ToString("00") + "'";
                 rcanvas.natalMercuryMinutex = pMinuteList[2].X;
                 rcanvas.natalMercuryMinutey = pMinuteList[2].Y;
+                rcanvas.natalMercuryRetrogradetxt = CommonData.getRetrograde(retrogradeList[2]);
+                rcanvas.natalMercuryRetrogradex = pRetrogradeList[2].X;
+                rcanvas.natalMercuryRetrogradey = pRetrogradeList[2].Y;
 
                 rcanvas.natalVenustxt = CommonData.getPlanetSymbol(3);
                 rcanvas.natalVenusx = pList[3].X;
@@ -686,6 +742,9 @@ namespace microcosm
                 rcanvas.natalVenusMinutetxt = ((degreeList[3] % 1) / 100 * 60 * 100).ToString("00") + "'";
                 rcanvas.natalVenusMinutex = pMinuteList[3].X;
                 rcanvas.natalVenusMinutey = pMinuteList[3].Y;
+                rcanvas.natalVenusRetrogradetxt = CommonData.getRetrograde(retrogradeList[3]);
+                rcanvas.natalVenusRetrogradex = pRetrogradeList[3].X;
+                rcanvas.natalVenusRetrogradey = pRetrogradeList[3].Y;
 
                 rcanvas.natalMarstxt = CommonData.getPlanetSymbol(4);
                 rcanvas.natalMarsx = pList[4].X;
@@ -699,6 +758,89 @@ namespace microcosm
                 rcanvas.natalMarsMinutetxt = ((degreeList[4] % 1) / 100 * 60 * 100).ToString("00") + "'";
                 rcanvas.natalMarsMinutex = pMinuteList[4].X;
                 rcanvas.natalMarsMinutey = pMinuteList[4].Y;
+                rcanvas.natalMarsRetrogradetxt = CommonData.getRetrograde(retrogradeList[4]);
+                rcanvas.natalMarsRetrogradex = pRetrogradeList[4].X;
+                rcanvas.natalMarsRetrogradey = pRetrogradeList[4].Y;
+
+                rcanvas.natalJupitertxt = CommonData.getPlanetSymbol(5);
+                rcanvas.natalJupiterx = pList[5].X;
+                rcanvas.natalJupitery = pList[5].Y;
+                rcanvas.natalJupiterdegreetxt = (degreeList[5] % 30).ToString("00°");
+                rcanvas.natalJupiterdegreex = pDegList[5].X;
+                rcanvas.natalJupiterdegreey = pDegList[5].Y;
+                rcanvas.natalJupitersigntxt = CommonData.getSignText(degreeList[5]);
+                rcanvas.natalJupitersignx = pSymbolList[5].X;
+                rcanvas.natalJupitersigny = pSymbolList[5].Y;
+                rcanvas.natalJupiterMinutetxt = ((degreeList[5] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalJupiterMinutex = pMinuteList[5].X;
+                rcanvas.natalJupiterMinutey = pMinuteList[5].Y;
+                rcanvas.natalJupiterRetrogradetxt = CommonData.getRetrograde(retrogradeList[5]);
+                rcanvas.natalJupiterRetrogradex = pRetrogradeList[5].X;
+                rcanvas.natalJupiterRetrogradey = pRetrogradeList[5].Y;
+
+                rcanvas.natalSaturntxt = CommonData.getPlanetSymbol(6);
+                rcanvas.natalSaturnx = pList[6].X;
+                rcanvas.natalSaturny = pList[6].Y;
+                rcanvas.natalSaturndegreetxt = (degreeList[6] % 30).ToString("00°");
+                rcanvas.natalSaturndegreex = pDegList[6].X;
+                rcanvas.natalSaturndegreey = pDegList[6].Y;
+                rcanvas.natalSaturnsigntxt = CommonData.getSignText(degreeList[6]);
+                rcanvas.natalSaturnsignx = pSymbolList[6].X;
+                rcanvas.natalSaturnsigny = pSymbolList[6].Y;
+                rcanvas.natalSaturnMinutetxt = ((degreeList[6] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalSaturnMinutex = pMinuteList[6].X;
+                rcanvas.natalSaturnMinutey = pMinuteList[6].Y;
+                rcanvas.natalSaturnRetrogradetxt = CommonData.getRetrograde(retrogradeList[6]);
+                rcanvas.natalSaturnRetrogradex = pRetrogradeList[6].X;
+                rcanvas.natalSaturnRetrogradey = pRetrogradeList[6].Y;
+
+                rcanvas.natalUranustxt = CommonData.getPlanetSymbol(7);
+                rcanvas.natalUranusx = pList[7].X;
+                rcanvas.natalUranusy = pList[7].Y;
+                rcanvas.natalUranusdegreetxt = (degreeList[7] % 30).ToString("00°");
+                rcanvas.natalUranusdegreex = pDegList[7].X;
+                rcanvas.natalUranusdegreey = pDegList[7].Y;
+                rcanvas.natalUranussigntxt = CommonData.getSignText(degreeList[7]);
+                rcanvas.natalUranussignx = pSymbolList[7].X;
+                rcanvas.natalUranussigny = pSymbolList[7].Y;
+                rcanvas.natalUranusMinutetxt = ((degreeList[7] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalUranusMinutex = pMinuteList[7].X;
+                rcanvas.natalUranusMinutey = pMinuteList[7].Y;
+                rcanvas.natalUranusRetrogradetxt = CommonData.getRetrograde(retrogradeList[7]);
+                rcanvas.natalUranusRetrogradex = pRetrogradeList[7].X;
+                rcanvas.natalUranusRetrogradey = pRetrogradeList[7].Y;
+
+                rcanvas.natalNeptunetxt = CommonData.getPlanetSymbol(8);
+                rcanvas.natalNeptunex = pList[8].X;
+                rcanvas.natalNeptuney = pList[8].Y;
+                rcanvas.natalNeptunedegreetxt = (degreeList[8] % 30).ToString("00°");
+                rcanvas.natalNeptunedegreex = pDegList[8].X;
+                rcanvas.natalNeptunedegreey = pDegList[8].Y;
+                rcanvas.natalNeptunesigntxt = CommonData.getSignText(degreeList[8]);
+                rcanvas.natalNeptunesignx = pSymbolList[8].X;
+                rcanvas.natalNeptunesigny = pSymbolList[8].Y;
+                rcanvas.natalNeptuneMinutetxt = ((degreeList[8] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalNeptuneMinutex = pMinuteList[8].X;
+                rcanvas.natalNeptuneMinutey = pMinuteList[8].Y;
+                rcanvas.natalNeptuneRetrogradetxt = CommonData.getRetrograde(retrogradeList[8]);
+                rcanvas.natalNeptuneRetrogradex = pRetrogradeList[8].X;
+                rcanvas.natalNeptuneRetrogradey = pRetrogradeList[8].Y;
+
+                rcanvas.natalPlutotxt = CommonData.getPlanetSymbol(9);
+                rcanvas.natalPlutox = pList[9].X;
+                rcanvas.natalPlutoy = pList[9].Y;
+                rcanvas.natalPlutodegreetxt = (degreeList[9] % 30).ToString("00°");
+                rcanvas.natalPlutodegreex = pDegList[9].X;
+                rcanvas.natalPlutodegreey = pDegList[9].Y;
+                rcanvas.natalPlutosigntxt = CommonData.getSignText(degreeList[9]);
+                rcanvas.natalPlutosignx = pSymbolList[9].X;
+                rcanvas.natalPlutosigny = pSymbolList[9].Y;
+                rcanvas.natalPlutoMinutetxt = ((degreeList[9] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalPlutoMinutex = pMinuteList[9].X;
+                rcanvas.natalPlutoMinutey = pMinuteList[9].Y;
+                rcanvas.natalPlutoRetrogradetxt = CommonData.getRetrograde(retrogradeList[9]);
+                rcanvas.natalPlutoRetrogradex = pRetrogradeList[9].X;
+                rcanvas.natalPlutoRetrogradey = pRetrogradeList[9].Y;
             }
             else if (tempsettings.bands == 2)
             {
@@ -740,5 +882,13 @@ namespace microcosm
             return new PointF((float)newX, (float)newY);
         }
 
+        private void OpenCommonConfig_Click(object sender, RoutedEventArgs e)
+        {
+            if (configWindow == null)
+            {
+                configWindow = new CommonConfigWindow(this);
+            }
+            configWindow.Visibility = Visibility.Visible;
+        }
     }
 }

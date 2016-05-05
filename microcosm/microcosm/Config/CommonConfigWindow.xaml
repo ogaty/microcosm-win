@@ -1,0 +1,23 @@
+﻿<Window x:Class="microcosm.Config.CommonConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:microcosm.Config"
+        mc:Ignorable="d"
+        Title="CommonConfigWindow" Height="300" Width="300" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="centric">
+                <StackPanel>
+                    <RadioButton x:Name="geoCentric" Content="GeoCentric" Checked="Centric_Checked"/>
+                    <RadioButton x:Name="helioCentric" Content="HelioCentric" Checked="Centric_Checked" />
+                </StackPanel>
+            </GroupBox>
+            <DockPanel LastChildFill="False" HorizontalAlignment="Right" Margin="0,20,20,0">
+                <Button Content="決定" Margin="0,0,10,0" Click="OkClick"/>
+                <Button Content="キャンセル" Click="CancelClick"></Button>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -234,5 +234,14 @@ namespace microcosm.Common
         {
             return absolute_position % 30;
         }
+
+        public static string getRetrograde(double speed)
+        {
+            if (speed < 0)
+            {
+                return "\u211e";
+            }
+            return "";
+        }
     }
 }

@@ -101,14 +101,27 @@ namespace microcosm.Calc
                 }
                 if (i >= 10)
                 {
+                    // MEAN NODE
                     p.isDisp = false;
                     p.isAspectDisp = false;
                 }
                 if (i == 11)
                 {
-                    // ヘッド
+                    // TRUE NODE ヘッド
                     p.isDisp = true;
                     p.isAspectDisp = true;
+                }
+                if (i == 12)
+                {
+                    // mean apogee、どうでもいい
+                    p.isDisp = false;
+                    p.isAspectDisp = false;
+                }
+                if (i == 13)
+                {
+                    // true apogee、どうでもいい
+                    p.isDisp = false;
+                    p.isAspectDisp = false;
                 }
                 if (config.centric == ECentric.HELIO_CENTRIC && i == 14)
                 {
