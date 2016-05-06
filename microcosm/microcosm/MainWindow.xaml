@@ -213,69 +213,69 @@
                 <Line x:Name="scusp11" StrokeThickness="1" X1="{Binding cusp11x1}" Y1="{Binding cusp11y1}" Y2="{Binding cusp11y2}" X2="{Binding cusp11x2}" Stroke="#FFAAAAAA"/>
                 <Line x:Name="scusp12" StrokeThickness="1" X1="{Binding cusp12x1}" Y1="{Binding cusp12y1}" Y2="{Binding cusp12y2}" X2="{Binding cusp12x2}" Stroke="#FF909090"/>
 
-                <Label x:Name="ariesSymbol" Content="{Binding ariestxt}" Canvas.Left="{Binding ariesx}" Canvas.Top="{Binding ariesy}"></Label>
-                <Label x:Name="taurusSymbol" Content="{Binding taurustxt}" Canvas.Left="{Binding taurusx}" Canvas.Top="{Binding taurusy}" />
-                <Label x:Name="geminiSymbol" Content="{Binding geminitxt}" Canvas.Left="{Binding geminix}" Canvas.Top="{Binding geminiy}" />
-                <Label x:Name="cancerSymbol" Content="{Binding cancertxt}" Canvas.Left="{Binding cancerx}" Canvas.Top="{Binding cancery}" />
-                <Label x:Name="leoSymbol" Content="{Binding leotxt}" Canvas.Left="{Binding leox}" Canvas.Top="{Binding leoy}" />
-                <Label x:Name="virgoSymbol" Content="{Binding virgotxt}" Canvas.Left="{Binding virgox}" Canvas.Top="{Binding virgoy}" />
-                <Label x:Name="libraSymbol" Content="{Binding libratxt}" Canvas.Left="{Binding librax}" Canvas.Top="{Binding libray}" />
-                <Label x:Name="scorpionSymbol" Content="{Binding scorpiontxt}" Canvas.Left="{Binding scorpionx}" Canvas.Top="{Binding scorpiony}" />
-                <Label x:Name="sagittariusSymbol" Content="{Binding sagittariustxt}" Canvas.Left="{Binding sagittariusx}" Canvas.Top="{Binding sagittariusy}" />
-                <Label x:Name="capricornSymbol"  Content="{Binding capricorntxt}" Canvas.Left="{Binding capricornx}" Canvas.Top="{Binding capricorny}" />
-                <Label x:Name="aquariusSymbol"  Content="{Binding aquariustxt}" Canvas.Left="{Binding aquariusx}" Canvas.Top="{Binding aquariusy}" />
-                <Label x:Name="piscesSymbol"  Content="{Binding piscestxt}" Canvas.Left="{Binding piscesx}" Canvas.Top="{Binding piscesy}" />
+                <Label x:Name="ariesSymbol" Content="{Binding ariesTxt}" Canvas.Left="{Binding ariesX}" Canvas.Top="{Binding ariesY}"></Label>
+                <Label x:Name="taurusSymbol" Content="{Binding taurusTxt}" Canvas.Left="{Binding taurusX}" Canvas.Top="{Binding taurusY}" />
+                <Label x:Name="geminiSymbol" Content="{Binding geminiTxt}" Canvas.Left="{Binding geminiX}" Canvas.Top="{Binding geminiY}" />
+                <Label x:Name="cancerSymbol" Content="{Binding cancerTxt}" Canvas.Left="{Binding cancerX}" Canvas.Top="{Binding cancerY}" />
+                <Label x:Name="leoSymbol" Content="{Binding leoTxt}" Canvas.Left="{Binding leoX}" Canvas.Top="{Binding leoY}" />
+                <Label x:Name="virgoSymbol" Content="{Binding virgoTxt}" Canvas.Left="{Binding virgoX}" Canvas.Top="{Binding virgoY}" />
+                <Label x:Name="libraSymbol" Content="{Binding libraTxt}" Canvas.Left="{Binding libraX}" Canvas.Top="{Binding libraY}" />
+                <Label x:Name="scorpionSymbol" Content="{Binding scorpionTxt}" Canvas.Left="{Binding scorpionX}" Canvas.Top="{Binding scorpionY}" />
+                <Label x:Name="sagittariusSymbol" Content="{Binding sagittariusTxt}" Canvas.Left="{Binding sagittariusX}" Canvas.Top="{Binding sagittariusY}" />
+                <Label x:Name="capricornSymbol"  Content="{Binding capricornTxt}" Canvas.Left="{Binding capricornX}" Canvas.Top="{Binding capricornY}" />
+                <Label x:Name="aquariusSymbol"  Content="{Binding aquariusTxt}" Canvas.Left="{Binding aquariusX}" Canvas.Top="{Binding aquariusY}" />
+                <Label x:Name="piscesSymbol"  Content="{Binding piscesTxt}" Canvas.Left="{Binding piscesX}" Canvas.Top="{Binding piscesY}" />
 
-                <Label x:Name="natalSunSymbol" Content="{Binding natalSuntxt}" Canvas.Left="{Binding natalSunx}" Canvas.Top="{Binding natalSuny}" FontSize="16"/>
-                <Label x:Name="natalSunDegree" Content="{Binding natalSundegreetxt}" Canvas.Left="{Binding natalSundegreex}" Canvas.Top="{Binding natalSundegreey}"></Label>
-                <Label x:Name="natalSunSign" Content="{Binding natalSunsigntxt}" Canvas.Left="{Binding natalSunsignx}" Canvas.Top="{Binding natalSunsigny}"></Label>
-                <Label x:Name="natalSunMinute" Content="{Binding natalSunMinutetxt}" Canvas.Left="{Binding natalSunMinutex}" Canvas.Top="{Binding natalSunMinutey}"></Label>
-                <Label x:Name="natalSunRetrograde" Content="{Binding natalSunRetrogradetxt}" Canvas.Left="{Binding natalSunRetrogradex}" Canvas.Top="{Binding natalSunRetrogradey}"></Label>
-                <Label x:Name="natalMoonSymbol" Content="{Binding natalMoontxt}" Canvas.Left="{Binding natalMoonx}" Canvas.Top="{Binding natalMoony}" FontSize="16"/>
-                <Label x:Name="natalMoonDegree" Content="{Binding natalMoondegreetxt}" Canvas.Left="{Binding natalMoondegreex}" Canvas.Top="{Binding natalMoondegreey}"></Label>
-                <Label x:Name="natalMoonSign" Content="{Binding natalMoonsigntxt}" Canvas.Left="{Binding natalMoonsignx}" Canvas.Top="{Binding natalMoonsigny}"></Label>
-                <Label x:Name="natalMoonMinute" Content="{Binding natalMoonMinutetxt}" Canvas.Left="{Binding natalMoonMinutex}" Canvas.Top="{Binding natalMoonMinutey}"></Label>
-                <Label x:Name="natalMoonRetrograde" Content="{Binding natalMoonRetrogradetxt}" Canvas.Left="{Binding natalMoonRetrogradex}" Canvas.Top="{Binding natalMoonRetrogradey}"></Label>
-                <Label x:Name="natalMercurySymbol" Content="{Binding natalMercurytxt}" Canvas.Left="{Binding natalMercuryx}" Canvas.Top="{Binding natalMercuryy}" FontSize="16"/>
-                <Label x:Name="natalMercuryDegree" Content="{Binding natalMercurydegreetxt}" Canvas.Left="{Binding natalMercurydegreex}" Canvas.Top="{Binding natalMercurydegreey}"></Label>
-                <Label x:Name="natalMercurySign" Content="{Binding natalMercurysigntxt}" Canvas.Left="{Binding natalMercurysignx}" Canvas.Top="{Binding natalMercurysigny}"></Label>
-                <Label x:Name="natalMercuryMinute" Content="{Binding natalMercuryMinutetxt}" Canvas.Left="{Binding natalMercuryMinutex}" Canvas.Top="{Binding natalMercuryMinutey}"></Label>
-                <Label x:Name="natalMercuryRetrograde" Content="{Binding natalMercuryRetrogradetxt}" Canvas.Left="{Binding natalMercuryRetrogradex}" Canvas.Top="{Binding natalMercuryRetrogradey}"></Label>
-                <Label x:Name="natalVenusSymbol" Content="{Binding natalVenustxt}" Canvas.Left="{Binding natalVenusx}" Canvas.Top="{Binding natalVenusy}" FontSize="16"/>
-                <Label x:Name="natalVenusDegree" Content="{Binding natalVenusdegreetxt}" Canvas.Left="{Binding natalVenusdegreex}" Canvas.Top="{Binding natalVenusdegreey}"></Label>
-                <Label x:Name="natalVenusSign" Content="{Binding natalVenussigntxt}" Canvas.Left="{Binding natalVenussignx}" Canvas.Top="{Binding natalVenussigny}"></Label>
-                <Label x:Name="natalVenusMinute" Content="{Binding natalVenusMinutetxt}" Canvas.Left="{Binding natalVenusMinutex}" Canvas.Top="{Binding natalVenusMinutey}"></Label>
-                <Label x:Name="natalVenusRetrograde" Content="{Binding natalVenusRetrogradetxt}" Canvas.Left="{Binding natalVenusRetrogradex}" Canvas.Top="{Binding natalVenusRetrogradey}"></Label>
-                <Label x:Name="natalMarsSymbol" Content="{Binding natalMarstxt}" Canvas.Left="{Binding natalMarsx}" Canvas.Top="{Binding natalMarsy}" FontSize="16"/>
-                <Label x:Name="natalMarsDegree" Content="{Binding natalMarsdegreetxt}" Canvas.Left="{Binding natalMarsdegreex}" Canvas.Top="{Binding natalMarsdegreey}"></Label>
-                <Label x:Name="natalMarsSign" Content="{Binding natalMarssigntxt}" Canvas.Left="{Binding natalMarssignx}" Canvas.Top="{Binding natalMarssigny}"></Label>
-                <Label x:Name="natalMarsMinute" Content="{Binding natalMarsMinutetxt}" Canvas.Left="{Binding natalMarsMinutex}" Canvas.Top="{Binding natalMarsMinutey}"></Label>
-                <Label x:Name="natalMarsRetrograde" Content="{Binding natalMarsRetrogradetxt}" Canvas.Left="{Binding natalMarsRetrogradex}" Canvas.Top="{Binding natalMarsRetrogradey}"></Label>
-                <Label x:Name="natalJupiterSymbol" Content="{Binding natalJupitertxt}" Canvas.Left="{Binding natalJupiterx}" Canvas.Top="{Binding natalJupitery}" FontSize="16"/>
-                <Label x:Name="natalJupiterDegree" Content="{Binding natalJupiterdegreetxt}" Canvas.Left="{Binding natalJupiterdegreex}" Canvas.Top="{Binding natalJupiterdegreey}"></Label>
-                <Label x:Name="natalJupiterSign" Content="{Binding natalJupitersigntxt}" Canvas.Left="{Binding natalJupitersignx}" Canvas.Top="{Binding natalJupitersigny}"></Label>
-                <Label x:Name="natalJupiterMinute" Content="{Binding natalJupiterMinutetxt}" Canvas.Left="{Binding natalJupiterMinutex}" Canvas.Top="{Binding natalJupiterMinutey}"></Label>
-                <Label x:Name="natalJupiterRetrograde" Content="{Binding natalJupiterRetrogradetxt}" Canvas.Left="{Binding natalJupiterRetrogradex}" Canvas.Top="{Binding natalJupiterRetrogradey}"></Label>
-                <Label x:Name="natalSaturnSymbol" Content="{Binding natalSaturntxt}" Canvas.Left="{Binding natalSaturnx}" Canvas.Top="{Binding natalSaturny}" FontSize="16"/>
-                <Label x:Name="natalSaturnDegree" Content="{Binding natalSaturndegreetxt}" Canvas.Left="{Binding natalSaturndegreex}" Canvas.Top="{Binding natalSaturndegreey}"></Label>
-                <Label x:Name="natalSaturnSign" Content="{Binding natalSaturnsigntxt}" Canvas.Left="{Binding natalSaturnsignx}" Canvas.Top="{Binding natalSaturnsigny}"></Label>
-                <Label x:Name="natalSaturnMinute" Content="{Binding natalSaturnMinutetxt}" Canvas.Left="{Binding natalSaturnMinutex}" Canvas.Top="{Binding natalSaturnMinutey}"></Label>
-                <Label x:Name="natalSaturnRetrograde" Content="{Binding natalSaturnRetrogradetxt}" Canvas.Left="{Binding natalSaturnRetrogradex}" Canvas.Top="{Binding natalSaturnRetrogradey}"></Label>
-                <Label x:Name="natalUranusSymbol" Content="{Binding natalUranustxt}" Canvas.Left="{Binding natalUranusx}" Canvas.Top="{Binding natalUranusy}" FontSize="16"/>
-                <Label x:Name="natalUranusDegree" Content="{Binding natalUranusdegreetxt}" Canvas.Left="{Binding natalUranusdegreex}" Canvas.Top="{Binding natalUranusdegreey}"></Label>
-                <Label x:Name="natalUranusSign" Content="{Binding natalUranussigntxt}" Canvas.Left="{Binding natalUranussignx}" Canvas.Top="{Binding natalUranussigny}"></Label>
-                <Label x:Name="natalUranusMinute" Content="{Binding natalUranusMinutetxt}" Canvas.Left="{Binding natalUranusMinutex}" Canvas.Top="{Binding natalUranusMinutey}"></Label>
-                <Label x:Name="natalUranusRetrograde" Content="{Binding natalUranusRetrogradetxt}" Canvas.Left="{Binding natalUranusRetrogradex}" Canvas.Top="{Binding natalUranusRetrogradey}"></Label>
-                <Label x:Name="natalNeptuneSymbol" Content="{Binding natalNeptunetxt}" Canvas.Left="{Binding natalNeptunex}" Canvas.Top="{Binding natalNeptuney}" FontSize="16"/>
-                <Label x:Name="natalNeptuneDegree" Content="{Binding natalNeptunedegreetxt}" Canvas.Left="{Binding natalNeptunedegreex}" Canvas.Top="{Binding natalNeptunedegreey}"></Label>
-                <Label x:Name="natalNeptuneSign" Content="{Binding natalNeptunesigntxt}" Canvas.Left="{Binding natalNeptunesignx}" Canvas.Top="{Binding natalNeptunesigny}"></Label>
-                <Label x:Name="natalNeptuneMinute" Content="{Binding natalNeptuneMinutetxt}" Canvas.Left="{Binding natalNeptuneMinutex}" Canvas.Top="{Binding natalNeptuneMinutey}"></Label>
-                <Label x:Name="natalNeptuneRetrograde" Content="{Binding natalNeptuneRetrogradetxt}" Canvas.Left="{Binding natalNeptuneRetrogradex}" Canvas.Top="{Binding natalNeptuneRetrogradey}"></Label>
-                <Label x:Name="natalPlutoSymbol" Content="{Binding natalPlutotxt}" Canvas.Left="{Binding natalPlutox}" Canvas.Top="{Binding natalPlutoy}" FontSize="16"/>
-                <Label x:Name="natalPlutoDegree" Content="{Binding natalPlutodegreetxt}" Canvas.Left="{Binding natalPlutodegreex}" Canvas.Top="{Binding natalPlutodegreey}"></Label>
-                <Label x:Name="natalPlutoSign" Content="{Binding natalPlutosigntxt}" Canvas.Left="{Binding natalPlutosignx}" Canvas.Top="{Binding natalPlutosigny}"></Label>
-                <Label x:Name="natalPlutoMinute" Content="{Binding natalPlutoMinutetxt}" Canvas.Left="{Binding natalPlutoMinutex}" Canvas.Top="{Binding natalPlutoMinutey}"></Label>
-                <Label x:Name="natalPlutoRetrograde" Content="{Binding natalPlutoRetrogradetxt}" Canvas.Left="{Binding natalPlutoRetrogradex}" Canvas.Top="{Binding natalPlutoRetrogradey}"></Label>
+                <Label x:Name="natalSunSymbol" Content="{Binding natalSunTxt}" Canvas.Left="{Binding natalSunX}" Canvas.Top="{Binding natalSunY}" FontSize="16"/>
+                <Label x:Name="natalSunDegree" Content="{Binding natalSunDegreeTxt}" Canvas.Left="{Binding natalSunDegreeX}" Canvas.Top="{Binding natalSunDegreeY}"></Label>
+                <Label x:Name="natalSunSign" Content="{Binding natalSunSignTxt}" Canvas.Left="{Binding natalSunSignX}" Canvas.Top="{Binding natalSunSignY}"></Label>
+                <Label x:Name="natalSunMinute" Content="{Binding natalSunMinuteTxt}" Canvas.Left="{Binding natalSunMinuteX}" Canvas.Top="{Binding natalSunMinuteY}"></Label>
+                <Label x:Name="natalSunRetrograde" Content="{Binding natalSunRetrogradeTxt}" Canvas.Left="{Binding natalSunRetrogradeX}" Canvas.Top="{Binding natalSunRetrogradeY}"></Label>
+                <Label x:Name="natalMoonSymbol" Content="{Binding natalMoonTxt}" Canvas.Left="{Binding natalMoonX}" Canvas.Top="{Binding natalMoonY}" FontSize="16"/>
+                <Label x:Name="natalMoonDegree" Content="{Binding natalMoonDegreeTxt}" Canvas.Left="{Binding natalMoonDegreeX}" Canvas.Top="{Binding natalMoonDegreeY}"></Label>
+                <Label x:Name="natalMoonSign" Content="{Binding natalMoonSignTxt}" Canvas.Left="{Binding natalMoonSignS}" Canvas.Top="{Binding natalMoonsignY}"></Label>
+                <Label x:Name="natalMoonMinute" Content="{Binding natalMoonMinuteTxt}" Canvas.Left="{Binding natalMoonMinuteX}" Canvas.Top="{Binding natalMoonMinuteY}"></Label>
+                <Label x:Name="natalMoonRetrograde" Content="{Binding natalMoonRetrogradeTxt}" Canvas.Left="{Binding natalMoonRetrogradeX}" Canvas.Top="{Binding natalMoonRetrogradeY}"></Label>
+                <Label x:Name="natalMercurySymbol" Content="{Binding natalMercuryTxt}" Canvas.Left="{Binding natalMercuryX}" Canvas.Top="{Binding natalMercuryY}" FontSize="16"/>
+                <Label x:Name="natalMercuryDegree" Content="{Binding natalMercuryDegreeTxt}" Canvas.Left="{Binding natalMercuryDegreeX}" Canvas.Top="{Binding natalMercuryDegreeY}"></Label>
+                <Label x:Name="natalMercurySign" Content="{Binding natalMercurySignTxt}" Canvas.Left="{Binding natalMercurysignX}" Canvas.Top="{Binding natalMercurysignY}"></Label>
+                <Label x:Name="natalMercuryMinute" Content="{Binding natalMercuryMinuteTxt}" Canvas.Left="{Binding natalMercuryMinuteX}" Canvas.Top="{Binding natalMercuryMinuteY}"></Label>
+                <Label x:Name="natalMercuryRetrograde" Content="{Binding natalMercuryRetrogradeTxt}" Canvas.Left="{Binding natalMercuryRetrogradeX}" Canvas.Top="{Binding natalMercuryRetrogradeY}"></Label>
+                <Label x:Name="natalVenusSymbol" Content="{Binding natalVenusTxt}" Canvas.Left="{Binding natalVenusX}" Canvas.Top="{Binding natalVenusY}" FontSize="16"/>
+                <Label x:Name="natalVenusDegree" Content="{Binding natalVenusDegreeTxt}" Canvas.Left="{Binding natalVenusDegreeX}" Canvas.Top="{Binding natalVenusDegreeY}"></Label>
+                <Label x:Name="natalVenusSign" Content="{Binding natalVenusSignTxt}" Canvas.Left="{Binding natalVenussignX}" Canvas.Top="{Binding natalVenussignY}"></Label>
+                <Label x:Name="natalVenusMinute" Content="{Binding natalVenusMinuteTxt}" Canvas.Left="{Binding natalVenusMinuteX}" Canvas.Top="{Binding natalVenusMinuteY}"></Label>
+                <Label x:Name="natalVenusRetrograde" Content="{Binding natalVenusRetrogradeTxt}" Canvas.Left="{Binding natalVenusRetrogradeX}" Canvas.Top="{Binding natalVenusRetrogradeY}"></Label>
+                <Label x:Name="natalMarsSymbol" Content="{Binding natalMarsTxt}" Canvas.Left="{Binding natalMarsX}" Canvas.Top="{Binding natalMarsT}" FontSize="16"/>
+                <Label x:Name="natalMarsDegree" Content="{Binding natalMarsDegreeTxt}" Canvas.Left="{Binding natalMarsDegreeX}" Canvas.Top="{Binding natalMarsDegreeY}"></Label>
+                <Label x:Name="natalMarsSign" Content="{Binding natalMarsSignTxt}" Canvas.Left="{Binding natalMarssignX}" Canvas.Top="{Binding natalMarssignY}"></Label>
+                <Label x:Name="natalMarsMinute" Content="{Binding natalMarsMinuteTxt}" Canvas.Left="{Binding natalMarsMinuteX}" Canvas.Top="{Binding natalMarsMinuteY}"></Label>
+                <Label x:Name="natalMarsRetrograde" Content="{Binding natalMarsRetrogradeTxt}" Canvas.Left="{Binding natalMarsRetrogradeX}" Canvas.Top="{Binding natalMarsRetrogradeY}"></Label>
+                <Label x:Name="natalJupiterSymbol" Content="{Binding natalJupiterTxt}" Canvas.Left="{Binding natalJupiterX}" Canvas.Top="{Binding natalJupiterY}" FontSize="16"/>
+                <Label x:Name="natalJupiterDegree" Content="{Binding natalJupiterDegreeTxt}" Canvas.Left="{Binding natalJupiterDegreeX}" Canvas.Top="{Binding natalJupiterDegreeY}"></Label>
+                <Label x:Name="natalJupiterSign" Content="{Binding natalJupiterSignTxt}" Canvas.Left="{Binding natalJupitersignX}" Canvas.Top="{Binding natalJupitersignY}"></Label>
+                <Label x:Name="natalJupiterMinute" Content="{Binding natalJupiterMinuteTxt}" Canvas.Left="{Binding natalJupiterMinuteX}" Canvas.Top="{Binding natalJupiterMinuteY}"></Label>
+                <Label x:Name="natalJupiterRetrograde" Content="{Binding natalJupiterRetrogradeTxt}" Canvas.Left="{Binding natalJupiterRetrogradeX}" Canvas.Top="{Binding natalJupiterRetrogradeY}"></Label>
+                <Label x:Name="natalSaturnSymbol" Content="{Binding natalSaturnTxt}" Canvas.Left="{Binding natalSaturnX}" Canvas.Top="{Binding natalSaturnY}" FontSize="16"/>
+                <Label x:Name="natalSaturnDegree" Content="{Binding natalSaturnDegreeTxt}" Canvas.Left="{Binding natalSaturnDegreeX}" Canvas.Top="{Binding natalSaturnDegreeY}"></Label>
+                <Label x:Name="natalSaturnSign" Content="{Binding natalSaturnSignTxt}" Canvas.Left="{Binding natalSaturnsignX}" Canvas.Top="{Binding natalSaturnsignY}"></Label>
+                <Label x:Name="natalSaturnMinute" Content="{Binding natalSaturnMinuteTxt}" Canvas.Left="{Binding natalSaturnMinuteX}" Canvas.Top="{Binding natalSaturnMinuteY}"></Label>
+                <Label x:Name="natalSaturnRetrograde" Content="{Binding natalSaturnRetrogradeTxt}" Canvas.Left="{Binding natalSaturnRetrogradeX}" Canvas.Top="{Binding natalSaturnRetrogradeY}"></Label>
+                <Label x:Name="natalUranusSymbol" Content="{Binding natalUranusTxt}" Canvas.Left="{Binding natalUranusX}" Canvas.Top="{Binding natalUranusY}" FontSize="16"/>
+                <Label x:Name="natalUranusDegree" Content="{Binding natalUranusDegreeTxt}" Canvas.Left="{Binding natalUranusDegreeX}" Canvas.Top="{Binding natalUranusDegreeY}"></Label>
+                <Label x:Name="natalUranusSign" Content="{Binding natalUranusSignTxt}" Canvas.Left="{Binding natalUranussignX}" Canvas.Top="{Binding natalUranussignY}"></Label>
+                <Label x:Name="natalUranusMinute" Content="{Binding natalUranusMinuteTxt}" Canvas.Left="{Binding natalUranusMinuteX}" Canvas.Top="{Binding natalUranusMinuteY}"></Label>
+                <Label x:Name="natalUranusRetrograde" Content="{Binding natalUranusRetrogradeTxt}" Canvas.Left="{Binding natalUranusRetrogradeX}" Canvas.Top="{Binding natalUranusRetrogradeY}"></Label>
+                <Label x:Name="natalNeptuneSymbol" Content="{Binding natalNeptuneTxt}" Canvas.Left="{Binding natalNeptuneX}" Canvas.Top="{Binding natalNeptuneY}" FontSize="16"/>
+                <Label x:Name="natalNeptuneDegree" Content="{Binding natalNeptuneDegreeTxt}" Canvas.Left="{Binding natalNeptuneDegreeX}" Canvas.Top="{Binding natalNeptuneDegreeY}"></Label>
+                <Label x:Name="natalNeptuneSign" Content="{Binding natalNeptuneSignTxt}" Canvas.Left="{Binding natalNeptunesignX}" Canvas.Top="{Binding natalNeptunesignY}"></Label>
+                <Label x:Name="natalNeptuneMinute" Content="{Binding natalNeptuneMinuteTxt}" Canvas.Left="{Binding natalNeptuneMinuteX}" Canvas.Top="{Binding natalNeptuneMinuteY}"></Label>
+                <Label x:Name="natalNeptuneRetrograde" Content="{Binding natalNeptuneRetrogradeTxt}" Canvas.Left="{Binding natalNeptuneRetrogradeX}" Canvas.Top="{Binding natalNeptuneRetrogradeY}"></Label>
+                <Label x:Name="natalPlutoSymbol" Content="{Binding natalPlutoTxt}" Canvas.Left="{Binding natalPlutoX}" Canvas.Top="{Binding natalPlutoY}" FontSize="16"/>
+                <Label x:Name="natalPlutoDegree" Content="{Binding natalPlutoDegreeTxt}" Canvas.Left="{Binding natalPlutoDegreeX}" Canvas.Top="{Binding natalPlutoDegreeY}"></Label>
+                <Label x:Name="natalPlutoSign" Content="{Binding natalPlutoSignTxt}" Canvas.Left="{Binding natalPlutoSignX}" Canvas.Top="{Binding natalPlutoSignY}"></Label>
+                <Label x:Name="natalPlutoMinute" Content="{Binding natalPlutoMinuteTxt}" Canvas.Left="{Binding natalPlutoMinuteX}" Canvas.Top="{Binding natalPlutoMinuteY}"></Label>
+                <Label x:Name="natalPlutoRetrograde" Content="{Binding natalPlutoRetrogradeTxt}" Canvas.Left="{Binding natalPlutoRetrogradeX}" Canvas.Top="{Binding natalPlutoRetrogradeY}"></Label>
             </Canvas>
         </StackPanel>
 

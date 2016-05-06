@@ -554,42 +554,42 @@ namespace microcosm
                 pList.Add(point);
             });
 
-            rcanvas.ariestxt = CommonData.getSignSymbol(0);
-            rcanvas.ariesx = pList[0].X;
-            rcanvas.ariesy = pList[0].Y;
-            rcanvas.taurustxt = CommonData.getSignSymbol(1);
-            rcanvas.taurusx = pList[1].X;
-            rcanvas.taurusy = pList[1].Y;
-            rcanvas.geminitxt = CommonData.getSignSymbol(2);
-            rcanvas.geminix = pList[2].X;
-            rcanvas.geminiy = pList[2].Y;
-            rcanvas.cancertxt = CommonData.getSignSymbol(3);
-            rcanvas.cancerx = pList[3].X;
-            rcanvas.cancery = pList[3].Y;
-            rcanvas.leotxt = CommonData.getSignSymbol(4);
-            rcanvas.leox = pList[4].X;
-            rcanvas.leoy = pList[4].Y;
-            rcanvas.virgotxt = CommonData.getSignSymbol(5);
-            rcanvas.virgox = pList[5].X;
-            rcanvas.virgoy = pList[5].Y;
-            rcanvas.libratxt = CommonData.getSignSymbol(6);
-            rcanvas.librax = pList[6].X;
-            rcanvas.libray = pList[6].Y;
-            rcanvas.scorpiontxt = CommonData.getSignSymbol(7);
-            rcanvas.scorpionx = pList[7].X;
-            rcanvas.scorpiony = pList[7].Y;
-            rcanvas.sagittariustxt = CommonData.getSignSymbol(8);
-            rcanvas.sagittariusx = pList[8].X;
-            rcanvas.sagittariusy = pList[8].Y;
-            rcanvas.capricorntxt = CommonData.getSignSymbol(9);
-            rcanvas.capricornx = pList[9].X;
-            rcanvas.capricorny = pList[9].Y;
-            rcanvas.aquariustxt = CommonData.getSignSymbol(10);
-            rcanvas.aquariusx = pList[10].X;
-            rcanvas.aquariusy = pList[10].Y;
-            rcanvas.piscestxt = CommonData.getSignSymbol(11);
-            rcanvas.piscesx = pList[11].X;
-            rcanvas.piscesy = pList[11].Y;
+            rcanvas.ariesTxt = CommonData.getSignSymbol(0);
+            rcanvas.ariesX = pList[0].X;
+            rcanvas.ariesY = pList[0].Y;
+            rcanvas.taurusTxt = CommonData.getSignSymbol(1);
+            rcanvas.taurusX = pList[1].X;
+            rcanvas.taurusY = pList[1].Y;
+            rcanvas.geminiTxt = CommonData.getSignSymbol(2);
+            rcanvas.geminiX = pList[2].X;
+            rcanvas.geminiY = pList[2].Y;
+            rcanvas.cancerTxt = CommonData.getSignSymbol(3);
+            rcanvas.cancerX = pList[3].X;
+            rcanvas.cancerY = pList[3].Y;
+            rcanvas.leoTxt = CommonData.getSignSymbol(4);
+            rcanvas.leoX = pList[4].X;
+            rcanvas.leoY = pList[4].Y;
+            rcanvas.virgoTxt = CommonData.getSignSymbol(5);
+            rcanvas.virgoX = pList[5].X;
+            rcanvas.virgoY = pList[5].Y;
+            rcanvas.libraTxt = CommonData.getSignSymbol(6);
+            rcanvas.libraX = pList[6].X;
+            rcanvas.libraY = pList[6].Y;
+            rcanvas.scorpionTxt = CommonData.getSignSymbol(7);
+            rcanvas.scorpionX = pList[7].X;
+            rcanvas.scorpionY = pList[7].Y;
+            rcanvas.sagittariusTxt = CommonData.getSignSymbol(8);
+            rcanvas.sagittariusX = pList[8].X;
+            rcanvas.sagittariusY = pList[8].Y;
+            rcanvas.capricornTxt = CommonData.getSignSymbol(9);
+            rcanvas.capricornX = pList[9].X;
+            rcanvas.capricornY = pList[9].Y;
+            rcanvas.aquariusTxt = CommonData.getSignSymbol(10);
+            rcanvas.aquariusX = pList[10].X;
+            rcanvas.aquariusY = pList[10].Y;
+            rcanvas.piscesTxt = CommonData.getSignSymbol(11);
+            rcanvas.piscesX = pList[11].X;
+            rcanvas.piscesY = pList[11].Y;
         }
 
         // 天体の表示
@@ -682,165 +682,162 @@ namespace microcosm
                     Console.WriteLine(planet.absolute_position - startdegree);
                 });
 
-                rcanvas.natalSuntxt = CommonData.getPlanetSymbol(0);
-                rcanvas.natalSunx = pList[0].X;
-                rcanvas.natalSuny = pList[0].Y;
-                rcanvas.natalSundegreetxt = (degreeList[0] % 30).ToString("00°");
-                rcanvas.natalSundegreex = pDegList[0].X;
-                rcanvas.natalSundegreey = pDegList[0].Y;
-                rcanvas.natalSunsigntxt = CommonData.getSignText(degreeList[0]);
-                rcanvas.natalSunsignx = pSymbolList[0].X;
-                rcanvas.natalSunsigny = pSymbolList[0].Y;
-                rcanvas.natalSunMinutetxt = ((degreeList[0] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalSunMinutex = pMinuteList[0].X;
-                rcanvas.natalSunMinutey = pMinuteList[0].Y;
-                rcanvas.natalSunRetrogradetxt = CommonData.getRetrograde(retrogradeList[0]);
-                rcanvas.natalSunRetrogradex = pRetrogradeList[1].X;
-                rcanvas.natalSunRetrogradey = pRetrogradeList[1].Y;
+                rcanvas.natalSunTxt = CommonData.getPlanetSymbol(0);
+                rcanvas.natalSunX = pList[0].X;
+                rcanvas.natalSunY = pList[0].Y;
+                rcanvas.natalSunDegreeTxt = (degreeList[0] % 30).ToString("00°");
+                rcanvas.natalSunDegreeX = pDegList[0].X;
+                rcanvas.natalSunDegreeY = pDegList[0].Y;
+                rcanvas.natalSunSignTxt = CommonData.getSignText(degreeList[0]);
+                rcanvas.natalSunSignX = pSymbolList[0].X;
+                rcanvas.natalSunSignY = pSymbolList[0].Y;
+                rcanvas.natalSunMinuteYxt = ((degreeList[0] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalSunMinuteX = pMinuteList[0].X;
+                rcanvas.natalSunMinuteY = pMinuteList[0].Y;
+                rcanvas.natalSunRetrogradeTxt = CommonData.getRetrograde(retrogradeList[0]);
+                rcanvas.natalSunRetrogradeX = pRetrogradeList[1].X;
+                rcanvas.natalSunRetrogradeY = pRetrogradeList[1].Y;
 
-                rcanvas.natalMoontxt = CommonData.getPlanetSymbol(1);
-                rcanvas.natalMoonx = pList[1].X;
-                rcanvas.natalMoony = pList[1].Y;
-                rcanvas.natalMoondegreetxt = (degreeList[1] % 30).ToString("00°");
-                rcanvas.natalMoondegreex = pDegList[1].X;
-                rcanvas.natalMoondegreey = pDegList[1].Y;
-                rcanvas.natalMoonsigntxt = CommonData.getSignText(degreeList[1]);
-                rcanvas.natalMoonsignx = pSymbolList[1].X;
-                rcanvas.natalMoonsigny = pSymbolList[1].Y;
-                rcanvas.natalMoonMinutetxt = ((degreeList[1] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalMoonMinutex = pMinuteList[1].X;
-                rcanvas.natalMoonMinutey = pMinuteList[1].Y;
-                rcanvas.natalMoonRetrogradetxt = CommonData.getRetrograde(retrogradeList[1]);
-                rcanvas.natalMoonRetrogradex = pRetrogradeList[1].X;
-                rcanvas.natalMoonRetrogradey = pRetrogradeList[1].Y;
+                rcanvas.natalMoonTxt = CommonData.getPlanetSymbol(1);
+                rcanvas.natalMoonX = pList[1].X;
+                rcanvas.natalMoonY = pList[1].Y;
+                rcanvas.natalMoonDegreeTxt = (degreeList[1] % 30).ToString("00°");
+                rcanvas.natalMoonDegreeX = pDegList[1].X;
+                rcanvas.natalMoonDegreeY = pDegList[1].Y;
+                rcanvas.natalMoonSignTxt = CommonData.getSignText(degreeList[1]);
+                rcanvas.natalMoonSignX = pSymbolList[1].X;
+                rcanvas.natalMoonSignY = pSymbolList[1].Y;
+                rcanvas.natalMoonMinuteTxt = ((degreeList[1] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalMoonMinuteX = pMinuteList[1].X;
+                rcanvas.natalMoonMinuteY = pMinuteList[1].Y;
+                rcanvas.natalMoonRetrogradeTxt = CommonData.getRetrograde(retrogradeList[1]);
+                rcanvas.natalMoonRetrogradeX = pRetrogradeList[1].X;
+                rcanvas.natalMoonRetrogradeY = pRetrogradeList[1].Y;
 
-                rcanvas.natalMercurytxt = CommonData.getPlanetSymbol(2);
-                rcanvas.natalMercuryx = pList[2].X;
-                rcanvas.natalMercuryy = pList[2].Y;
-                rcanvas.natalMercurydegreetxt = (degreeList[2] % 30).ToString("00°");
-                rcanvas.natalMercurydegreex = pDegList[2].X;
-                rcanvas.natalMercurydegreey = pDegList[2].Y;
-                rcanvas.natalMercurysigntxt = CommonData.getSignText(degreeList[2]);
-                rcanvas.natalMercurysignx = pSymbolList[2].X;
-                rcanvas.natalMercurysigny = pSymbolList[2].Y;
-                rcanvas.natalMercuryMinutetxt = ((degreeList[2] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalMercuryMinutex = pMinuteList[2].X;
-                rcanvas.natalMercuryMinutey = pMinuteList[2].Y;
-                rcanvas.natalMercuryRetrogradetxt = CommonData.getRetrograde(retrogradeList[2]);
-                rcanvas.natalMercuryRetrogradex = pRetrogradeList[2].X;
-                rcanvas.natalMercuryRetrogradey = pRetrogradeList[2].Y;
+                rcanvas.natalMercuryTxt = CommonData.getPlanetSymbol(2);
+                rcanvas.natalMercuryX = pList[2].X;
+                rcanvas.natalMercuryY = pList[2].Y;
+                rcanvas.natalMercuryDegreeTxt = (degreeList[2] % 30).ToString("00°");
+                rcanvas.natalMercuryDegreeX = pDegList[2].X;
+                rcanvas.natalMercuryDegreeY = pDegList[2].Y;
+                rcanvas.natalMercurySignTxt = CommonData.getSignText(degreeList[2]);
+                rcanvas.natalMercurySignX = pSymbolList[2].X;
+                rcanvas.natalMercurySignY = pSymbolList[2].Y;
+                rcanvas.natalMercuryMinuteTxt = ((degreeList[2] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalMercuryMinuteX = pMinuteList[2].X;
+                rcanvas.natalMercuryMinuteY = pMinuteList[2].Y;
+                rcanvas.natalMercuryRetrogradeTxt = CommonData.getRetrograde(retrogradeList[2]);
+                rcanvas.natalMercuryRetrogradeX = pRetrogradeList[2].X;
+                rcanvas.natalMercuryRetrogradeY = pRetrogradeList[2].Y;
 
-                rcanvas.natalVenustxt = CommonData.getPlanetSymbol(3);
-                rcanvas.natalVenusx = pList[3].X;
-                rcanvas.natalVenusy = pList[3].Y;
-                rcanvas.natalVenusdegreetxt = (degreeList[3] % 30).ToString("00°");
-                rcanvas.natalVenusdegreex = pDegList[3].X;
-                rcanvas.natalVenusdegreey = pDegList[3].Y;
-                rcanvas.natalVenussigntxt = CommonData.getSignText(degreeList[3]);
-                rcanvas.natalVenussignx = pSymbolList[3].X;
-                rcanvas.natalVenussigny = pSymbolList[3].Y;
-                rcanvas.natalVenusMinutetxt = ((degreeList[3] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalVenusMinutex = pMinuteList[3].X;
-                rcanvas.natalVenusMinutey = pMinuteList[3].Y;
-                rcanvas.natalVenusRetrogradetxt = CommonData.getRetrograde(retrogradeList[3]);
-                rcanvas.natalVenusRetrogradex = pRetrogradeList[3].X;
-                rcanvas.natalVenusRetrogradey = pRetrogradeList[3].Y;
+                rcanvas.natalVenusTxt = CommonData.getPlanetSymbol(3);
+                rcanvas.natalVenusX = pList[3].X;
+                rcanvas.natalVenusY = pList[3].Y;
+                rcanvas.natalVenusDegreeTxt = (degreeList[3] % 30).ToString("00°");
+                rcanvas.natalVenusDegreeX = pDegList[3].X;
+                rcanvas.natalVenusDegreeY = pDegList[3].Y;
+                rcanvas.natalVenusSignTxt = CommonData.getSignText(degreeList[3]);
+                rcanvas.natalVenusSignX = pSymbolList[3].X;
+                rcanvas.natalVenusSignY = pSymbolList[3].Y;
+                rcanvas.natalVenusMinuteTxt = ((degreeList[3] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalVenusMinuteX = pMinuteList[3].X;
+                rcanvas.natalVenusMinuteY = pMinuteList[3].Y;
+                rcanvas.natalVenusRetrogradeTxt = CommonData.getRetrograde(retrogradeList[3]);
+                rcanvas.natalVenusRetrogradeX = pRetrogradeList[3].X;
+                rcanvas.natalVenusRetrogradeY = pRetrogradeList[3].Y;
 
-                rcanvas.natalMarstxt = CommonData.getPlanetSymbol(4);
-                rcanvas.natalMarsx = pList[4].X;
-                rcanvas.natalMarsy = pList[4].Y;
-                rcanvas.natalMarsdegreetxt = (degreeList[4] % 30).ToString("00°");
-                rcanvas.natalMarsdegreex = pDegList[4].X;
-                rcanvas.natalMarsdegreey = pDegList[4].Y;
-                rcanvas.natalMarssigntxt = CommonData.getSignText(degreeList[4]);
-                rcanvas.natalMarssignx = pSymbolList[4].X;
-                rcanvas.natalMarssigny = pSymbolList[4].Y;
-                rcanvas.natalMarsMinutetxt = ((degreeList[4] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalMarsMinutex = pMinuteList[4].X;
-                rcanvas.natalMarsMinutey = pMinuteList[4].Y;
-                rcanvas.natalMarsRetrogradetxt = CommonData.getRetrograde(retrogradeList[4]);
-                rcanvas.natalMarsRetrogradex = pRetrogradeList[4].X;
-                rcanvas.natalMarsRetrogradey = pRetrogradeList[4].Y;
+                rcanvas.natalMarsTxt = CommonData.getPlanetSymbol(4);
+                rcanvas.natalMarsX = pList[4].X;
+                rcanvas.natalMarsY = pList[4].Y;
+                rcanvas.natalMarsDegreeTxt = (degreeList[4] % 30).ToString("00°");
+                rcanvas.natalMarsDegreeX = pDegList[4].X;
+                rcanvas.natalMarsDegreeY = pDegList[4].Y;
+                rcanvas.natalMarsSignTxt = CommonData.getSignText(degreeList[4]);
+                rcanvas.natalMarsSignX = pSymbolList[4].X;
+                rcanvas.natalMarsSignY = pSymbolList[4].Y;
+                rcanvas.natalMarsMinuteTxt = ((degreeList[4] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalMarsMinuteX = pMinuteList[4].X;
+                rcanvas.natalMarsMinuteY = pMinuteList[4].Y;
+                rcanvas.natalMarsRetrogradeTxt = CommonData.getRetrograde(retrogradeList[4]);
+                rcanvas.natalMarsRetrogradeX = pRetrogradeList[4].X;
+                rcanvas.natalMarsRetrogradeY = pRetrogradeList[4].Y;
 
-                rcanvas.natalJupitertxt = CommonData.getPlanetSymbol(5);
-                rcanvas.natalJupiterx = pList[5].X;
-                rcanvas.natalJupitery = pList[5].Y;
-                rcanvas.natalJupiterdegreetxt = (degreeList[5] % 30).ToString("00°");
-                rcanvas.natalJupiterdegreex = pDegList[5].X;
-                rcanvas.natalJupiterdegreey = pDegList[5].Y;
-                rcanvas.natalJupitersigntxt = CommonData.getSignText(degreeList[5]);
-                rcanvas.natalJupitersignx = pSymbolList[5].X;
-                rcanvas.natalJupitersigny = pSymbolList[5].Y;
-                rcanvas.natalJupiterMinutetxt = ((degreeList[5] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalJupiterMinutex = pMinuteList[5].X;
-                rcanvas.natalJupiterMinutey = pMinuteList[5].Y;
-                rcanvas.natalJupiterRetrogradetxt = CommonData.getRetrograde(retrogradeList[5]);
-                rcanvas.natalJupiterRetrogradex = pRetrogradeList[5].X;
-                rcanvas.natalJupiterRetrogradey = pRetrogradeList[5].Y;
+                rcanvas.natalJupiterTxt = CommonData.getPlanetSymbol(5);
+                rcanvas.natalJupiterX = pList[5].X;
+                rcanvas.natalJupiterY = pList[5].Y;
+                rcanvas.natalJupiterDegreeTxt = (degreeList[5] % 30).ToString("00°");
+                rcanvas.natalJupiterDegreeX = pDegList[5].X;
+                rcanvas.natalJupiterDegreeY = pDegList[5].Y;
+                rcanvas.natalJupiterSignTxt = CommonData.getSignText(degreeList[5]);
+                rcanvas.natalJupiterSignX = pSymbolList[5].X;
+                rcanvas.natalJupiterSignY = pSymbolList[5].Y;
+                rcanvas.natalJupiterMinuteTxt = ((degreeList[5] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalJupiterMinuteX = pMinuteList[5].X;
+                rcanvas.natalJupiterMinuteY = pMinuteList[5].Y;
+                rcanvas.natalJupiterRetrogradeTxt = CommonData.getRetrograde(retrogradeList[5]);
+                rcanvas.natalJupiterRetrogradeX = pRetrogradeList[5].X;
+                rcanvas.natalJupiterRetrogradeY = pRetrogradeList[5].Y;
 
-                rcanvas.natalSaturntxt = CommonData.getPlanetSymbol(6);
-                rcanvas.natalSaturnx = pList[6].X;
-                rcanvas.natalSaturny = pList[6].Y;
-                rcanvas.natalSaturndegreetxt = (degreeList[6] % 30).ToString("00°");
-                rcanvas.natalSaturndegreex = pDegList[6].X;
-                rcanvas.natalSaturndegreey = pDegList[6].Y;
-                rcanvas.natalSaturnsigntxt = CommonData.getSignText(degreeList[6]);
-                rcanvas.natalSaturnsignx = pSymbolList[6].X;
-                rcanvas.natalSaturnsigny = pSymbolList[6].Y;
-                rcanvas.natalSaturnMinutetxt = ((degreeList[6] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalSaturnMinutex = pMinuteList[6].X;
-                rcanvas.natalSaturnMinutey = pMinuteList[6].Y;
-                rcanvas.natalSaturnRetrogradetxt = CommonData.getRetrograde(retrogradeList[6]);
-                rcanvas.natalSaturnRetrogradex = pRetrogradeList[6].X;
-                rcanvas.natalSaturnRetrogradey = pRetrogradeList[6].Y;
+                rcanvas.natalSaturnTxt = CommonData.getPlanetSymbol(6);
+                rcanvas.natalSaturnX = pList[6].X;
+                rcanvas.natalSaturnY = pList[6].Y;
+                rcanvas.natalSaturnDegreeTxt = (degreeList[6] % 30).ToString("00°");
+                rcanvas.natalSaturnDegreeX = pDegList[6].X;
+                rcanvas.natalSaturnDegreeY = pDegList[6].Y;
+                rcanvas.natalSaturnSignTxt = CommonData.getSignText(degreeList[6]);
+                rcanvas.natalSaturnSignX = pSymbolList[6].X;
+                rcanvas.natalSaturnSignY = pSymbolList[6].Y;
+                rcanvas.natalSaturnMinuteTxt = ((degreeList[6] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalSaturnMinuteX = pMinuteList[6].X;
+                rcanvas.natalSaturnMinuteY = pMinuteList[6].Y;
+                rcanvas.natalSaturnRetrogradeTxt = CommonData.getRetrograde(retrogradeList[6]);
+                rcanvas.natalSaturnRetrogradeX = pRetrogradeList[6].X;
+                rcanvas.natalSaturnRetrogradeY = pRetrogradeList[6].Y;
 
-                rcanvas.natalUranustxt = CommonData.getPlanetSymbol(7);
-                rcanvas.natalUranusx = pList[7].X;
-                rcanvas.natalUranusy = pList[7].Y;
-                rcanvas.natalUranusdegreetxt = (degreeList[7] % 30).ToString("00°");
-                rcanvas.natalUranusdegreex = pDegList[7].X;
-                rcanvas.natalUranusdegreey = pDegList[7].Y;
-                rcanvas.natalUranussigntxt = CommonData.getSignText(degreeList[7]);
-                rcanvas.natalUranussignx = pSymbolList[7].X;
-                rcanvas.natalUranussigny = pSymbolList[7].Y;
-                rcanvas.natalUranusMinutetxt = ((degreeList[7] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalUranusMinutex = pMinuteList[7].X;
-                rcanvas.natalUranusMinutey = pMinuteList[7].Y;
-                rcanvas.natalUranusRetrogradetxt = CommonData.getRetrograde(retrogradeList[7]);
-                rcanvas.natalUranusRetrogradex = pRetrogradeList[7].X;
-                rcanvas.natalUranusRetrogradey = pRetrogradeList[7].Y;
+                rcanvas.natalUranusTxt = CommonData.getPlanetSymbol(7);
+                rcanvas.natalUranusX = pList[7].X;
+                rcanvas.natalUranusY = pList[7].Y;
+                rcanvas.natalUranusDegreeTxt = (degreeList[7] % 30).ToString("00°");
+                rcanvas.natalUranusDegreeX = pDegList[7].X;
+                rcanvas.natalUranusDegreeY = pDegList[7].Y;
+                rcanvas.natalUranusSignTxt = CommonData.getSignText(degreeList[7]);
+                rcanvas.natalUranusSignX = pSymbolList[7].X;
+                rcanvas.natalUranusSignY = pSymbolList[7].Y;
+                rcanvas.natalUranusMinuteTxt = ((degreeList[7] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalUranusMinuteX = pMinuteList[7].X;
+                rcanvas.natalUranusMinuteY = pMinuteList[7].Y;
+                rcanvas.natalUranusRetrogradeTxt = CommonData.getRetrograde(retrogradeList[7]);
+                rcanvas.natalUranusRetrogradeX = pRetrogradeList[7].X;
+                rcanvas.natalUranusRetrogradeY = pRetrogradeList[7].Y;
 
-                rcanvas.natalNeptunetxt = CommonData.getPlanetSymbol(8);
-                rcanvas.natalNeptunex = pList[8].X;
-                rcanvas.natalNeptuney = pList[8].Y;
-                rcanvas.natalNeptunedegreetxt = (degreeList[8] % 30).ToString("00°");
-                rcanvas.natalNeptunedegreex = pDegList[8].X;
-                rcanvas.natalNeptunedegreey = pDegList[8].Y;
-                rcanvas.natalNeptunesigntxt = CommonData.getSignText(degreeList[8]);
-                rcanvas.natalNeptunesignx = pSymbolList[8].X;
-                rcanvas.natalNeptunesigny = pSymbolList[8].Y;
-                rcanvas.natalNeptuneMinutetxt = ((degreeList[8] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalNeptuneMinutex = pMinuteList[8].X;
-                rcanvas.natalNeptuneMinutey = pMinuteList[8].Y;
-                rcanvas.natalNeptuneRetrogradetxt = CommonData.getRetrograde(retrogradeList[8]);
-                rcanvas.natalNeptuneRetrogradex = pRetrogradeList[8].X;
-                rcanvas.natalNeptuneRetrogradey = pRetrogradeList[8].Y;
+                rcanvas.natalNeptuneTxt = CommonData.getPlanetSymbol(8);
+                rcanvas.natalNeptuneX = pList[8].X;
+                rcanvas.natalNeptuneY = pList[8].Y;
+                rcanvas.natalNeptuneDegreeTxt = (degreeList[8] % 30).ToString("00°");
+                rcanvas.natalNeptuneDegreeX = pDegList[8].X;
+                rcanvas.natalNeptuneDegreeY = pDegList[8].Y;
+                rcanvas.natalNeptuneSignTxt = CommonData.getSignText(degreeList[8]);
+                rcanvas.natalNeptuneSignX = pSymbolList[8].X;
+                rcanvas.natalNeptuneSignY = pSymbolList[8].Y;
+                rcanvas.natalNeptuneMinuteTxt = ((degreeList[8] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalNeptuneMinuteX = pMinuteList[8].X;
+                rcanvas.natalNeptuneMinuteY = pMinuteList[8].Y;
+                rcanvas.natalNeptuneRetrogradeTxt = CommonData.getRetrograde(retrogradeList[8]);
+                rcanvas.natalNeptuneRetrogradeX = pRetrogradeList[8].X;
+                rcanvas.natalNeptuneRetrogradeY = pRetrogradeList[8].Y;
 
-                rcanvas.natalPlutotxt = CommonData.getPlanetSymbol(9);
-                rcanvas.natalPlutox = pList[9].X;
-                rcanvas.natalPlutoy = pList[9].Y;
-                rcanvas.natalPlutodegreetxt = (degreeList[9] % 30).ToString("00°");
-                rcanvas.natalPlutodegreex = pDegList[9].X;
-                rcanvas.natalPlutodegreey = pDegList[9].Y;
-                rcanvas.natalPlutosigntxt = CommonData.getSignText(degreeList[9]);
-                rcanvas.natalPlutosignx = pSymbolList[9].X;
-                rcanvas.natalPlutosigny = pSymbolList[9].Y;
-                rcanvas.natalPlutoMinutetxt = ((degreeList[9] % 1) / 100 * 60 * 100).ToString("00") + "'";
-                rcanvas.natalPlutoMinutex = pMinuteList[9].X;
-                rcanvas.natalPlutoMinutey = pMinuteList[9].Y;
-                rcanvas.natalPlutoRetrogradetxt = CommonData.getRetrograde(retrogradeList[9]);
-                rcanvas.natalPlutoRetrogradex = pRetrogradeList[9].X;
-                rcanvas.natalPlutoRetrogradey = pRetrogradeList[9].Y;
+                SetPluto(
+                    CommonData.getPlanetSymbol(9),
+                    pList[9],
+                    (degreeList[9] % 30).ToString("00°"),
+                    pDegList[9],
+                    CommonData.getSignText(degreeList[9]),
+                    pSymbolList[9],
+                    ((degreeList[9] % 1) / 100 * 60 * 100).ToString("00") + "'",
+                    pMinuteList[9],
+                    CommonData.getRetrograde(retrogradeList[9]),
+                    pRetrogradeList[9]
+                );
             }
             else if (tempsettings.bands == 2)
             {
@@ -848,6 +845,30 @@ namespace microcosm
             else if (tempsettings.bands == 3)
             {
             }
+        }
+        
+        public void SetPluto(
+            string planetTxt, pointF planet, 
+            string degTxt, pointF degree, 
+            string signTxt, pointF sign, 
+            string minuteTxt, pointF minute, 
+            string retrogradeTxt, pointF retrograde) 
+        {
+            rcanvas.natalPlutoTxt = planetTxt;
+            rcanvas.natalPlutoX = planet.X;
+            rcanvas.natalPlutoY = planet.Y;
+            rcanvas.natalPlutoDegreeTxt = degTxt;
+            rcanvas.natalPlutoDegreeX = degree.X;
+            rcanvas.natalPlutoDegreeY = degree.Y;
+            rcanvas.natalPlutoSignTxt = signTxt;
+            rcanvas.natalPlutoSignX = sign.X;
+            rcanvas.natalPlutoSignY = sign.Y;
+            rcanvas.natalPlutoMinuteTxt = minuteTxt;
+            rcanvas.natalPlutoMinuteX = minute.X;
+            rcanvas.natalPlutoMinuteY = minute.Y;
+            rcanvas.natalPlutoRetrogradeTxt = retrogradeTxt;
+            rcanvas.natalPlutoRetrogradeX = retrograde.X;
+            rcanvas.natalPlutoRetrogradeY = retrograde.Y;
         }
 
 

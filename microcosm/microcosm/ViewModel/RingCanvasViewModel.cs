@@ -1611,45 +1611,45 @@ namespace microcosm.ViewModel
 
         // 牡羊座
         #region
-        private double _ariesx;
-        public double ariesx
+        private double _ariesX;
+        public double ariesX
         {
             get
             {
-                return _ariesx;
+                return _ariesX;
             }
             set
             {
-                _ariesx = value;
+                _ariesX =value;
                 OnPropertyChanged("ariesx");
             }
         }
 
-        private double _ariesy;
-        public double ariesy
+        private double _ariesY;
+        public double ariesY
         {
             get
             {
-                return _ariesy;
+                return _ariesY;
             }
             set
             {
-                _ariesy = value;
+                _ariesY = value;
                 OnPropertyChanged("ariesy");
             }
         }
 
-        private string _ariestxt;
-        public string ariestxt
+        private string _ariesTxt;
+        public string ariesTxt
         {
             get
             {
-                return _ariestxt;
+                return _ariesTxt;
             }
             set
             {
-                _ariestxt = value;
-                OnPropertyChanged("ariestxt");
+                _ariesTxt = value;
+                OnPropertyChanged("ariesTxt");
             }
         }
 
@@ -1657,44 +1657,44 @@ namespace microcosm.ViewModel
 
         // 牡牛座
         #region
-        private double _taurusx;
-        public double taurusx
+        private double _taurusX;
+        public double taurusX
         {
             get
             {
-                return _taurusx;
+                return _taurusX;
             }
             set
             {
-                _taurusx = value;
+                _taurusX =value;
                 OnPropertyChanged("taurusx");
             }
         }
 
-        private double _taurusy;
-        public double taurusy
+        private double _taurusY;
+        public double taurusY
         {
             get
             {
-                return _taurusy;
+                return _taurusY;
             }
             set
             {
-                _taurusy = value;
+                _taurusY = value;
                 OnPropertyChanged("taurusy");
             }
         }
-        private string _taurustxt;
-        public string taurustxt
+        private string _taurusTxt;
+        public string taurusTxt
         {
             get
             {
-                return _taurustxt;
+                return _taurusTxt;
             }
             set
             {
-                _taurustxt = value;
-                OnPropertyChanged("taurustxt");
+                _taurusTxt = value;
+                OnPropertyChanged("taurusTxt");
             }
         }
 
@@ -1702,44 +1702,44 @@ namespace microcosm.ViewModel
 
         // 双子座
         #region
-        private double _geminix;
-        public double geminix
+        private double _geminiX;
+        public double geminiX
         {
             get
             {
-                return _geminix;
+                return _geminiX;
             }
             set
             {
-                _geminix = value;
+                _geminiX =value;
                 OnPropertyChanged("geminix");
             }
         }
 
-        private double _geminiy;
-        public double geminiy
+        private double _geminiY;
+        public double geminiY
         {
             get
             {
-                return _geminiy;
+                return _geminiY;
             }
             set
             {
-                _geminiy = value;
+                _geminiY = value;
                 OnPropertyChanged("geminiy");
             }
         }
-        private string _geminitxt;
-        public string geminitxt
+        private string _geminiTxt;
+        public string geminiTxt
         {
             get
             {
-                return _geminitxt;
+                return _geminiTxt;
             }
             set
             {
-                _geminitxt = value;
-                OnPropertyChanged("geminitxt");
+                _geminiTxt = value;
+                OnPropertyChanged("geminiTxt");
             }
         }
 
@@ -1748,45 +1748,45 @@ namespace microcosm.ViewModel
 
         // 蟹座
         #region
-        private double _cancerx;
-        public double cancerx
+        private double _cancerX;
+        public double cancerX
         {
             get
             {
-                return _cancerx;
+                return _cancerX;
             }
             set
             {
-                _cancerx = value;
+                _cancerX =value;
                 OnPropertyChanged("cancerx");
             }
         }
 
-        private double _cancery;
-        public double cancery
+        private double _cancerY;
+        public double cancerY
         {
             get
             {
-                return _cancery;
+                return _cancerY;
             }
             set
             {
-                _cancery = value;
+                _cancerY = value;
                 OnPropertyChanged("cancery");
             }
         }
 
-        private string _cancertxt;
-        public string cancertxt
+        private string _cancerTxt;
+        public string cancerTxt
         {
             get
             {
-                return _cancertxt;
+                return _cancerTxt;
             }
             set
             {
-                _cancertxt = value;
-                OnPropertyChanged("cancertxt");
+                _cancerTxt = value;
+                OnPropertyChanged("cancerTxt");
             }
         }
 
@@ -1794,45 +1794,45 @@ namespace microcosm.ViewModel
 
         // 獅子座
         #region
-        private double _leox;
-        public double leox
+        private double _leoX;
+        public double leoX
         {
             get
             {
-                return _leox;
+                return _leoX;
             }
             set
             {
-                _leox = value;
+                _leoX =value;
                 OnPropertyChanged("leox");
             }
         }
 
-        private double _leoy;
-        public double leoy
+        private double _leoY;
+        public double leoY
         {
             get
             {
-                return _leoy;
+                return _leoY;
             }
             set
             {
-                _leoy = value;
+                _leoY = value;
                 OnPropertyChanged("leoy");
             }
         }
 
-        private string _leotxt;
-        public string leotxt
+        private string _leoTxt;
+        public string leoTxt
         {
             get
             {
-                return _leotxt;
+                return _leoTxt;
             }
             set
             {
-                _leotxt = value;
-                OnPropertyChanged("leotxt");
+                _leoTxt = value;
+                OnPropertyChanged("leoTxt");
             }
         }
 
@@ -1840,45 +1840,45 @@ namespace microcosm.ViewModel
 
         // 乙女座
         #region
-        private double _virgox;
-        public double virgox
+        private double _virgoX;
+        public double virgoX
         {
             get
             {
-                return _virgox;
+                return _virgoX;
             }
             set
             {
-                _virgox = value;
+                _virgoX =value;
                 OnPropertyChanged("virgox");
             }
         }
 
-        private double _virgoy;
-        public double virgoy
+        private double _virgoY;
+        public double virgoY
         {
             get
             {
-                return _virgoy;
+                return _virgoY;
             }
             set
             {
-                _virgoy = value;
+                _virgoY = value;
                 OnPropertyChanged("virgoy");
             }
         }
 
-        private string _virgotxt;
-        public string virgotxt
+        private string _virgoTxt;
+        public string virgoTxt
         {
             get
             {
-                return _virgotxt;
+                return _virgoTxt;
             }
             set
             {
-                _virgotxt = value;
-                OnPropertyChanged("virgotxt");
+                _virgoTxt = value;
+                OnPropertyChanged("virgoTxt");
             }
         }
 
@@ -1886,45 +1886,45 @@ namespace microcosm.ViewModel
 
         // 天秤座
         #region
-        private double _librax;
-        public double librax
+        private double _libraX;
+        public double libraX
         {
             get
             {
-                return _librax;
+                return _libraX;
             }
             set
             {
-                _librax = value;
+                _libraX =value;
                 OnPropertyChanged("librax");
             }
         }
 
-        private double _libray;
-        public double libray
+        private double _libraY;
+        public double libraY
         {
             get
             {
-                return _libray;
+                return _libraY;
             }
             set
             {
-                _libray = value;
+                _libraY = value;
                 OnPropertyChanged("libray");
             }
         }
 
-        private string _libratxt;
-        public string libratxt
+        private string _libraTxt;
+        public string libraTxt
         {
             get
             {
-                return _libratxt;
+                return _libraTxt;
             }
             set
             {
-                _libratxt = value;
-                OnPropertyChanged("libratxt");
+                _libraTxt = value;
+                OnPropertyChanged("libraTxt");
             }
         }
 
@@ -1932,134 +1932,134 @@ namespace microcosm.ViewModel
 
         // 蠍座
         #region
-        private double _scorpionx;
-        public double scorpionx
+        private double _scorpionX;
+        public double scorpionX
         {
             get
             {
-                return _scorpionx;
+                return _scorpionX;
             }
             set
             {
-                _scorpionx = value;
+                _scorpionX =value;
                 OnPropertyChanged("scorpionx");
             }
         }
 
-        private double _scorpiony;
-        public double scorpiony
+        private double _scorpionY;
+        public double scorpionY
         {
             get
             {
-                return _scorpiony;
+                return _scorpionY;
             }
             set
             {
-                _scorpiony = value;
+                _scorpionY = value;
                 OnPropertyChanged("scorpiony");
             }
         }
 
-        private string _scorpiontxt;
-        public string scorpiontxt
+        private string _scorpionTxt;
+        public string scorpionTxt
         {
             get
             {
-                return _scorpiontxt;
+                return _scorpionTxt;
             }
             set
             {
-                _scorpiontxt = value;
-                OnPropertyChanged("scorpiontxt");
+                _scorpionTxt = value;
+                OnPropertyChanged("scorpionTxt");
             }
         }
         #endregion
 
         // 射手座
         #region
-        private double _sagittariusx;
-        public double sagittariusx
+        private double _sagittariusX;
+        public double sagittariusX
         {
             get
             {
-                return _sagittariusx;
+                return _sagittariusX;
             }
             set
             {
-                _sagittariusx = value;
+                _sagittariusX =value;
                 OnPropertyChanged("sagittariusx");
             }
         }
 
-        private double _sagittariusy;
-        public double sagittariusy
+        private double _sagittariusY;
+        public double sagittariusY
         {
             get
             {
-                return _sagittariusy;
+                return _sagittariusY;
             }
             set
             {
-                _sagittariusy = value;
+                _sagittariusY = value;
                 OnPropertyChanged("sagittariusy");
             }
         }
 
-        private string _sagittariustxt;
-        public string sagittariustxt
+        private string _sagittariusTxt;
+        public string sagittariusTxt
         {
             get
             {
-                return _sagittariustxt;
+                return _sagittariusTxt;
             }
             set
             {
-                _sagittariustxt = value;
-                OnPropertyChanged("sagittariustxt");
+                _sagittariusTxt = value;
+                OnPropertyChanged("sagittariusTxt");
             }
         }
         #endregion
 
         // 山羊座
         #region
-        private double _capricornx;
-        public double capricornx
+        private double _capricornX;
+        public double capricornX
         {
             get
             {
-                return _capricornx;
+                return _capricornX;
             }
             set
             {
-                _capricornx = value;
+                _capricornX =value;
                 OnPropertyChanged("capricornx");
             }
         }
 
-        private double _capricorny;
-        public double capricorny
+        private double _capricornY;
+        public double capricornY
         {
             get
             {
-                return _capricorny;
+                return _capricornY;
             }
             set
             {
-                _capricorny = value;
+                _capricornY = value;
                 OnPropertyChanged("capricorny");
             }
         }
-        private string _capricorntxt;
-        public string capricorntxt
+        private string _capricornTxt;
+        public string capricornTxt
         {
             get
             {
-                return _capricorntxt;
+                return _capricornTxt;
             }
             set
             {
-                _capricorntxt = value;
-                OnPropertyChanged("capricorntxt");
+                _capricornTxt = value;
+                OnPropertyChanged("capricornTxt");
             }
         }
 
@@ -2067,44 +2067,44 @@ namespace microcosm.ViewModel
 
         // 水瓶座
         #region
-        private double _aquariusx;
-        public double aquariusx
+        private double _aquariusX;
+        public double aquariusX
         {
             get
             {
-                return _aquariusx;
+                return _aquariusX;
             }
             set
             {
-                _aquariusx = value;
+                _aquariusX =value;
                 OnPropertyChanged("aquariusx");
             }
         }
 
-        private double _aquariusy;
-        public double aquariusy
+        private double _aquariusY;
+        public double aquariusY
         {
             get
             {
-                return _aquariusy;
+                return _aquariusY;
             }
             set
             {
-                _aquariusy = value;
+                _aquariusY = value;
                 OnPropertyChanged("aquariusy");
             }
         }
-        private string _aquariustxt;
-        public string aquariustxt
+        private string _aquariusTxt;
+        public string aquariusTxt
         {
             get
             {
-                return _aquariustxt;
+                return _aquariusTxt;
             }
             set
             {
-                _aquariustxt = value;
-                OnPropertyChanged("aquariustxt");
+                _aquariusTxt = value;
+                OnPropertyChanged("aquariusTxt");
             }
         }
 
@@ -2112,44 +2112,44 @@ namespace microcosm.ViewModel
 
         // 魚座
         #region
-        private double _piscesx;
-        public double piscesx
+        private double _piscesX;
+        public double piscesX
         {
             get
             {
-                return _piscesx;
+                return _piscesX;
             }
             set
             {
-                _piscesx = value;
+                _piscesX =value;
                 OnPropertyChanged("piscesx");
             }
         }
 
-        private double _piscesy;
-        public double piscesy
+        private double _piscesY;
+        public double piscesY
         {
             get
             {
-                return _piscesy;
+                return _piscesY;
             }
             set
             {
-                _piscesy = value;
+                _piscesY = value;
                 OnPropertyChanged("piscesy");
             }
         }
-        private string _piscestxt;
-        public string piscestxt
+        private string _piscesTxt;
+        public string piscesTxt
         {
             get
             {
-                return _piscestxt;
+                return _piscesTxt;
             }
             set
             {
-                _piscestxt = value;
-                OnPropertyChanged("piscestxt");
+                _piscesTxt = value;
+                OnPropertyChanged("piscesTxt");
             }
         }
 
@@ -2157,218 +2157,218 @@ namespace microcosm.ViewModel
 
         // 太陽
         #region
-        private double _natalSunx;
-        public double natalSunx
+        private double _natalSunX;
+        public double natalSunX
         {
             get
             {
-                return _natalSunx;
+                return _natalSunX;
             }
             set
             {
-                _natalSunx = value;
+                _natalSunX =value;
                 OnPropertyChanged("natalSunx");
             }
         }
 
-        private double _natalSuny;
-        public double natalSuny
+        private double _natalSunY;
+        public double natalSunY
         {
             get
             {
-                return _natalSuny;
+                return _natalSunY;
             }
             set
             {
-                _natalSuny = value;
+                _natalSunY = value;
                 OnPropertyChanged("natalSuny");
             }
         }
-        private string _natalSuntxt;
-        public string natalSuntxt
+        private string _natalSunTxt;
+        public string natalSunTxt
         {
             get
             {
-                return _natalSuntxt;
+                return _natalSunTxt;
             }
             set
             {
-                _natalSuntxt = value;
-                OnPropertyChanged("natalSuntxt");
+                _natalSunTxt = value;
+                OnPropertyChanged("natalSunTxt");
             }
         }
-        private double _natalSundegreex;
-        public double natalSundegreex
+        private double _natalSunDegreeX;
+        public double natalSunDegreeX
         {
             get
             {
-                return _natalSundegreex;
+                return _natalSunDegreeX;
             }
             set
             {
-                _natalSundegreex = value;
-                OnPropertyChanged("natalSundegreex");
-            }
-        }
-
-        private double _natalSundegreey;
-        public double natalSundegreey
-        {
-            get
-            {
-                return _natalSundegreey;
-            }
-            set
-            {
-                _natalSundegreey = value;
-                OnPropertyChanged("natalSundegreey");
-            }
-        }
-        private string _natalSundegreetxt;
-        public string natalSundegreetxt
-        {
-            get
-            {
-                return _natalSundegreetxt;
-            }
-            set
-            {
-                _natalSundegreetxt = value;
-                OnPropertyChanged("natalSundegreetxt");
-            }
-        }
-        private double _natalSunsignx;
-        public double natalSunsignx
-        {
-            get
-            {
-                return _natalSunsignx;
-            }
-            set
-            {
-                _natalSunsignx = value;
-                OnPropertyChanged("natalSunsignx");
+                _natalSunDegreeX = value;
+                OnPropertyChanged("natalSunDegreeX");
             }
         }
 
-        private double _natalSunsigny;
-        public double natalSunsigny
+        private double _natalSunDegreeY;
+        public double natalSunDegreeY
         {
             get
             {
-                return _natalSunsigny;
+                return _natalSunDegreeY;
             }
             set
             {
-                _natalSunsigny = value;
-                OnPropertyChanged("natalSunsigny");
+                _natalSunDegreeY = value;
+                OnPropertyChanged("natalSunDegreeY");
             }
         }
-        private string _natalSunsigntxt;
-        public string natalSunsigntxt
+        private string _natalSunDegreeTxt;
+        public string natalSunDegreeTxt
         {
             get
             {
-                return _natalSunsigntxt;
+                return _natalSunDegreeTxt;
             }
             set
             {
-                _natalSunsigntxt = value;
-                OnPropertyChanged("natalSunsigntxt");
+                _natalSunDegreeTxt = value;
+                OnPropertyChanged("natalSunDegreeTxt");
             }
         }
-        private double _natalSunMinutex;
-        public double natalSunMinutex
+        private double _natalSunSignX;
+        public double natalSunSignX
         {
             get
             {
-                return _natalSunMinutex;
+                return _natalSunSignX;
             }
             set
             {
-                _natalSunMinutex = value;
-                OnPropertyChanged("natalSunMinutex");
-            }
-        }
-
-        private double _natalSunMinutey;
-        public double natalSunMinutey
-        {
-            get
-            {
-                return _natalSunMinutey;
-            }
-            set
-            {
-                _natalSunMinutey = value;
-                OnPropertyChanged("natalSunMinutey");
-            }
-        }
-        private string _natalSunMinutetxt;
-        public string natalSunMinutetxt
-        {
-            get
-            {
-                return _natalSunMinutetxt;
-            }
-            set
-            {
-                _natalSunMinutetxt = value;
-                OnPropertyChanged("natalSunMinutetxt");
-            }
-        }
-        private double _natalSunRetrogradex;
-        public double natalSunRetrogradex
-        {
-            get
-            {
-                return _natalSunRetrogradex;
-            }
-            set
-            {
-                _natalSunRetrogradex = value;
-                OnPropertyChanged("natalSunRetrogradex");
+                _natalSunSignX = value;
+                OnPropertyChanged("natalSunSignX");
             }
         }
 
-        private double _natalSunRetrogradey;
-        public double natalSunRetrogradey
+        private double _natalSunSignY;
+        public double natalSunSignY
         {
             get
             {
-                return _natalSunRetrogradey;
+                return _natalSunSignY;
             }
             set
             {
-                _natalSunRetrogradey = value;
-                OnPropertyChanged("natalSunRetrogradey");
+                _natalSunSignY = value;
+                OnPropertyChanged("natalSunSignY");
             }
         }
-        private string _natalSunRetrogradetxt;
-        public string natalSunRetrogradetxt
+        private string _natalSunSignTxt;
+        public string natalSunSignTxt
         {
             get
             {
-                return _natalSunRetrogradetxt;
+                return _natalSunSignTxt;
             }
             set
             {
-                _natalSunRetrogradetxt = value;
-                OnPropertyChanged("natalSunRetrogradetxt");
+                _natalSunSignTxt = value;
+                OnPropertyChanged("natalSunSignTxt");
+            }
+        }
+        private double _natalSunMinuteX;
+        public double natalSunMinuteX
+        {
+            get
+            {
+                return _natalSunMinuteX;
+            }
+            set
+            {
+                _natalSunMinuteX = value;
+                OnPropertyChanged("natalSunMinuteX");
             }
         }
 
-        private double _natalSunangle;
-        public double natalSunangle
+        private double _natalSunMinuteY;
+        public double natalSunMinuteY
         {
             get
             {
-                return _natalSunangle;
+                return _natalSunMinuteY;
             }
             set
             {
-                _natalSunangle = value;
-                OnPropertyChanged("natalSunangle");
+                _natalSunMinuteY = value;
+                OnPropertyChanged("natalSunMinuteY");
+            }
+        }
+        private string _natalSunMinuteTxt;
+        public string natalSunMinuteTxt
+        {
+            get
+            {
+                return _natalSunMinuteTxt;
+            }
+            set
+            {
+                _natalSunMinuteTxt = value;
+                OnPropertyChanged("natalSunMinuteTxt");
+            }
+        }
+        private double _natalSunRetrogradeX;
+        public double natalSunRetrogradeX
+        {
+            get
+            {
+                return _natalSunRetrogradeX;
+            }
+            set
+            {
+                _natalSunRetrogradeX = value;
+                OnPropertyChanged("natalSunRetrogradeX");
+            }
+        }
+
+        private double _natalSunRetrogradeY;
+        public double natalSunRetrogradeY
+        {
+            get
+            {
+                return _natalSunRetrogradeY;
+            }
+            set
+            {
+                _natalSunRetrogradeY = value;
+                OnPropertyChanged("natalSunRetrogradeY");
+            }
+        }
+        private string _natalSunRetrogradeTxt;
+        public string natalSunRetrogradeTxt
+        {
+            get
+            {
+                return _natalSunRetrogradeTxt;
+            }
+            set
+            {
+                _natalSunRetrogradeTxt = value;
+                OnPropertyChanged("natalSunRetrogradeTxt");
+            }
+        }
+
+        private double _natalSunAngle;
+        public double natalSunAngle
+        {
+            get
+            {
+                return _natalSunAngle;
+            }
+            set
+            {
+                _natalSunAngle = value;
+                OnPropertyChanged("natalSunAngle");
             }
         }
 
@@ -2376,217 +2376,217 @@ namespace microcosm.ViewModel
 
         // 月
         #region
-        private double _natalMoonx;
-        public double natalMoonx
+        private double _natalMoonX;
+        public double natalMoonX
         {
             get
             {
-                return _natalMoonx;
+                return _natalMoonX;
             }
             set
             {
-                _natalMoonx = value;
-                OnPropertyChanged("natalMoonx");
+                _natalMoonX = value;
+                OnPropertyChanged("natalMoonX");
             }
         }
 
-        private double _natalMoony;
-        public double natalMoony
+        private double _natalMoonY;
+        public double natalMoonY
         {
             get
             {
-                return _natalMoony;
+                return _natalMoonY;
             }
             set
             {
-                _natalMoony = value;
-                OnPropertyChanged("natalMoony");
+                _natalMoonY = value;
+                OnPropertyChanged("natalMoonY");
             }
         }
-        private string _natalMoontxt;
-        public string natalMoontxt
+        private string _natalMoonTxt;
+        public string natalMoonTxt
         {
             get
             {
-                return _natalMoontxt;
+                return _natalMoonTxt;
             }
             set
             {
-                _natalMoontxt = value;
-                OnPropertyChanged("natalMoontxt");
+                _natalMoonTxt = value;
+                OnPropertyChanged("natalMoonTxt");
             }
         }
-        private double _natalMoondegreex;
-        public double natalMoondegreex
+        private double _natalMoonDegreeX;
+        public double natalMoonDegreeX
         {
             get
             {
-                return _natalMoondegreex;
+                return _natalMoonDegreeX;
             }
             set
             {
-                _natalMoondegreex = value;
-                OnPropertyChanged("natalMoondegreex");
-            }
-        }
-
-        private double _natalMoondegreey;
-        public double natalMoondegreey
-        {
-            get
-            {
-                return _natalMoondegreey;
-            }
-            set
-            {
-                _natalMoondegreey = value;
-                OnPropertyChanged("natalMoondegreey");
-            }
-        }
-        private string _natalMoondegreetxt;
-        public string natalMoondegreetxt
-        {
-            get
-            {
-                return _natalMoondegreetxt;
-            }
-            set
-            {
-                _natalMoondegreetxt = value;
-                OnPropertyChanged("natalMoondegreetxt");
-            }
-        }
-        private double _natalMoonsignx;
-        public double natalMoonsignx
-        {
-            get
-            {
-                return _natalMoonsignx;
-            }
-            set
-            {
-                _natalMoonsignx = value;
-                OnPropertyChanged("natalMoonsignx");
+                _natalMoonDegreeX = value;
+                OnPropertyChanged("natalMoonDegreeX");
             }
         }
 
-        private double _natalMoonsigny;
-        public double natalMoonsigny
+        private double _natalMoonDegreeY;
+        public double natalMoonDegreeY
         {
             get
             {
-                return _natalMoonsigny;
+                return _natalMoonDegreeY;
             }
             set
             {
-                _natalMoonsigny = value;
-                OnPropertyChanged("natalMoonsigny");
+                _natalMoonDegreeY = value;
+                OnPropertyChanged("natalMoonDegreeY");
             }
         }
-        private string _natalMoonsigntxt;
-        public string natalMoonsigntxt
+        private string _natalMoonDegreeTxt;
+        public string natalMoonDegreeTxt
         {
             get
             {
-                return _natalMoonsigntxt;
+                return _natalMoonDegreeTxt;
             }
             set
             {
-                _natalMoonsigntxt = value;
-                OnPropertyChanged("natalMoonsigntxt");
+                _natalMoonDegreeTxt = value;
+                OnPropertyChanged("natalMoonDegreeTxt");
             }
         }
-        private double _natalMoonMinutex;
-        public double natalMoonMinutex
+        private double _natalMoonSignX;
+        public double natalMoonSignX
         {
             get
             {
-                return _natalMoonMinutex;
+                return _natalMoonSignX;
             }
             set
             {
-                _natalMoonMinutex = value;
-                OnPropertyChanged("natalMoonMinutex");
-            }
-        }
-
-        private double _natalMoonMinutey;
-        public double natalMoonMinutey
-        {
-            get
-            {
-                return _natalMoonMinutey;
-            }
-            set
-            {
-                _natalMoonMinutey = value;
-                OnPropertyChanged("natalMoonMinutey");
-            }
-        }
-        private string _natalMoonMinutetxt;
-        public string natalMoonMinutetxt
-        {
-            get
-            {
-                return _natalMoonMinutetxt;
-            }
-            set
-            {
-                _natalMoonMinutetxt = value;
-                OnPropertyChanged("natalMoonMinutetxt");
-            }
-        }
-        private double _natalMoonRetrogradex;
-        public double natalMoonRetrogradex
-        {
-            get
-            {
-                return _natalMoonRetrogradex;
-            }
-            set
-            {
-                _natalMoonRetrogradex = value;
-                OnPropertyChanged("natalMoonRetrogradex");
+                _natalMoonSignX = value;
+                OnPropertyChanged("natalMoonSignX");
             }
         }
 
-        private double _natalMoonRetrogradey;
-        public double natalMoonRetrogradey
+        private double _natalMoonSignY;
+        public double natalMoonSignY
         {
             get
             {
-                return _natalMoonRetrogradey;
+                return _natalMoonSignY;
             }
             set
             {
-                _natalMoonRetrogradey = value;
-                OnPropertyChanged("natalMoonRetrogradey");
+                _natalMoonSignY = value;
+                OnPropertyChanged("natalMoonSignY");
             }
         }
-        private string _natalMoonRetrogradetxt;
-        public string natalMoonRetrogradetxt
+        private string _natalMoonSignTxt;
+        public string natalMoonSignTxt
         {
             get
             {
-                return _natalMoonRetrogradetxt;
+                return _natalMoonSignTxt;
             }
             set
             {
-                _natalMoonRetrogradetxt = value;
-                OnPropertyChanged("natalMoonRetrogradetxt");
+                _natalMoonSignTxt = value;
+                OnPropertyChanged("natalMoonSignTxt");
             }
         }
-        private double _natalMoonangle;
-        public double natalMoonangle
+        private double _natalMoonMinuteX;
+        public double natalMoonMinuteX
         {
             get
             {
-                return _natalMoonangle;
+                return _natalMoonMinuteX;
             }
             set
             {
-                _natalMoonangle = value;
-                OnPropertyChanged("natalMoonangle");
+                _natalMoonMinuteX = value;
+                OnPropertyChanged("natalMoonMinuteX");
+            }
+        }
+
+        private double _natalMoonMinuteY;
+        public double natalMoonMinuteY
+        {
+            get
+            {
+                return _natalMoonMinuteY;
+            }
+            set
+            {
+                _natalMoonMinuteY = value;
+                OnPropertyChanged("natalMoonMinuteY");
+            }
+        }
+        private string _natalMoonMinuteTxt;
+        public string natalMoonMinuteTxt
+        {
+            get
+            {
+                return _natalMoonMinuteTxt;
+            }
+            set
+            {
+                _natalMoonMinuteTxt = value;
+                OnPropertyChanged("natalMoonMinuteTxt");
+            }
+        }
+        private double _natalMoonRetrogradeX;
+        public double natalMoonRetrogradeX
+        {
+            get
+            {
+                return _natalMoonRetrogradeX;
+            }
+            set
+            {
+                _natalMoonRetrogradeX = value;
+                OnPropertyChanged("natalMoonRetrogradeX");
+            }
+        }
+
+        private double _natalMoonRetrogradeY;
+        public double natalMoonRetrogradeY
+        {
+            get
+            {
+                return _natalMoonRetrogradeY;
+            }
+            set
+            {
+                _natalMoonRetrogradeY = value;
+                OnPropertyChanged("natalMoonRetrogradeY");
+            }
+        }
+        private string _natalMoonRetrogradeTxt;
+        public string natalMoonRetrogradeTxt
+        {
+            get
+            {
+                return _natalMoonRetrogradeTxt;
+            }
+            set
+            {
+                _natalMoonRetrogradeTxt = value;
+                OnPropertyChanged("natalMoonRetrogradeTxt");
+            }
+        }
+        private double _natalMoonAngle;
+        public double natalMoonAngle
+        {
+            get
+            {
+                return _natalMoonAngle;
+            }
+            set
+            {
+                _natalMoonAngle = value;
+                OnPropertyChanged("natalMoonAngle");
             }
         }
 
@@ -2594,217 +2594,217 @@ namespace microcosm.ViewModel
 
         // 水星
         #region
-        private double _natalMercuryx;
-        public double natalMercuryx
+        private double _natalMercuryX;
+        public double natalMercuryX
         {
             get
             {
-                return _natalMercuryx;
+                return _natalMercuryX;
             }
             set
             {
-                _natalMercuryx = value;
+                _natalMercuryX =value;
                 OnPropertyChanged("natalMercuryx");
             }
         }
 
-        private double _natalMercuryy;
-        public double natalMercuryy
+        private double _natalMercuryY;
+        public double natalMercuryY
         {
             get
             {
-                return _natalMercuryy;
+                return _natalMercuryY;
             }
             set
             {
-                _natalMercuryy = value;
+                _natalMercuryY = value;
                 OnPropertyChanged("natalMercuryy");
             }
         }
-        private string _natalMercurytxt;
-        public string natalMercurytxt
+        private string _natalMercuryTxt;
+        public string natalMercuryTxt
         {
             get
             {
-                return _natalMercurytxt;
+                return _natalMercuryTxt;
             }
             set
             {
-                _natalMercurytxt = value;
-                OnPropertyChanged("natalMercurytxt");
+                _natalMercuryTxt = value;
+                OnPropertyChanged("natalMercuryTxt");
             }
         }
-        private double _natalMercurydegreex;
-        public double natalMercurydegreex
+        private double _natalMercuryDegreeX;
+        public double natalMercuryDegreeX
         {
             get
             {
-                return _natalMercurydegreex;
+                return _natalMercuryDegreeX;
             }
             set
             {
-                _natalMercurydegreex = value;
-                OnPropertyChanged("natalMercurydegreex");
-            }
-        }
-
-        private double _natalMercurydegreey;
-        public double natalMercurydegreey
-        {
-            get
-            {
-                return _natalMercurydegreey;
-            }
-            set
-            {
-                _natalMercurydegreey = value;
-                OnPropertyChanged("natalMercurydegreey");
-            }
-        }
-        private string _natalMercurydegreetxt;
-        public string natalMercurydegreetxt
-        {
-            get
-            {
-                return _natalMercurydegreetxt;
-            }
-            set
-            {
-                _natalMercurydegreetxt = value;
-                OnPropertyChanged("natalMercurydegreetxt");
-            }
-        }
-        private double _natalMercurysignx;
-        public double natalMercurysignx
-        {
-            get
-            {
-                return _natalMercurysignx;
-            }
-            set
-            {
-                _natalMercurysignx = value;
-                OnPropertyChanged("natalMercurysignx");
+                _natalMercuryDegreeX = value;
+                OnPropertyChanged("natalMercuryDegreeX");
             }
         }
 
-        private double _natalMercurysigny;
-        public double natalMercurysigny
+        private double _natalMercuryDegreeY;
+        public double natalMercuryDegreeY
         {
             get
             {
-                return _natalMercurysigny;
+                return _natalMercuryDegreeY;
             }
             set
             {
-                _natalMercurysigny = value;
-                OnPropertyChanged("natalMercurysigny");
+                _natalMercuryDegreeY = value;
+                OnPropertyChanged("natalMercuryDegreeY");
             }
         }
-        private string _natalMercurysigntxt;
-        public string natalMercurysigntxt
+        private string _natalMercuryDegreeTxt;
+        public string natalMercuryDegreeTxt
         {
             get
             {
-                return _natalMercurysigntxt;
+                return _natalMercuryDegreeTxt;
             }
             set
             {
-                _natalMercurysigntxt = value;
-                OnPropertyChanged("natalMercurysigntxt");
+                _natalMercuryDegreeTxt = value;
+                OnPropertyChanged("natalMercuryDegreeTxt");
             }
         }
-        private double _natalMercuryMinutex;
-        public double natalMercuryMinutex
+        private double _natalMercurySignX;
+        public double natalMercurySignX
         {
             get
             {
-                return _natalMercuryMinutex;
+                return _natalMercurySignX;
             }
             set
             {
-                _natalMercuryMinutex = value;
-                OnPropertyChanged("natalMercuryMinutex");
-            }
-        }
-
-        private double _natalMercuryMinutey;
-        public double natalMercuryMinutey
-        {
-            get
-            {
-                return _natalMercuryMinutey;
-            }
-            set
-            {
-                _natalMercuryMinutey = value;
-                OnPropertyChanged("natalMercuryMinutey");
-            }
-        }
-        private string _natalMercuryMinutetxt;
-        public string natalMercuryMinutetxt
-        {
-            get
-            {
-                return _natalMercuryMinutetxt;
-            }
-            set
-            {
-                _natalMercuryMinutetxt = value;
-                OnPropertyChanged("natalMercuryMinutetxt");
-            }
-        }
-        private double _natalMercuryRetrogradex;
-        public double natalMercuryRetrogradex
-        {
-            get
-            {
-                return _natalMercuryRetrogradex;
-            }
-            set
-            {
-                _natalMercuryRetrogradex = value;
-                OnPropertyChanged("natalMercuryRetrogradex");
+                _natalMercurySignX = value;
+                OnPropertyChanged("natalMercurySignX");
             }
         }
 
-        private double _natalMercuryRetrogradey;
-        public double natalMercuryRetrogradey
+        private double _natalMercurySignY;
+        public double natalMercurySignY
         {
             get
             {
-                return _natalMercuryRetrogradey;
+                return _natalMercurySignY;
             }
             set
             {
-                _natalMercuryRetrogradey = value;
-                OnPropertyChanged("natalMercuryRetrogradey");
+                _natalMercurySignY = value;
+                OnPropertyChanged("natalMercurySignY");
             }
         }
-        private string _natalMercuryRetrogradetxt;
-        public string natalMercuryRetrogradetxt
+        private string _natalMercurySignTxt;
+        public string natalMercurySignTxt
         {
             get
             {
-                return _natalMercuryRetrogradetxt;
+                return _natalMercurySignTxt;
             }
             set
             {
-                _natalMercuryRetrogradetxt = value;
-                OnPropertyChanged("natalMercuryRetrogradetxt");
+                _natalMercurySignTxt = value;
+                OnPropertyChanged("natalMercurySignTxt");
             }
         }
-        private double _natalMercuryangle;
-        public double natalMercuryangle
+        private double _natalMercuryMinuteX;
+        public double natalMercuryMinuteX
         {
             get
             {
-                return _natalMercuryangle;
+                return _natalMercuryMinuteX;
             }
             set
             {
-                _natalMercuryangle = value;
-                OnPropertyChanged("natalMercuryangle");
+                _natalMercuryMinuteX = value;
+                OnPropertyChanged("natalMercuryMinuteX");
+            }
+        }
+
+        private double _natalMercuryMinuteY;
+        public double natalMercuryMinuteY
+        {
+            get
+            {
+                return _natalMercuryMinuteY;
+            }
+            set
+            {
+                _natalMercuryMinuteY = value;
+                OnPropertyChanged("natalMercuryMinuteY");
+            }
+        }
+        private string _natalMercuryMinuteTxt;
+        public string natalMercuryMinuteTxt
+        {
+            get
+            {
+                return _natalMercuryMinuteTxt;
+            }
+            set
+            {
+                _natalMercuryMinuteTxt = value;
+                OnPropertyChanged("natalMercuryMinuteTxt");
+            }
+        }
+        private double _natalMercuryRetrogradeX;
+        public double natalMercuryRetrogradeX
+        {
+            get
+            {
+                return _natalMercuryRetrogradeX;
+            }
+            set
+            {
+                _natalMercuryRetrogradeX = value;
+                OnPropertyChanged("natalMercuryRetrogradeX");
+            }
+        }
+
+        private double _natalMercuryRetrogradeY;
+        public double natalMercuryRetrogradeY
+        {
+            get
+            {
+                return _natalMercuryRetrogradeY;
+            }
+            set
+            {
+                _natalMercuryRetrogradeY = value;
+                OnPropertyChanged("natalMercuryRetrogradeY");
+            }
+        }
+        private string _natalMercuryRetrogradeTxt;
+        public string natalMercuryRetrogradeTxt
+        {
+            get
+            {
+                return _natalMercuryRetrogradeTxt;
+            }
+            set
+            {
+                _natalMercuryRetrogradeTxt = value;
+                OnPropertyChanged("natalMercuryRetrogradeTxt");
+            }
+        }
+        private double _natalMercuryAngle;
+        public double natalMercuryAngle
+        {
+            get
+            {
+                return _natalMercuryAngle;
+            }
+            set
+            {
+                _natalMercuryAngle = value;
+                OnPropertyChanged("natalMercuryAngle");
             }
         }
 
@@ -2812,217 +2812,217 @@ namespace microcosm.ViewModel
 
         // 金星
         #region
-        private double _natalVenusx;
-        public double natalVenusx
+        private double _natalVenusX;
+        public double natalVenusX
         {
             get
             {
-                return _natalVenusx;
+                return _natalVenusX;
             }
             set
             {
-                _natalVenusx = value;
+                _natalVenusX =value;
                 OnPropertyChanged("natalVenusx");
             }
         }
 
-        private double _natalVenusy;
-        public double natalVenusy
+        private double _natalVenusY;
+        public double natalVenusY
         {
             get
             {
-                return _natalVenusy;
+                return _natalVenusY;
             }
             set
             {
-                _natalVenusy = value;
+                _natalVenusY = value;
                 OnPropertyChanged("natalVenusy");
             }
         }
-        private string _natalVenustxt;
-        public string natalVenustxt
+        private string _natalVenusTxt;
+        public string natalVenusTxt
         {
             get
             {
-                return _natalVenustxt;
+                return _natalVenusTxt;
             }
             set
             {
-                _natalVenustxt = value;
-                OnPropertyChanged("natalVenustxt");
+                _natalVenusTxt = value;
+                OnPropertyChanged("natalVenusTxt");
             }
         }
-        private double _natalVenusdegreex;
-        public double natalVenusdegreex
+        private double _natalVenusDegreeX;
+        public double natalVenusDegreeX
         {
             get
             {
-                return _natalVenusdegreex;
+                return _natalVenusDegreeX;
             }
             set
             {
-                _natalVenusdegreex = value;
-                OnPropertyChanged("natalVenusdegreex");
-            }
-        }
-
-        private double _natalVenusdegreey;
-        public double natalVenusdegreey
-        {
-            get
-            {
-                return _natalVenusdegreey;
-            }
-            set
-            {
-                _natalVenusdegreey = value;
-                OnPropertyChanged("natalVenusdegreey");
-            }
-        }
-        private string _natalVenusdegreetxt;
-        public string natalVenusdegreetxt
-        {
-            get
-            {
-                return _natalVenusdegreetxt;
-            }
-            set
-            {
-                _natalVenusdegreetxt = value;
-                OnPropertyChanged("natalVenusdegreetxt");
-            }
-        }
-        private double _natalVenussignx;
-        public double natalVenussignx
-        {
-            get
-            {
-                return _natalVenussignx;
-            }
-            set
-            {
-                _natalVenussignx = value;
-                OnPropertyChanged("natalVenussignx");
+                _natalVenusDegreeX = value;
+                OnPropertyChanged("natalVenusDegreeX");
             }
         }
 
-        private double _natalVenussigny;
-        public double natalVenussigny
+        private double _natalVenusDegreeY;
+        public double natalVenusDegreeY
         {
             get
             {
-                return _natalVenussigny;
+                return _natalVenusDegreeY;
             }
             set
             {
-                _natalVenussigny = value;
-                OnPropertyChanged("natalVenussigny");
+                _natalVenusDegreeY = value;
+                OnPropertyChanged("natalVenusDegreeY");
             }
         }
-        private string _natalVenussigntxt;
-        public string natalVenussigntxt
+        private string _natalVenusDegreeTxt;
+        public string natalVenusDegreeTxt
         {
             get
             {
-                return _natalVenussigntxt;
+                return _natalVenusDegreeTxt;
             }
             set
             {
-                _natalVenussigntxt = value;
-                OnPropertyChanged("natalVenussigntxt");
+                _natalVenusDegreeTxt = value;
+                OnPropertyChanged("natalVenusDegreeTxt");
             }
         }
-        private double _natalVenusMinutex;
-        public double natalVenusMinutex
+        private double _natalVenusSignX;
+        public double natalVenusSignX
         {
             get
             {
-                return _natalVenusMinutex;
+                return _natalVenusSignX;
             }
             set
             {
-                _natalVenusMinutex = value;
-                OnPropertyChanged("natalVenusMinutex");
-            }
-        }
-
-        private double _natalVenusMinutey;
-        public double natalVenusMinutey
-        {
-            get
-            {
-                return _natalVenusMinutey;
-            }
-            set
-            {
-                _natalVenusMinutey = value;
-                OnPropertyChanged("natalVenusMinutey");
-            }
-        }
-        private string _natalVenusMinutetxt;
-        public string natalVenusMinutetxt
-        {
-            get
-            {
-                return _natalVenusMinutetxt;
-            }
-            set
-            {
-                _natalVenusMinutetxt = value;
-                OnPropertyChanged("natalVenusMinutetxt");
-            }
-        }
-        private double _natalVenusRetrogradex;
-        public double natalVenusRetrogradex
-        {
-            get
-            {
-                return _natalVenusRetrogradex;
-            }
-            set
-            {
-                _natalVenusRetrogradex = value;
-                OnPropertyChanged("natalVenusRetrogradex");
+                _natalVenusSignX = value;
+                OnPropertyChanged("natalVenusSignX");
             }
         }
 
-        private double _natalVenusRetrogradey;
-        public double natalVenusRetrogradey
+        private double _natalVenusSignY;
+        public double natalVenusSignY
         {
             get
             {
-                return _natalVenusRetrogradey;
+                return _natalVenusSignY;
             }
             set
             {
-                _natalVenusRetrogradey = value;
-                OnPropertyChanged("natalVenusRetrogradey");
+                _natalVenusSignY = value;
+                OnPropertyChanged("natalVenusSignY");
             }
         }
-        private string _natalVenusRetrogradetxt;
-        public string natalVenusRetrogradetxt
+        private string _natalVenusSignTxt;
+        public string natalVenusSignTxt
         {
             get
             {
-                return _natalVenusRetrogradetxt;
+                return _natalVenusSignTxt;
             }
             set
             {
-                _natalVenusRetrogradetxt = value;
-                OnPropertyChanged("natalVenusRetrogradetxt");
+                _natalVenusSignTxt = value;
+                OnPropertyChanged("natalVenusSignTxt");
             }
         }
-        private double _natalVenusangle;
-        public double natalVenusangle
+        private double _natalVenusMinuteX;
+        public double natalVenusMinuteX
         {
             get
             {
-                return _natalVenusangle;
+                return _natalVenusMinuteX;
             }
             set
             {
-                _natalVenusangle = value;
-                OnPropertyChanged("natalVenusangle");
+                _natalVenusMinuteX = value;
+                OnPropertyChanged("natalVenusMinuteX");
+            }
+        }
+
+        private double _natalVenusMinuteY;
+        public double natalVenusMinuteY
+        {
+            get
+            {
+                return _natalVenusMinuteY;
+            }
+            set
+            {
+                _natalVenusMinuteY = value;
+                OnPropertyChanged("natalVenusMinuteY");
+            }
+        }
+        private string _natalVenusMinuteTxt;
+        public string natalVenusMinuteTxt
+        {
+            get
+            {
+                return _natalVenusMinuteTxt;
+            }
+            set
+            {
+                _natalVenusMinuteTxt = value;
+                OnPropertyChanged("natalVenusMinuteTxt");
+            }
+        }
+        private double _natalVenusRetrogradeX;
+        public double natalVenusRetrogradeX
+        {
+            get
+            {
+                return _natalVenusRetrogradeX;
+            }
+            set
+            {
+                _natalVenusRetrogradeX = value;
+                OnPropertyChanged("natalVenusRetrogradeX");
+            }
+        }
+
+        private double _natalVenusRetrogradeY;
+        public double natalVenusRetrogradeY
+        {
+            get
+            {
+                return _natalVenusRetrogradeY;
+            }
+            set
+            {
+                _natalVenusRetrogradeY = value;
+                OnPropertyChanged("natalVenusRetrogradeY");
+            }
+        }
+        private string _natalVenusRetrogradeTxt;
+        public string natalVenusRetrogradeTxt
+        {
+            get
+            {
+                return _natalVenusRetrogradeTxt;
+            }
+            set
+            {
+                _natalVenusRetrogradeTxt = value;
+                OnPropertyChanged("natalVenusRetrogradeTxt");
+            }
+        }
+        private double _natalVenusAngle;
+        public double natalVenusAngle
+        {
+            get
+            {
+                return _natalVenusAngle;
+            }
+            set
+            {
+                _natalVenusAngle = value;
+                OnPropertyChanged("natalVenusAngle");
             }
         }
 
@@ -3030,217 +3030,217 @@ namespace microcosm.ViewModel
 
         // 火星
         #region
-        private double _natalMarsx;
-        public double natalMarsx
+        private double _natalMarsX;
+        public double natalMarsX
         {
             get
             {
-                return _natalMarsx;
+                return _natalMarsX;
             }
             set
             {
-                _natalMarsx = value;
+                _natalMarsX =value;
                 OnPropertyChanged("natalMarsx");
             }
         }
 
-        private double _natalMarsy;
-        public double natalMarsy
+        private double _natalMarsY;
+        public double natalMarsY
         {
             get
             {
-                return _natalMarsy;
+                return _natalMarsY;
             }
             set
             {
-                _natalMarsy = value;
+                _natalMarsY = value;
                 OnPropertyChanged("natalMarsy");
             }
         }
-        private string _natalMarstxt;
-        public string natalMarstxt
+        private string _natalMarsTxt;
+        public string natalMarsTxt
         {
             get
             {
-                return _natalMarstxt;
+                return _natalMarsTxt;
             }
             set
             {
-                _natalMarstxt = value;
-                OnPropertyChanged("natalMarstxt");
+                _natalMarsTxt = value;
+                OnPropertyChanged("natalMarsTxt");
             }
         }
-        private double _natalMarsdegreex;
-        public double natalMarsdegreex
+        private double _natalMarsDegreeX;
+        public double natalMarsDegreeX
         {
             get
             {
-                return _natalMarsdegreex;
+                return _natalMarsDegreeX;
             }
             set
             {
-                _natalMarsdegreex = value;
-                OnPropertyChanged("natalMarsdegreex");
-            }
-        }
-
-        private double _natalMarsdegreey;
-        public double natalMarsdegreey
-        {
-            get
-            {
-                return _natalMarsdegreey;
-            }
-            set
-            {
-                _natalMarsdegreey = value;
-                OnPropertyChanged("natalMarsdegreey");
-            }
-        }
-        private string _natalMarsdegreetxt;
-        public string natalMarsdegreetxt
-        {
-            get
-            {
-                return _natalMarsdegreetxt;
-            }
-            set
-            {
-                _natalMarsdegreetxt = value;
-                OnPropertyChanged("natalMarsdegreetxt");
-            }
-        }
-        private double _natalMarssignx;
-        public double natalMarssignx
-        {
-            get
-            {
-                return _natalMarssignx;
-            }
-            set
-            {
-                _natalMarssignx = value;
-                OnPropertyChanged("natalMarssignx");
+                _natalMarsDegreeX = value;
+                OnPropertyChanged("natalMarsDegreeX");
             }
         }
 
-        private double _natalMarssigny;
-        public double natalMarssigny
+        private double _natalMarsDegreeY;
+        public double natalMarsDegreeY
         {
             get
             {
-                return _natalMarssigny;
+                return _natalMarsDegreeY;
             }
             set
             {
-                _natalMarssigny = value;
-                OnPropertyChanged("natalMarssigny");
+                _natalMarsDegreeY = value;
+                OnPropertyChanged("natalMarsDegreeY");
             }
         }
-        private string _natalMarssigntxt;
-        public string natalMarssigntxt
+        private string _natalMarsDegreeTxt;
+        public string natalMarsDegreeTxt
         {
             get
             {
-                return _natalMarssigntxt;
+                return _natalMarsDegreeTxt;
             }
             set
             {
-                _natalMarssigntxt = value;
-                OnPropertyChanged("natalMarssigntxt");
+                _natalMarsDegreeTxt = value;
+                OnPropertyChanged("natalMarsDegreeTxt");
             }
         }
-        private double _natalMarsMinutex;
-        public double natalMarsMinutex
+        private double _natalMarsSignX;
+        public double natalMarsSignX
         {
             get
             {
-                return _natalMarsMinutex;
+                return _natalMarsSignX;
             }
             set
             {
-                _natalMarsMinutex = value;
-                OnPropertyChanged("natalMarsMinutex");
-            }
-        }
-
-        private double _natalMarsMinutey;
-        public double natalMarsMinutey
-        {
-            get
-            {
-                return _natalMarsMinutey;
-            }
-            set
-            {
-                _natalMarsMinutey = value;
-                OnPropertyChanged("natalMarsMinutey");
-            }
-        }
-        private string _natalMarsMinutetxt;
-        public string natalMarsMinutetxt
-        {
-            get
-            {
-                return _natalMarsMinutetxt;
-            }
-            set
-            {
-                _natalMarsMinutetxt = value;
-                OnPropertyChanged("natalMarsMinutetxt");
-            }
-        }
-        private double _natalMarsRetrogradex;
-        public double natalMarsRetrogradex
-        {
-            get
-            {
-                return _natalMarsRetrogradex;
-            }
-            set
-            {
-                _natalMarsRetrogradex = value;
-                OnPropertyChanged("natalMarsRetrogradex");
+                _natalMarsSignX = value;
+                OnPropertyChanged("natalMarsSignX");
             }
         }
 
-        private double _natalMarsRetrogradey;
-        public double natalMarsRetrogradey
+        private double _natalMarsSignY;
+        public double natalMarsSignY
         {
             get
             {
-                return _natalMarsRetrogradey;
+                return _natalMarsSignY;
             }
             set
             {
-                _natalMarsRetrogradey = value;
-                OnPropertyChanged("natalMarsRetrogradey");
+                _natalMarsSignY = value;
+                OnPropertyChanged("natalMarsSignY");
             }
         }
-        private string _natalMarsRetrogradetxt;
-        public string natalMarsRetrogradetxt
+        private string _natalMarsSignTxt;
+        public string natalMarsSignTxt
         {
             get
             {
-                return _natalMarsRetrogradetxt;
+                return _natalMarsSignTxt;
             }
             set
             {
-                _natalMarsRetrogradetxt = value;
-                OnPropertyChanged("natalMarsRetrogradetxt");
+                _natalMarsSignTxt = value;
+                OnPropertyChanged("natalMarsSignTxt");
             }
         }
-        private double _natalMarsangle;
-        public double natalMarsangle
+        private double _natalMarsMinuteX;
+        public double natalMarsMinuteX
         {
             get
             {
-                return _natalMarsangle;
+                return _natalMarsMinuteX;
             }
             set
             {
-                _natalMarsangle = value;
-                OnPropertyChanged("natalMarsangle");
+                _natalMarsMinuteX = value;
+                OnPropertyChanged("natalMarsMinuteX");
+            }
+        }
+
+        private double _natalMarsMinuteY;
+        public double natalMarsMinuteY
+        {
+            get
+            {
+                return _natalMarsMinuteY;
+            }
+            set
+            {
+                _natalMarsMinuteY = value;
+                OnPropertyChanged("natalMarsMinuteY");
+            }
+        }
+        private string _natalMarsMinuteTxt;
+        public string natalMarsMinuteTxt
+        {
+            get
+            {
+                return _natalMarsMinuteTxt;
+            }
+            set
+            {
+                _natalMarsMinuteTxt = value;
+                OnPropertyChanged("natalMarsMinuteTxt");
+            }
+        }
+        private double _natalMarsRetrogradeX;
+        public double natalMarsRetrogradeX
+        {
+            get
+            {
+                return _natalMarsRetrogradeX;
+            }
+            set
+            {
+                _natalMarsRetrogradeX = value;
+                OnPropertyChanged("natalMarsRetrogradeX");
+            }
+        }
+
+        private double _natalMarsRetrogradeY;
+        public double natalMarsRetrogradeY
+        {
+            get
+            {
+                return _natalMarsRetrogradeY;
+            }
+            set
+            {
+                _natalMarsRetrogradeY = value;
+                OnPropertyChanged("natalMarsRetrogradeY");
+            }
+        }
+        private string _natalMarsRetrogradeTxt;
+        public string natalMarsRetrogradeTxt
+        {
+            get
+            {
+                return _natalMarsRetrogradeTxt;
+            }
+            set
+            {
+                _natalMarsRetrogradeTxt = value;
+                OnPropertyChanged("natalMarsRetrogradeTxt");
+            }
+        }
+        private double _natalMarsAngle;
+        public double natalMarsAngle
+        {
+            get
+            {
+                return _natalMarsAngle;
+            }
+            set
+            {
+                _natalMarsAngle = value;
+                OnPropertyChanged("natalMarsAngle");
             }
         }
 
@@ -3248,217 +3248,217 @@ namespace microcosm.ViewModel
 
         // 木星
         #region
-        private double _natalJupiterx;
-        public double natalJupiterx
+        private double _natalJupiterX;
+        public double natalJupiterX
         {
             get
             {
-                return _natalJupiterx;
+                return _natalJupiterX;
             }
             set
             {
-                _natalJupiterx = value;
+                _natalJupiterX =value;
                 OnPropertyChanged("natalJupiterx");
             }
         }
 
-        private double _natalJupitery;
-        public double natalJupitery
+        private double _natalJupiterY;
+        public double natalJupiterY
         {
             get
             {
-                return _natalJupitery;
+                return _natalJupiterY;
             }
             set
             {
-                _natalJupitery = value;
+                _natalJupiterY = value;
                 OnPropertyChanged("natalJupitery");
             }
         }
-        private string _natalJupitertxt;
-        public string natalJupitertxt
+        private string _natalJupiterTxt;
+        public string natalJupiterTxt
         {
             get
             {
-                return _natalJupitertxt;
+                return _natalJupiterTxt;
             }
             set
             {
-                _natalJupitertxt = value;
-                OnPropertyChanged("natalJupitertxt");
+                _natalJupiterTxt = value;
+                OnPropertyChanged("natalJupiterTxt");
             }
         }
-        private double _natalJupiterdegreex;
-        public double natalJupiterdegreex
+        private double _natalJupiterDegreeX;
+        public double natalJupiterDegreeX
         {
             get
             {
-                return _natalJupiterdegreex;
+                return _natalJupiterDegreeX;
             }
             set
             {
-                _natalJupiterdegreex = value;
-                OnPropertyChanged("natalJupiterdegreex");
-            }
-        }
-
-        private double _natalJupiterdegreey;
-        public double natalJupiterdegreey
-        {
-            get
-            {
-                return _natalJupiterdegreey;
-            }
-            set
-            {
-                _natalJupiterdegreey = value;
-                OnPropertyChanged("natalJupiterdegreey");
-            }
-        }
-        private string _natalJupiterdegreetxt;
-        public string natalJupiterdegreetxt
-        {
-            get
-            {
-                return _natalJupiterdegreetxt;
-            }
-            set
-            {
-                _natalJupiterdegreetxt = value;
-                OnPropertyChanged("natalJupiterdegreetxt");
-            }
-        }
-        private double _natalJupitersignx;
-        public double natalJupitersignx
-        {
-            get
-            {
-                return _natalJupitersignx;
-            }
-            set
-            {
-                _natalJupitersignx = value;
-                OnPropertyChanged("natalJupitersignx");
+                _natalJupiterDegreeX = value;
+                OnPropertyChanged("natalJupiterDegreeX");
             }
         }
 
-        private double _natalJupitersigny;
-        public double natalJupitersigny
+        private double _natalJupiterDegreeY;
+        public double natalJupiterDegreeY
         {
             get
             {
-                return _natalJupitersigny;
+                return _natalJupiterDegreeY;
             }
             set
             {
-                _natalJupitersigny = value;
-                OnPropertyChanged("natalJupitersigny");
+                _natalJupiterDegreeY = value;
+                OnPropertyChanged("natalJupiterDegreeY");
             }
         }
-        private string _natalJupitersigntxt;
-        public string natalJupitersigntxt
+        private string _natalJupiterDegreeTxt;
+        public string natalJupiterDegreeTxt
         {
             get
             {
-                return _natalJupitersigntxt;
+                return _natalJupiterDegreeTxt;
             }
             set
             {
-                _natalJupitersigntxt = value;
-                OnPropertyChanged("natalJupitersigntxt");
+                _natalJupiterDegreeTxt = value;
+                OnPropertyChanged("natalJupiterDegreeTxt");
             }
         }
-        private double _natalJupiterMinutex;
-        public double natalJupiterMinutex
+        private double _natalJupiterSignX;
+        public double natalJupiterSignX
         {
             get
             {
-                return _natalJupiterMinutex;
+                return _natalJupiterSignX;
             }
             set
             {
-                _natalJupiterMinutex = value;
-                OnPropertyChanged("natalJupiterMinutex");
-            }
-        }
-
-        private double _natalJupiterMinutey;
-        public double natalJupiterMinutey
-        {
-            get
-            {
-                return _natalJupiterMinutey;
-            }
-            set
-            {
-                _natalJupiterMinutey = value;
-                OnPropertyChanged("natalJupiterMinutey");
-            }
-        }
-        private string _natalJupiterMinutetxt;
-        public string natalJupiterMinutetxt
-        {
-            get
-            {
-                return _natalJupiterMinutetxt;
-            }
-            set
-            {
-                _natalJupiterMinutetxt = value;
-                OnPropertyChanged("natalJupiterMinutetxt");
-            }
-        }
-        private double _natalJupiterRetrogradex;
-        public double natalJupiterRetrogradex
-        {
-            get
-            {
-                return _natalJupiterRetrogradex;
-            }
-            set
-            {
-                _natalJupiterRetrogradex = value;
-                OnPropertyChanged("natalJupiterRetrogradex");
+                _natalJupiterSignX = value;
+                OnPropertyChanged("natalJupiterSignX");
             }
         }
 
-        private double _natalJupiterRetrogradey;
-        public double natalJupiterRetrogradey
+        private double _natalJupiterSignY;
+        public double natalJupiterSignY
         {
             get
             {
-                return _natalJupiterRetrogradey;
+                return _natalJupiterSignY;
             }
             set
             {
-                _natalJupiterRetrogradey = value;
-                OnPropertyChanged("natalJupiterRetrogradey");
+                _natalJupiterSignY = value;
+                OnPropertyChanged("natalJupiterSignY");
             }
         }
-        private string _natalJupiterRetrogradetxt;
-        public string natalJupiterRetrogradetxt
+        private string _natalJupiterSignTxt;
+        public string natalJupiterSignTxt
         {
             get
             {
-                return _natalJupiterRetrogradetxt;
+                return _natalJupiterSignTxt;
             }
             set
             {
-                _natalJupiterRetrogradetxt = value;
-                OnPropertyChanged("natalJupiterRetrogradetxt");
+                _natalJupiterSignTxt = value;
+                OnPropertyChanged("natalJupiterSignTxt");
             }
         }
-        private double _natalJupiterangle;
-        public double natalJupiterangle
+        private double _natalJupiterMinuteX;
+        public double natalJupiterMinuteX
         {
             get
             {
-                return _natalJupiterangle;
+                return _natalJupiterMinuteX;
             }
             set
             {
-                _natalJupiterangle = value;
-                OnPropertyChanged("natalJupiterangle");
+                _natalJupiterMinuteX = value;
+                OnPropertyChanged("natalJupiterMinuteX");
+            }
+        }
+
+        private double _natalJupiterMinuteY;
+        public double natalJupiterMinuteY
+        {
+            get
+            {
+                return _natalJupiterMinuteY;
+            }
+            set
+            {
+                _natalJupiterMinuteY = value;
+                OnPropertyChanged("natalJupiterMinuteY");
+            }
+        }
+        private string _natalJupiterMinuteTxt;
+        public string natalJupiterMinuteTxt
+        {
+            get
+            {
+                return _natalJupiterMinuteTxt;
+            }
+            set
+            {
+                _natalJupiterMinuteTxt = value;
+                OnPropertyChanged("natalJupiterMinuteTxt");
+            }
+        }
+        private double _natalJupiterRetrogradeX;
+        public double natalJupiterRetrogradeX
+        {
+            get
+            {
+                return _natalJupiterRetrogradeX;
+            }
+            set
+            {
+                _natalJupiterRetrogradeX = value;
+                OnPropertyChanged("natalJupiterRetrogradeX");
+            }
+        }
+
+        private double _natalJupiterRetrogradeY;
+        public double natalJupiterRetrogradeY
+        {
+            get
+            {
+                return _natalJupiterRetrogradeY;
+            }
+            set
+            {
+                _natalJupiterRetrogradeY = value;
+                OnPropertyChanged("natalJupiterRetrogradeY");
+            }
+        }
+        private string _natalJupiterRetrogradeTxt;
+        public string natalJupiterRetrogradeTxt
+        {
+            get
+            {
+                return _natalJupiterRetrogradeTxt;
+            }
+            set
+            {
+                _natalJupiterRetrogradeTxt = value;
+                OnPropertyChanged("natalJupiterRetrogradeTxt");
+            }
+        }
+        private double _natalJupiterAngle;
+        public double natalJupiterAngle
+        {
+            get
+            {
+                return _natalJupiterAngle;
+            }
+            set
+            {
+                _natalJupiterAngle = value;
+                OnPropertyChanged("natalJupiterAngle");
             }
         }
 
@@ -3466,217 +3466,217 @@ namespace microcosm.ViewModel
 
         // 土星
         #region
-        private double _natalSaturnx;
-        public double natalSaturnx
+        private double _natalSaturnX;
+        public double natalSaturnX
         {
             get
             {
-                return _natalSaturnx;
+                return _natalSaturnX;
             }
             set
             {
-                _natalSaturnx = value;
+                _natalSaturnX =value;
                 OnPropertyChanged("natalSaturnx");
             }
         }
 
-        private double _natalSaturny;
-        public double natalSaturny
+        private double _natalSaturnY;
+        public double natalSaturnY
         {
             get
             {
-                return _natalSaturny;
+                return _natalSaturnY;
             }
             set
             {
-                _natalSaturny = value;
+                _natalSaturnY = value;
                 OnPropertyChanged("natalSaturny");
             }
         }
-        private string _natalSaturntxt;
-        public string natalSaturntxt
+        private string _natalSaturnTxt;
+        public string natalSaturnTxt
         {
             get
             {
-                return _natalSaturntxt;
+                return _natalSaturnTxt;
             }
             set
             {
-                _natalSaturntxt = value;
-                OnPropertyChanged("natalSaturntxt");
+                _natalSaturnTxt = value;
+                OnPropertyChanged("natalSaturnTxt");
             }
         }
-        private double _natalSaturndegreex;
-        public double natalSaturndegreex
+        private double _natalSaturnDegreeX;
+        public double natalSaturnDegreeX
         {
             get
             {
-                return _natalSaturndegreex;
+                return _natalSaturnDegreeX;
             }
             set
             {
-                _natalSaturndegreex = value;
-                OnPropertyChanged("natalSaturndegreex");
-            }
-        }
-
-        private double _natalSaturndegreey;
-        public double natalSaturndegreey
-        {
-            get
-            {
-                return _natalSaturndegreey;
-            }
-            set
-            {
-                _natalSaturndegreey = value;
-                OnPropertyChanged("natalSaturndegreey");
-            }
-        }
-        private string _natalSaturndegreetxt;
-        public string natalSaturndegreetxt
-        {
-            get
-            {
-                return _natalSaturndegreetxt;
-            }
-            set
-            {
-                _natalSaturndegreetxt = value;
-                OnPropertyChanged("natalSaturndegreetxt");
-            }
-        }
-        private double _natalSaturnsignx;
-        public double natalSaturnsignx
-        {
-            get
-            {
-                return _natalSaturnsignx;
-            }
-            set
-            {
-                _natalSaturnsignx = value;
-                OnPropertyChanged("natalSaturnsignx");
+                _natalSaturnDegreeX = value;
+                OnPropertyChanged("natalSaturnDegreeX");
             }
         }
 
-        private double _natalSaturnsigny;
-        public double natalSaturnsigny
+        private double _natalSaturnDegreeY;
+        public double natalSaturnDegreeY
         {
             get
             {
-                return _natalSaturnsigny;
+                return _natalSaturnDegreeY;
             }
             set
             {
-                _natalSaturnsigny = value;
-                OnPropertyChanged("natalSaturnsigny");
+                _natalSaturnDegreeY = value;
+                OnPropertyChanged("natalSaturnDegreeY");
             }
         }
-        private string _natalSaturnsigntxt;
-        public string natalSaturnsigntxt
+        private string _natalSaturnDegreeTxt;
+        public string natalSaturnDegreeTxt
         {
             get
             {
-                return _natalSaturnsigntxt;
+                return _natalSaturnDegreeTxt;
             }
             set
             {
-                _natalSaturnsigntxt = value;
-                OnPropertyChanged("natalSaturnsigntxt");
+                _natalSaturnDegreeTxt = value;
+                OnPropertyChanged("natalSaturnDegreeTxt");
             }
         }
-        private double _natalSaturnMinutex;
-        public double natalSaturnMinutex
+        private double _natalSaturnSignX;
+        public double natalSaturnSignX
         {
             get
             {
-                return _natalSaturnMinutex;
+                return _natalSaturnSignX;
             }
             set
             {
-                _natalSaturnMinutex = value;
-                OnPropertyChanged("natalSaturnMinutex");
-            }
-        }
-
-        private double _natalSaturnMinutey;
-        public double natalSaturnMinutey
-        {
-            get
-            {
-                return _natalSaturnMinutey;
-            }
-            set
-            {
-                _natalSaturnMinutey = value;
-                OnPropertyChanged("natalSaturnMinutey");
-            }
-        }
-        private string _natalSaturnMinutetxt;
-        public string natalSaturnMinutetxt
-        {
-            get
-            {
-                return _natalSaturnMinutetxt;
-            }
-            set
-            {
-                _natalSaturnMinutetxt = value;
-                OnPropertyChanged("natalSaturnMinutetxt");
-            }
-        }
-        private double _natalSaturnRetrogradex;
-        public double natalSaturnRetrogradex
-        {
-            get
-            {
-                return _natalSaturnRetrogradex;
-            }
-            set
-            {
-                _natalSaturnRetrogradex = value;
-                OnPropertyChanged("natalSaturnRetrogradex");
+                _natalSaturnSignX = value;
+                OnPropertyChanged("natalSaturnSignX");
             }
         }
 
-        private double _natalSaturnRetrogradey;
-        public double natalSaturnRetrogradey
+        private double _natalSaturnSignY;
+        public double natalSaturnSignY
         {
             get
             {
-                return _natalSaturnRetrogradey;
+                return _natalSaturnSignY;
             }
             set
             {
-                _natalSaturnRetrogradey = value;
-                OnPropertyChanged("natalSaturnRetrogradey");
+                _natalSaturnSignY = value;
+                OnPropertyChanged("natalSaturnSignY");
             }
         }
-        private string _natalSaturnRetrogradetxt;
-        public string natalSaturnRetrogradetxt
+        private string _natalSaturnSignTxt;
+        public string natalSaturnSignTxt
         {
             get
             {
-                return _natalSaturnRetrogradetxt;
+                return _natalSaturnSignTxt;
             }
             set
             {
-                _natalSaturnRetrogradetxt = value;
-                OnPropertyChanged("natalSaturnRetrogradetxt");
+                _natalSaturnSignTxt = value;
+                OnPropertyChanged("natalSaturnSignTxt");
             }
         }
-        private double _natalSaturnangle;
-        public double natalSaturnangle
+        private double _natalSaturnMinuteX;
+        public double natalSaturnMinuteX
         {
             get
             {
-                return _natalSaturnangle;
+                return _natalSaturnMinuteX;
             }
             set
             {
-                _natalSaturnangle = value;
-                OnPropertyChanged("natalSaturnangle");
+                _natalSaturnMinuteX = value;
+                OnPropertyChanged("natalSaturnMinuteX");
+            }
+        }
+
+        private double _natalSaturnMinuteY;
+        public double natalSaturnMinuteY
+        {
+            get
+            {
+                return _natalSaturnMinuteY;
+            }
+            set
+            {
+                _natalSaturnMinuteY = value;
+                OnPropertyChanged("natalSaturnMinuteY");
+            }
+        }
+        private string _natalSaturnMinuteTxt;
+        public string natalSaturnMinuteTxt
+        {
+            get
+            {
+                return _natalSaturnMinuteTxt;
+            }
+            set
+            {
+                _natalSaturnMinuteTxt = value;
+                OnPropertyChanged("natalSaturnMinuteTxt");
+            }
+        }
+        private double _natalSaturnRetrogradeX;
+        public double natalSaturnRetrogradeX
+        {
+            get
+            {
+                return _natalSaturnRetrogradeX;
+            }
+            set
+            {
+                _natalSaturnRetrogradeX = value;
+                OnPropertyChanged("natalSaturnRetrogradeX");
+            }
+        }
+
+        private double _natalSaturnRetrogradeY;
+        public double natalSaturnRetrogradeY
+        {
+            get
+            {
+                return _natalSaturnRetrogradeY;
+            }
+            set
+            {
+                _natalSaturnRetrogradeY = value;
+                OnPropertyChanged("natalSaturnRetrogradeY");
+            }
+        }
+        private string _natalSaturnRetrogradeTxt;
+        public string natalSaturnRetrogradeTxt
+        {
+            get
+            {
+                return _natalSaturnRetrogradeTxt;
+            }
+            set
+            {
+                _natalSaturnRetrogradeTxt = value;
+                OnPropertyChanged("natalSaturnRetrogradeTxt");
+            }
+        }
+        private double _natalSaturnAngle;
+        public double natalSaturnAngle
+        {
+            get
+            {
+                return _natalSaturnAngle;
+            }
+            set
+            {
+                _natalSaturnAngle = value;
+                OnPropertyChanged("natalSaturnAngle");
             }
         }
 
@@ -3684,217 +3684,217 @@ namespace microcosm.ViewModel
 
         // 天王星
         #region
-        private double _natalUranusx;
-        public double natalUranusx
+        private double _natalUranusX;
+        public double natalUranusX
         {
             get
             {
-                return _natalUranusx;
+                return _natalUranusX;
             }
             set
             {
-                _natalUranusx = value;
+                _natalUranusX =value;
                 OnPropertyChanged("natalUranusx");
             }
         }
 
-        private double _natalUranusy;
-        public double natalUranusy
+        private double _natalUranusY;
+        public double natalUranusY
         {
             get
             {
-                return _natalUranusy;
+                return _natalUranusY;
             }
             set
             {
-                _natalUranusy = value;
+                _natalUranusY = value;
                 OnPropertyChanged("natalUranusy");
             }
         }
-        private string _natalUranustxt;
-        public string natalUranustxt
+        private string _natalUranusTxt;
+        public string natalUranusTxt
         {
             get
             {
-                return _natalUranustxt;
+                return _natalUranusTxt;
             }
             set
             {
-                _natalUranustxt = value;
-                OnPropertyChanged("natalUranustxt");
+                _natalUranusTxt = value;
+                OnPropertyChanged("natalUranusTxt");
             }
         }
-        private double _natalUranusdegreex;
-        public double natalUranusdegreex
+        private double _natalUranusDegreeX;
+        public double natalUranusDegreeX
         {
             get
             {
-                return _natalUranusdegreex;
+                return _natalUranusDegreeX;
             }
             set
             {
-                _natalUranusdegreex = value;
-                OnPropertyChanged("natalUranusdegreex");
-            }
-        }
-
-        private double _natalUranusdegreey;
-        public double natalUranusdegreey
-        {
-            get
-            {
-                return _natalUranusdegreey;
-            }
-            set
-            {
-                _natalUranusdegreey = value;
-                OnPropertyChanged("natalUranusdegreey");
-            }
-        }
-        private string _natalUranusdegreetxt;
-        public string natalUranusdegreetxt
-        {
-            get
-            {
-                return _natalUranusdegreetxt;
-            }
-            set
-            {
-                _natalUranusdegreetxt = value;
-                OnPropertyChanged("natalUranusdegreetxt");
-            }
-        }
-        private double _natalUranussignx;
-        public double natalUranussignx
-        {
-            get
-            {
-                return _natalUranussignx;
-            }
-            set
-            {
-                _natalUranussignx = value;
-                OnPropertyChanged("natalUranussignx");
+                _natalUranusDegreeX = value;
+                OnPropertyChanged("natalUranusDegreeX");
             }
         }
 
-        private double _natalUranussigny;
-        public double natalUranussigny
+        private double _natalUranusDegreeY;
+        public double natalUranusDegreeY
         {
             get
             {
-                return _natalUranussigny;
+                return _natalUranusDegreeY;
             }
             set
             {
-                _natalUranussigny = value;
-                OnPropertyChanged("natalUranussigny");
+                _natalUranusDegreeY = value;
+                OnPropertyChanged("natalUranusDegreeY");
             }
         }
-        private string _natalUranussigntxt;
-        public string natalUranussigntxt
+        private string _natalUranusDegreeTxt;
+        public string natalUranusDegreeTxt
         {
             get
             {
-                return _natalUranussigntxt;
+                return _natalUranusDegreeTxt;
             }
             set
             {
-                _natalUranussigntxt = value;
-                OnPropertyChanged("natalUranussigntxt");
+                _natalUranusDegreeTxt = value;
+                OnPropertyChanged("natalUranusDegreeTxt");
             }
         }
-        private double _natalUranusMinutex;
-        public double natalUranusMinutex
+        private double _natalUranusSignX;
+        public double natalUranusSignX
         {
             get
             {
-                return _natalUranusMinutex;
+                return _natalUranusSignX;
             }
             set
             {
-                _natalUranusMinutex = value;
-                OnPropertyChanged("natalUranusMinutex");
-            }
-        }
-
-        private double _natalUranusMinutey;
-        public double natalUranusMinutey
-        {
-            get
-            {
-                return _natalUranusMinutey;
-            }
-            set
-            {
-                _natalUranusMinutey = value;
-                OnPropertyChanged("natalUranusMinutey");
-            }
-        }
-        private string _natalUranusMinutetxt;
-        public string natalUranusMinutetxt
-        {
-            get
-            {
-                return _natalUranusMinutetxt;
-            }
-            set
-            {
-                _natalUranusMinutetxt = value;
-                OnPropertyChanged("natalUranusMinutetxt");
-            }
-        }
-        private double _natalUranusRetrogradex;
-        public double natalUranusRetrogradex
-        {
-            get
-            {
-                return _natalUranusRetrogradex;
-            }
-            set
-            {
-                _natalUranusRetrogradex = value;
-                OnPropertyChanged("natalUranusRetrogradex");
+                _natalUranusSignX = value;
+                OnPropertyChanged("natalUranusSignX");
             }
         }
 
-        private double _natalUranusRetrogradey;
-        public double natalUranusRetrogradey
+        private double _natalUranusSignY;
+        public double natalUranusSignY
         {
             get
             {
-                return _natalUranusRetrogradey;
+                return _natalUranusSignY;
             }
             set
             {
-                _natalUranusRetrogradey = value;
-                OnPropertyChanged("natalUranusRetrogradey");
+                _natalUranusSignY = value;
+                OnPropertyChanged("natalUranusSignY");
             }
         }
-        private string _natalUranusRetrogradetxt;
-        public string natalUranusRetrogradetxt
+        private string _natalUranusSignTxt;
+        public string natalUranusSignTxt
         {
             get
             {
-                return _natalUranusRetrogradetxt;
+                return _natalUranusSignTxt;
             }
             set
             {
-                _natalUranusRetrogradetxt = value;
-                OnPropertyChanged("natalUranusRetrogradetxt");
+                _natalUranusSignTxt = value;
+                OnPropertyChanged("natalUranusSignTxt");
             }
         }
-        private double _natalUranusangle;
-        public double natalUranusangle
+        private double _natalUranusMinuteX;
+        public double natalUranusMinuteX
         {
             get
             {
-                return _natalUranusangle;
+                return _natalUranusMinuteX;
             }
             set
             {
-                _natalUranusangle = value;
-                OnPropertyChanged("natalUranusangle");
+                _natalUranusMinuteX = value;
+                OnPropertyChanged("natalUranusMinuteX");
+            }
+        }
+
+        private double _natalUranusMinuteY;
+        public double natalUranusMinuteY
+        {
+            get
+            {
+                return _natalUranusMinuteY;
+            }
+            set
+            {
+                _natalUranusMinuteY = value;
+                OnPropertyChanged("natalUranusMinuteY");
+            }
+        }
+        private string _natalUranusMinuteTxt;
+        public string natalUranusMinuteTxt
+        {
+            get
+            {
+                return _natalUranusMinuteTxt;
+            }
+            set
+            {
+                _natalUranusMinuteTxt = value;
+                OnPropertyChanged("natalUranusMinuteTxt");
+            }
+        }
+        private double _natalUranusRetrogradeX;
+        public double natalUranusRetrogradeX
+        {
+            get
+            {
+                return _natalUranusRetrogradeX;
+            }
+            set
+            {
+                _natalUranusRetrogradeX = value;
+                OnPropertyChanged("natalUranusRetrogradeX");
+            }
+        }
+
+        private double _natalUranusRetrogradeY;
+        public double natalUranusRetrogradeY
+        {
+            get
+            {
+                return _natalUranusRetrogradeY;
+            }
+            set
+            {
+                _natalUranusRetrogradeY = value;
+                OnPropertyChanged("natalUranusRetrogradeY");
+            }
+        }
+        private string _natalUranusRetrogradeTxt;
+        public string natalUranusRetrogradeTxt
+        {
+            get
+            {
+                return _natalUranusRetrogradeTxt;
+            }
+            set
+            {
+                _natalUranusRetrogradeTxt = value;
+                OnPropertyChanged("natalUranusRetrogradeTxt");
+            }
+        }
+        private double _natalUranusAngle;
+        public double natalUranusAngle
+        {
+            get
+            {
+                return _natalUranusAngle;
+            }
+            set
+            {
+                _natalUranusAngle = value;
+                OnPropertyChanged("natalUranusAngle");
             }
         }
 
@@ -3902,217 +3902,217 @@ namespace microcosm.ViewModel
 
         // 海王星
         #region
-        private double _natalNeptunex;
-        public double natalNeptunex
+        private double _natalNeptuneX;
+        public double natalNeptuneX
         {
             get
             {
-                return _natalNeptunex;
+                return _natalNeptuneX;
             }
             set
             {
-                _natalNeptunex = value;
+                _natalNeptuneX =value;
                 OnPropertyChanged("natalNeptunex");
             }
         }
 
-        private double _natalNeptuney;
-        public double natalNeptuney
+        private double _natalNeptuneY;
+        public double natalNeptuneY
         {
             get
             {
-                return _natalNeptuney;
+                return _natalNeptuneY;
             }
             set
             {
-                _natalNeptuney = value;
+                _natalNeptuneY = value;
                 OnPropertyChanged("natalNeptuney");
             }
         }
-        private string _natalNeptunetxt;
-        public string natalNeptunetxt
+        private string _natalNeptuneTxt;
+        public string natalNeptuneTxt
         {
             get
             {
-                return _natalNeptunetxt;
+                return _natalNeptuneTxt;
             }
             set
             {
-                _natalNeptunetxt = value;
-                OnPropertyChanged("natalNeptunetxt");
+                _natalNeptuneTxt = value;
+                OnPropertyChanged("natalNeptuneTxt");
             }
         }
-        private double _natalNeptunedegreex;
-        public double natalNeptunedegreex
+        private double _natalNeptuneDegreeX;
+        public double natalNeptuneDegreeX
         {
             get
             {
-                return _natalNeptunedegreex;
+                return _natalNeptuneDegreeX;
             }
             set
             {
-                _natalNeptunedegreex = value;
-                OnPropertyChanged("natalNeptunedegreex");
-            }
-        }
-
-        private double _natalNeptunedegreey;
-        public double natalNeptunedegreey
-        {
-            get
-            {
-                return _natalNeptunedegreey;
-            }
-            set
-            {
-                _natalNeptunedegreey = value;
-                OnPropertyChanged("natalNeptunedegreey");
-            }
-        }
-        private string _natalNeptunedegreetxt;
-        public string natalNeptunedegreetxt
-        {
-            get
-            {
-                return _natalNeptunedegreetxt;
-            }
-            set
-            {
-                _natalNeptunedegreetxt = value;
-                OnPropertyChanged("natalNeptunedegreetxt");
-            }
-        }
-        private double _natalNeptunesignx;
-        public double natalNeptunesignx
-        {
-            get
-            {
-                return _natalNeptunesignx;
-            }
-            set
-            {
-                _natalNeptunesignx = value;
-                OnPropertyChanged("natalNeptunesignx");
+                _natalNeptuneDegreeX = value;
+                OnPropertyChanged("natalNeptuneDegreeX");
             }
         }
 
-        private double _natalNeptunesigny;
-        public double natalNeptunesigny
+        private double _natalNeptuneDegreeY;
+        public double natalNeptuneDegreeY
         {
             get
             {
-                return _natalNeptunesigny;
+                return _natalNeptuneDegreeY;
             }
             set
             {
-                _natalNeptunesigny = value;
-                OnPropertyChanged("natalNeptunesigny");
+                _natalNeptuneDegreeY = value;
+                OnPropertyChanged("natalNeptuneDegreeY");
             }
         }
-        private string _natalNeptunesigntxt;
-        public string natalNeptunesigntxt
+        private string _natalNeptuneDegreeTxt;
+        public string natalNeptuneDegreeTxt
         {
             get
             {
-                return _natalNeptunesigntxt;
+                return _natalNeptuneDegreeTxt;
             }
             set
             {
-                _natalNeptunesigntxt = value;
-                OnPropertyChanged("natalNeptunesigntxt");
+                _natalNeptuneDegreeTxt = value;
+                OnPropertyChanged("natalNeptuneDegreeTxt");
             }
         }
-        private double _natalNeptuneMinutex;
-        public double natalNeptuneMinutex
+        private double _natalNeptuneSignX;
+        public double natalNeptuneSignX
         {
             get
             {
-                return _natalNeptuneMinutex;
+                return _natalNeptuneSignX;
             }
             set
             {
-                _natalNeptuneMinutex = value;
-                OnPropertyChanged("natalNeptuneMinutex");
-            }
-        }
-
-        private double _natalNeptuneMinutey;
-        public double natalNeptuneMinutey
-        {
-            get
-            {
-                return _natalNeptuneMinutey;
-            }
-            set
-            {
-                _natalNeptuneMinutey = value;
-                OnPropertyChanged("natalNeptuneMinutey");
-            }
-        }
-        private string _natalNeptuneMinutetxt;
-        public string natalNeptuneMinutetxt
-        {
-            get
-            {
-                return _natalNeptuneMinutetxt;
-            }
-            set
-            {
-                _natalNeptuneMinutetxt = value;
-                OnPropertyChanged("natalNeptuneMinutetxt");
-            }
-        }
-        private double _natalNeptuneRetrogradex;
-        public double natalNeptuneRetrogradex
-        {
-            get
-            {
-                return _natalNeptuneRetrogradex;
-            }
-            set
-            {
-                _natalNeptuneRetrogradex = value;
-                OnPropertyChanged("natalNeptuneRetrogradex");
+                _natalNeptuneSignX = value;
+                OnPropertyChanged("natalNeptuneSignX");
             }
         }
 
-        private double _natalNeptuneRetrogradey;
-        public double natalNeptuneRetrogradey
+        private double _natalNeptuneSignY;
+        public double natalNeptuneSignY
         {
             get
             {
-                return _natalNeptuneRetrogradey;
+                return _natalNeptuneSignY;
             }
             set
             {
-                _natalNeptuneRetrogradey = value;
-                OnPropertyChanged("natalNeptuneRetrogradey");
+                _natalNeptuneSignY = value;
+                OnPropertyChanged("natalNeptuneSignY");
             }
         }
-        private string _natalNeptuneRetrogradetxt;
-        public string natalNeptuneRetrogradetxt
+        private string _natalNeptuneSignTxt;
+        public string natalNeptuneSignTxt
         {
             get
             {
-                return _natalNeptuneRetrogradetxt;
+                return _natalNeptuneSignTxt;
             }
             set
             {
-                _natalNeptuneRetrogradetxt = value;
-                OnPropertyChanged("natalNeptuneRetrogradetxt");
+                _natalNeptuneSignTxt = value;
+                OnPropertyChanged("natalNeptuneSignTxt");
             }
         }
-        private double _natalNeptuneangle;
-        public double natalNeptuneangle
+        private double _natalNeptuneMinuteX;
+        public double natalNeptuneMinuteX
         {
             get
             {
-                return _natalNeptuneangle;
+                return _natalNeptuneMinuteX;
             }
             set
             {
-                _natalNeptuneangle = value;
-                OnPropertyChanged("natalNeptuneangle");
+                _natalNeptuneMinuteX = value;
+                OnPropertyChanged("natalNeptuneMinuteX");
+            }
+        }
+
+        private double _natalNeptuneMinuteY;
+        public double natalNeptuneMinuteY
+        {
+            get
+            {
+                return _natalNeptuneMinuteY;
+            }
+            set
+            {
+                _natalNeptuneMinuteY = value;
+                OnPropertyChanged("natalNeptuneMinuteY");
+            }
+        }
+        private string _natalNeptuneMinuteTxt;
+        public string natalNeptuneMinuteTxt
+        {
+            get
+            {
+                return _natalNeptuneMinuteTxt;
+            }
+            set
+            {
+                _natalNeptuneMinuteTxt = value;
+                OnPropertyChanged("natalNeptuneMinuteTxt");
+            }
+        }
+        private double _natalNeptuneRetrogradeX;
+        public double natalNeptuneRetrogradeX
+        {
+            get
+            {
+                return _natalNeptuneRetrogradeX;
+            }
+            set
+            {
+                _natalNeptuneRetrogradeX = value;
+                OnPropertyChanged("natalNeptuneRetrogradeX");
+            }
+        }
+
+        private double _natalNeptuneRetrogradeY;
+        public double natalNeptuneRetrogradeY
+        {
+            get
+            {
+                return _natalNeptuneRetrogradeY;
+            }
+            set
+            {
+                _natalNeptuneRetrogradeY = value;
+                OnPropertyChanged("natalNeptuneRetrogradeY");
+            }
+        }
+        private string _natalNeptuneRetrogradeTxt;
+        public string natalNeptuneRetrogradeTxt
+        {
+            get
+            {
+                return _natalNeptuneRetrogradeTxt;
+            }
+            set
+            {
+                _natalNeptuneRetrogradeTxt = value;
+                OnPropertyChanged("natalNeptuneRetrogradeTxt");
+            }
+        }
+        private double _natalNeptuneAngle;
+        public double natalNeptuneAngle
+        {
+            get
+            {
+                return _natalNeptuneAngle;
+            }
+            set
+            {
+                _natalNeptuneAngle = value;
+                OnPropertyChanged("natalNeptuneAngle");
             }
         }
 
@@ -4120,217 +4120,217 @@ namespace microcosm.ViewModel
 
         // 冥王星
         #region
-        private double _natalPlutox;
-        public double natalPlutox
+        private double _natalPlutoX;
+        public double natalPlutoX
         {
             get
             {
-                return _natalPlutox;
+                return _natalPlutoX;
             }
             set
             {
-                _natalPlutox = value;
+                _natalPlutoX =value;
                 OnPropertyChanged("natalPlutox");
             }
         }
 
-        private double _natalPlutoy;
-        public double natalPlutoy
+        private double _natalPlutoY;
+        public double natalPlutoY
         {
             get
             {
-                return _natalPlutoy;
+                return _natalPlutoY;
             }
             set
             {
-                _natalPlutoy = value;
+                _natalPlutoY = value;
                 OnPropertyChanged("natalPlutoy");
             }
         }
-        private string _natalPlutotxt;
-        public string natalPlutotxt
+        private string _natalPlutoTxt;
+        public string natalPlutoTxt
         {
             get
             {
-                return _natalPlutotxt;
+                return _natalPlutoTxt;
             }
             set
             {
-                _natalPlutotxt = value;
-                OnPropertyChanged("natalPlutotxt");
+                _natalPlutoTxt = value;
+                OnPropertyChanged("natalPlutoTxt");
             }
         }
-        private double _natalPlutodegreex;
-        public double natalPlutodegreex
+        private double _natalPlutoDegreeX;
+        public double natalPlutoDegreeX
         {
             get
             {
-                return _natalPlutodegreex;
+                return _natalPlutoDegreeX;
             }
             set
             {
-                _natalPlutodegreex = value;
-                OnPropertyChanged("natalPlutodegreex");
-            }
-        }
-
-        private double _natalPlutodegreey;
-        public double natalPlutodegreey
-        {
-            get
-            {
-                return _natalPlutodegreey;
-            }
-            set
-            {
-                _natalPlutodegreey = value;
-                OnPropertyChanged("natalPlutodegreey");
-            }
-        }
-        private string _natalPlutodegreetxt;
-        public string natalPlutodegreetxt
-        {
-            get
-            {
-                return _natalPlutodegreetxt;
-            }
-            set
-            {
-                _natalPlutodegreetxt = value;
-                OnPropertyChanged("natalPlutodegreetxt");
-            }
-        }
-        private double _natalPlutosignx;
-        public double natalPlutosignx
-        {
-            get
-            {
-                return _natalPlutosignx;
-            }
-            set
-            {
-                _natalPlutosignx = value;
-                OnPropertyChanged("natalPlutosignx");
+                _natalPlutoDegreeX = value;
+                OnPropertyChanged("natalPlutoDegreeX");
             }
         }
 
-        private double _natalPlutosigny;
-        public double natalPlutosigny
+        private double _natalPlutoDegreeY;
+        public double natalPlutoDegreeY
         {
             get
             {
-                return _natalPlutosigny;
+                return _natalPlutoDegreeY;
             }
             set
             {
-                _natalPlutosigny = value;
-                OnPropertyChanged("natalPlutosigny");
+                _natalPlutoDegreeY = value;
+                OnPropertyChanged("natalPlutoDegreeY");
             }
         }
-        private string _natalPlutosigntxt;
-        public string natalPlutosigntxt
+        private string _natalPlutoDegreeTxt;
+        public string natalPlutoDegreeTxt
         {
             get
             {
-                return _natalPlutosigntxt;
+                return _natalPlutoDegreeTxt;
             }
             set
             {
-                _natalPlutosigntxt = value;
-                OnPropertyChanged("natalPlutosigntxt");
+                _natalPlutoDegreeTxt = value;
+                OnPropertyChanged("natalPlutoDegreeTxt");
             }
         }
-        private double _natalPlutoMinutex;
-        public double natalPlutoMinutex
+        private double _natalPlutoSignX;
+        public double natalPlutoSignX
         {
             get
             {
-                return _natalPlutoMinutex;
+                return _natalPlutoSignX;
             }
             set
             {
-                _natalPlutoMinutex = value;
-                OnPropertyChanged("natalPlutoMinutex");
-            }
-        }
-
-        private double _natalPlutoMinutey;
-        public double natalPlutoMinutey
-        {
-            get
-            {
-                return _natalPlutoMinutey;
-            }
-            set
-            {
-                _natalPlutoMinutey = value;
-                OnPropertyChanged("natalPlutoMinutey");
-            }
-        }
-        private string _natalPlutoMinutetxt;
-        public string natalPlutoMinutetxt
-        {
-            get
-            {
-                return _natalPlutoMinutetxt;
-            }
-            set
-            {
-                _natalPlutoMinutetxt = value;
-                OnPropertyChanged("natalPlutoMinutetxt");
-            }
-        }
-        private double _natalPlutoRetrogradex;
-        public double natalPlutoRetrogradex
-        {
-            get
-            {
-                return _natalPlutoRetrogradex;
-            }
-            set
-            {
-                _natalPlutoRetrogradex = value;
-                OnPropertyChanged("natalPlutoRetrogradex");
+                _natalPlutoSignX = value;
+                OnPropertyChanged("natalPlutoSignX");
             }
         }
 
-        private double _natalPlutoRetrogradey;
-        public double natalPlutoRetrogradey
+        private double _natalPlutoSignY;
+        public double natalPlutoSignY
         {
             get
             {
-                return _natalPlutoRetrogradey;
+                return _natalPlutoSignY;
             }
             set
             {
-                _natalPlutoRetrogradey = value;
-                OnPropertyChanged("natalPlutoRetrogradey");
+                _natalPlutoSignY = value;
+                OnPropertyChanged("natalPlutoSignY");
             }
         }
-        private string _natalPlutoRetrogradetxt;
-        public string natalPlutoRetrogradetxt
+        private string _natalPlutoSignTxt;
+        public string natalPlutoSignTxt
         {
             get
             {
-                return _natalPlutoRetrogradetxt;
+                return _natalPlutoSignTxt;
             }
             set
             {
-                _natalPlutoRetrogradetxt = value;
-                OnPropertyChanged("natalPlutoRetrogradetxt");
+                _natalPlutoSignTxt = value;
+                OnPropertyChanged("natalPlutoSignTxt");
             }
         }
-        private double _natalPlutoangle;
-        public double natalPlutoangle
+        private double _natalPlutoMinuteX;
+        public double natalPlutoMinuteX
         {
             get
             {
-                return _natalPlutoangle;
+                return _natalPlutoMinuteX;
             }
             set
             {
-                _natalPlutoangle = value;
-                OnPropertyChanged("natalPlutoangle");
+                _natalPlutoMinuteX = value;
+                OnPropertyChanged("natalPlutoMinuteX");
+            }
+        }
+
+        private double _natalPlutoMinuteY;
+        public double natalPlutoMinuteY
+        {
+            get
+            {
+                return _natalPlutoMinuteY;
+            }
+            set
+            {
+                _natalPlutoMinuteY = value;
+                OnPropertyChanged("natalPlutoMinuteY");
+            }
+        }
+        private string _natalPlutoMinuteTxt;
+        public string natalPlutoMinuteTxt
+        {
+            get
+            {
+                return _natalPlutoMinuteTxt;
+            }
+            set
+            {
+                _natalPlutoMinuteTxt = value;
+                OnPropertyChanged("natalPlutoMinuteTxt");
+            }
+        }
+        private double _natalPlutoRetrogradeX;
+        public double natalPlutoRetrogradeX
+        {
+            get
+            {
+                return _natalPlutoRetrogradeX;
+            }
+            set
+            {
+                _natalPlutoRetrogradeX = value;
+                OnPropertyChanged("natalPlutoRetrogradeX");
+            }
+        }
+
+        private double _natalPlutoRetrogradeY;
+        public double natalPlutoRetrogradeY
+        {
+            get
+            {
+                return _natalPlutoRetrogradeY;
+            }
+            set
+            {
+                _natalPlutoRetrogradeY = value;
+                OnPropertyChanged("natalPlutoRetrogradeY");
+            }
+        }
+        private string _natalPlutoRetrogradeTxt;
+        public string natalPlutoRetrogradeTxt
+        {
+            get
+            {
+                return _natalPlutoRetrogradeTxt;
+            }
+            set
+            {
+                _natalPlutoRetrogradeTxt = value;
+                OnPropertyChanged("natalPlutoRetrogradeTxt");
+            }
+        }
+        private double _natalPlutoAngle;
+        public double natalPlutoAngle
+        {
+            get
+            {
+                return _natalPlutoAngle;
+            }
+            set
+            {
+                _natalPlutoAngle = value;
+                OnPropertyChanged("natalPlutoAngle");
             }
         }
 
