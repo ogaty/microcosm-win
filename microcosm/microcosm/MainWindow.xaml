@@ -276,6 +276,11 @@
                 <Label x:Name="natalPlutoSign" Content="{Binding natalPlutosigntxt}" Canvas.Left="{Binding natalPlutosignx}" Canvas.Top="{Binding natalPlutosigny}"></Label>
                 <Label x:Name="natalPlutoMinute" Content="{Binding natalPlutoMinutetxt}" Canvas.Left="{Binding natalPlutoMinutex}" Canvas.Top="{Binding natalPlutoMinutey}"></Label>
                 <Label x:Name="natalPlutoRetrograde" Content="{Binding natalPlutoRetrogradetxt}" Canvas.Left="{Binding natalPlutoRetrogradex}" Canvas.Top="{Binding natalPlutoRetrogradey}"></Label>
+                <Label x:Name="natalEarthSymbol" Content="{Binding natalEarthtxt}" Canvas.Left="{Binding natalEarthx}" Canvas.Top="{Binding natalEarthy}" FontSize="16"/>
+                <Label x:Name="natalEarthDegree" Content="{Binding natalEarthdegreetxt}" Canvas.Left="{Binding natalEarthdegreex}" Canvas.Top="{Binding natalEarthdegreey}"></Label>
+                <Label x:Name="natalEarthSign" Content="{Binding natalEarthsigntxt}" Canvas.Left="{Binding natalEarthsignx}" Canvas.Top="{Binding natalEarthsigny}"></Label>
+                <Label x:Name="natalEarthMinute" Content="{Binding natalEarthMinutetxt}" Canvas.Left="{Binding natalEarthMinutex}" Canvas.Top="{Binding natalEarthMinutey}"></Label>
+                <Label x:Name="natalEarthRetrograde" Content="{Binding natalEarthRetrogradetxt}" Canvas.Left="{Binding natalEarthRetrogradex}" Canvas.Top="{Binding natalEarthRetrogradey}"></Label>
             </Canvas>
         </StackPanel>
 

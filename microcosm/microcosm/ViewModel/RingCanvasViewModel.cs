@@ -4336,6 +4336,224 @@ namespace microcosm.ViewModel
 
         #endregion
 
+        // 地球
+        #region
+        private double _natalEarthx;
+        public double natalEarthx
+        {
+            get
+            {
+                return _natalEarthx;
+            }
+            set
+            {
+                _natalEarthx = value;
+                OnPropertyChanged("natalEarthx");
+            }
+        }
+
+        private double _natalEarthy;
+        public double natalEarthy
+        {
+            get
+            {
+                return _natalEarthy;
+            }
+            set
+            {
+                _natalEarthy = value;
+                OnPropertyChanged("natalEarthy");
+            }
+        }
+        private string _natalEarthtxt;
+        public string natalEarthtxt
+        {
+            get
+            {
+                return _natalEarthtxt;
+            }
+            set
+            {
+                _natalEarthtxt = value;
+                OnPropertyChanged("natalEarthtxt");
+            }
+        }
+        private double _natalEarthdegreex;
+        public double natalEarthdegreex
+        {
+            get
+            {
+                return _natalEarthdegreex;
+            }
+            set
+            {
+                _natalEarthdegreex = value;
+                OnPropertyChanged("natalEarthdegreex");
+            }
+        }
+
+        private double _natalEarthdegreey;
+        public double natalEarthdegreey
+        {
+            get
+            {
+                return _natalEarthdegreey;
+            }
+            set
+            {
+                _natalEarthdegreey = value;
+                OnPropertyChanged("natalEarthdegreey");
+            }
+        }
+        private string _natalEarthdegreetxt;
+        public string natalEarthdegreetxt
+        {
+            get
+            {
+                return _natalEarthdegreetxt;
+            }
+            set
+            {
+                _natalEarthdegreetxt = value;
+                OnPropertyChanged("natalEarthdegreetxt");
+            }
+        }
+        private double _natalEarthsignx;
+        public double natalEarthsignx
+        {
+            get
+            {
+                return _natalEarthsignx;
+            }
+            set
+            {
+                _natalEarthsignx = value;
+                OnPropertyChanged("natalEarthsignx");
+            }
+        }
+
+        private double _natalEarthsigny;
+        public double natalEarthsigny
+        {
+            get
+            {
+                return _natalEarthsigny;
+            }
+            set
+            {
+                _natalEarthsigny = value;
+                OnPropertyChanged("natalEarthsigny");
+            }
+        }
+        private string _natalEarthsigntxt;
+        public string natalEarthsigntxt
+        {
+            get
+            {
+                return _natalEarthsigntxt;
+            }
+            set
+            {
+                _natalEarthsigntxt = value;
+                OnPropertyChanged("natalEarthsigntxt");
+            }
+        }
+        private double _natalEarthMinutex;
+        public double natalEarthMinutex
+        {
+            get
+            {
+                return _natalEarthMinutex;
+            }
+            set
+            {
+                _natalEarthMinutex = value;
+                OnPropertyChanged("natalEarthMinutex");
+            }
+        }
+
+        private double _natalEarthMinutey;
+        public double natalEarthMinutey
+        {
+            get
+            {
+                return _natalEarthMinutey;
+            }
+            set
+            {
+                _natalEarthMinutey = value;
+                OnPropertyChanged("natalEarthMinutey");
+            }
+        }
+        private string _natalEarthMinutetxt;
+        public string natalEarthMinutetxt
+        {
+            get
+            {
+                return _natalEarthMinutetxt;
+            }
+            set
+            {
+                _natalEarthMinutetxt = value;
+                OnPropertyChanged("natalEarthMinutetxt");
+            }
+        }
+        private double _natalEarthRetrogradex;
+        public double natalEarthRetrogradex
+        {
+            get
+            {
+                return _natalEarthRetrogradex;
+            }
+            set
+            {
+                _natalEarthRetrogradex = value;
+                OnPropertyChanged("natalEarthRetrogradex");
+            }
+        }
+
+        private double _natalEarthRetrogradey;
+        public double natalEarthRetrogradey
+        {
+            get
+            {
+                return _natalEarthRetrogradey;
+            }
+            set
+            {
+                _natalEarthRetrogradey = value;
+                OnPropertyChanged("natalEarthRetrogradey");
+            }
+        }
+        private string _natalEarthRetrogradetxt;
+        public string natalEarthRetrogradetxt
+        {
+            get
+            {
+                return _natalEarthRetrogradetxt;
+            }
+            set
+            {
+                _natalEarthRetrogradetxt = value;
+                OnPropertyChanged("natalEarthRetrogradetxt");
+            }
+        }
+        private double _natalEarthangle;
+        public double natalEarthangle
+        {
+            get
+            {
+                return _natalEarthangle;
+            }
+            set
+            {
+                _natalEarthangle = value;
+                OnPropertyChanged("natalEarthangle");
+            }
+        }
+
+        #endregion
+
         protected void OnPropertyChanged(string propertyname)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
