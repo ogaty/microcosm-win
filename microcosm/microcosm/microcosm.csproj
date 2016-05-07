@@ -77,6 +77,7 @@
     <Compile Include="DB\UserEventData.cs" />
     <Compile Include="DB\XMLDBManager.cs" />
     <Compile Include="Planet\PlanetData.cs" />
+    <Compile Include="Planet\PlanetDisplay.cs" />
     <Compile Include="Setting\AspectSetting.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="ViewModel\DatabaseWindowViewModel.cs" />

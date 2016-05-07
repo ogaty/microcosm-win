@@ -600,7 +600,6 @@ namespace microcosm
             List<double> degreeList = new List<double>();
             List<double> retrogradeList = new List<double>();
             List<bool> dispList = new List<bool>();
-            List<PointF> pList = new List<PointF>();
             List<PointF> pDegList = new List<PointF>();
             List<PointF> pSymbolList = new List<PointF>();
             List<PointF> pMinuteList = new List<PointF>();
@@ -676,7 +675,6 @@ namespace microcosm
 
                     retrogradeList.Add(planet.speed);
                     dispList.Add(planet.isDisp);
-                    pList.Add(point);
                     pDegList.Add(pointdegree);
                     pSymbolList.Add(pointsymbol);
                     pMinuteList.Add(pointminute);
@@ -684,7 +682,9 @@ namespace microcosm
 
                     PlanetDisplay display = new PlanetDisplay()
                     {
-                        planet_no = planet.no
+                        planetNo = planet.no,
+                        planetPt = point,
+                        planetTxt = CommonData.getPlanetSymbol(planet.no)
                     };
                     pDisplayList.Add(display);
 
@@ -693,11 +693,11 @@ namespace microcosm
                 });
 
                 pDisplayList.ForEach(displayData => {
-                    if (displayData.planet_no == (int)CommonData.ZODIAC_SUN)
+                    if (displayData.planetNo == (int)CommonData.ZODIAC_SUN)
                     {
                         rcanvas.natalSunTxt = CommonData.getPlanetSymbol(0);
-                        rcanvas.natalSunX = pList[0].X;
-                        rcanvas.natalSunY = pList[0].Y;
+                        rcanvas.natalSunX = displayData.planetPt.X;
+                        rcanvas.natalSunY = displayData.planetPt.Y;
                         rcanvas.natalSunDegreeTxt = (degreeList[0] % 30).ToString("00°");
                         rcanvas.natalSunDegreeX = pDegList[0].X;
                         rcanvas.natalSunDegreeY = pDegList[0].Y;
@@ -711,11 +711,11 @@ namespace microcosm
                         rcanvas.natalSunRetrogradeX = pRetrogradeList[0].X;
                         rcanvas.natalSunRetrogradeY = pRetrogradeList[0].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_MOON)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_MOON)
                     {
                         rcanvas.natalMoonTxt = CommonData.getPlanetSymbol(1);
-                        rcanvas.natalMoonX = pList[1].X;
-                        rcanvas.natalMoonY = pList[1].Y;
+                        rcanvas.natalMoonX = displayData.planetPt.X;
+                        rcanvas.natalMoonY = displayData.planetPt.Y;
                         rcanvas.natalMoonDegreeTxt = (degreeList[1] % 30).ToString("00°");
                         rcanvas.natalMoonDegreeX = pDegList[1].X;
                         rcanvas.natalMoonDegreeY = pDegList[1].Y;
@@ -729,11 +729,11 @@ namespace microcosm
                         rcanvas.natalMoonRetrogradeX = pRetrogradeList[1].X;
                         rcanvas.natalMoonRetrogradeY = pRetrogradeList[1].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_MERCURY)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_MERCURY)
                     {
                         rcanvas.natalMercuryTxt = CommonData.getPlanetSymbol(2);
-                        rcanvas.natalMercuryX = pList[2].X;
-                        rcanvas.natalMercuryY = pList[2].Y;
+                        rcanvas.natalMercuryX = displayData.planetPt.X;
+                        rcanvas.natalMercuryY = displayData.planetPt.Y;
                         rcanvas.natalMercuryDegreeTxt = (degreeList[2] % 30).ToString("00°");
                         rcanvas.natalMercuryDegreeX = pDegList[2].X;
                         rcanvas.natalMercuryDegreeY = pDegList[2].Y;
@@ -747,11 +747,11 @@ namespace microcosm
                         rcanvas.natalMercuryRetrogradeX = pRetrogradeList[2].X;
                         rcanvas.natalMercuryRetrogradeY = pRetrogradeList[2].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_VENUS)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_VENUS)
                     {
                         rcanvas.natalVenusTxt = CommonData.getPlanetSymbol(3);
-                        rcanvas.natalVenusX = pList[3].X;
-                        rcanvas.natalVenusY = pList[3].Y;
+                        rcanvas.natalVenusX = displayData.planetPt.X;
+                        rcanvas.natalVenusY = displayData.planetPt.Y;
                         rcanvas.natalVenusDegreeTxt = (degreeList[3] % 30).ToString("00°");
                         rcanvas.natalVenusDegreeX = pDegList[3].X;
                         rcanvas.natalVenusDegreeY = pDegList[3].Y;
@@ -765,11 +765,11 @@ namespace microcosm
                         rcanvas.natalVenusRetrogradeX = pRetrogradeList[3].X;
                         rcanvas.natalVenusRetrogradeY = pRetrogradeList[3].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_MARS)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_MARS)
                     {
                         rcanvas.natalMarsTxt = CommonData.getPlanetSymbol(4);
-                        rcanvas.natalMarsX = pList[4].X;
-                        rcanvas.natalMarsY = pList[4].Y;
+                        rcanvas.natalMarsX = displayData.planetPt.X;
+                        rcanvas.natalMarsY = displayData.planetPt.Y;
                         rcanvas.natalMarsDegreeTxt = (degreeList[4] % 30).ToString("00°");
                         rcanvas.natalMarsDegreeX = pDegList[4].X;
                         rcanvas.natalMarsDegreeY = pDegList[4].Y;
@@ -783,11 +783,11 @@ namespace microcosm
                         rcanvas.natalMarsRetrogradeX = pRetrogradeList[4].X;
                         rcanvas.natalMarsRetrogradeY = pRetrogradeList[4].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_JUPITER)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_JUPITER)
                     {
                         rcanvas.natalJupiterTxt = CommonData.getPlanetSymbol(5);
-                        rcanvas.natalJupiterX = pList[5].X;
-                        rcanvas.natalJupiterY = pList[5].Y;
+                        rcanvas.natalJupiterX = displayData.planetPt.X;
+                        rcanvas.natalJupiterY = displayData.planetPt.Y;
                         rcanvas.natalJupiterDegreeTxt = (degreeList[5] % 30).ToString("00°");
                         rcanvas.natalJupiterDegreeX = pDegList[5].X;
                         rcanvas.natalJupiterDegreeY = pDegList[5].Y;
@@ -801,11 +801,11 @@ namespace microcosm
                         rcanvas.natalJupiterRetrogradeX = pRetrogradeList[5].X;
                         rcanvas.natalJupiterRetrogradeY = pRetrogradeList[5].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_SATURN)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_SATURN)
                     {
                         rcanvas.natalSaturnTxt = CommonData.getPlanetSymbol(6);
-                        rcanvas.natalSaturnX = pList[6].X;
-                        rcanvas.natalSaturnY = pList[6].Y;
+                        rcanvas.natalSaturnX = displayData.planetPt.X;
+                        rcanvas.natalSaturnY = displayData.planetPt.Y;
                         rcanvas.natalSaturnDegreeTxt = (degreeList[6] % 30).ToString("00°");
                         rcanvas.natalSaturnDegreeX = pDegList[6].X;
                         rcanvas.natalSaturnDegreeY = pDegList[6].Y;
@@ -819,11 +819,11 @@ namespace microcosm
                         rcanvas.natalSaturnRetrogradeX = pRetrogradeList[6].X;
                         rcanvas.natalSaturnRetrogradeY = pRetrogradeList[6].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_URANUS)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_URANUS)
                     {
                         rcanvas.natalUranusTxt = CommonData.getPlanetSymbol(7);
-                        rcanvas.natalUranusX = pList[7].X;
-                        rcanvas.natalUranusY = pList[7].Y;
+                        rcanvas.natalUranusX = displayData.planetPt.X;
+                        rcanvas.natalUranusY = displayData.planetPt.Y;
                         rcanvas.natalUranusDegreeTxt = (degreeList[7] % 30).ToString("00°");
                         rcanvas.natalUranusDegreeX = pDegList[7].X;
                         rcanvas.natalUranusDegreeY = pDegList[7].Y;
@@ -837,11 +837,11 @@ namespace microcosm
                         rcanvas.natalUranusRetrogradeX = pRetrogradeList[7].X;
                         rcanvas.natalUranusRetrogradeY = pRetrogradeList[7].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_NEPTUNE)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_NEPTUNE)
                     {
                         rcanvas.natalNeptuneTxt = CommonData.getPlanetSymbol(8);
-                        rcanvas.natalNeptuneX = pList[8].X;
-                        rcanvas.natalNeptuneY = pList[8].Y;
+                        rcanvas.natalNeptuneX = displayData.planetPt.X;
+                        rcanvas.natalNeptuneY = displayData.planetPt.Y;
                         rcanvas.natalNeptuneDegreeTxt = (degreeList[8] % 30).ToString("00°");
                         rcanvas.natalNeptuneDegreeX = pDegList[8].X;
                         rcanvas.natalNeptuneDegreeY = pDegList[8].Y;
@@ -855,11 +855,11 @@ namespace microcosm
                         rcanvas.natalNeptuneRetrogradeX = pRetrogradeList[8].X;
                         rcanvas.natalNeptuneRetrogradeY = pRetrogradeList[8].Y;
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_PLUTO)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_PLUTO)
                     {
                         SetPluto(
                             CommonData.getPlanetSymbol(9),
-                            pList[9],
+                            displayData.planetPt,
                             (degreeList[9] % 30).ToString("00°"),
                             pDegList[9],
                             CommonData.getSignText(degreeList[9]),
@@ -870,13 +870,13 @@ namespace microcosm
                             pRetrogradeList[9]
                         );
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_EARTH)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_EARTH)
                     {
                         if (dispList[14])
                         {
                             rcanvas.natalEarthtxt = CommonData.getPlanetSymbol(14);
-                            rcanvas.natalEarthx = pList[14].X;
-                            rcanvas.natalEarthy = pList[14].Y;
+                            rcanvas.natalEarthx = displayData.planetPt.X;
+                            rcanvas.natalEarthy = displayData.planetPt.Y;
                             rcanvas.natalEarthdegreetxt = (degreeList[14] % 30).ToString("00°");
                             rcanvas.natalEarthdegreex = pDegList[14].X;
                             rcanvas.natalEarthdegreey = pDegList[14].Y;
@@ -891,7 +891,7 @@ namespace microcosm
                             rcanvas.natalEarthRetrogradey = pRetrogradeList[14].Y;
                         }
                     }
-                    else if (displayData.planet_no == (int)CommonData.ZODIAC_DH_TRUENODE)
+                    else if (displayData.planetNo == (int)CommonData.ZODIAC_DH_TRUENODE)
                     {
                     }
 

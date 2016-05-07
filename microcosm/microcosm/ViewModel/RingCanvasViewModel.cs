@@ -2822,7 +2822,7 @@ namespace microcosm.ViewModel
             set
             {
                 _natalVenusX =value;
-                OnPropertyChanged("natalVenusx");
+                OnPropertyChanged("natalVenusX");
             }
         }
 
@@ -2836,7 +2836,7 @@ namespace microcosm.ViewModel
             set
             {
                 _natalVenusY = value;
-                OnPropertyChanged("natalVenusy");
+                OnPropertyChanged("natalVenusY");
             }
         }
         private string _natalVenusTxt;
@@ -3258,7 +3258,7 @@ namespace microcosm.ViewModel
             set
             {
                 _natalJupiterX =value;
-                OnPropertyChanged("natalJupiterx");
+                OnPropertyChanged("natalJupiterX");
             }
         }
 
@@ -3272,7 +3272,7 @@ namespace microcosm.ViewModel
             set
             {
                 _natalJupiterY = value;
-                OnPropertyChanged("natalJupitery");
+                OnPropertyChanged("natalJupiterY");
             }
         }
         private string _natalJupiterTxt;
@@ -3694,7 +3694,7 @@ namespace microcosm.ViewModel
             set
             {
                 _natalUranusX =value;
-                OnPropertyChanged("natalUranusx");
+                OnPropertyChanged("natalUranusX");
             }
         }
 
@@ -3708,7 +3708,7 @@ namespace microcosm.ViewModel
             set
             {
                 _natalUranusY = value;
-                OnPropertyChanged("natalUranusy");
+                OnPropertyChanged("natalUranusY");
             }
         }
         private string _natalUranusTxt;
