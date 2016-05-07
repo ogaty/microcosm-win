@@ -13,5 +13,8 @@ namespace microcosm.Planet
 
         public string planetTxt { get; set; }
         public PointF planetPt { get; set; }
+
+        public string degreeTxt { get; set; }
+        public PointF degreePt { get; set; }
     }
 }
