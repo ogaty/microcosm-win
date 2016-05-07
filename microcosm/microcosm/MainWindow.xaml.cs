@@ -693,7 +693,7 @@ namespace microcosm
                 rcanvas.natalSunSignTxt = CommonData.getSignText(degreeList[0]);
                 rcanvas.natalSunSignX = pSymbolList[0].X;
                 rcanvas.natalSunSignY = pSymbolList[0].Y;
-                rcanvas.natalSunMinuteYxt = ((degreeList[0] % 1) / 100 * 60 * 100).ToString("00") + "'";
+                rcanvas.natalSunMinuteTxt = ((degreeList[0] % 1) / 100 * 60 * 100).ToString("00") + "'";
                 rcanvas.natalSunMinuteX = pMinuteList[0].X;
                 rcanvas.natalSunMinuteY = pMinuteList[0].Y;
                 rcanvas.natalSunRetrogradeTxt = CommonData.getRetrograde(retrogradeList[0]);
@@ -869,11 +869,11 @@ namespace microcosm
         }
         
         public void SetPluto(
-            string planetTxt, pointF planet, 
-            string degTxt, pointF degree, 
-            string signTxt, pointF sign, 
-            string minuteTxt, pointF minute, 
-            string retrogradeTxt, pointF retrograde) 
+            string planetTxt, PointF planet, 
+            string degTxt, PointF degree, 
+            string signTxt, PointF sign, 
+            string minuteTxt, PointF minute, 
+            string retrogradeTxt, PointF retrograde) 
         {
             rcanvas.natalPlutoTxt = planetTxt;
             rcanvas.natalPlutoX = planet.X;
