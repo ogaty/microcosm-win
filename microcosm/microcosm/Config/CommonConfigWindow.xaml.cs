@@ -52,13 +52,15 @@ namespace microcosm.Config
             }
 
             string filename = @"system\config.csm";
-            // 生成も
             XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
             FileStream fs = new FileStream(filename, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
             serializer.Serialize(sw, main.config);
             sw.Close();
             fs.Close();
+
+            main.ReCalc();
+            main.ReRender();
 
             this.Visibility = Visibility.Hidden;
         }

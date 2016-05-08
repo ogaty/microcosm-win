@@ -75,5 +75,27 @@ namespace microcosm.ViewModel
             });
             
         }
+
+        public void ReRender(
+            List<PlanetData> list1,
+            List<PlanetData> list2,
+            List<PlanetData> list3,
+            List<PlanetData> list4,
+            List<PlanetData> list5,
+            List<PlanetData> list6
+            )
+        {
+            pList.Clear();
+            Enumerable.Range(0, 10).ToList().ForEach(i => {
+                pList.Add(new PlanetListData(i,
+                    list1[i],
+                    list2[i],
+                    list3[i],
+                    list4[i],
+                    list5[i],
+                    list6[i]
+                    ));
+            });
+        }
     }
 }

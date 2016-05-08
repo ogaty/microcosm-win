@@ -115,7 +115,7 @@ namespace microcosm.Common
                 case ZODIAC_DH_TRUENODE:
                     return "\u260a";
                 case ZODIAC_EARTH:
-                    return "u2641";
+                    return "\u2641";
             }
             return "";
         }

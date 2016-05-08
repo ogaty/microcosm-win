@@ -77,6 +77,28 @@ namespace microcosm.ViewModel
             });
 
         }
+
+        public void ReRender(
+            double[] list1,
+            double[] list2,
+            double[] list3,
+            double[] list4,
+            double[] list5,
+            double[] list6
+            )
+        {
+            hList.Clear();
+            Enumerable.Range(0, 12).ToList().ForEach(i => {
+                hList.Add(new HouseListData(i,
+                    list1[i + 1],
+                    list2[i + 1],
+                    list3[i + 1],
+                    list4[i + 1],
+                    list5[i + 1],
+                    list6[i + 1]
+                    ));
+            });
+        }
     }
 
 }
