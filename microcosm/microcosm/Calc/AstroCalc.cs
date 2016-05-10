@@ -72,15 +72,6 @@ namespace microcosm.Calc
 
                     // Ephemeris Timeで計算, 結果はxに入る
                     s.swe_calc_ut(dret[1], i, flag, x, ref serr);
-                    // tropicalからayanamsaをマイナス
-                    if (x[0] > daya)
-                    {
-                        x[0] -= daya;
-                    }
-                    else
-                    {
-                        x[0] = x[0] - daya + 360;
-                    }
                 }
                 else
                 {

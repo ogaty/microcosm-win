@@ -20,6 +20,12 @@ namespace microcosm.Config
         TROPICAL = 0,
         SIDEREAL = 1
     }
+    public enum Progression
+    {
+        PRIMARY = 0,
+        SECONDARY = 1,
+        CPS = 2
+    }
     public enum HouseCalc
     {
         PLACIDUS = 0,
@@ -55,7 +61,7 @@ namespace microcosm.Config
 
         // プログレス計算方法
         [XmlElement("progression")]
-        public int progression { get; set; }
+        public Progression progression { get; set; }
 
         // デフォルト表示
         [XmlElement("defaultbands")]
@@ -94,6 +100,7 @@ namespace microcosm.Config
             zodiacWidth = 60;
             zodiacCenter = 150;
             dispPattern = 0;
+            progression = Progression.PRIMARY;
         }
 
     }

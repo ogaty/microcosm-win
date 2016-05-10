@@ -34,6 +34,32 @@ namespace microcosm.Config
             {
                 helioCentric.IsChecked = true;
             }
+            if (main.config.sidereal == Esidereal.TROPICAL)
+            {
+                tropical.IsChecked = true;
+            }
+            else
+            {
+                sidereal.IsChecked = true;
+            }
+            if (main.config.progression == Progression.PRIMARY)
+            {
+                primaryProgression.IsChecked = true;
+                secondaryProgression.IsChecked = false;
+                compositProgression.IsChecked = false;
+            }
+            else if (main.config.progression == Progression.SECONDARY)
+            {
+                primaryProgression.IsChecked = false;
+                secondaryProgression.IsChecked = true;
+                compositProgression.IsChecked = false;
+            }
+            else
+            {
+                primaryProgression.IsChecked = false;
+                secondaryProgression.IsChecked = false;
+                compositProgression.IsChecked = true;
+            }
         }
 
         private void Centric_Checked(object sender, RoutedEventArgs e)
@@ -49,6 +75,26 @@ namespace microcosm.Config
             else
             {
                 main.config.centric = ECentric.HELIO_CENTRIC;
+            }
+            if (tropical.IsChecked == true)
+            {
+                main.config.sidereal = Esidereal.TROPICAL;
+            }
+            else
+            {
+                main.config.sidereal = Esidereal.SIDEREAL;
+            }
+            if (primaryProgression.IsChecked == true)
+            {
+                main.config.progression = Progression.PRIMARY;
+            }
+            else if (secondaryProgression.IsChecked == true)
+            {
+                main.config.progression = Progression.SECONDARY;
+            }
+            else
+            {
+                main.config.progression = Progression.CPS;
             }
 
             string filename = @"system\config.csm";
@@ -74,6 +120,11 @@ namespace microcosm.Config
         {
             e.Cancel = true;
             this.Visibility = Visibility.Hidden;
+        }
+
+        private void Equinox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

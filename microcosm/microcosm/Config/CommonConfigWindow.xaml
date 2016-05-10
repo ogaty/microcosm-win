@@ -5,18 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm.Config"
         mc:Ignorable="d"
-        Title="CommonConfigWindow" Height="300" Width="300" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="CommonConfigWindow" Height="150" Width="440" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
-        <StackPanel>
-            <GroupBox Header="centric">
-                <StackPanel>
-                    <RadioButton x:Name="geoCentric" Content="GeoCentric" Checked="Centric_Checked"/>
-                    <RadioButton x:Name="helioCentric" Content="HelioCentric" Checked="Centric_Checked" />
-                </StackPanel>
-            </GroupBox>
-            <DockPanel LastChildFill="False" HorizontalAlignment="Right" Margin="0,20,20,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="270"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <StackPanel Margin="10,0">
+                <GroupBox Header="centric">
+                    <StackPanel>
+                        <RadioButton x:Name="geoCentric" Content="GeoCentric"/>
+                        <RadioButton x:Name="helioCentric" Content="HelioCentric" />
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="春分点計算">
+                    <StackPanel>
+                        <RadioButton x:Name="tropical" Content="Tropical"/>
+                        <RadioButton x:Name="sidereal" Content="SideReal"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="10,0">
+            <StackPanel>
+                <GroupBox Header="春分点計算">
+                    <StackPanel>
+                        <RadioButton x:Name="primaryProgression" Content="一度一年法(Primary Progression)"></RadioButton>
+                        <RadioButton x:Name="secondaryProgression" Content="一日一年法(Secondary Progression)"></RadioButton>
+                        <RadioButton x:Name="compositProgression" Content="CPS(Composit Progression)"></RadioButton>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <DockPanel LastChildFill="False" HorizontalAlignment="Right" Margin="0,20,0,0">
                 <Button Content="決定" Margin="0,0,10,0" Click="OkClick"/>
-                <Button Content="キャンセル" Click="CancelClick"></Button>
+                <Button Content="キャンセル" Click="CancelClick"/>
             </DockPanel>
         </StackPanel>
     </Grid>
