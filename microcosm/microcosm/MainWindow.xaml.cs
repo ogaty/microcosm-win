@@ -951,9 +951,71 @@ namespace microcosm
             }
             else if (tempsettings.bands == 2)
             {
+                // first
+                if (tempsettings.firstBand == TempSetting.BandKind.NATAL)
+                {
+                    natallist.ForEach(planet =>
+                    {
+                        // 天体表示させない
+                        if (!planet.isDisp)
+                        {
+                            return;
+                        }
+                    });
+                }
+
+                // second
+                if (tempsettings.secondBand == TempSetting.BandKind.NATAL)
+                {
+                    natallist.ForEach(planet =>
+                    {
+                        // 天体表示させない
+                        if (!planet.isDisp)
+                        {
+                            return;
+                        }
+                    });
+                }
             }
             else if (tempsettings.bands == 3)
             {
+                // first
+                if (tempsettings.firstBand == TempSetting.BandKind.NATAL)
+                {
+                    natallist.ForEach(planet =>
+                    {
+                        // 天体表示させない
+                        if (!planet.isDisp)
+                        {
+                            return;
+                        }
+                    });
+                }
+
+                // second
+                if (tempsettings.secondBand == TempSetting.BandKind.NATAL)
+                {
+                    progresslist.ForEach(planet =>
+                    {
+                        // 天体表示させない
+                        if (!planet.isDisp)
+                        {
+                            return;
+                        }
+                    });
+                }
+                // third
+                if (tempsettings.thirdBand == TempSetting.BandKind.NATAL)
+                {
+                    transitlist.ForEach(planet =>
+                    {
+                        // 天体表示させない
+                        if (!planet.isDisp)
+                        {
+                            return;
+                        }
+                    });
+                }
             }
         }
 
