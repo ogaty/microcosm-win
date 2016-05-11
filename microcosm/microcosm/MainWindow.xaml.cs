@@ -1153,6 +1153,107 @@ namespace microcosm
             rcanvas.natalPlutoRetrogradeY = retrograde.Y;
         }
 
+        // アスペクト表示
+        public void aspectsRendering(double startDegree, List<PlanetData> natallist, List<PlanetData> progresslist, List<PlanetData> transitlist)
+        {
+            aspectRender(startDegree, natallist, 1, 1, 1);
+            /*
+            if (aspectSetting.n_n)
+            {
+                aspectRender(startDegree, natallist, 1, 1, 1);
+            }
+            if (aspectSetting.p_p && setting.bands > 1)
+            {
+                aspectRender(startDegree, progresslist, 2, 2, 1);
+            }
+            if (aspectSetting.t_t && setting.bands > 2)
+            {
+                aspectRender(startDegree, transitlist, 3, 3, 1);
+            }
+            if (aspectSetting.n_p && setting.bands > 1)
+            {
+                aspectRender(startDegree, natallist, 1, 2, 2);
+            }
+            if (aspectSetting.n_t && setting.bands > 2)
+            {
+                aspectRender(startDegree, natallist, 1, 3, 3);
+            }
+            if (aspectSetting.p_t && setting.bands > 2)
+            {
+                aspectRender(startDegree, progresslist, 2, 3, 3);
+            }
+            */
+
+        }
+
+        // startPosition、endPosition : n-pの線は1-2となる
+        private void aspectRender(double startDegree, List<PlanetData> list, int startPosition, int endPosition, int aspectKind)
+        {
+            if (list == null)
+            {
+                return;
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (!list[i].isAspectDisp)
+                {
+                    continue;
+                }
+                PointF startPoint;
+                PointF endPoint;
+                if (startPosition == 1)
+                {
+                    startPoint = rotate(config.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
+                }
+                else if (startPosition == 2)
+                {
+                    //                    startPoint = rotate(setting.calcThirdInnerRadius() / 2, 0, list[i].absolute_position - startDegree);
+                    startPoint = rotate(config.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
+                }
+                else
+                {
+                    //                    startPoint = rotate(setting.calcSecondInnerRadius() / 2, 0, list[i].absolute_position - startDegree);
+                    startPoint = rotate(config.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
+                }
+                startPoint.X += (float)rcanvas.outerWidth / 2;
+                startPoint.X -= 8;
+                startPoint.Y *= -1;
+                startPoint.Y += (float)rcanvas.outerHeight / 2;
+
+                if (aspectKind == 1) // natal
+                {
+                    for (int j = 0; j < list[i].aspects.Count; j++)
+                    {
+                        if (!list[list[i].aspects[j].targetPlanetNo].isAspectDisp)
+                        {
+                            continue;
+                        }
+                        if (endPosition == 1)
+                        {
+                            endPoint = rotate((float)rcanvas.outerWidth / 2, 0, list[i].aspects[j].targetPosition - startDegree);
+                        }
+                        else if (endPosition == 2)
+                        {
+                            endPoint = rotate((float)rcanvas.outerWidth / 2, 0, list[i].aspects[j].targetPosition - startDegree);
+                        }
+                        else
+                        {
+                            endPoint = rotate((float)rcanvas.outerWidth, 0, list[i].aspects[j].targetPosition - startDegree);
+                        }
+                        endPoint.X += (float)rcanvas.outerWidth / 2;
+                        endPoint.Y *= -1;
+                        endPoint.Y += (float)rcanvas.outerHeight / 2;
+                    }
+
+                }
+                else if (aspectKind == 2) // progress
+                {
+                }
+                else if (aspectKind == 3) // transit
+                {
+                }
+            }
+        }
 
         public void UsernameRefresh()
         {
@@ -1207,6 +1308,11 @@ namespace microcosm
         }
 
         private void MultipleRing_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OpenDisplayConfig_Click(object sender, RoutedEventArgs e)
         {
 
         }

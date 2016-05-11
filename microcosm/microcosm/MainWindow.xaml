@@ -30,12 +30,13 @@
                 <MenuItem Header="データベースを開く(_O)" Click="OpenDatabase_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="表示(_D)">
-                <MenuItem Header="一重円(_Q)" Checked="SingleRing_Click"></MenuItem>
-                <MenuItem Header="三重円(_W)" Checked="TripleRing_Click"></MenuItem>
-                <MenuItem Header="カスタム(_E)" Checked="MultipleRing_Click"></MenuItem>
+                <MenuItem Header="一重円(_Q)" Click="SingleRing_Click"/>
+                <MenuItem Header="三重円(_W)" Click="TripleRing_Click"/>
+                <MenuItem Header="カスタム(_E)" Click="MultipleRing_Click"/>
             </MenuItem>
             <MenuItem Header="設定(_C)">
                 <MenuItem Header="共通設定(_C)" Click="OpenCommonConfig_Click"></MenuItem>
+                <MenuItem Header="表示設定(_D)" Click="OpenDisplayConfig_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="ヘルプ(_H)"></MenuItem>
         </Menu>
