@@ -61,6 +61,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Aspect\AspectInfo.cs" />
+    <Compile Include="Calc\AspectCalc.cs" />
     <Compile Include="Calc\AstroCalc.cs" />
     <Compile Include="Common\CommonData.cs" />
     <Compile Include="Config\CommonConfigWindow.xaml.cs">

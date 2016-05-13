@@ -22,6 +22,7 @@ using microcosm.Calc;
 using microcosm.Planet;
 using System.Drawing;
 using microcosm.Common;
+using microcosm.Aspect;
 
 namespace microcosm
 {
@@ -30,12 +31,14 @@ namespace microcosm
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel mainWindowVM;
         public PlanetListViewModel firstPList;
         public HouseListViewModel houseList;
 
         public SettingData[] settings = new SettingData[10];
+        public SettingData currentSetting;
         public ConfigData config = new ConfigData();
-        public TempSetting tempsettings;
+        public TempSetting tempSettings;
 
         public AstroCalc calc;
         public RingCanvasViewModel rcanvas;
@@ -61,6 +64,7 @@ namespace microcosm
         public double[] houseList6;
 
         public CommonConfigWindow configWindow;
+        public bool flag = false;
 
         public MainWindow()
         {
@@ -75,7 +79,7 @@ namespace microcosm
         // データ初期化
         private void DataInit()
         {
-            tempsettings = new TempSetting(config);
+            tempSettings = new TempSetting(config);
             Enumerable.Range(0, 10).ToList().ForEach(i =>
             {
                 string filename = @"system\setting" + i + ".csm";
@@ -98,6 +102,7 @@ namespace microcosm
                 }
 
             });
+            currentSetting = settings[0];
 
             {
                 string filename = @"system\config.csm";
@@ -279,6 +284,9 @@ namespace microcosm
             natalEarthMinute.DataContext = rcanvas;
             natalEarthRetrograde.DataContext = rcanvas;
 
+            mainWindowVM = new MainWindowViewModel();
+            explanation.DataContext = mainWindowVM;
+
             reportVM = new ReportViewModel(
                 list1,
                 list2, 
@@ -324,6 +332,9 @@ namespace microcosm
             houseList4 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
             houseList5 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
             houseList6 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+
+            AspectCalc aspect = new AspectCalc();
+            list1 = aspect.AspectCalcSame(currentSetting, list1);
         }
 
         private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
@@ -369,6 +380,7 @@ namespace microcosm
             signCuspRender(houseList1[1]);
             zodiacRender(houseList1[1]);
             planetRender(houseList1[1], list1, list2, list3);
+            aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
         }
 
         // ハウスカスプレンダリング
@@ -622,7 +634,7 @@ namespace microcosm
             List<bool> dispList = new List<bool>();
             List<PlanetDisplay> pDisplayList = new List<PlanetDisplay>();
 
-            if (tempsettings.bands == 1)
+            if (tempSettings.bands == 1)
             {
                 natallist.ForEach(planet =>
                 {
@@ -637,7 +649,7 @@ namespace microcosm
                     PointF pointsymbol;
                     PointF pointminute;
                     PointF pointretrograde;
-                    if (tempsettings.bands == 1)
+                    if (tempSettings.bands == 1)
                     {
                         point = rotate(rcanvas.outerWidth / 3 + 20, 0, planet.absolute_position - startdegree);
                         pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
@@ -645,7 +657,7 @@ namespace microcosm
                         pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, planet.absolute_position - startdegree);
                         pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, planet.absolute_position - startdegree);
                     }
-                    else if (tempsettings.bands == 2)
+                    else if (tempSettings.bands == 2)
                     {
                         point = rotate(rcanvas.outerWidth / 2 + 20 - rcanvas.innerWidth / 2, 0, planet.absolute_position - startdegree);
                         pointdegree = rotate(rcanvas.outerWidth / 3, 0, planet.absolute_position - startdegree);
@@ -949,10 +961,10 @@ namespace microcosm
                 });
 
             }
-            else if (tempsettings.bands == 2)
+            else if (tempSettings.bands == 2)
             {
                 // first
-                if (tempsettings.firstBand == TempSetting.BandKind.NATAL)
+                if (tempSettings.firstBand == TempSetting.BandKind.NATAL)
                 {
                     natallist.ForEach(planet =>
                     {
@@ -965,7 +977,7 @@ namespace microcosm
                 }
 
                 // second
-                if (tempsettings.secondBand == TempSetting.BandKind.NATAL)
+                if (tempSettings.secondBand == TempSetting.BandKind.NATAL)
                 {
                     natallist.ForEach(planet =>
                     {
@@ -977,10 +989,10 @@ namespace microcosm
                     });
                 }
             }
-            else if (tempsettings.bands == 3)
+            else if (tempSettings.bands == 3)
             {
                 // first
-                if (tempsettings.firstBand == TempSetting.BandKind.NATAL)
+                if (tempSettings.firstBand == TempSetting.BandKind.NATAL)
                 {
                     natallist.ForEach(planet =>
                     {
@@ -993,7 +1005,7 @@ namespace microcosm
                 }
 
                 // second
-                if (tempsettings.secondBand == TempSetting.BandKind.NATAL)
+                if (tempSettings.secondBand == TempSetting.BandKind.NATAL)
                 {
                     progresslist.ForEach(planet =>
                     {
@@ -1005,7 +1017,7 @@ namespace microcosm
                     });
                 }
                 // third
-                if (tempsettings.thirdBand == TempSetting.BandKind.NATAL)
+                if (tempSettings.thirdBand == TempSetting.BandKind.NATAL)
                 {
                     transitlist.ForEach(planet =>
                     {
@@ -1031,6 +1043,7 @@ namespace microcosm
             rcanvas.natalEarthSignTxt = "";
             rcanvas.natalEarthMinuteTxt = "";
             rcanvas.natalEarthRetrogradeTxt = "";
+//            ringCanvas.Children.Clear();
         }
 
         public void SetJupiter(
@@ -1154,9 +1167,16 @@ namespace microcosm
         }
 
         // アスペクト表示
-        public void aspectsRendering(double startDegree, List<PlanetData> natallist, List<PlanetData> progresslist, List<PlanetData> transitlist)
+        public void aspectsRendering(
+                double startDegree, 
+                List<PlanetData> list1, 
+                List<PlanetData> list2, 
+                List<PlanetData> list3,
+                List<PlanetData> list4,
+                List<PlanetData> list5
+            )
         {
-            aspectRender(startDegree, natallist, 1, 1, 1);
+            aspectRender(startDegree, list1, 1, 1, 1);
             /*
             if (aspectSetting.n_n)
             {
@@ -1189,6 +1209,11 @@ namespace microcosm
         // startPosition、endPosition : n-pの線は1-2となる
         private void aspectRender(double startDegree, List<PlanetData> list, int startPosition, int endPosition, int aspectKind)
         {
+            if (flag == false)
+            {
+                flag = true;
+                return;
+            }
             if (list == null)
             {
                 return;
@@ -1215,10 +1240,9 @@ namespace microcosm
                     //                    startPoint = rotate(setting.calcSecondInnerRadius() / 2, 0, list[i].absolute_position - startDegree);
                     startPoint = rotate(config.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
                 }
-                startPoint.X += (float)rcanvas.outerWidth / 2;
-                startPoint.X -= 8;
+                startPoint.X += (float)((rcanvas.outerWidth) / 2);
                 startPoint.Y *= -1;
-                startPoint.Y += (float)rcanvas.outerHeight / 2;
+                startPoint.Y += (float)((rcanvas.outerHeight) / 2);
 
                 if (aspectKind == 1) // natal
                 {
@@ -1230,19 +1254,52 @@ namespace microcosm
                         }
                         if (endPosition == 1)
                         {
-                            endPoint = rotate((float)rcanvas.outerWidth / 2, 0, list[i].aspects[j].targetPosition - startDegree);
+                            endPoint = rotate((float)config.zodiacCenter / 2, 0, list[i].aspects[j].targetPosition - startDegree);
                         }
                         else if (endPosition == 2)
                         {
-                            endPoint = rotate((float)rcanvas.outerWidth / 2, 0, list[i].aspects[j].targetPosition - startDegree);
+                            endPoint = rotate((float)config.zodiacCenter / 2, 0, list[i].aspects[j].targetPosition - startDegree);
                         }
                         else
                         {
-                            endPoint = rotate((float)rcanvas.outerWidth, 0, list[i].aspects[j].targetPosition - startDegree);
+                            endPoint = rotate((float)config.zodiacCenter, 0, list[i].aspects[j].targetPosition - startDegree);
                         }
-                        endPoint.X += (float)rcanvas.outerWidth / 2;
+                        endPoint.X += (float)((rcanvas.outerWidth) / 2);
                         endPoint.Y *= -1;
-                        endPoint.Y += (float)rcanvas.outerHeight / 2;
+                        endPoint.Y += (float)((rcanvas.outerHeight) / 2);
+
+                        Line aspectLine = new Line()
+                        {
+                            X1 = startPoint.X,
+                            Y1 = startPoint.Y,
+                            X2 = endPoint.X,
+                            Y2 = endPoint.Y
+                        };
+                        if (list[i].aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
+                        {
+                            aspectLine.Stroke = System.Windows.Media.Brushes.Red;
+                        }
+                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.TRINE)
+                        {
+                            aspectLine.Stroke = System.Windows.Media.Brushes.Orange;
+                        }
+                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SQUARE)
+                        {
+                            aspectLine.Stroke = System.Windows.Media.Brushes.DarkGray;
+                        }
+                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SEXTILE)
+                        {
+                            aspectLine.Stroke = System.Windows.Media.Brushes.Green;
+                        }
+                        else
+                        {
+                            aspectLine.Stroke = System.Windows.Media.Brushes.Black;
+                        }
+                        aspectLine.MouseEnter += new MouseEventHandler(aspectMouseEnter);
+                        aspectLine.MouseLeave += new MouseEventHandler(explanationClear);
+                        aspectLine.Tag = list[i].aspects[j];
+                        ringCanvas.Children.Add(aspectLine);
+
                     }
 
                 }
@@ -1253,6 +1310,17 @@ namespace microcosm
                 {
                 }
             }
+        }
+
+        private void aspectMouseEnter(object sender, System.EventArgs e)
+        {
+            Line l = (Line)sender;
+            AspectInfo info = (AspectInfo)l.Tag;
+            mainWindowVM.explanationTxt = info.aspectKind.ToString();
+        }
+        public void explanationClear(object sender, System.EventArgs e)
+        {
+            mainWindowVM.explanationTxt = "";
         }
 
         public void UsernameRefresh()
@@ -1297,13 +1365,13 @@ namespace microcosm
 
         private void SingleRing_Click(object sender, RoutedEventArgs e)
         {
-            tempsettings.bands = 1;
+            tempSettings.bands = 1;
             ReRender();
         }
 
         private void TripleRing_Click(object sender, RoutedEventArgs e)
         {
-            tempsettings.bands = 3;
+            tempSettings.bands = 3;
             ReRender();
         }
 

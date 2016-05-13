@@ -170,6 +170,19 @@ namespace microcosm.ViewModel
                 OnPropertyChanged("transitLng");
             }
         }
+        public string _explanationTxt;
+        public string explanationTxt
+        {
+            get
+            {
+                return _explanationTxt;
+            }
+            set
+            {
+                _explanationTxt = value;
+                OnPropertyChanged("explanationTxt");
+            }
+        }
 
         protected void OnPropertyChanged(string propertyname)
         {
