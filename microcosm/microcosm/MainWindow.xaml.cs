@@ -364,16 +364,16 @@ namespace microcosm
             }
             else
             {
-                rcanvas.outerWidth = ringCanvas.ActualWidth;
-                rcanvas.outerHeight = ringCanvas.ActualWidth;
-                rcanvas.innerWidth = ringCanvas.ActualWidth - config.zodiacWidth;
-                rcanvas.innerHeight = ringCanvas.ActualWidth - config.zodiacWidth;
+                rcanvas.outerWidth = ringCanvas.ActualWidth - 10;
+                rcanvas.outerHeight = ringCanvas.ActualWidth - 10;
+                rcanvas.innerWidth = ringCanvas.ActualWidth - 10 - config.zodiacWidth;
+                rcanvas.innerHeight = ringCanvas.ActualWidth - 10 - config.zodiacWidth;
                 rcanvas.centerLeft = ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2;
                 rcanvas.centerTop = ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2;
             }
 
 
-            Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
+            // Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
 
             ReRender();
         }
@@ -730,7 +730,7 @@ namespace microcosm
 
                     //                    g.DrawString(CommonData.getPlanetSymbol(planet.no), fnt, brush, point.X, point.Y);
                     //                    Console.WriteLine(planet.absolute_position - startdegree);
-                    Console.WriteLine(planet.no.ToString() + " " + (planet.absolute_position % 30).ToString("00"));
+                    // Console.WriteLine(planet.no.ToString() + " " + (planet.absolute_position % 30).ToString("00"));
                 });
 
                 AllClear();

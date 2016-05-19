@@ -12,5 +12,6 @@
   <zodiacOuterWidth>470</zodiacOuterWidth>
   <zodiacWidth>60</zodiacWidth>
   <zodiacCenter>180</zodiacCenter>
+  <decimalDisp>0</decimalDisp>
   <dispPattern>0</dispPattern>
 </ConfigData>

@@ -42,13 +42,13 @@ namespace microcosm.Config
             {
                 sidereal.IsChecked = true;
             }
-            if (main.config.progression == Progression.PRIMARY)
+            if (main.config.progression == EProgression.PRIMARY)
             {
                 primaryProgression.IsChecked = true;
                 secondaryProgression.IsChecked = false;
                 compositProgression.IsChecked = false;
             }
-            else if (main.config.progression == Progression.SECONDARY)
+            else if (main.config.progression == EProgression.SECONDARY)
             {
                 primaryProgression.IsChecked = false;
                 secondaryProgression.IsChecked = true;
@@ -59,6 +59,16 @@ namespace microcosm.Config
                 primaryProgression.IsChecked = false;
                 secondaryProgression.IsChecked = false;
                 compositProgression.IsChecked = true;
+            }
+            if (main.config.decimalDisp == (int)EDecimalDisp.DECIMAL)
+            {
+                decimalDisp.IsChecked = true;
+                degreeDisp.IsChecked = false;
+            }
+            else
+            {
+                decimalDisp.IsChecked = false;
+                degreeDisp.IsChecked = true;
             }
         }
 
@@ -86,15 +96,23 @@ namespace microcosm.Config
             }
             if (primaryProgression.IsChecked == true)
             {
-                main.config.progression = Progression.PRIMARY;
+                main.config.progression = EProgression.PRIMARY;
             }
             else if (secondaryProgression.IsChecked == true)
             {
-                main.config.progression = Progression.SECONDARY;
+                main.config.progression = EProgression.SECONDARY;
             }
             else
             {
-                main.config.progression = Progression.CPS;
+                main.config.progression = EProgression.CPS;
+            }
+            if (decimalDisp.IsChecked == true)
+            {
+                main.config.decimalDisp = (int)EDecimalDisp.DECIMAL;
+            }
+            else
+            {
+                main.config.decimalDisp = (int)EDecimalDisp.DEGREE;
             }
 
             string filename = @"system\config.csm";

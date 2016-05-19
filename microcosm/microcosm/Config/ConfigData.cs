@@ -20,18 +20,23 @@ namespace microcosm.Config
         TROPICAL = 0,
         SIDEREAL = 1
     }
-    public enum Progression
+    public enum EProgression
     {
         PRIMARY = 0,
         SECONDARY = 1,
         CPS = 2
     }
-    public enum HouseCalc
+    public enum EHouseCalc
     {
         PLACIDUS = 0,
         KOCH  = 1,
         CAMPANUS = 2,
         EQUAL = 3
+    }
+    public enum EDecimalDisp
+    {
+        DECIMAL = 0,
+        DEGREE = 1
     }
     public class ConfigData
     {
@@ -61,7 +66,7 @@ namespace microcosm.Config
 
         // プログレス計算方法
         [XmlElement("progression")]
-        public Progression progression { get; set; }
+        public EProgression progression { get; set; }
 
         // デフォルト表示
         [XmlElement("defaultbands")]
@@ -83,6 +88,10 @@ namespace microcosm.Config
         [XmlElement("zodiacCenter")]
         public int zodiacCenter { get; set; }
 
+        // 10進、60進
+        [XmlElement("decimalDisp")]
+        public int decimalDisp { get; set; }
+
         // SolarFireっぽく表示orAMATERUっぽく表示
         [XmlElement("dispPattern")]
         public int dispPattern { get; set; }
@@ -95,12 +104,12 @@ namespace microcosm.Config
             defaultPlace = "東京都中央区";
             lat = 35.670587;
             lng = 139.772003;
-            houseCalc = (int)HouseCalc.PLACIDUS;
+            houseCalc = (int)EHouseCalc.PLACIDUS;
             zodiacOuterWidth = 470;
             zodiacWidth = 60;
             zodiacCenter = 250;
             dispPattern = 0;
-            progression = Progression.PRIMARY;
+            progression = EProgression.PRIMARY;
         }
 
     }
