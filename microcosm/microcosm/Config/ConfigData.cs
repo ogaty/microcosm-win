@@ -98,7 +98,7 @@ namespace microcosm.Config
             houseCalc = (int)HouseCalc.PLACIDUS;
             zodiacOuterWidth = 470;
             zodiacWidth = 60;
-            zodiacCenter = 150;
+            zodiacCenter = 250;
             dispPattern = 0;
             progression = Progression.PRIMARY;
         }

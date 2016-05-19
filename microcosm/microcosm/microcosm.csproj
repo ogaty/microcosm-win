@@ -63,6 +63,9 @@
     <Compile Include="Aspect\AspectInfo.cs" />
     <Compile Include="Calc\AspectCalc.cs" />
     <Compile Include="Calc\AstroCalc.cs" />
+    <Compile Include="ChartSelectorWindow.xaml.cs">
+      <DependentUpon>ChartSelectorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\CommonData.cs" />
     <Compile Include="Config\CommonConfigWindow.xaml.cs">
       <DependentUpon>CommonConfigWindow.xaml</DependentUpon>
@@ -87,6 +90,10 @@
     <Compile Include="ViewModel\PlanetList.cs" />
     <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\RingCanvasViewModel.cs" />
+    <Page Include="ChartSelectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Config\CommonConfigWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

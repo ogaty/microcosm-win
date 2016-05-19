@@ -1,0 +1,73 @@
+﻿<Window x:Class="microcosm.ChartSelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:microcosm"
+        mc:Ignorable="d"
+        Title="時刻設定" Height="340" Width="300" Closing="Window_Closing" ResizeMode="CanMinimize">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <GroupBox Header="時刻" Height="55" Margin="5,10">
+                <StackPanel Orientation="Vertical">
+                    <RadioButton x:Name="natalTime" Content="出生時刻" IsChecked="True" ></RadioButton>
+                    <RadioButton x:Name="transitTime" Content="イベント時刻"></RadioButton>
+                </StackPanel>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Center">
+                <TextBox Margin="5,0" Width="35" Text="2016"></TextBox>
+                <TextBlock Text="/"></TextBlock>
+                <TextBox Margin="5,0" Width="20" Text="12"></TextBox>
+                <TextBlock Text="/"></TextBlock>
+                <TextBox Margin="5,0" Width="20" Text="31"></TextBox>
+                <TextBox Margin="5,0" Width="20" Text="12"></TextBox>
+                <TextBlock Text=":"></TextBlock>
+                <TextBox Margin="5,0" Width="20" Text="30"></TextBox>
+                <TextBlock Text=":"></TextBlock>
+                <TextBox Margin="5,0" Width="20" Text="45"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30">
+                <Label Content="年" Margin="5,0"></Label>
+                <Button Content="←" VerticalAlignment="Center"></Button>
+                <Button Content="→" VerticalAlignment="Center"></Button>
+                <TextBox Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"></TextBox>
+                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30">
+                <Label Content="月" Margin="5,0"></Label>
+                <Button Content="←" VerticalAlignment="Center"></Button>
+                <Button Content="→" VerticalAlignment="Center"></Button>
+                <TextBox Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"></TextBox>
+                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30">
+                <Label Content="日" Margin="5,0"></Label>
+                <Button Content="←" VerticalAlignment="Center"></Button>
+                <Button Content="→" VerticalAlignment="Center"></Button>
+                <TextBox Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"/>
+                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30">
+                <Label Content="時" Margin="5,0"></Label>
+                <Button Content="←" VerticalAlignment="Center"></Button>
+                <Button Content="→" VerticalAlignment="Center"></Button>
+                <TextBox Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"/>
+                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30">
+                <Label Content="分" Margin="5,0"></Label>
+                <Button Content="←" VerticalAlignment="Center"></Button>
+                <Button Content="→" VerticalAlignment="Center"></Button>
+                <TextBox Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"/>
+                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30">
+                <Label Content="秒" Margin="5,0"></Label>
+                <Button Content="←" VerticalAlignment="Center"></Button>
+                <Button Content="→" VerticalAlignment="Center"></Button>
+                <TextBox Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"/>
+                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

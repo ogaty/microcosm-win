@@ -45,6 +45,8 @@ namespace microcosm.ViewModel
         private string getTxt(double absolute_position)
         {
             string dataTxt = CommonData.getSignText(absolute_position);
+//            dataTxt += ((absolute_position % 1) / 100 * 60 * 100).ToString("00") + "'";,
+
             dataTxt += string.Format("{0,00:F3}", CommonData.getDeg(absolute_position));
             return dataTxt;
         }

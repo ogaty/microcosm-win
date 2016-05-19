@@ -34,6 +34,9 @@
                 <MenuItem Header="三重円(_W)" Click="TripleRing_Click"/>
                 <MenuItem Header="カスタム(_E)" Click="MultipleRing_Click"/>
             </MenuItem>
+            <MenuItem Header="ウィンドウ(_W)">
+                <MenuItem Header="時刻設定(_T)" Click="ChartSelector_Click"></MenuItem>
+            </MenuItem>
             <MenuItem Header="設定(_C)">
                 <MenuItem Header="共通設定(_C)" Click="OpenCommonConfig_Click"></MenuItem>
                 <MenuItem Header="表示設定(_D)" Click="OpenDisplayConfig_Click"></MenuItem>
@@ -281,6 +284,11 @@
                 <Label x:Name="natalPlutoSign" Content="{Binding natalPlutoSignTxt}" Canvas.Left="{Binding natalPlutoSignX}" Canvas.Top="{Binding natalPlutoSignY}"></Label>
                 <Label x:Name="natalPlutoMinute" Content="{Binding natalPlutoMinuteTxt}" Canvas.Left="{Binding natalPlutoMinuteX}" Canvas.Top="{Binding natalPlutoMinuteY}"></Label>
                 <Label x:Name="natalPlutoRetrograde" Content="{Binding natalPlutoRetrogradeTxt}" Canvas.Left="{Binding natalPlutoRetrogradeX}" Canvas.Top="{Binding natalPlutoRetrogradeY}" Foreground="DeepPink"></Label>
+                <Label x:Name="natalDHSymbol" Content="{Binding natalDHTxt}" Canvas.Left="{Binding natalDHX}" Canvas.Top="{Binding natalDHY}" FontSize="16" Foreground="DarkCyan"/>
+                <Label x:Name="natalDHDegree" Content="{Binding natalDHDegreeTxt}" Canvas.Left="{Binding natalDHDegreeX}" Canvas.Top="{Binding natalDHDegreeY}"></Label>
+                <Label x:Name="natalDHSign" Content="{Binding natalDHSignTxt}" Canvas.Left="{Binding natalDHSignX}" Canvas.Top="{Binding natalDHSignY}"></Label>
+                <Label x:Name="natalDHMinute" Content="{Binding natalDHMinuteTxt}" Canvas.Left="{Binding natalDHMinuteX}" Canvas.Top="{Binding natalDHMinuteY}"></Label>
+                <Label x:Name="natalDHRetrograde" Content="{Binding natalDHRetrogradeTxt}" Canvas.Left="{Binding natalDHRetrogradeX}" Canvas.Top="{Binding natalDHRetrogradeY}" Foreground="DeepPink"></Label>
                 <Label x:Name="natalEarthSymbol" Content="{Binding natalEarthTxt}" Canvas.Left="{Binding natalEarthX}" Canvas.Top="{Binding natalEarthY}" FontSize="16" Foreground="SkyBlue"/>
                 <Label x:Name="natalEarthDegree" Content="{Binding natalEarthDegreeTxt}" Canvas.Left="{Binding natalEarthDegreeX}" Canvas.Top="{Binding natalEarthDegreeY}"></Label>
                 <Label x:Name="natalEarthSign" Content="{Binding natalEarthSignTxt}" Canvas.Left="{Binding natalEarthSignX}" Canvas.Top="{Binding natalEarthSignY}"></Label>

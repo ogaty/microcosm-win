@@ -4554,6 +4554,224 @@ namespace microcosm.ViewModel
 
         #endregion
 
+        // ヘッド
+        #region
+        private double _natalDHX;
+        public double natalDHX
+        {
+            get
+            {
+                return _natalDHX;
+            }
+            set
+            {
+                _natalDHX = value;
+                OnPropertyChanged("natalDHX");
+            }
+        }
+
+        private double _natalDHY;
+        public double natalDHY
+        {
+            get
+            {
+                return _natalDHY;
+            }
+            set
+            {
+                _natalDHY = value;
+                OnPropertyChanged("natalDHY");
+            }
+        }
+        private string _natalDHTxt;
+        public string natalDHTxt
+        {
+            get
+            {
+                return _natalDHTxt;
+            }
+            set
+            {
+                _natalDHTxt = value;
+                OnPropertyChanged("natalDHTxt");
+            }
+        }
+        private double _natalDHDegreeX;
+        public double natalDHDegreeX
+        {
+            get
+            {
+                return _natalDHDegreeX;
+            }
+            set
+            {
+                _natalDHDegreeX = value;
+                OnPropertyChanged("natalDHDegreeX");
+            }
+        }
+
+        private double _natalDHDegreeY;
+        public double natalDHDegreeY
+        {
+            get
+            {
+                return _natalDHDegreeY;
+            }
+            set
+            {
+                _natalDHDegreeY = value;
+                OnPropertyChanged("natalDHDegreeY");
+            }
+        }
+        private string _natalDHDegreeTxt;
+        public string natalDHDegreeTxt
+        {
+            get
+            {
+                return _natalDHDegreeTxt;
+            }
+            set
+            {
+                _natalDHDegreeTxt = value;
+                OnPropertyChanged("natalDHDegreeTxt");
+            }
+        }
+        private double _natalDHSignX;
+        public double natalDHSignX
+        {
+            get
+            {
+                return _natalDHSignX;
+            }
+            set
+            {
+                _natalDHSignX = value;
+                OnPropertyChanged("natalDHSignX");
+            }
+        }
+
+        private double _natalDHSignY;
+        public double natalDHSignY
+        {
+            get
+            {
+                return _natalDHSignY;
+            }
+            set
+            {
+                _natalDHSignY = value;
+                OnPropertyChanged("natalDHSignY");
+            }
+        }
+        private string _natalDHSignTxt;
+        public string natalDHSignTxt
+        {
+            get
+            {
+                return _natalDHSignTxt;
+            }
+            set
+            {
+                _natalDHSignTxt = value;
+                OnPropertyChanged("natalDHSignTxt");
+            }
+        }
+        private double _natalDHMinuteX;
+        public double natalDHMinuteX
+        {
+            get
+            {
+                return _natalDHMinuteX;
+            }
+            set
+            {
+                _natalDHMinuteX = value;
+                OnPropertyChanged("natalDHMinuteX");
+            }
+        }
+
+        private double _natalDHMinuteY;
+        public double natalDHMinuteY
+        {
+            get
+            {
+                return _natalDHMinuteY;
+            }
+            set
+            {
+                _natalDHMinuteY = value;
+                OnPropertyChanged("natalDHMinuteY");
+            }
+        }
+        private string _natalDHMinuteTxt;
+        public string natalDHMinuteTxt
+        {
+            get
+            {
+                return _natalDHMinuteTxt;
+            }
+            set
+            {
+                _natalDHMinuteTxt = value;
+                OnPropertyChanged("natalDHMinuteTxt");
+            }
+        }
+        private double _natalDHRetrogradeX;
+        public double natalDHRetrogradeX
+        {
+            get
+            {
+                return _natalDHRetrogradeX;
+            }
+            set
+            {
+                _natalDHRetrogradeX = value;
+                OnPropertyChanged("natalDHRetrogradeX");
+            }
+        }
+
+        private double _natalDHRetrogradeY;
+        public double natalDHRetrogradeY
+        {
+            get
+            {
+                return _natalDHRetrogradeY;
+            }
+            set
+            {
+                _natalDHRetrogradeY = value;
+                OnPropertyChanged("natalDHRetrogradeY");
+            }
+        }
+        private string _natalDHRetrogradeTxt;
+        public string natalDHRetrogradeTxt
+        {
+            get
+            {
+                return _natalDHRetrogradeTxt;
+            }
+            set
+            {
+                _natalDHRetrogradeTxt = value;
+                OnPropertyChanged("natalDHRetrogradeTxt");
+            }
+        }
+        private double _natalDHAngle;
+        public double natalDHAngle
+        {
+            get
+            {
+                return _natalDHAngle;
+            }
+            set
+            {
+                _natalDHAngle = value;
+                OnPropertyChanged("natalDHAngle");
+            }
+        }
+
+        #endregion
+
         protected void OnPropertyChanged(string propertyname)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

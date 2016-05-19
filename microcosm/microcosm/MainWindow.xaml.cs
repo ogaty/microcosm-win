@@ -64,6 +64,9 @@ namespace microcosm
         public double[] houseList6;
 
         public CommonConfigWindow configWindow;
+        public ChartSelectorWindow chartSelecterWindow;
+
+        // temp ２回レンダリングされるのを防ぐ
         public bool flag = false;
 
         public MainWindow()
@@ -283,6 +286,11 @@ namespace microcosm
             natalEarthSign.DataContext = rcanvas;
             natalEarthMinute.DataContext = rcanvas;
             natalEarthRetrograde.DataContext = rcanvas;
+            natalDHSymbol.DataContext = rcanvas;
+            natalDHDegree.DataContext = rcanvas;
+            natalDHSign.DataContext = rcanvas;
+            natalDHMinute.DataContext = rcanvas;
+            natalDHRetrograde.DataContext = rcanvas;
 
             mainWindowVM = new MainWindowViewModel();
             explanation.DataContext = mainWindowVM;
@@ -710,7 +718,7 @@ namespace microcosm
                         planetPt = point,
                         planetTxt = CommonData.getPlanetSymbol(planet.no),
                         degreePt = pointdegree,
-                        degreeTxt = (planet.absolute_position % 30).ToString("00°"),
+                        degreeTxt = ((planet.absolute_position - 0.5) % 30).ToString("00°"),
                         symbolPt = pointsymbol,
                         symbolTxt = CommonData.getSignText(planet.absolute_position),
                         minutePt = pointminute,
@@ -721,7 +729,8 @@ namespace microcosm
                     pDisplayList.Add(display);
 
                     //                    g.DrawString(CommonData.getPlanetSymbol(planet.no), fnt, brush, point.X, point.Y);
-                    Console.WriteLine(planet.absolute_position - startdegree);
+                    //                    Console.WriteLine(planet.absolute_position - startdegree);
+                    Console.WriteLine(planet.no.ToString() + " " + (planet.absolute_position % 30).ToString("00"));
                 });
 
                 AllClear();
@@ -956,8 +965,27 @@ namespace microcosm
                     }
                     else if (displayData.planetNo == (int)CommonData.ZODIAC_DH_TRUENODE)
                     {
+                        if (!displayData.isDisp)
+                        {
+                            return;
+                        }
+                        rcanvas.natalDHTxt = displayData.planetTxt;
+                        rcanvas.natalDHX = displayData.planetPt.X;
+                        rcanvas.natalDHY = displayData.planetPt.Y;
+                        rcanvas.natalDHDegreeTxt = displayData.degreeTxt;
+                        rcanvas.natalDHDegreeX = displayData.degreePt.X;
+                        rcanvas.natalDHDegreeY = displayData.degreePt.Y;
+                        rcanvas.natalDHSignTxt = displayData.symbolTxt;
+                        rcanvas.natalDHSignX = displayData.symbolPt.X;
+                        rcanvas.natalDHSignY = displayData.symbolPt.Y;
+                        rcanvas.natalDHMinuteTxt = displayData.minuteTxt;
+                        rcanvas.natalDHMinuteX = displayData.minutePt.X;
+                        rcanvas.natalDHMinuteY = displayData.minutePt.Y;
+                        rcanvas.natalDHRetrogradeTxt = displayData.retrogradeTxt;
+                        rcanvas.natalDHRetrogradeX = displayData.retrogradePt.X;
+                        rcanvas.natalDHRetrogradeY = displayData.retrogradePt.Y;
                     }
-//                    display();
+                    //                    display();
                 });
 
             }
@@ -1382,6 +1410,16 @@ namespace microcosm
 
         private void OpenDisplayConfig_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void ChartSelector_Click(object sender, RoutedEventArgs e)
+        {
+            if (chartSelecterWindow == null)
+            {
+                chartSelecterWindow = new ChartSelectorWindow(this);
+            }
+            chartSelecterWindow.Visibility = Visibility.Visible;
 
         }
     }
