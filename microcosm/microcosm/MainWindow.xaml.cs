@@ -186,7 +186,7 @@ namespace microcosm
             ReCalc();
 
             //viewmodel設定
-            firstPList = new PlanetListViewModel(list1, list2, list3, list4, list5, list6);
+            firstPList = new PlanetListViewModel(this, list1, list2, list3, list4, list5, list6);
             planetList.DataContext = firstPList;
 
             houseList = new HouseListViewModel(houseList1, houseList2, houseList3, houseList4, houseList5, houseList6);
@@ -351,6 +351,13 @@ namespace microcosm
 
         private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            ReRender();
+        }
+
+        // レンダリングメイン
+        public void ReRender()
+        {
+            AllClear();
             rcanvas.innerLeft = config.zodiacWidth / 2;
             rcanvas.innerTop = config.zodiacWidth / 2;
             if (ringCanvas.ActualWidth > ringStack.ActualHeight)
@@ -364,10 +371,10 @@ namespace microcosm
             }
             else
             {
-                rcanvas.outerWidth = ringCanvas.ActualWidth - 10;
-                rcanvas.outerHeight = ringCanvas.ActualWidth - 10;
-                rcanvas.innerWidth = ringCanvas.ActualWidth - 10 - config.zodiacWidth;
-                rcanvas.innerHeight = ringCanvas.ActualWidth - 10 - config.zodiacWidth;
+                rcanvas.outerWidth = ringCanvas.ActualWidth;
+                rcanvas.outerHeight = ringCanvas.ActualWidth;
+                rcanvas.innerWidth = ringCanvas.ActualWidth - config.zodiacWidth;
+                rcanvas.innerHeight = ringCanvas.ActualWidth - config.zodiacWidth;
                 rcanvas.centerLeft = ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2;
                 rcanvas.centerTop = ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2;
             }
@@ -375,20 +382,85 @@ namespace microcosm
 
             // Console.WriteLine(ringCanvas.ActualWidth.ToString() + "," + ringStack.ActualHeight.ToString());
 
-            ReRender();
-        }
-
-        // レンダリングメイン
-        public void ReRender()
-        {
             firstPList.ReRender(list1, list2, list3, list4, list5, list6);
             houseList.ReRender(houseList1, houseList2, houseList3, houseList4, houseList5, houseList6);
+
+//            circleRender();
 
             houseCuspRender(houseList1);
             signCuspRender(houseList1[1]);
             zodiacRender(houseList1[1]);
             planetRender(houseList1[1], list1, list2, list3);
             aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
+        }
+
+        private void circleRender()
+        {
+            // 獣帯外側
+            Ellipse outerEllipse = new Ellipse()
+            {
+                StrokeThickness = 3,
+                Margin = new Thickness(15, 15, 15, 15),
+                Stroke = System.Windows.SystemColors.WindowTextBrush
+            };
+            if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+            {
+                // 横長
+                outerEllipse.Width = ringStack.ActualHeight - 30;
+                outerEllipse.Height = ringStack.ActualWidth - 30;
+
+            }
+            else
+            {
+                // 縦長
+                outerEllipse.Width = ringCanvas.ActualWidth - 30;
+                outerEllipse.Height = ringCanvas.ActualWidth - 30;
+            }
+            ringCanvas.Children.Add(outerEllipse);
+
+            // 獣帯内側
+            Ellipse innerEllipse = new Ellipse()
+            {
+                StrokeThickness = 3,
+                Margin = new Thickness(45, 45, 45, 45),
+                Stroke = System.Windows.SystemColors.WindowTextBrush
+            };
+            if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+            {
+                // 横長
+                innerEllipse.Width = ringStack.ActualHeight - 90;
+                innerEllipse.Height = ringStack.ActualWidth - 90;
+
+            }
+            else
+            {
+                // 縦長
+                innerEllipse.Width = ringCanvas.ActualWidth - 90;
+                innerEllipse.Height = ringCanvas.ActualWidth - 90;
+            }
+            ringCanvas.Children.Add(innerEllipse);
+
+            // 中心
+            int marginSize = (int)(ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2);
+            Ellipse centerEllipse = new Ellipse()
+            {
+                StrokeThickness = 3,
+                Stroke = System.Windows.SystemColors.WindowTextBrush,
+                Width = config.zodiacCenter,
+                Height = config.zodiacCenter
+            };
+            if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+            {
+                // 横長
+                marginSize = (int)(ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2);
+            }
+            else
+            {
+                // 縦長
+                marginSize = (int)(ringCanvas.ActualWidth / 2 - config.zodiacCenter / 2);
+            }
+            centerEllipse.Margin = new Thickness(marginSize, marginSize, marginSize, marginSize);
+            ringCanvas.Children.Add(centerEllipse);
         }
 
         // ハウスカスプレンダリング
@@ -733,7 +805,6 @@ namespace microcosm
                     // Console.WriteLine(planet.no.ToString() + " " + (planet.absolute_position % 30).ToString("00"));
                 });
 
-                AllClear();
                 pDisplayList.ForEach(displayData => {
                     RingDisplay display;
                     if (displayData.planetNo == (int)CommonData.ZODIAC_SUN)
@@ -1340,6 +1411,12 @@ namespace microcosm
             }
         }
 
+        private void planetMouseEnter(object sender, System.EventArgs e)
+        {
+            Label l = (Label)sender;
+            PlanetData data = (PlanetData)l.Tag;
+            mainWindowVM.explanationTxt = CommonData.getPlanetText(data.no);
+        }
         private void aspectMouseEnter(object sender, System.EventArgs e)
         {
             Line l = (Line)sender;
@@ -1380,6 +1457,15 @@ namespace microcosm
 
 
             return new PointF((float)newX, (float)newY);
+        }
+
+        public double HexToDecimal(string decimalStr)
+        {
+            double tmp = double.Parse(decimalStr);
+            double ftmp = tmp - (int)tmp;
+            ftmp = ftmp / 100 * 60;
+            int itmp = (int)tmp;
+            return itmp + ftmp;
         }
 
         private void OpenCommonConfig_Click(object sender, RoutedEventArgs e)
