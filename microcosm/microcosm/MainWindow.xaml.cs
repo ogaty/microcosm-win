@@ -64,6 +64,7 @@ namespace microcosm
         public double[] houseList6;
 
         public CommonConfigWindow configWindow;
+        public SettingWIndow setWindow;
         public ChartSelectorWindow chartSelecterWindow;
 
         // temp ２回レンダリングされるのを防ぐ
@@ -813,21 +814,18 @@ namespace microcosm
                         {
                             return;
                         }
-                        rcanvas.natalSunTxt = displayData.planetTxt;
-                        rcanvas.natalSunX = displayData.planetPt.X;
-                        rcanvas.natalSunY = displayData.planetPt.Y;
-                        rcanvas.natalSunDegreeTxt = displayData.degreeTxt;
-                        rcanvas.natalSunDegreeX = displayData.degreePt.X;
-                        rcanvas.natalSunDegreeY = displayData.degreePt.Y;
-                        rcanvas.natalSunSignTxt = displayData.symbolTxt;
-                        rcanvas.natalSunSignX = displayData.symbolPt.X;
-                        rcanvas.natalSunSignY = displayData.symbolPt.Y;
-                        rcanvas.natalSunMinuteTxt = displayData.minuteTxt;
-                        rcanvas.natalSunMinuteX = displayData.minutePt.X;
-                        rcanvas.natalSunMinuteY = displayData.minutePt.Y;
-                        rcanvas.natalSunRetrogradeTxt = displayData.retrogradeTxt;
-                        rcanvas.natalSunRetrogradeX = displayData.retrogradePt.X;
-                        rcanvas.natalSunRetrogradeY = displayData.retrogradePt.Y;
+                        SetSun(
+                            displayData.planetTxt,
+                            displayData.planetPt,
+                            displayData.degreeTxt,
+                            displayData.degreePt,
+                            displayData.symbolTxt,
+                            displayData.symbolPt,
+                            displayData.minuteTxt,
+                            displayData.minutePt,
+                            displayData.retrogradeTxt,
+                            displayData.retrogradePt
+                        );
                     }
                     else if (displayData.planetNo == (int)CommonData.ZODIAC_MOON)
                     {
@@ -835,21 +833,18 @@ namespace microcosm
                         {
                             return;
                         }
-                        rcanvas.natalMoonTxt = displayData.planetTxt;
-                        rcanvas.natalMoonX = displayData.planetPt.X;
-                        rcanvas.natalMoonY = displayData.planetPt.Y;
-                        rcanvas.natalMoonDegreeTxt = displayData.degreeTxt;
-                        rcanvas.natalMoonDegreeX = displayData.degreePt.X;
-                        rcanvas.natalMoonDegreeY = displayData.degreePt.Y;
-                        rcanvas.natalMoonSignTxt = displayData.symbolTxt;
-                        rcanvas.natalMoonSignX = displayData.symbolPt.X;
-                        rcanvas.natalMoonSignY = displayData.symbolPt.Y;
-                        rcanvas.natalMoonMinuteTxt = displayData.minuteTxt;
-                        rcanvas.natalMoonMinuteX = displayData.minutePt.X;
-                        rcanvas.natalMoonMinuteY = displayData.minutePt.Y;
-                        rcanvas.natalMoonRetrogradeTxt = displayData.retrogradeTxt;
-                        rcanvas.natalMoonRetrogradeX = displayData.retrogradePt.X;
-                        rcanvas.natalMoonRetrogradeY = displayData.retrogradePt.Y;
+                        SetMoon(
+                            displayData.planetTxt,
+                            displayData.planetPt,
+                            displayData.degreeTxt,
+                            displayData.degreePt,
+                            displayData.symbolTxt,
+                            displayData.symbolPt,
+                            displayData.minuteTxt,
+                            displayData.minutePt,
+                            displayData.retrogradeTxt,
+                            displayData.retrogradePt
+                        );
                     }
                     else if (displayData.planetNo == (int)CommonData.ZODIAC_MERCURY)
                     {
@@ -857,21 +852,18 @@ namespace microcosm
                         {
                             return;
                         }
-                        rcanvas.natalMercuryTxt = displayData.planetTxt;
-                        rcanvas.natalMercuryX = displayData.planetPt.X;
-                        rcanvas.natalMercuryY = displayData.planetPt.Y;
-                        rcanvas.natalMercuryDegreeTxt = displayData.degreeTxt;
-                        rcanvas.natalMercuryDegreeX = displayData.degreePt.X;
-                        rcanvas.natalMercuryDegreeY = displayData.degreePt.Y;
-                        rcanvas.natalMercurySignTxt = displayData.symbolTxt;
-                        rcanvas.natalMercurySignX = displayData.symbolPt.X;
-                        rcanvas.natalMercurySignY = displayData.symbolPt.Y;
-                        rcanvas.natalMercuryMinuteTxt = displayData.minuteTxt;
-                        rcanvas.natalMercuryMinuteX = displayData.minutePt.X;
-                        rcanvas.natalMercuryMinuteY = displayData.minutePt.Y;
-                        rcanvas.natalMercuryRetrogradeTxt = displayData.retrogradeTxt;
-                        rcanvas.natalMercuryRetrogradeX = displayData.retrogradePt.X;
-                        rcanvas.natalMercuryRetrogradeY = displayData.retrogradePt.Y;
+                        SetMercury(
+                            displayData.planetTxt,
+                            displayData.planetPt,
+                            displayData.degreeTxt,
+                            displayData.degreePt,
+                            displayData.symbolTxt,
+                            displayData.symbolPt,
+                            displayData.minuteTxt,
+                            displayData.minutePt,
+                            displayData.retrogradeTxt,
+                            displayData.retrogradePt
+                        );
                     }
                     else if (displayData.planetNo == (int)CommonData.ZODIAC_VENUS)
                     {
@@ -879,21 +871,18 @@ namespace microcosm
                         {
                             return;
                         }
-                        rcanvas.natalVenusTxt = displayData.planetTxt;
-                        rcanvas.natalVenusX = displayData.planetPt.X;
-                        rcanvas.natalVenusY = displayData.planetPt.Y;
-                        rcanvas.natalVenusDegreeTxt = displayData.degreeTxt;
-                        rcanvas.natalVenusDegreeX = displayData.degreePt.X;
-                        rcanvas.natalVenusDegreeY = displayData.degreePt.Y;
-                        rcanvas.natalVenusSignTxt = displayData.symbolTxt;
-                        rcanvas.natalVenusSignX = displayData.symbolPt.X;
-                        rcanvas.natalVenusSignY = displayData.symbolPt.Y;
-                        rcanvas.natalVenusMinuteTxt = displayData.minuteTxt;
-                        rcanvas.natalVenusMinuteX = displayData.minutePt.X;
-                        rcanvas.natalVenusMinuteY = displayData.minutePt.Y;
-                        rcanvas.natalVenusRetrogradeTxt = displayData.retrogradeTxt;
-                        rcanvas.natalVenusRetrogradeX = displayData.retrogradePt.X;
-                        rcanvas.natalVenusRetrogradeY = displayData.retrogradePt.Y;
+                        SetVenus(
+                            displayData.planetTxt,
+                            displayData.planetPt,
+                            displayData.degreeTxt,
+                            displayData.degreePt,
+                            displayData.symbolTxt,
+                            displayData.symbolPt,
+                            displayData.minuteTxt,
+                            displayData.minutePt,
+                            displayData.retrogradeTxt,
+                            displayData.retrogradePt
+                        );
                     }
                     else if (displayData.planetNo == (int)CommonData.ZODIAC_MARS)
                     {
@@ -901,21 +890,18 @@ namespace microcosm
                         {
                             return;
                         }
-                        rcanvas.natalMarsTxt = displayData.planetTxt;
-                        rcanvas.natalMarsX = displayData.planetPt.X;
-                        rcanvas.natalMarsY = displayData.planetPt.Y;
-                        rcanvas.natalMarsDegreeTxt = displayData.degreeTxt;
-                        rcanvas.natalMarsDegreeX = displayData.degreePt.X;
-                        rcanvas.natalMarsDegreeY = displayData.degreePt.Y;
-                        rcanvas.natalMarsSignTxt = displayData.symbolTxt;
-                        rcanvas.natalMarsSignX = displayData.symbolPt.X;
-                        rcanvas.natalMarsSignY = displayData.symbolPt.Y;
-                        rcanvas.natalMarsMinuteTxt = displayData.minuteTxt;
-                        rcanvas.natalMarsMinuteX = displayData.minutePt.X;
-                        rcanvas.natalMarsMinuteY = displayData.minutePt.Y;
-                        rcanvas.natalMarsRetrogradeTxt = displayData.retrogradeTxt;
-                        rcanvas.natalMarsRetrogradeX = displayData.retrogradePt.X;
-                        rcanvas.natalMarsRetrogradeY = displayData.retrogradePt.Y;
+                        SetMars(
+                            displayData.planetTxt,
+                            displayData.planetPt,
+                            displayData.degreeTxt,
+                            displayData.degreePt,
+                            displayData.symbolTxt,
+                            displayData.symbolPt,
+                            displayData.minuteTxt,
+                            displayData.minutePt,
+                            displayData.retrogradeTxt,
+                            displayData.retrogradePt
+                        );
                     }
                     else if (displayData.planetNo == (int)CommonData.ZODIAC_JUPITER)
                     {
@@ -1144,6 +1130,128 @@ namespace microcosm
             rcanvas.natalEarthRetrogradeTxt = "";
 //            ringCanvas.Children.Clear();
         }
+
+        public void SetSun(
+            string planetTxt, PointF planet,
+            string degTxt, PointF degree,
+            string signTxt, PointF sign,
+            string minuteTxt, PointF minute,
+            string retrogradeTxt, PointF retrograde)
+        {
+            rcanvas.natalSunTxt = planetTxt;
+            rcanvas.natalSunX = planet.X;
+            rcanvas.natalSunY = planet.Y;
+            rcanvas.natalSunDegreeTxt = degTxt;
+            rcanvas.natalSunDegreeX = degree.X;
+            rcanvas.natalSunDegreeY = degree.Y;
+            rcanvas.natalSunSignTxt = signTxt;
+            rcanvas.natalSunSignX = sign.X;
+            rcanvas.natalSunSignY = sign.Y;
+            rcanvas.natalSunMinuteTxt = minuteTxt;
+            rcanvas.natalSunMinuteX = minute.X;
+            rcanvas.natalSunMinuteY = minute.Y;
+            rcanvas.natalSunRetrogradeTxt = retrogradeTxt;
+            rcanvas.natalSunRetrogradeX = retrograde.X;
+            rcanvas.natalSunRetrogradeY = retrograde.Y;
+        }
+
+        public void SetMoon(
+            string planetTxt, PointF planet,
+            string degTxt, PointF degree,
+            string signTxt, PointF sign,
+            string minuteTxt, PointF minute,
+            string retrogradeTxt, PointF retrograde)
+        {
+            rcanvas.natalMoonTxt = planetTxt;
+            rcanvas.natalMoonX = planet.X;
+            rcanvas.natalMoonY = planet.Y;
+            rcanvas.natalMoonDegreeTxt = degTxt;
+            rcanvas.natalMoonDegreeX = degree.X;
+            rcanvas.natalMoonDegreeY = degree.Y;
+            rcanvas.natalMoonSignTxt = signTxt;
+            rcanvas.natalMoonSignX = sign.X;
+            rcanvas.natalMoonSignY = sign.Y;
+            rcanvas.natalMoonMinuteTxt = minuteTxt;
+            rcanvas.natalMoonMinuteX = minute.X;
+            rcanvas.natalMoonMinuteY = minute.Y;
+            rcanvas.natalMoonRetrogradeTxt = retrogradeTxt;
+            rcanvas.natalMoonRetrogradeX = retrograde.X;
+            rcanvas.natalMoonRetrogradeY = retrograde.Y;
+        }
+
+        public void SetMercury(
+            string planetTxt, PointF planet,
+            string degTxt, PointF degree,
+            string signTxt, PointF sign,
+            string minuteTxt, PointF minute,
+            string retrogradeTxt, PointF retrograde)
+        {
+            rcanvas.natalMercuryTxt = planetTxt;
+            rcanvas.natalMercuryX = planet.X;
+            rcanvas.natalMercuryY = planet.Y;
+            rcanvas.natalMercuryDegreeTxt = degTxt;
+            rcanvas.natalMercuryDegreeX = degree.X;
+            rcanvas.natalMercuryDegreeY = degree.Y;
+            rcanvas.natalMercurySignTxt = signTxt;
+            rcanvas.natalMercurySignX = sign.X;
+            rcanvas.natalMercurySignY = sign.Y;
+            rcanvas.natalMercuryMinuteTxt = minuteTxt;
+            rcanvas.natalMercuryMinuteX = minute.X;
+            rcanvas.natalMercuryMinuteY = minute.Y;
+            rcanvas.natalMercuryRetrogradeTxt = retrogradeTxt;
+            rcanvas.natalMercuryRetrogradeX = retrograde.X;
+            rcanvas.natalMercuryRetrogradeY = retrograde.Y;
+        }
+
+        public void SetVenus(
+            string planetTxt, PointF planet,
+            string degTxt, PointF degree,
+            string signTxt, PointF sign,
+            string minuteTxt, PointF minute,
+            string retrogradeTxt, PointF retrograde)
+        {
+            rcanvas.natalVenusTxt = planetTxt;
+            rcanvas.natalVenusX = planet.X;
+            rcanvas.natalVenusY = planet.Y;
+            rcanvas.natalVenusDegreeTxt = degTxt;
+            rcanvas.natalVenusDegreeX = degree.X;
+            rcanvas.natalVenusDegreeY = degree.Y;
+            rcanvas.natalVenusSignTxt = signTxt;
+            rcanvas.natalVenusSignX = sign.X;
+            rcanvas.natalVenusSignY = sign.Y;
+            rcanvas.natalVenusMinuteTxt = minuteTxt;
+            rcanvas.natalVenusMinuteX = minute.X;
+            rcanvas.natalVenusMinuteY = minute.Y;
+            rcanvas.natalVenusRetrogradeTxt = retrogradeTxt;
+            rcanvas.natalVenusRetrogradeX = retrograde.X;
+            rcanvas.natalVenusRetrogradeY = retrograde.Y;
+        }
+
+
+        public void SetMars(
+            string planetTxt, PointF planet,
+            string degTxt, PointF degree,
+            string signTxt, PointF sign,
+            string minuteTxt, PointF minute,
+            string retrogradeTxt, PointF retrograde)
+        {
+            rcanvas.natalMarsTxt = planetTxt;
+            rcanvas.natalMarsX = planet.X;
+            rcanvas.natalMarsY = planet.Y;
+            rcanvas.natalMarsDegreeTxt = degTxt;
+            rcanvas.natalMarsDegreeX = degree.X;
+            rcanvas.natalMarsDegreeY = degree.Y;
+            rcanvas.natalMarsSignTxt = signTxt;
+            rcanvas.natalMarsSignX = sign.X;
+            rcanvas.natalMarsSignY = sign.Y;
+            rcanvas.natalMarsMinuteTxt = minuteTxt;
+            rcanvas.natalMarsMinuteX = minute.X;
+            rcanvas.natalMarsMinuteY = minute.Y;
+            rcanvas.natalMarsRetrogradeTxt = retrogradeTxt;
+            rcanvas.natalMarsRetrogradeX = retrograde.X;
+            rcanvas.natalMarsRetrogradeY = retrograde.Y;
+        }
+
 
         public void SetJupiter(
             string planetTxt, PointF planet,
@@ -1496,7 +1604,11 @@ namespace microcosm
 
         private void OpenDisplayConfig_Click(object sender, RoutedEventArgs e)
         {
-
+            if (setWindow == null)
+            {
+                setWindow = new SettingWIndow(this);
+            }
+            setWindow.Visibility = Visibility.Visible;
         }
 
         private void ChartSelector_Click(object sender, RoutedEventArgs e)

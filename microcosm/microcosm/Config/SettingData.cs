@@ -13,7 +13,7 @@ namespace microcosm.Config
     public class SettingData
     {
         public SettingXml xmlData;
-        public string dispname;
+        public string dispName { get; set; }
 
         // nn np nt n4 n5 n6
         // pn pp pt p4 p5 p6
@@ -57,7 +57,7 @@ namespace microcosm.Config
         {
             xmlData = new SettingXml();
 
-            this.dispname = "表示設定" + no.ToString();
+            this.dispName = "表示設定" + no.ToString();
             orb_sun_soft_1st = new double[6, 6] {
                 { 8.0, 8.0, 8.0, 8.0, 8.0, 8.0 },
                 { 8.0, 8.0, 8.0, 8.0, 8.0, 8.0 },
