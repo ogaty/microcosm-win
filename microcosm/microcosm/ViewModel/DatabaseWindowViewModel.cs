@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Controls;
 using microcosm.DB;
+using System.Windows;
 
 namespace microcosm.ViewModel
 {
@@ -127,6 +128,8 @@ namespace microcosm.ViewModel
             }
 
             dbwindow.UserDirTree.Items.Add(CreateDirectoryNode(rootDirectoryInfo));
+            TreeViewItem treeItem = (TreeViewItem)dbwindow.UserDirTree.Items[0];
+            treeItem.IsExpanded = true;
         }
 
         // ツリー選択
@@ -202,24 +205,49 @@ namespace microcosm.ViewModel
                 Directory.CreateDirectory(directoryInfo.FullName);
             }
 
+            ContextMenu context = new ContextMenu();
+            MenuItem newItem = new MenuItem { Header = "新規作成" };
+            newItem.Click += newItem_Click;
+            context.Items.Add(newItem);
+
+            MenuItem deleteItem = new MenuItem { Header = "削除" };
+            deleteItem.Click += deleteItem_Click;
+            context.Items.Add(deleteItem);
+
             var directoryNode = new TreeViewItem { Header = directoryInfo.Name };
+            directoryNode.ContextMenu = context;
+
             foreach (var directory in directoryInfo.GetDirectories())
             {
+                // ディレクトリ
                 TreeViewItem item = CreateDirectoryNode(directory);
                 item.Tag = directory.FullName;
+                item.ContextMenu = context;
                 item.Selected += UserDir_Selected;
                 directoryNode.Items.Add(item);
             }
 
             foreach (var file in directoryInfo.GetFiles())
             {
+                // ファイル
                 TreeViewItem item = new TreeViewItem { Header = file.Name };
                 item.Tag = file.FullName;
+                item.ContextMenu = context;
                 item.Selected += UserItem_Selected;
                 directoryNode.Items.Add(item);
             }
 
             return directoryNode;
+        }
+
+        public void newItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("click");
+        }
+
+        public void deleteItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("click");
         }
     }
 }

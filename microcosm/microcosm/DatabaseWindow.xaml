@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="DatabaseWindow" Height="410" Width="720">
+        Title="データベース" Height="410" Width="720">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"></ColumnDefinition>
@@ -17,6 +17,11 @@
                     <Style TargetType="TreeViewItem">
                     </Style>
                 </TreeView.Resources>
+                <TreeView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="新規作成"></MenuItem>
+                    </ContextMenu>
+                </TreeView.ContextMenu>
             </TreeView>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">

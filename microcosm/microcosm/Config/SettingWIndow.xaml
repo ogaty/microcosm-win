@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm.Config"
         mc:Ignorable="d"
-        Title="表示設定" Height="300" Width="640" Closing="Window_Closing">
+        Title="表示設定" Height="520" Width="640" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition Width="220"></ColumnDefinition>
             <ColumnDefinition Width="320"></ColumnDefinition>
+            <ColumnDefinition Width="220"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="10,10,0,0">
             <ListBox x:Name="dispList">
@@ -25,16 +25,223 @@
         <StackPanel Grid.Column="1" Margin="10,10,0,0" x:Name="leftPane">
             <TextBlock Text="名称"></TextBlock>
             <TextBox Text="{Binding dispName}"></TextBox>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="1"></Label>
-                <Label Content="2"></Label>
-                <Label Content="3"></Label>
-                <Label Content="4"></Label>
-                <Label Content="5"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="☉"></Label>
-            </StackPanel>
+            <TabControl Margin="0,10,0,0">
+                <TabItem Header="天体表示">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Width="26">
+                            <Label Content="" Margin="0,0,0,0"></Label>
+                            <Label Content="☉" HorizontalAlignment="Center"></Label>
+                            <Label Content="☽" HorizontalAlignment="Center"></Label>
+                            <Label Content="☿" HorizontalAlignment="Center"></Label>
+                            <Label Content="♀" HorizontalAlignment="Center"></Label>
+                            <Label Content="♂" HorizontalAlignment="Center"></Label>
+                            <Label Content="♃" HorizontalAlignment="Center"></Label>
+                            <Label Content="♄" HorizontalAlignment="Center"></Label>
+                            <Label Content="♅" HorizontalAlignment="Center"></Label>
+                            <Label Content="♆" HorizontalAlignment="Center"></Label>
+                            <Label Content="♇" HorizontalAlignment="Center"></Label>
+                            <Label Content="☊" HorizontalAlignment="Center"></Label>
+                            <Label Content="⚷" HorizontalAlignment="Center"></Label>
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="1"></Label>
+                                <Label Content="2" Margin="4,0,0,0"></Label>
+                                <Label Content="3" Margin="4,0,0,0"></Label>
+                                <Label Content="4" Margin="4,0,0,0"></Label>
+                                <Label Content="5" Margin="4,0,0,0"></Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstSun" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondSun" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdSun" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthSun" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthSun" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstMoon" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstMercury" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstVenus" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstMars" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstJupiter" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstSaturn" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstUranus" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstNeptune" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstPluto" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstDH" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstChiron" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Width="26" Margin="16,0,0,0">
+                            <Label Content="" Margin="0,0,0,0"></Label>
+                            <Label Content="♁" HorizontalAlignment="Center"></Label>
+                            <Label Content="⚸" HorizontalAlignment="Center"></Label>
+                            <Label Content="⚳" HorizontalAlignment="Center"></Label>
+                            <Label Content="⚴" HorizontalAlignment="Center"></Label>
+                            <Label Content="⚵" HorizontalAlignment="Center"></Label>
+                            <Label Content="⚶" HorizontalAlignment="Center"></Label>
+                            <Label Content="" HorizontalAlignment="Center"></Label>
+                            <Label Content="" HorizontalAlignment="Center"></Label>
+                            <Label Content="" HorizontalAlignment="Center"></Label>
+                            <Label Content="" HorizontalAlignment="Center"></Label>
+                            <Label Content="☋" HorizontalAlignment="Center"></Label>
+                            <Label Content="" HorizontalAlignment="Center"></Label>
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="1"></Label>
+                                <Label Content="2" Margin="4,0,0,0"></Label>
+                                <Label Content="3" Margin="4,0,0,0"></Label>
+                                <Label Content="4" Margin="4,0,0,0"></Label>
+                                <Label Content="5" Margin="4,0,0,0"></Label>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstEarth" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstLilith" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="seconLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstCeles" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondCeles" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdCeles" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthCeles" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthCeles" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstParas" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondParas" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdParas" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthParas" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthParas" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstJuno" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondJuno" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdJuno" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthJuno" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthJuno" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstVesta" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondVesta" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdVesta" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthVesta" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthVesta" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26"></StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26"></StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26"></StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26"></StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
+                                <CheckBox x:Name="firstDT" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondDT" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="thirdDT" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fourthDT" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="fifthDT" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26"></StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Header="アスペクト表示">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="1-1"></Label>
+                        </StackPanel>
+                        
+                        <Label Content="1-2"></Label>
+                        <Label Content="1-3"></Label>
+                        <Label Content="1-4"></Label>
+                        <Label Content="1-5"></Label>
+                        <Label Content="2-2"></Label>
+                        <Label Content="2-3"></Label>
+                        <Label Content="2-4"></Label>
+                        <Label Content="2-5"></Label>
+                        <Label Content="3-3"></Label>
+                        <Label Content="3-4"></Label>
+                        <Label Content="3-5"></Label>
+                        <Label Content="4-4"></Label>
+                        <Label Content="4-5"></Label>
+                        <Label Content="5-5"></Label>
+                    </StackPanel>
+                </TabItem>
+
+            </TabControl>
+
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="10,10,0,0">
             

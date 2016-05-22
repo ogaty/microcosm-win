@@ -30,6 +30,7 @@ namespace microcosm.Config
             InitializeComponent();
 
             dispList.ItemsSource = new ObservableCollection<SettingData>(main.settings);
+            dispList.SelectedIndex = 0;
             settingVM = new SettingWindowViewModel(main);
             leftPane.DataContext = settingVM;
 
