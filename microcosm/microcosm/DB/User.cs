@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace microcosm.DB
 {
+    // メインウィンドウ用
+    // UserDataとUserEventを両方管理
     public class User
     {
         public UserData udata { get; set; }

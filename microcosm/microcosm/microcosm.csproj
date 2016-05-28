@@ -80,7 +80,11 @@
     <Compile Include="DatabaseWindow.xaml.cs">
       <DependentUpon>DatabaseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DB\DbItem.cs" />
     <Compile Include="DB\TransitBinding.cs" />
+    <Compile Include="DB\UserEditWindow.xaml.cs">
+      <DependentUpon>UserEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\UserEventData.cs" />
     <Compile Include="DB\XMLDBManager.cs" />
     <Compile Include="Planet\PlanetData.cs" />
@@ -107,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DatabaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DB\UserEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

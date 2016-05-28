@@ -9,6 +9,7 @@ using microcosm.Config;
 
 namespace microcosm.DB
 {
+    // .csmファイル格納クラス
     [XmlRoot("userdata")]
     public class UserData
     {

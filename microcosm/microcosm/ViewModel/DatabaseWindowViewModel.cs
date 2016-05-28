@@ -7,8 +7,9 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Controls;
-using microcosm.DB;
 using System.Windows;
+using microcosm.DB;
+using System.Xml.Serialization;
 
 namespace microcosm.ViewModel
 {
@@ -133,10 +134,11 @@ namespace microcosm.ViewModel
         }
 
         // ツリー選択
-        private void UserItem_Selected(object sender, System.Windows.RoutedEventArgs e)
+        public void UserItem_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
             TreeViewItem item = (TreeViewItem)sender;
-            XMLDBManager DBMgr = new XMLDBManager(item.Tag.ToString());
+            DbItem iteminfo = (DbItem)item.Tag;
+            XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
             UserData data = DBMgr.getObject();
             UserEventData udata = new UserEventData()
             {
@@ -145,7 +147,7 @@ namespace microcosm.ViewModel
                 birth_place = data.birth_place,
                 lat_lng = data.lat_lng,
                 memo = data.memo,
-                fullpath = item.Tag.ToString()
+                fullpath = iteminfo.fileName
             };
 
             dbwindow.UserEvent.Items.Clear();
@@ -159,7 +161,7 @@ namespace microcosm.ViewModel
             int i = 0;
             data.userevent.ForEach(ev =>
             {
-                dbwindow.UserEvent.Items.Add(createEventData(ev, item.Tag.ToString(), i));
+                dbwindow.UserEvent.Items.Add(createEventData(ev, iteminfo.fileName, i));
                 i++;
             });
         }
@@ -168,7 +170,6 @@ namespace microcosm.ViewModel
         {
             UserEventData udata = (UserEventData)sender;
             Memo = udata.memo;
-            Console.WriteLine("memo");
         }
 
         private UserEventData createEventData(UserEvent uevent, string filename, int index)
@@ -194,7 +195,6 @@ namespace microcosm.ViewModel
 
         private void UserDir_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
-            Console.WriteLine("dir");
         }
 
         // ディレクトリ再帰的呼び出し
@@ -206,12 +206,20 @@ namespace microcosm.ViewModel
             }
 
             ContextMenu context = new ContextMenu();
-            MenuItem newItem = new MenuItem { Header = "新規作成" };
-            newItem.Click += newItem_Click;
+            MenuItem newItem = new MenuItem { Header = "新規データ作成" };
+            newItem.Click += dbwindow.newItem_Click;
             context.Items.Add(newItem);
 
+            MenuItem newDirItem = new MenuItem { Header = "新規ディレクトリ作成" };
+            newDirItem.Click += dbwindow.newDir_Click;
+            context.Items.Add(newDirItem);
+
+            MenuItem editItem = new MenuItem { Header = "編集" };
+            editItem.Click += dbwindow.edit_Click;
+            context.Items.Add(editItem);
+
             MenuItem deleteItem = new MenuItem { Header = "削除" };
-            deleteItem.Click += deleteItem_Click;
+            deleteItem.Click += dbwindow.deleteItem_Click;
             context.Items.Add(deleteItem);
 
             var directoryNode = new TreeViewItem { Header = directoryInfo.Name };
@@ -221,7 +229,11 @@ namespace microcosm.ViewModel
             {
                 // ディレクトリ
                 TreeViewItem item = CreateDirectoryNode(directory);
-                item.Tag = directory.FullName;
+                item.Tag = new DbItem
+                {
+                    fileName = directory.FullName,
+                    isDir = true
+                };
                 item.ContextMenu = context;
                 item.Selected += UserDir_Selected;
                 directoryNode.Items.Add(item);
@@ -230,8 +242,13 @@ namespace microcosm.ViewModel
             foreach (var file in directoryInfo.GetFiles())
             {
                 // ファイル
-                TreeViewItem item = new TreeViewItem { Header = file.Name };
-                item.Tag = file.FullName;
+                string trimName = System.IO.Path.GetFileNameWithoutExtension(file.Name);
+                TreeViewItem item = new TreeViewItem { Header = trimName };
+                item.Tag = new DbItem
+                {
+                    fileName = file.FullName,
+                    isDir = false
+                };
                 item.ContextMenu = context;
                 item.Selected += UserItem_Selected;
                 directoryNode.Items.Add(item);
@@ -240,14 +257,5 @@ namespace microcosm.ViewModel
             return directoryNode;
         }
 
-        public void newItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("click");
-        }
-
-        public void deleteItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("click");
-        }
     }
 }
