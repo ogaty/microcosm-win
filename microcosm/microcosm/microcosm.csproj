@@ -80,12 +80,17 @@
     <Compile Include="DatabaseWindow.xaml.cs">
       <DependentUpon>DatabaseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DB\AddrSearchResult.cs" />
     <Compile Include="DB\DbItem.cs" />
+    <Compile Include="DB\UserSearchWindowViewModel.cs" />
     <Compile Include="DB\TransitBinding.cs" />
     <Compile Include="DB\UserEditWindow.xaml.cs">
       <DependentUpon>UserEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DB\UserEventData.cs" />
+    <Compile Include="DB\UserSearchWindow.xaml.cs">
+      <DependentUpon>UserSearchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\XMLDBManager.cs" />
     <Compile Include="Planet\PlanetData.cs" />
     <Compile Include="Planet\PlanetDisplay.cs" />
@@ -115,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DB\UserEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DB\UserSearchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

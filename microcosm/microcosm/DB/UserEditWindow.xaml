@@ -9,7 +9,13 @@
     <Window.Resources>
     </Window.Resources>
     <Grid>
-        <StackPanel Margin="10,0">
+        <StackPanel>
+        <Menu>
+            <MenuItem Header="インポート(_I)"></MenuItem>
+            <MenuItem Header="エクスポート(_E)"></MenuItem>
+        </Menu>
+        </StackPanel>
+        <StackPanel Margin="10,20,10,0">
             <Label Content="ファイル名"></Label>
             <TextBox x:Name="fileName" Width="220" HorizontalAlignment="Right"></TextBox>
             <Label Content="名前"></Label>
@@ -29,7 +35,7 @@
             </StackPanel>
             <Label Content="出生地"></Label>
             <TextBox x:Name="userPlace" Width="220" HorizontalAlignment="Right"></TextBox>
-            <Button Content="地名から緯度経度検索" Margin="0,10,0,0" Width="150" HorizontalAlignment="Right"></Button>
+            <Button Content="地名から緯度経度検索" Margin="0,10,0,0" Width="150" HorizontalAlignment="Right" Click="Search_Click"></Button>
             <Button Content="Google Mapを使用して緯度経度検索" Margin="0,10,0,0" Width="210" HorizontalAlignment="Right"></Button>
             <StackPanel Orientation="Horizontal">
                 <StackPanel Margin="20,0,0,0">

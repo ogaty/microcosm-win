@@ -10,5 +10,8 @@ namespace microcosm.DB
     {
         public string fileName;
         public bool isDir;
+
+        public string userName;
+        public string userFurigana;
     }
 }

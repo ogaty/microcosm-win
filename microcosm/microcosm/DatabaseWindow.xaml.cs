@@ -65,7 +65,19 @@ namespace microcosm
         public void newItem_Click(object sender, EventArgs e)
         {
             setDisable();
-            AddUserEditWindow();
+            AddUserEditWindow(new DbItem
+            {
+                fileName = "新規データ" 
+                + DateTime.Now.Year 
+                + DateTime.Now.Month 
+                + DateTime.Now.Day 
+                + DateTime.Now.Hour 
+                + DateTime.Now.Minute 
+                + DateTime.Now.Second,
+                isDir = false,
+                userName = "新規データ",
+                userFurigana = "しんきでーた",
+            });
         }
 
         // 新規作成(ファイル)コールバック
@@ -111,7 +123,9 @@ namespace microcosm
                 newItem.Tag = new DbItem
                 {
                     fileName = newPath,
-                    isDir = false
+                    isDir = false,
+                    userName = userName,
+                    userFurigana = userFurigana
                 };
                 newItem.Selected += window.UserItem_Selected;
                 item.Items.Add(newItem);
@@ -125,7 +139,9 @@ namespace microcosm
                 newItem.Tag = new DbItem
                 {
                     fileName = newPath,
-                    isDir = false
+                    isDir = false,
+                    userName = userName,
+                    userFurigana = userFurigana
                 };
                 newItem.Selected += window.UserItem_Selected;
                 parentItem.Items.Add(newItem);
@@ -163,7 +179,15 @@ namespace microcosm
             TreeViewItem newItem = new TreeViewItem { Header = "新規ディレクトリ" };
             TreeViewItem parentItem = (TreeViewItem)item.Parent;
             DbItem parentIteminfo = (DbItem)parentItem.Tag;
-            string parentPath = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
+            string parentPath;
+            if (parentIteminfo == null)
+            {
+                parentPath = "data";
+            }
+            else
+            {
+                parentPath = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
+            }
             newItem.Tag = new DbItem
             {
                 fileName = parentPath + "新規ディレクトリ",
@@ -177,16 +201,14 @@ namespace microcosm
         {
             TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
             DbItem iteminfo = (DbItem)item.Tag;
-            TreeViewItem newItem = new TreeViewItem { Header = "新規ディレクトリ" };
-            TreeViewItem parentItem = (TreeViewItem)item.Parent;
-            DbItem parentIteminfo = (DbItem)parentItem.Tag;
-            string parentPath = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
-            newItem.Tag = new DbItem
-            {
-                fileName = parentPath + "新規ディレクトリ",
-                isDir = true
-            };
-            parentItem.Items.Add(newItem);
+            XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
+            UserData data = DBMgr.getObject();
+            iteminfo.fileName = System.IO.Path.GetFileNameWithoutExtension(iteminfo.fileName);
+            iteminfo.userName = data.name;
+            iteminfo.userFurigana = data.furigana;
+
+            setDisable();
+            AddUserEditWindow(iteminfo);
         }
 
         // 削除
@@ -195,11 +217,15 @@ namespace microcosm
             MessageBox.Show("click");
         }
 
-        public void AddUserEditWindow()
+        public void AddUserEditWindow(DbItem item)
         {
             if (editwindow == null)
             {
-                editwindow = new UserEditWindow(this);
+                editwindow = new UserEditWindow(this, item);
+            }
+            else
+            {
+                editwindow.UserEditRefresh(item);
             }
             editwindow.Visibility = Visibility.Visible;
         }
