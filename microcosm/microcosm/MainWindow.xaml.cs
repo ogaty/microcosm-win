@@ -66,6 +66,7 @@ namespace microcosm
         public CommonConfigWindow configWindow;
         public SettingWIndow setWindow;
         public ChartSelectorWindow chartSelecterWindow;
+        public DatabaseWindow dbWindow;
 
         // temp ２回レンダリングされるのを防ぐ
         public bool flag = false;
@@ -1543,8 +1544,11 @@ namespace microcosm
 
         private void OpenDatabase_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseWindow dbwin = new DatabaseWindow(this);
-            dbwin.Show();
+            if (dbWindow == null)
+            {
+                dbWindow = new DatabaseWindow(this);
+            }
+            dbWindow.Visibility = Visibility.Visible;
         }
 
         private void mainWindow_Closed(object sender, EventArgs e)

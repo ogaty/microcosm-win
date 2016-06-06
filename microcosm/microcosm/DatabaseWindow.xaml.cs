@@ -46,7 +46,10 @@ namespace microcosm
         {
             ListView item = (ListView)sender;
             UserEventData data = (UserEventData)item.SelectedItem;
-            window.Memo = data.memo;
+            if (data != null)
+            {
+                window.Memo = data.memo;
+            }
         }
 
         // 決定ボタン
@@ -58,13 +61,31 @@ namespace microcosm
             }
             mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
 
-            this.Close();
+            this.Visibility = Visibility.Hidden;
         }
 
         // 新規作成(ファイル)
         public void newItem_Click(object sender, EventArgs e)
         {
             newData();
+        }
+
+        // イベントリスト右クリック→表示
+        public void disp_Click(object sender, EventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
+
+            this.Visibility = Visibility.Hidden;
+        }
+
+        // イベントリスト右クリック→新規追加
+        public void addEvent_Click(object sender, EventArgs e)
+        {
+            newEventData();
         }
 
         // 新規作成(ファイル)コールバック
@@ -158,6 +179,7 @@ namespace microcosm
             fs.Close();
         }
 
+        // ユーザーデータ追加
         public void newData()
         {
             setDisable();
@@ -183,6 +205,14 @@ namespace microcosm
                 userTimezone = "JST",
                 memo = ""
             });
+        }
+
+        // イベントデータ追加
+        // fileNameとかが不要になる
+        public void newEventData()
+        {
+            setDisable();
+            // TODO
         }
 
         // 新規作成(ディレクトリ)

@@ -23,6 +23,7 @@ namespace microcosm.DB
     {
         public DatabaseWindow dbwindow;
         public UserSearchWindow searchWindow;
+        public GoogleSearchWindow googleSearchWindow;
         public DateTime defaultDate { get; } = new DateTime(2000, 1, 1, 12, 0, 0);
         public UserEditWindow(DatabaseWindow dbwindow, DbItem item)
         {
@@ -31,12 +32,14 @@ namespace microcosm.DB
             UserEditSet(item);
         }
 
+        // 表示文字リフレッシュ
         public void UserEditRefresh(DbItem item)
         {
             UserEditClear();
             UserEditSet(item);
         }
 
+        // 表示文字設定
         public void UserEditSet(DbItem item)
         {
             fileName.Text = item.fileName;
@@ -53,6 +56,15 @@ namespace microcosm.DB
             userMemo.Text = item.memo;
         }
 
+        // 表示文字設定(CB)
+        public void UserEditSet(string place, string lat, string lng)
+        {
+            userPlace.Text = place;
+            userLat.Text = lat;
+            userLng.Text = lng;
+        }
+
+        // 表示文字クリア
         public void UserEditClear()
         {
             fileName.Text = "";
@@ -109,6 +121,16 @@ namespace microcosm.DB
                 searchWindow = new UserSearchWindow(this, userPlace.Text);
             }
             searchWindow.Visibility = Visibility.Visible;
+
+        }
+
+        private void GoogleSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (googleSearchWindow == null)
+            {
+                googleSearchWindow = new GoogleSearchWindow(this, userPlace.Text);
+            }
+            googleSearchWindow.Visibility = Visibility.Visible;
 
         }
     }

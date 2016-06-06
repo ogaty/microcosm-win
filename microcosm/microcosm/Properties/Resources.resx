@@ -142,4 +142,7 @@
   <data name="TIMEZONE_UTC_STR_SHORT" xml:space="preserve">
     <value>UTC</value>
   </data>
+  <data name="ERROR_ERROR_RESPONSE" xml:space="preserve">
+    <value>データが取得できませんでした。</value>
+  </data>
 </root>

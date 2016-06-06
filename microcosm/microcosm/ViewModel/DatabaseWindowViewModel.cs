@@ -164,14 +164,18 @@ namespace microcosm.ViewModel
                 dbwindow.UserEvent.Items.Add(createEventData(ev, iteminfo.fileName, i));
                 i++;
             });
+            ContextMenu context = new ContextMenu();
+            MenuItem newItem = new MenuItem { Header = "表示" };
+            newItem.Click += dbwindow.disp_Click;
+            context.Items.Add(newItem);
+            MenuItem addEventItem = new MenuItem { Header = "イベント追加" };
+            addEventItem.Click += dbwindow.addEvent_Click;
+            context.Items.Add(addEventItem);
+
+            dbwindow.UserEvent.ContextMenu = context;
         }
 
-        private void UserEvent_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            UserEventData udata = (UserEventData)sender;
-            Memo = udata.memo;
-        }
-
+        // リスト上に表示されるデータを作成
         private UserEventData createEventData(UserEvent uevent, string filename, int index)
         {
             return new UserEventData()

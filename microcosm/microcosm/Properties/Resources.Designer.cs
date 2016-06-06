@@ -61,6 +61,15 @@ namespace microcosm.Properties {
         }
         
         /// <summary>
+        ///   データが取得できませんでした。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ERROR_ERROR_RESPONSE {
+            get {
+                return ResourceManager.GetString("ERROR_ERROR_RESPONSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Bitmap half_circle_bottom {

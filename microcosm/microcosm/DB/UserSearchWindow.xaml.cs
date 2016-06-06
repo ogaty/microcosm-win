@@ -71,5 +71,22 @@ namespace microcosm.DB
             }
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void Ok_Click(object sender, RoutedEventArgs e)
+        {
+            AddrSearchResult searchItem = (AddrSearchResult)resultBox.SelectedItem;
+            if (searchItem == null)
+            {
+                return;
+            }
+            editWindow.UserEditSet(searchItem.resultPlace, searchItem.resultLat.ToString(), searchItem.resultLng.ToString());
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }
