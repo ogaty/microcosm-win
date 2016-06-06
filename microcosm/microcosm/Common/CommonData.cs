@@ -76,6 +76,18 @@ namespace microcosm.Common
             }
             return Properties.Resources.TIMEZONE_UTC_STR_SHORT;
         }
+        // SelectBoxのIndexを返す
+        public static int getTimezoneIndex(string timezone)
+        {
+            switch (timezone)
+            {
+                case "JST":
+                    return 0;
+                case "UTC":
+                    return 1;
+            }
+            return 0;
+        }
         // 番号を引数に天体のシンボルを返す
         public static string getPlanetSymbol(int number)
         {

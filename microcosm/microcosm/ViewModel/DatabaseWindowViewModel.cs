@@ -186,7 +186,7 @@ namespace microcosm.ViewModel
                         uevent.event_second
                     ),
                 birth_place = uevent.event_place,
-                lat_lng = String.Format("({0},{1})", uevent.event_lat, uevent.event_lng),
+                lat_lng = String.Format("{0:00.000}/{1:000.000}", uevent.event_lat, uevent.event_lng),
                 memo = uevent.event_memo,
                 fullpath = filename
             };

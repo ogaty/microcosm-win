@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm.DB"
         mc:Ignorable="d"
-        Title="ユーザーデータ編集" Height="580" Width="290" Closing="Window_Closing">
+        Title="ユーザーデータ編集" Height="600" Width="290" Closing="Window_Closing">
     <Window.Resources>
     </Window.Resources>
     <Grid>

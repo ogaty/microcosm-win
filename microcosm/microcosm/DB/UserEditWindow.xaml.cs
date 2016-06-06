@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using microcosm.Common;
+
 namespace microcosm.DB
 {
     /// <summary>
@@ -21,6 +23,7 @@ namespace microcosm.DB
     {
         public DatabaseWindow dbwindow;
         public UserSearchWindow searchWindow;
+        public DateTime defaultDate { get; } = new DateTime(2000, 1, 1, 12, 0, 0);
         public UserEditWindow(DatabaseWindow dbwindow, DbItem item)
         {
             this.dbwindow = dbwindow;
@@ -39,6 +42,15 @@ namespace microcosm.DB
             fileName.Text = item.fileName;
             userName.Text = item.userName;
             userFurigana.Text = item.userFurigana;
+            userBirth.SelectedDate = item.userBirth;
+            userHour.Text = item.userHour;
+            userMinute.Text = item.userMinute;
+            userSecond.Text = item.userSecond;
+            userPlace.Text = item.userPlace;
+            userLat.Text = item.userLat;
+            userLng.Text = item.userLng;
+            userTimezone.SelectedIndex = CommonData.getTimezoneIndex(item.userTimezone);
+            userMemo.Text = item.memo;
         }
 
         public void UserEditClear()
@@ -46,6 +58,15 @@ namespace microcosm.DB
             fileName.Text = "";
             userName.Text = "";
             userFurigana.Text = "";
+            userBirth.SelectedDate = defaultDate;
+            userHour.Text = "";
+            userMinute.Text = "";
+            userSecond.Text = "";
+            userPlace.Text = "";
+            userLat.Text = "";
+            userLng.Text = "";
+            userTimezone.SelectedIndex = CommonData.getTimezoneIndex("JST");
+            userMemo.Text = "";
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

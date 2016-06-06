@@ -47,7 +47,7 @@ namespace microcosm.DB
         {
             get
             {
-                return birth_year.ToString("0000") + "/" + birth_month.ToString("00") + "/" + birth_day.ToString("00") + " " +
+                return birth_year.ToString("0000") + "年" + birth_month.ToString("00") + "月" + birth_day.ToString("00") + "日 " +
                     birth_hour.ToString("00") + ":" + birth_minute.ToString("00") + ":" + birth_second.ToString("00");
             }
         }

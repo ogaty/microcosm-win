@@ -13,5 +13,14 @@ namespace microcosm.DB
 
         public string userName;
         public string userFurigana;
+        public DateTime userBirth;
+        public string userHour;
+        public string userMinute;
+        public string userSecond;
+        public string userPlace;
+        public string userLat;
+        public string userLng;
+        public string userTimezone;
+        public string memo;
     }
 }

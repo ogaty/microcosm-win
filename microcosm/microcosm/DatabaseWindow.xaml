@@ -19,7 +19,7 @@
                 </TreeView.Resources>
                 <TreeView.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="新規作成"></MenuItem>
+                        <MenuItem Header="新規データ" Click="NewDataContext_Click"></MenuItem>
                     </ContextMenu>
                 </TreeView.ContextMenu>
             </TreeView>
@@ -34,8 +34,8 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="" Width="100" DisplayMemberBinding="{Binding name}"></GridViewColumn>
-                        <GridViewColumn Header="" Width="140" DisplayMemberBinding="{Binding birth_str}"></GridViewColumn>
-                        <GridViewColumn Header="" Width="100" DisplayMemberBinding="{Binding birth_place}"></GridViewColumn>
+                        <GridViewColumn Header="" Width="150" DisplayMemberBinding="{Binding birth_str}"></GridViewColumn>
+                        <GridViewColumn Header="" Width="90" DisplayMemberBinding="{Binding birth_place}"></GridViewColumn>
                         <GridViewColumn Header="" Width="150" DisplayMemberBinding="{Binding lat_lng}"></GridViewColumn>
                     </GridView>
                 </ListView.View>

@@ -64,20 +64,7 @@ namespace microcosm
         // 新規作成(ファイル)
         public void newItem_Click(object sender, EventArgs e)
         {
-            setDisable();
-            AddUserEditWindow(new DbItem
-            {
-                fileName = "新規データ" 
-                + DateTime.Now.Year 
-                + DateTime.Now.Month 
-                + DateTime.Now.Day 
-                + DateTime.Now.Hour 
-                + DateTime.Now.Minute 
-                + DateTime.Now.Second,
-                isDir = false,
-                userName = "新規データ",
-                userFurigana = "しんきでーた",
-            });
+            newData();
         }
 
         // 新規作成(ファイル)コールバック
@@ -171,6 +158,33 @@ namespace microcosm
             fs.Close();
         }
 
+        public void newData()
+        {
+            setDisable();
+            AddUserEditWindow(new DbItem
+            {
+                fileName = "新規データ"
+                + DateTime.Now.Year
+                + DateTime.Now.Month.ToString("00")
+                + DateTime.Now.Day.ToString("00")
+                + DateTime.Now.Hour.ToString("00")
+                + DateTime.Now.Minute.ToString("00")
+                + DateTime.Now.Second.ToString("00"),
+                isDir = false,
+                userName = "新規データ",
+                userFurigana = "しんきでーた",
+                userBirth = DateTime.Today,
+                userHour = "12",
+                userMinute = "0",
+                userSecond = "0",
+                userPlace = "東京都中央区",
+                userLat = "35.685175",
+                userLng = "139.7528",
+                userTimezone = "JST",
+                memo = ""
+            });
+        }
+
         // 新規作成(ディレクトリ)
         public void newDir_Click(object sender, EventArgs e)
         {
@@ -206,6 +220,15 @@ namespace microcosm
             iteminfo.fileName = System.IO.Path.GetFileNameWithoutExtension(iteminfo.fileName);
             iteminfo.userName = data.name;
             iteminfo.userFurigana = data.furigana;
+            iteminfo.userBirth = new DateTime(data.birth_year, data.birth_month, data.birth_day, data.birth_hour, data.birth_minute, data.birth_second);
+            iteminfo.userHour = data.birth_hour.ToString();
+            iteminfo.userMinute = data.birth_minute.ToString();
+            iteminfo.userSecond = data.birth_second.ToString();
+            iteminfo.userPlace = data.birth_place;
+            iteminfo.userLat = data.lat.ToString("00.000");
+            iteminfo.userLng = data.lng.ToString("000.000");
+            iteminfo.userTimezone = data.timezone;
+            iteminfo.memo = data.memo;
 
             setDisable();
             AddUserEditWindow(iteminfo);
@@ -237,6 +260,12 @@ namespace microcosm
         public void setDisable()
         {
             this.IsEnabled = false;
+        }
+
+        // 新規作成(何もないところ右クリック)
+        private void NewDataContext_Click(object sender, RoutedEventArgs e)
+        {
+            newData();
         }
     }
 }
