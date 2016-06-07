@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows;
 using microcosm.DB;
 using System.Xml.Serialization;
+using System.Windows.Input;
 
 namespace microcosm.ViewModel
 {
@@ -123,6 +124,7 @@ namespace microcosm.ViewModel
         {
             var rootDirectoryInfo = new DirectoryInfo(datadir);
             dbwindow.UserDirTree.Items.Clear();
+            dbwindow.UserEvent.Items.Clear();
             if (!Directory.Exists(rootDirectoryInfo.FullName))
             {
                 Directory.CreateDirectory(rootDirectoryInfo.FullName);
@@ -140,11 +142,28 @@ namespace microcosm.ViewModel
             DbItem iteminfo = (DbItem)item.Tag;
             XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
             UserData data = DBMgr.getObject();
-            UserEventData udata = new UserEventData()
+            UserData udata = new UserData()
+            {
+                name = data.name,
+                birth_year = data.birth_year,
+                birth_month = data.birth_month,
+                birth_day = data.birth_day,
+                birth_hour = data.birth_hour,
+                birth_minute = data.birth_minute,
+                birth_second = data.birth_second,
+                birth_place = data.birth_place,
+                lat = data.lat,
+                lng = data.lng,
+                timezone = data.timezone,
+                memo = data.memo
+            };
+            UserEventData edata = new UserEventData()
             {
                 name = data.name,
                 birth_str = data.birth_str,
                 birth_place = data.birth_place,
+                lat = data.lat.ToString(),
+                lng = data.lng.ToString(),
                 lat_lng = data.lat_lng,
                 memo = data.memo,
                 fullpath = iteminfo.fileName
@@ -152,6 +171,7 @@ namespace microcosm.ViewModel
 
             dbwindow.UserEvent.Items.Clear();
             dbwindow.UserEvent.Items.Add(udata);
+            dbwindow.UserEvent.Tag = udata;
 
             if (data.userevent == null)
             {
@@ -240,6 +260,7 @@ namespace microcosm.ViewModel
                 };
                 item.ContextMenu = context;
                 item.Selected += UserDir_Selected;
+                item.MouseDoubleClick += UserDir_MouseDoubleClick;
                 directoryNode.Items.Add(item);
             }
 
@@ -255,11 +276,43 @@ namespace microcosm.ViewModel
                 };
                 item.ContextMenu = context;
                 item.Selected += UserItem_Selected;
+                item.MouseDoubleClick += UserItem_MouseDoubleClick;
                 directoryNode.Items.Add(item);
             }
 
             return directoryNode;
         }
 
+        private void UserItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TreeViewItem item = (TreeViewItem)sender;
+            DbItem iteminfo = (DbItem)item.Tag;
+            XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
+            UserData data = DBMgr.getObject();
+            UserEventData edata = new UserEventData()
+            {
+                name = data.name,
+                birth_str = data.birth_str,
+                birth_place = data.birth_place,
+                lat = data.lat.ToString(),
+                lng = data.lng.ToString(),
+                lat_lng = data.lat_lng,
+                memo = data.memo,
+                fullpath = iteminfo.fileName
+            };
+
+            dbwindow.mainwindow.userdata = edata;
+            dbwindow.mainwindow.mainWindowVM.ReSet(data.name, data.birth_str, data.birth_place, data.lat.ToString(), data.lng.ToString(),
+                edata.name, edata.birth_str, edata.birth_place, edata.lat, edata.lng);
+            dbwindow.mainwindow.ReCalc();
+            dbwindow.mainwindow.ReRender();
+
+            dbwindow.Visibility = Visibility.Hidden;
+        }
+
+        private void UserDir_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TreeViewItem item = (TreeViewItem)sender;
+        }
     }
 }

@@ -193,5 +193,20 @@ namespace microcosm.ViewModel
             }
 
         }
+
+        public void ReSet(string uName, string uBirthStr, string uBirthPlace, string uLat, string uLng, 
+            string tName, string tBirthStr, string tBirthPlace, string tLat, string tLng)
+        {
+            this.userName = uName;
+            this.userBirthStr = uBirthStr;
+            this.userBirthPlace = uBirthPlace;
+            this.userLat = uLat;
+            this.userLng = uLng;
+            this.transitName = tName;
+            this.transitBirthStr = tBirthStr;
+            this.transitPlace = tBirthPlace;
+            this.transitLat = tLat;
+            this.transitLng = tLng;
+        }
     }
 }

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using microcosm.Common;
+using Microsoft.Win32;
+using System.IO;
 
 namespace microcosm.DB
 {
@@ -132,6 +134,22 @@ namespace microcosm.DB
             }
             googleSearchWindow.Visibility = Visibility.Visible;
 
+        }
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    StreamReader sr = new StreamReader(fileStream, true);
+                    string line = sr.ReadLine();
+                }
+            }
         }
     }
 }

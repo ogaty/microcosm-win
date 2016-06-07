@@ -59,7 +59,14 @@ namespace microcosm
             {
                 return;
             }
-            mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
+            UserData udata = (UserData)UserEvent.Tag;
+            mainwindow.targetUser = udata;
+            UserEventData edata = (UserEventData)UserEvent.SelectedItem;
+            mainwindow.userdata = edata;
+            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
+                edata.name, edata.birth_str, edata.birth_place, edata.lat, edata.lng);
+            mainwindow.ReCalc();
+            mainwindow.ReRender();
 
             this.Visibility = Visibility.Hidden;
         }
@@ -220,24 +227,61 @@ namespace microcosm
         {
             TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
             DbItem iteminfo = (DbItem)item.Tag;
-            TreeViewItem newItem = new TreeViewItem { Header = "新規ディレクトリ" };
-            TreeViewItem parentItem = (TreeViewItem)item.Parent;
-            DbItem parentIteminfo = (DbItem)parentItem.Tag;
+            string newDir = "新規ディレクトリ" +
+                DateTime.Now.Year.ToString() +
+                DateTime.Now.Month.ToString("00") +
+                DateTime.Now.Day.ToString("00") +
+                DateTime.Now.Hour.ToString("00") +
+                DateTime.Now.Minute.ToString("00") +
+                DateTime.Now.Second.ToString("00");
+            TreeViewItem newItem = new TreeViewItem { Header = newDir };
             string parentPath;
-            if (parentIteminfo == null)
+            if (iteminfo.isDir)
             {
-                parentPath = "data";
+                string dirName = iteminfo.fileName + @"\" + newDir;
+                newItem.Tag = new DbItem
+                {
+                    fileName = dirName,
+                    isDir = true
+                };
+                item.Items.Add(newItem);
+                Directory.CreateDirectory(dirName);
             }
             else
             {
-                parentPath = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
+                if (item.Parent is TreeView)
+                {
+                    string dirName = @"data\" + newDir;
+                    newItem.Tag = new DbItem
+                    {
+                        fileName = dirName,
+                        isDir = true
+                    };
+                    item.Items.Add(newItem);
+                    Directory.CreateDirectory(dirName);
+                }
+                else
+                {
+                    TreeViewItem parentItem = (TreeViewItem)item.Parent;
+                    DbItem parentIteminfo = (DbItem)parentItem.Tag;
+                    if (parentIteminfo == null)
+                    {
+                        parentPath = "data";
+                    }
+                    else
+                    {
+                        parentPath = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
+                    }
+                    string dirName = parentPath + @"\" + newDir;
+                    newItem.Tag = new DbItem
+                    {
+                        fileName = dirName,
+                        isDir = true
+                    };
+                    parentItem.Items.Add(newItem);
+                    Directory.CreateDirectory(dirName);
+                }
             }
-            newItem.Tag = new DbItem
-            {
-                fileName = parentPath + "新規ディレクトリ",
-                isDir = true
-            };
-            parentItem.Items.Add(newItem);
         }
 
         // 編集
@@ -267,7 +311,41 @@ namespace microcosm
         // 削除
         public void deleteItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("click");
+            TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
+            if (item == null)
+            {
+                return;
+            }
+            DbItem iteminfo = (DbItem)item.Tag;
+            if (iteminfo.isDir)
+            {
+                if (Directory.Exists(iteminfo.fileName))
+                {
+                    try
+                    {
+                        Directory.Delete(iteminfo.fileName, true);
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("ディレクトリの削除に失敗しました。");
+                    }
+                }
+            }
+            else 
+            {
+                if (File.Exists(iteminfo.fileName))
+                {
+                    try
+                    {
+                        File.Delete(iteminfo.fileName);
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("ファイルの削除に失敗しました。");
+                    }
+                }
+            }
+            window.CreateTree();
         }
 
         public void AddUserEditWindow(DbItem item)

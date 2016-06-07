@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel>
         <Menu>
-            <MenuItem Header="インポート(_I)"></MenuItem>
+            <MenuItem Header="インポート(_I)" Click="Import_Click"></MenuItem>
             <MenuItem Header="エクスポート(_E)"></MenuItem>
         </Menu>
         </StackPanel>

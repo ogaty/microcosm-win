@@ -15,22 +15,22 @@
                 </StackPanel>
             </GroupBox>
             <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Center">
-                <TextBox Margin="5,0" Width="35" Text="2016"></TextBox>
+                <TextBox x:Name="setYear" Margin="5,0" Width="35" Text="2016"></TextBox>
                 <TextBlock Text="/"></TextBlock>
-                <TextBox Margin="5,0" Width="20" Text="12"></TextBox>
+                <TextBox x:Name="setMonth" Margin="5,0" Width="20" Text="12"></TextBox>
                 <TextBlock Text="/"></TextBlock>
-                <TextBox Margin="5,0" Width="20" Text="31"></TextBox>
-                <TextBox Margin="5,0" Width="20" Text="12"></TextBox>
+                <TextBox x:Name="setDay" Margin="5,0" Width="20" Text="31"></TextBox>
+                <TextBox x:Name="setHour" Margin="5,0" Width="20" Text="12"></TextBox>
                 <TextBlock Text=":"></TextBlock>
-                <TextBox Margin="5,0" Width="20" Text="30"></TextBox>
+                <TextBox x:Name="setMinute" Margin="5,0" Width="20" Text="30"></TextBox>
                 <TextBlock Text=":"></TextBlock>
-                <TextBox Margin="5,0" Width="20" Text="45"></TextBox>
+                <TextBox x:Name="setSecond" Margin="5,0" Width="20" Text="45"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30">
                 <Label Content="年" Margin="5,0"></Label>
-                <Button Content="←" VerticalAlignment="Center"></Button>
-                <Button Content="→" VerticalAlignment="Center"></Button>
-                <TextBox Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"></TextBox>
+                <Button x:Name="leftYear" Content="←" VerticalAlignment="Center" Click="LeftYear_Click"></Button>
+                <Button x:Name="rightYear" Content="→" VerticalAlignment="Center" Click="RightYear_Click"></Button>
+                <TextBox x:Name="unitYear" Text="0" Width="20" VerticalAlignment="Center" Margin="10,0"></TextBox>
                 <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30">

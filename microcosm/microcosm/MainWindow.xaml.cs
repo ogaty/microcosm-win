@@ -169,7 +169,7 @@ namespace microcosm
             targetUser = new UserData(config);
             UserBinding ub = new UserBinding(targetUser);
             TransitBinding tb = new TransitBinding(targetUser);
-            this.DataContext = new
+            mainWindowVM = new MainWindowViewModel()
             {
                 userName = targetUser.name,
                 userBirthStr = ub.birthStr,
@@ -184,6 +184,7 @@ namespace microcosm
                 transitLat = String.Format("{0:f4}", targetUser.lat),
                 transitLng = String.Format("{0:f4}", targetUser.lng),
             };
+            this.DataContext = mainWindowVM;
 
             ReCalc();
 
@@ -294,7 +295,6 @@ namespace microcosm
             natalDHMinute.DataContext = rcanvas;
             natalDHRetrograde.DataContext = rcanvas;
 
-            mainWindowVM = new MainWindowViewModel();
             explanation.DataContext = mainWindowVM;
 
             reportVM = new ReportViewModel(
@@ -387,9 +387,10 @@ namespace microcosm
             firstPList.ReRender(list1, list2, list3, list4, list5, list6);
             houseList.ReRender(houseList1, houseList2, houseList3, houseList4, houseList5, houseList6);
 
-//            circleRender();
+            // circleRender();
+            // houseCuspRender(houseList1);
 
-            houseCuspRender(houseList1);
+            houseCuspRender2(houseList1);
             signCuspRender(houseList1[1]);
             zodiacRender(houseList1[1]);
             planetRender(houseList1[1], list1, list2, list3);
@@ -467,6 +468,50 @@ namespace microcosm
 
         // ハウスカスプレンダリング
         private void houseCuspRender(double[] natalcusp)
+        {
+            //内側がstart, 外側がend
+            double startX = config.zodiacCenter / 2;
+            double endX = rcanvas.innerWidth / 2;
+
+            double startY = 0;
+            double endY = 0;
+            List<PointF[]> pList = new List<PointF[]>();
+            Enumerable.Range(1, 12).ToList().ForEach(i =>
+            {
+                double degree = natalcusp[i] - natalcusp[1];
+
+                PointF newStart = rotate(startX, startY, degree);
+                newStart.X += (float)rcanvas.outerWidth / 2;
+                // Formの座標は下がプラス、数学では上がマイナス
+                newStart.Y = newStart.Y * -1;
+                newStart.Y += (float)rcanvas.outerHeight / 2;
+
+                PointF newEnd = rotate(endX, endY, degree);
+                newEnd.X += (float)rcanvas.outerWidth / 2;
+                // Formの座標は下がプラス、数学では上がマイナス
+                newEnd.Y = newEnd.Y * -1;
+                newEnd.Y += (float)rcanvas.outerHeight / 2;
+
+                PointF[] pointList = new PointF[2];
+                pointList[0] = newStart;
+                pointList[1] = newEnd;
+                pList.Add(pointList);
+
+            });
+
+            Line line1 = new Line();
+            line1.X1 = pList[0][0].X;
+            line1.Y1 = pList[0][0].Y;
+            line1.X2 = pList[0][1].X;
+            line1.Y2 = pList[0][1].Y;
+            line1.Stroke = System.Windows.Media.Brushes.Black;
+            line1.StrokeThickness = 1.0;
+            ringCanvas.Children.Add(line1);
+        }
+
+        // ハウスカスプレンダリング
+        // そのうち消す
+        private void houseCuspRender2(double[] natalcusp)
         {
             //内側がstart, 外側がend
             double startX = config.zodiacCenter / 2;
@@ -1129,6 +1174,7 @@ namespace microcosm
             rcanvas.natalEarthSignTxt = "";
             rcanvas.natalEarthMinuteTxt = "";
             rcanvas.natalEarthRetrogradeTxt = "";
+            // 最終的に
 //            ringCanvas.Children.Clear();
         }
 
