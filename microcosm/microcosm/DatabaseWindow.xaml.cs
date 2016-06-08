@@ -17,6 +17,7 @@ using microcosm.DB;
 using System.Xml.Serialization;
 using System.IO;
 using Microsoft.Win32;
+using System.Reflection;
 
 namespace microcosm
 {
@@ -500,6 +501,8 @@ namespace microcosm
         {
             OpenFileDialog oFD = new OpenFileDialog();
             oFD.FilterIndex = 1;
+            oFD.Filter = "AMATERU Export Files|*.csv";
+            oFD.Title = "エクスポートしたファイルを選択してください";
             bool? result = oFD.ShowDialog();
             if (result == true)
             {
@@ -520,16 +523,104 @@ namespace microcosm
                                 int.Parse(hours[0]), int.Parse(hours[1]), int.Parse(hours[2]), 
                                 double.Parse(data[9]), double.Parse(data[10]), data[9], data[6], data[11]);
                             string filename = data[1] + ".csm";
-                            
+                            Assembly myAssembly = Assembly.GetEntryAssembly();
+                            string path =  System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\AMATERU\" + filename;
+
+                            try
+                            {
+                                if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+                                {
+                                    Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+                                }
+                                XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+                                FileStream fs = new FileStream(path, FileMode.Create);
+                                StreamWriter sw = new StreamWriter(fs);
+                                serializer.Serialize(sw, udata);
+                                sw.Close();
+                                fs.Close();
+                            }
+                            catch (IOException)
+                            {
+
+                            }
+
                         }
                         else
                         {
                             continue;
                         }
                     }
+                    window.CreateTree();
                 }
             }
 
+        }
+
+        private void Stargazer_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            oFD.Title = "ファイルを選択してください";
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
+                    while (sr.Peek() >= 0)
+                    {
+                        string line = sr.ReadLine();
+                        if (line.IndexOf(",") > 0)
+                        {
+                            string[] data = line.Split(' ');
+                            int year = int.Parse(data[0].Substring(0, 4));
+                            int month = int.Parse(data[0].Substring(4, 2));
+                            int day = int.Parse(data[0].Substring(6, 2));
+
+                            int hour = int.Parse(data[1].Substring(0, 2));
+                            int minute = int.Parse(data[1].Substring(2, 2));
+                            int second = int.Parse(data[1].Substring(4, 2));
+
+                            string[] name = data[6].Split(',');
+                            name[0] = name[0].Replace("\"", "");
+                            name[1] = name[1].Replace("\"", "");
+
+                            UserData udata = new UserData(name[1], "",
+                                year, month, day,
+                                hour, minute, second,
+                                double.Parse(data[3]), double.Parse(data[5]), name[0], "", "JST");
+                            string filename = name[1] + ".csm";
+                            Assembly myAssembly = Assembly.GetEntryAssembly();
+                            string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Stargazer\" + filename;
+
+                            try
+                            {
+                                if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+                                {
+                                    Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+                                }
+                                XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+                                FileStream fs = new FileStream(path, FileMode.Create);
+                                StreamWriter sw = new StreamWriter(fs);
+                                serializer.Serialize(sw, udata);
+                                sw.Close();
+                                fs.Close();
+                            } 
+                            catch (IOException)
+                            {
+
+                            }
+
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    window.CreateTree();
+                }
+            }
         }
     }
 }

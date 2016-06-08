@@ -18,8 +18,8 @@
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <Menu>
                 <MenuItem Header="インポート(_I)">
-                    <MenuItem Header="Amateru(CSV)" Click="Amateru_Import"></MenuItem>
-                    <MenuItem Header="Stargazer"></MenuItem>
+                    <MenuItem Header="AMATERU (CSV)" Click="Amateru_Import"></MenuItem>
+                    <MenuItem Header="Stargazer" Click="Stargazer_Click"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="エクスポート(_E)"></MenuItem>
             </Menu>
@@ -47,10 +47,10 @@
                 </ListView.Resources>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="" Width="100" DisplayMemberBinding="{Binding name}"></GridViewColumn>
-                        <GridViewColumn Header="" Width="150" DisplayMemberBinding="{Binding birth_str}"></GridViewColumn>
-                        <GridViewColumn Header="" Width="90" DisplayMemberBinding="{Binding birth_place}"></GridViewColumn>
-                        <GridViewColumn Header="" Width="150" DisplayMemberBinding="{Binding lat_lng}"></GridViewColumn>
+                        <GridViewColumn Header="名前" Width="100" DisplayMemberBinding="{Binding name}"></GridViewColumn>
+                        <GridViewColumn Header="時刻" Width="150" DisplayMemberBinding="{Binding birth_str}"></GridViewColumn>
+                        <GridViewColumn Header="場所" Width="90" DisplayMemberBinding="{Binding birth_place}"></GridViewColumn>
+                        <GridViewColumn Header="緯度経度" Width="150" DisplayMemberBinding="{Binding lat_lng}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
