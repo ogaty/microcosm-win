@@ -388,12 +388,13 @@ namespace microcosm
             houseList.ReRender(houseList1, houseList2, houseList3, houseList4, houseList5, houseList6);
 
             // circleRender();
-            // houseCuspRender(houseList1);
+            // houseCuspRender(houseList1, houseList2, houseList3, houseList4, houseList5);
 
             houseCuspRender2(houseList1);
-            signCuspRender(houseList1[1]);
+            signCuspRender2(houseList1[1]);
             zodiacRender(houseList1[1]);
-            planetRender(houseList1[1], list1, list2, list3);
+            planetRender2(houseList1[1], list1, list2, list3, list4, list5);
+            planetLine(houseList1[1], list1, list2, list3, list4, list5);
             aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
         }
 
@@ -467,7 +468,11 @@ namespace microcosm
         }
 
         // ハウスカスプレンダリング
-        private void houseCuspRender(double[] natalcusp)
+        private void houseCuspRender(double[] natalcusp,
+            double[] cusp2,
+            double[] cusp3,
+            double[] cusp4,
+            double[] cusp5)
         {
             //内側がstart, 外側がend
             double startX = config.zodiacCenter / 2;
@@ -499,14 +504,17 @@ namespace microcosm
 
             });
 
-            Line line1 = new Line();
-            line1.X1 = pList[0][0].X;
-            line1.Y1 = pList[0][0].Y;
-            line1.X2 = pList[0][1].X;
-            line1.Y2 = pList[0][1].Y;
-            line1.Stroke = System.Windows.Media.Brushes.Black;
-            line1.StrokeThickness = 1.0;
-            ringCanvas.Children.Add(line1);
+            Enumerable.Range(0, 11).ToList().ForEach(i =>
+            {
+                Line l = new Line();
+                l.X1 = pList[i][0].X;
+                l.Y1 = pList[i][0].Y;
+                l.X2 = pList[i][1].X;
+                l.Y2 = pList[i][1].Y;
+                l.Stroke = System.Windows.Media.Brushes.Black;
+                l.StrokeThickness = 1.0;
+                ringCanvas.Children.Add(l);
+            });
         }
 
         // ハウスカスプレンダリング
@@ -637,6 +645,51 @@ namespace microcosm
                 pList.Add(pointList);
             });
 
+            Enumerable.Range(0, 11).ToList().ForEach(i =>
+            {
+                Line l = new Line();
+                l.X1 = pList[i][0].X;
+                l.Y1 = pList[i][0].Y;
+                l.X2 = pList[i][1].X;
+                l.Y2 = pList[i][1].Y;
+                l.Stroke = System.Windows.Media.Brushes.Black;
+                l.StrokeThickness = 1.0;
+                ringCanvas.Children.Add(l);
+            });
+        }
+
+        // サインカスプレンダリング
+        private void signCuspRender2(double startdegree)
+        {
+            double startX = rcanvas.innerWidth / 2;
+            double endX = rcanvas.outerWidth / 2;
+
+            double startY = 0;
+            double endY = 0;
+            List<PointF[]> pList = new List<PointF[]>();
+            
+            Enumerable.Range(1, 12).ToList().ForEach(i =>
+            {
+                double degree = (30.0 * i) - startdegree;
+
+                PointF newStart = rotate(startX, startY, degree);
+                newStart.X += (float)rcanvas.outerWidth / 2;
+                // Formの座標は下がプラス、数学では上がマイナス
+                newStart.Y = newStart.Y * -1;
+                newStart.Y += (float)rcanvas.outerHeight / 2;
+
+                PointF newEnd = rotate(endX, endY, degree);
+                newEnd.X += (float)rcanvas.outerWidth / 2;
+                // Formの座標は下がプラス、数学では上がマイナス
+                newEnd.Y = newEnd.Y * -1;
+                newEnd.Y += (float)rcanvas.outerHeight / 2;
+
+                PointF[] pointList = new PointF[2];
+                pointList[0] = newStart;
+                pointList[1] = newEnd;
+                pList.Add(pointList);
+            });
+
             rcanvas.scusp1x1 = pList[0][0].X;
             rcanvas.scusp1y1 = pList[0][0].Y;
             rcanvas.scusp1x2 = pList[0][1].X;
@@ -700,6 +753,7 @@ namespace microcosm
         }
 
         // zodiac文字列描画
+        // 獣帯に乗る文字ね
         private void zodiacRender(double startdegree)
         {
             List<PointF> pList = new List<PointF>();
@@ -753,9 +807,23 @@ namespace microcosm
         }
 
         // 天体の表示
-        private void planetRender(double startdegree, List<PlanetData> natallist,
+        private void planetRender(double startdegree, 
+            List<PlanetData> list1,
+            List<PlanetData> list2,
+            List<PlanetData> list3,
+            List<PlanetData> list4,
+            List<PlanetData> list5
+            )
+        {
+        }
+
+        // 天体の表示
+        private void planetRender2(double startdegree, List<PlanetData> natallist,
             List<PlanetData> progresslist,
-            List<PlanetData> transitlist)
+            List<PlanetData> transitlist,
+            List<PlanetData> list4,
+            List<PlanetData> list5
+            )
         {
             List<double> degreeList = new List<double>();
             List<bool> dispList = new List<bool>();
@@ -1160,6 +1228,17 @@ namespace microcosm
                     });
                 }
             }
+        }
+
+        // 天体から中心円への線
+        private void planetLine(double startdegree, 
+            List<PlanetData> list1,
+            List<PlanetData> list2,
+            List<PlanetData> list3,
+            List<PlanetData> list4,
+            List<PlanetData> list5
+            )
+        {
         }
 
         public void AllClear()

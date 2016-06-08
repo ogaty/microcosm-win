@@ -162,10 +162,17 @@ namespace microcosm.ViewModel
                 name = data.name,
                 birth_str = data.birth_str,
                 birth_place = data.birth_place,
-                lat = data.lat.ToString(),
-                lng = data.lng.ToString(),
+                birth_year = data.birth_year,
+                birth_month = data.birth_month,
+                birth_day = data.birth_day,
+                birth_hour = data.birth_hour,
+                birth_minute = data.birth_minute,
+                birth_second = data.birth_second,
+                lat = data.lat,
+                lng = data.lng,
                 lat_lng = data.lat_lng,
                 memo = data.memo,
+                timezone = data.timezone,
                 fullpath = iteminfo.fileName
             };
 
@@ -191,6 +198,9 @@ namespace microcosm.ViewModel
             MenuItem addEventItem = new MenuItem { Header = "イベント追加" };
             addEventItem.Click += dbwindow.addEvent_Click;
             context.Items.Add(addEventItem);
+            MenuItem editEventItem = new MenuItem { Header = "イベント編集" };
+            editEventItem.Click += dbwindow.editEvent_Click;
+            context.Items.Add(editEventItem);
 
             dbwindow.UserEvent.ContextMenu = context;
         }
@@ -209,9 +219,18 @@ namespace microcosm.ViewModel
                         uevent.event_minute,
                         uevent.event_second
                     ),
+                birth_year = uevent.event_year,
+                birth_month = uevent.event_month,
+                birth_minute = uevent.event_day,
+                birth_hour = uevent.event_hour,
+                birth_day = uevent.event_day,
+                birth_second = uevent.event_second,
                 birth_place = uevent.event_place,
+                lat = uevent.event_lat,
+                lng = uevent.event_lng,
                 lat_lng = String.Format("{0:00.000}/{1:000.000}", uevent.event_lat, uevent.event_lng),
                 memo = uevent.event_memo,
+                timezone = uevent.event_timezone,
                 fullpath = filename
             };
         }
@@ -294,16 +313,23 @@ namespace microcosm.ViewModel
                 name = data.name,
                 birth_str = data.birth_str,
                 birth_place = data.birth_place,
-                lat = data.lat.ToString(),
-                lng = data.lng.ToString(),
+                birth_year = data.birth_year,
+                birth_month = data.birth_month,
+                birth_day = data.birth_day,
+                birth_hour = data.birth_hour,
+                birth_minute = data.birth_minute,
+                birth_second = data.birth_second,
+                lat = data.lat,
+                lng = data.lng,
                 lat_lng = data.lat_lng,
                 memo = data.memo,
+                timezone = data.timezone,
                 fullpath = iteminfo.fileName
             };
 
             dbwindow.mainwindow.userdata = edata;
             dbwindow.mainwindow.mainWindowVM.ReSet(data.name, data.birth_str, data.birth_place, data.lat.ToString(), data.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat, edata.lng);
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString());
             dbwindow.mainwindow.ReCalc();
             dbwindow.mainwindow.ReRender();
 

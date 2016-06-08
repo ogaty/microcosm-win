@@ -1,0 +1,59 @@
+﻿<Window x:Class="microcosm.DB.UserEventEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:microcosm.DB"
+        mc:Ignorable="d"
+        Title="イベント編集" Height="530" Width="290" Closing="Window_Closing">
+    <Grid>
+        <StackPanel>
+            <Menu>
+                <MenuItem Header="インポート(_I)" Click="Import_Click"></MenuItem>
+                <MenuItem Header="エクスポート(_E)"></MenuItem>
+            </Menu>
+        </StackPanel>
+        <StackPanel Margin="10,20,10,0">
+            <Label Content="イベント名"></Label>
+            <TextBox x:Name="eventName" Width="220" HorizontalAlignment="Right"></TextBox>
+            <Label Content="イベント日時"></Label>
+            <DatePicker x:Name="eventBirth" Width="220" HorizontalAlignment="Right"></DatePicker>
+            <Label Content="イベント時刻"></Label>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBox x:Name="eventHour" Width="60" Height="18"></TextBox>
+                <Label Content="時"></Label>
+                <TextBox x:Name="eventMinute" Width="60" Height="18"></TextBox>
+                <Label Content="分"></Label>
+                <TextBox x:Name="eventSecond" Width="60" Height="18"></TextBox>
+                <Label Content="秒"></Label>
+            </StackPanel>
+            <Label Content="発生場所"></Label>
+            <TextBox x:Name="eventPlace" Width="220" HorizontalAlignment="Right"></TextBox>
+            <Button Content="地名から緯度経度検索" Margin="0,10,0,0" Width="150" HorizontalAlignment="Right" Click="Search_Click"></Button>
+            <Button Content="Google Mapを使用して緯度経度検索" Margin="0,10,0,0" Width="210" HorizontalAlignment="Right" Click="GoogleSearch_Click"></Button>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="20,0,0,0">
+                    <Label Content="緯度"></Label>
+                    <TextBox x:Name="eventLat" Width="80" Margin="20,0,0,0"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0">
+                    <Label Content="経度"></Label>
+                    <TextBox x:Name="eventLng" Width="80" Margin="20,0,0,0"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <Label Content="タイムゾーン"></Label>
+            <ComboBox x:Name="eventTimezone" Width="220" HorizontalAlignment="Right" >
+                <ComboBoxItem Content="JST(日本標準)" IsSelected="True"/>
+                <ComboBoxItem Content="GMT(世界標準)"/>
+            </ComboBox>
+            <Label Content="メモ"></Label>
+            <TextBox Width="220" Height="50" AcceptsReturn="True" x:Name="eventMemo" Margin="10,0,0,10" HorizontalAlignment="Right"></TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="決定" Click="Ok_Click"></Button>
+                <Button Content="キャンセル" Margin="10,0,0,0" Click="Cancel_Click"></Button>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

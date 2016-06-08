@@ -91,14 +91,17 @@
       <DependentUpon>GoogleSearchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DB\GoogleSearchWindowViewModel.cs" />
+    <Compile Include="DB\UserEventEditWindow.xaml.cs">
+      <DependentUpon>UserEventEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\UserSearchWindowViewModel.cs" />
     <Compile Include="DB\TransitBinding.cs" />
     <Compile Include="DB\UserEditWindow.xaml.cs">
       <DependentUpon>UserEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DB\UserEventData.cs" />
-    <Compile Include="DB\UserSearchWindow.xaml.cs">
-      <DependentUpon>UserSearchWindow.xaml</DependentUpon>
+    <Compile Include="DB\PlaceSearchWindow.xaml.cs">
+      <DependentUpon>PlaceSearchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DB\XMLDBManager.cs" />
     <Compile Include="Planet\PlanetData.cs" />
@@ -136,7 +139,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DB\UserSearchWindow.xaml">
+    <Page Include="DB\UserEventEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DB\PlaceSearchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

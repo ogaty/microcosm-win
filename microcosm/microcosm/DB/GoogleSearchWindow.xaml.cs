@@ -22,11 +22,23 @@ namespace microcosm.DB
     public partial class GoogleSearchWindow : Window
     {
         public UserEditWindow editWindow;
+        public UserEventEditWindow eventEditWindow;
         public GoogleSearchWindowViewModel searchResultList { get; set; }
 
         public GoogleSearchWindow(UserEditWindow editWindow, string searchStr)
         {
             this.editWindow = editWindow;
+            InitializeComponent();
+
+            searchPlace.Text = searchStr;
+            searchResultList = new GoogleSearchWindowViewModel();
+            searchResultList.resultList = new List<AddrSearchResult>();
+            resultBox.DataContext = searchResultList;
+        }
+
+        public GoogleSearchWindow(UserEventEditWindow editWindow, string searchStr)
+        {
+            this.eventEditWindow = editWindow;
             InitializeComponent();
 
             searchPlace.Text = searchStr;
@@ -68,7 +80,14 @@ namespace microcosm.DB
             {
                 return;
             }
-            editWindow.UserEditSet(searchItem.resultPlace, searchItem.resultLat.ToString(), searchItem.resultLng.ToString());
+            if (editWindow != null)
+            {
+                editWindow.UserEditSet(searchItem.resultPlace, searchItem.resultLat.ToString(), searchItem.resultLng.ToString());
+            }
+            else
+            {
+                eventEditWindow.UserEditSet(searchItem.resultPlace, searchItem.resultLat.ToString(), searchItem.resultLng.ToString());
+            }
             this.Visibility = Visibility.Hidden;
         }
 

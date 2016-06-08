@@ -16,6 +16,7 @@ using microcosm.ViewModel;
 using microcosm.DB;
 using System.Xml.Serialization;
 using System.IO;
+using Microsoft.Win32;
 
 namespace microcosm
 {
@@ -27,6 +28,7 @@ namespace microcosm
         public MainWindow mainwindow;
         public DatabaseWindowViewModel window;
         public UserEditWindow editwindow;
+        public UserEventEditWindow eventEditWindow;
         public DatabaseWindow(MainWindow mainwindow)
         {
             this.mainwindow = mainwindow;
@@ -45,10 +47,25 @@ namespace microcosm
         private void UserEvent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListView item = (ListView)sender;
-            UserEventData data = (UserEventData)item.SelectedItem;
-            if (data != null)
+            if (item.SelectedItem == null) {
+                return;
+            }
+            if (item.SelectedItem is UserEventData)
             {
-                window.Memo = data.memo;
+                UserEventData data = (UserEventData)item.SelectedItem;
+                if (data != null)
+                {
+                    window.Memo = data.memo;
+                }
+            }
+            else
+            {
+                UserData data = (UserData)item.SelectedItem;
+                if (data != null)
+                {
+                    window.Memo = data.memo;
+                }
+
             }
         }
 
@@ -64,7 +81,7 @@ namespace microcosm
             UserEventData edata = (UserEventData)UserEvent.SelectedItem;
             mainwindow.userdata = edata;
             mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat, edata.lng);
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString());
             mainwindow.ReCalc();
             mainwindow.ReRender();
 
@@ -93,6 +110,12 @@ namespace microcosm
         public void addEvent_Click(object sender, EventArgs e)
         {
             newEventData();
+        }
+
+        // イベントリスト右クリック→編集
+        public void editEvent_Click(object sender, EventArgs e)
+        {
+            editEventData();
         }
 
         // 新規作成(ファイル)コールバック
@@ -186,6 +209,22 @@ namespace microcosm
             fs.Close();
         }
 
+        // 新規作成(イベント)コールバック
+        public void newEvent_Click_CB(
+            string eventName,
+            DateTime eventBirth,
+            int eventHour,
+            int eventMinute,
+            int eventSecond,
+            string eventPlace,
+            double eventLat,
+            double eventLng,
+            string eventMemo,
+            string eventTimezone
+        )
+        {
+        }
+
         // ユーザーデータ追加
         public void newData()
         {
@@ -214,12 +253,88 @@ namespace microcosm
             });
         }
 
-        // イベントデータ追加
-        // fileNameとかが不要になる
+        // 右クリックイベントデータ追加
         public void newEventData()
         {
             setDisable();
-            // TODO
+            DbItem item = new DbItem()
+            {
+                userName = "新規イベント",
+                userBirth = DateTime.Today,
+                userHour = "12",
+                userMinute = "0",
+                userSecond = "0",
+                userPlace = "東京都中央区",
+                userLat = "35.685175",
+                userLng = "139.7528",
+                userTimezone = "JST",
+                memo = ""
+            };
+            if (eventEditWindow == null)
+            {
+                eventEditWindow = new UserEventEditWindow(this, item);
+            }
+            else
+            {
+                eventEditWindow.UserEditRefresh(item);
+            }
+            eventEditWindow.Visibility = Visibility.Visible;
+        }
+
+        // 右クリックイベントデータ編集
+        public void editEventData()
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            DbItem item;
+            if (UserEvent.SelectedItem is UserData)
+            {
+                UserData data = (UserData)UserEvent.SelectedItem;
+                item = new DbItem()
+                {
+                    userName = data.name,
+                    userBirth = new DateTime(data.birth_year, data.birth_month, data.birth_day,
+                    data.birth_hour, data.birth_minute, data.birth_second),
+                    userHour = data.birth_hour.ToString(),
+                    userMinute = data.birth_minute.ToString(),
+                    userSecond = data.birth_second.ToString(),
+                    userPlace = data.birth_place,
+                    userLat = data.lat.ToString(),
+                    userLng = data.lng.ToString(),
+                    userTimezone = data.timezone,
+                    memo = data.memo
+                };
+            }
+            else
+            {
+                UserEventData data = (UserEventData)UserEvent.SelectedItem;
+                item = new DbItem()
+                {
+                    userName = data.name,
+                    userBirth = new DateTime(data.birth_year, data.birth_month, data.birth_day,
+                    data.birth_hour, data.birth_minute, data.birth_second),
+                    userHour = data.birth_hour.ToString(),
+                    userMinute = data.birth_minute.ToString(),
+                    userSecond = data.birth_second.ToString(),
+                    userPlace = data.birth_place,
+                    userLat = data.lat.ToString(),
+                    userLng = data.lng.ToString(),
+                    userTimezone = data.timezone,
+                    memo = data.memo
+                };
+            }
+            if (eventEditWindow == null)
+            {
+                eventEditWindow = new UserEventEditWindow(this, item);
+            }
+            else
+            {
+                eventEditWindow.UserEditRefresh(item);
+            }
+            setDisable();
+            eventEditWindow.Visibility = Visibility.Visible;
         }
 
         // 新規作成(ディレクトリ)
@@ -374,6 +489,47 @@ namespace microcosm
         private void NewDataContext_Click(object sender, RoutedEventArgs e)
         {
             newData();
+        }
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Amateru_Import(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    StreamReader sr = new StreamReader(fileStream, true);
+                    while (sr.Peek() >= 0)
+                    {
+                        string line = sr.ReadLine();
+                        if (line.IndexOf("NATAL") == 0)
+                        {
+                            string[] data = line.Split('\t');
+                            string[] days = data[6].Split('-');
+                            string[] hours = data[7].Split(':');
+                            UserData udata = new UserData(data[1], data[2], 
+                                int.Parse(days[0]), int.Parse(days[1]), int.Parse(days[2]), 
+                                int.Parse(hours[0]), int.Parse(hours[1]), int.Parse(hours[2]), 
+                                double.Parse(data[9]), double.Parse(data[10]), data[9], data[6], data[11]);
+                            string filename = data[1] + ".csm";
+                            
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

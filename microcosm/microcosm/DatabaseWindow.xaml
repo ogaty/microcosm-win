@@ -11,7 +11,21 @@
             <ColumnDefinition Width="220"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <Menu>
+                <MenuItem Header="インポート(_I)">
+                    <MenuItem Header="Amateru(CSV)" Click="Amateru_Import"></MenuItem>
+                    <MenuItem Header="Stargazer"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="エクスポート(_E)"></MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10">
             <TreeView x:Name="UserDirTree" ItemsSource="{Binding UItems}" Height="196">
                 <TreeView.Resources>
                     <Style TargetType="TreeViewItem">
@@ -24,7 +38,7 @@
                 </TreeView.ContextMenu>
             </TreeView>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="10">
             <ListView Height="200" x:Name="UserEvent" ItemsSource="{Binding UserEventList}" SelectionChanged="UserEvent_SelectionChanged">
                 <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">

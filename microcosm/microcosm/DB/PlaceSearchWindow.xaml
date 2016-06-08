@@ -1,0 +1,27 @@
+﻿<Window x:Class="microcosm.DB.PlaceSearchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:microcosm.DB"
+        mc:Ignorable="d"
+        Title="地名検索" Height="290" Width="300" Closing="Window_Closing">
+    <Grid>
+        <StackPanel Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <TextBox x:Name="searchPlace" Width="200"></TextBox>
+                <Button Content="検索" Margin="30,0,0,0" Click="SearchBtn_Click"/>
+            </StackPanel>
+            <ListView Margin="0,0,0,10" Height="150" x:Name="resultBox" ItemsSource="{Binding resultList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="地名" Width="80" DisplayMemberBinding="{Binding resultPlace}"></GridViewColumn>
+                        <GridViewColumn Header="緯度" Width="80" DisplayMemberBinding="{Binding resultLat}"></GridViewColumn>
+                        <GridViewColumn Header="経度" Width="80" DisplayMemberBinding="{Binding resultLng}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button Content="決定" Width="50" HorizontalAlignment="Right" Click="Ok_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

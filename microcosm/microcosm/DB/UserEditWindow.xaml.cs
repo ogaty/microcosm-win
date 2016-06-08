@@ -24,7 +24,7 @@ namespace microcosm.DB
     public partial class UserEditWindow : Window
     {
         public DatabaseWindow dbwindow;
-        public UserSearchWindow searchWindow;
+        public PlaceSearchWindow searchWindow;
         public GoogleSearchWindow googleSearchWindow;
         public DateTime defaultDate { get; } = new DateTime(2000, 1, 1, 12, 0, 0);
         public UserEditWindow(DatabaseWindow dbwindow, DbItem item)
@@ -120,7 +120,7 @@ namespace microcosm.DB
         {
             if (searchWindow == null)
             {
-                searchWindow = new UserSearchWindow(this, userPlace.Text);
+                searchWindow = new PlaceSearchWindow(this, userPlace.Text);
             }
             searchWindow.Visibility = Visibility.Visible;
 
