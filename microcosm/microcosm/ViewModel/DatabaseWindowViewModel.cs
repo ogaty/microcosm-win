@@ -141,52 +141,20 @@ namespace microcosm.ViewModel
             TreeViewItem item = (TreeViewItem)sender;
             DbItem iteminfo = (DbItem)item.Tag;
             XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
-            UserData data = DBMgr.getObject();
-            UserData udata = new UserData()
-            {
-                name = data.name,
-                birth_year = data.birth_year,
-                birth_month = data.birth_month,
-                birth_day = data.birth_day,
-                birth_hour = data.birth_hour,
-                birth_minute = data.birth_minute,
-                birth_second = data.birth_second,
-                birth_place = data.birth_place,
-                lat = data.lat,
-                lng = data.lng,
-                timezone = data.timezone,
-                memo = data.memo
-            };
-            UserEventData edata = new UserEventData()
-            {
-                name = data.name,
-                birth_str = data.birth_str,
-                birth_place = data.birth_place,
-                birth_year = data.birth_year,
-                birth_month = data.birth_month,
-                birth_day = data.birth_day,
-                birth_hour = data.birth_hour,
-                birth_minute = data.birth_minute,
-                birth_second = data.birth_second,
-                lat = data.lat,
-                lng = data.lng,
-                lat_lng = data.lat_lng,
-                memo = data.memo,
-                timezone = data.timezone,
-                fullpath = iteminfo.fileName
-            };
+            UserData udata = DBMgr.getObject();
+            udata.filename = iteminfo.fileName;
 
             dbwindow.UserEvent.Items.Clear();
             dbwindow.UserEvent.Items.Add(udata);
             dbwindow.UserEvent.Tag = udata;
 
-            if (data.userevent == null)
+            if (udata.userevent == null)
             {
                 return;
             }
 
             int i = 0;
-            data.userevent.ForEach(ev =>
+            udata.userevent.ForEach(ev =>
             {
                 dbwindow.UserEvent.Items.Add(createEventData(ev, iteminfo.fileName, i));
                 i++;

@@ -78,8 +78,42 @@ namespace microcosm
                 return;
             }
             UserData udata = (UserData)UserEvent.Tag;
+            UserEventData edata;
             mainwindow.targetUser = udata;
-            UserEventData edata = (UserEventData)UserEvent.SelectedItem;
+            if (UserEvent.SelectedItem is UserData)
+            {
+                edata = new UserEventData()
+                {
+                    name = udata.name,
+                    birth_year = udata.birth_year,
+                    birth_month = udata.birth_month,
+                    birth_day = udata.birth_day,
+                    birth_hour = udata.birth_hour,
+                    birth_minute = udata.birth_minute,
+                    birth_second = udata.birth_second,
+                    birth_place = udata.birth_place,
+                    lat = udata.lat,
+                    lng = udata.lng,
+                    timezone = udata.timezone,
+                    memo = udata.memo,
+                    birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                        udata.birth_year,
+                        udata.birth_month,
+                        udata.birth_day,
+                        udata.birth_hour,
+                        udata.birth_minute,
+                        udata.birth_second
+                    ),
+                    lat_lng = String.Format("{0:00.000}/{1:000.000}", udata.lat, udata.lng),
+                    fullpath = udata.filename
+                };
+                mainwindow.userdata = edata;
+            }
+            else
+            {
+                mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
+                edata = (UserEventData)UserEvent.SelectedItem;
+            }
             mainwindow.userdata = edata;
             mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
                 edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString());
@@ -224,6 +258,123 @@ namespace microcosm
             string eventTimezone
         )
         {
+            UserData udata = (UserData)UserEvent.Tag;
+            UserEvent uevent = new UserEvent()
+            {
+                event_name = eventName,
+                event_year = eventBirth.Year,
+                event_month = eventBirth.Month,
+                event_day = eventBirth.Day,
+                event_hour = eventHour,
+                event_minute = eventMinute,
+                event_second = eventSecond,
+                event_place = eventPlace,
+                event_lat = eventLat,
+                event_lng = eventLng,
+                event_memo = eventMemo,
+                event_timezone = eventTimezone,
+            };
+            UserEventData ueventdata = new UserEventData()
+            {
+                name = eventName,
+                birth_year = eventBirth.Year,
+                birth_month = eventBirth.Month,
+                birth_day = eventBirth.Day,
+                birth_hour = eventHour,
+                birth_minute = eventMinute,
+                birth_second = eventSecond,
+                birth_place = eventPlace,
+                lat = eventLat,
+                lng = eventLng,
+                memo = eventMemo,
+                timezone = eventTimezone,
+                birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                        eventBirth.Year,
+                        eventBirth.Month,
+                        eventBirth.Day,
+                        eventHour,
+                        eventMinute,
+                        eventSecond
+                    ),
+                fullpath = udata.filename,
+                lat_lng = String.Format("{0:00.000}/{1:000.000}", eventLat, eventLng)
+            };
+            udata.userevent.Add(uevent);
+
+            UserEvent.Items.Add(ueventdata);
+            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+            FileStream fs = new FileStream(udata.filename, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            serializer.Serialize(sw, udata);
+            sw.Close();
+            fs.Close();
+
+        }
+
+        // イベント編集コールバック
+        public void editEvent_Click_CB(
+            int index,
+            string eventName,
+            DateTime eventBirth,
+            int eventHour,
+            int eventMinute,
+            int eventSecond,
+            string eventPlace,
+            double eventLat,
+            double eventLng,
+            string eventMemo,
+            string eventTimezone
+            )
+        {
+            UserData udata = (UserData)UserEvent.Tag;
+            UserEvent uevent = new UserEvent()
+            {
+                event_name = eventName,
+                event_year = eventBirth.Year,
+                event_month = eventBirth.Month,
+                event_day = eventBirth.Day,
+                event_hour = eventHour,
+                event_minute = eventMinute,
+                event_second = eventSecond,
+                event_place = eventPlace,
+                event_lat = eventLat,
+                event_lng = eventLng,
+                event_memo = eventMemo,
+                event_timezone = eventTimezone,
+            };
+            UserEventData ueventdata = new UserEventData()
+            {
+                name = eventName,
+                birth_year = eventBirth.Year,
+                birth_month = eventBirth.Month,
+                birth_day = eventBirth.Day,
+                birth_hour = eventHour,
+                birth_minute = eventMinute,
+                birth_second = eventSecond,
+                birth_place = eventPlace,
+                lat = eventLat,
+                lng = eventLng,
+                memo = eventMemo,
+                timezone = eventTimezone,
+                birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                        eventBirth.Year,
+                        eventBirth.Month,
+                        eventBirth.Day,
+                        eventHour,
+                        eventMinute,
+                        eventSecond
+                    ),
+                fullpath = udata.filename,
+                lat_lng = String.Format("{0:00.000}/{1:000.000}", eventLat, eventLng)
+            };
+            udata.userevent[index] = uevent;
+            UserEvent.Items[index] = ueventdata;
+            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+            FileStream fs = new FileStream(udata.filename, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            serializer.Serialize(sw, udata);
+            sw.Close();
+            fs.Close();
         }
 
         // ユーザーデータ追加
@@ -334,6 +485,8 @@ namespace microcosm
             {
                 eventEditWindow.UserEditRefresh(item);
             }
+            eventEditWindow.isEdit = true;
+            eventEditWindow.index = UserEvent.SelectedIndex;
             setDisable();
             eventEditWindow.Visibility = Visibility.Visible;
         }
@@ -552,6 +705,7 @@ namespace microcosm
                     }
                     window.CreateTree();
                 }
+                MessageBox.Show("完了しました。");
             }
 
         }
@@ -620,6 +774,76 @@ namespace microcosm
                     }
                     window.CreateTree();
                 }
+                MessageBox.Show("完了しました。");
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void Zet_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            oFD.Filter = "ZET Chart Files|*.zbs";
+            oFD.Title = "チャートファイルを選択してください";
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
+                    while (sr.Peek() >= 0)
+                    {
+                        string line = sr.ReadLine();
+                        string[] data = line.Split(';');
+                        if (data[0] == "") continue;
+                        if (data[0].IndexOf('-') == 0)
+                        {
+                            data[0] = data[0].Substring(2);
+                        }
+                        string[] days = data[1].Split('.');
+                        string[] hours = data[2].Split(':');
+                        string timezone = "UTC";
+                        if (data[3] == " +9")
+                        {
+                            timezone = "JST";
+                        }
+                        string lat = data[5].Replace('n', '.');
+                        string lng = data[6].Replace('e', '.');
+                        UserData udata = new UserData(data[0], "",
+                            int.Parse(days[2]), int.Parse(days[1]), int.Parse(days[0]),
+                            int.Parse(hours[0]), int.Parse(hours[1]), 0,
+                            double.Parse(lat), double.Parse(lng), data[4], data[8], timezone);
+                        string filename = data[0] + ".csm";
+                        Assembly myAssembly = Assembly.GetEntryAssembly();
+                        string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\ZET\" + filename;
+
+                        try
+                        {
+                            if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+                            {
+                                Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+                            }
+                            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+                            FileStream fs = new FileStream(path, FileMode.Create);
+                            StreamWriter sw = new StreamWriter(fs);
+                            serializer.Serialize(sw, udata);
+                            sw.Close();
+                            fs.Close();
+                        }
+                        catch (IOException)
+                        {
+
+                        }
+                    }
+                    window.CreateTree();
+                }
+                MessageBox.Show("完了しました。");
             }
         }
     }

@@ -24,6 +24,8 @@ namespace microcosm.DB
         public PlaceSearchWindow searchWindow;
         public GoogleSearchWindow googleSearchWindow;
         public DateTime defaultDate { get; } = new DateTime(2000, 1, 1, 12, 0, 0);
+        public bool isEdit = false;
+        public int index;
         public UserEventEditWindow(DatabaseWindow dbwindow, DbItem item)
         {
             this.dbwindow = dbwindow;
@@ -80,19 +82,39 @@ namespace microcosm.DB
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            dbwindow.newEvent_Click_CB(
-                eventName.Text,
-                eventBirth.DisplayDate,
-                int.Parse(eventHour.Text),
-                int.Parse(eventMinute.Text),
-                int.Parse(eventSecond.Text),
-                eventPlace.Text,
-                double.Parse(eventLat.Text),
-                double.Parse(eventLng.Text),
-                eventMemo.Text,
-                eventTimezone.Text
-            );
+            if (isEdit)
+            {
+                dbwindow.editEvent_Click_CB(
+                    index,
+                    eventName.Text,
+                    eventBirth.DisplayDate,
+                    int.Parse(eventHour.Text),
+                    int.Parse(eventMinute.Text),
+                    int.Parse(eventSecond.Text),
+                    eventPlace.Text,
+                    double.Parse(eventLat.Text),
+                    double.Parse(eventLng.Text),
+                    eventMemo.Text,
+                    eventTimezone.Text
+                );
+            }
+            else
+            {
+                dbwindow.newEvent_Click_CB(
+                    eventName.Text,
+                    eventBirth.DisplayDate,
+                    int.Parse(eventHour.Text),
+                    int.Parse(eventMinute.Text),
+                    int.Parse(eventSecond.Text),
+                    eventPlace.Text,
+                    double.Parse(eventLat.Text),
+                    double.Parse(eventLng.Text),
+                    eventMemo.Text,
+                    eventTimezone.Text
+                );
+            }
             dbwindow.setEnable();
+            isEdit = false;
             this.Visibility = Visibility.Hidden;
         }
 

@@ -43,6 +43,8 @@ namespace microcosm.DB
         [XmlArrayItem("event")]
         public List<UserEvent> userevent { get; set; }
 
+        public string filename;
+
         public string birth_str
         {
             get

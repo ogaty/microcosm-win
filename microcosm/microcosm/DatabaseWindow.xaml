@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="データベース" Height="410" Width="720">
+        Title="データベース" Height="440" Width="720" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"></ColumnDefinition>
@@ -18,8 +18,9 @@
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <Menu>
                 <MenuItem Header="インポート(_I)">
-                    <MenuItem Header="AMATERU (CSV)" Click="Amateru_Import"></MenuItem>
+                    <MenuItem Header="AMATERU (csv)" Click="Amateru_Import"></MenuItem>
                     <MenuItem Header="Stargazer" Click="Stargazer_Click"></MenuItem>
+                    <MenuItem Header="ZET (zbs)" Click="Zet_Click"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="エクスポート(_E)"></MenuItem>
             </Menu>
