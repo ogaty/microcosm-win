@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="microcosm" SizeToContent="WidthAndHeight"
         MinWidth="680"
-        MinHeight="400" SizeChanged="mainWindow_SizeChanged" Closed="mainWindow_Closed">
+        MinHeight="400" SizeChanged="mainWindow_SizeChanged" Closed="mainWindow_Closed" KeyDown="mainWindow_KeyDown">
     <Window.Resources>
         <BitmapImage x:Key="CircleBottom" UriSource="Resources/half_circle_bottom.png"></BitmapImage>
         <BitmapImage x:Key="CircleLeft" UriSource="Resources/half_circle_left.png"></BitmapImage>

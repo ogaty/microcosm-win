@@ -1749,5 +1749,16 @@ namespace microcosm
             chartSelecterWindow.Visibility = Visibility.Visible;
 
         }
+
+        private void mainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
+            {
+                if (e.Key == Key.A)
+                {
+                    // MessageBox.Show("Ctrl + A");
+                }
+            }
+        }
     }
 }
