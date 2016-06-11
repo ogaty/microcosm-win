@@ -42,22 +42,447 @@ namespace microcosm
         {
             int count = int.Parse(unitYear.Text);
             int year = int.Parse(setYear.Text);
-            setYear.Text = (year - count).ToString();
-            main.targetUser.birth_year -= count;
-            main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " + 
-                setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            if (natalTime.IsChecked == true)
+            {
+                setYear.Text = (year - count).ToString();
+                main.targetUser.birth_year -= count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setYear.Text = (year - count).ToString();
+                main.userdata.birth_year -= count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
             main.ReCalc();
             main.ReRender();
+
         }
 
         private void RightYear_Click(object sender, RoutedEventArgs e)
         {
             int count = int.Parse(unitYear.Text);
             int year = int.Parse(setYear.Text);
-            setYear.Text = (year + count).ToString();
-            main.targetUser.birth_year += count;
-            main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            if (natalTime.IsChecked == true)
+            {
+                setYear.Text = (year + count).ToString();
+                main.targetUser.birth_year += count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setYear.Text = (year + count).ToString();
+                main.userdata.birth_year += count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void natalTime_Checked(object sender, RoutedEventArgs e)
+        {
+            if (setYear == null)
+            {
+                // initialize前に呼ばれてしまうのでリターン
+                return;
+            }
+            setYear.Text = main.targetUser.birth_year.ToString();
+            setMonth.Text = main.targetUser.birth_month.ToString();
+            setDay.Text = main.targetUser.birth_day.ToString();
+            setHour.Text = main.targetUser.birth_hour.ToString();
+            setMinute.Text = main.targetUser.birth_minute.ToString();
+            setSecond.Text = main.targetUser.birth_second.ToString();
+        }
+
+        private void transitTime_Checked(object sender, RoutedEventArgs e)
+        {
+            setYear.Text = main.userdata.birth_year.ToString();
+            setMonth.Text = main.userdata.birth_month.ToString();
+            setDay.Text = main.userdata.birth_day.ToString();
+            setHour.Text = main.userdata.birth_hour.ToString();
+            setMinute.Text = main.userdata.birth_minute.ToString();
+            setSecond.Text = main.userdata.birth_second.ToString();
+
+        }
+
+        private void timeSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (setYear == null)
+            {
+                // initialize前に呼ばれてしまうのでリターン
+                return;
+            }
+            ComboBox item = (ComboBox)sender;
+            int index = item.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    // 1時間
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "0";
+                    unitHour.Text = "1";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 1:
+                    // 1日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "1";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 2:
+                    // 7日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "7";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 3:
+                    // 30日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "30";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 4:
+                    // 365日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "365";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void LeftMonth_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitMonth.Text);
+            int month = int.Parse(setMonth.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setMonth.Text = (month - count).ToString();
+                main.targetUser.birth_month -= count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setMonth.Text = (month - count).ToString();
+                main.userdata.birth_month -= count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void RightMonth_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitMonth.Text);
+            int month = int.Parse(setMonth.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setMonth.Text = (month + count).ToString();
+                main.targetUser.birth_month += count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setMonth.Text = (month - count).ToString();
+                main.userdata.birth_month += count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void LeftDay_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitDay.Text);
+            int month = int.Parse(setDay.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setDay.Text = (month - count).ToString();
+                main.targetUser.birth_day -= count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setDay.Text = (month - count).ToString();
+                main.userdata.birth_day -= count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void RightDay_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitDay.Text);
+            int day = int.Parse(setDay.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setDay.Text = (day + count).ToString();
+                main.targetUser.birth_day += count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setDay.Text = (day + count).ToString();
+                main.userdata.birth_day += count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void LeftHour_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitHour.Text);
+            int hour = int.Parse(setHour.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setHour.Text = (hour - count).ToString();
+                main.targetUser.birth_hour -= count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setHour.Text = (hour - count).ToString();
+                main.userdata.birth_hour -= count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void RightHour_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitHour.Text);
+            int hour = int.Parse(setHour.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setHour.Text = (hour + count).ToString();
+                main.targetUser.birth_hour += count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setHour.Text = (hour + count).ToString();
+                main.userdata.birth_hour += count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void LeftMinute_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitMinute.Text);
+            int minute = int.Parse(setMinute.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setMinute.Text = (minute - count).ToString();
+                main.targetUser.birth_minute -= count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setMinute.Text = (minute - count).ToString();
+                main.userdata.birth_minute -= count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void RightMinute_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitMinute.Text);
+            int minute = int.Parse(setMinute.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setMinute.Text = (minute + count).ToString();
+                main.targetUser.birth_minute += count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setMinute.Text = (minute + count).ToString();
+                main.userdata.birth_minute += count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void LeftSecond_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitSecond.Text);
+            int second = int.Parse(setSecond.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setSecond.Text = (second - count).ToString();
+                main.targetUser.birth_second -= count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setSecond.Text = (second - count).ToString();
+                main.userdata.birth_second -= count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void RightSecond_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitSecond.Text);
+            int second = int.Parse(setSecond.Text);
+            if (natalTime.IsChecked == true)
+            {
+                setSecond.Text = (second + count).ToString();
+                main.targetUser.birth_second += count;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                setSecond.Text = (second + count).ToString();
+                main.userdata.birth_second += count;
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
+        private void LeftChange_Click(object sender, RoutedEventArgs e)
+        {
+            int yearCount = int.Parse(unitYear.Text);
+            int monthCount = int.Parse(unitMonth.Text);
+            int dayCount = int.Parse(unitDay.Text);
+            int hourCount = int.Parse(unitHour.Text);
+            int minuteCount = int.Parse(unitMinute.Text);
+            int secondCount = int.Parse(unitSecond.Text);
+            int year = int.Parse(setYear.Text);
+            int month = int.Parse(setMonth.Text);
+            int day = int.Parse(setDay.Text);
+            int hour = int.Parse(setHour.Text);
+            int minute = int.Parse(setMinute.Text);
+            int second = int.Parse(setSecond.Text);
+            setYear.Text = (second - yearCount).ToString();
+            setMonth.Text = (month - monthCount).ToString();
+            setDay.Text = (day - dayCount).ToString();
+            setHour.Text = (hour - hourCount).ToString();
+            setMinute.Text = (minute - minuteCount).ToString();
+            setSecond.Text = (second - secondCount).ToString();
+
+            if (natalTime.IsChecked == true)
+            {
+                main.targetUser.birth_year -= yearCount;
+                main.targetUser.birth_month -= monthCount;
+                main.targetUser.birth_day -= dayCount;
+                main.targetUser.birth_hour -= hourCount;
+                main.targetUser.birth_minute -= minuteCount;
+                main.targetUser.birth_second -= secondCount;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                main.userdata.birth_year -= yearCount;
+                main.userdata.birth_month -= monthCount;
+                main.userdata.birth_day -= dayCount;
+                main.userdata.birth_hour -= hourCount;
+                main.userdata.birth_minute -= minuteCount;
+                main.userdata.birth_second -= secondCount;
+
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+
+        }
+
+        private void RightChange_Click(object sender, RoutedEventArgs e)
+        {
+            int yearCount = int.Parse(unitYear.Text);
+            int monthCount = int.Parse(unitMonth.Text);
+            int dayCount = int.Parse(unitDay.Text);
+            int hourCount = int.Parse(unitHour.Text);
+            int minuteCount = int.Parse(unitMinute.Text);
+            int secondCount = int.Parse(unitSecond.Text);
+            int year = int.Parse(setYear.Text);
+            int month = int.Parse(setMonth.Text);
+            int day = int.Parse(setDay.Text);
+            int hour = int.Parse(setHour.Text);
+            int minute = int.Parse(setMinute.Text);
+            int second = int.Parse(setSecond.Text);
+            setYear.Text = (second + yearCount).ToString();
+            setMonth.Text = (month + monthCount).ToString();
+            setDay.Text = (day + dayCount).ToString();
+            setHour.Text = (hour + hourCount).ToString();
+            setMinute.Text = (minute + minuteCount).ToString();
+            setSecond.Text = (second + secondCount).ToString();
+
+            if (natalTime.IsChecked == true)
+            {
+                main.targetUser.birth_year += yearCount;
+                main.targetUser.birth_month += monthCount;
+                main.targetUser.birth_day += dayCount;
+                main.targetUser.birth_hour += hourCount;
+                main.targetUser.birth_minute += minuteCount;
+                main.targetUser.birth_second += secondCount;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            else
+            {
+                main.userdata.birth_year += yearCount;
+                main.userdata.birth_month += monthCount;
+                main.userdata.birth_day += dayCount;
+                main.userdata.birth_hour += hourCount;
+                main.userdata.birth_minute += minuteCount;
+                main.userdata.birth_second += secondCount;
+
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
             main.ReCalc();
             main.ReRender();
         }

@@ -229,6 +229,60 @@ namespace microcosm.Common
             return "";
         }
 
+        public static System.Windows.Media.Brush getPlanetColor(int number)
+        {
+            if (number == (int)CommonData.ZODIAC_SUN)
+            {
+                return System.Windows.Media.Brushes.Olive;
+            }
+            else if (number == (int)CommonData.ZODIAC_MOON)
+            {
+                return System.Windows.Media.Brushes.DarkGoldenrod;
+            }
+            else if (number == (int)CommonData.ZODIAC_MERCURY)
+            {
+                return System.Windows.Media.Brushes.Purple;
+            }
+            else if (number == (int)CommonData.ZODIAC_VENUS)
+            {
+                return System.Windows.Media.Brushes.Green;
+            }
+            else if (number == (int)CommonData.ZODIAC_MARS)
+            {
+                return System.Windows.Media.Brushes.Red;
+            }
+            else if (number == (int)CommonData.ZODIAC_JUPITER)
+            {
+                return System.Windows.Media.Brushes.Maroon;
+            }
+            else if (number == (int)CommonData.ZODIAC_SATURN)
+            {
+                return System.Windows.Media.Brushes.DimGray;
+            }
+            else if (number == (int)CommonData.ZODIAC_URANUS)
+            {
+                return System.Windows.Media.Brushes.DarkTurquoise;
+            }
+            else if (number == (int)CommonData.ZODIAC_NEPTUNE)
+            {
+                return System.Windows.Media.Brushes.DodgerBlue;
+            }
+            else if (number == (int)CommonData.ZODIAC_PLUTO)
+            {
+                return System.Windows.Media.Brushes.DeepPink;
+            }
+            else if (number == (int)CommonData.ZODIAC_EARTH)
+            {
+                return System.Windows.Media.Brushes.SkyBlue;
+            }
+            else if (number == (int)CommonData.ZODIAC_DH_TRUENODE)
+            {
+                return System.Windows.Media.Brushes.DarkCyan;
+            }
+            return System.Windows.Media.Brushes.Black;
+        }
+
+
         // サイン番号を返す(0:牡羊座、11:魚座)
         public static int getSign(double absolute_position)
         {
@@ -239,6 +293,88 @@ namespace microcosm.Common
         public static string getSignText(double absolute_position)
         {
             return getSignSymbol((int)absolute_position / 30);
+        }
+
+        // サインテキストを返す(0:♈、11:♓)
+        public static string getSignTextJp(double absolute_position)
+        {
+            switch((int)absolute_position / 30)
+            {
+                case 0:
+                    return "牡羊座";
+                case 1:
+                    return "牡牛座";
+                case 2:
+                    return "双子座";
+                case 3:
+                    return "蟹座";
+                case 4:
+                    return "獅子座";
+                case 5:
+                    return "乙女座";
+                case 6:
+                    return "天秤座";
+                case 7:
+                    return "蠍座";
+                case 8:
+                    return "射手座";
+                case 9:
+                    return "山羊座";
+                case 10:
+                    return "水瓶座";
+                case 11:
+                    return "魚座";
+                default:
+                    break;
+            }
+            return "";
+        }
+
+        // サイン色を返す
+        public static System.Windows.Media.Brush getSignColor(double absolute_position)
+        {
+            switch((int)absolute_position / 30)
+            {
+                case 0:
+                    // 牡羊座
+                    return System.Windows.Media.Brushes.OrangeRed;
+                case 1:
+                    // 牡牛座
+                    return System.Windows.Media.Brushes.Goldenrod;
+                case 2:
+                    // 双子座
+                    return System.Windows.Media.Brushes.MediumSeaGreen;
+                case 3:
+                    // 蟹座
+                    return System.Windows.Media.Brushes.SteelBlue;
+                case 4:
+                    // 獅子座
+                    return System.Windows.Media.Brushes.Crimson;
+                case 5:
+                    // 乙女座
+                    return System.Windows.Media.Brushes.Maroon;
+                case 6:
+                    // 天秤座
+                    return System.Windows.Media.Brushes.Teal;
+                case 7:
+                    // 蠍座
+                    return System.Windows.Media.Brushes.CornflowerBlue;
+                case 8:
+                    // 射手座
+                    return System.Windows.Media.Brushes.DeepPink;
+                case 9:
+                    // 山羊座
+                    return System.Windows.Media.Brushes.SaddleBrown;
+                case 10:
+                    // 水瓶座
+                    return System.Windows.Media.Brushes.CadetBlue;
+                case 11:
+                    // 魚座
+                    return System.Windows.Media.Brushes.DodgerBlue;
+                default:
+                    break;
+            }
+            return System.Windows.Media.Brushes.Black;
         }
 
         // サイン度数を返す(0～29.9)

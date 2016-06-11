@@ -33,6 +33,7 @@ namespace microcosm.Config
         public BandKind thirdBand;
         public BandKind fourthBand;
         public BandKind fifthBand;
+        public double zodiacCenter;
 
         public TempSetting(ConfigData config)
         {

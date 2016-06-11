@@ -32,6 +32,7 @@
                     <Style TargetType="TreeViewItem">
                     </Style>
                 </TreeView.Resources>
+                    
                 <TreeView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="新規データ" Click="NewDataContext_Click"></MenuItem>

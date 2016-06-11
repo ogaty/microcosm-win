@@ -56,7 +56,7 @@ namespace microcosm.ViewModel
                 dataTxt += string.Format("{0,00:F3}", CommonData.getDeg(absolute_position));
             } else
             {
-                dataTxt += string.Format("{0,00:F3}", main.HexToDecimal(CommonData.getDeg(absolute_position).ToString())) + "'";
+                dataTxt += string.Format("{0,00:F3}", main.DecimalToHex(CommonData.getDeg(absolute_position).ToString())) + "'";
             }
             return dataTxt;
         }
