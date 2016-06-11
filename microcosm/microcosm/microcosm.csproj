@@ -82,6 +82,9 @@
     </Compile>
     <Compile Include="Config\SettingXml.cs" />
     <Compile Include="Config\TempSetting.cs" />
+    <Compile Include="CustomRingWindow.xaml.cs">
+      <DependentUpon>CustomRingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseWindow.xaml.cs">
       <DependentUpon>DatabaseWindow.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Config\SettingWIndow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomRingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

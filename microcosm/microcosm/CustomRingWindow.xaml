@@ -1,0 +1,34 @@
+﻿<Window x:Class="microcosm.CustomRingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:microcosm"
+        mc:Ignorable="d"
+        Title="カスタム円設定" Height="300" Width="300" Closing="Window_Closing">
+    <Grid>
+        <StackPanel>
+            <StackPanel Margin="10">
+                <ComboBox x:Name="ringSelector" SelectedIndex="1">
+                    <ComboBoxItem Content="二重円"/>
+                    <ComboBoxItem Content="三重円"/>
+                    <ComboBoxItem Content="四重円"/>
+                    <ComboBoxItem Content="五重円"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel x:Name="rings">
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                <Button Content="決定" Click="Ok_Click">
+
+                </Button>
+                <Button Content="キャンセル" Margin="10,0,0,0" Click="Cancel_Click">
+
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+        
+    </Grid>
+</Window>

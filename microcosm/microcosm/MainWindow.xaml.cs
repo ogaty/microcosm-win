@@ -65,6 +65,7 @@ namespace microcosm
         public SettingWIndow setWindow;
         public ChartSelectorWindow chartSelecterWindow;
         public DatabaseWindow dbWindow;
+        public CustomRingWindow ringWindow;
 
         // temp ２回レンダリングされるのを防ぐ
         public bool flag = false;
@@ -295,6 +296,7 @@ namespace microcosm
             aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
         }
 
+        // 円レンダリング
         private void circleRender()
         {
             // 獣帯外側
@@ -362,7 +364,257 @@ namespace microcosm
             };
             centerEllipse.Margin = new Thickness(marginSize, marginSize, marginSize, marginSize);
             ringCanvas.Children.Add(centerEllipse);
+
+            // 二重円
+            if (tempSettings.bands == 2)
+            {
+                int margin2Size;
+                Ellipse ring2Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin2Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 4 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 2;
+                    ring2Ellipse.Height = (int)(ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 2;
+                }
+                else
+                {
+                    // 縦長
+                    margin2Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 4 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 2;
+                    ring2Ellipse.Height = (int)(ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 2;
+                }
+                ring2Ellipse.Margin = new Thickness(margin2Size, margin2Size, margin2Size, margin2Size);
+                ringCanvas.Children.Add(ring2Ellipse);
+            }
+
+            // 三重円
+            if (tempSettings.bands == 3)
+            {
+                int margin2Size;
+                Ellipse ring2Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin2Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 3 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 3 + tempSettings.zodiacCenter;
+                    ring2Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 3 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin2Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 3 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 3 + tempSettings.zodiacCenter;
+                    ring2Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 3 + tempSettings.zodiacCenter;
+                }
+                ring2Ellipse.Margin = new Thickness(margin2Size, margin2Size, margin2Size, margin2Size);
+                ringCanvas.Children.Add(ring2Ellipse);
+
+                int margin3Size;
+                Ellipse ring3Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin3Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 6 + 45;
+                    ring3Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 2 / 3 + tempSettings.zodiacCenter;
+                    ring3Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 2 / 3 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin3Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 6 + 45;
+                    ring3Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 2 / 3 + tempSettings.zodiacCenter;
+                    ring3Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 2 / 3 + tempSettings.zodiacCenter;
+                }
+                ring3Ellipse.Margin = new Thickness(margin3Size, margin3Size, margin3Size, margin3Size);
+                ringCanvas.Children.Add(ring3Ellipse);
+
+            }
+
+            // 四重円
+            if (tempSettings.bands == 4)
+            {
+                int margin2Size;
+                Ellipse ring2Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin2Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 3 / 8 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 4 + tempSettings.zodiacCenter;
+                    ring2Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 4 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin2Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 3 / 8 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 4 + tempSettings.zodiacCenter;
+                    ring2Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 4 + tempSettings.zodiacCenter;
+                }
+                ring2Ellipse.Margin = new Thickness(margin2Size, margin2Size, margin2Size, margin2Size);
+                ringCanvas.Children.Add(ring2Ellipse);
+
+                int margin3Size;
+                Ellipse ring3Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin3Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 4 + 45;
+                    ring3Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 2 + tempSettings.zodiacCenter;
+                    ring3Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 2 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin3Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 4 + 45;
+                    ring3Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 2 + tempSettings.zodiacCenter;
+                    ring3Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 2 + tempSettings.zodiacCenter;
+                }
+                ring3Ellipse.Margin = new Thickness(margin3Size, margin3Size, margin3Size, margin3Size);
+                ringCanvas.Children.Add(ring3Ellipse);
+
+                int margin4Size;
+                Ellipse ring4Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin4Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 8 + 45;
+                    ring4Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 3 / 4 + tempSettings.zodiacCenter;
+                    ring4Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 3 / 4 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin4Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 8 + 45;
+                    ring4Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 3 / 4 + tempSettings.zodiacCenter;
+                    ring4Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 3 / 4 + tempSettings.zodiacCenter;
+                }
+                ring4Ellipse.Margin = new Thickness(margin4Size, margin4Size, margin4Size, margin4Size);
+                ringCanvas.Children.Add(ring4Ellipse);
+            }
+
+            // 五重円
+            if (tempSettings.bands == 5)
+            {
+                int margin2Size;
+                Ellipse ring2Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin2Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 2 / 5 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 5 + tempSettings.zodiacCenter;
+                    ring2Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) / 5 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin2Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 2 / 5 + 45;
+                    ring2Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 5 + tempSettings.zodiacCenter;
+                    ring2Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) / 5 + tempSettings.zodiacCenter;
+                }
+                ring2Ellipse.Margin = new Thickness(margin2Size, margin2Size, margin2Size, margin2Size);
+                ringCanvas.Children.Add(ring2Ellipse);
+
+                int margin3Size;
+                Ellipse ring3Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin3Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 3 / 10 + 45;
+                    ring3Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 2 / 5 + tempSettings.zodiacCenter;
+                    ring3Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 2 / 5 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin3Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 3 / 10 + 45;
+                    ring3Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 2 / 5 + tempSettings.zodiacCenter;
+                    ring3Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 2 / 5 + tempSettings.zodiacCenter;
+                }
+                ring3Ellipse.Margin = new Thickness(margin3Size, margin3Size, margin3Size, margin3Size);
+                ringCanvas.Children.Add(ring3Ellipse);
+
+                int margin4Size;
+                Ellipse ring4Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin4Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 1 / 5 + 45;
+                    ring4Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 3 / 5 + tempSettings.zodiacCenter;
+                    ring4Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 3 / 5 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin4Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 1 / 5 + 45;
+                    ring4Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 3 / 5 + tempSettings.zodiacCenter;
+                    ring4Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 3 / 5 + tempSettings.zodiacCenter;
+                }
+                ring4Ellipse.Margin = new Thickness(margin4Size, margin4Size, margin4Size, margin4Size);
+                ringCanvas.Children.Add(ring4Ellipse);
+
+                int margin5Size;
+                Ellipse ring5Ellipse = new Ellipse()
+                {
+                    StrokeThickness = 1,
+                    Stroke = System.Windows.Media.Brushes.Gray,
+                };
+                if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                {
+                    // 横長
+                    margin5Size = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 1 / 10 + 45;
+                    ring5Ellipse.Width = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 4 / 5 + tempSettings.zodiacCenter;
+                    ring5Ellipse.Height = (int)(ringStack.ActualHeight - 90 - tempSettings.zodiacCenter) * 4 / 5 + tempSettings.zodiacCenter;
+                }
+                else
+                {
+                    // 縦長
+                    margin5Size = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 1 / 10 + 45;
+                    ring5Ellipse.Width = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 4 / 5 + tempSettings.zodiacCenter;
+                    ring5Ellipse.Height = (int)(ringStack.ActualWidth - 90 - tempSettings.zodiacCenter) * 4 / 5 + tempSettings.zodiacCenter;
+                }
+                ring5Ellipse.Margin = new Thickness(margin5Size, margin5Size, margin5Size, margin5Size);
+                ringCanvas.Children.Add(ring5Ellipse);
+            }
         }
+        // a = (x1 - x2) / 2
+        // b = (x2 + a) / 2 = (x2 + (x1 - x2) / 2 ) / 2
+        // = (x2 /2 + x1 / 2) / 2
 
         // ハウスカスプレンダリング
         private void houseCuspRender(double[] natalcusp,
@@ -422,7 +674,7 @@ namespace microcosm
                 l.StrokeThickness = 2.0;
                 l.Tag = new Explanation()
                 {
-                    before = "ハウス　",
+                    before = (i + 1).ToString() + "ハウス　",
                     sign = CommonData.getSignTextJp(natalcusp[i + 1]),
                     degree = DecimalToHex((natalcusp[i + 1] % 30).ToString())
                 };
@@ -991,7 +1243,11 @@ namespace microcosm
 
         private void MultipleRing_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ringWindow == null)
+            {
+                ringWindow = new CustomRingWindow(this);
+            }
+            ringWindow.Visibility = Visibility.Visible;
         }
 
         private void OpenDisplayConfig_Click(object sender, RoutedEventArgs e)
