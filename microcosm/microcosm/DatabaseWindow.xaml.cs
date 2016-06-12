@@ -1161,5 +1161,9 @@ namespace microcosm
                 MessageBox.Show("完了しました。");
             }
         }
+
+        private void Amateru_Export(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

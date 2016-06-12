@@ -25,7 +25,6 @@
                     <MenuItem Header="ZET (zbs)" Click="Zet_Click"/>
                     <MenuItem Header="TimePassager (chw)" Click="TimePassages_Click"/>
                 </MenuItem>
-                <MenuItem Header="エクスポート(_E)"></MenuItem>
             </Menu>
         </StackPanel>
 
