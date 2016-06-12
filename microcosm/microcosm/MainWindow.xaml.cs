@@ -67,9 +67,6 @@ namespace microcosm
         public DatabaseWindow dbWindow;
         public CustomRingWindow ringWindow;
 
-        // temp ２回レンダリングされるのを防ぐ
-        public bool flag = false;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -877,9 +874,6 @@ namespace microcosm
                         return;
                     }
                     SetSign(displayData);
-
-                    //                    display();
-
                 });
             }
         }
@@ -1050,11 +1044,6 @@ namespace microcosm
         // startPosition、endPosition : n-pの線は1-2となる
         private void aspectRender(double startDegree, List<PlanetData> list, int startPosition, int endPosition, int aspectKind)
         {
-            if (flag == false)
-            {
-                flag = true;
-                return;
-            }
             if (list == null)
             {
                 return;
@@ -1157,14 +1146,14 @@ namespace microcosm
         {
             Line l = (Line)sender;
             Explanation data = (Explanation)l.Tag;
-            mainWindowVM.explanationTxt = data.before + data.sign + data.degree.ToString("0.000");
+            mainWindowVM.explanationTxt = data.before + data.sign + DecimalToHex(data.degree.ToString("0.000")).ToString("0.000") + "\'";
         }
 
         private void planetMouseEnter(object sender, System.EventArgs e)
         {
             Label l = (Label)sender;
             Explanation data = (Explanation)l.Tag;
-            mainWindowVM.explanationTxt = data.sign + data.degree.ToString("0.000");
+            mainWindowVM.explanationTxt = data.sign + DecimalToHex(data.degree.ToString("0.000")).ToString("0.000") + "\'";
         }
         private void aspectMouseEnter(object sender, System.EventArgs e)
         {
@@ -1279,5 +1268,97 @@ namespace microcosm
                 }
             }
         }
+
+        private void Natal_Current_Click(object sender, RoutedEventArgs e)
+        {
+            natalSet();
+            ReCalc();
+            ReRender();
+        }
+
+        private void Transit_Current_Click(object sender, RoutedEventArgs e)
+        {
+            transitSet();
+            ReCalc();
+            ReRender();
+        }
+
+        private void Both_Current_Click(object sender, RoutedEventArgs e)
+        {
+            natalSet();
+            transitSet();
+            ReCalc();
+            ReRender();
+        }
+
+        public void natalSet()
+        {
+            mainWindowVM.userName = "現在時刻";
+            mainWindowVM.userBirthStr =
+                DateTime.Now.Year
+                + "/"
+                + DateTime.Now.Month.ToString("00")
+                + "/"
+                + DateTime.Now.Day.ToString("00")
+                + " "
+                + DateTime.Now.Hour.ToString("00")
+                + ":"
+                + DateTime.Now.Minute.ToString("00")
+                + ":"
+                + DateTime.Now.Second.ToString("00")
+                + " "
+                + config.defaultTimezone;
+            mainWindowVM.userBirthPlace = config.defaultPlace;
+            mainWindowVM.userLat = config.lat.ToString("00.0000");
+            mainWindowVM.userLng = config.lng.ToString("000.0000");
+
+            targetUser.name = "現在時刻";
+            targetUser.birth_year = DateTime.Now.Year;
+            targetUser.birth_month = DateTime.Now.Month;
+            targetUser.birth_day = DateTime.Now.Day;
+            targetUser.birth_hour = DateTime.Now.Hour;
+            targetUser.birth_minute = DateTime.Now.Minute;
+            targetUser.birth_second = DateTime.Now.Second;
+            targetUser.birth_place = config.defaultPlace;
+            targetUser.lat = config.lat;
+            targetUser.lng = config.lng;
+            targetUser.timezone = config.defaultTimezone;
+        }
+
+        public void transitSet()
+        {
+            mainWindowVM.transitName = "現在時刻";
+            mainWindowVM.transitBirthStr =
+                DateTime.Now.Year
+                + "/"
+                + DateTime.Now.Month.ToString("00")
+                + "/"
+                + DateTime.Now.Day.ToString("00")
+                + " "
+                + DateTime.Now.Hour.ToString("00")
+                + ":"
+                + DateTime.Now.Minute.ToString("00")
+                + ":"
+                + DateTime.Now.Second.ToString("00")
+                + " "
+                + config.defaultTimezone;
+            mainWindowVM.transitPlace = config.defaultPlace;
+            mainWindowVM.transitLat = config.lat.ToString("00.0000");
+            mainWindowVM.transitLng = config.lng.ToString("000.0000");
+
+            userdata.name = "現在時刻";
+            userdata.birth_year = DateTime.Now.Year;
+            userdata.birth_month = DateTime.Now.Month;
+            userdata.birth_day = DateTime.Now.Day;
+            userdata.birth_hour = DateTime.Now.Hour;
+            userdata.birth_minute = DateTime.Now.Minute;
+            userdata.birth_second = DateTime.Now.Second;
+            userdata.birth_place = config.defaultPlace;
+            userdata.lat = config.lat;
+            userdata.lng = config.lng;
+            userdata.timezone = config.defaultTimezone;
+
+        }
+
     }
 }

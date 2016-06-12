@@ -18,9 +18,12 @@
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <Menu>
                 <MenuItem Header="インポート(_I)">
-                    <MenuItem Header="AMATERU (csv)" Click="Amateru_Import"></MenuItem>
-                    <MenuItem Header="Stargazer" Click="Stargazer_Click"></MenuItem>
-                    <MenuItem Header="ZET (zbs)" Click="Zet_Click"></MenuItem>
+                    <MenuItem Header="AMATERU (csv)" Click="Amateru_Import"/>
+                    <MenuItem Header="Stargazer" Click="Stargazer_Click"/>
+                    <MenuItem Header="Astrolog32 (dat)" Click="Astrolog_Click"/>
+                    <MenuItem Header="StarFisher (sfs)" Click="StarFisher_Click"/>
+                    <MenuItem Header="ZET (zbs)" Click="Zet_Click"/>
+                    <MenuItem Header="TimePassager (chw)" Click="TimePassages_Click"/>
                 </MenuItem>
                 <MenuItem Header="エクスポート(_E)"></MenuItem>
             </Menu>
@@ -32,7 +35,7 @@
                     <Style TargetType="TreeViewItem">
                     </Style>
                 </TreeView.Resources>
-                    
+
                 <TreeView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="新規データ" Click="NewDataContext_Click"></MenuItem>
@@ -44,7 +47,7 @@
             <ListView Height="200" x:Name="UserEvent" ItemsSource="{Binding UserEventList}" SelectionChanged="UserEvent_SelectionChanged">
                 <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
-                        
+
                     </Style>
                 </ListView.Resources>
                 <ListView.View>
@@ -56,9 +59,9 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            
+
             <TextBox Height="100" Margin="0,20,0,0" x:Name="UserMemo" Text="{Binding Memo}">
-                
+
             </TextBox>
             <Button x:Name="SubmitBtn" Content="決定" Margin="0,10,0,0" Width="100" HorizontalAlignment="Right" Click="Submit_Click"></Button>
         </StackPanel>

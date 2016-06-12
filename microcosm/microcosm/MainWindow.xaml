@@ -27,6 +27,11 @@
         </Grid.RowDefinitions>
         <Menu x:Name="menuBar" Grid.ColumnSpan="4">
             <MenuItem Header="ファイル(_F)">
+                <MenuItem Header="現在時刻を開く(_N)">
+                    <MenuItem Header="出生時刻として設定" Click="Natal_Current_Click"></MenuItem>
+                    <MenuItem Header="イベント時刻として設定" Click="Transit_Current_Click"></MenuItem>
+                    <MenuItem Header="両方に設定" Click="Both_Current_Click"></MenuItem>
+                </MenuItem>
                 <MenuItem Header="データベースを開く(_O)" Click="OpenDatabase_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="表示(_D)">

@@ -846,5 +846,320 @@ namespace microcosm
                 MessageBox.Show("完了しました。");
             }
         }
+
+        private void TimePassages_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            oFD.Filter = "TimePassager Chart Files|*.chw";
+            oFD.Title = "チャートファイルを選択してください";
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
+                    int i = 0;
+                    string name = "";
+                    int year = 2000;
+                    int month = 1;
+                    int day = 1;
+                    int hour = 12;
+                    int minute = 0;
+                    string timezone = "JST";
+                    string place = "";
+                    string lat = "35.670587";
+                    string lng = "139.772003";
+                    string memo = "";
+                    while (sr.Peek() >= 0)
+                    {
+                        string line = sr.ReadLine();
+                        i++;
+                        if (i == 1)
+                        {
+                            continue;
+                        }
+                        switch (i)
+                        {
+                            case 2:
+                                name = line;
+                                break;
+                            case 3:
+                                string[] dt = line.Split('/');
+                                year = int.Parse(dt[2]);
+                                month = int.Parse(dt[0]);
+                                day = int.Parse(dt[1]);
+                                break;
+                            case 4:
+                                string[] tm = line.Split(':');
+                                hour = int.Parse(tm[0]);
+                                minute = int.Parse(tm[1]);
+                                break;
+                            case 5:
+                                if (line == "-9.0")
+                                {
+                                    timezone = "JST";
+                                }
+                                else
+                                {
+                                    timezone = "UTC";
+                                }
+                                break;
+                            case 6:
+                                // daylight設定、インポートしない
+                            case 7:
+                                place = line;
+                                break;
+                            case 8:
+                                place += "," + line;
+                                break;
+                            case 9:
+                                lat = line;
+                                break;
+                            case 10:
+                                lng = line;
+                                break;
+                            case 33:
+                                memo = line;
+                                break;
+                            default:
+                                break;
+                        }
+                        if (i >= 33)
+                        {
+                            UserData udata = new UserData(name, "",
+                                year, month, day,
+                                hour, minute, 0,
+                                double.Parse(lat), double.Parse(lng), place, memo, timezone);
+                            string filename = name + ".csm";
+                            Assembly myAssembly = Assembly.GetEntryAssembly();
+                            string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\TimePassages\" + filename;
+
+                            try
+                            {
+                                if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+                                {
+                                    Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+                                }
+                                XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+                                FileStream fs = new FileStream(path, FileMode.Create);
+                                StreamWriter sw = new StreamWriter(fs);
+                                serializer.Serialize(sw, udata);
+                                sw.Close();
+                                fs.Close();
+                            }
+                            catch (IOException)
+                            {
+                            }
+                            break;
+                        }
+
+                    }
+                    window.CreateTree();
+                }
+                MessageBox.Show("完了しました。");
+            }
+        }
+
+        private void Astrolog_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            oFD.Filter = "Astrolog DAT Files|*.dat";
+            oFD.Title = "チャートファイルを選択してください";
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    string name = "";
+                    int year = 2000;
+                    int month = 1;
+                    int day = 1;
+                    int hour = 12;
+                    int minute = 0;
+                    int second = 0;
+                    string timezone = "JST";
+                    string place = "";
+                    string lat = "35.670587";
+                    string lng = "139.772003";
+                    string memo = "";
+                    bool dataSet = false;
+                    StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
+                    while (sr.Peek() >= 0)
+                    {
+                        string line = sr.ReadLine();
+                        string[] data = line.Split(' ');
+                        if (data[0].IndexOf("/qb") == 0)
+                        {
+                            month = int.Parse(data[1]);
+                            day = int.Parse(data[2]);
+                            year = int.Parse(data[3]);
+                            string[] hours = data[4].Split(':');
+                            hour = int.Parse(hours[0]);
+                            minute = int.Parse(hours[1]);
+                            second = int.Parse(hours[2]);
+                            if (data[6] == "-9:00")
+                            {
+                                timezone = "JST";
+                            }
+                            else
+                            {
+                                timezone = "UTC";
+                            }
+                            string[] lngs = data[7].Split('\'');
+                            lng = lngs[0].Replace(':', '.');
+                            string[] lats = data[7].Split('\'');
+                            lng = lats[0].Replace(':', ',');
+                        }
+                        else if (data[0].IndexOf("/zi") == 0)
+                        {
+                            data = line.Split('\"');
+                            name = data[1];
+                            place = data[3];
+                            dataSet = true;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+
+                        if (!dataSet) continue;
+
+                        UserData udata = new UserData(name, "",
+                            year, month, day,
+                            hour, minute, second,
+                            double.Parse(lat), double.Parse(lng), place, memo, timezone);
+                        string filename = name + ".csm";
+                        Assembly myAssembly = Assembly.GetEntryAssembly();
+                        string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Astrolog32\" + filename;
+
+                        try
+                        {
+                            if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+                            {
+                                Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+                            }
+                            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+                            FileStream fs = new FileStream(path, FileMode.Create);
+                            StreamWriter sw = new StreamWriter(fs);
+                            serializer.Serialize(sw, udata);
+                            sw.Close();
+                            fs.Close();
+                        }
+                        catch (IOException)
+                        {
+
+                        }
+                    }
+                    window.CreateTree();
+                }
+                MessageBox.Show("完了しました。");
+            }
+        }
+
+        private void StarFisher_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            oFD.Filter = "StarFisher Script Files|*.sfs";
+            oFD.Title = "チャートファイルを選択してください";
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    string name = "";
+                    int year = 2000;
+                    int month = 1;
+                    int day = 1;
+                    int hour = 12;
+                    int minute = 0;
+                    int second = 0;
+                    string place = "";
+                    string lat = "35.670587";
+                    string lng = "139.772003";
+                    string timezone = "JST";
+                    string memo = "";
+                    bool dataSet = false;
+                    StreamReader sr = new StreamReader(fileStream, true);
+                    while (sr.Peek() >= 0)
+                    {
+                        string line = sr.ReadLine();
+                        if (line.IndexOf("Latitude") > 0)
+                        {
+                            string[] datainfo = line.Split('\"');
+                            lat = datainfo[1];
+                            lat = "38";
+                        }
+                        if (line.IndexOf("Longitude") > 0)
+                        {
+                            string[] datainfo = line.Split('\"');
+                            lng = datainfo[1];
+                            lng = "138";
+                        }
+                        if (line.IndexOf("Date") > 0)
+                        {
+                            string[] datainfo = line.Split('\"');
+                            string[] dateinfo = datainfo[1].Split(' ');
+                            year = int.Parse(dateinfo[0].Split('-')[0]);
+                            month = int.Parse(dateinfo[0].Split('-')[1]);
+                            day = int.Parse(dateinfo[0].Split('-')[2]);
+                            hour = int.Parse(dateinfo[1].Split(':')[0]);
+                            minute = int.Parse(dateinfo[1].Split(':')[1]);
+                            second = int.Parse(dateinfo[1].Split(':')[2]);
+                            timezone = dateinfo[2];
+                        }
+                        if (line.IndexOf("Caption") > 0)
+                        {
+                            name = line.Split('\"')[1];
+                        }
+                        if (line.IndexOf("Location") > 0)
+                        {
+                            place = line.Split('\"')[1];
+                        }
+                        if (line.IndexOf("Note") > 0)
+                        {
+                            memo = line.Split('\"')[1];
+                            dataSet = true;
+                        }
+
+
+                        if (!dataSet) continue;
+
+                        UserData udata = new UserData(name, "",
+                            year, month, day,
+                            hour, minute, second,
+                            double.Parse(lat), double.Parse(lng), place, memo, timezone);
+                        string filename = name + ".csm";
+                        Assembly myAssembly = Assembly.GetEntryAssembly();
+                        string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\StarFisher\" + filename;
+
+                        try
+                        {
+                            if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+                            {
+                                Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+                            }
+                            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+                            FileStream fs = new FileStream(path, FileMode.Create);
+                            StreamWriter sw = new StreamWriter(fs);
+                            serializer.Serialize(sw, udata);
+                            sw.Close();
+                            fs.Close();
+                        }
+                        catch (IOException)
+                        {
+
+                        }
+                    }
+                    window.CreateTree();
+                }
+                MessageBox.Show("完了しました。");
+            }
+        }
     }
 }

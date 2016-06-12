@@ -64,6 +64,10 @@ namespace microcosm.Config
         [XmlElement("lng")]
         public double lng { get; set; }
 
+        // デフォルトタイムゾーン
+        [XmlElement("defaultTimezone")]
+        public string defaultTimezone { get; set; }
+
         // プログレス計算方法
         [XmlElement("progression")]
         public EProgression progression { get; set; }
@@ -108,6 +112,7 @@ namespace microcosm.Config
             zodiacOuterWidth = 470;
             zodiacWidth = 60;
             zodiacCenter = 250;
+            defaultTimezone = "JST";
             dispPattern = 0;
             progression = EProgression.PRIMARY;
         }
