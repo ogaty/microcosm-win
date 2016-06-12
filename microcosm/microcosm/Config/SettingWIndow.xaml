@@ -13,7 +13,7 @@
             <ColumnDefinition Width="220"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="10,10,0,0">
-            <ListBox x:Name="dispList">
+            <ListBox x:Name="dispList" SelectionChanged="dispList_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding dispName}"></TextBlock>
@@ -24,7 +24,7 @@
 
         <StackPanel Grid.Column="1" Margin="10,10,0,0" x:Name="leftPane">
             <TextBlock Text="名称"></TextBlock>
-            <TextBox Text="{Binding dispName}"></TextBox>
+            <TextBox x:Name="settingName" Text="{Binding dispName}"></TextBox>
             <TabControl Margin="0,10,0,0">
                 <TabItem Header="天体表示">
                     <StackPanel Orientation="Horizontal">
@@ -60,77 +60,77 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstMoon" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthMoon" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstMercury" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthMercury" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstVenus" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthVenus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstMars" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthMars" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstJupiter" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthJupiter" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstSaturn" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthSaturn" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstUranus" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthUranus" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstNeptune" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthNeptune" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstPluto" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthPluto" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstDH" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthDH" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstChiron" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthChiron" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
@@ -161,14 +161,14 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstEarth" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthEarth" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="26">
                                 <CheckBox x:Name="firstLilith" VerticalAlignment="Center" Margin="3,0,0,0"></CheckBox>
-                                <CheckBox x:Name="seconLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
+                                <CheckBox x:Name="secondLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="thirdLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fourthLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>
                                 <CheckBox x:Name="fifthLilith" VerticalAlignment="Center" Margin="4,0,0,0"></CheckBox>

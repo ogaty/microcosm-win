@@ -221,6 +221,12 @@ namespace microcosm.Config
             d.Add(CommonData.ZODIAC_MC, true);
             d.Add(CommonData.ZODIAC_CHIRON, false);
             d.Add(CommonData.ZODIAC_EARTH, false);
+            d.Add(CommonData.ZODIAC_LILITH, false);
+            d.Add(CommonData.ZODIAC_CELES, false);
+            d.Add(CommonData.ZODIAC_PARAS, false);
+            d.Add(CommonData.ZODIAC_JUNO, false);
+            d.Add(CommonData.ZODIAC_VESTA, false);
+            d.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
             dispPlanet.Add(d);
             dispPlanet.Add(d);
             dispPlanet.Add(d);

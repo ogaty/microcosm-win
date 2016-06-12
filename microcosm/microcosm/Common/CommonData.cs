@@ -22,8 +22,14 @@ namespace microcosm.Common
         public const int ZODIAC_NEPTUNE = 8;
         public const int ZODIAC_PLUTO = 9;
         public const int ZODIAC_DH_TRUENODE = 11;
+        public const int ZODIAC_DT_OSCULATE_APOGEE = 13;
         public const int ZODIAC_EARTH = 14;
         public const int ZODIAC_CHIRON = 15;
+        public const int ZODIAC_CELES = 17;
+        public const int ZODIAC_PARAS = 18;
+        public const int ZODIAC_JUNO = 19;
+        public const int ZODIAC_VESTA = 20;
+        public const int ZODIAC_LILITH = 1181;
         public const int ZODIAC_ASC = 10000;
         public const int ZODIAC_MC = 10001;
 
