@@ -18,6 +18,7 @@ using System.Xml.Serialization;
 using System.IO;
 using Microsoft.Win32;
 using System.Reflection;
+using microcosm.Planet;
 
 namespace microcosm
 {
@@ -151,6 +152,62 @@ namespace microcosm
         public void editEvent_Click(object sender, EventArgs e)
         {
             editEventData();
+        }
+
+        // イベントリスト右クリック→回帰計算
+        public void returnEvent_Click(object sender, EventArgs e)
+        {
+            // ソーラーリターン
+            // 誕生日1日前から1時間ごとに計算
+            // 原始的だけどとりあえずいいや
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            DbItem item;
+            if (UserEvent.SelectedItem is UserData)
+            {
+                UserData data = (UserData)UserEvent.SelectedItem;
+                DateTime currentDate = new DateTime(
+                    data.birth_year,
+                    data.birth_month,
+                    data.birth_day,
+                    data.birth_hour,
+                    data.birth_minute,
+                    data.birth_second
+                    );
+                List<PlanetData> currentPlanet = mainwindow.calc.PositionCalc(data.birth_year,
+                    data.birth_month,
+                    data.birth_day,
+                    data.birth_hour,
+                    data.birth_minute,
+                    data.birth_second,
+                    data.lat,
+                    data.lng);
+
+                DateTime calcDate = currentDate.AddDays(364.5);
+                for (int i = 0; i < 40; i++)
+                {
+                    calcDate = calcDate.AddHours(1);
+                    List<PlanetData> planet = mainwindow.calc.PositionCalc(calcDate.Year,
+                        calcDate.Month,
+                        calcDate.Day,
+                        calcDate.Hour,
+                        calcDate.Minute,
+                        calcDate.Day,
+                        data.lat,
+                        data.lng);
+                    if (Math.Abs(currentPlanet[0].absolute_position - planet[0].absolute_position) < 0.01)
+                    {
+                        Console.WriteLine(currentPlanet[0].absolute_position.ToString());
+                        Console.WriteLine(planet[0].absolute_position.ToString());
+                        break;
+                    }
+                }
+                MessageBox.Show(calcDate.ToString());
+            }
+
+
         }
 
         // 新規作成(ファイル)コールバック

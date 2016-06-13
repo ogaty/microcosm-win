@@ -990,30 +990,67 @@ namespace microcosm
                             X2 = endPoint.X,
                             Y2 = endPoint.Y
                         };
+                        TextBlock aspectLbl = new TextBlock();
+                        aspectLbl.Margin = new Thickness(Math.Abs(startPoint.X + endPoint.X) / 2 - 5, Math.Abs(endPoint.Y + startPoint.Y) / 2 - 8, 0, 0);
                         if (list[i].aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
                         {
                             aspectLine.Stroke = System.Windows.Media.Brushes.Red;
+                            aspectLbl.Foreground = System.Windows.Media.Brushes.Red;
+                            aspectLbl.Text = "☍";
+                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                            aspectLbl.TextAlignment = TextAlignment.Left;
+                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
                         }
                         else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.TRINE)
                         {
                             aspectLine.Stroke = System.Windows.Media.Brushes.Orange;
+                            aspectLbl.Foreground = System.Windows.Media.Brushes.Orange;
+                            aspectLbl.Text = "△";
+                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                            aspectLbl.TextAlignment = TextAlignment.Left;
+                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
                         }
                         else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SQUARE)
                         {
                             aspectLine.Stroke = System.Windows.Media.Brushes.DarkGray;
+                            aspectLbl.Foreground = System.Windows.Media.Brushes.DarkGray;
+                            aspectLbl.Text = "□";
+                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                            aspectLbl.TextAlignment = TextAlignment.Left;
+                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
                         }
                         else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SEXTILE)
                         {
                             aspectLine.Stroke = System.Windows.Media.Brushes.Green;
+                            aspectLbl.Foreground = System.Windows.Media.Brushes.Green;
+                            aspectLbl.Text = "⚹";
+                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                            aspectLbl.TextAlignment = TextAlignment.Left;
+                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+                        }
+                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.INCONJUNCT)
+                        {
+                            aspectLine.Stroke = System.Windows.Media.Brushes.Gray;
+                            aspectLbl.Foreground = System.Windows.Media.Brushes.Gray;
+                            aspectLbl.Text = "⚻";
+                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                            aspectLbl.TextAlignment = TextAlignment.Left;
+                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
                         }
                         else
                         {
                             aspectLine.Stroke = System.Windows.Media.Brushes.Black;
+                            aspectLbl.Foreground = System.Windows.Media.Brushes.Black;
+                            aspectLbl.Text = "⚼";
+                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                            aspectLbl.TextAlignment = TextAlignment.Left;
+                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
                         }
                         aspectLine.MouseEnter += new MouseEventHandler(aspectMouseEnter);
                         aspectLine.MouseLeave += new MouseEventHandler(explanationClear);
                         aspectLine.Tag = list[i].aspects[j];
                         ringCanvas.Children.Add(aspectLine);
+                        ringCanvas.Children.Add(aspectLbl);
 
                     }
 

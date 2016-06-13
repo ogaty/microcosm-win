@@ -169,6 +169,9 @@ namespace microcosm.ViewModel
             MenuItem editEventItem = new MenuItem { Header = "イベント編集" };
             editEventItem.Click += dbwindow.editEvent_Click;
             context.Items.Add(editEventItem);
+            MenuItem returnEventItem = new MenuItem { Header = "回帰計算" };
+            returnEventItem.Click += dbwindow.returnEvent_Click;
+            context.Items.Add(returnEventItem);
 
             dbwindow.UserEvent.ContextMenu = context;
         }
