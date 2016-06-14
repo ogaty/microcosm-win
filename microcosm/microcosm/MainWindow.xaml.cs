@@ -1282,5 +1282,38 @@ namespace microcosm
 
         }
 
+        private void Png_Export(object sender, RoutedEventArgs e)
+        {
+            DrawingVisual dv = new DrawingVisual();
+            DrawingContext dc = dv.RenderOpen();
+
+
+            Canvas cnvs = new Canvas()
+            {
+                Width = 400,
+                Height = 400,
+                Background = System.Windows.Media.Brushes.White
+            };
+            Line line = new Line();
+            line.X1 = 30;
+            line.Y1 = 30;
+            line.X2 = 60;
+            line.Y2 = 60;
+            line.Stroke = System.Windows.Media.Brushes.Gray;
+            cnvs.Children.Add(line);
+            RenderTargetBitmap render = new RenderTargetBitmap((Int32)cnvs.Width, (Int32)cnvs.Height, 96, 96, PixelFormats.Default);
+            render.Render(cnvs);
+
+            // PNGフォーマットで画像を保存するので
+            var enc = new PngBitmapEncoder();
+            enc.Frames.Add(BitmapFrame.Create(render));
+
+            using (FileStream fs = new FileStream("test.png", FileMode.Create))
+            {
+                enc.Save(fs);    // 中身が透明じゃない画像が出力されるはず！！
+                fs.Close();
+            }
+
+        }
     }
 }
