@@ -91,7 +91,7 @@
             <TextBlock Name="progressCalc" Text="一日一年法"></TextBlock>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2">
+        <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" x:Name="xxx">
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock Name="transitName" Text="{Binding transitName}"></TextBlock>

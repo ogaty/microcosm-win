@@ -24,6 +24,9 @@ namespace microcosm
         {
             List<bool> dispList = new List<bool>();
             List<PlanetDisplay> pDisplayList = new List<PlanetDisplay>();
+            if (ringCanvas.ActualWidth < 470) {
+                // TODO 表記を変えること
+            }
 
             if (tempSettings.bands == 1)
             {

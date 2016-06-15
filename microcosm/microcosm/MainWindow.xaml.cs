@@ -618,7 +618,7 @@ namespace microcosm
         {
             //内側がstart, 外側がend
             double startX = tempSettings.zodiacCenter / 2;
-            double endX = (config.zodiacOuterWidth - config.zodiacWidth) / 2;
+            double endX = (ringCanvas.ActualWidth - 90) / 2;
 
             double startY = 0;
             double endY = 0;
@@ -1286,22 +1286,22 @@ namespace microcosm
         {
             DrawingVisual dv = new DrawingVisual();
             DrawingContext dc = dv.RenderOpen();
-
-
-            Canvas cnvs = new Canvas()
+            Canvas cnvs = ringCanvas;
+            cnvs.Background = System.Windows.Media.Brushes.White;
+            cnvs.LayoutTransform = null;
+            System.Windows.Size oldSize = new System.Windows.Size(ringCanvas.ActualWidth, ringCanvas.ActualHeight);
+            System.Windows.Size renderSize;
+            if (cnvs.ActualHeight > cnvs.ActualWidth)
             {
-                Width = 400,
-                Height = 400,
-                Background = System.Windows.Media.Brushes.White
-            };
-            Line line = new Line();
-            line.X1 = 30;
-            line.Y1 = 30;
-            line.X2 = 60;
-            line.Y2 = 60;
-            line.Stroke = System.Windows.Media.Brushes.Gray;
-            cnvs.Children.Add(line);
-            RenderTargetBitmap render = new RenderTargetBitmap((Int32)cnvs.Width, (Int32)cnvs.Height, 96, 96, PixelFormats.Default);
+                renderSize = new System.Windows.Size(cnvs.ActualHeight, cnvs.ActualHeight);
+            }
+            else
+            {
+                renderSize = new System.Windows.Size(cnvs.ActualWidth, cnvs.ActualWidth);
+            }
+            cnvs.Measure(renderSize);
+            cnvs.Arrange(new Rect(renderSize));
+            RenderTargetBitmap render = new RenderTargetBitmap((Int32)renderSize.Width, (Int32)renderSize.Height, 96, 96, PixelFormats.Default);
             render.Render(cnvs);
 
             // PNGフォーマットで画像を保存するので
@@ -1313,6 +1313,9 @@ namespace microcosm
                 enc.Save(fs);    // 中身が透明じゃない画像が出力されるはず！！
                 fs.Close();
             }
+
+            ringCanvas.Measure(oldSize);
+            ringCanvas.Arrange(new Rect(oldSize));
 
         }
     }
