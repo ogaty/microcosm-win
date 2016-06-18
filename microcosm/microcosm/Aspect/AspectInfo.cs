@@ -25,7 +25,7 @@ namespace microcosm.Aspect
     {
         public double targetPosition; // 絶対位置
         public AspectKind aspectKind; // アスペクト種別
-        public int softHard; // ソフトorハード 1:soft, 2:hard
+        public SoftHard softHard; // ソフトorハード 1:soft, 2:hard
         public int targetPlanetNo; // ターゲット番号
     }
 }

@@ -36,6 +36,7 @@ namespace microcosm.Config
             leftPane.DataContext = settingVM;
 
             settingVM.dispName = main.currentSetting.dispName;
+            setOrb();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -162,6 +163,438 @@ namespace microcosm.Config
             fourthDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
             fifthDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
 
+        }
+
+        private void setOrb()
+        {
+            int index = orbRing.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    // N
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 0].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 0].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 0].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 0].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 0].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 0].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 0].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 0].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 0].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 0].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 0].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 0].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 0].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 0].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 0].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 0].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 0].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 0].ToString();
+                    break;
+                case 1:
+                    // P
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 1].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 1].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 1].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 1].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 1].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 1].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 1].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 1].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 1].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 1].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 1].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 1].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 1].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 1].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 1].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 1].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 1].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 1].ToString();
+                    break;
+                case 2:
+                    // T
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[2, 2].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[2, 2].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[2, 2].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[2, 2].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[2, 2].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[2, 2].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[2, 2].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[2, 2].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[2, 2].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[2, 2].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[2, 2].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[2, 2].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[2, 2].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[2, 2].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[2, 2].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[2, 2].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[2, 2].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[2, 2].ToString();
+                    break;
+                case 3:
+                    // N-P
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 1].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 1].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 1].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 1].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 1].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 1].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 1].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 1].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 1].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 1].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 1].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 1].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 1].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 1].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 1].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 1].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 1].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 1].ToString();
+                    break;
+                case 4:
+                    // N-T
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 2].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 2].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 2].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 2].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 2].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 2].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 2].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 2].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 2].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 2].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 2].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 2].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 2].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 2].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 2].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 2].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 2].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 2].ToString();
+                    break;
+                case 5:
+                    // P-T
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 2].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 2].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 2].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 2].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 2].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 2].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 2].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 2].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 2].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 2].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 2].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 2].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 2].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 2].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 2].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 2].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 2].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 2].ToString();
+                    break;
+                case 6:
+                    // N-4
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 3].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 3].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 3].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 3].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 3].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 3].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 3].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 3].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 3].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 3].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 3].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 3].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 3].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 3].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 3].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 3].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 3].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 3].ToString();
+                    break;
+                case 7:
+                    // N-5
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 4].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 4].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 4].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 4].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 4].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 4].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 4].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 4].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 4].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 4].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 4].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 4].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 4].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 4].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 4].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 4].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 4].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 4].ToString();
+                    break;
+                case 8:
+                    // P-4
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 3].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 3].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 3].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 3].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 3].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 3].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 3].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 3].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 3].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 3].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 3].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 3].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 3].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 3].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 3].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 3].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 3].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 3].ToString();
+                    break;
+                case 9:
+                    // P-5
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 4].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 4].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 4].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 4].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 4].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 4].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 4].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 4].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 4].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 4].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 4].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 4].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 4].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 4].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 4].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 4].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 4].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 4].ToString();
+                    break;
+                case 10:
+                    // T-4
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[2, 3].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[2, 3].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[2, 3].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[2, 3].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[2, 3].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[2, 3].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[2, 3].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[2, 3].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[2, 3].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[2, 3].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[2, 3].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[2, 3].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[2, 3].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[2, 3].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[2, 3].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[2, 3].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[2, 3].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[2, 3].ToString();
+                    break;
+                case 11:
+                    // T-5
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[2, 4].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[2, 4].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[2, 4].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[2, 4].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[2, 4].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[2, 4].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[2, 4].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[2, 4].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[2, 4].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[2, 4].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[2, 4].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[2, 4].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[2, 4].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[2, 4].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[2, 4].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[2, 4].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[2, 4].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[2, 4].ToString();
+                    break;
+                case 12:
+                    // 4-4
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[3, 3].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[3, 3].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[3, 3].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[3, 3].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[3, 3].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[3, 3].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[3, 3].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[3, 3].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[3, 3].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[3, 3].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[3, 3].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[3, 3].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[3, 3].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[3, 3].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[3, 3].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[3, 3].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[3, 3].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[3, 3].ToString();
+                    break;
+                case 13:
+                    // 4-5
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[3, 4].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[3, 4].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[3, 4].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[3, 4].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[3, 4].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[3, 4].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[3, 4].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[3, 4].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[3, 4].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[3, 4].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[3, 4].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[3, 4].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[3, 4].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[3, 4].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[3, 4].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[3, 4].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[3, 4].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[3, 4].ToString();
+                    break;
+                case 14:
+                    // 5-5
+                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[4, 4].ToString();
+                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[4, 4].ToString();
+                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[4, 4].ToString();
+                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[4, 4].ToString();
+                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[4, 4].ToString();
+                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[4, 4].ToString();
+                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[4, 4].ToString();
+                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[4, 4].ToString();
+                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[4, 4].ToString();
+                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[4, 4].ToString();
+                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[4, 4].ToString();
+                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[4, 4].ToString();
+                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[4, 4].ToString();
+                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[4, 4].ToString();
+                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[4, 4].ToString();
+                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[4, 4].ToString();
+                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[4, 4].ToString();
+                    otherHard150.Text = main.currentSetting.orb_other_hard_150[4, 4].ToString();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void conjunction11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            if ((int)img.Tag == 1)
+            {
+                // on->off
+                // main.list1['sun'] = false;
+            } else
+            {
+            }
+
+        }
+
+        private void opposition11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            if ((int)img.Tag == 1)
+            {
+                // on->off
+            }
+            else
+            {
+            }
+        }
+
+        private void trine11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            if ((int)img.Tag == 1)
+            {
+                // on->off
+            }
+            else
+            {
+            }
+        }
+
+        private void square11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            if ((int)img.Tag == 1)
+            {
+                // on->off
+            }
+            else
+            {
+            }
+        }
+
+        private void sextile11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            if ((int)img.Tag == 1)
+            {
+                // on->off
+            }
+            else
+            {
+            }
+        }
+
+        private void inconjunct11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            if ((int)img.Tag == 1)
+            {
+                // on->off
+            }
+            else
+            {
+            }
+        }
+
+        private void sesquiquadrate11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            if ((int)img.Tag == 1)
+            {
+                // on->off
+            }
+            else
+            {
+            }
+        }
+
+        private void orbRing_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sunSoft1st != null)
+            {
+                setOrb();
+            }
         }
     }
 }

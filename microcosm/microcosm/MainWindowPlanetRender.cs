@@ -117,7 +117,7 @@ namespace microcosm
                         planetTxt = CommonData.getPlanetSymbol(planet.no),
                         planetColor = CommonData.getPlanetColor(planet.no),
                         degreePt = pointdegree,
-                        degreeTxt = ((planet.absolute_position - 0.5) % 30).ToString("00°"),
+                        degreeTxt = ((planet.absolute_position) % 30 - 0.5).ToString("00°"),
                         symbolPt = pointsymbol,
                         symbolTxt = CommonData.getSignText(planet.absolute_position),
                         minutePt = pointminute,

@@ -47,12 +47,12 @@ namespace microcosm
         public UserData targetUser;
         public UserEventData userdata;
 
-        List<PlanetData> list1;
-        List<PlanetData> list2;
-        List<PlanetData> list3;
-        List<PlanetData> list4;
-        List<PlanetData> list5;
-        List<PlanetData> list6;
+        public List<PlanetData> list1;
+        public List<PlanetData> list2;
+        public List<PlanetData> list3;
+        public List<PlanetData> list4;
+        public List<PlanetData> list5;
+        public List<PlanetData> list6;
 
         public double[] houseList1;
         public double[] houseList2;
@@ -88,6 +88,7 @@ namespace microcosm
 
                 if (!File.Exists(filename))
                 {
+                    // 生成
                     XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
                     FileStream fs = new FileStream(filename, FileMode.Create);
                     StreamWriter sw = new StreamWriter(fs);
@@ -96,6 +97,7 @@ namespace microcosm
                     fs.Close();
                 } else
                 {
+                    // 読み込み
                     XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
                     FileStream fs = new FileStream(filename, FileMode.Open);
                     settings[i].xmlData = (SettingXml)serializer.Deserialize(fs);
@@ -937,6 +939,7 @@ namespace microcosm
             {
                 if (!list[i].isAspectDisp)
                 {
+                    // 表示対象外
                     continue;
                 }
                 PointF startPoint;
@@ -990,6 +993,12 @@ namespace microcosm
                             X2 = endPoint.X,
                             Y2 = endPoint.Y
                         };
+                        if (list[i].aspects[j].softHard == SoftHard.SOFT)
+                        {
+                            aspectLine.StrokeDashArray = new DoubleCollection();
+                            aspectLine.StrokeDashArray.Add(4.0);
+                            aspectLine.StrokeDashArray.Add(4.0);
+                        }
                         TextBlock aspectLbl = new TextBlock();
                         aspectLbl.Margin = new Thickness(Math.Abs(startPoint.X + endPoint.X) / 2 - 5, Math.Abs(endPoint.Y + startPoint.Y) / 2 - 8, 0, 0);
                         if (list[i].aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
@@ -1018,6 +1027,7 @@ namespace microcosm
                             aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
                             aspectLbl.TextAlignment = TextAlignment.Left;
                             aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+
                         }
                         else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SEXTILE)
                         {

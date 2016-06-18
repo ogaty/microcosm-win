@@ -111,6 +111,11 @@
     <Compile Include="MainWindowPlanetRender.cs" />
     <Compile Include="Planet\PlanetData.cs" />
     <Compile Include="Planet\PlanetDisplay.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Setting\AspectSetting.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="ViewModel\DatabaseWindowViewModel.cs" />
@@ -177,11 +182,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -221,6 +221,72 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\conjunction_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\conjunction_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\opposition_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\opposition_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\inconjunct_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\inconjunct_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sesquiquadrate_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sesquiquadrate_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sextile_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sextile_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\square_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\square_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\trine_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\trine_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mercury_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mercury_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moon_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moon_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sun_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sun_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\venus_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\venus_on.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

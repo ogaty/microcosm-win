@@ -148,4 +148,70 @@
   <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="conjunction_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conjunction_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="conjunction_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conjunction_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="inconjunct_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inconjunct_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="inconjunct_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inconjunct_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opposition_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\opposition_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opposition_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\opposition_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sextile_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sextile_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sextile_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sextile_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="square_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\square_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="square_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\square_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trine_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trine_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trine_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trine_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sesquiquadrate_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sesquiquadrate_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sesquiquadrate_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sesquiquadrate_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mercury_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mercury_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mercury_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mercury_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moon_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moon_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moon_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moon_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sun_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sun_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sun_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sun_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="venus_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\venus_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="venus_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\venus_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

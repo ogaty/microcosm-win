@@ -9,8 +9,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition Width="320"></ColumnDefinition>
-            <ColumnDefinition Width="220"></ColumnDefinition>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+            <ColumnDefinition Width="90"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="10,10,0,0">
             <ListBox x:Name="dispList" SelectionChanged="dispList_SelectionChanged">
@@ -218,26 +218,134 @@
                 </TabItem>
 
                 <TabItem Header="アスペクト表示">
-                    <StackPanel>
+                    <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="1-1"></Label>
+                            <Label Content="1-1 (Natal)" Width="100"></Label>
+                            <StackPanel>
+                                <Image Source="/Resources/sun_on.png"></Image>
+                                <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden"></Image>
+                            </StackPanel>
+                            <StackPanel>
+                                <Image Source="/Resources/moon_on.png"></Image>
+                                <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden"></Image>
+                            </StackPanel>
+                            <StackPanel>
+                                <Image Source="/Resources/mercury_on.png"></Image>
+                                <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden"></Image>
+                            </StackPanel>
+                            <StackPanel>
+                                <Image Source="/Resources/venus_on.png"></Image>
+                                <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden"></Image>
+                            </StackPanel>
                         </StackPanel>
-                        
-                        <Label Content="1-2"></Label>
-                        <Label Content="1-3"></Label>
-                        <Label Content="1-4"></Label>
-                        <Label Content="1-5"></Label>
-                        <Label Content="2-2"></Label>
-                        <Label Content="2-3"></Label>
-                        <Label Content="2-4"></Label>
-                        <Label Content="2-5"></Label>
-                        <Label Content="3-3"></Label>
-                        <Label Content="3-4"></Label>
-                        <Label Content="3-5"></Label>
-                        <Label Content="4-4"></Label>
-                        <Label Content="4-5"></Label>
-                        <Label Content="5-5"></Label>
+
+                        <Label Content="2-2 (Progress)" Width="100"></Label>
+                        <Label Content="3-3 (Transit)" Width="100"></Label>
+                        <Label Content="1-2 (N-P)" Width="100"></Label>
+                        <Label Content="1-3 (N-T)" Width="100"></Label>
+                        <Label Content="2-3 (P-T)" Width="100"></Label>
+                        <Label Content="1-4" Width="100"></Label>
+                        <Label Content="1-5" Width="100"></Label>
+                        <Label Content="2-4" Width="100"></Label>
+                        <Label Content="2-5" Width="100"></Label>
+                        <Label Content="3-4" Width="100"></Label>
+                        <Label Content="3-5" Width="100"></Label>
+                        <Label Content="4-4" Width="100"></Label>
+                        <Label Content="4-5" Width="100"></Label>
+                        <Label Content="5-5" Width="100"></Label>
                     </StackPanel>
+                </TabItem>
+                <TabItem Header="オーブ">
+                    <StackPanel Margin="10">
+                        <ComboBox x:Name="orbRing" Width="130" HorizontalAlignment="Left" SelectionChanged="orbRing_SelectionChanged">
+                            <ComboBoxItem Content="1 - 1 (Natal)" IsSelected="True"/>
+                            <ComboBoxItem Content="2 - 2 (Progress)"/>
+                            <ComboBoxItem Content="3 - 3 (Transit)"/>
+                            <ComboBoxItem Content="1 - 2 (N - P)"/>
+                            <ComboBoxItem Content="1 - 3 (N - T)"/>
+                            <ComboBoxItem Content="2 - 3 (P - T)"/>
+                            <ComboBoxItem Content="1 - 4"/>
+                            <ComboBoxItem Content="1 - 5"/>
+                            <ComboBoxItem Content="2 - 4"/>
+                            <ComboBoxItem Content="2 - 5"/>
+                            <ComboBoxItem Content="3 - 4"/>
+                            <ComboBoxItem Content="3 - 5"/>
+                            <ComboBoxItem Content="4 - 4"/>
+                            <ComboBoxItem Content="4 - 5"/>
+                            <ComboBoxItem Content="5 - 5"/>
+                        </ComboBox>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="ソフト" Margin="160,0,0,0"></TextBlock>
+                                    <TextBlock Text="ハード" Margin="58,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Background="#FFFFEDB2">
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                        <TextBlock Width="30"></TextBlock>
+                                        <TextBlock Width="70" Text="１種" Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft1st"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="sunHard1st"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                        <TextBlock Width="30" Text="太陽"></TextBlock>
+                                        <TextBlock Width="70" Text="150° / 135° " Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft150"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="sunHard150"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
+                                        <TextBlock Width="30" Text=""></TextBlock>
+                                        <TextBlock Width="70" Text="２種・３種 " Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft2nd"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="sunHard2nd"></TextBox>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Background="#FFF7F9CE">
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                        <TextBlock Width="30"></TextBlock>
+                                        <TextBlock Width="70" Text="１種" Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft1st"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="moonHard1st"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                        <TextBlock Text="月" Width="30"></TextBlock>
+                                        <TextBlock Width="70" Text="150° / 135° " Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft150"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="moonHard150"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
+                                        <TextBlock Width="30"></TextBlock>
+                                        <TextBlock Width="70" Text="２種・３種" Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft2nd"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="moonHard2nd"></TextBox>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Background="#FFDBF1CE">
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                        <TextBlock Width="30"></TextBlock>
+                                        <TextBlock Width="70" Text="１種" Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft1st"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="otherHard1st"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                        <TextBlock Text="その他" Width="30"></TextBlock>
+                                        <TextBlock Width="70" Text="150° / 135° " Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft150"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="otherHard150"></TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
+                                        <TextBlock Width="30"></TextBlock>
+                                        <TextBlock Width="70" Text="２種・３種" Margin="20,0,0,0"></TextBlock>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft2nd"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="otherHard2nd"></TextBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+
                 </TabItem>
 
             </TabControl>
