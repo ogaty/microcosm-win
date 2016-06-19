@@ -176,15 +176,33 @@ namespace microcosm
             int month = int.Parse(setMonth.Text);
             if (natalTime.IsChecked == true)
             {
-                setMonth.Text = (month - count).ToString();
-                main.targetUser.birth_month -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(-1 * count);
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setMonth.Text = (month - count).ToString();
-                main.userdata.birth_month -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(-1 * count);
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -195,18 +213,35 @@ namespace microcosm
         private void RightMonth_Click(object sender, RoutedEventArgs e)
         {
             int count = int.Parse(unitMonth.Text);
-            int month = int.Parse(setMonth.Text);
             if (natalTime.IsChecked == true)
             {
-                setMonth.Text = (month + count).ToString();
-                main.targetUser.birth_month += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(count);
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setMonth.Text = (month - count).ToString();
-                main.userdata.birth_month += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(count);
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
