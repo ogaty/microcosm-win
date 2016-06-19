@@ -9,7 +9,9 @@ namespace microcosm.Aspect
     public class Explanation
     {
         public string before = "";
+        public string planet;
         public string sign;
         public double degree;
+        public bool retrograde;
     }
 }

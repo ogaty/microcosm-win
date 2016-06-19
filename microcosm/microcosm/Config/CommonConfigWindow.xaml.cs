@@ -70,12 +70,23 @@ namespace microcosm.Config
                 decimalDisp.IsChecked = false;
                 degreeDisp.IsChecked = true;
             }
+            if (main.config.dispPattern == 0)
+            {
+                fullDisp.IsChecked = true;
+                miniDisp.IsChecked = false;
+            }
+            else
+            {
+                fullDisp.IsChecked = false;
+                miniDisp.IsChecked = true;
+            }
         }
 
         private void Centric_Checked(object sender, RoutedEventArgs e)
         {
         }
 
+        // 保存
         private void OkClick(object sender, RoutedEventArgs e)
         {
             if (geoCentric.IsChecked == true)
@@ -113,6 +124,14 @@ namespace microcosm.Config
             else
             {
                 main.config.decimalDisp = (int)EDecimalDisp.DEGREE;
+            }
+            if (fullDisp.IsChecked == true)
+            {
+                main.config.dispPattern = (int)DispPetern.FULL;
+            }
+            else
+            {
+                main.config.dispPattern = (int)DispPetern.MINI;
             }
 
             string filename = @"system\config.csm";

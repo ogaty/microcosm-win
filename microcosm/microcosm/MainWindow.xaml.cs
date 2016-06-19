@@ -238,6 +238,7 @@ namespace microcosm
 
             AspectCalc aspect = new AspectCalc();
             list1 = aspect.AspectCalcSame(currentSetting, list1);
+            list2 = aspect.AspectCalcSame(currentSetting, list2);
         }
 
         private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -888,6 +889,27 @@ namespace microcosm
             ringCanvas.Children.Add(txtLbl);
         }
 
+        // 天体表示
+        // 天体、度数だけ
+        public void SetOnlySignDegree(PlanetDisplay displayData)
+        {
+            Label txtLbl = new Label();
+            txtLbl.Content = displayData.planetTxt;
+            txtLbl.Margin = new Thickness(displayData.planetPt.X, displayData.planetPt.Y, 0, 0);
+            txtLbl.Foreground = displayData.planetColor;
+            txtLbl.Tag = displayData.explanation;
+            txtLbl.FontSize = 16;
+            txtLbl.MouseEnter += planetMouseEnter;
+            ringCanvas.Children.Add(txtLbl);
+
+            Label degreeLbl = new Label();
+            degreeLbl.Content = displayData.degreeTxt;
+            degreeLbl.Margin = new Thickness(displayData.degreePt.X, displayData.degreePt.Y, 0, 0);
+            degreeLbl.Tag = displayData.explanation;
+            degreeLbl.MouseEnter += planetMouseEnter;
+            ringCanvas.Children.Add(degreeLbl);
+        }
+
         // アスペクト表示
         public void aspectsRendering(
                 double startDegree, 
@@ -899,6 +921,11 @@ namespace microcosm
             )
         {
             aspectRender(startDegree, list1, 1, 1, 1);
+            if (tempSettings.bands == 2)
+            {
+                aspectRender(startDegree, list1, 1, 2, 1);
+                aspectRender(startDegree, list2, 2, 2, 1);
+            }
             /*
             if (aspectSetting.n_n)
             {
@@ -952,6 +979,16 @@ namespace microcosm
                 {
                     //                    startPoint = rotate(setting.calcThirdInnerRadius() / 2, 0, list[i].absolute_position - startDegree);
                     startPoint = rotate(tempSettings.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
+                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                    {
+                        // 横長
+                        startPoint = rotate((int)(ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4, 0, list[i].absolute_position - startDegree);
+                    }
+                    else
+                    {
+                        // 縦長
+                        startPoint = rotate((int)(ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4, 0, list[i].absolute_position - startDegree);
+                    }
                 }
                 else
                 {
@@ -976,7 +1013,16 @@ namespace microcosm
                         }
                         else if (endPosition == 2)
                         {
-                            endPoint = rotate((float)tempSettings.zodiacCenter / 2, 0, list[i].aspects[j].targetPosition - startDegree);
+                            if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                            {
+                                // 横長
+                                endPoint = rotate((int)(ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4, 0, list[i].aspects[j].targetPosition - startDegree);
+                            }
+                            else
+                            {
+                                // 縦長
+                                endPoint = rotate((int)(ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4, 0, list[i].aspects[j].targetPosition - startDegree);
+                            }
                         }
                         else
                         {
@@ -1001,7 +1047,11 @@ namespace microcosm
                         }
                         TextBlock aspectLbl = new TextBlock();
                         aspectLbl.Margin = new Thickness(Math.Abs(startPoint.X + endPoint.X) / 2 - 5, Math.Abs(endPoint.Y + startPoint.Y) / 2 - 8, 0, 0);
-                        if (list[i].aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
+                        if (list[i].aspects[j].aspectKind == Aspect.AspectKind.CONJUNCTION)
+                        {
+
+                        }
+                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
                         {
                             aspectLine.Stroke = System.Windows.Media.Brushes.Red;
                             aspectLbl.Foreground = System.Windows.Media.Brushes.Red;
@@ -1021,8 +1071,8 @@ namespace microcosm
                         }
                         else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SQUARE)
                         {
-                            aspectLine.Stroke = System.Windows.Media.Brushes.DarkGray;
-                            aspectLbl.Foreground = System.Windows.Media.Brushes.DarkGray;
+                            aspectLine.Stroke = System.Windows.Media.Brushes.Purple;
+                            aspectLbl.Foreground = System.Windows.Media.Brushes.Purple;
                             aspectLbl.Text = "□";
                             aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
                             aspectLbl.TextAlignment = TextAlignment.Left;
@@ -1085,7 +1135,16 @@ namespace microcosm
         {
             Label l = (Label)sender;
             Explanation data = (Explanation)l.Tag;
-            mainWindowVM.explanationTxt = data.sign + DecimalToHex(data.degree.ToString("0.000")).ToString("0.000") + "\'";
+            string retro;
+            if (data.retrograde)
+            {
+                retro = "(逆行)";
+            }
+            else
+            {
+                retro = "";
+            }
+            mainWindowVM.explanationTxt = data.planet + " " + data.sign + DecimalToHex(data.degree.ToString("0.000")).ToString("0.000") + "\' " + retro;
         }
         private void aspectMouseEnter(object sender, System.EventArgs e)
         {

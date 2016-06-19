@@ -24,9 +24,6 @@ namespace microcosm
         {
             List<bool> dispList = new List<bool>();
             List<PlanetDisplay> pDisplayList = new List<PlanetDisplay>();
-            if (ringCanvas.ActualWidth < 470) {
-                // TODO 表記を変えること
-            }
 
             if (tempSettings.bands == 1)
             {
@@ -68,8 +65,16 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 6 * index - startdegree);
-                    pointdegree = rotate(rcanvas.outerWidth / 3, 0, 6 * index - startdegree);
+                    if (ringCanvas.ActualWidth < 470)
+                    {
+                        point = rotate(rcanvas.outerWidth / 3 - 20, 0, 6 * index - startdegree);
+                        pointdegree = rotate(rcanvas.outerWidth / 3 - 40, 0, 6 * index - startdegree);
+                    }
+                    else
+                    {
+                        point = rotate(rcanvas.outerWidth / 3 + 20, 0, 6 * index - startdegree);
+                        pointdegree = rotate(rcanvas.outerWidth / 3, 0, 6 * index - startdegree);
+                    }
                     pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, 6 * index - startdegree);
                     pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, 6 * index - startdegree);
                     pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, 6 * index - startdegree);
@@ -101,11 +106,22 @@ namespace microcosm
                     pointretrograde.Y -= 15;
 
                     dispList.Add(planet.isDisp);
+                    bool retrograde;
+                    if (planet.speed < 0)
+                    {
+                        retrograde = true;
+                    }
+                    else
+                    {
+                        retrograde = false;
+                    }
 
                     Explanation exp = new Explanation()
                     {
+                        planet = CommonData.getPlanetText(planet.no),
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        retrograde = retrograde
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -136,7 +152,15 @@ namespace microcosm
                     {
                         return;
                     }
-                    SetSign(displayData);
+                    if (ringCanvas.ActualWidth < 470)
+                    {
+                        SetOnlySignDegree(displayData);
+                    }
+                    else
+                    {
+                        SetSign(displayData);
+                    }
+
                 });
             }
             // 二重円

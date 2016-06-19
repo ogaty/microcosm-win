@@ -38,6 +38,11 @@ namespace microcosm.Config
         DECIMAL = 0,
         DEGREE = 1
     }
+    public enum DispPetern
+    {
+        FULL = 0,
+        MINI = 1
+    }
     public class ConfigData
     {
         // 天文データパス
