@@ -214,4 +214,94 @@
   <data name="venus_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\venus_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="jupiter_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jupiter_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jupiter_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jupiter_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mars_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mars_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mars_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mars_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="neptune_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\neptune_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="neptune_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\neptune_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pluto_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pluto_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pluto_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pluto_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saturn_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saturn_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saturn_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saturn_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uranus_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uranus_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uranus_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uranus_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chiron_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiron_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chiron_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiron_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dh_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dh_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dh_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dh_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dt_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dt_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dt_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dt_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="earth_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\earth_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="earth_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\earth_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lilith_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lilith_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lilith_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lilith_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ceres_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ceres_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ceres_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ceres_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="juno_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\juno_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="juno_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\juno_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="paras_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paras_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="paras_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paras_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vesta_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vesta_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vesta_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vesta_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

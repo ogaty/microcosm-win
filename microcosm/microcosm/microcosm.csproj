@@ -288,6 +288,96 @@
   <ItemGroup>
     <None Include="Resources\venus_on.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jupiter_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jupiter_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mars_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mars_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saturn_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saturn_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\neptune_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\neptune_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pluto_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pluto_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uranus_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uranus_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\chiron_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\chiron_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dh_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dh_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dt_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dt_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\earth_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\earth_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lilith_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lilith_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ceres_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ceres_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\juno_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\juno_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paras_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paras_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vesta_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vesta_on.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
