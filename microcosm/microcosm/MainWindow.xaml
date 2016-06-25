@@ -67,9 +67,9 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="" Width="40" DisplayMemberBinding="{Binding pName}"></GridViewColumn>
-                        <GridViewColumn Header="N" Width="80" DisplayMemberBinding="{Binding firstData}"></GridViewColumn>
-                        <GridViewColumn Header="P" Width="80" DisplayMemberBinding="{Binding secondData}"></GridViewColumn>
-                        <GridViewColumn Header="T" Width="80" DisplayMemberBinding="{Binding thirdData}"></GridViewColumn>
+                        <GridViewColumn Header="1" Width="80" DisplayMemberBinding="{Binding firstData}"></GridViewColumn>
+                        <GridViewColumn Header="2" Width="80" DisplayMemberBinding="{Binding secondData}"></GridViewColumn>
+                        <GridViewColumn Header="3" Width="80" DisplayMemberBinding="{Binding thirdData}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -78,9 +78,9 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="" Width="40" DisplayMemberBinding="{Binding hName}"></GridViewColumn>
-                        <GridViewColumn Header="N" Width="80" DisplayMemberBinding="{Binding firstData}"></GridViewColumn>
-                        <GridViewColumn Header="P" Width="80" DisplayMemberBinding="{Binding secondData}"></GridViewColumn>
-                        <GridViewColumn Header="T" Width="80" DisplayMemberBinding="{Binding thirdData}"></GridViewColumn>
+                        <GridViewColumn Header="1" Width="80" DisplayMemberBinding="{Binding firstData}"></GridViewColumn>
+                        <GridViewColumn Header="2" Width="80" DisplayMemberBinding="{Binding secondData}"></GridViewColumn>
+                        <GridViewColumn Header="3" Width="80" DisplayMemberBinding="{Binding thirdData}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

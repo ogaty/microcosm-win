@@ -265,64 +265,64 @@
     <Resource Include="Resources\trine_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mercury_off.png" />
+    <Resource Include="Resources\mercury_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mercury_on.png" />
+    <Resource Include="Resources\mercury_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\moon_off.png" />
+    <Resource Include="Resources\moon_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\moon_on.png" />
+    <Resource Include="Resources\moon_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sun_off.png" />
+    <Resource Include="Resources\sun_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sun_on.png" />
+    <Resource Include="Resources\sun_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\venus_off.png" />
+    <Resource Include="Resources\venus_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\venus_on.png" />
+    <Resource Include="Resources\venus_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\jupiter_off.png" />
+    <Resource Include="Resources\jupiter_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\jupiter_on.png" />
+    <Resource Include="Resources\jupiter_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mars_off.png" />
+    <Resource Include="Resources\mars_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mars_on.png" />
+    <Resource Include="Resources\mars_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\saturn_off.png" />
+    <Resource Include="Resources\saturn_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\saturn_on.png" />
+    <Resource Include="Resources\saturn_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\neptune_off.png" />
+    <Resource Include="Resources\neptune_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\neptune_on.png" />
+    <Resource Include="Resources\neptune_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pluto_off.png" />
+    <Resource Include="Resources\pluto_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pluto_on.png" />
+    <Resource Include="Resources\pluto_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\uranus_off.png" />
+    <Resource Include="Resources\uranus_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\uranus_on.png" />
+    <Resource Include="Resources\uranus_on.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\chiron_off.png" />
@@ -349,10 +349,10 @@
     <Resource Include="Resources\earth_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lilith_off.png" />
+    <Resource Include="Resources\lilith_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lilith_on.png" />
+    <Resource Include="Resources\lilith_on.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ceres_off.png" />
@@ -361,22 +361,22 @@
     <Resource Include="Resources\ceres_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\juno_off.png" />
+    <Resource Include="Resources\juno_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\juno_on.png" />
+    <Resource Include="Resources\juno_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\paras_off.png" />
+    <Resource Include="Resources\paras_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\paras_on.png" />
+    <Resource Include="Resources\paras_on.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\vesta_off.png" />
+    <Resource Include="Resources\vesta_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\vesta_on.png" />
+    <Resource Include="Resources\vesta_on.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
