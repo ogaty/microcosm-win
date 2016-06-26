@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace microcosm.Aspect
 {
+    // アスペクト情報管理クラス
+    // ポジションリストにぶら下がる
     public enum AspectKind
     {
         CONJUNCTION = 1,
@@ -27,5 +29,6 @@ namespace microcosm.Aspect
         public AspectKind aspectKind; // アスペクト種別
         public SoftHard softHard; // ソフトorハード 1:soft, 2:hard
         public int targetPlanetNo; // ターゲット番号
+        public bool isDisp; // 表示するかどうか
     }
 }

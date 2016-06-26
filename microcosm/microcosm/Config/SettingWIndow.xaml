@@ -223,12 +223,12 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="1-1 (Natal)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn11"></Image>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff11"></Image>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn11" MouseDown="aspectSunOn11_MouseDown"></Image>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff11" MouseDown="aspectSunOff11_MouseDown"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn11"></Image>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff11"></Image>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn11" MouseDown="aspectMoonOn11_MouseDown"></Image>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff11" MouseDown="aspectMoonOff11_MouseDown"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn11"></Image>

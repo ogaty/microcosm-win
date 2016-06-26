@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using microcosm.ViewModel;
 using System.Collections.ObjectModel;
 using microcosm.Common;
+using microcosm.Aspect;
 
 namespace microcosm.Config
 {
@@ -36,6 +37,7 @@ namespace microcosm.Config
             leftPane.DataContext = settingVM;
 
             settingVM.dispName = main.currentSetting.dispName;
+            setAspect();
             setOrb();
         }
 
@@ -163,6 +165,19 @@ namespace microcosm.Config
             fourthDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
             fifthDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
 
+        }
+
+        private void setAspect()
+        {
+            aspectSunOn11.Tag = 1;
+            aspectSunOff11.Tag = 0;
+
+            int index = orbRing.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    break;
+            }
         }
 
         private void setOrb()
@@ -595,6 +610,84 @@ namespace microcosm.Config
             {
                 setOrb();
             }
+        }
+
+        private void aspectSunOn11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectSunOff11.Visibility = Visibility.Visible;
+            aspectSunOff11.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_SUN)
+                {
+                    // ちょっと違う？？
+                    data.isAspectDisp = false;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectSunOff11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectSunOn11.Visibility = Visibility.Visible;
+            aspectSunOn11.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_SUN)
+                {
+                    // ちょっと違う？？
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectMoonOn11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMoonOff11.Visibility = Visibility.Visible;
+            aspectMoonOff11.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MOON)
+                {
+                    data.isAspectDisp = false;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectMoonOff11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMoonOn11.Visibility = Visibility.Visible;
+            aspectMoonOn11.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MOON)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
     }
 }

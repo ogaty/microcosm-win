@@ -32,19 +32,21 @@ namespace microcosm.Calc
 
                     // 90.0 と　300.0では210度ではなく150度にならなければいけない
                     // アスペクトは180°以上にはならない
-                    double aspect_degree = list[i].absolute_position - list[j].absolute_position;
-
+                    double from;
+                    double to;
+                    if (list[i].absolute_position - list[j].absolute_position < 0) {
+                        to = list[j].absolute_position;
+                        from = list[i].absolute_position;
+                    }
+                    else
+                    {
+                        to = list[i].absolute_position;
+                        from = list[j].absolute_position;
+                    }
+                    double aspect_degree = to - from;
                     if (aspect_degree > 180)
                     {
-                        aspect_degree = list[j].absolute_position + 360 - list[i].absolute_position;
-                    }
-                    if (aspect_degree < 0)
-                    {
-                        aspect_degree = Math.Abs(aspect_degree);
-                        if (aspect_degree > 180)
-                        {
-                            aspect_degree = aspect_degree - 180;
-                        }
+                        aspect_degree = 360 + from - to;
                     }
 
                     foreach (AspectKind kind in Enum.GetValues(typeof(AspectKind)))
@@ -55,6 +57,7 @@ namespace microcosm.Calc
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
                                 kind == AspectKind.SQUARE ||
+                                kind == AspectKind.SEXTILE ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_1st[0, 0] &&
@@ -144,6 +147,7 @@ namespace microcosm.Calc
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
                                 kind == AspectKind.SQUARE ||
+                                kind == AspectKind.SEXTILE ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_moon_hard_1st[0, 0] &&
@@ -237,6 +241,7 @@ namespace microcosm.Calc
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
                                 kind == AspectKind.SQUARE ||
+                                kind == AspectKind.SEXTILE ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_1st[0, 0] &&
