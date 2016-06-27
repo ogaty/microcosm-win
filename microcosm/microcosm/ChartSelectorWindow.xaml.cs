@@ -44,15 +44,43 @@ namespace microcosm
             int year = int.Parse(setYear.Text);
             if (natalTime.IsChecked == true)
             {
-                setYear.Text = (year - count).ToString();
-                main.targetUser.birth_year -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setYear.Text = (year - count).ToString();
-                main.userdata.birth_year -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -67,15 +95,45 @@ namespace microcosm
             int year = int.Parse(setYear.Text);
             if (natalTime.IsChecked == true)
             {
-                setYear.Text = (year + count).ToString();
-                main.targetUser.birth_year += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
+
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setYear.Text = (year + count).ToString();
-                main.userdata.birth_year += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
+
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -183,8 +241,10 @@ namespace microcosm
                     int.Parse(setMinute.Text),
                     int.Parse(setSecond.Text));
                 DateTime newDt = dt.AddMonths(-1 * count);
+                setDay.Text = newDt.Day.ToString();
                 setMonth.Text = newDt.Month.ToString();
                 setYear.Text = newDt.Year.ToString();
+                main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
@@ -199,10 +259,12 @@ namespace microcosm
                     int.Parse(setMinute.Text),
                     int.Parse(setSecond.Text));
                 DateTime newDt = dt.AddMonths(-1 * count);
+                setDay.Text = newDt.Day.ToString();
                 setMonth.Text = newDt.Month.ToString();
                 setYear.Text = newDt.Year.ToString();
-                main.targetUser.birth_month = newDt.Month;
-                main.targetUser.birth_year = newDt.Year;
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -240,8 +302,8 @@ namespace microcosm
                 DateTime newDt = dt.AddMonths(count);
                 setMonth.Text = newDt.Month.ToString();
                 setYear.Text = newDt.Year.ToString();
-                main.targetUser.birth_month = newDt.Month;
-                main.targetUser.birth_year = newDt.Year;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -255,15 +317,37 @@ namespace microcosm
             int month = int.Parse(setDay.Text);
             if (natalTime.IsChecked == true)
             {
-                setDay.Text = (month - count).ToString();
-                main.targetUser.birth_day -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setDay.Text = (month - count).ToString();
-                main.userdata.birth_day -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -277,15 +361,37 @@ namespace microcosm
             int day = int.Parse(setDay.Text);
             if (natalTime.IsChecked == true)
             {
-                setDay.Text = (day + count).ToString();
-                main.targetUser.birth_day += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setDay.Text = (day + count).ToString();
-                main.userdata.birth_day += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -299,15 +405,41 @@ namespace microcosm
             int hour = int.Parse(setHour.Text);
             if (natalTime.IsChecked == true)
             {
-                setHour.Text = (hour - count).ToString();
-                main.targetUser.birth_hour -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
+                main.targetUser.birth_hour = newDt.Hour;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setHour.Text = (hour - count).ToString();
-                main.userdata.birth_hour -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
+                main.userdata.birth_hour = newDt.Hour;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -321,15 +453,43 @@ namespace microcosm
             int hour = int.Parse(setHour.Text);
             if (natalTime.IsChecked == true)
             {
-                setHour.Text = (hour + count).ToString();
-                main.targetUser.birth_hour += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setHour.Text = (hour + count).ToString();
-                main.userdata.birth_hour += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -343,15 +503,43 @@ namespace microcosm
             int minute = int.Parse(setMinute.Text);
             if (natalTime.IsChecked == true)
             {
-                setMinute.Text = (minute - count).ToString();
-                main.targetUser.birth_minute -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setMinute.Text = (minute - count).ToString();
-                main.userdata.birth_minute -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -365,15 +553,43 @@ namespace microcosm
             int minute = int.Parse(setMinute.Text);
             if (natalTime.IsChecked == true)
             {
-                setMinute.Text = (minute + count).ToString();
-                main.targetUser.birth_minute += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setMinute.Text = (minute + count).ToString();
-                main.userdata.birth_minute += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -387,15 +603,43 @@ namespace microcosm
             int second = int.Parse(setSecond.Text);
             if (natalTime.IsChecked == true)
             {
-                setSecond.Text = (second - count).ToString();
-                main.targetUser.birth_second -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setSecond.Text = (second - count).ToString();
-                main.userdata.birth_second -= count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -409,15 +653,43 @@ namespace microcosm
             int second = int.Parse(setSecond.Text);
             if (natalTime.IsChecked == true)
             {
-                setSecond.Text = (second + count).ToString();
-                main.targetUser.birth_second += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                setSecond.Text = (second + count).ToString();
-                main.userdata.birth_second += count;
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
@@ -439,32 +711,44 @@ namespace microcosm
             int hour = int.Parse(setHour.Text);
             int minute = int.Parse(setMinute.Text);
             int second = int.Parse(setSecond.Text);
-            setYear.Text = (second - yearCount).ToString();
-            setMonth.Text = (month - monthCount).ToString();
-            setDay.Text = (day - dayCount).ToString();
-            setHour.Text = (hour - hourCount).ToString();
-            setMinute.Text = (minute - minuteCount).ToString();
-            setSecond.Text = (second - secondCount).ToString();
+            DateTime dt = new DateTime(int.Parse(unitYear.Text),
+                int.Parse(unitMonth.Text),
+                int.Parse(unitDay.Text),
+                int.Parse(unitHour.Text),
+                int.Parse(unitMinute.Text),
+                int.Parse(unitSecond.Text));
+            DateTime newDt = dt.AddSeconds(-1 * secondCount);
+            newDt = newDt.AddMinutes(-1 * minuteCount);
+            newDt = newDt.AddHours(-1 * hourCount);
+            newDt = newDt.AddDays(-1 * dayCount);
+            newDt = newDt.AddMonths(-1 * monthCount);
+            newDt = newDt.AddYears(-1 * yearCount);
+            setDay.Text = newDt.Day.ToString();
+            setMonth.Text = newDt.Month.ToString();
+            setYear.Text = newDt.Year.ToString();
+            setHour.Text = newDt.Hour.ToString();
+            setMinute.Text = newDt.Minute.ToString();
+            setSecond.Text = newDt.Second.ToString();
 
             if (natalTime.IsChecked == true)
             {
-                main.targetUser.birth_year -= yearCount;
-                main.targetUser.birth_month -= monthCount;
-                main.targetUser.birth_day -= dayCount;
-                main.targetUser.birth_hour -= hourCount;
-                main.targetUser.birth_minute -= minuteCount;
-                main.targetUser.birth_second -= secondCount;
+                main.targetUser.birth_year = newDt.Year;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_hour = newDt.Month;
+                main.targetUser.birth_minute = newDt.Minute;
+                main.targetUser.birth_second = newDt.Second;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                main.userdata.birth_year -= yearCount;
-                main.userdata.birth_month -= monthCount;
-                main.userdata.birth_day -= dayCount;
-                main.userdata.birth_hour -= hourCount;
-                main.userdata.birth_minute -= minuteCount;
-                main.userdata.birth_second -= secondCount;
+                main.userdata.birth_year = newDt.Year;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_hour = newDt.Month;
+                main.userdata.birth_minute = newDt.Minute;
+                main.userdata.birth_second = newDt.Second;
 
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
@@ -488,33 +772,46 @@ namespace microcosm
             int hour = int.Parse(setHour.Text);
             int minute = int.Parse(setMinute.Text);
             int second = int.Parse(setSecond.Text);
-            setYear.Text = (second + yearCount).ToString();
-            setMonth.Text = (month + monthCount).ToString();
-            setDay.Text = (day + dayCount).ToString();
-            setHour.Text = (hour + hourCount).ToString();
-            setMinute.Text = (minute + minuteCount).ToString();
-            setSecond.Text = (second + secondCount).ToString();
+            DateTime dt = new DateTime(int.Parse(unitYear.Text),
+                int.Parse(unitMonth.Text),
+                int.Parse(unitDay.Text),
+                int.Parse(unitHour.Text),
+                int.Parse(unitMinute.Text),
+                int.Parse(unitSecond.Text));
+            DateTime newDt = dt.AddSeconds(secondCount);
+            newDt = newDt.AddMinutes(minuteCount);
+            newDt = newDt.AddHours(hourCount);
+            newDt = newDt.AddDays(dayCount);
+            newDt = newDt.AddMonths(monthCount);
+            newDt = newDt.AddYears(yearCount);
+            setDay.Text = newDt.Day.ToString();
+            setMonth.Text = newDt.Month.ToString();
+            setYear.Text = newDt.Year.ToString();
+            setHour.Text = newDt.Hour.ToString();
+            setMinute.Text = newDt.Minute.ToString();
+            setSecond.Text = newDt.Second.ToString();
+
 
             if (natalTime.IsChecked == true)
             {
-                main.targetUser.birth_year += yearCount;
-                main.targetUser.birth_month += monthCount;
-                main.targetUser.birth_day += dayCount;
-                main.targetUser.birth_hour += hourCount;
-                main.targetUser.birth_minute += minuteCount;
-                main.targetUser.birth_second += secondCount;
+                main.targetUser.birth_year = newDt.Year;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_hour = newDt.Month;
+                main.targetUser.birth_minute = newDt.Minute;
+                main.targetUser.birth_second = newDt.Second;
                 main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
-                main.userdata.birth_year += yearCount;
-                main.userdata.birth_month += monthCount;
-                main.userdata.birth_day += dayCount;
-                main.userdata.birth_hour += hourCount;
-                main.userdata.birth_minute += minuteCount;
-                main.userdata.birth_second += secondCount;
-
+                main.userdata.birth_year = newDt.Year;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_hour = newDt.Month;
+                main.userdata.birth_minute = newDt.Minute;
+                main.userdata.birth_second = newDt.Second;
+                
                 main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }

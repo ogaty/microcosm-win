@@ -731,7 +731,7 @@ namespace microcosm
                             UserData udata = new UserData(data[1], data[2], 
                                 int.Parse(days[0]), int.Parse(days[1]), int.Parse(days[2]), 
                                 int.Parse(hours[0]), int.Parse(hours[1]), int.Parse(hours[2]), 
-                                double.Parse(data[9]), double.Parse(data[10]), data[9], data[6], data[11]);
+                                double.Parse(data[9]), double.Parse(data[10]), data[8], data[6], data[11]);
                             string filename = data[1] + ".csm";
                             Assembly myAssembly = Assembly.GetEntryAssembly();
                             string path =  System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\AMATERU\" + filename;
@@ -1221,6 +1221,33 @@ namespace microcosm
 
         private void Amateru_Export(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void NewMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            setDisable();
+            AddUserEditWindow(new DbItem
+            {
+                fileName = "新規データ"
+                + DateTime.Now.Year
+                + DateTime.Now.Month.ToString("00")
+                + DateTime.Now.Day.ToString("00")
+                + DateTime.Now.Hour.ToString("00")
+                + DateTime.Now.Minute.ToString("00")
+                + DateTime.Now.Second.ToString("00"),
+                isDir = false,
+                userName = "新規データ",
+                userFurigana = "しんきでーた",
+                userBirth = DateTime.Today,
+                userHour = "12",
+                userMinute = "0",
+                userSecond = "0",
+                userPlace = "東京都中央区",
+                userLat = "35.685175",
+                userLng = "139.7528",
+                userTimezone = "JST",
+                memo = ""
+            });
         }
     }
 }

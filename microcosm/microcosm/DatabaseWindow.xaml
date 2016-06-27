@@ -17,6 +17,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <Menu>
+                <MenuItem Header="新規作成(_N)" Click="NewMenuItem_Click"></MenuItem>
                 <MenuItem Header="インポート(_I)">
                     <MenuItem Header="AMATERU (csv)" Click="Amateru_Import"/>
                     <MenuItem Header="Stargazer" Click="Stargazer_Click"/>
