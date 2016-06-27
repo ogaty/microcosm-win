@@ -306,52 +306,52 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="2-2 (Progress)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn22" MouseEnter="aspectSunOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff22" MouseEnter="aspectSunOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn22" MouseDown="aspectSunOn22_MouseDown"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff22" MouseDown="aspectSunOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn22" MouseEnter="aspectMoonOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff22" MouseEnter="aspectMoonOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn22" MouseDown="aspectMoonOn22_MouseDown"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff22" MouseDown="aspectMoonOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn22" MouseEnter="aspectMercuryOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff22" MouseEnter="aspectMercuryOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn22" MouseDown="aspectMercuryOn22_MouseDown"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff22" MouseDown="aspectMercuryOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn22" MouseEnter="aspectVenusOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff22" MouseEnter="aspectVenusOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn22" MouseDown="aspectVenusOn22_MouseDown"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff22" MouseDown="aspectVenusOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn22" MouseEnter="aspectMarsOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff22" MouseEnter="aspectMarsOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn22" MouseDown="aspectMarsOn22_MouseDown"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff22" MouseDown="aspectMarsOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn22" MouseEnter="aspectJupiterOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff22" MouseEnter="aspectJupiterOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn22" MouseDown="aspectJupiterOn22_MouseDown"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff22" MouseDown="aspectJupiterOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn22" MouseEnter="aspectSaturnOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff22" MouseEnter="aspectSaturnOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn22" MouseDown="aspectSaturnOn22_MouseDown"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff22" MouseDown="aspectSaturnOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn22" MouseEnter="aspectUranusOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff22" MouseEnter="aspectUranusOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn22" MouseDown="aspectUranusOn22_MouseDown"/>
+                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff22" MouseDown="aspectUranusOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn22" MouseEnter="aspectNeptuneOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff22" MouseEnter="aspectNeptuneOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn22" MouseDown="aspectNeptuneOn22_MouseDown"/>
+                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff22" MouseDown="aspectNeptuneOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn22" MouseEnter="aspectPlutoOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff22" MouseEnter="aspectPlutoOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn22" MouseDown="aspectPlutoOn22_MouseDown"/>
+                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff22" MouseDown="aspectPlutoOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn22" MouseEnter="aspectDhOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff22" MouseEnter="aspectDhOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn22" MouseDown="aspectDhOn22_MouseDown"/>
+                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff22" MouseDown="aspectDhOff22_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn22" MouseEnter="aspectChironOn22_MouseEnter"></Image>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff22" MouseEnter="aspectChironOff22_MouseEnter"></Image>
+                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn22" MouseDown="aspectChironOn22_MouseDown"/>
+                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff22" MouseDown="aspectChironOff22_MouseDown"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
@@ -388,52 +388,52 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="3-3 (Transit)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn33" MouseEnter="aspectSunOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff33" MouseEnter="aspectSunOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn33" MouseDown="aspectSunOn33_MouseDown"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff33" MouseDown="aspectSunOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn33" MouseEnter="aspectMoonOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff33" MouseEnter="aspectMoonOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn33" MouseDown="aspectMoonOn33_MouseDown"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff33" MouseDown="aspectMoonOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn33" MouseEnter="aspectMercuryOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff33" MouseEnter="aspectMercuryOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn33" MouseDown="aspectMercuryOn33_MouseDown"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff33" MouseDown="aspectMercuryOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn33" MouseEnter="aspectVenusOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff33" MouseEnter="aspectVenusOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn33" MouseDown="aspectVenusOn33_MouseDown"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff33" MouseDown="aspectVenusOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn33" MouseEnter="aspectMarsOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff33" MouseEnter="aspectMarsOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn33" MouseDown="aspectMarsOn33_MouseDown"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff33" MouseDown="aspectMarsOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn33" MouseEnter="aspectJupiterOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff33" MouseEnter="aspectJupiterOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn33" MouseDown="aspectJupiterOn33_MouseDown"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff33" MouseDown="aspectJupiterOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn33" MouseEnter="aspectSaturnOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff33" MouseEnter="aspectSaturnOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn33" MouseDown="aspectSaturnOn33_MouseDown"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff33" MouseDown="aspectSaturnOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn33" MouseEnter="aspectUranusOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff33" MouseEnter="aspectUranusOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn33" MouseDown="aspectUranusOn33_MouseDown"/>
+                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff33" MouseDown="aspectUranusOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn33" MouseEnter="aspectNeptuneOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff33" MouseEnter="aspectNeptuneOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn33" MouseDown="aspectNeptuneOn33_MouseDown"/>
+                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff33" MouseDown="aspectNeptuneOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn33" MouseEnter="aspectPlutoOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff33" MouseEnter="aspectPlutoOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn33" MouseDown="aspectPlutoOn33_MouseDown"/>
+                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff33" MouseDown="aspectPlutoOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn33" MouseEnter="aspectDhOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff33" MouseEnter="aspectDhOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn33" MouseDown="aspectDhOn33_MouseDown"/>
+                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff33" MouseDown="aspectDhOff33_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn33" MouseEnter="aspectChironOn33_MouseEnter"></Image>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff33" MouseEnter="aspectChironOff33_MouseEnter"></Image>
+                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn33" MouseDown="aspectChironOn33_MouseDown"/>
+                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff33" MouseDown="aspectChironOff33_MouseDown"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
@@ -470,52 +470,52 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="1-2 (N-P)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn12"></Image>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff12"></Image>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn12" MouseDown="aspectSunOn12_MouseDown"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff12" MouseDown="aspectSunOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn12"></Image>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff12"></Image>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn12" MouseDown="aspectMoonOn12_MouseDown"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff12" MouseDown="aspectMoonOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn12"></Image>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff12"></Image>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn12" MouseDown="aspectMercuryOn12_MouseDown"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff12" MouseDown="aspectMercuryOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn12"></Image>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff12"></Image>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn12" MouseDown="aspectVenusOn12_MouseDown"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff12" MouseDown="aspectVenusOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn12"></Image>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff12"></Image>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn12" MouseDown="aspectMarsOn12_MouseDown"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff12" MouseDown="aspectMarsOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn12"></Image>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff12"></Image>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn12" MouseDown="aspectJupiterOn12_MouseDown"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff12" MouseDown="aspectJupiterOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn12"></Image>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff12"></Image>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn12" MouseDown="aspectSaturnOn12_MouseDown"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff12" MouseDown="aspectSaturnOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn12"></Image>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff12"></Image>
+                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn12" MouseDown="aspectUranusOn12_MouseDown"/>
+                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff12" MouseDown="aspectUranusOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn12"></Image>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff12"></Image>
+                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn12" MouseDown="aspectNeptuneOn12_MouseDown"/>
+                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff12" MouseDown="aspectNeptuneOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn12"></Image>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff12"></Image>
+                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn12" MouseDown="aspectPlutoOn12_MouseDown"/>
+                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff12" MouseDown="aspectPlutoOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn12"></Image>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff12"></Image>
+                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn12" MouseDown="aspectDhOn12_MouseDown"/>
+                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff12" MouseDown="aspectDhOff12_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn12"></Image>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff12"></Image>
+                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn12" MouseDown="aspectChironOn12_MouseDown"/>
+                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff12" MouseDown="aspectChironOff12_MouseDown"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
@@ -552,52 +552,52 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="1-3 (N-T)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn13"></Image>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff13"></Image>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn13" MouseDown="aspectSunOn13_MouseDown"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff13" MouseDown="aspectSunOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn13"></Image>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff13"></Image>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn13" MouseDown="aspectMoonOn13_MouseDown"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff13" MouseDown="aspectMoonOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn13"></Image>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff13"></Image>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn13" MouseDown="aspectMercuryOn13_MouseDown"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff13" MouseDown="aspectMercuryOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn13"></Image>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff13"></Image>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn13" MouseDown="aspectVenusOn13_MouseDown"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff13" MouseDown="aspectVenusOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn13"></Image>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff13"></Image>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn13" MouseDown="aspectMarsOn13_MouseDown"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff13" MouseDown="aspectMarsOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn13"></Image>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff13"></Image>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn13" MouseDown="aspectJupiterOn13_MouseDown"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff13" MouseDown="aspectJupiterOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn13"></Image>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff13"></Image>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn13" MouseDown="aspectSaturnOn13_MouseDown"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff13" MouseDown="aspectSaturnOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn13"></Image>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff13"></Image>
+                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn13" MouseDown="aspectUranusOn13_MouseDown"/>
+                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff13" MouseDown="aspectUranusOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn13"></Image>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff13"></Image>
+                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn13" MouseDown="aspectNeptuneOn13_MouseDown"/>
+                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff13" MouseDown="aspectNeptuneOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn13"></Image>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff13"></Image>
+                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn13" MouseDown="aspectPlutoOn13_MouseDown"/>
+                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff13" MouseDown="aspectPlutoOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn13"></Image>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff13"></Image>
+                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn13" MouseDown="aspectDhOn13_MouseDown"/>
+                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff13" MouseDown="aspectDhOff13_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn13"></Image>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff13"></Image>
+                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn13" MouseDown="aspectChironOn13_MouseDown"/>
+                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff13" MouseDown="aspectChironOff13_MouseDown"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
@@ -634,52 +634,52 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="2-3 (P-T)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn23"></Image>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff23"></Image>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn23" MouseDown="aspectSunOn23_MouseDown"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff23" MouseDown="aspectSunOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn23"></Image>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff23"></Image>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn23" MouseDown="aspectMoonOn23_MouseDown"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff23" MouseDown="aspectMoonOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn23"></Image>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff23"></Image>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn23" MouseDown="aspectMercuryOn23_MouseDown"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff23" MouseDown="aspectMercuryOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn23"></Image>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff23"></Image>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn23" MouseDown="aspectVenusOn23_MouseDown"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff23" MouseDown="aspectVenusOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn23"></Image>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff23"></Image>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn23" MouseDown="aspectMarsOn23_MouseDown"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff23" MouseDown="aspectMarsOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn23"></Image>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff23"></Image>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn23" MouseDown="aspectJupiterOn23_MouseDown"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff23" MouseDown="aspectJupiterOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn23"></Image>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff23"></Image>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn23" MouseDown="aspectSaturnOn23_MouseDown"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff23" MouseDown="aspectSaturnOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn23"></Image>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff23"></Image>
+                                    <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn23" MouseDown="aspectUranusOn23_MouseDown"/>
+                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="aspectUranusOff23" MouseDown="aspectUranusOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn23"></Image>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff23"></Image>
+                                    <Image Source="/Resources/neptune_on.png" x:Name="aspectNeptuneOn23" MouseDown="aspectNeptuneOn23_MouseDown"/>
+                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="aspectNeptuneOff23" MouseDown="aspectNeptuneOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn23"></Image>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff23"></Image>
+                                    <Image Source="/Resources/pluto_on.png" x:Name="aspectPlutoOn23" MouseDown="aspectPlutoOn23_MouseDown"/>
+                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="aspectPlutoOff23" MouseDown="aspectPlutoOff23_MouseDown"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn23"></Image>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff23"></Image>
+                                    <Image Source="/Resources/dh_on.png" x:Name="aspectDhOn23" MouseDown="aspectDhOn23_MouseDown"/>
+                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="aspectDhOff23" MouseDown="aspectDhOff23_MouseDown"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn23"></Image>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff23"></Image>
+                                    <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn23" MouseDown="aspectChironOn23_MouseDown"></Image>
+                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff23" MouseDown="aspectChironOff23_MouseDown"></Image>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">

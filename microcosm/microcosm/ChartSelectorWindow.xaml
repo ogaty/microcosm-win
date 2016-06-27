@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="時刻設定" Height="400" Width="300" Closing="Window_Closing" ResizeMode="CanMinimize">
+        Title="時刻設定" Height="400" Width="250" Closing="Window_Closing" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical">
             <GroupBox Header="時刻" Height="55" Margin="5,10">
@@ -35,47 +35,41 @@
                 <TextBlock Text=":"></TextBlock>
                 <TextBox x:Name="setSecond" Margin="5,0" Width="20" Text="45"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="30">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="年" Margin="5,0"></Label>
                 <Button x:Name="leftYear" Content="←" VerticalAlignment="Center" Click="LeftYear_Click"></Button>
                 <Button x:Name="rightYear" Content="→" VerticalAlignment="Center" Click="RightYear_Click" Margin="5,0,0,0"></Button>
                 <TextBox x:Name="unitYear" Text="0" Width="30" VerticalAlignment="Center" Margin="10,0"></TextBox>
-                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="30">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="月" Margin="5,0"></Label>
                 <Button Content="←" VerticalAlignment="Center" Click="LeftMonth_Click"></Button>
                 <Button Content="→" VerticalAlignment="Center" Click="RightMonth_Click" Margin="5,0,0,0"></Button>
                 <TextBox x:Name="unitMonth" Text="0" Width="30" VerticalAlignment="Center" Margin="10,0"></TextBox>
-                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="30">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="日" Margin="5,0"></Label>
                 <Button Content="←" VerticalAlignment="Center" Click="LeftDay_Click"></Button>
                 <Button Content="→" VerticalAlignment="Center" Margin="5,0,0,0" Click="RightDay_Click"></Button>
                 <TextBox x:Name="unitDay" Text="1" Width="30" VerticalAlignment="Center" Margin="10,0"/>
-                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="30">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="時" Margin="5,0"></Label>
                 <Button Content="←" VerticalAlignment="Center" Click="LeftHour_Click"></Button>
                 <Button Content="→" VerticalAlignment="Center" Margin="5,0,0,0" Click="RightHour_Click"></Button>
                 <TextBox x:Name="unitHour" Text="0" Width="30" VerticalAlignment="Center" Margin="10,0"/>
-                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="30">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="分" Margin="5,0"></Label>
                 <Button Content="←" VerticalAlignment="Center" Click="LeftMinute_Click"></Button>
                 <Button Content="→" VerticalAlignment="Center" Margin="5,0,0,0" Click="RightMinute_Click"></Button>
                 <TextBox x:Name="unitMinute" Text="0" Width="30" VerticalAlignment="Center" Margin="10,0"/>
-                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="30">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="秒" Margin="5,0"></Label>
                 <Button Content="←" VerticalAlignment="Center" Click="LeftSecond_Click"></Button>
                 <Button Content="→" VerticalAlignment="Center" Margin="5,0,0,0" Click="RightSecond_Click"></Button>
                 <TextBox x:Name="unitSecond" Text="0" Width="30" VerticalAlignment="Center" Margin="10,0"/>
-                <Slider SmallChange="1" Width="160" LargeChange="10" VerticalAlignment="Center" Value="5"></Slider>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center" Margin="0,15">
                 <Button x:Name="leftChange" Content="←" VerticalAlignment="Center" Click="LeftChange_Click" Width="70"></Button>

@@ -98,10 +98,23 @@ namespace microcosm
                 } else
                 {
                     // 読み込み
-                    XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
-                    FileStream fs = new FileStream(filename, FileMode.Open);
-                    settings[i].xmlData = (SettingXml)serializer.Deserialize(fs);
-                    fs.Close();
+                    try
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
+                        FileStream fs = new FileStream(filename, FileMode.Open);
+                        settings[i].xmlData = (SettingXml)serializer.Deserialize(fs);
+                        fs.Close();
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("設定ファイル読み込みに失敗しました。再作成します。");
+                        XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
+                        FileStream fs = new FileStream(filename, FileMode.Create);
+                        StreamWriter sw = new StreamWriter(fs);
+                        serializer.Serialize(sw, settings[i].xmlData);
+                        sw.Close();
+                        fs.Close();
+                    }
                 }
 
             });
@@ -121,10 +134,23 @@ namespace microcosm
                 } else
                 {
                     // 読み込み
-                    XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
-                    FileStream fs = new FileStream(filename, FileMode.Open);
-                    config = (ConfigData)serializer.Deserialize(fs);
-                    fs.Close();
+                    try
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
+                        FileStream fs = new FileStream(filename, FileMode.Open);
+                        config = (ConfigData)serializer.Deserialize(fs);
+                        fs.Close();
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("設定ファイル読み込みに失敗しました。再作成します。");
+                        XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
+                        FileStream fs = new FileStream(filename, FileMode.Create);
+                        StreamWriter sw = new StreamWriter(fs);
+                        serializer.Serialize(sw, config);
+                        sw.Close();
+                        fs.Close();
+                    }
                 }
             }
 

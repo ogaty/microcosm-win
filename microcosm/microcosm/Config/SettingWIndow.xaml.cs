@@ -1088,13 +1088,404 @@ namespace microcosm.Config
 
         }
 
-        private void aspectSunOn22_MouseEnter(object sender, MouseEventArgs e)
+
+
+
+        private void aspectSunOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSunOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMoonOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMoonOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMercuryOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMercuryOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectVenusOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectVenusOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMarsOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMarsOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectJupiterOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectJupiterOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSaturnOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSaturnOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectUranusOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectUranusOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectNeptuneOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectNeptuneOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectPlutoOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectPlutoOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectDhOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectDhOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectChironOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectChironOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSunOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSunOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMoonOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMoonOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMercuryOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMercuryOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectVenusOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectVenusOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMarsOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMarsOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectJupiterOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectJupiterOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSaturnOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSaturnOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectUranusOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectUranusOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectNeptuneOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectNeptuneOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectPlutoOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectPlutoOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectDhOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectDhOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectChironOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectChironOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSunOn12_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectSunOff12.Visibility = Visibility.Visible;
+            aspectSunOff12.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_SUN)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectSunOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectChironOn12.Visibility = Visibility.Visible;
+            aspectChironOn12.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_SUN)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectMoonOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMoonOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMercuryOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMercuryOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectVenusOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectVenusOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMarsOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectMarsOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectJupiterOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectJupiterOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSaturnOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSaturnOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectUranusOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectUranusOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectNeptuneOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectNeptuneOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectPlutoOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectPlutoOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectDhOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectDhOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectChironOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectChironOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void aspectSunOn33_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectSunOff33.Visibility = Visibility.Visible;
+            aspectSunOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1108,13 +1499,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectSunOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectSunOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectSunOn11.Visibility = Visibility.Visible;
-            aspectSunOn11.Height = 24;
+            aspectSunOn33.Visibility = Visibility.Visible;
+            aspectSunOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1128,13 +1519,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMoonOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMoonOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectMoonOff33.Visibility = Visibility.Visible;
+            aspectMoonOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1148,13 +1539,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMoonOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMoonOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectMoonOn33.Visibility = Visibility.Visible;
+            aspectMoonOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1168,17 +1559,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMercuryOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMercuryOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectMercuryOff33.Visibility = Visibility.Visible;
+            aspectMercuryOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MERCURY)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1188,17 +1579,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMercuryOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMercuryOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectMercuryOn33.Visibility = Visibility.Visible;
+            aspectMercuryOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MERCURY)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -1208,17 +1599,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectVenusOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectVenusOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectVenusOff33.Visibility = Visibility.Visible;
+            aspectVenusOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_VENUS)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1228,13 +1619,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectVenusOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectVenusOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectVenusOn33.Visibility = Visibility.Visible;
+            aspectVenusOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1248,17 +1639,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMarsOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMarsOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectMarsOff33.Visibility = Visibility.Visible;
+            aspectMarsOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MARS)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1268,17 +1659,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMarsOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMarsOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectMarsOn33.Visibility = Visibility.Visible;
+            aspectMarsOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MARS)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -1288,17 +1679,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectJupiterOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectJupiterOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectJupiterOff33.Visibility = Visibility.Visible;
+            aspectJupiterOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_JUPITER)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1306,19 +1697,20 @@ namespace microcosm.Config
             }
             main.ReRender();
 
+
         }
 
-        private void aspectJupiterOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectJupiterOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectJupiterOn33.Visibility = Visibility.Visible;
+            aspectJupiterOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_JUPITER)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -1328,13 +1720,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectSaturnOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectSaturnOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectSaturnOff33.Visibility = Visibility.Visible;
+            aspectSaturnOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1348,13 +1740,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectSaturnOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectSaturnOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectSaturnOn33.Visibility = Visibility.Visible;
+            aspectSaturnOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1368,13 +1760,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectUranusOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectUranusOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectUranusOff33.Visibility = Visibility.Visible;
+            aspectUranusOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1388,13 +1780,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectUranusOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectUranusOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectUranusOn33.Visibility = Visibility.Visible;
+            aspectUranusOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1408,13 +1800,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectNeptuneOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectNeptuneOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectNeptuneOff33.Visibility = Visibility.Visible;
+            aspectNeptuneOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1428,13 +1820,14 @@ namespace microcosm.Config
 
         }
 
-        private void aspectNeptuneOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectNeptuneOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectNeptuneOn33.Visibility = Visibility.Visible;
+            aspectNeptuneOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1445,16 +1838,15 @@ namespace microcosm.Config
                 }
             }
             main.ReRender();
-
         }
 
-        private void aspectPlutoOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectPlutoOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectPlutoOff11.Visibility = Visibility.Visible;
-            aspectPlutoOff11.Height = 24;
+            aspectPlutoOff33.Visibility = Visibility.Visible;
+            aspectPlutoOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1468,13 +1860,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectPlutoOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectPlutoOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectPlutoOn11.Visibility = Visibility.Visible;
-            aspectPlutoOn11.Height = 24;
+            aspectPlutoOn33.Visibility = Visibility.Visible;
+            aspectPlutoOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1488,13 +1880,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectDhOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectDhOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectDhOff11.Visibility = Visibility.Visible;
-            aspectDhOff11.Height = 24;
+            aspectDhOff33.Visibility = Visibility.Visible;
+            aspectDhOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1508,13 +1900,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectDhOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectDhOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectDhOn11.Visibility = Visibility.Visible;
-            aspectDhOn11.Height = 24;
+            aspectDhOn33.Visibility = Visibility.Visible;
+            aspectDhOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1528,13 +1920,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectChironOn22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectChironOn33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectChironOff11.Visibility = Visibility.Visible;
-            aspectChironOff11.Height = 24;
+            aspectChironOff33.Visibility = Visibility.Visible;
+            aspectChironOff33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1548,13 +1940,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectChironOff22_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectChironOff33_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectChironOn11.Visibility = Visibility.Visible;
-            aspectChironOn11.Height = 24;
+            aspectChironOn33.Visibility = Visibility.Visible;
+            aspectChironOn33.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1565,16 +1957,15 @@ namespace microcosm.Config
                 }
             }
             main.ReRender();
-
         }
 
-        private void aspectSunOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectSunOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectSunOff11.Visibility = Visibility.Visible;
-            aspectSunOff11.Height = 24;
+            aspectSunOff22.Visibility = Visibility.Visible;
+            aspectSunOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1588,13 +1979,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectSunOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectSunOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectSunOn11.Visibility = Visibility.Visible;
-            aspectSunOn11.Height = 24;
+            aspectSunOn22.Visibility = Visibility.Visible;
+            aspectSunOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1608,13 +1999,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMoonOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMoonOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectMoonOff22.Visibility = Visibility.Visible;
+            aspectMoonOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1628,13 +2019,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMoonOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMoonOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectMoonOn22.Visibility = Visibility.Visible;
+            aspectMoonOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1648,17 +2039,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMercuryOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMercuryOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectMercuryOff22.Visibility = Visibility.Visible;
+            aspectMercuryOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MERCURY)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1668,17 +2059,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMercuryOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMercuryOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectMercuryOn22.Visibility = Visibility.Visible;
+            aspectMercuryOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MERCURY)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -1688,17 +2079,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectVenusOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectVenusOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectVenusOff22.Visibility = Visibility.Visible;
+            aspectVenusOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_VENUS)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1708,17 +2099,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectVenusOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectVenusOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectVenusOn22.Visibility = Visibility.Visible;
+            aspectVenusOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_VENUS)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -1728,17 +2119,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMarsOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMarsOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectMarsOff22.Visibility = Visibility.Visible;
+            aspectMarsOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MARS)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1748,17 +2139,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectMarsOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectMarsOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectMarsOn22.Visibility = Visibility.Visible;
+            aspectMarsOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_MARS)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -1768,17 +2159,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectJupiterOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectJupiterOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectJupiterOff22.Visibility = Visibility.Visible;
+            aspectJupiterOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_JUPITER)
                 {
                     data.isAspectDisp = false;
                     break;
@@ -1788,17 +2179,17 @@ namespace microcosm.Config
 
         }
 
-        private void aspectJupiterOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectJupiterOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectJupiterOn22.Visibility = Visibility.Visible;
+            aspectJupiterOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
-                if (data.no == (int)CommonData.ZODIAC_MOON)
+                if (data.no == (int)CommonData.ZODIAC_JUPITER)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -1808,13 +2199,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectSaturnOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectSaturnOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectSaturnOff22.Visibility = Visibility.Visible;
+            aspectSaturnOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1828,13 +2219,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectSaturnOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectSaturnOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectSaturnOn22.Visibility = Visibility.Visible;
+            aspectSaturnOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1848,13 +2239,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectUranusOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectUranusOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectUranusOff22.Visibility = Visibility.Visible;
+            aspectUranusOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1868,13 +2259,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectUranusOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectUranusOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectUranusOn22.Visibility = Visibility.Visible;
+            aspectUranusOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1888,13 +2279,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectNeptuneOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectNeptuneOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectNeptuneOff22.Visibility = Visibility.Visible;
+            aspectNeptuneOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1908,13 +2299,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectNeptuneOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectNeptuneOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectNeptuneOn22.Visibility = Visibility.Visible;
+            aspectNeptuneOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1928,13 +2319,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectPlutoOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectPlutoOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff11.Visibility = Visibility.Visible;
-            aspectMoonOff11.Height = 24;
+            aspectPlutoOff22.Visibility = Visibility.Visible;
+            aspectPlutoOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1948,13 +2339,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectPlutoOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectPlutoOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn11.Visibility = Visibility.Visible;
-            aspectMoonOn11.Height = 24;
+            aspectPlutoOn22.Visibility = Visibility.Visible;
+            aspectPlutoOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1968,13 +2359,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectDhOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectDhOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectDhOff11.Visibility = Visibility.Visible;
-            aspectDhOff11.Height = 24;
+            aspectDhOff22.Visibility = Visibility.Visible;
+            aspectDhOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1988,13 +2379,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectDhOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectDhOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectDhOn11.Visibility = Visibility.Visible;
-            aspectDhOn11.Height = 24;
+            aspectDhOn22.Visibility = Visibility.Visible;
+            aspectDhOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -2008,13 +2399,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectChironOn33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectChironOn22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectChironOff11.Visibility = Visibility.Visible;
-            aspectChironOff11.Height = 24;
+            aspectChironOff22.Visibility = Visibility.Visible;
+            aspectChironOff22.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -2028,13 +2419,13 @@ namespace microcosm.Config
 
         }
 
-        private void aspectChironOff33_MouseEnter(object sender, MouseEventArgs e)
+        private void aspectChironOff22_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectChironOn11.Visibility = Visibility.Visible;
-            aspectChironOn11.Height = 24;
+            aspectChironOn22.Visibility = Visibility.Visible;
+            aspectChironOn22.Height = 24;
 
             foreach (var data in main.list1)
             {
