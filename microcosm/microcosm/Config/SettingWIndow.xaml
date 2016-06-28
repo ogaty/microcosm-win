@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm.Config"
         mc:Ignorable="d"
-        Title="表示設定" Height="520" Width="640" Closing="Window_Closing">
+        Title="表示設定" Height="520" Width="680" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition Width="470"></ColumnDefinition>
-            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="530"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="10,10,0,0">
             <ListBox x:Name="dispList" SelectionChanged="dispList_SelectionChanged">
@@ -270,6 +270,14 @@
                                     <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn11" MouseDown="aspectChironOn11_MouseDown"></Image>
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff11" MouseDown="aspectChironOff11_MouseDown"></Image>
                                 </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/asc_on.png" x:Name="aspectAscOn11" MouseDown="aspectAscOn11_MouseDown"></Image>
+                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="aspectAscOff11" MouseDown="aspectAscOff11_MouseDown"></Image>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/mc_on.png" x:Name="aspectMcOn11" MouseDown="aspectMcOn11_MouseDown"></Image>
+                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff11" MouseDown="aspectMcOff11_MouseDown"></Image>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
                                 <Label Width="100"></Label>
@@ -353,6 +361,14 @@
                                     <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn22" MouseDown="aspectChironOn22_MouseDown"/>
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff22" MouseDown="aspectChironOff22_MouseDown"/>
                                 </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/asc_on.png" x:Name="aspectAscOn22" MouseDown="aspectAscOn22_MouseDown"></Image>
+                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="aspectAscOff22" MouseDown="aspectAscOff22_MouseDown"></Image>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/mc_on.png" x:Name="aspectMcOn22" MouseDown="aspectMcOn22_MouseDown"></Image>
+                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff22" MouseDown="aspectMcOff22_MouseDown"></Image>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
                                 <Label Width="100"></Label>
@@ -434,6 +450,14 @@
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn33" MouseDown="aspectChironOn33_MouseDown"/>
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff33" MouseDown="aspectChironOff33_MouseDown"/>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/asc_on.png" x:Name="aspectAscOn33" MouseDown="aspectAscOn33_MouseDown"></Image>
+                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="aspectAscOff33" MouseDown="aspectAscOff33_MouseDown"></Image>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/mc_on.png" x:Name="aspectMcOn33" MouseDown="aspectMcOn33_MouseDown"></Image>
+                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff33" MouseDown="aspectMcOff33_MouseDown"></Image>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
@@ -517,6 +541,14 @@
                                     <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn12" MouseDown="aspectChironOn12_MouseDown"/>
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff12" MouseDown="aspectChironOff12_MouseDown"/>
                                 </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/asc_on.png" x:Name="aspectAscOn12" MouseDown="aspectAscOn12_MouseDown"></Image>
+                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="aspectAscOff12" MouseDown="aspectAscOff12_MouseDown"></Image>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/mc_on.png" x:Name="aspectMcOn12" MouseDown="aspectMcOn12_MouseDown"></Image>
+                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff12" MouseDown="aspectMcOff12_MouseDown"></Image>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
                                 <Label Width="100"></Label>
@@ -598,6 +630,14 @@
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn13" MouseDown="aspectChironOn13_MouseDown"/>
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff13" MouseDown="aspectChironOff13_MouseDown"/>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/asc_on.png" x:Name="aspectAscOn13" MouseDown="aspectAscOn13_MouseDown"></Image>
+                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="aspectAscOff13" MouseDown="aspectAscOff13_MouseDown"></Image>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/mc_on.png" x:Name="aspectMcOn13" MouseDown="aspectMcOn13_MouseDown"></Image>
+                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff13" MouseDown="aspectMcOff13_MouseDown"></Image>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
@@ -681,6 +721,14 @@
                                     <Image Source="/Resources/chiron_on.png" x:Name="aspectChironOn23" MouseDown="aspectChironOn23_MouseDown"></Image>
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="aspectChironOff23" MouseDown="aspectChironOff23_MouseDown"></Image>
                                 </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/asc_on.png" x:Name="aspectAscOn23" MouseDown="aspectAscOn23_MouseDown"></Image>
+                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="aspectAscOff23" MouseDown="aspectAscOff23_MouseDown"></Image>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/mc_on.png" x:Name="aspectMcOn23" MouseDown="aspectMcOn23_MouseDown"></Image>
+                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff23" MouseDown="aspectMcOff23_MouseDown"></Image>
+                                </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
                                 <Label Width="100"></Label>
@@ -713,7 +761,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden" x:Name="aspectDtOff23"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="1-4" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -764,7 +812,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -795,7 +843,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="1-5" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -846,7 +894,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -877,7 +925,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="2-4" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -928,7 +976,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -959,7 +1007,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="2-5" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -1010,7 +1058,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -1041,7 +1089,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="3-4" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -1092,7 +1140,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -1123,7 +1171,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="3-5" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -1174,7 +1222,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -1205,7 +1253,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="4-4" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -1256,7 +1304,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -1287,7 +1335,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="4-5" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -1338,7 +1386,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>
@@ -1369,7 +1417,7 @@
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Content="5-5" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png"></Image>
@@ -1420,7 +1468,7 @@
                                     <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden" Height="0">
                                 <Label Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/earth_on.png"></Image>

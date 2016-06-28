@@ -63,6 +63,26 @@ namespace microcosm.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap asc_off {
+            get {
+                object obj = ResourceManager.GetObject("asc_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap asc_on {
+            get {
+                object obj = ResourceManager.GetObject("asc_on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap ceres_off {
             get {
                 object obj = ResourceManager.GetObject("ceres_off", resourceCulture);
@@ -335,6 +355,26 @@ namespace microcosm.Properties {
         internal static System.Drawing.Bitmap mars_on {
             get {
                 object obj = ResourceManager.GetObject("mars_on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap mc_off {
+            get {
+                object obj = ResourceManager.GetObject("mc_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap mc_on {
+            get {
+                object obj = ResourceManager.GetObject("mc_on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

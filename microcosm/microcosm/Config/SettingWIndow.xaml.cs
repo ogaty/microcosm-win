@@ -1088,7 +1088,85 @@ namespace microcosm.Config
 
         }
 
+        private void aspectAscOn11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOff11.Visibility = Visibility.Visible;
+            aspectAscOff11.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectAscOff11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOn11.Visibility = Visibility.Visible;
+            aspectAscOn11.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOn11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOff11.Visibility = Visibility.Visible;
+            aspectMcOff11.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOff11_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOn11.Visibility = Visibility.Visible;
+            aspectMcOn11.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
 
 
         private void aspectSunOn23_MouseDown(object sender, MouseButtonEventArgs e)
@@ -1552,13 +1630,93 @@ namespace microcosm.Config
             main.ReRender();
         }
 
+        private void aspectAscOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOff23.Visibility = Visibility.Visible;
+            aspectAscOff23.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectAscOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOn23.Visibility = Visibility.Visible;
+            aspectAscOn23.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOn23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOff23.Visibility = Visibility.Visible;
+            aspectMcOff23.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOff23_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOn23.Visibility = Visibility.Visible;
+            aspectMcOn23.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
         private void aspectSunOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectSunOff23.Visibility = Visibility.Visible;
-            aspectSunOff23.Height = 24;
+            aspectSunOff13.Visibility = Visibility.Visible;
+            aspectSunOff13.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1576,8 +1734,8 @@ namespace microcosm.Config
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectSunOn23.Visibility = Visibility.Visible;
-            aspectSunOn23.Height = 24;
+            aspectSunOn13.Visibility = Visibility.Visible;
+            aspectSunOn13.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1595,8 +1753,8 @@ namespace microcosm.Config
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOff23.Visibility = Visibility.Visible;
-            aspectMoonOff23.Height = 24;
+            aspectMoonOff13.Visibility = Visibility.Visible;
+            aspectMoonOff13.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1614,8 +1772,8 @@ namespace microcosm.Config
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectMoonOn23.Visibility = Visibility.Visible;
-            aspectMoonOn23.Height = 24;
+            aspectMoonOn13.Visibility = Visibility.Visible;
+            aspectMoonOn13.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -1630,102 +1788,461 @@ namespace microcosm.Config
 
         private void aspectMercuryOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMercuryOff13.Visibility = Visibility.Visible;
+            aspectMercuryOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MERCURY)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectMercuryOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMercuryOn13.Visibility = Visibility.Visible;
+            aspectMercuryOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MERCURY)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectVenusOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectVenusOff13.Visibility = Visibility.Visible;
+            aspectVenusOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_VENUS)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectVenusOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectVenusOn13.Visibility = Visibility.Visible;
+            aspectVenusOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_VENUS)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectMarsOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMarsOff13.Visibility = Visibility.Visible;
+            aspectMarsOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MARS)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectMarsOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMarsOn13.Visibility = Visibility.Visible;
+            aspectMarsOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MARS)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectJupiterOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectJupiterOff13.Visibility = Visibility.Visible;
+            aspectJupiterOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_JUPITER)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectJupiterOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectJupiterOn13.Visibility = Visibility.Visible;
+            aspectJupiterOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_JUPITER)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectSaturnOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectSaturnOff13.Visibility = Visibility.Visible;
+            aspectSaturnOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_SATURN)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectSaturnOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectSaturnOn13.Visibility = Visibility.Visible;
+            aspectSaturnOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_SATURN)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectUranusOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectUranusOff13.Visibility = Visibility.Visible;
+            aspectUranusOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_URANUS)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectUranusOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectUranusOn13.Visibility = Visibility.Visible;
+            aspectUranusOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_URANUS)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectNeptuneOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectNeptuneOff13.Visibility = Visibility.Visible;
+            aspectNeptuneOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_NEPTUNE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectNeptuneOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectNeptuneOn13.Visibility = Visibility.Visible;
+            aspectNeptuneOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_NEPTUNE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectPlutoOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectPlutoOff13.Visibility = Visibility.Visible;
+            aspectPlutoOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_PLUTO)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectPlutoOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectPlutoOn13.Visibility = Visibility.Visible;
+            aspectPlutoOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_PLUTO)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectDhOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectDhOff13.Visibility = Visibility.Visible;
+            aspectDhOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_DH_TRUENODE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectDhOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectDhOn13.Visibility = Visibility.Visible;
+            aspectDhOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_DH_TRUENODE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectChironOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectChironOff13.Visibility = Visibility.Visible;
+            aspectChironOff13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_CHIRON)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectChironOff13_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectChironOn13.Visibility = Visibility.Visible;
+            aspectChironOn13.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_CHIRON)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectAscOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOff13.Visibility = Visibility.Visible;
+            aspectAscOff13.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectAscOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOn13.Visibility = Visibility.Visible;
+            aspectAscOn13.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOn13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOff13.Visibility = Visibility.Visible;
+            aspectMcOff13.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOff13_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOn13.Visibility = Visibility.Visible;
+            aspectMcOn13.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectSunOn12_MouseDown(object sender, MouseButtonEventArgs e)
@@ -1752,8 +2269,8 @@ namespace microcosm.Config
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
-            aspectChironOn12.Visibility = Visibility.Visible;
-            aspectChironOn12.Height = 24;
+            aspectSunOn12.Visibility = Visibility.Visible;
+            aspectSunOn12.Height = 24;
 
             foreach (var data in main.list1)
             {
@@ -2034,42 +2551,230 @@ namespace microcosm.Config
 
         private void aspectNeptuneOn12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectNeptuneOff12.Visibility = Visibility.Visible;
+            aspectNeptuneOff12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_NEPTUNE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectNeptuneOff12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectNeptuneOn12.Visibility = Visibility.Visible;
+            aspectNeptuneOn12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_NEPTUNE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectPlutoOn12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectPlutoOff12.Visibility = Visibility.Visible;
+            aspectPlutoOff12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_PLUTO)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectPlutoOff12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectPlutoOn12.Visibility = Visibility.Visible;
+            aspectPlutoOn12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_PLUTO)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectDhOn12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectDhOff12.Visibility = Visibility.Visible;
+            aspectDhOff12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_DH_TRUENODE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectDhOff12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectDhOn12.Visibility = Visibility.Visible;
+            aspectDhOn12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_DH_TRUENODE)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectChironOn12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectChironOff12.Visibility = Visibility.Visible;
+            aspectChironOff12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_CHIRON)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectChironOff12_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectChironOn12.Visibility = Visibility.Visible;
+            aspectChironOn12.Height = 24;
 
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_CHIRON)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectAscOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOff12.Visibility = Visibility.Visible;
+            aspectAscOff12.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectAscOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOn12.Visibility = Visibility.Visible;
+            aspectAscOn12.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectMcOn12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOff12.Visibility = Visibility.Visible;
+            aspectMcOff12.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectMcOff12_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOn12.Visibility = Visibility.Visible;
+            aspectMcOn12.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
         }
 
         private void aspectSunOn33_MouseDown(object sender, MouseButtonEventArgs e)
@@ -2544,6 +3249,82 @@ namespace microcosm.Config
             foreach (var data in main.list1)
             {
                 if (data.no == (int)CommonData.ZODIAC_CHIRON)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectAscOn33_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOff33.Visibility = Visibility.Visible;
+            aspectAscOff33.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectAscOff33_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOn33.Visibility = Visibility.Visible;
+            aspectAscOn33.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectMcOn33_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOff33.Visibility = Visibility.Visible;
+            aspectMcOff33.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+        private void aspectMcOff33_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOn33.Visibility = Visibility.Visible;
+            aspectMcOn33.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
                 {
                     data.isAspectDisp = true;
                     break;
@@ -3031,5 +3812,87 @@ namespace microcosm.Config
             main.ReRender();
 
         }
+
+        private void aspectAscOn22_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOff22.Visibility = Visibility.Visible;
+            aspectAscOff22.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+
+        }
+
+        private void aspectAscOff22_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectAscOn22.Visibility = Visibility.Visible;
+            aspectAscOn22.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_ASC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOn22_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOff22.Visibility = Visibility.Visible;
+            aspectMcOff22.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+
+        }
+
+        private void aspectMcOff22_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+            aspectMcOn22.Visibility = Visibility.Visible;
+            aspectMcOn22.Height = 24;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == (int)CommonData.ZODIAC_MC)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
+
     }
 }
