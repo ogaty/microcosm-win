@@ -9,15 +9,37 @@
     <Grid>
         <StackPanel>
             <StackPanel Margin="10">
-                <ComboBox x:Name="ringSelector" SelectedIndex="1">
+                <ComboBox x:Name="ringSelector" SelectionChanged="ringSelector_SelectionChanged">
+                    <ComboBoxItem Content="一重円" IsSelected="True"/>
                     <ComboBoxItem Content="二重円"/>
                     <ComboBoxItem Content="三重円"/>
-                    <ComboBoxItem Content="四重円"/>
-                    <ComboBoxItem Content="五重円"/>
                 </ComboBox>
             </StackPanel>
-            <StackPanel x:Name="rings">
-
+            <StackPanel x:Name="rings" Margin="10,0,10,10">
+                <StackPanel x:Name="no1">
+                    <Label Content="１"></Label>
+                    <ComboBox x:Name="ring1">
+                        <ComboBoxItem Content="ネイタル" IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem Content="プログレス"></ComboBoxItem>
+                        <ComboBoxItem Content="トランジット"></ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel x:Name="no2" Visibility="Hidden">
+                    <Label Content="２"></Label>
+                    <ComboBox x:Name="ring2">
+                        <ComboBoxItem Content="ネイタル"></ComboBoxItem>
+                        <ComboBoxItem Content="プログレス" IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem Content="トランジット"></ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel x:Name="no3" Visibility="Hidden">
+                    <Label Content="３"></Label>
+                    <ComboBox x:Name="ring3">
+                        <ComboBoxItem Content="ネイタル"></ComboBoxItem>
+                        <ComboBoxItem Content="プログレス"></ComboBoxItem>
+                        <ComboBoxItem Content="トランジット" IsSelected="True"></ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                 <Button Content="決定" Click="Ok_Click">

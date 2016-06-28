@@ -26,6 +26,22 @@ namespace microcosm.Config
     {
         public MainWindow main;
         public SettingWindowViewModel settingVM;
+
+        public bool[,] aspectSun = new bool[10, 15];
+        public bool[,] aspectMoon = new bool[10, 15];
+        public bool[,] aspectMercury = new bool[10, 15];
+        public bool[,] aspectVenus = new bool[10, 15];
+        public bool[,] aspectMars = new bool[10, 15];
+        public bool[,] aspectJupiter = new bool[10, 15];
+        public bool[,] aspectSaturn = new bool[10, 15];
+        public bool[,] aspectUranus = new bool[10, 15];
+        public bool[,] aspectNeptune = new bool[10, 15];
+        public bool[,] aspectPluto = new bool[10, 15];
+        public bool[,] aspectDh = new bool[10, 15];
+        public bool[,] aspectChiron = new bool[10, 15];
+        public bool[,] aspectAsc = new bool[10, 15];
+        public bool[,] aspectMc = new bool[10,15];
+
         public SettingWIndow(MainWindow main)
         {
             this.main = main;
@@ -612,6 +628,8 @@ namespace microcosm.Config
             }
         }
 
+        // aspect
+        // 11(0)
         private void aspectSunOn11_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
@@ -619,6 +637,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectSunOff11.Visibility = Visibility.Visible;
             aspectSunOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectSun[index,0] = false;
 
             foreach (var data in main.list1)
             {
@@ -638,6 +659,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectSunOn11.Visibility = Visibility.Visible;
             aspectSunOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectSun[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -657,6 +681,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMoon[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -676,6 +703,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMoon[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -695,6 +725,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMercury[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -715,6 +748,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMercury[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -735,6 +771,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectVenus[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -755,6 +794,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectVenus[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -775,6 +817,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMars[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -795,6 +840,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMars[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -815,6 +863,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectJupiter[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -835,6 +886,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectJupiter[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -855,6 +909,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectSaturn[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -875,6 +932,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectSaturn[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -895,6 +955,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectUranus[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -915,6 +978,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectUranus[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -935,6 +1001,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOff11.Visibility = Visibility.Visible;
             aspectMoonOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectNeptune[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -955,6 +1024,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMoonOn11.Visibility = Visibility.Visible;
             aspectMoonOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectNeptune[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -975,6 +1047,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectPlutoOff11.Visibility = Visibility.Visible;
             aspectPlutoOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectPluto[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -995,6 +1070,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectPlutoOn11.Visibility = Visibility.Visible;
             aspectPlutoOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectPluto[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -1015,6 +1093,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectDhOff11.Visibility = Visibility.Visible;
             aspectDhOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectDh[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -1035,6 +1116,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectDhOn11.Visibility = Visibility.Visible;
             aspectDhOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectDh[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -1055,6 +1139,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectChironOff11.Visibility = Visibility.Visible;
             aspectChironOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectChiron[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -1075,6 +1162,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectChironOn11.Visibility = Visibility.Visible;
             aspectChironOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectChiron[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -1095,6 +1185,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectAscOff11.Visibility = Visibility.Visible;
             aspectAscOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectAsc[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -1115,6 +1208,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectAscOn11.Visibility = Visibility.Visible;
             aspectAscOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectAsc[index, 0] = true;
 
             foreach (var data in main.list1)
             {
@@ -1135,6 +1231,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMcOff11.Visibility = Visibility.Visible;
             aspectMcOff11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMc[index, 0] = false;
 
             foreach (var data in main.list1)
             {
@@ -1155,6 +1254,9 @@ namespace microcosm.Config
             img.Height = 0;
             aspectMcOn11.Visibility = Visibility.Visible;
             aspectMcOn11.Height = 24;
+            int index = dispList.SelectedIndex;
+
+            aspectMc[index, 0] = true;
 
             foreach (var data in main.list1)
             {

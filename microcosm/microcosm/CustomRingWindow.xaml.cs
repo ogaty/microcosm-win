@@ -46,5 +46,31 @@ namespace microcosm
             this.Visibility = Visibility.Hidden;
 
         }
+
+        private void ringSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ring1 == null)
+            {
+                return;
+            }
+            int index = ringSelector.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    no2.Visibility = Visibility.Hidden;
+                    no3.Visibility = Visibility.Hidden;
+                    break;
+                case 1:
+                    no2.Visibility = Visibility.Visible;
+                    no3.Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    no2.Visibility = Visibility.Visible;
+                    no3.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
