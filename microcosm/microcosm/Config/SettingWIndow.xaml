@@ -1516,15 +1516,6 @@
                             <ComboBoxItem Content="1 - 2 (N - P)"/>
                             <ComboBoxItem Content="1 - 3 (N - T)"/>
                             <ComboBoxItem Content="2 - 3 (P - T)"/>
-                            <ComboBoxItem Content="1 - 4"/>
-                            <ComboBoxItem Content="1 - 5"/>
-                            <ComboBoxItem Content="2 - 4"/>
-                            <ComboBoxItem Content="2 - 5"/>
-                            <ComboBoxItem Content="3 - 4"/>
-                            <ComboBoxItem Content="3 - 5"/>
-                            <ComboBoxItem Content="4 - 4"/>
-                            <ComboBoxItem Content="4 - 5"/>
-                            <ComboBoxItem Content="5 - 5"/>
                         </ComboBox>
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                             <StackPanel>
@@ -1601,6 +1592,10 @@
                 </TabItem>
 
             </TabControl>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button Content="保存"></Button>
+                <Button Content="キャンセル" Margin="10,0,0,0"></Button>
+            </StackPanel>
 
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="10,10,0,0">
