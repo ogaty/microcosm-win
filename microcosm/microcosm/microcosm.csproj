@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>planet.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -389,6 +392,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\mc_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="planet.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

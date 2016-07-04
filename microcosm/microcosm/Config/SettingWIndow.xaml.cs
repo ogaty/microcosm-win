@@ -11,9 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Xml.Serialization;
+using System.IO;
 
 using microcosm.ViewModel;
-using System.Collections.ObjectModel;
 using microcosm.Common;
 using microcosm.Aspect;
 
@@ -28,6 +30,7 @@ namespace microcosm.Config
         public SettingWindowViewModel settingVM;
 
         // Aspect 一時保存用
+        // settings * 10, 1-1,1-2…5-5で15個
         public bool[,] aspectSun = new bool[10, 15];
         public bool[,] aspectMoon = new bool[10, 15];
         public bool[,] aspectMercury = new bool[10, 15];
@@ -43,16 +46,30 @@ namespace microcosm.Config
         public bool[,] aspectAsc = new bool[10, 15];
         public bool[,] aspectMc = new bool[10,15];
 
+        public bool[,] aspectConjunction = new bool[10, 15];
+        public bool[,] aspectOpposition = new bool[10, 15];
+        public bool[,] aspectTrine = new bool[10, 15];
+        public bool[,] aspectSquare = new bool[10, 15];
+        public bool[,] aspectSextile = new bool[10, 15];
+        public bool[,] aspectInconjunct = new bool[10, 15];
+        public bool[,] aspectSesquiquadrate = new bool[10, 15];
+
         public Dictionary<string, bool[,]> aspectTempArray = new Dictionary<string, bool[,]>();
+        public Dictionary<string, bool[,]> aspect2TempArray = new Dictionary<string, bool[,]>();
         public Dictionary<string, bool> aspectBoolean = new Dictionary<string, bool>();
+        public Dictionary<string, bool> aspect2Boolean = new Dictionary<string, bool>();
         public Dictionary<string, int> aspectSubindex = new Dictionary<string, int>();
+        public Dictionary<string, int> aspect2Subindex = new Dictionary<string, int>();
         public Dictionary<string, int> aspectCommonDataNo = new Dictionary<string, int>();
 
         // control dictionary
         public Dictionary<string, FrameworkElement> anotherControl = new Dictionary<string, FrameworkElement>();
+        public Dictionary<string, FrameworkElement> another2Control = new Dictionary<string, FrameworkElement>();
 
         public List<string> aspectControlList = new List<string>();
         public List<Image> aspectControlNameList = new List<Image>();
+
+        string[] strNumbers = { "11", "22", "33", "12", "13", "23" };
 
         public SettingWIndow(MainWindow main)
         {
@@ -811,145 +828,6 @@ namespace microcosm.Config
         }
 
 
-        private void aspectSunOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSunOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOn23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOff23_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
 
         private void aspectSunOn13_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -1707,6 +1585,64 @@ namespace microcosm.Config
             anotherControl.Add("aspectAscOff23", aspectAscOn23);
             anotherControl.Add("aspectMcOff23", aspectMcOn23);
 
+            another2Control.Add("aspectConjunctionOn11", aspectConjunctionOff11);
+            another2Control.Add("aspectConjunctionOff11", aspectConjunctionOn11);
+            another2Control.Add("aspectOppositionOn11", aspectOppositionOff11);
+            another2Control.Add("aspectOppositionOff11", aspectOppositionOn11);
+            another2Control.Add("aspectTrineOn11", aspectTrineOff11);
+            another2Control.Add("aspectTrineOff11", aspectTrineOn11);
+            another2Control.Add("aspectSquareOn11", aspectSquareOff11);
+            another2Control.Add("aspectSquareOff11", aspectSquareOn11);
+            another2Control.Add("aspectConjunctionOn22", aspectConjunctionOff22);
+            another2Control.Add("aspectConjunctionOff22", aspectConjunctionOn22);
+            another2Control.Add("aspectOppositionOn22", aspectOppositionOff22);
+            another2Control.Add("aspectOppositionOff22", aspectOppositionOn22);
+            another2Control.Add("aspectTrineOn22", aspectTrineOff22);
+            another2Control.Add("aspectTrineOff22", aspectTrineOn22);
+            another2Control.Add("aspectSquareOn22", aspectSquareOff22);
+            another2Control.Add("aspectSquareOff22", aspectSquareOn22);
+            another2Control.Add("aspectConjunctionOn33", aspectConjunctionOff33);
+            another2Control.Add("aspectConjunctionOff33", aspectConjunctionOn33);
+            another2Control.Add("aspectOppositionOn33", aspectOppositionOff33);
+            another2Control.Add("aspectOppositionOff33", aspectOppositionOn33);
+            another2Control.Add("aspectTrineOn33", aspectTrineOff33);
+            another2Control.Add("aspectTrineOff33", aspectTrineOn33);
+            another2Control.Add("aspectSquareOn33", aspectSquareOff33);
+            another2Control.Add("aspectSquareOff33", aspectSquareOn33);
+            another2Control.Add("aspectConjunctionOn12", aspectConjunctionOff12);
+            another2Control.Add("aspectConjunctionOff12", aspectConjunctionOn12);
+            another2Control.Add("aspectOppositionOn12", aspectOppositionOff12);
+            another2Control.Add("aspectOppositionOff12", aspectOppositionOn12);
+            another2Control.Add("aspectTrineOn12", aspectTrineOff12);
+            another2Control.Add("aspectTrineOff12", aspectTrineOn12);
+            another2Control.Add("aspectSquareOn12", aspectSquareOff12);
+            another2Control.Add("aspectSquareOff12", aspectSquareOn12);
+            another2Control.Add("aspectConjunctionOn13", aspectConjunctionOff13);
+            another2Control.Add("aspectConjunctionOff13", aspectConjunctionOn13);
+            another2Control.Add("aspectOppositionOn13", aspectOppositionOff13);
+            another2Control.Add("aspectOppositionOff13", aspectOppositionOn13);
+            another2Control.Add("aspectTrineOn13", aspectTrineOff13);
+            another2Control.Add("aspectTrineOff13", aspectTrineOn13);
+            another2Control.Add("aspectSquareOn13", aspectSquareOff13);
+            another2Control.Add("aspectSquareOff13", aspectSquareOn13);
+            another2Control.Add("aspectConjunctionOn23", aspectConjunctionOff23);
+            another2Control.Add("aspectConjunctionOff23", aspectConjunctionOn23);
+            another2Control.Add("aspectOppositionOn23", aspectOppositionOff23);
+            another2Control.Add("aspectOppositionOff23", aspectOppositionOn23);
+            another2Control.Add("aspectTrineOn23", aspectTrineOff23);
+            another2Control.Add("aspectTrineOff23", aspectTrineOn23);
+            another2Control.Add("aspectSquareOn23", aspectSquareOff23);
+            another2Control.Add("aspectSquareOff23", aspectSquareOn23);
+            foreach (string n in strNumbers)
+            {
+                another2Control.Add("aspectSextileOn" + n, (FrameworkElement)FindName("aspectSextileOff" + n));
+                another2Control.Add("aspectSextileOff" + n, (FrameworkElement)FindName("aspectSextileOff" + n));
+                another2Control.Add("aspectInconjunctOn" + n, (FrameworkElement)FindName("aspectInconjunctOff" + n));
+                another2Control.Add("aspectInconjunctOff" + n, (FrameworkElement)FindName("aspectInconjunctOn" + n));
+                another2Control.Add("aspectSesquiquadrateOn" + n, (FrameworkElement)FindName("aspectSesquiquadrateOff" + n));
+                another2Control.Add("aspectSesquiquadrateOff" + n, (FrameworkElement)FindName("aspectSesquiquadrateOn" + n));
+            }
+
         }
 
         private void createAspectTempArray()
@@ -1879,6 +1815,24 @@ namespace microcosm.Config
             aspectTempArray.Add("aspectChironOff23", aspectChiron);
             aspectTempArray.Add("aspectAscOff23", aspectAsc);
             aspectTempArray.Add("aspectMcOff23", aspectMc);
+
+            foreach (string n in strNumbers)
+            {
+                aspect2TempArray.Add("aspectConjunctionOn" + n, aspectConjunction);
+                aspect2TempArray.Add("aspectOppositionOn" + n, aspectOpposition);
+                aspect2TempArray.Add("aspectTrineOn" + n, aspectTrine);
+                aspect2TempArray.Add("aspectSquareOn" + n, aspectSquare);
+                aspect2TempArray.Add("aspectSextileOn" + n, aspectSextile);
+                aspect2TempArray.Add("aspectInconjunctOn" + n, aspectInconjunct);
+                aspect2TempArray.Add("aspectSesquiquadrateOn" + n, aspectSesquiquadrate);
+                aspect2TempArray.Add("aspectConjunctionOff" + n, aspectConjunction);
+                aspect2TempArray.Add("aspectOppositionOff" + n, aspectOpposition);
+                aspect2TempArray.Add("aspectTrineOff" + n, aspectTrine);
+                aspect2TempArray.Add("aspectSquareOff" + n, aspectSquare);
+                aspect2TempArray.Add("aspectSextileOff" + n, aspectSextile);
+                aspect2TempArray.Add("aspectInconjunctOff" + n, aspectInconjunct);
+                aspect2TempArray.Add("aspectSesquiquadrateOff" + n, aspectSesquiquadrate);
+            }
         }
 
         private void createAspectBoolean()
@@ -2051,6 +2005,23 @@ namespace microcosm.Config
             aspectBoolean.Add("aspectChironOff23", false);
             aspectBoolean.Add("aspectAscOff23", false);
             aspectBoolean.Add("aspectMcOff23", false);
+            foreach (string n in strNumbers)
+            {
+                aspect2Boolean.Add("aspectConjunctionOn" + n, true);
+                aspect2Boolean.Add("aspectOppositionOn" + n, true);
+                aspect2Boolean.Add("aspectTrineOn" + n, true);
+                aspect2Boolean.Add("aspectSquareOn" + n, true);
+                aspect2Boolean.Add("aspectSextileOn" + n, true);
+                aspect2Boolean.Add("aspectInconjunctOn" + n, true);
+                aspect2Boolean.Add("aspectSesquiquadrateOn" + n, true);
+                aspect2Boolean.Add("aspectConjunctionOff" + n, false);
+                aspect2Boolean.Add("aspectOppositionOff" + n, false);
+                aspect2Boolean.Add("aspectTrineOff" + n, false);
+                aspect2Boolean.Add("aspectSquareOff" + n, false);
+                aspect2Boolean.Add("aspectSextileOff" + n, false);
+                aspect2Boolean.Add("aspectInconjunctOff" + n, false);
+                aspect2Boolean.Add("aspectSesquiquadrateOff" + n, false);
+            }
         }
 
         private void createAspectSubindex()
@@ -2223,6 +2194,25 @@ namespace microcosm.Config
             aspectSubindex.Add("aspectChironOff23", 5);
             aspectSubindex.Add("aspectAscOff23", 5);
             aspectSubindex.Add("aspectMcOff23", 5);
+            int i = 0;
+            foreach (string n in strNumbers)
+            {
+                aspect2Subindex.Add("aspectConjunctionOn" + n, i);
+                aspect2Subindex.Add("aspectConjunctionOff" + n, i);
+                aspect2Subindex.Add("aspectOppositionOn" + n, i);
+                aspect2Subindex.Add("aspectOppositionOff" + n, i);
+                aspect2Subindex.Add("aspectTrineOn" + n, i);
+                aspect2Subindex.Add("aspectTrineOff" + n, i);
+                aspect2Subindex.Add("aspectSquareOn" + n, i);
+                aspect2Subindex.Add("aspectSquareOff" + n, i);
+                aspect2Subindex.Add("aspectSextileOn" + n, i);
+                aspect2Subindex.Add("aspectSextileOff" + n, i);
+                aspect2Subindex.Add("aspectInconjunctOn" + n, i);
+                aspect2Subindex.Add("aspectInconjunctOff" + n, i);
+                aspect2Subindex.Add("aspectSesquiquadrateOn" + n, i);
+                aspect2Subindex.Add("aspectSesquiquadrateOff" + n, i);
+                i++;
+            }
         }
 
         private void createAspectCommonDataNo()
@@ -2737,6 +2727,929 @@ namespace microcosm.Config
             aspectControlNameList.Add(aspectAscOff23);
             aspectControlNameList.Add(aspectMcOff23);
 
+        }
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingXml xmldata = new SettingXml();
+            if (aspectSunOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSun11 = true;
+            }
+            else
+            {
+                xmldata.aspectSun11 = false;
+            }
+            if (aspectMoonOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMoon11 = true;
+            }
+            else
+            {
+                xmldata.aspectMoon11 = false;
+            }
+            if (aspectMercuryOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMercury11 = true;
+            }
+            else
+            {
+                xmldata.aspectMercury11 = false;
+            }
+            if (aspectVenusOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectVenus11 = true;
+            }
+            else
+            {
+                xmldata.aspectVenus11 = false;
+            }
+            if (aspectMarsOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMars11 = true;
+            }
+            else
+            {
+                xmldata.aspectMars11 = false;
+            }
+            if (aspectJupiterOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectJupiter11 = true;
+            }
+            else
+            {
+                xmldata.aspectJupiter11 = false;
+            }
+            if (aspectSaturnOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSaturn11 = true;
+            }
+            else
+            {
+                xmldata.aspectSaturn11 = false;
+            }
+            if (aspectUranusOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectUranus11 = true;
+            }
+            else
+            {
+                xmldata.aspectUranus11 = false;
+            }
+            if (aspectNeptuneOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectNeptune11 = true;
+            }
+            else
+            {
+                xmldata.aspectNeptune11 = false;
+            }
+            if (aspectPlutoOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectPluto11 = true;
+            }
+            else
+            {
+                xmldata.aspectPluto11 = false;
+            }
+            if (aspectDhOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectDh11 = true;
+            }
+            else
+            {
+                xmldata.aspectDh11 = false;
+            }
+            if (aspectChironOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectChiron11 = true;
+            }
+            else
+            {
+                xmldata.aspectChiron11 = false;
+            }
+            if (aspectAscOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectAsc11 = true;
+            }
+            else
+            {
+                xmldata.aspectAsc11 = false;
+            }
+            if (aspectMcOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMc11 = true;
+            }
+            else
+            {
+                xmldata.aspectMc11 = false;
+            }
+            if (aspectSunOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSun22 = true;
+            }
+            else
+            {
+                xmldata.aspectSun22 = false;
+            }
+            if (aspectMoonOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMoon22 = true;
+            }
+            else
+            {
+                xmldata.aspectMoon22 = false;
+            }
+            if (aspectMercuryOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMercury22 = true;
+            }
+            else
+            {
+                xmldata.aspectMercury22 = false;
+            }
+            if (aspectVenusOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectVenus22 = true;
+            }
+            else
+            {
+                xmldata.aspectVenus22 = false;
+            }
+            if (aspectMarsOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMars22 = true;
+            }
+            else
+            {
+                xmldata.aspectMars22 = false;
+            }
+            if (aspectJupiterOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectJupiter22 = true;
+            }
+            else
+            {
+                xmldata.aspectJupiter22 = false;
+            }
+            if (aspectSaturnOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSaturn22 = true;
+            }
+            else
+            {
+                xmldata.aspectSaturn22 = false;
+            }
+            if (aspectUranusOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectUranus22 = true;
+            }
+            else
+            {
+                xmldata.aspectUranus22 = false;
+            }
+            if (aspectNeptuneOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectNeptune22 = true;
+            }
+            else
+            {
+                xmldata.aspectNeptune22 = false;
+            }
+            if (aspectPlutoOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectPluto22 = true;
+            }
+            else
+            {
+                xmldata.aspectPluto22 = false;
+            }
+            if (aspectDhOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectDh22 = true;
+            }
+            else
+            {
+                xmldata.aspectDh22 = false;
+            }
+            if (aspectChironOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectChiron22 = true;
+            }
+            else
+            {
+                xmldata.aspectChiron22 = false;
+            }
+            if (aspectAscOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectAsc22 = true;
+            }
+            else
+            {
+                xmldata.aspectAsc22 = false;
+            }
+            if (aspectMcOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMc22 = true;
+            }
+            else
+            {
+                xmldata.aspectMc22 = false;
+            }
+            if (aspectSunOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSun33 = true;
+            }
+            else
+            {
+                xmldata.aspectSun33 = false;
+            }
+            if (aspectMoonOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMoon33 = true;
+            }
+            else
+            {
+                xmldata.aspectMoon33 = false;
+            }
+            if (aspectMercuryOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMercury33 = true;
+            }
+            else
+            {
+                xmldata.aspectMercury33 = false;
+            }
+            if (aspectVenusOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectVenus33 = true;
+            }
+            else
+            {
+                xmldata.aspectVenus33 = false;
+            }
+            if (aspectMarsOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMars33 = true;
+            }
+            else
+            {
+                xmldata.aspectMars33 = false;
+            }
+            if (aspectJupiterOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectJupiter33 = true;
+            }
+            else
+            {
+                xmldata.aspectJupiter33 = false;
+            }
+            if (aspectSaturnOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSaturn33 = true;
+            }
+            else
+            {
+                xmldata.aspectSaturn33 = false;
+            }
+            if (aspectUranusOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectUranus33 = true;
+            }
+            else
+            {
+                xmldata.aspectUranus33 = false;
+            }
+            if (aspectNeptuneOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectNeptune33 = true;
+            }
+            else
+            {
+                xmldata.aspectNeptune33 = false;
+            }
+            if (aspectPlutoOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectPluto33 = true;
+            }
+            else
+            {
+                xmldata.aspectPluto33 = false;
+            }
+            if (aspectDhOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectDh33 = true;
+            }
+            else
+            {
+                xmldata.aspectDh33 = false;
+            }
+            if (aspectChironOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectChiron33 = true;
+            }
+            else
+            {
+                xmldata.aspectChiron33 = false;
+            }
+            if (aspectAscOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectAsc33 = true;
+            }
+            else
+            {
+                xmldata.aspectAsc33 = false;
+            }
+            if (aspectMcOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMc33 = true;
+            }
+            else
+            {
+                xmldata.aspectMc33 = false;
+            }
+            if (aspectSunOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSun12 = true;
+            }
+            else
+            {
+                xmldata.aspectSun12 = false;
+            }
+            if (aspectMoonOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMoon12 = true;
+            }
+            else
+            {
+                xmldata.aspectMoon12 = false;
+            }
+            if (aspectMercuryOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMercury12 = true;
+            }
+            else
+            {
+                xmldata.aspectMercury12 = false;
+            }
+            if (aspectVenusOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectVenus12 = true;
+            }
+            else
+            {
+                xmldata.aspectVenus12 = false;
+            }
+            if (aspectMarsOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMars12 = true;
+            }
+            else
+            {
+                xmldata.aspectMars12 = false;
+            }
+            if (aspectJupiterOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectJupiter12 = true;
+            }
+            else
+            {
+                xmldata.aspectJupiter12 = false;
+            }
+            if (aspectSaturnOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSaturn12 = true;
+            }
+            else
+            {
+                xmldata.aspectSaturn12 = false;
+            }
+            if (aspectUranusOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectUranus12 = true;
+            }
+            else
+            {
+                xmldata.aspectUranus12 = false;
+            }
+            if (aspectNeptuneOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectNeptune12 = true;
+            }
+            else
+            {
+                xmldata.aspectNeptune12 = false;
+            }
+            if (aspectPlutoOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectPluto12 = true;
+            }
+            else
+            {
+                xmldata.aspectPluto12 = false;
+            }
+            if (aspectDhOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectDh12 = true;
+            }
+            else
+            {
+                xmldata.aspectDh12 = false;
+            }
+            if (aspectChironOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectChiron12 = true;
+            }
+            else
+            {
+                xmldata.aspectChiron12 = false;
+            }
+            if (aspectAscOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectAsc12 = true;
+            }
+            else
+            {
+                xmldata.aspectAsc12 = false;
+            }
+            if (aspectMcOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMc12 = true;
+            }
+            else
+            {
+                xmldata.aspectMc12 = false;
+            }
+            if (aspectSunOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSun13 = true;
+            }
+            else
+            {
+                xmldata.aspectSun13 = false;
+            }
+            if (aspectMoonOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMoon13 = true;
+            }
+            else
+            {
+                xmldata.aspectMoon13 = false;
+            }
+            if (aspectMercuryOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMercury13 = true;
+            }
+            else
+            {
+                xmldata.aspectMercury13 = false;
+            }
+            if (aspectVenusOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectVenus13 = true;
+            }
+            else
+            {
+                xmldata.aspectVenus13 = false;
+            }
+            if (aspectMarsOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMars13 = true;
+            }
+            else
+            {
+                xmldata.aspectMars13 = false;
+            }
+            if (aspectJupiterOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectJupiter13 = true;
+            }
+            else
+            {
+                xmldata.aspectJupiter13 = false;
+            }
+            if (aspectSaturnOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSaturn13 = true;
+            }
+            else
+            {
+                xmldata.aspectSaturn13 = false;
+            }
+            if (aspectUranusOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectUranus13 = true;
+            }
+            else
+            {
+                xmldata.aspectUranus13 = false;
+            }
+            if (aspectNeptuneOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectNeptune13 = true;
+            }
+            else
+            {
+                xmldata.aspectNeptune13 = false;
+            }
+            if (aspectPlutoOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectPluto13 = true;
+            }
+            else
+            {
+                xmldata.aspectPluto13 = false;
+            }
+            if (aspectDhOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectDh13 = true;
+            }
+            else
+            {
+                xmldata.aspectDh13 = false;
+            }
+            if (aspectChironOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectChiron13 = true;
+            }
+            else
+            {
+                xmldata.aspectChiron13 = false;
+            }
+            if (aspectAscOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectAsc13 = true;
+            }
+            else
+            {
+                xmldata.aspectAsc13 = false;
+            }
+            if (aspectMcOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMc13 = true;
+            }
+            else
+            {
+                xmldata.aspectMc13 = false;
+            }
+            if (aspectSunOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSun23 = true;
+            }
+            else
+            {
+                xmldata.aspectSun23 = false;
+            }
+            if (aspectMoonOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMoon23 = true;
+            }
+            else
+            {
+                xmldata.aspectMoon23 = false;
+            }
+            if (aspectMercuryOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMercury23 = true;
+            }
+            else
+            {
+                xmldata.aspectMercury23 = false;
+            }
+            if (aspectVenusOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectVenus23 = true;
+            }
+            else
+            {
+                xmldata.aspectVenus23 = false;
+            }
+            if (aspectMarsOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMars23 = true;
+            }
+            else
+            {
+                xmldata.aspectMars23 = false;
+            }
+            if (aspectJupiterOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectJupiter23 = true;
+            }
+            else
+            {
+                xmldata.aspectJupiter23 = false;
+            }
+            if (aspectSaturnOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSaturn23 = true;
+            }
+            else
+            {
+                xmldata.aspectSaturn23 = false;
+            }
+            if (aspectUranusOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectUranus23 = true;
+            }
+            else
+            {
+                xmldata.aspectUranus23 = false;
+            }
+            if (aspectNeptuneOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectNeptune23 = true;
+            }
+            else
+            {
+                xmldata.aspectNeptune23 = false;
+            }
+            if (aspectPlutoOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectPluto23 = true;
+            }
+            else
+            {
+                xmldata.aspectPluto23 = false;
+            }
+            if (aspectDhOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectDh23 = true;
+            }
+            else
+            {
+                xmldata.aspectDh23 = false;
+            }
+            if (aspectChironOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectChiron23 = true;
+            }
+            else
+            {
+                xmldata.aspectChiron23 = false;
+            }
+            if (aspectAscOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectAsc23 = true;
+            }
+            else
+            {
+                xmldata.aspectAsc23 = false;
+            }
+            if (aspectMcOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectMc23 = true;
+            }
+            else
+            {
+                xmldata.aspectMc23 = false;
+            }
+
+            if (aspectConjunctionOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectConjunction11 = true;
+            }
+            else
+            {
+                xmldata.aspectConjunction11 = false;
+            }
+            if (aspectOppositionOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectOpposition11 = true;
+            }
+            else
+            {
+                xmldata.aspectOpposition11 = false;
+            }
+            if (aspectTrineOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectTrine11 = true;
+            }
+            else
+            {
+                xmldata.aspectTrine11 = false;
+            }
+            if (aspectSquareOn11.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSquare11 = true;
+            }
+            else
+            {
+                xmldata.aspectSquare11 = false;
+            }
+            if (aspectConjunctionOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectConjunction22 = true;
+            }
+            else
+            {
+                xmldata.aspectConjunction22 = false;
+            }
+            if (aspectOppositionOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectOpposition22 = true;
+            }
+            else
+            {
+                xmldata.aspectOpposition22 = false;
+            }
+            if (aspectTrineOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectTrine22 = true;
+            }
+            else
+            {
+                xmldata.aspectTrine22 = false;
+            }
+            if (aspectSquareOn22.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSquare22 = true;
+            }
+            else
+            {
+                xmldata.aspectSquare22 = false;
+            }
+            if (aspectConjunctionOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectConjunction33 = true;
+            }
+            else
+            {
+                xmldata.aspectConjunction33 = false;
+            }
+            if (aspectOppositionOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectOpposition33 = true;
+            }
+            else
+            {
+                xmldata.aspectOpposition33 = false;
+            }
+            if (aspectTrineOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectTrine33 = true;
+            }
+            else
+            {
+                xmldata.aspectTrine33 = false;
+            }
+            if (aspectSquareOn33.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSquare33 = true;
+            }
+            else
+            {
+                xmldata.aspectSquare33 = false;
+            }
+            if (aspectConjunctionOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectConjunction12 = true;
+            }
+            else
+            {
+                xmldata.aspectConjunction12 = false;
+            }
+            if (aspectOppositionOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectOpposition12 = true;
+            }
+            else
+            {
+                xmldata.aspectOpposition12 = false;
+            }
+            if (aspectTrineOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectTrine12 = true;
+            }
+            else
+            {
+                xmldata.aspectTrine12 = false;
+            }
+            if (aspectSquareOn12.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSquare12 = true;
+            }
+            else
+            {
+                xmldata.aspectSquare12 = false;
+            }
+            if (aspectConjunctionOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectConjunction13 = true;
+            }
+            else
+            {
+                xmldata.aspectConjunction13 = false;
+            }
+            if (aspectOppositionOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectOpposition13 = true;
+            }
+            else
+            {
+                xmldata.aspectOpposition13 = false;
+            }
+            if (aspectTrineOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectTrine13 = true;
+            }
+            else
+            {
+                xmldata.aspectTrine13 = false;
+            }
+            if (aspectSquareOn13.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSquare13 = true;
+            }
+            else
+            {
+                xmldata.aspectSquare13 = false;
+            }
+            if (aspectConjunctionOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectConjunction23 = true;
+            }
+            else
+            {
+                xmldata.aspectConjunction23 = false;
+            }
+            if (aspectOppositionOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectOpposition23 = true;
+            }
+            else
+            {
+                xmldata.aspectOpposition23 = false;
+            }
+            if (aspectTrineOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectTrine23 = true;
+            }
+            else
+            {
+                xmldata.aspectTrine23 = false;
+            }
+            if (aspectSquareOn23.Visibility == Visibility.Visible)
+            {
+                xmldata.aspectSquare23 = true;
+            }
+            else
+            {
+                xmldata.aspectSquare23 = false;
+            }
+            xmldata.aspectSextile11 = aspectSextileOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSextile22 = aspectSextileOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSextile33 = aspectSextileOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSextile12 = aspectSextileOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSextile13 = aspectSextileOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSextile23 = aspectSextileOn23.Visibility == Visibility.Visible ? true : false;
+
+            xmldata.aspectInconjunct11 = aspectInconjunctOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectInconjunct22 = aspectInconjunctOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectInconjunct33 = aspectInconjunctOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectInconjunct12 = aspectInconjunctOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectInconjunct13 = aspectInconjunctOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectInconjunct23 = aspectInconjunctOn23.Visibility == Visibility.Visible ? true : false;
+
+            xmldata.aspectSesquiquadrate11 = aspectSesquiquadrateOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSesquiquadrate22 = aspectSesquiquadrateOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSesquiquadrate33 = aspectSesquiquadrateOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSesquiquadrate12 = aspectSesquiquadrateOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSesquiquadrate13 = aspectSesquiquadrateOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSesquiquadrate23 = aspectSesquiquadrateOn23.Visibility == Visibility.Visible ? true : false;
+
+
+            int index = dispList.SelectedIndex;
+
+            string filename = @"system\setting" + index + ".csm";
+            XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
+            FileStream fs = new FileStream(filename, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            serializer.Serialize(sw, xmldata);
+            sw.Close();
+            fs.Close();
+
+            main.ReCalc();
+            main.ReRender();
+
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void aspect2MouseDownCommon(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+
+            Image ctl = (Image)another2Control[img.Name];
+            ctl.Visibility = Visibility.Visible;
+            ctl.Height = 24;
+
+            int index = dispList.SelectedIndex;
+
+            (aspect2TempArray[img.Name])[index, aspect2Subindex[img.Name]] = aspect2Boolean[img.Name];
+
+            main.ReRender();
         }
 
     }

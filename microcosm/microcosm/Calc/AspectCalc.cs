@@ -57,8 +57,7 @@ namespace microcosm.Calc
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
                                 kind == AspectKind.SQUARE ||
-                                kind == AspectKind.SEXTILE ||
-                                kind == AspectKind.SESQUIQUADRATE)
+                                kind == AspectKind.SEXTILE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_1st[0, 0] &&
                                     aspect_degree > getDegree(kind) - a_setting.orb_sun_hard_1st[0, 0])
@@ -85,7 +84,8 @@ namespace microcosm.Calc
                                     break;
                                 }
                             }
-                            else if (kind == AspectKind.INCONJUNCT)
+                            else if (kind == AspectKind.INCONJUNCT ||
+                                kind == AspectKind.SESQUIQUADRATE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_150[0, 0] &&
                                     aspect_degree > getDegree(kind) - a_setting.orb_sun_hard_150[0, 0])
@@ -147,8 +147,7 @@ namespace microcosm.Calc
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
                                 kind == AspectKind.SQUARE ||
-                                kind == AspectKind.SEXTILE ||
-                                kind == AspectKind.SESQUIQUADRATE)
+                                kind == AspectKind.SEXTILE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_moon_hard_1st[0, 0] &&
                                     aspect_degree > getDegree(kind) - a_setting.orb_moon_hard_1st[0, 0])
@@ -175,7 +174,8 @@ namespace microcosm.Calc
                                     break;
                                 }
                             }
-                            else if (kind == AspectKind.INCONJUNCT)
+                            else if (kind == AspectKind.INCONJUNCT ||
+                                kind == AspectKind.SESQUIQUADRATE)
                             {
                                 Console.WriteLine(aspect_degree);
                                 Console.WriteLine(getDegree(kind) + a_setting.orb_moon_soft_150[0, 0]);
@@ -241,8 +241,7 @@ namespace microcosm.Calc
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
                                 kind == AspectKind.SQUARE ||
-                                kind == AspectKind.SEXTILE ||
-                                kind == AspectKind.SESQUIQUADRATE)
+                                kind == AspectKind.SEXTILE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_1st[0, 0] &&
                                     aspect_degree > getDegree(kind) - a_setting.orb_other_hard_1st[0, 0])
@@ -269,7 +268,8 @@ namespace microcosm.Calc
                                     break;
                                 }
                             }
-                            else if (kind == AspectKind.INCONJUNCT)
+                            else if (kind == AspectKind.INCONJUNCT ||
+                                kind == AspectKind.SESQUIQUADRATE)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_150[0, 0] &&
                                     aspect_degree > getDegree(kind) - a_setting.orb_other_hard_150[0, 0])
