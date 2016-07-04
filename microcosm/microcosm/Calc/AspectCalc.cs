@@ -333,7 +333,9 @@ namespace microcosm.Calc
         }
 
         // 違うリストのアスペクトを計算する
-        public List<PlanetData> AspectCalcOther(SettingData a_setting, List<PlanetData> fromList, List<PlanetData> toList, int listKind)
+        // fromListにアスペクトを追加して返却
+        public List<PlanetData> AspectCalcOther(SettingData a_setting, List<PlanetData> fromList, List<PlanetData> toList, 
+            int listKind)
         {
             // if (natal-natal)
             for (int i = 0; i < fromList.Count - 1; i++)

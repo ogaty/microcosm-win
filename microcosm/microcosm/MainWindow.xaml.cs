@@ -264,7 +264,26 @@ namespace microcosm
 
             AspectCalc aspect = new AspectCalc();
             list1 = aspect.AspectCalcSame(currentSetting, list1);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 1);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 2);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list4, 3);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list5, 4);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list6, 5);
             list2 = aspect.AspectCalcSame(currentSetting, list2);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list3, 2);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list4, 3);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list5, 4);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list6, 5);
+            list3 = aspect.AspectCalcSame(currentSetting, list3);
+            list3 = aspect.AspectCalcOther(currentSetting, list3, list4, 3);
+            list3 = aspect.AspectCalcOther(currentSetting, list3, list5, 4);
+            list3 = aspect.AspectCalcOther(currentSetting, list3, list6, 5);
+            list4 = aspect.AspectCalcSame(currentSetting, list4);
+            list4 = aspect.AspectCalcOther(currentSetting, list4, list5, 4);
+            list4 = aspect.AspectCalcOther(currentSetting, list4, list6, 5);
+            list5 = aspect.AspectCalcSame(currentSetting, list5);
+            list5 = aspect.AspectCalcOther(currentSetting, list5, list6, 5);
+            list6 = aspect.AspectCalcSame(currentSetting, list6);
         }
 
         private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
