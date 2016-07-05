@@ -183,7 +183,8 @@ namespace microcosm
                     data.birth_minute,
                     data.birth_second,
                     data.lat,
-                    data.lng);
+                    data.lng,
+                    mainwindow.config.houseCalc);
 
                 DateTime calcDate = currentDate.AddDays(364.5);
                 for (int i = 0; i < 40; i++)
@@ -196,7 +197,8 @@ namespace microcosm
                         calcDate.Minute,
                         calcDate.Day,
                         data.lat,
-                        data.lng);
+                        data.lng,
+                        mainwindow.config.houseCalc);
                     if (Math.Abs(currentPlanet[0].absolute_position - planet[0].absolute_position) < 0.01)
                     {
                         Console.WriteLine(currentPlanet[0].absolute_position.ToString());

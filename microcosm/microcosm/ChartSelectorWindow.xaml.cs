@@ -818,5 +818,23 @@ namespace microcosm
             main.ReCalc();
             main.ReRender();
         }
+
+        private void setButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (natalTime.IsChecked == true)
+            {
+                main.mainWindowVM.userBirthStr = string.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + 
+                    string.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + 
+                    string.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text + " " + main.userdata.timezone;
+            }
+            else
+            {
+                main.mainWindowVM.transitBirthStr = setYear.Text + "/" + setMonth.Text + "/" + setDay.Text + " " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
     }
 }

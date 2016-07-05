@@ -248,12 +248,12 @@ namespace microcosm
 
         public void ReCalc()
         {
-            list1 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng);
-            list2 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng);
-            list3 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng);
-            list4 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng);
-            list5 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng);
-            list6 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng);
+            list1 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+            list2 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+            list3 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+            list4 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+            list5 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+            list6 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
 
             houseList1 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
             houseList2 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
@@ -264,25 +264,25 @@ namespace microcosm
 
             AspectCalc aspect = new AspectCalc();
             list1 = aspect.AspectCalcSame(currentSetting, list1);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 1);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 2);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list4, 3);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list5, 4);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list6, 5);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 4);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 5);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list4, 9);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list5, 10);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list6, 20);
             list2 = aspect.AspectCalcSame(currentSetting, list2);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list3, 2);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list4, 3);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list5, 4);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list6, 5);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list3, 6);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list4, 11);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list5, 12);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list6, 20);
             list3 = aspect.AspectCalcSame(currentSetting, list3);
-            list3 = aspect.AspectCalcOther(currentSetting, list3, list4, 3);
-            list3 = aspect.AspectCalcOther(currentSetting, list3, list5, 4);
-            list3 = aspect.AspectCalcOther(currentSetting, list3, list6, 5);
+            list3 = aspect.AspectCalcOther(currentSetting, list3, list4, 13);
+            list3 = aspect.AspectCalcOther(currentSetting, list3, list5, 14);
+            list3 = aspect.AspectCalcOther(currentSetting, list3, list6, 20);
             list4 = aspect.AspectCalcSame(currentSetting, list4);
-            list4 = aspect.AspectCalcOther(currentSetting, list4, list5, 4);
-            list4 = aspect.AspectCalcOther(currentSetting, list4, list6, 5);
+            list4 = aspect.AspectCalcOther(currentSetting, list4, list5, 15);
+            list4 = aspect.AspectCalcOther(currentSetting, list4, list6, 20);
             list5 = aspect.AspectCalcSame(currentSetting, list5);
-            list5 = aspect.AspectCalcOther(currentSetting, list5, list6, 5);
+            list5 = aspect.AspectCalcOther(currentSetting, list5, list6, 20);
             list6 = aspect.AspectCalcSame(currentSetting, list6);
         }
 
@@ -818,6 +818,14 @@ namespace microcosm
                     {
                         return;
                     }
+                    if (planet.no == 10000)
+                    {
+                        return;
+                    }
+                    if (planet.no == 10001)
+                    {
+                        return;
+                    }
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
                     int index = (int)(planet.absolute_position / 6);
@@ -1048,10 +1056,12 @@ namespace microcosm
                 {
                     for (int j = 0; j < list[i].aspects.Count; j++)
                     {
-                        if (!list[list[i].aspects[j].targetPlanetNo].isAspectDisp)
+                        int tNo = calc.targetNoList[list[i].aspects[j].targetPlanetNo];
+                        if (!list[tNo].isAspectDisp)
                         {
                             continue;
                         }
+
                         if (endPosition == 1)
                         {
                             endPoint = rotate((float)tempSettings.zodiacCenter / 2, 0, list[i].aspects[j].targetPosition - startDegree);

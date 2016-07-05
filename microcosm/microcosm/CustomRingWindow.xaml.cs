@@ -34,7 +34,7 @@ namespace microcosm
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            this.main.tempSettings.bands = ringSelector.SelectedIndex + 2;
+            this.main.tempSettings.bands = ringSelector.SelectedIndex + 1;
             main.ReCalc();
             main.ReRender();
             this.Visibility = Visibility.Hidden;

@@ -22,7 +22,6 @@
                 <ComboBoxItem Content="365日"/>
 
             </ComboBox>
-
             <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Center">
                 <TextBox x:Name="setYear" Margin="5,0" Width="35" Text="2016"></TextBox>
                 <TextBlock Text="/"></TextBlock>
@@ -35,6 +34,8 @@
                 <TextBlock Text=":"></TextBlock>
                 <TextBox x:Name="setSecond" Margin="5,0" Width="20" Text="45"></TextBox>
             </StackPanel>
+            <Button x:Name="setButton" Content="SET" Margin="10,10,10,0" Width="60" HorizontalAlignment="Right" Click="setButton_Click"></Button>
+
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="年" Margin="5,0"></Label>
                 <Button x:Name="leftYear" Content="←" VerticalAlignment="Center" Click="LeftYear_Click"></Button>

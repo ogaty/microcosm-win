@@ -17,13 +17,13 @@ namespace microcosm.Calc
         public List<PlanetData> AspectCalcSame(SettingData a_setting, List<PlanetData> list)
         {
             // if (natal-natal)
-            for (int i = 0; i < list.Count - 2; i++)
+            for (int i = 0; i < list.Count - 1; i++)
             {
                 if (!list[i].isAspectDisp)
                 {
                     continue;
                 }
-                for (int j = i + 1; j < list.Count - 1; j++)
+                for (int j = i + 1; j < list.Count; j++)
                 {
                     if (!list[j].isAspectDisp)
                     {
@@ -334,7 +334,24 @@ namespace microcosm.Calc
 
         // 違うリストのアスペクトを計算する
         // fromListにアスペクトを追加して返却
-        public List<PlanetData> AspectCalcOther(SettingData a_setting, List<PlanetData> fromList, List<PlanetData> toList, 
+        // listKindはpositionを決める
+        // 1: from1 to1
+        // 2: from2 to2
+        // 3: from3 to3
+        // 4: from1 to2
+        // 5: from1 to3
+        // 6: from2 to3
+        // 7: from4 to4
+        // 8: from5 to5
+        // 9: from1 to4
+        // 10: from1 to5
+        // 11: from2 to4
+        // 12: from2 to5
+        // 13: from3 to4
+        // 14: from3 to5
+        // 15: from4 to5
+        public List<PlanetData> AspectCalcOther(SettingData a_setting, 
+            List<PlanetData> fromList, List<PlanetData> toList, 
             int listKind)
         {
             // if (natal-natal)

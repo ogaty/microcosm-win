@@ -19,6 +19,7 @@ namespace microcosm.Calc
         public ConfigData config;
         public double year_days = 365.2424;
         public SwissEph s;
+        public Dictionary<int, int> targetNoList = new Dictionary<int, int>();
 
         public AstroCalc(ConfigData config)
         {
@@ -33,7 +34,7 @@ namespace microcosm.Calc
         }
 
         // 天体の位置を計算する
-        public List<PlanetData> PositionCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng)
+        public List<PlanetData> PositionCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind)
         {
             List<PlanetData> planetdata = new List<PlanetData>(); ;
 
@@ -50,6 +51,8 @@ namespace microcosm.Calc
 
             // [0]:Ephemeris Time [1]:Universal Time
             double[] dret = { 0.0, 0.0 };
+
+            int ii = 0;
 
             // utcに変換
             s.swe_utc_time_zone(year, month, day, hour, min, sec, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
@@ -110,7 +113,7 @@ namespace microcosm.Calc
                 }
                 if (i == 13)
                 {
-                    // true apogee、どうでもいい
+                    // true apogee、要はリリス
                     p.isDisp = false;
                     p.isAspectDisp = false;
                 }
@@ -120,15 +123,57 @@ namespace microcosm.Calc
                     p.isDisp = true;
                     p.isAspectDisp = true;
                 }
+                if (!targetNoList.ContainsKey(i))
+                {
+                    targetNoList.Add(i, i);
+                }
+                ii = i;
                 planetdata.Add(p);
             });
 
             s.swe_close();
+            // ハウスを後ろにくっつける
+            double[] houses = CuspCalc(year, month, day, hour, min, sec, lat, lng, houseKind);
+            PlanetData pAsc = new PlanetData()
+            {
+                isAspectDisp = true,
+                isDisp = true,
+                absolute_position = houses[1],
+                no = CommonData.ZODIAC_ASC,
+                sensitive = true,
+                speed = 1,
+                aspects = new List<AspectInfo>(),
+                secondAspects = new List<AspectInfo>(),
+                thirdAspects = new List<AspectInfo>()
+            };
+            if (!targetNoList.ContainsKey(CommonData.ZODIAC_ASC))
+            {
+                targetNoList.Add(CommonData.ZODIAC_ASC, ++ii);
+            }
+            planetdata.Add(pAsc);
+            PlanetData pMc = new PlanetData()
+            {
+                isAspectDisp = true,
+                isDisp = true,
+                absolute_position = houses[10],
+                no = CommonData.ZODIAC_MC,
+                sensitive = true,
+                speed = 1,
+                aspects = new List<AspectInfo>(),
+                secondAspects = new List<AspectInfo>(),
+                thirdAspects = new List<AspectInfo>()
+            };
+            if (!targetNoList.ContainsKey(CommonData.ZODIAC_MC))
+            {
+                targetNoList.Add(CommonData.ZODIAC_MC, ++ii);
+            }
+            planetdata.Add(pMc);
+
             return planetdata;
         }
 
         // カスプを計算
-        public double[] CuspCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int house)
+        public double[] CuspCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind)
         {
             int utc_year = 0;
             int utc_month = 0;
@@ -149,20 +194,24 @@ namespace microcosm.Calc
             double[] cusps = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             double[] ascmc = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-            if (house == 0)
+            if (houseKind == 0)
             {
+                // Placidas
                 s.swe_houses(dret[1], lat, lng, 'P', cusps, ascmc);
             }
-            else if (house == 1)
+            else if (houseKind == 1)
             {
+                // Koch
                 s.swe_houses(dret[1], lat, lng, 'K', cusps, ascmc);
             }
-            else if (house == 2)
+            else if (houseKind == 2)
             {
+                // Campanus
                 s.swe_houses(dret[1], lat, lng, 'C', cusps, ascmc);
             }
             else
             {
+                // Equal
                 s.swe_houses(dret[1], lat, lng, 'E', cusps, ascmc);
             }
             s.swe_close();

@@ -39,6 +39,14 @@ namespace microcosm
                     {
                         return;
                     }
+                    if (planet.no == 10000)
+                    {
+                        return;
+                    }
+                    if (planet.no == 10001)
+                    {
+                        return;
+                    }
 
                     PointF point;
                     PointF pointdegree;
