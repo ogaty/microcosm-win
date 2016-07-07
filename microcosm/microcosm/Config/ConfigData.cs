@@ -105,9 +105,9 @@ namespace microcosm.Config
         [XmlElement("dispPattern")]
         public int dispPattern { get; set; }
 
-        public ConfigData()
+        public ConfigData(string path)
         {
-            ephepath = @"\ephe";
+            ephepath = path;
             centric = ECentric.GEO_CENTRIC;
             sidereal = Esidereal.TROPICAL;
             defaultPlace = "東京都中央区";
@@ -118,6 +118,24 @@ namespace microcosm.Config
             zodiacWidth = 60;
             zodiacCenter = 250;
             defaultTimezone = "JST";
+            decimalDisp = (int)EDecimalDisp.DECIMAL;
+            dispPattern = 0;
+            progression = EProgression.PRIMARY;
+        }
+
+        public ConfigData()
+        {
+            centric = ECentric.GEO_CENTRIC;
+            sidereal = Esidereal.TROPICAL;
+            defaultPlace = "東京都中央区";
+            lat = 35.670587;
+            lng = 139.772003;
+            houseCalc = (int)EHouseCalc.PLACIDUS;
+            zodiacOuterWidth = 470;
+            zodiacWidth = 60;
+            zodiacCenter = 250;
+            defaultTimezone = "JST";
+            decimalDisp = (int)EDecimalDisp.DECIMAL;
             dispPattern = 0;
             progression = EProgression.PRIMARY;
         }

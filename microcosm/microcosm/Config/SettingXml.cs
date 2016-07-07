@@ -13,6 +13,7 @@ namespace microcosm.Config
         [XmlElement("dispname")]
         public string dispname;
 
+        #region orb 1st
         // 第一種アスペクト、一重～六重円
         [XmlElement("orb_sun_soft_1st_0")]
         public double[] orb_sun_soft_1st_0;
@@ -96,9 +97,10 @@ namespace microcosm.Config
         public double[] orb_other_hard_1st_4;
         [XmlElement("orb_other_hard_1st_5")]
         public double[] orb_other_hard_1st_5;
-
+        #endregion
 
         // 第二種アスペクト、一重～五重円
+        #region orb 2nd
         [XmlElement("orb_sun_soft_2nd_0")]
         public double[] orb_sun_soft_2nd_0;
         [XmlElement("orb_sun_soft_2nd_1")]
@@ -181,8 +183,10 @@ namespace microcosm.Config
         public double[] orb_other_hard_2nd_4;
         [XmlElement("orb_other_hard_2nd_5")]
         public double[] orb_other_hard_2nd_5;
+        #endregion
 
-
+        // 135/150
+        #region orb 150
         [XmlElement("orb_sun_soft_150_0")]
         public double[] orb_sun_soft_150_0;
         [XmlElement("orb_sun_soft_150_1")]
@@ -265,10 +269,12 @@ namespace microcosm.Config
         public double[] orb_other_hard_150_4;
         [XmlElement("orb_other_hard_150_5")]
         public double[] orb_other_hard_150_5;
+        #endregion
 
         [XmlElement("dispCircle")]
         public bool[] dispCircle;
 
+        #region dispPlanet
         [XmlElement("dispPlanet_sun")]
         public bool dispPlanet_sun;
         [XmlElement("dispPlanet_moon")]
@@ -293,7 +299,12 @@ namespace microcosm.Config
         public bool dispPlanet_truenode;
         [XmlElement("dispPlanet_earth")]
         public bool dispPlanet_earth;
+        #endregion
 
+        [XmlElement("dispAspect")]
+        public bool[] dispAspect;
+
+        #region aspect Planet
         [XmlElement("aspectSun11")]
         public bool aspectSun11;
         [XmlElement("aspectMoon11")]
@@ -462,7 +473,9 @@ namespace microcosm.Config
         public bool aspectAsc23;
         [XmlElement("aspectMc23")]
         public bool aspectMc23;
+        #endregion
 
+        #region aspect Aspect
         [XmlElement("aspectConjunction11")]
         public bool aspectConjunction11;
         [XmlElement("aspectOpposition11")]
@@ -547,6 +560,7 @@ namespace microcosm.Config
         public bool aspectInconjunct23;
         [XmlElement("aspectSesquiquadrate23")]
         public bool aspectSesquiquadrate23;
+        #endregion
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using microcosm.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -396,6 +397,27 @@ namespace microcosm.Common
                 return "\u211e";
             }
             return "";
+        }
+
+        public static UserEventData udata2event(UserData udata)
+        {
+            return new UserEventData()
+            {
+                name = udata.name,
+                birth_year = udata.birth_year,
+                birth_month = udata.birth_month,
+                birth_day = udata.birth_day,
+                birth_hour = udata.birth_hour,
+                birth_minute = udata.birth_minute,
+                birth_second = udata.birth_second,
+                birth_place = udata.birth_place,
+                birth_str = udata.birth_str,
+                lat = udata.lat,
+                lng = udata.lng,
+                lat_lng = udata.lat_lng,
+                timezone = udata.timezone,
+                memo = udata.memo
+            };
         }
     }
 }

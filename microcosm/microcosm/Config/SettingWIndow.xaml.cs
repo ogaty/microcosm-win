@@ -54,6 +54,8 @@ namespace microcosm.Config
         public bool[,] aspectInconjunct = new bool[10, 15];
         public bool[,] aspectSesquiquadrate = new bool[10, 15];
 
+        public bool[,] aspectDispChecked = new bool[10, 15];
+
         public Dictionary<string, bool[,]> aspectTempArray = new Dictionary<string, bool[,]>();
         public Dictionary<string, bool[,]> aspect2TempArray = new Dictionary<string, bool[,]>();
         public Dictionary<string, bool> aspectBoolean = new Dictionary<string, bool>();
@@ -239,6 +241,12 @@ namespace microcosm.Config
                     anotherControl[aspectControlList[i]].Height = 24;
                 }
             }
+            disp11.IsChecked = main.settings[list.SelectedIndex].dispAspect[0, 0];
+            disp22.IsChecked = main.settings[list.SelectedIndex].dispAspect[1, 1];
+            disp33.IsChecked = main.settings[list.SelectedIndex].dispAspect[2, 2];
+            disp12.IsChecked = main.settings[list.SelectedIndex].dispAspect[0, 1];
+            disp13.IsChecked = main.settings[list.SelectedIndex].dispAspect[0, 2];
+            disp23.IsChecked = main.settings[list.SelectedIndex].dispAspect[1, 2];
         }
 
         private void setAspect()
@@ -257,326 +265,106 @@ namespace microcosm.Config
         private void setOrb()
         {
             int index = orbRing.SelectedIndex;
+            int from = 0;
+            int to = 0;
             switch (index)
             {
                 case 0:
                     // N
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 0].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 0].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 0].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 0].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 0].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 0].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 0].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 0].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 0].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 0].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 0].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 0].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 0].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 0].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 0].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 0].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 0].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 0].ToString();
+                    from = 0;
+                    to = 0;
                     break;
                 case 1:
                     // P
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 1].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 1].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 1].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 1].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 1].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 1].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 1].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 1].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 1].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 1].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 1].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 1].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 1].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 1].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 1].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 1].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 1].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 1].ToString();
+                    from = 1;
+                    to = 1;
                     break;
                 case 2:
                     // T
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[2, 2].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[2, 2].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[2, 2].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[2, 2].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[2, 2].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[2, 2].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[2, 2].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[2, 2].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[2, 2].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[2, 2].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[2, 2].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[2, 2].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[2, 2].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[2, 2].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[2, 2].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[2, 2].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[2, 2].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[2, 2].ToString();
+                    from = 2;
+                    to = 2;
                     break;
                 case 3:
                     // N-P
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 1].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 1].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 1].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 1].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 1].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 1].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 1].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 1].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 1].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 1].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 1].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 1].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 1].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 1].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 1].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 1].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 1].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 1].ToString();
+                    from = 0;
+                    to = 1;
                     break;
                 case 4:
                     // N-T
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 2].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 2].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 2].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 2].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 2].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 2].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 2].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 2].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 2].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 2].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 2].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 2].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 2].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 2].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 2].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 2].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 2].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 2].ToString();
+                    from = 0;
+                    to = 2;
                     break;
                 case 5:
                     // P-T
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 2].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 2].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 2].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 2].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 2].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 2].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 2].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 2].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 2].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 2].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 2].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 2].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 2].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 2].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 2].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 2].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 2].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 2].ToString();
+                    from = 1;
+                    to = 2;
                     break;
                 case 6:
                     // N-4
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 3].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 3].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 3].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 3].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 3].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 3].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 3].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 3].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 3].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 3].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 3].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 3].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 3].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 3].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 3].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 3].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 3].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 3].ToString();
+                    from = 0;
+                    to = 3;
                     break;
                 case 7:
                     // N-5
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[0, 4].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[0, 4].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[0, 4].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[0, 4].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[0, 4].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[0, 4].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[0, 4].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[0, 4].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[0, 4].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[0, 4].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[0, 4].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[0, 4].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[0, 4].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[0, 4].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[0, 4].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[0, 4].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[0, 4].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[0, 4].ToString();
+                    from = 0;
+                    to = 4;
                     break;
                 case 8:
                     // P-4
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 3].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 3].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 3].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 3].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 3].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 3].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 3].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 3].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 3].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 3].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 3].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 3].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 3].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 3].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 3].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 3].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 3].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 3].ToString();
+                    from = 1;
+                    to = 3;
                     break;
                 case 9:
                     // P-5
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[1, 4].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[1, 4].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[1, 4].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[1, 4].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[1, 4].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[1, 4].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[1, 4].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[1, 4].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[1, 4].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[1, 4].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[1, 4].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[1, 4].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[1, 4].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[1, 4].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[1, 4].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[1, 4].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[1, 4].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[1, 4].ToString();
+                    from = 1;
+                    to = 4;
                     break;
                 case 10:
                     // T-4
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[2, 3].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[2, 3].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[2, 3].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[2, 3].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[2, 3].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[2, 3].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[2, 3].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[2, 3].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[2, 3].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[2, 3].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[2, 3].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[2, 3].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[2, 3].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[2, 3].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[2, 3].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[2, 3].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[2, 3].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[2, 3].ToString();
+                    from = 2;
+                    to = 3;
                     break;
                 case 11:
                     // T-5
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[2, 4].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[2, 4].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[2, 4].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[2, 4].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[2, 4].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[2, 4].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[2, 4].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[2, 4].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[2, 4].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[2, 4].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[2, 4].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[2, 4].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[2, 4].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[2, 4].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[2, 4].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[2, 4].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[2, 4].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[2, 4].ToString();
+                    from = 2;
+                    to = 4;
                     break;
                 case 12:
                     // 4-4
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[3, 3].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[3, 3].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[3, 3].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[3, 3].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[3, 3].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[3, 3].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[3, 3].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[3, 3].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[3, 3].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[3, 3].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[3, 3].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[3, 3].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[3, 3].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[3, 3].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[3, 3].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[3, 3].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[3, 3].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[3, 3].ToString();
+                    from = 3;
+                    to = 3;
                     break;
                 case 13:
                     // 4-5
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[3, 4].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[3, 4].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[3, 4].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[3, 4].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[3, 4].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[3, 4].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[3, 4].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[3, 4].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[3, 4].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[3, 4].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[3, 4].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[3, 4].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[3, 4].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[3, 4].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[3, 4].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[3, 4].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[3, 4].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[3, 4].ToString();
+                    from = 3;
+                    to = 4;
                     break;
                 case 14:
                     // 5-5
-                    sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[4, 4].ToString();
-                    sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[4, 4].ToString();
-                    sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[4, 4].ToString();
-                    sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[4, 4].ToString();
-                    sunSoft150.Text = main.currentSetting.orb_sun_soft_150[4, 4].ToString();
-                    sunHard150.Text = main.currentSetting.orb_sun_hard_150[4, 4].ToString();
-                    moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[4, 4].ToString();
-                    moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[4, 4].ToString();
-                    moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[4, 4].ToString();
-                    moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[4, 4].ToString();
-                    moonSoft150.Text = main.currentSetting.orb_moon_soft_150[4, 4].ToString();
-                    moonHard150.Text = main.currentSetting.orb_moon_hard_150[4, 4].ToString();
-                    otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[4, 4].ToString();
-                    otherHard1st.Text = main.currentSetting.orb_other_hard_1st[4, 4].ToString();
-                    otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[4, 4].ToString();
-                    otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[4, 4].ToString();
-                    otherSoft150.Text = main.currentSetting.orb_other_soft_150[4, 4].ToString();
-                    otherHard150.Text = main.currentSetting.orb_other_hard_150[4, 4].ToString();
+                    from = 4;
+                    to = 4;
                     break;
                 default:
                     break;
             }
+            sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[from, to].ToString();
+            sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[from, to].ToString();
+            sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[from, to].ToString();
+            sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[from, to].ToString();
+            sunSoft150.Text = main.currentSetting.orb_sun_soft_150[from, to].ToString();
+            sunHard150.Text = main.currentSetting.orb_sun_hard_150[from, to].ToString();
+            moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[from, to].ToString();
+            moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[from, to].ToString();
+            moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[from, to].ToString();
+            moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[from, to].ToString();
+            moonSoft150.Text = main.currentSetting.orb_moon_soft_150[from, to].ToString();
+            moonHard150.Text = main.currentSetting.orb_moon_hard_150[from, to].ToString();
+            otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[from, to].ToString();
+            otherHard1st.Text = main.currentSetting.orb_other_hard_1st[from, to].ToString();
+            otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[from, to].ToString();
+            otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[from, to].ToString();
+            otherSoft150.Text = main.currentSetting.orb_other_soft_150[from, to].ToString();
+            otherHard150.Text = main.currentSetting.orb_other_hard_150[from, to].ToString();
         }
 
         private void conjunction11_MouseDown(object sender, MouseButtonEventArgs e)
@@ -828,146 +616,6 @@ namespace microcosm.Config
         }
 
 
-
-        private void aspectSunOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSunOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOn13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOff13_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
 
         private void aspectSunOn12_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -2828,22 +2476,6 @@ namespace microcosm.Config
             {
                 xmldata.aspectChiron11 = false;
             }
-            if (aspectAscOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectAsc11 = true;
-            }
-            else
-            {
-                xmldata.aspectAsc11 = false;
-            }
-            if (aspectMcOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMc11 = true;
-            }
-            else
-            {
-                xmldata.aspectMc11 = false;
-            }
             if (aspectSunOn22.Visibility == Visibility.Visible)
             {
                 xmldata.aspectSun22 = true;
@@ -2939,22 +2571,6 @@ namespace microcosm.Config
             else
             {
                 xmldata.aspectChiron22 = false;
-            }
-            if (aspectAscOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectAsc22 = true;
-            }
-            else
-            {
-                xmldata.aspectAsc22 = false;
-            }
-            if (aspectMcOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMc22 = true;
-            }
-            else
-            {
-                xmldata.aspectMc22 = false;
             }
             if (aspectSunOn33.Visibility == Visibility.Visible)
             {
@@ -3052,22 +2668,6 @@ namespace microcosm.Config
             {
                 xmldata.aspectChiron33 = false;
             }
-            if (aspectAscOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectAsc33 = true;
-            }
-            else
-            {
-                xmldata.aspectAsc33 = false;
-            }
-            if (aspectMcOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMc33 = true;
-            }
-            else
-            {
-                xmldata.aspectMc33 = false;
-            }
             if (aspectSunOn12.Visibility == Visibility.Visible)
             {
                 xmldata.aspectSun12 = true;
@@ -3163,22 +2763,6 @@ namespace microcosm.Config
             else
             {
                 xmldata.aspectChiron12 = false;
-            }
-            if (aspectAscOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectAsc12 = true;
-            }
-            else
-            {
-                xmldata.aspectAsc12 = false;
-            }
-            if (aspectMcOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMc12 = true;
-            }
-            else
-            {
-                xmldata.aspectMc12 = false;
             }
             if (aspectSunOn13.Visibility == Visibility.Visible)
             {
@@ -3276,22 +2860,6 @@ namespace microcosm.Config
             {
                 xmldata.aspectChiron13 = false;
             }
-            if (aspectAscOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectAsc13 = true;
-            }
-            else
-            {
-                xmldata.aspectAsc13 = false;
-            }
-            if (aspectMcOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMc13 = true;
-            }
-            else
-            {
-                xmldata.aspectMc13 = false;
-            }
             if (aspectSunOn23.Visibility == Visibility.Visible)
             {
                 xmldata.aspectSun23 = true;
@@ -3388,215 +2956,43 @@ namespace microcosm.Config
             {
                 xmldata.aspectChiron23 = false;
             }
-            if (aspectAscOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectAsc23 = true;
-            }
-            else
-            {
-                xmldata.aspectAsc23 = false;
-            }
-            if (aspectMcOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMc23 = true;
-            }
-            else
-            {
-                xmldata.aspectMc23 = false;
-            }
 
-            if (aspectConjunctionOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectConjunction11 = true;
-            }
-            else
-            {
-                xmldata.aspectConjunction11 = false;
-            }
-            if (aspectOppositionOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectOpposition11 = true;
-            }
-            else
-            {
-                xmldata.aspectOpposition11 = false;
-            }
-            if (aspectTrineOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectTrine11 = true;
-            }
-            else
-            {
-                xmldata.aspectTrine11 = false;
-            }
-            if (aspectSquareOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSquare11 = true;
-            }
-            else
-            {
-                xmldata.aspectSquare11 = false;
-            }
-            if (aspectConjunctionOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectConjunction22 = true;
-            }
-            else
-            {
-                xmldata.aspectConjunction22 = false;
-            }
-            if (aspectOppositionOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectOpposition22 = true;
-            }
-            else
-            {
-                xmldata.aspectOpposition22 = false;
-            }
-            if (aspectTrineOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectTrine22 = true;
-            }
-            else
-            {
-                xmldata.aspectTrine22 = false;
-            }
-            if (aspectSquareOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSquare22 = true;
-            }
-            else
-            {
-                xmldata.aspectSquare22 = false;
-            }
-            if (aspectConjunctionOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectConjunction33 = true;
-            }
-            else
-            {
-                xmldata.aspectConjunction33 = false;
-            }
-            if (aspectOppositionOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectOpposition33 = true;
-            }
-            else
-            {
-                xmldata.aspectOpposition33 = false;
-            }
-            if (aspectTrineOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectTrine33 = true;
-            }
-            else
-            {
-                xmldata.aspectTrine33 = false;
-            }
-            if (aspectSquareOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSquare33 = true;
-            }
-            else
-            {
-                xmldata.aspectSquare33 = false;
-            }
-            if (aspectConjunctionOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectConjunction12 = true;
-            }
-            else
-            {
-                xmldata.aspectConjunction12 = false;
-            }
-            if (aspectOppositionOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectOpposition12 = true;
-            }
-            else
-            {
-                xmldata.aspectOpposition12 = false;
-            }
-            if (aspectTrineOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectTrine12 = true;
-            }
-            else
-            {
-                xmldata.aspectTrine12 = false;
-            }
-            if (aspectSquareOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSquare12 = true;
-            }
-            else
-            {
-                xmldata.aspectSquare12 = false;
-            }
-            if (aspectConjunctionOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectConjunction13 = true;
-            }
-            else
-            {
-                xmldata.aspectConjunction13 = false;
-            }
-            if (aspectOppositionOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectOpposition13 = true;
-            }
-            else
-            {
-                xmldata.aspectOpposition13 = false;
-            }
-            if (aspectTrineOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectTrine13 = true;
-            }
-            else
-            {
-                xmldata.aspectTrine13 = false;
-            }
-            if (aspectSquareOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSquare13 = true;
-            }
-            else
-            {
-                xmldata.aspectSquare13 = false;
-            }
-            if (aspectConjunctionOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectConjunction23 = true;
-            }
-            else
-            {
-                xmldata.aspectConjunction23 = false;
-            }
-            if (aspectOppositionOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectOpposition23 = true;
-            }
-            else
-            {
-                xmldata.aspectOpposition23 = false;
-            }
-            if (aspectTrineOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectTrine23 = true;
-            }
-            else
-            {
-                xmldata.aspectTrine23 = false;
-            }
-            if (aspectSquareOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSquare23 = true;
-            }
-            else
-            {
-                xmldata.aspectSquare23 = false;
-            }
+            xmldata.aspectAsc11 = aspectAscOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectAsc22 = aspectAscOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectAsc33 = aspectAscOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectAsc12 = aspectAscOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectAsc13 = aspectAscOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectAsc23 = aspectAscOn23.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectMc11 = aspectMcOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectMc22 = aspectMcOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectMc33 = aspectMcOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectMc12 = aspectMcOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectMc13 = aspectMcOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectMc23 = aspectMcOn23.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectConjunction11 = aspectConjunctionOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectConjunction22 = aspectConjunctionOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectConjunction33 = aspectConjunctionOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectConjunction12 = aspectConjunctionOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectConjunction13 = aspectConjunctionOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectConjunction23 = aspectConjunctionOn23.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectOpposition11 = aspectOppositionOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectOpposition22 = aspectOppositionOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectOpposition33 = aspectOppositionOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectOpposition12 = aspectOppositionOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectOpposition13 = aspectOppositionOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectOpposition23 = aspectOppositionOn23.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectTrine11 = aspectTrineOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectTrine22 = aspectTrineOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectTrine33 = aspectTrineOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectTrine12 = aspectTrineOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectTrine13 = aspectTrineOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectTrine23 = aspectTrineOn23.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSquare11 = aspectSquareOn11.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSquare22 = aspectSquareOn22.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSquare33 = aspectSquareOn33.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSquare12 = aspectSquareOn12.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSquare13 = aspectSquareOn13.Visibility == Visibility.Visible ? true : false;
+            xmldata.aspectSquare23 = aspectSquareOn23.Visibility == Visibility.Visible ? true : false;
             xmldata.aspectSextile11 = aspectSextileOn11.Visibility == Visibility.Visible ? true : false;
             xmldata.aspectSextile22 = aspectSextileOn22.Visibility == Visibility.Visible ? true : false;
             xmldata.aspectSextile33 = aspectSextileOn33.Visibility == Visibility.Visible ? true : false;
@@ -3619,15 +3015,27 @@ namespace microcosm.Config
             xmldata.aspectSesquiquadrate23 = aspectSesquiquadrateOn23.Visibility == Visibility.Visible ? true : false;
 
 
-            int index = dispList.SelectedIndex;
+            xmldata.dispAspect = new bool[6];
+            xmldata.dispAspect[0] = disp11.IsChecked == true ? true : false;
+            xmldata.dispAspect[1] = disp11.IsChecked == true ? true : false;
+            xmldata.dispAspect[2] = disp11.IsChecked == true ? true : false;
+            xmldata.dispAspect[3] = disp11.IsChecked == true ? true : false;
+            xmldata.dispAspect[4] = disp11.IsChecked == true ? true : false;
+            xmldata.dispAspect[5] = disp11.IsChecked == true ? true : false;
 
-            string filename = @"system\setting" + index + ".csm";
-            XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
-            FileStream fs = new FileStream(filename, FileMode.Create);
-            StreamWriter sw = new StreamWriter(fs);
-            serializer.Serialize(sw, xmldata);
-            sw.Close();
-            fs.Close();
+            for (int index = 0; index < 10; index++)
+            {
+                string filename = @"system\setting" + index + ".csm";
+                XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
+                FileStream fs = new FileStream(filename, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+                serializer.Serialize(sw, xmldata);
+                sw.Close();
+                fs.Close();
+
+                main.settings[index].xmlData = xmldata;
+            }
+
 
             main.ReCalc();
             main.ReRender();
@@ -3652,5 +3060,82 @@ namespace microcosm.Config
             main.ReRender();
         }
 
+        private void disp11_Checked(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp11.IsChecked == true)
+            {
+                aspectDispChecked[index, 0] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 0] = false;
+            }
+        }
+
+        private void disp22_Checked(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp11.IsChecked == true)
+            {
+                aspectDispChecked[index, 1] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 1] = false;
+            }
+        }
+
+        private void disp33_Checked(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp11.IsChecked == true)
+            {
+                aspectDispChecked[index, 2] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 2] = false;
+            }
+        }
+
+        private void disp12_Checked(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp11.IsChecked == true)
+            {
+                aspectDispChecked[index, 3] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 3] = false;
+            }
+        }
+
+        private void disp13_Checked(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp11.IsChecked == true)
+            {
+                aspectDispChecked[index, 4] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 4] = false;
+            }
+        }
+
+        private void disp23_Checked(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp11.IsChecked == true)
+            {
+                aspectDispChecked[index, 5] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 5] = false;
+            }
+        }
     }
 }

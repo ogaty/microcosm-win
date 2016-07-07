@@ -30,6 +30,8 @@ namespace microcosm.Planet
         public List<AspectInfo> fifthAspects;
         // 6重円アスペクトはここ
         public List<AspectInfo> sixthAspects;
+        // 7重円アスペクトはここ
+        public List<AspectInfo> seventhAspects;
         // 天体を表示するか
         public bool isDisp;
         // アスペクトを表示するか
@@ -44,8 +46,6 @@ namespace microcosm.Planet
 
         public PlanetData(int kind)
         {
-            // unicodeでASC、MCが出てくればそっちへ移行
-            // 最終的には自作したほうが早いかも
             switch (kind)
             {
                 case CommonData.ZODIAC_SUN:

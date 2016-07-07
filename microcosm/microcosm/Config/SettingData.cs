@@ -49,6 +49,7 @@ namespace microcosm.Config
 
         public bool[,] dispAspect;
 
+        // no: 設定番号
         public SettingData(int no)
         {
             init(no);

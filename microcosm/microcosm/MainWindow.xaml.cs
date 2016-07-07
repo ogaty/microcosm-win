@@ -37,7 +37,7 @@ namespace microcosm
 
         public SettingData[] settings = new SettingData[10];
         public SettingData currentSetting;
-        public ConfigData config = new ConfigData();
+        public ConfigData config;
         public TempSetting tempSettings;
 
         public AstroCalc calc;
@@ -53,6 +53,7 @@ namespace microcosm
         public List<PlanetData> list4;
         public List<PlanetData> list5;
         public List<PlanetData> list6;
+        public List<PlanetData> list7;
 
         public double[] houseList1;
         public double[] houseList2;
@@ -60,6 +61,7 @@ namespace microcosm
         public double[] houseList4;
         public double[] houseList5;
         public double[] houseList6;
+        public double[] houseList7;
 
         public CommonConfigWindow configWindow;
         public SettingWIndow setWindow;
@@ -80,6 +82,45 @@ namespace microcosm
         // データ初期化
         private void DataInit()
         {
+
+            {
+                string exePath = Environment.GetCommandLineArgs()[0];
+                string exeDir = System.IO.Path.GetDirectoryName(exePath);
+                string filename = @"system\config.csm";
+                if (!File.Exists(filename))
+                {
+                    // 生成も
+                    config = new ConfigData(exeDir + @"\ephe");
+                    XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
+                    FileStream fs = new FileStream(filename, FileMode.Create);
+                    StreamWriter sw = new StreamWriter(fs);
+                    serializer.Serialize(sw, config);
+                    sw.Close();
+                    fs.Close();
+                }
+                else
+                {
+                    // 読み込み
+                    try
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
+                        FileStream fs = new FileStream(filename, FileMode.Open);
+                        config = (ConfigData)serializer.Deserialize(fs);
+                        fs.Close();
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("設定ファイル読み込みに失敗しました。再作成します。");
+                        XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
+                        FileStream fs = new FileStream(filename, FileMode.Create);
+                        StreamWriter sw = new StreamWriter(fs);
+                        serializer.Serialize(sw, config);
+                        sw.Close();
+                        fs.Close();
+                    }
+                }
+            }
+
             tempSettings = new TempSetting(config);
             Enumerable.Range(0, 10).ToList().ForEach(i =>
             {
@@ -116,53 +157,36 @@ namespace microcosm
                         fs.Close();
                     }
                 }
-
             });
-            currentSetting = settings[0];
+            currentSetting = new SettingData(0);
+            currentSetting.xmlData = settings[0].xmlData;
+            currentSetting.dispAspect[0, 0] = settings[0].xmlData.dispAspect[0];
+            currentSetting.dispAspect[1, 1] = settings[0].xmlData.dispAspect[1];
+            currentSetting.dispAspect[2, 2] = settings[0].xmlData.dispAspect[2];
+            currentSetting.dispAspect[0, 1] = settings[0].xmlData.dispAspect[3];
+            currentSetting.dispAspect[0, 2] = settings[0].xmlData.dispAspect[4];
+            currentSetting.dispAspect[1, 2] = settings[0].xmlData.dispAspect[5];
 
+            for (int i = 0; i < 10; i++)
             {
-                string filename = @"system\config.csm";
-                if (!File.Exists(filename))
-                {
-                    // 生成も
-                    XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
-                    FileStream fs = new FileStream(filename, FileMode.Create);
-                    StreamWriter sw = new StreamWriter(fs);
-                    serializer.Serialize(sw, config);
-                    sw.Close();
-                    fs.Close();
-                } else
-                {
-                    // 読み込み
-                    try
-                    {
-                        XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
-                        FileStream fs = new FileStream(filename, FileMode.Open);
-                        config = (ConfigData)serializer.Deserialize(fs);
-                        fs.Close();
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show("設定ファイル読み込みに失敗しました。再作成します。");
-                        XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
-                        FileStream fs = new FileStream(filename, FileMode.Create);
-                        StreamWriter sw = new StreamWriter(fs);
-                        serializer.Serialize(sw, config);
-                        sw.Close();
-                        fs.Close();
-                    }
-                }
+                settings[i].dispAspect[0, 0] = settings[i].xmlData.dispAspect[0];
+                settings[i].dispAspect[1, 1] = settings[i].xmlData.dispAspect[1];
+                settings[i].dispAspect[2, 2] = settings[i].xmlData.dispAspect[2];
+                settings[i].dispAspect[0, 1] = settings[i].xmlData.dispAspect[3];
+                settings[i].dispAspect[0, 2] = settings[i].xmlData.dispAspect[4];
+                settings[i].dispAspect[1, 2] = settings[i].xmlData.dispAspect[5];
             }
+
 
             rcanvas = new RingCanvasViewModel(config);
             ringStack.Background = System.Windows.Media.Brushes.GhostWhite;
 
         }
 
+        // AstroCalcインスタンス
         private void DataCalc()
         {
             calc = new AstroCalc(config);
-
         }
 
         private void SetViewModel()
@@ -205,7 +229,8 @@ namespace microcosm
             };
             this.DataContext = mainWindowVM;
 
-            ReCalc();
+            UserEventData edata = CommonData.udata2event(targetUser);
+            ReCalc(edata, edata, edata, edata, edata, edata, edata);
 
             //viewmodel設定
             firstPList = new PlanetListViewModel(this, list1, list2, list3, list4, list5, list6);
@@ -248,19 +273,86 @@ namespace microcosm
 
         public void ReCalc()
         {
-            list1 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            list2 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            list3 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            list4 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            list5 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            list6 = calc.PositionCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+            UserEventData edata = CommonData.udata2event(targetUser);
+            ReCalc(edata, userdata, userdata, userdata, userdata, userdata, userdata);
+        }
 
-            houseList1 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            houseList2 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            houseList3 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            houseList4 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            houseList5 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
-            houseList6 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second, targetUser.lat, targetUser.lng, config.houseCalc);
+
+        public void ReCalc(
+                UserEventData list1Data,
+                UserEventData list2Data,
+                UserEventData list3Data,
+                UserEventData list4Data,
+                UserEventData list5Data,
+                UserEventData list6Data,
+                UserEventData list7Data
+            )
+        {
+            // TODO secondary, primaryの判定ね
+            if (list1 != null)
+            {
+                list1 = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
+                    list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
+                    list1Data.lat, list1Data.lng, config.houseCalc);
+                houseList1 = calc.CuspCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
+                    list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
+                    list1Data.lat, list1Data.lng, config.houseCalc);
+            }
+            if (list2 != null)
+            {
+                list2 = calc.PositionCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
+                    list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
+                    list2Data.lat, list2Data.lng, config.houseCalc);
+                houseList2 = calc.CuspCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
+                    list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
+                    list2Data.lat, list2Data.lng, config.houseCalc);
+            }
+            if (list3 != null)
+            {
+                list3 = calc.PositionCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
+                    list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
+                    list3Data.lat, list3Data.lng, config.houseCalc);
+                houseList3 = calc.CuspCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
+                    list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
+                    list3Data.lat, list3Data.lng, config.houseCalc);
+            }
+            if (list4 != null)
+            {
+                list4 = calc.PositionCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
+                    list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
+                    list4Data.lat, list4Data.lng, config.houseCalc);
+                houseList4 = calc.CuspCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
+                    list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
+                    list4Data.lat, list4Data.lng, config.houseCalc);
+            }
+            if (list5 != null)
+            {
+                list5 = calc.PositionCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
+                    list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
+                    list5Data.lat, list5Data.lng, config.houseCalc);
+                houseList5 = calc.CuspCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
+                    list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
+                    list5Data.lat, list5Data.lng, config.houseCalc);
+            }
+            if (list6 != null)
+            {
+                list6 = calc.PositionCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
+                    list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
+                    list6Data.lat, list6Data.lng, config.houseCalc);
+                houseList6 = calc.CuspCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
+                    list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
+                    list6Data.lat, list6Data.lng, config.houseCalc);
+            }
+            if (list7 != null)
+            {
+                list7 = calc.PositionCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
+                    list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
+                    list7Data.lat, list7Data.lng, config.houseCalc);
+                houseList7 = calc.CuspCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
+                    list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
+                    list7Data.lat, list7Data.lng, config.houseCalc);
+            }
+
 
             AspectCalc aspect = new AspectCalc();
             list1 = aspect.AspectCalcSame(currentSetting, list1);
@@ -973,11 +1065,21 @@ namespace microcosm
                 List<PlanetData> list5
             )
         {
-            aspectRender(startDegree, list1, 1, 1, 1);
+            aspectRender(startDegree, list1, 1, 1, 1, 1);
             if (tempSettings.bands == 2)
             {
-                aspectRender(startDegree, list1, 1, 2, 1);
-                aspectRender(startDegree, list2, 2, 2, 1);
+                aspectRender(startDegree, list1, 1, 1, 2, 1);
+                aspectRender(startDegree, list2, 2, 2, 2, 1);
+                aspectRender(startDegree, list1, 1, 2, 2, 2);
+            }
+            if (tempSettings.bands == 3)
+            {
+                aspectRender(startDegree, list1, 1, 1, 3, 1);
+                aspectRender(startDegree, list2, 2, 2, 3, 1);
+                aspectRender(startDegree, list3, 3, 3, 3, 1);
+                aspectRender(startDegree, list1, 1, 2, 3, 2);
+                aspectRender(startDegree, list1, 1, 3, 3, 3);
+                aspectRender(startDegree, list2, 2, 3, 3, 3);
             }
             /*
             if (aspectSetting.n_n)
@@ -1009,12 +1111,137 @@ namespace microcosm
         }
 
         // startPosition、endPosition : n-pの線は1-2となる
-        private void aspectRender(double startDegree, List<PlanetData> list, int startPosition, int endPosition, int aspectKind)
+        // aspectKind1 : aspectを使う 2: secondAspectを使う
+        private void aspectRender(double startDegree, List<PlanetData> list, 
+            int startPosition, int endPosition, int aspectRings,
+            int aspectKind)
         {
             if (list == null)
             {
                 return;
             }
+            double startRingX = tempSettings.zodiacCenter / 2;
+            double endRingX = tempSettings.zodiacCenter / 2;
+            if (aspectRings == 1)
+            {
+                // 一重円
+                startRingX = tempSettings.zodiacCenter / 2;
+                endRingX = tempSettings.zodiacCenter / 2;
+            }
+            else if (aspectRings == 2)
+            {
+                // 二重円
+                if (startPosition == 1)
+                {
+                    // 内側
+                    startRingX = tempSettings.zodiacCenter / 2;
+                }
+                else
+                {
+                    // 外側
+                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                    {
+                        // 横長
+                        startRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                    else
+                    {
+                        // 縦長
+                        startRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                }
+                if (endPosition == 1)
+                {
+                    // 内側
+                    endRingX = tempSettings.zodiacCenter / 2;
+                }
+                else
+                {
+                    // 外側
+                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                    {
+                        // 横長
+                        endRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                    else
+                    {
+                        // 縦長
+                        endRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                }
+            }
+            else if (aspectRings == 3)
+            {
+                // 三重円
+                if (startPosition == 1)
+                {
+                    // 1
+                    startRingX = tempSettings.zodiacCenter / 2;
+                }
+                else if (startPosition == 2)
+                {
+                    // 2
+                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                    {
+                        // 横長
+                        startRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 3;
+                    }
+                    else
+                    {
+                        // 縦長
+                        startRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 3;
+                    }
+                }
+                else
+                {
+                    // 3
+                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                    {
+                        // 横長
+                        startRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                    else
+                    {
+                        // 縦長
+                        startRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                }
+                if (endPosition == 1)
+                {
+                    // 1
+                    endRingX = tempSettings.zodiacCenter / 2;
+                }
+                else if (endPosition == 2)
+                {
+                    // 2
+                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                    {
+                        // 横長
+                        endRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 3;
+                    }
+                    else
+                    {
+                        // 縦長
+                        endRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 3;
+                    }
+                }
+                else
+                {
+                    // 3
+                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
+                    {
+                        // 横長
+                        endRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                    else
+                    {
+                        // 縦長
+                        endRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4;
+                    }
+                }
+
+            }
+
             for (int i = 0; i < list.Count; i++)
             {
                 if (!list[i].isAspectDisp)
@@ -1023,160 +1250,124 @@ namespace microcosm
                     continue;
                 }
                 PointF startPoint;
-                PointF endPoint;
-                if (startPosition == 1)
-                {
-                    startPoint = rotate(tempSettings.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
-                }
-                else if (startPosition == 2)
-                {
-                    //                    startPoint = rotate(setting.calcThirdInnerRadius() / 2, 0, list[i].absolute_position - startDegree);
-                    startPoint = rotate(tempSettings.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
-                    if (ringCanvas.ActualWidth > ringStack.ActualHeight)
-                    {
-                        // 横長
-                        startPoint = rotate((int)(ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4, 0, list[i].absolute_position - startDegree);
-                    }
-                    else
-                    {
-                        // 縦長
-                        startPoint = rotate((int)(ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4, 0, list[i].absolute_position - startDegree);
-                    }
-                }
-                else
-                {
-                    //                    startPoint = rotate(setting.calcSecondInnerRadius() / 2, 0, list[i].absolute_position - startDegree);
-                    startPoint = rotate(tempSettings.zodiacCenter / 2, 0, list[i].absolute_position - startDegree);
-                }
+                startPoint = rotate(startRingX, 0, list[i].absolute_position - startDegree);
                 startPoint.X += (float)((rcanvas.outerWidth) / 2);
                 startPoint.Y *= -1;
                 startPoint.Y += (float)((rcanvas.outerHeight) / 2);
-
-                if (aspectKind == 1) // natal
+                if (aspectKind == 1)
                 {
-                    for (int j = 0; j < list[i].aspects.Count; j++)
-                    {
-                        int tNo = calc.targetNoList[list[i].aspects[j].targetPlanetNo];
-                        if (!list[tNo].isAspectDisp)
-                        {
-                            continue;
-                        }
-
-                        if (endPosition == 1)
-                        {
-                            endPoint = rotate((float)tempSettings.zodiacCenter / 2, 0, list[i].aspects[j].targetPosition - startDegree);
-                        }
-                        else if (endPosition == 2)
-                        {
-                            if (ringCanvas.ActualWidth > ringStack.ActualHeight)
-                            {
-                                // 横長
-                                endPoint = rotate((int)(ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4, 0, list[i].aspects[j].targetPosition - startDegree);
-                            }
-                            else
-                            {
-                                // 縦長
-                                endPoint = rotate((int)(ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4, 0, list[i].aspects[j].targetPosition - startDegree);
-                            }
-                        }
-                        else
-                        {
-                            endPoint = rotate((float)tempSettings.zodiacCenter, 0, list[i].aspects[j].targetPosition - startDegree);
-                        }
-                        endPoint.X += (float)((rcanvas.outerWidth) / 2);
-                        endPoint.Y *= -1;
-                        endPoint.Y += (float)((rcanvas.outerHeight) / 2);
-
-                        Line aspectLine = new Line()
-                        {
-                            X1 = startPoint.X,
-                            Y1 = startPoint.Y,
-                            X2 = endPoint.X,
-                            Y2 = endPoint.Y
-                        };
-                        if (list[i].aspects[j].softHard == SoftHard.SOFT)
-                        {
-                            aspectLine.StrokeDashArray = new DoubleCollection();
-                            aspectLine.StrokeDashArray.Add(4.0);
-                            aspectLine.StrokeDashArray.Add(4.0);
-                        }
-                        TextBlock aspectLbl = new TextBlock();
-                        aspectLbl.Margin = new Thickness(Math.Abs(startPoint.X + endPoint.X) / 2 - 5, Math.Abs(endPoint.Y + startPoint.Y) / 2 - 8, 0, 0);
-                        if (list[i].aspects[j].aspectKind == Aspect.AspectKind.CONJUNCTION)
-                        {
-
-                        }
-                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
-                        {
-                            aspectLine.Stroke = System.Windows.Media.Brushes.Red;
-                            aspectLbl.Foreground = System.Windows.Media.Brushes.Red;
-                            aspectLbl.Text = "☍";
-                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
-                            aspectLbl.TextAlignment = TextAlignment.Left;
-                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
-                        }
-                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.TRINE)
-                        {
-                            aspectLine.Stroke = System.Windows.Media.Brushes.Orange;
-                            aspectLbl.Foreground = System.Windows.Media.Brushes.Orange;
-                            aspectLbl.Text = "△";
-                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
-                            aspectLbl.TextAlignment = TextAlignment.Left;
-                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
-                        }
-                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SQUARE)
-                        {
-                            aspectLine.Stroke = System.Windows.Media.Brushes.Purple;
-                            aspectLbl.Foreground = System.Windows.Media.Brushes.Purple;
-                            aspectLbl.Text = "□";
-                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
-                            aspectLbl.TextAlignment = TextAlignment.Left;
-                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
-
-                        }
-                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.SEXTILE)
-                        {
-                            aspectLine.Stroke = System.Windows.Media.Brushes.Green;
-                            aspectLbl.Foreground = System.Windows.Media.Brushes.Green;
-                            aspectLbl.Text = "⚹";
-                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
-                            aspectLbl.TextAlignment = TextAlignment.Left;
-                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
-                        }
-                        else if (list[i].aspects[j].aspectKind == Aspect.AspectKind.INCONJUNCT)
-                        {
-                            aspectLine.Stroke = System.Windows.Media.Brushes.Gray;
-                            aspectLbl.Foreground = System.Windows.Media.Brushes.Gray;
-                            aspectLbl.Text = "⚻";
-                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
-                            aspectLbl.TextAlignment = TextAlignment.Left;
-                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
-                        }
-                        else
-                        {
-                            aspectLine.Stroke = System.Windows.Media.Brushes.Black;
-                            aspectLbl.Foreground = System.Windows.Media.Brushes.Black;
-                            aspectLbl.Text = "⚼";
-                            aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
-                            aspectLbl.TextAlignment = TextAlignment.Left;
-                            aspectLbl.VerticalAlignment = VerticalAlignment.Top;
-                        }
-                        aspectLine.MouseEnter += new MouseEventHandler(aspectMouseEnter);
-                        aspectLine.MouseLeave += new MouseEventHandler(explanationClear);
-                        aspectLine.Tag = list[i].aspects[j];
-                        ringCanvas.Children.Add(aspectLine);
-                        ringCanvas.Children.Add(aspectLbl);
-
-                    }
-
+                    aspectListRender(startDegree, list, list[i].aspects, startPoint, endRingX);
                 }
-                else if (aspectKind == 2) // progress
+                else if (aspectKind == 2)
                 {
+                    aspectListRender(startDegree, list, list[i].secondAspects, startPoint, endRingX);
                 }
-                else if (aspectKind == 3) // transit
+                else if (aspectKind == 3)
                 {
+                    aspectListRender(startDegree, list, list[i].thirdAspects, startPoint, endRingX);
                 }
             }
+        }
+
+        // aspectRender サブ関数
+        private void aspectListRender(double startDegree, List<PlanetData> list, List<AspectInfo> aspects, PointF startPoint, double endRingX)
+        {
+            for (int j = 0; j < aspects.Count; j++)
+            {
+                int tNo = calc.targetNoList[aspects[j].targetPlanetNo];
+                if (!list[tNo].isAspectDisp)
+                {
+                    continue;
+                }
+                PointF endPoint;
+
+                endPoint = rotate(endRingX, 0, aspects[j].targetPosition - startDegree);
+                endPoint.X += (float)((rcanvas.outerWidth) / 2);
+                endPoint.Y *= -1;
+                endPoint.Y += (float)((rcanvas.outerHeight) / 2);
+
+                Line aspectLine = new Line()
+                {
+                    X1 = startPoint.X,
+                    Y1 = startPoint.Y,
+                    X2 = endPoint.X,
+                    Y2 = endPoint.Y
+                };
+                if (aspects[j].softHard == SoftHard.SOFT)
+                {
+                    aspectLine.StrokeDashArray = new DoubleCollection();
+                    aspectLine.StrokeDashArray.Add(4.0);
+                    aspectLine.StrokeDashArray.Add(4.0);
+                }
+                TextBlock aspectLbl = new TextBlock();
+                aspectLbl.Margin = new Thickness(Math.Abs(startPoint.X + endPoint.X) / 2 - 5, Math.Abs(endPoint.Y + startPoint.Y) / 2 - 8, 0, 0);
+                if (aspects[j].aspectKind == Aspect.AspectKind.CONJUNCTION)
+                {
+                    // 描画しない
+                }
+                else if (aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
+                {
+                    aspectLine.Stroke = System.Windows.Media.Brushes.Red;
+                    aspectLbl.Foreground = System.Windows.Media.Brushes.Red;
+                    aspectLbl.Text = "☍";
+                    aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                    aspectLbl.TextAlignment = TextAlignment.Left;
+                    aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+                }
+                else if (aspects[j].aspectKind == Aspect.AspectKind.TRINE)
+                {
+                    aspectLine.Stroke = System.Windows.Media.Brushes.Orange;
+                    aspectLbl.Foreground = System.Windows.Media.Brushes.Orange;
+                    aspectLbl.Text = "△";
+                    aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                    aspectLbl.TextAlignment = TextAlignment.Left;
+                    aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+                }
+                else if (aspects[j].aspectKind == Aspect.AspectKind.SQUARE)
+                {
+                    aspectLine.Stroke = System.Windows.Media.Brushes.Purple;
+                    aspectLbl.Foreground = System.Windows.Media.Brushes.Purple;
+                    aspectLbl.Text = "□";
+                    aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                    aspectLbl.TextAlignment = TextAlignment.Left;
+                    aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+
+                }
+                else if (aspects[j].aspectKind == Aspect.AspectKind.SEXTILE)
+                {
+                    aspectLine.Stroke = System.Windows.Media.Brushes.Green;
+                    aspectLbl.Foreground = System.Windows.Media.Brushes.Green;
+                    aspectLbl.Text = "⚹";
+                    aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                    aspectLbl.TextAlignment = TextAlignment.Left;
+                    aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+                }
+                else if (aspects[j].aspectKind == Aspect.AspectKind.INCONJUNCT)
+                {
+                    aspectLine.Stroke = System.Windows.Media.Brushes.Gray;
+                    aspectLbl.Foreground = System.Windows.Media.Brushes.Gray;
+                    aspectLbl.Text = "⚻";
+                    aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                    aspectLbl.TextAlignment = TextAlignment.Left;
+                    aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+                }
+                else
+                {
+                    aspectLine.Stroke = System.Windows.Media.Brushes.Black;
+                    aspectLbl.Foreground = System.Windows.Media.Brushes.Black;
+                    aspectLbl.Text = "⚼";
+                    aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
+                    aspectLbl.TextAlignment = TextAlignment.Left;
+                    aspectLbl.VerticalAlignment = VerticalAlignment.Top;
+                }
+                aspectLine.MouseEnter += new MouseEventHandler(aspectMouseEnter);
+                aspectLine.MouseLeave += new MouseEventHandler(explanationClear);
+                aspectLine.Tag = aspects[j];
+                ringCanvas.Children.Add(aspectLine);
+                ringCanvas.Children.Add(aspectLbl);
+
+            }
+
         }
 
         private void houseCuspMouseEnter(object sender, System.EventArgs e)
@@ -1318,14 +1509,15 @@ namespace microcosm
         private void Natal_Current_Click(object sender, RoutedEventArgs e)
         {
             natalSet();
-            ReCalc();
+            UserEventData edata = CommonData.udata2event(targetUser);
+            ReCalc(edata, null, null, null, null, null, null);
             ReRender();
         }
 
         private void Transit_Current_Click(object sender, RoutedEventArgs e)
         {
             transitSet();
-            ReCalc();
+            ReCalc(null, userdata, null, null, null, null, null);
             ReRender();
         }
 
@@ -1333,7 +1525,8 @@ namespace microcosm
         {
             natalSet();
             transitSet();
-            ReCalc();
+            UserEventData edata = CommonData.udata2event(targetUser);
+            ReCalc(edata, userdata, null, null, null, null, null);
             ReRender();
         }
 
