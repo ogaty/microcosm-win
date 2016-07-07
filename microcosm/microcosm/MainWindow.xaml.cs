@@ -289,7 +289,7 @@ namespace microcosm
             )
         {
             // TODO secondary, primaryの判定ね
-            if (list1 != null)
+            if (list1Data != null)
             {
                 list1 = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
                     list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
@@ -298,7 +298,7 @@ namespace microcosm
                     list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
                     list1Data.lat, list1Data.lng, config.houseCalc);
             }
-            if (list2 != null)
+            if (list2Data != null)
             {
                 list2 = calc.PositionCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
                     list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
@@ -307,7 +307,7 @@ namespace microcosm
                     list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
                     list2Data.lat, list2Data.lng, config.houseCalc);
             }
-            if (list3 != null)
+            if (list3Data != null)
             {
                 list3 = calc.PositionCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
                     list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
@@ -316,7 +316,7 @@ namespace microcosm
                     list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
                     list3Data.lat, list3Data.lng, config.houseCalc);
             }
-            if (list4 != null)
+            if (list4Data != null)
             {
                 list4 = calc.PositionCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
                     list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
@@ -325,7 +325,7 @@ namespace microcosm
                     list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
                     list4Data.lat, list4Data.lng, config.houseCalc);
             }
-            if (list5 != null)
+            if (list5Data != null)
             {
                 list5 = calc.PositionCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
                     list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
@@ -334,7 +334,7 @@ namespace microcosm
                     list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
                     list5Data.lat, list5Data.lng, config.houseCalc);
             }
-            if (list6 != null)
+            if (list6Data != null)
             {
                 list6 = calc.PositionCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
                     list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
@@ -343,7 +343,7 @@ namespace microcosm
                     list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
                     list6Data.lat, list6Data.lng, config.houseCalc);
             }
-            if (list7 != null)
+            if (list7Data != null)
             {
                 list7 = calc.PositionCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
                     list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
