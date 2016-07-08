@@ -13,6 +13,13 @@ namespace microcosm.Calc
 {
     public class AspectCalc
     {
+        public MainWindow main;
+
+        public AspectCalc(MainWindow main)
+        {
+            this.main = main;
+        }
+
         // 同じリストのアスペクトを計算する
         public List<PlanetData> AspectCalcSame(SettingData a_setting, List<PlanetData> list)
         {
@@ -354,7 +361,6 @@ namespace microcosm.Calc
             List<PlanetData> fromList, List<PlanetData> toList, 
             int listKind)
         {
-            // if (natal-natal)
             for (int i = 0; i < fromList.Count - 1; i++)
             {
                 for (int j = 0; j < toList.Count - 1; j++)
@@ -374,9 +380,9 @@ namespace microcosm.Calc
 
                     foreach (AspectKind kind in Enum.GetValues(typeof(AspectKind)))
                     {
-                        if (listKind == 1)
+                        if (listKind == 4)
                         {
-                            // progress
+                            // 1-2
                             if (i == CommonData.ZODIAC_SUN)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_1st[0, 0] &&
@@ -433,7 +439,9 @@ namespace microcosm.Calc
                         }
                         else
                         {
-                            // transit
+                            // 今はこれで
+                            // 1-3
+                            // 2-3
                             if (i == CommonData.ZODIAC_SUN)
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_1st[0, 0] &&

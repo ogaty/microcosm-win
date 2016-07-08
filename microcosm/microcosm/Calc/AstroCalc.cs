@@ -16,13 +16,15 @@ namespace microcosm.Calc
     // 天体およびハウスの計算をする
     public class AstroCalc
     {
+        public MainWindow main;
         public ConfigData config;
         public double year_days = 365.2424;
         public SwissEph s;
         public Dictionary<int, int> targetNoList = new Dictionary<int, int>();
 
-        public AstroCalc(ConfigData config)
+        public AstroCalc(MainWindow main, ConfigData config)
         {
+            this.main = main;
             this.config = config;
             s = new SwissEph();
             // http://www.astro.com/ftp/swisseph/ephe/archive_zip/ からDL
@@ -220,19 +222,29 @@ namespace microcosm.Calc
         }
 
         // 一度一年法
+        // 一度ずらすので再計算不要
         // 一年を365.24日で計算、当然ずれが生じる
         // 面倒なのでとりあえず放置
-        public List<PlanetData> PrimaryProgressionCalc(List<PlanetData> natallist, DateTime natalTime, DateTime transitTime)
+        public List<PlanetData> PrimaryProgressionCalc(List<PlanetData> natallist, DateTime natalTime, DateTime transitTime, int ringIndex)
         {
             List<PlanetData> progresslist = new List<PlanetData>();
             TimeSpan ts = transitTime - natalTime;
             double years = ts.TotalDays / year_days;
             natallist.ForEach(data =>
             {
-                PlanetData progressdata = new PlanetData() { absolute_position = data.absolute_position, no = data.no, sensitive = data.sensitive, speed = data.speed,
+                PlanetData progressdata = new PlanetData() {
+                    absolute_position = data.absolute_position,
+                    no = data.no,
+                    sensitive = data.sensitive,
+                    speed = data.speed,
                     aspects = new List<AspectInfo>(),
                     secondAspects = new List<AspectInfo>(),
-                    thirdAspects= new List<AspectInfo>() };
+                    thirdAspects= new List<AspectInfo>(),
+                    fourthAspects = new List<AspectInfo>(),
+                    fifthAspects = new List<AspectInfo>(),
+                    isDisp = true,
+                    isAspectDisp = true
+                };
                 progressdata.absolute_position += years;
                 progressdata.absolute_position %= 365;
                 progresslist.Add(progressdata);
@@ -301,7 +313,11 @@ namespace microcosm.Calc
                 PlanetData progressdata = new PlanetData() { absolute_position = x[0], no = data.no, sensitive = data.sensitive, speed = data.speed,
                     aspects = new List<AspectInfo>(),
                     secondAspects = new List<AspectInfo>(),
-                    thirdAspects = new List<AspectInfo>()
+                    thirdAspects = new List<AspectInfo>(),
+                    fourthAspects = new List<AspectInfo>(),
+                    fifthAspects = new List<AspectInfo>(),
+                    isDisp = true,
+                    isAspectDisp = true
                 };
                 progresslist.Add(progressdata);
 
@@ -383,8 +399,14 @@ namespace microcosm.Calc
                     s.swe_calc_ut(dret[1], data.no, flag, x, ref serr);
                 }
 
-                progressdata = new PlanetData() { absolute_position = x[0], no = data.no, sensitive = data.sensitive, speed = data.speed, aspects = new List<AspectInfo>(),
-                    secondAspects = new List<AspectInfo>(), thirdAspects = new List<AspectInfo>() };
+                progressdata = new PlanetData() { absolute_position = x[0], no = data.no, sensitive = data.sensitive,
+                    speed = data.speed, aspects = new List<AspectInfo>(),
+                    secondAspects = new List<AspectInfo>(), thirdAspects = new List<AspectInfo>(),
+                    fourthAspects = new List<AspectInfo>(),
+                    fifthAspects = new List<AspectInfo>(),
+                    isDisp = true,
+                    isAspectDisp = true
+                };
                 progresslist.Add(progressdata);
 
             });

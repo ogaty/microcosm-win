@@ -45,8 +45,18 @@ namespace microcosm.Config
         public bool[] dispCircle = new bool[] {
             true, false, false, false, false, false
         };
+        // 0:11～15:45
         public List<Dictionary<int, bool>> dispPlanet;
 
+        // [from, to]
+        public bool[,] aspectConjunction;
+        public bool[,] aspectOpposition;
+        public bool[,] aspectSquare;
+        public bool[,] aspectTrine;
+        public bool[,] aspectSextile;
+        public bool[,] aspectInconjunct;
+        public bool[,] aspectSesquiquadrate;
+        // [from, to]
         public bool[,] dispAspect;
 
         // no: 設定番号
@@ -233,6 +243,62 @@ namespace microcosm.Config
             dispPlanet.Add(d);
             dispPlanet.Add(d);
             dispPlanet.Add(d);
+            aspectConjunction = new bool[6, 6] {
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true }
+            };
+            aspectOpposition = new bool[6, 6] {
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true }
+            };
+            aspectTrine = new bool[6, 6] {
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true }
+            };
+            aspectSquare = new bool[6, 6] {
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true }
+            };
+            aspectSextile = new bool[6, 6] {
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true }
+            };
+            aspectInconjunct = new bool[6, 6] {
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true }
+            };
+            aspectSesquiquadrate = new bool[6, 6] {
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true },
+                { true, true, true, true, true, true }
+            };
             dispAspect = new bool[6, 6] {
                 { true, true, true, true, true, true },
                 { true, true, true, true, true, true },

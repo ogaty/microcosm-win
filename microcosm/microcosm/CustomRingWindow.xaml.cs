@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using microcosm.Config;
+
 namespace microcosm
 {
     /// <summary>
@@ -35,6 +37,112 @@ namespace microcosm
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             this.main.tempSettings.bands = ringSelector.SelectedIndex + 1;
+            if (ringSelector.SelectedIndex == 0)
+            {
+                // 一重円
+                switch (ring1.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.firstBand = TempSetting.BandKind.NATAL;
+                        break;
+                    case 1:
+                        main.tempSettings.firstBand = TempSetting.BandKind.PROGRESS;
+                        break;
+                    case 2:
+                        main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                    default:
+                        main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+            }
+            else if (ringSelector.SelectedIndex == 1)
+            {
+                // 二重円
+                switch (ring1.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.firstBand = TempSetting.BandKind.NATAL;
+                        break;
+                    case 1:
+                        main.tempSettings.firstBand = TempSetting.BandKind.PROGRESS;
+                        break;
+                    case 2:
+                        main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                    default:
+                        main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+
+                switch (ring2.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.secondBand = TempSetting.BandKind.NATAL;
+                        break;
+                    case 1:
+                        main.tempSettings.secondBand = TempSetting.BandKind.PROGRESS;
+                        break;
+                    case 2:
+                        main.tempSettings.secondBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                    default:
+                        main.tempSettings.secondBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+            }
+
+            else if (ringSelector.SelectedIndex == 2)
+            {
+                // 三重円
+                switch (ring1.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.firstBand = TempSetting.BandKind.NATAL;
+                        break;
+                    case 1:
+                        main.tempSettings.firstBand = TempSetting.BandKind.PROGRESS;
+                        break;
+                    case 2:
+                        main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                    default:
+                        main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+
+                switch (ring2.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.secondBand = TempSetting.BandKind.NATAL;
+                        break;
+                    case 1:
+                        main.tempSettings.secondBand = TempSetting.BandKind.PROGRESS;
+                        break;
+                    case 2:
+                        main.tempSettings.secondBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                    default:
+                        main.tempSettings.secondBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+
+                switch (ring3.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.thirdBand = TempSetting.BandKind.NATAL;
+                        break;
+                    case 1:
+                        main.tempSettings.thirdBand = TempSetting.BandKind.PROGRESS;
+                        break;
+                    case 2:
+                        main.tempSettings.thirdBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                    default:
+                        main.tempSettings.thirdBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+            }
             main.ReCalc();
             main.ReRender();
             this.Visibility = Visibility.Hidden;

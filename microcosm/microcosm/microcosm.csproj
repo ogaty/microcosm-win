@@ -75,6 +75,7 @@
       <DependentUpon>ChartSelectorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\CommonData.cs" />
+    <Compile Include="Config\AspectControlTable.cs" />
     <Compile Include="Config\CommonConfigWindow.xaml.cs">
       <DependentUpon>CommonConfigWindow.xaml</DependentUpon>
     </Compile>

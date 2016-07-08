@@ -186,7 +186,7 @@ namespace microcosm
         // AstroCalcインスタンス
         private void DataCalc()
         {
-            calc = new AstroCalc(config);
+            calc = new AstroCalc(this, config);
         }
 
         private void SetViewModel()
@@ -288,73 +288,329 @@ namespace microcosm
                 UserEventData list7Data
             )
         {
-            // TODO secondary, primaryの判定ね
             if (list1Data != null)
             {
-                list1 = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
-                    list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
-                    list1Data.lat, list1Data.lng, config.houseCalc);
+                if (tempSettings.firstBand == TempSetting.BandKind.PROGRESS)
+                {
+                    List<PlanetData> tempList;
+                    switch (config.progression)
+                    {
+                        case EProgression.PRIMARY:
+                            tempList = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
+                                list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
+                                list1Data.lat, list1Data.lng, config.houseCalc);
+
+                            list1 = calc.PrimaryProgressionCalc(tempList,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                ),
+                                0
+                            );
+
+                            break;
+
+                        case EProgression.SECONDARY:
+                            tempList = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
+                                list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
+                                list1Data.lat, list1Data.lng, config.houseCalc);
+
+                            list1 = calc.SecondaryProgressionCalc(tempList,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                )
+                            );
+
+                            break;
+
+                        case EProgression.CPS:
+                            tempList = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
+                                list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
+                                list1Data.lat, list1Data.lng, config.houseCalc);
+
+                            list1 = calc.CompositProgressionCalc(tempList,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                )
+                            );
+
+                            break;
+                    }
+                }
+                else
+                {
+                    list1 = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
+                        list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
+                        list1Data.lat, list1Data.lng, config.houseCalc);
+                }
                 houseList1 = calc.CuspCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
                     list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
                     list1Data.lat, list1Data.lng, config.houseCalc);
             }
             if (list2Data != null)
             {
-                list2 = calc.PositionCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
-                    list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
-                    list2Data.lat, list2Data.lng, config.houseCalc);
+                if (tempSettings.secondBand == TempSetting.BandKind.PROGRESS)
+                {
+                    switch (config.progression)
+                    {
+                        case EProgression.PRIMARY:
+                            list2 = calc.PrimaryProgressionCalc(list1,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                ),
+                                1
+                            );
+
+                        break;
+
+                        case EProgression.SECONDARY:
+                            list2 = calc.SecondaryProgressionCalc(list1,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                )
+                            );
+
+                        break;
+
+                        case EProgression.CPS:
+                            list2 = calc.CompositProgressionCalc(list1,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                )
+                            );
+
+                        break;
+                    }
+                }
+                else
+                {
+                    list2 = calc.PositionCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
+                        list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
+                        list2Data.lat, list2Data.lng, config.houseCalc);
+                }
+
                 houseList2 = calc.CuspCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
                     list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
                     list2Data.lat, list2Data.lng, config.houseCalc);
             }
             if (list3Data != null)
             {
-                list3 = calc.PositionCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
-                    list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
-                    list3Data.lat, list3Data.lng, config.houseCalc);
+                if (tempSettings.thirdBand == TempSetting.BandKind.PROGRESS)
+                {
+                    switch (config.progression)
+                    {
+                        case EProgression.PRIMARY:
+                            list3 = calc.PrimaryProgressionCalc(list1,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                ),
+                                2
+                            );
+
+                            break;
+
+                        case EProgression.SECONDARY:
+                            list3 = calc.SecondaryProgressionCalc(list1,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                )
+                            );
+
+                            break;
+
+                        case EProgression.CPS:
+                            list3 = calc.CompositProgressionCalc(list1,
+                                new DateTime(targetUser.birth_year,
+                                    targetUser.birth_month,
+                                    targetUser.birth_day,
+                                    targetUser.birth_hour,
+                                    targetUser.birth_minute,
+                                    targetUser.birth_second
+                                ),
+                                new DateTime(userdata.birth_year,
+                                    userdata.birth_month,
+                                    userdata.birth_day,
+                                    userdata.birth_hour,
+                                    userdata.birth_minute,
+                                    userdata.birth_second
+                                )
+                            );
+
+                            break;
+                    }
+                }
+                else
+                {
+                    list3 = calc.PositionCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
+                        list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
+                        list3Data.lat, list3Data.lng, config.houseCalc);
+                }
                 houseList3 = calc.CuspCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
                     list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
                     list3Data.lat, list3Data.lng, config.houseCalc);
             }
             if (list4Data != null)
             {
-                list4 = calc.PositionCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
-                    list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
-                    list4Data.lat, list4Data.lng, config.houseCalc);
+                if (tempSettings.fourthBand == TempSetting.BandKind.PROGRESS)
+                {
+                    list4 = calc.PositionCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
+                        list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
+                        list4Data.lat, list4Data.lng, config.houseCalc);
+                }
+                else
+                {
+                    list4 = calc.PositionCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
+                        list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
+                        list4Data.lat, list4Data.lng, config.houseCalc);
+                }
                 houseList4 = calc.CuspCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
                     list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
                     list4Data.lat, list4Data.lng, config.houseCalc);
             }
             if (list5Data != null)
             {
-                list5 = calc.PositionCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
-                    list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
-                    list5Data.lat, list5Data.lng, config.houseCalc);
+                if (tempSettings.fifthBand == TempSetting.BandKind.PROGRESS)
+                {
+                    list5 = calc.PositionCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
+                        list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
+                        list5Data.lat, list5Data.lng, config.houseCalc);
+                }
+                else
+                {
+                    list5 = calc.PositionCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
+                        list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
+                        list5Data.lat, list5Data.lng, config.houseCalc);
+                }
                 houseList5 = calc.CuspCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
                     list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
                     list5Data.lat, list5Data.lng, config.houseCalc);
             }
             if (list6Data != null)
             {
-                list6 = calc.PositionCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
-                    list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
-                    list6Data.lat, list6Data.lng, config.houseCalc);
+                if (tempSettings.sixthBand == TempSetting.BandKind.PROGRESS)
+                {
+                    list6 = calc.PositionCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
+                        list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
+                        list6Data.lat, list6Data.lng, config.houseCalc);
+                }
+                else
+                {
+                    list6 = calc.PositionCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
+                        list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
+                        list6Data.lat, list6Data.lng, config.houseCalc);
+                }
                 houseList6 = calc.CuspCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
                     list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
                     list6Data.lat, list6Data.lng, config.houseCalc);
             }
             if (list7Data != null)
             {
-                list7 = calc.PositionCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
-                    list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
-                    list7Data.lat, list7Data.lng, config.houseCalc);
+                if (tempSettings.secondBand == TempSetting.BandKind.PROGRESS)
+                {
+                    list7 = calc.PositionCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
+                        list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
+                        list7Data.lat, list7Data.lng, config.houseCalc);
+                }
+                else
+                {
+                    list7 = calc.PositionCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
+                        list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
+                        list7Data.lat, list7Data.lng, config.houseCalc);
+                }
                 houseList7 = calc.CuspCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
                     list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
                     list7Data.lat, list7Data.lng, config.houseCalc);
             }
 
 
-            AspectCalc aspect = new AspectCalc();
+            AspectCalc aspect = new AspectCalc(this);
             list1 = aspect.AspectCalcSame(currentSetting, list1);
             list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 4);
             list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 5);
@@ -1065,12 +1321,24 @@ namespace microcosm
                 List<PlanetData> list5
             )
         {
-            aspectRender(startDegree, list1, 1, 1, 1, 1);
+            if (currentSetting.dispAspect[0, 0])
+            {
+                aspectRender(startDegree, list1, 1, 1, 1, 1);
+            }
             if (tempSettings.bands == 2)
             {
-                aspectRender(startDegree, list1, 1, 1, 2, 1);
-                aspectRender(startDegree, list2, 2, 2, 2, 1);
-                aspectRender(startDegree, list1, 1, 2, 2, 2);
+                if (currentSetting.dispAspect[0, 0])
+                {
+                    aspectRender(startDegree, list1, 1, 1, 2, 1);
+                }
+                if (currentSetting.dispAspect[1, 1])
+                {
+                    aspectRender(startDegree, list2, 2, 2, 2, 1);
+                }
+                if (currentSetting.dispAspect[0, 1])
+                {
+                    aspectRender(startDegree, list1, 1, 2, 2, 2);
+                }
             }
             if (tempSettings.bands == 3)
             {
@@ -1621,13 +1889,12 @@ namespace microcosm
             RenderTargetBitmap render = new RenderTargetBitmap((Int32)renderSize.Width, (Int32)renderSize.Height, 96, 96, PixelFormats.Default);
             render.Render(cnvs);
 
-            // PNGフォーマットで画像を保存するので
             var enc = new PngBitmapEncoder();
             enc.Frames.Add(BitmapFrame.Create(render));
 
-            using (FileStream fs = new FileStream("test.png", FileMode.Create))
+            using (FileStream fs = new FileStream("horoscope.png", FileMode.Create))
             {
-                enc.Save(fs);    // 中身が透明じゃない画像が出力されるはず！！
+                enc.Save(fs);
                 fs.Close();
             }
 
