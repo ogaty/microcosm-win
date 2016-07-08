@@ -44,7 +44,7 @@ namespace microcosm.Config
         public bool[,] aspectDh = new bool[10, 15];
         public bool[,] aspectChiron = new bool[10, 15];
         public bool[,] aspectAsc = new bool[10, 15];
-        public bool[,] aspectMc = new bool[10,15];
+        public bool[,] aspectMc = new bool[10, 15];
 
         public bool[,] aspectConjunction = new bool[10, 15];
         public bool[,] aspectOpposition = new bool[10, 15];
@@ -84,20 +84,6 @@ namespace microcosm.Config
                 targetNames.Add("aspectChironOn" + s);
                 targetNames.Add("aspectAscOn" + s);
                 targetNames.Add("aspectMcOn" + s);
-                targetNames.Add("aspectSunOff" + s);
-                targetNames.Add("aspectMoonOff" + s);
-                targetNames.Add("aspectMercuryOff" + s);
-                targetNames.Add("aspectVenusOff" + s);
-                targetNames.Add("aspectMarsOff" + s);
-                targetNames.Add("aspectJupiterOff" + s);
-                targetNames.Add("aspectSaturnOff" + s);
-                targetNames.Add("aspectUranusOff" + s);
-                targetNames.Add("aspectNeptuneOff" + s);
-                targetNames.Add("aspectPlutoOff" + s);
-                targetNames.Add("aspectDhOff" + s);
-                targetNames.Add("aspectChironOff" + s);
-                targetNames.Add("aspectAscOff" + s);
-                targetNames.Add("aspectMcOff" + s);
             }
             createControlTable();
 
@@ -245,7 +231,13 @@ namespace microcosm.Config
             }
             for (int i = 0; i < targetNames.Count; i++)
             {
-                if (controlTable[targetNames[i]].targetBoolean)
+                int subIndex = controlTable[targetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    int commonDataNo = controlTable[targetNames[i]].commonDataNo;
+                    controlTable[targetNames[i]].tempArray[j, subIndex] = main.settings[j].dispPlanet[subIndex][commonDataNo];
+                }
+                if (controlTable[targetNames[i]].tempArray[main.dispSettingBox.SelectedIndex, subIndex])
                 {
                     controlTable[targetNames[i]].selfElement.Visibility = Visibility.Visible;
                     controlTable[targetNames[i]].selfElement.Height = 24;

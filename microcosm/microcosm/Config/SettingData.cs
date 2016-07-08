@@ -215,34 +215,8 @@ namespace microcosm.Config
             };
             dispCircle = new bool[6] { true, false, false, false, false, false };
 
+            // dispPlanet[subIndex][commonDataNo]
             dispPlanet = new List<Dictionary<int, bool>>();
-            Dictionary<int, bool> d = new Dictionary<int, bool>();
-            d.Add(CommonData.ZODIAC_SUN, true);
-            d.Add(CommonData.ZODIAC_MOON, true);
-            d.Add(CommonData.ZODIAC_MERCURY, true);
-            d.Add(CommonData.ZODIAC_VENUS, true);
-            d.Add(CommonData.ZODIAC_MARS, true);
-            d.Add(CommonData.ZODIAC_JUPITER, true);
-            d.Add(CommonData.ZODIAC_SATURN, true);
-            d.Add(CommonData.ZODIAC_URANUS, true);
-            d.Add(CommonData.ZODIAC_NEPTUNE, true);
-            d.Add(CommonData.ZODIAC_PLUTO, true);
-            d.Add(CommonData.ZODIAC_DH_TRUENODE, true);
-            d.Add(CommonData.ZODIAC_ASC, true);
-            d.Add(CommonData.ZODIAC_MC, true);
-            d.Add(CommonData.ZODIAC_CHIRON, false);
-            d.Add(CommonData.ZODIAC_EARTH, false);
-            d.Add(CommonData.ZODIAC_LILITH, false);
-            d.Add(CommonData.ZODIAC_CELES, false);
-            d.Add(CommonData.ZODIAC_PARAS, false);
-            d.Add(CommonData.ZODIAC_JUNO, false);
-            d.Add(CommonData.ZODIAC_VESTA, false);
-            d.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
-            dispPlanet.Add(d);
-            dispPlanet.Add(d);
-            dispPlanet.Add(d);
-            dispPlanet.Add(d);
-            dispPlanet.Add(d);
             aspectConjunction = new bool[6, 6] {
                 { true, true, true, true, true, true },
                 { true, true, true, true, true, true },
