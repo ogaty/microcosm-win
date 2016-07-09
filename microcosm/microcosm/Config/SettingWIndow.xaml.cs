@@ -62,6 +62,7 @@ namespace microcosm.Config
         string[] strNumbers = { "11", "22", "33", "12", "13", "23" };
 
         public List<string> targetNames = new List<string>();
+        public List<string> aspectTargetNames = new List<string>();
 
         public SettingWIndow(MainWindow main)
         {
@@ -84,6 +85,14 @@ namespace microcosm.Config
                 targetNames.Add("aspectChironOn" + s);
                 targetNames.Add("aspectAscOn" + s);
                 targetNames.Add("aspectMcOn" + s);
+
+                aspectTargetNames.Add("aspectConjunctionOn" + s);
+                aspectTargetNames.Add("aspectOppositionOn" + s);
+                aspectTargetNames.Add("aspectTrineOn" + s);
+                aspectTargetNames.Add("aspectSquareOn" + s);
+                aspectTargetNames.Add("aspectSextileOn" + s);
+                aspectTargetNames.Add("aspectInconjunctOn" + s);
+                aspectTargetNames.Add("aspectSesquiquadrateOn" + s);
             }
             createControlTable();
 
@@ -94,7 +103,6 @@ namespace microcosm.Config
 
             settingVM.dispName = main.currentSetting.dispName;
             setAspect();
-            setOrb();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -229,6 +237,7 @@ namespace microcosm.Config
             {
                 return;
             }
+            // アスペクト設定
             for (int i = 0; i < targetNames.Count; i++)
             {
                 int subIndex = controlTable[targetNames[i]].subIndex;
@@ -252,6 +261,31 @@ namespace microcosm.Config
                     controlTable[targetNames[i]].anotherElement.Height = 24;
                 }
             }
+            // アスペクト設定
+            for (int i = 0; i < aspectTargetNames.Count; i++)
+            {
+                int subIndex = aspectControlTable[aspectTargetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    AspectKind aspectKindNo = aspectControlTable[aspectTargetNames[i]].aspectKindNo;
+                    aspectControlTable[aspectTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispAspectCategory[subIndex][aspectKindNo];
+                }
+                if (aspectControlTable[aspectTargetNames[i]].tempArray[main.dispSettingBox.SelectedIndex, subIndex])
+                {
+                    aspectControlTable[aspectTargetNames[i]].aspectSelfElement.Visibility = Visibility.Visible;
+                    aspectControlTable[aspectTargetNames[i]].aspectSelfElement.Height = 24;
+                    aspectControlTable[aspectTargetNames[i]].aspectAnotherElement.Visibility = Visibility.Hidden;
+                    aspectControlTable[aspectTargetNames[i]].aspectAnotherElement.Height = 0;
+                }
+                else
+                {
+                    aspectControlTable[aspectTargetNames[i]].aspectSelfElement.Visibility = Visibility.Hidden;
+                    aspectControlTable[aspectTargetNames[i]].aspectSelfElement.Height = 0;
+                    aspectControlTable[aspectTargetNames[i]].aspectAnotherElement.Visibility = Visibility.Visible;
+                    aspectControlTable[aspectTargetNames[i]].aspectAnotherElement.Height = 24;
+                }
+            }
+
             disp11.IsChecked = main.settings[list.SelectedIndex].dispAspect[0, 0];
             disp22.IsChecked = main.settings[list.SelectedIndex].dispAspect[1, 1];
             disp33.IsChecked = main.settings[list.SelectedIndex].dispAspect[2, 2];
@@ -267,6 +301,8 @@ namespace microcosm.Config
                 aspectDispChecked[i, 4] = main.settings[i].dispAspect[0, 2];
                 aspectDispChecked[i, 5] = main.settings[i].dispAspect[1, 2];
             }
+
+            setOrb();
         }
 
         private void setAspect()
@@ -285,106 +321,28 @@ namespace microcosm.Config
         private void setOrb()
         {
             int index = orbRing.SelectedIndex;
-            int from = 0;
-            int to = 0;
-            switch (index)
-            {
-                case 0:
-                    // N
-                    from = 0;
-                    to = 0;
-                    break;
-                case 1:
-                    // P
-                    from = 1;
-                    to = 1;
-                    break;
-                case 2:
-                    // T
-                    from = 2;
-                    to = 2;
-                    break;
-                case 3:
-                    // N-P
-                    from = 0;
-                    to = 1;
-                    break;
-                case 4:
-                    // N-T
-                    from = 0;
-                    to = 2;
-                    break;
-                case 5:
-                    // P-T
-                    from = 1;
-                    to = 2;
-                    break;
-                case 6:
-                    // N-4
-                    from = 0;
-                    to = 3;
-                    break;
-                case 7:
-                    // N-5
-                    from = 0;
-                    to = 4;
-                    break;
-                case 8:
-                    // P-4
-                    from = 1;
-                    to = 3;
-                    break;
-                case 9:
-                    // P-5
-                    from = 1;
-                    to = 4;
-                    break;
-                case 10:
-                    // T-4
-                    from = 2;
-                    to = 3;
-                    break;
-                case 11:
-                    // T-5
-                    from = 2;
-                    to = 4;
-                    break;
-                case 12:
-                    // 4-4
-                    from = 3;
-                    to = 3;
-                    break;
-                case 13:
-                    // 4-5
-                    from = 3;
-                    to = 4;
-                    break;
-                case 14:
-                    // 5-5
-                    from = 4;
-                    to = 4;
-                    break;
-                default:
-                    break;
-            }
-            sunSoft1st.Text = main.currentSetting.orb_sun_soft_1st[from, to].ToString();
-            sunHard1st.Text = main.currentSetting.orb_sun_hard_1st[from, to].ToString();
-            sunSoft2nd.Text = main.currentSetting.orb_sun_soft_2nd[from, to].ToString();
-            sunHard2nd.Text = main.currentSetting.orb_sun_hard_2nd[from, to].ToString();
-            sunSoft150.Text = main.currentSetting.orb_sun_soft_150[from, to].ToString();
-            sunHard150.Text = main.currentSetting.orb_sun_hard_150[from, to].ToString();
-            moonSoft1st.Text = main.currentSetting.orb_moon_soft_1st[from, to].ToString();
-            moonHard1st.Text = main.currentSetting.orb_moon_hard_1st[from, to].ToString();
-            moonSoft2nd.Text = main.currentSetting.orb_moon_soft_2nd[from, to].ToString();
-            moonHard2nd.Text = main.currentSetting.orb_moon_hard_2nd[from, to].ToString();
-            moonSoft150.Text = main.currentSetting.orb_moon_soft_150[from, to].ToString();
-            moonHard150.Text = main.currentSetting.orb_moon_hard_150[from, to].ToString();
-            otherSoft1st.Text = main.currentSetting.orb_other_soft_1st[from, to].ToString();
-            otherHard1st.Text = main.currentSetting.orb_other_hard_1st[from, to].ToString();
-            otherSoft2nd.Text = main.currentSetting.orb_other_soft_2nd[from, to].ToString();
-            otherHard2nd.Text = main.currentSetting.orb_other_hard_2nd[from, to].ToString();
-            otherSoft150.Text = main.currentSetting.orb_other_soft_150[from, to].ToString();
-            otherHard150.Text = main.currentSetting.orb_other_hard_150[from, to].ToString();
+            ringSubIndex subidx = CommonData.getRingSubIndex(index);
+            int from = subidx.from;
+            int to = subidx.to;
+
+            sunSoft1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_1ST].ToString();
+            sunHard1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_1ST].ToString();
+            sunSoft2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_2ND].ToString();
+            sunHard2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_2ND].ToString();
+            sunSoft150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_150].ToString();
+            sunHard150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_150].ToString();
+            moonSoft1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_1ST].ToString();
+            moonHard1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_1ST].ToString();
+            moonSoft2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_2ND].ToString();
+            moonHard2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_2ND].ToString();
+            moonSoft150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_150].ToString();
+            moonHard150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_150].ToString();
+            otherSoft1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_1ST].ToString();
+            otherHard1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_1ST].ToString();
+            otherSoft2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_2ND].ToString();
+            otherHard2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_2ND].ToString();
+            otherSoft150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_150].ToString();
+            otherHard150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_150].ToString();
         }
 
         private void conjunction11_MouseDown(object sender, MouseButtonEventArgs e)
@@ -635,153 +593,13 @@ namespace microcosm.Config
             aspectMouseDownCommon(sender, e);
         }
 
-        private void aspectSunOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSunOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOn33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOff33_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
         private void aspectMouseDownCommon(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
 
-            Image ctl = (Image)(controlTable[img.Name].aspectAnotherElement);
+            Image ctl = (Image)(controlTable[img.Name].anotherElement);
             ctl.Visibility = Visibility.Visible;
             ctl.Height = 24;
 
@@ -1068,101 +886,129 @@ namespace microcosm.Config
 
                 aspectControlTable.Add("aspectConjunctionOn" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectConjunctionOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectConjunctionOff" + n),
                     tempArray = aspectConjunction,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.CONJUNCTION
                 });
                 aspectControlTable.Add("aspectOppositionOn" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectOppositionOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectOppositionOff" + n),
                     tempArray = aspectOpposition,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.OPPOSITION
                 });
                 aspectControlTable.Add("aspectSquareOn" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSquareOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSquareOff" + n),
                     tempArray = aspectSquare,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SQUARE
                 });
                 aspectControlTable.Add("aspectTrineOn" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectTrineOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectTrineOff" + n),
                     tempArray = aspectTrine,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.TRINE
                 });
                 aspectControlTable.Add("aspectSextileOn" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSextileOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSextileOff" + n),
                     tempArray = aspectSextile,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SEXTILE
                 });
                 aspectControlTable.Add("aspectInconjunctOn" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectInconjunctOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectInconjunctOff" + n),
                     tempArray = aspectInconjunct,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.INCONJUNCT
                 });
                 aspectControlTable.Add("aspectSesquiquadrateOn" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSesquiquadrateOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSesquiquadrateOff" + n),
                     tempArray = aspectSesquiquadrate,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SESQUIQUADRATE
                 });
                 aspectControlTable.Add("aspectConjunctionOff" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectConjunctionOff" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectConjunctionOn" + n),
                     tempArray = aspectConjunction,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.CONJUNCTION
                 });
                 aspectControlTable.Add("aspectOppositionOff" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectOppositionOff" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectOppositionOn" + n),
                     tempArray = aspectOpposition,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.OPPOSITION
                 });
                 aspectControlTable.Add("aspectSquareOff" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSquareOff" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSquareOn" + n),
                     tempArray = aspectSquare,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SQUARE
                 });
                 aspectControlTable.Add("aspectTrineOff" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectTrineOff" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectTrineOn" + n),
                     tempArray = aspectTrine,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.TRINE
                 });
                 aspectControlTable.Add("aspectSextileOff" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSextileOff" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSextileOn" + n),
                     tempArray = aspectSextile,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SEXTILE
                 });
                 aspectControlTable.Add("aspectInconjunctOff" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectInconjunctOff" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectInconjunctOn" + n),
                     tempArray = aspectInconjunct,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.INCONJUNCT
                 });
                 aspectControlTable.Add("aspectSesquiquadrateOff" + n, new AspectControlTable()
                 {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSesquiquadrateOff" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSesquiquadrateOn" + n),
                     tempArray = aspectSesquiquadrate,
                     targetBoolean = true,
-                    subIndex = 0
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SESQUIQUADRATE
                 });
 
             }
@@ -1807,7 +1653,7 @@ namespace microcosm.Config
             img.Visibility = Visibility.Hidden;
             img.Height = 0;
 
-            Image ctl = (Image)controlTable[img.Name].anotherElement;
+            Image ctl = (Image)aspectControlTable[img.Name].aspectAnotherElement;
             ctl.Visibility = Visibility.Visible;
             ctl.Height = 24;
 
@@ -1895,6 +1741,11 @@ namespace microcosm.Config
             {
                 aspectDispChecked[index, 5] = false;
             }
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

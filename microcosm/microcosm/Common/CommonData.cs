@@ -7,6 +7,34 @@ using System.Threading.Tasks;
 
 namespace microcosm.Common
 {
+    public class ringSubIndex
+    {
+        public int from;
+        public int to;
+    }
+    public enum OrbKind
+    {
+        SUN_HARD_1ST = 0,
+        SUN_SOFT_1ST = 1,
+        SUN_HARD_2ND = 2,
+        SUN_SOFT_2ND = 3,
+        SUN_HARD_150 = 4,
+        SUN_SOFT_150 = 5,
+        MOON_HARD_1ST = 6,
+        MOON_SOFT_1ST = 7,
+        MOON_HARD_2ND = 8,
+        MOON_SOFT_2ND = 9,
+        MOON_HARD_150 = 10,
+        MOON_SOFT_150 = 11,
+        OTHER_HARD_1ST = 12,
+        OTHER_SOFT_1ST = 13,
+        OTHER_HARD_2ND = 14,
+        OTHER_SOFT_2ND = 15,
+        OTHER_HARD_150 = 16,
+        OTHER_SOFT_150 = 17
+    }
+
+
     public class CommonData
     {
         const double TIMEZONE_JST = 9.0;
@@ -397,6 +425,97 @@ namespace microcosm.Common
                 return "\u211e";
             }
             return "";
+        }
+
+        public static ringSubIndex getRingSubIndex(int subindex)
+        {
+            ringSubIndex ret = new ringSubIndex()
+            {
+                from = 0,
+                to = 0
+            };
+            switch (subindex)
+            {
+                case 0:
+                    // N
+                    ret.from = 0;
+                    ret.to = 0;
+                    break;
+                case 1:
+                    // P
+                    ret.from = 1;
+                    ret.to = 1;
+                    break;
+                case 2:
+                    // T
+                    ret.from = 2;
+                    ret.to = 2;
+                    break;
+                case 3:
+                    // N-P
+                    ret.from = 0;
+                    ret.to = 1;
+                    break;
+                case 4:
+                    // N-T
+                    ret.from = 0;
+                    ret.to = 2;
+                    break;
+                case 5:
+                    // P-T
+                    ret.from = 1;
+                    ret.to = 2;
+                    break;
+                case 6:
+                    // N-4
+                    ret.from = 0;
+                    ret.to = 3;
+                    break;
+                case 7:
+                    // N-5
+                    ret.from = 0;
+                    ret.to = 4;
+                    break;
+                case 8:
+                    // P-4
+                    ret.from = 1;
+                    ret.to = 3;
+                    break;
+                case 9:
+                    // P-5
+                    ret.from = 1;
+                    ret.to = 4;
+                    break;
+                case 10:
+                    // T-4
+                    ret.from = 2;
+                    ret.to = 3;
+                    break;
+                case 11:
+                    // T-5
+                    ret.from = 2;
+                    ret.to = 4;
+                    break;
+                case 12:
+                    // 4-4
+                    ret.from = 3;
+                    ret.to = 3;
+                    break;
+                case 13:
+                    // 4-5
+                    ret.from = 3;
+                    ret.to = 4;
+                    break;
+                case 14:
+                    // 5-5
+                    ret.from = 4;
+                    ret.to = 4;
+                    break;
+                default:
+                    break;
+            }
+
+            return ret;
         }
 
         public static UserEventData udata2event(UserData udata)

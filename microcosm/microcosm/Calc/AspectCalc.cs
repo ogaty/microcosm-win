@@ -66,8 +66,8 @@ namespace microcosm.Calc
                                 kind == AspectKind.SQUARE ||
                                 kind == AspectKind.SEXTILE)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_sun_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_1ST])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -78,8 +78,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_sun_soft_1st[0, 0] &&
-                                  aspect_degree > getDegree(kind) - a_setting.orb_sun_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_SOFT_1ST] &&
+                                  aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_SOFT_1ST])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -94,8 +94,8 @@ namespace microcosm.Calc
                             else if (kind == AspectKind.INCONJUNCT ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_150[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_sun_hard_150[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_150] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_150])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -106,8 +106,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_sun_soft_150[0, 0] &&
-                                  aspect_degree > getDegree(kind) - a_setting.orb_sun_soft_150[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_SOFT_150] &&
+                                  aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_SOFT_150])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -121,8 +121,8 @@ namespace microcosm.Calc
                             }
                             else
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_2nd[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_sun_hard_2nd[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_2ND] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_2ND])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -133,8 +133,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_sun_soft_2nd[0, 0] &&
-                                  aspect_degree > getDegree(kind) - a_setting.orb_sun_soft_2nd[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_SOFT_2ND] &&
+                                  aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_SOFT_2ND])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -156,8 +156,8 @@ namespace microcosm.Calc
                                 kind == AspectKind.SQUARE ||
                                 kind == AspectKind.SEXTILE)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_moon_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_1ST])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -168,8 +168,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_moon_soft_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_SOFT_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_SOFT_1ST])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -184,12 +184,12 @@ namespace microcosm.Calc
                             else if (kind == AspectKind.INCONJUNCT ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
-                                Console.WriteLine(aspect_degree);
-                                Console.WriteLine(getDegree(kind) + a_setting.orb_moon_soft_150[0, 0]);
-                                Console.WriteLine(getDegree(kind) - a_setting.orb_moon_soft_150[0, 0]);
-                                Console.WriteLine("");
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_moon_hard_150[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_hard_150[0, 0])
+                                // Console.WriteLine(aspect_degree);
+                                // Console.WriteLine(getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_150]);
+                                // Console.WriteLine(getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_150]);
+                                // Console.WriteLine("");
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_150] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_150])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -200,8 +200,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_moon_soft_150[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_soft_150[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_SOFT_150] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_SOFT_150])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -215,8 +215,8 @@ namespace microcosm.Calc
                             }
                             else
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_moon_hard_2nd[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_hard_2nd[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_2ND] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_2ND])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -227,8 +227,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_moon_soft_2nd[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_soft_2nd[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_SOFT_2ND] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_SOFT_2ND])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -250,8 +250,8 @@ namespace microcosm.Calc
                                 kind == AspectKind.SQUARE ||
                                 kind == AspectKind.SEXTILE)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_1ST])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -262,8 +262,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_other_soft_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_SOFT_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_SOFT_1ST])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -278,8 +278,8 @@ namespace microcosm.Calc
                             else if (kind == AspectKind.INCONJUNCT ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_150[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_hard_150[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_150] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_150])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -290,8 +290,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_other_soft_150[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_soft_150[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_SOFT_150] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_SOFT_150])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -305,8 +305,8 @@ namespace microcosm.Calc
                             }
                             else
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_2nd[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_hard_2nd[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_2ND] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_2ND])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -317,8 +317,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_other_soft_2nd[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_soft_2nd[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_SOFT_2ND] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_SOFT_2ND])
                                 {
                                     list[i].aspects.Add(new AspectInfo()
                                     {
@@ -361,6 +361,7 @@ namespace microcosm.Calc
             List<PlanetData> fromList, List<PlanetData> toList, 
             int listKind)
         {
+            int n = 0; // TODO
             for (int i = 0; i < fromList.Count - 1; i++)
             {
                 for (int j = 0; j < toList.Count - 1; j++)
@@ -385,15 +386,15 @@ namespace microcosm.Calc
                             // 1-2
                             if (i == CommonData.ZODIAC_SUN)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_sun_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
                                         softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_sun_soft_1st[0, 0] &&
-                                  aspect_degree > getDegree(kind) - a_setting.orb_sun_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_SOFT_1ST] &&
+                                  aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_SOFT_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
                                         softHard = SoftHard.HARD, targetPlanetNo = toList[j].no });
@@ -402,15 +403,15 @@ namespace microcosm.Calc
                             }
                             else if (i == CommonData.ZODIAC_MOON)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_moon_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.MOON_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
                                         softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_moon_soft_1st[0, 0] &&
-                                  aspect_degree > getDegree(kind) - a_setting.orb_moon_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.MOON_HARD_1ST] &&
+                                  aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
                                         softHard = SoftHard.HARD, targetPlanetNo = toList[j].no });
@@ -420,15 +421,15 @@ namespace microcosm.Calc
                             }
                             else
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
                                         softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_other_soft_1st[0, 0] &&
-                                     aspect_degree > getDegree(kind) - a_setting.orb_other_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_SOFT_1ST] &&
+                                     aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_SOFT_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
                                         softHard = SoftHard.HARD, targetPlanetNo = toList[j].no });
@@ -444,8 +445,8 @@ namespace microcosm.Calc
                             // 2-3
                             if (i == CommonData.ZODIAC_SUN)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_sun_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_sun_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_HARD_1ST])
                                 {
                                     fromList[i].thirdAspects.Add(new AspectInfo()
                                     {
@@ -456,8 +457,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_sun_soft_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_sun_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_SOFT_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_SOFT_1ST])
                                 {
                                     fromList[i].thirdAspects.Add(new AspectInfo()
                                     {
@@ -471,8 +472,8 @@ namespace microcosm.Calc
                             }
                             else if (i == CommonData.ZODIAC_MOON)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_moon_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_moon_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.MOON_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
                                 {
                                     fromList[i].thirdAspects.Add(new AspectInfo()
                                     {
@@ -483,8 +484,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_sun_soft_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_sun_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_HARD_1ST])
                                 {
                                     fromList[i].thirdAspects.Add(new AspectInfo()
                                     {
@@ -499,8 +500,8 @@ namespace microcosm.Calc
                             }
                             else
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orb_other_hard_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_hard_1st[0, 0])
+                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_HARD_2ND] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_HARD_2ND])
                                 {
                                     fromList[i].thirdAspects.Add(new AspectInfo()
                                     {
@@ -511,8 +512,8 @@ namespace microcosm.Calc
                                     });
                                     break;
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orb_other_soft_1st[0, 0] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orb_other_soft_1st[0, 0])
+                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_SOFT_2ND] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_SOFT_2ND])
                                 {
                                     fromList[i].thirdAspects.Add(new AspectInfo()
                                     {

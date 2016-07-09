@@ -711,12 +711,12 @@ namespace microcosm
             int hour = int.Parse(setHour.Text);
             int minute = int.Parse(setMinute.Text);
             int second = int.Parse(setSecond.Text);
-            DateTime dt = new DateTime(int.Parse(unitYear.Text),
-                int.Parse(unitMonth.Text),
-                int.Parse(unitDay.Text),
-                int.Parse(unitHour.Text),
-                int.Parse(unitMinute.Text),
-                int.Parse(unitSecond.Text));
+            DateTime dt = new DateTime(int.Parse(setYear.Text),
+                int.Parse(setMonth.Text),
+                int.Parse(setDay.Text),
+                int.Parse(setHour.Text),
+                int.Parse(setMinute.Text),
+                int.Parse(setSecond.Text));
             DateTime newDt = dt.AddSeconds(-1 * secondCount);
             newDt = newDt.AddMinutes(-1 * minuteCount);
             newDt = newDt.AddHours(-1 * hourCount);
@@ -772,12 +772,12 @@ namespace microcosm
             int hour = int.Parse(setHour.Text);
             int minute = int.Parse(setMinute.Text);
             int second = int.Parse(setSecond.Text);
-            DateTime dt = new DateTime(int.Parse(unitYear.Text),
-                int.Parse(unitMonth.Text),
-                int.Parse(unitDay.Text),
-                int.Parse(unitHour.Text),
-                int.Parse(unitMinute.Text),
-                int.Parse(unitSecond.Text));
+            DateTime dt = new DateTime(int.Parse(setYear.Text),
+                int.Parse(setMonth.Text),
+                int.Parse(setDay.Text),
+                int.Parse(setHour.Text),
+                int.Parse(setMinute.Text),
+                int.Parse(setSecond.Text));
             DateTime newDt = dt.AddSeconds(secondCount);
             newDt = newDt.AddMinutes(minuteCount);
             newDt = newDt.AddHours(hourCount);

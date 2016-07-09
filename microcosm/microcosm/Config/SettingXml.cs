@@ -16,259 +16,259 @@ namespace microcosm.Config
         #region orb 1st
         // 第一種アスペクト、一重～六重円
         [XmlElement("orb_sun_soft_1st_0")]
-        public double[] orb_sun_soft_1st_0;
+        public double orb_sun_soft_1st_0;
         [XmlElement("orb_sun_soft_1st_1")]
-        public double[] orb_sun_soft_1st_1;
+        public double orb_sun_soft_1st_1;
         [XmlElement("orb_sun_soft_1st_2")]
-        public double[] orb_sun_soft_1st_2;
+        public double orb_sun_soft_1st_2;
         [XmlElement("orb_sun_soft_1st_3")]
-        public double[] orb_sun_soft_1st_3;
+        public double orb_sun_soft_1st_3;
         [XmlElement("orb_sun_soft_1st_4")]
-        public double[] orb_sun_soft_1st_4;
+        public double orb_sun_soft_1st_4;
         [XmlElement("orb_sun_soft_1st_5")]
-        public double[] orb_sun_soft_1st_5;
+        public double orb_sun_soft_1st_5;
 
 
         [XmlElement("orb_sun_hard_1st_0")]
-        public double[] orb_sun_hard_1st_0;
+        public double orb_sun_hard_1st_0;
         [XmlElement("orb_sun_hard_1st_1")]
-        public double[] orb_sun_hard_1st_1;
+        public double orb_sun_hard_1st_1;
         [XmlElement("orb_sun_hard_1st_2")]
-        public double[] orb_sun_hard_1st_2;
+        public double orb_sun_hard_1st_2;
         [XmlElement("orb_sun_hard_1st_3")]
-        public double[] orb_sun_hard_1st_3;
+        public double orb_sun_hard_1st_3;
         [XmlElement("orb_sun_hard_1st_4")]
-        public double[] orb_sun_hard_1st_4;
+        public double orb_sun_hard_1st_4;
         [XmlElement("orb_sun_hard_1st_5")]
-        public double[] orb_sun_hard_1st_5;
+        public double orb_sun_hard_1st_5;
 
 
         [XmlElement("orb_moon_soft_1st_0")]
-        public double[] orb_moon_soft_1st_0;
+        public double orb_moon_soft_1st_0;
         [XmlElement("orb_moon_soft_1st_1")]
-        public double[] orb_moon_soft_1st_1;
+        public double orb_moon_soft_1st_1;
         [XmlElement("orb_moon_soft_1st_2")]
-        public double[] orb_moon_soft_1st_2;
+        public double orb_moon_soft_1st_2;
         [XmlElement("orb_moon_soft_1st_3")]
-        public double[] orb_moon_soft_1st_3;
+        public double orb_moon_soft_1st_3;
         [XmlElement("orb_moon_soft_1st_4")]
-        public double[] orb_moon_soft_1st_4;
+        public double orb_moon_soft_1st_4;
         [XmlElement("orb_moon_soft_1st_5")]
-        public double[] orb_moon_soft_1st_5;
+        public double orb_moon_soft_1st_5;
 
 
         [XmlElement("orb_moon_hard_1st_0")]
-        public double[] orb_moon_hard_1st_0;
+        public double orb_moon_hard_1st_0;
         [XmlElement("orb_moon_hard_1st_1")]
-        public double[] orb_moon_hard_1st_1;
+        public double orb_moon_hard_1st_1;
         [XmlElement("orb_moon_hard_1st_2")]
-        public double[] orb_moon_hard_1st_2;
+        public double orb_moon_hard_1st_2;
         [XmlElement("orb_moon_hard_1st_3")]
-        public double[] orb_moon_hard_1st_3;
+        public double orb_moon_hard_1st_3;
         [XmlElement("orb_moon_hard_1st_4")]
-        public double[] orb_moon_hard_1st_4;
+        public double orb_moon_hard_1st_4;
         [XmlElement("orb_moon_hard_1st_5")]
-        public double[] orb_moon_hard_1st_5;
+        public double orb_moon_hard_1st_5;
 
 
         [XmlElement("orb_other_soft_1st_0")]
-        public double[] orb_other_soft_1st_0;
+        public double orb_other_soft_1st_0;
         [XmlElement("orb_other_soft_1st_1")]
-        public double[] orb_other_soft_1st_1;
+        public double orb_other_soft_1st_1;
         [XmlElement("orb_other_soft_1st_2")]
-        public double[] orb_other_soft_1st_2;
+        public double orb_other_soft_1st_2;
         [XmlElement("orb_other_soft_1st_3")]
-        public double[] orb_other_soft_1st_3;
+        public double orb_other_soft_1st_3;
         [XmlElement("orb_other_soft_1st_4")]
-        public double[] orb_other_soft_1st_4;
+        public double orb_other_soft_1st_4;
         [XmlElement("orb_other_soft_1st_5")]
-        public double[] orb_other_soft_1st_5;
+        public double orb_other_soft_1st_5;
 
 
         [XmlElement("orb_other_hard_1st_0")]
-        public double[] orb_other_hard_1st_0;
+        public double orb_other_hard_1st_0;
         [XmlElement("orb_other_hard_1st_1")]
-        public double[] orb_other_hard_1st_1;
+        public double orb_other_hard_1st_1;
         [XmlElement("orb_other_hard_1st_2")]
-        public double[] orb_other_hard_1st_2;
+        public double orb_other_hard_1st_2;
         [XmlElement("orb_other_hard_1st_3")]
-        public double[] orb_other_hard_1st_3;
+        public double orb_other_hard_1st_3;
         [XmlElement("orb_other_hard_1st_4")]
-        public double[] orb_other_hard_1st_4;
+        public double orb_other_hard_1st_4;
         [XmlElement("orb_other_hard_1st_5")]
-        public double[] orb_other_hard_1st_5;
+        public double orb_other_hard_1st_5;
         #endregion
 
         // 第二種アスペクト、一重～五重円
         #region orb 2nd
         [XmlElement("orb_sun_soft_2nd_0")]
-        public double[] orb_sun_soft_2nd_0;
+        public double orb_sun_soft_2nd_0;
         [XmlElement("orb_sun_soft_2nd_1")]
-        public double[] orb_sun_soft_2nd_1;
+        public double orb_sun_soft_2nd_1;
         [XmlElement("orb_sun_soft_2nd_2")]
-        public double[] orb_sun_soft_2nd_2;
+        public double orb_sun_soft_2nd_2;
         [XmlElement("orb_sun_soft_2nd_3")]
-        public double[] orb_sun_soft_2nd_3;
+        public double orb_sun_soft_2nd_3;
         [XmlElement("orb_sun_soft_2nd_4")]
-        public double[] orb_sun_soft_2nd_4;
+        public double orb_sun_soft_2nd_4;
         [XmlElement("orb_sun_soft_2nd_5")]
-        public double[] orb_sun_soft_2nd_5;
+        public double orb_sun_soft_2nd_5;
 
 
         [XmlElement("orb_sun_hard_2nd_0")]
-        public double[] orb_sun_hard_2nd_0;
+        public double orb_sun_hard_2nd_0;
         [XmlElement("orb_sun_hard_2nd_1")]
-        public double[] orb_sun_hard_2nd_1;
+        public double orb_sun_hard_2nd_1;
         [XmlElement("orb_sun_hard_2nd_2")]
-        public double[] orb_sun_hard_2nd_2;
+        public double orb_sun_hard_2nd_2;
         [XmlElement("orb_sun_hard_2nd_3")]
-        public double[] orb_sun_hard_2nd_3;
+        public double orb_sun_hard_2nd_3;
         [XmlElement("orb_sun_hard_2nd_4")]
-        public double[] orb_sun_hard_2nd_4;
+        public double orb_sun_hard_2nd_4;
         [XmlElement("orb_sun_hard_2nd_5")]
-        public double[] orb_sun_hard_2nd_5;
+        public double orb_sun_hard_2nd_5;
 
 
         [XmlElement("orb_moon_soft_2nd_0")]
-        public double[] orb_moon_soft_2nd_0;
+        public double orb_moon_soft_2nd_0;
         [XmlElement("orb_moon_soft_2nd_1")]
-        public double[] orb_moon_soft_2nd_1;
+        public double orb_moon_soft_2nd_1;
         [XmlElement("orb_moon_soft_2nd_2")]
-        public double[] orb_moon_soft_2nd_2;
+        public double orb_moon_soft_2nd_2;
         [XmlElement("orb_moon_soft_2nd_3")]
-        public double[] orb_moon_soft_2nd_3;
+        public double orb_moon_soft_2nd_3;
         [XmlElement("orb_moon_soft_2nd_4")]
-        public double[] orb_moon_soft_2nd_4;
+        public double orb_moon_soft_2nd_4;
         [XmlElement("orb_moon_soft_2nd_5")]
-        public double[] orb_moon_soft_2nd_5;
+        public double orb_moon_soft_2nd_5;
 
 
         [XmlElement("orb_moon_hard_2nd_0")]
-        public double[] orb_moon_hard_2nd_0;
+        public double orb_moon_hard_2nd_0;
         [XmlElement("orb_moon_hard_2nd_1")]
-        public double[] orb_moon_hard_2nd_1;
+        public double orb_moon_hard_2nd_1;
         [XmlElement("orb_moon_hard_2nd_2")]
-        public double[] orb_moon_hard_2nd_2;
+        public double orb_moon_hard_2nd_2;
         [XmlElement("orb_moon_hard_2nd_3")]
-        public double[] orb_moon_hard_2nd_3;
+        public double orb_moon_hard_2nd_3;
         [XmlElement("orb_moon_hard_2nd_4")]
-        public double[] orb_moon_hard_2nd_4;
+        public double orb_moon_hard_2nd_4;
         [XmlElement("orb_moon_hard_2nd_5")]
-        public double[] orb_moon_hard_2nd_5;
+        public double orb_moon_hard_2nd_5;
 
 
         [XmlElement("orb_other_soft_2nd_0")]
-        public double[] orb_other_soft_2nd_0;
+        public double orb_other_soft_2nd_0;
         [XmlElement("orb_other_soft_2nd_1")]
-        public double[] orb_other_soft_2nd_1;
+        public double orb_other_soft_2nd_1;
         [XmlElement("orb_other_soft_2nd_2")]
-        public double[] orb_other_soft_2nd_2;
+        public double orb_other_soft_2nd_2;
         [XmlElement("orb_other_soft_2nd_3")]
-        public double[] orb_other_soft_2nd_3;
+        public double orb_other_soft_2nd_3;
         [XmlElement("orb_other_soft_2nd_4")]
-        public double[] orb_other_soft_2nd_4;
+        public double orb_other_soft_2nd_4;
         [XmlElement("orb_other_soft_2nd_5")]
-        public double[] orb_other_soft_2nd_5;
+        public double orb_other_soft_2nd_5;
 
 
         [XmlElement("orb_other_hard_2nd_0")]
-        public double[] orb_other_hard_2nd_0;
+        public double orb_other_hard_2nd_0;
         [XmlElement("orb_other_hard_2nd_1")]
-        public double[] orb_other_hard_2nd_1;
+        public double orb_other_hard_2nd_1;
         [XmlElement("orb_other_hard_2nd_2")]
-        public double[] orb_other_hard_2nd_2;
+        public double orb_other_hard_2nd_2;
         [XmlElement("orb_other_hard_2nd_3")]
-        public double[] orb_other_hard_2nd_3;
+        public double orb_other_hard_2nd_3;
         [XmlElement("orb_other_hard_2nd_4")]
-        public double[] orb_other_hard_2nd_4;
+        public double orb_other_hard_2nd_4;
         [XmlElement("orb_other_hard_2nd_5")]
-        public double[] orb_other_hard_2nd_5;
+        public double orb_other_hard_2nd_5;
         #endregion
 
         // 135/150
         #region orb 150
         [XmlElement("orb_sun_soft_150_0")]
-        public double[] orb_sun_soft_150_0;
+        public double orb_sun_soft_150_0;
         [XmlElement("orb_sun_soft_150_1")]
-        public double[] orb_sun_soft_150_1;
+        public double orb_sun_soft_150_1;
         [XmlElement("orb_sun_soft_150_2")]
-        public double[] orb_sun_soft_150_2;
+        public double orb_sun_soft_150_2;
         [XmlElement("orb_sun_soft_150_3")]
-        public double[] orb_sun_soft_150_3;
+        public double orb_sun_soft_150_3;
         [XmlElement("orb_sun_soft_150_4")]
-        public double[] orb_sun_soft_150_4;
+        public double orb_sun_soft_150_4;
         [XmlElement("orb_sun_soft_150_5")]
-        public double[] orb_sun_soft_150_5;
+        public double orb_sun_soft_150_5;
 
 
         [XmlElement("orb_sun_hard_150_0")]
-        public double[] orb_sun_hard_150_0;
+        public double orb_sun_hard_150_0;
         [XmlElement("orb_sun_hard_150_1")]
-        public double[] orb_sun_hard_150_1;
+        public double orb_sun_hard_150_1;
         [XmlElement("orb_sun_hard_150_2")]
-        public double[] orb_sun_hard_150_2;
+        public double orb_sun_hard_150_2;
         [XmlElement("orb_sun_hard_150_3")]
-        public double[] orb_sun_hard_150_3;
+        public double orb_sun_hard_150_3;
         [XmlElement("orb_sun_hard_150_4")]
-        public double[] orb_sun_hard_150_4;
+        public double orb_sun_hard_150_4;
         [XmlElement("orb_sun_hard_150_5")]
-        public double[] orb_sun_hard_150_5;
+        public double orb_sun_hard_150_5;
 
 
         [XmlElement("orb_moon_soft_150_0")]
-        public double[] orb_moon_soft_150_0;
+        public double orb_moon_soft_150_0;
         [XmlElement("orb_moon_soft_150_1")]
-        public double[] orb_moon_soft_150_1;
+        public double orb_moon_soft_150_1;
         [XmlElement("orb_moon_soft_150_2")]
-        public double[] orb_moon_soft_150_2;
+        public double orb_moon_soft_150_2;
         [XmlElement("orb_moon_soft_150_3")]
-        public double[] orb_moon_soft_150_3;
+        public double orb_moon_soft_150_3;
         [XmlElement("orb_moon_soft_150_4")]
-        public double[] orb_moon_soft_150_4;
+        public double orb_moon_soft_150_4;
         [XmlElement("orb_moon_soft_150_5")]
-        public double[] orb_moon_soft_150_5;
+        public double orb_moon_soft_150_5;
 
 
         [XmlElement("orb_moon_hard_150_0")]
-        public double[] orb_moon_hard_150_0;
+        public double orb_moon_hard_150_0;
         [XmlElement("orb_moon_hard_150_1")]
-        public double[] orb_moon_hard_150_1;
+        public double orb_moon_hard_150_1;
         [XmlElement("orb_moon_hard_150_2")]
-        public double[] orb_moon_hard_150_2;
+        public double orb_moon_hard_150_2;
         [XmlElement("orb_moon_hard_150_3")]
-        public double[] orb_moon_hard_150_3;
+        public double orb_moon_hard_150_3;
         [XmlElement("orb_moon_hard_150_4")]
-        public double[] orb_moon_hard_150_4;
+        public double orb_moon_hard_150_4;
         [XmlElement("orb_moon_hard_150_5")]
-        public double[] orb_moon_hard_150_5;
+        public double orb_moon_hard_150_5;
 
 
         [XmlElement("orb_other_soft_150_0")]
-        public double[] orb_other_soft_150_0;
+        public double orb_other_soft_150_0;
         [XmlElement("orb_other_soft_150_1")]
-        public double[] orb_other_soft_150_1;
+        public double orb_other_soft_150_1;
         [XmlElement("orb_other_soft_150_2")]
-        public double[] orb_other_soft_150_2;
+        public double orb_other_soft_150_2;
         [XmlElement("orb_other_soft_150_3")]
-        public double[] orb_other_soft_150_3;
+        public double orb_other_soft_150_3;
         [XmlElement("orb_other_soft_150_4")]
-        public double[] orb_other_soft_150_4;
+        public double orb_other_soft_150_4;
         [XmlElement("orb_other_soft_150_5")]
-        public double[] orb_other_soft_150_5;
+        public double orb_other_soft_150_5;
 
 
         [XmlElement("orb_other_hard_150_0")]
-        public double[] orb_other_hard_150_0;
+        public double orb_other_hard_150_0;
         [XmlElement("orb_other_hard_150_1")]
-        public double[] orb_other_hard_150_1;
+        public double orb_other_hard_150_1;
         [XmlElement("orb_other_hard_150_2")]
-        public double[] orb_other_hard_150_2;
+        public double orb_other_hard_150_2;
         [XmlElement("orb_other_hard_150_3")]
-        public double[] orb_other_hard_150_3;
+        public double orb_other_hard_150_3;
         [XmlElement("orb_other_hard_150_4")]
-        public double[] orb_other_hard_150_4;
+        public double orb_other_hard_150_4;
         [XmlElement("orb_other_hard_150_5")]
-        public double[] orb_other_hard_150_5;
+        public double orb_other_hard_150_5;
         #endregion
 
         [XmlElement("dispCircle")]

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="時刻設定" Height="400" Width="250" Closing="Window_Closing" ResizeMode="CanMinimize">
+        Title="時刻設定" Height="430" Width="250" Closing="Window_Closing" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical">
             <GroupBox Header="時刻" Height="55" Margin="5,10">

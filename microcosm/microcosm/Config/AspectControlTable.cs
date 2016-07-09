@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using microcosm.Aspect;
 
 namespace microcosm.Config
 {
@@ -16,6 +17,7 @@ namespace microcosm.Config
         public bool[,] tempArray;
         public bool targetBoolean;
         public int commonDataNo;
+        public AspectKind aspectKindNo;
 
         // 0～15
         // 0: 1-1
