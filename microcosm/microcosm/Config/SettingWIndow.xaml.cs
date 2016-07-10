@@ -31,6 +31,21 @@ namespace microcosm.Config
 
         // Aspect 一時保存用
         // settings * 10, 1-1,1-2…5-5で15個
+        public bool[,] planetDispSun = new bool[10, 15];
+        public bool[,] planetDispMoon = new bool[10, 15];
+        public bool[,] planetDispMercury = new bool[10, 15];
+        public bool[,] planetDispVenus = new bool[10, 15];
+        public bool[,] planetDispMars = new bool[10, 15];
+        public bool[,] planetDispJupiter = new bool[10, 15];
+        public bool[,] planetDispSaturn = new bool[10, 15];
+        public bool[,] planetDispUranus = new bool[10, 15];
+        public bool[,] planetDispNeptune = new bool[10, 15];
+        public bool[,] planetDispPluto = new bool[10, 15];
+        public bool[,] planetDispDh = new bool[10, 15];
+        public bool[,] planetDispChiron = new bool[10, 15];
+        public bool[,] planetDispAsc = new bool[10, 15];
+        public bool[,] planetDispMc = new bool[10, 15];
+
         public bool[,] aspectSun = new bool[10, 15];
         public bool[,] aspectMoon = new bool[10, 15];
         public bool[,] aspectMercury = new bool[10, 15];
@@ -58,11 +73,13 @@ namespace microcosm.Config
 
         public Dictionary<string, AspectControlTable> controlTable = new Dictionary<string, AspectControlTable>();
         public Dictionary<string, AspectControlTable> aspectControlTable = new Dictionary<string, AspectControlTable>();
+        public Dictionary<string, AspectControlTable> planetDispControlTable = new Dictionary<string, AspectControlTable>();
 
         string[] strNumbers = { "11", "22", "33", "12", "13", "23" };
 
         public List<string> targetNames = new List<string>();
         public List<string> aspectTargetNames = new List<string>();
+        public List<string> planetTargetNames = new List<string>();
 
         public SettingWIndow(MainWindow main)
         {
@@ -93,6 +110,21 @@ namespace microcosm.Config
                 aspectTargetNames.Add("aspectSextileOn" + s);
                 aspectTargetNames.Add("aspectInconjunctOn" + s);
                 aspectTargetNames.Add("aspectSesquiquadrateOn" + s);
+
+                planetTargetNames.Add("planetSunOn" + s);
+                planetTargetNames.Add("planetMoonOn" + s);
+                planetTargetNames.Add("planetMercuryOn" + s);
+                planetTargetNames.Add("planetVenusOn" + s);
+                planetTargetNames.Add("planetMarsOn" + s);
+                planetTargetNames.Add("planetJupiterOn" + s);
+                planetTargetNames.Add("planetSaturnOn" + s);
+                planetTargetNames.Add("planetUranusOn" + s);
+                planetTargetNames.Add("planetNeptuneOn" + s);
+                planetTargetNames.Add("planetPlutoOn" + s);
+                planetTargetNames.Add("planetDhOn" + s);
+                planetTargetNames.Add("planetChironOn" + s);
+                planetTargetNames.Add("planetAscOn" + s);
+                planetTargetNames.Add("planetMcOn" + s);
             }
             createControlTable();
 
@@ -115,119 +147,6 @@ namespace microcosm.Config
         {
             ListBox list = (ListBox)sender;
             settingName.Text = main.settings[list.SelectedIndex].dispName;
-            firstSun.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_SUN];
-            secondSun.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_SUN];
-            thirdSun.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_SUN];
-            fourthSun.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_SUN];
-            fifthSun.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_SUN];
-
-            firstMoon.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_MOON];
-            secondMoon.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_MOON];
-            thirdMoon.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_MOON];
-            fourthMoon.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_MOON];
-            fifthMoon.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_MOON];
-
-            firstMercury.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_MERCURY];
-            secondMercury.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_MERCURY];
-            thirdMercury.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_MERCURY];
-            fourthMercury.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_MERCURY];
-            fifthMercury.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_MERCURY];
-
-            firstVenus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_VENUS];
-            secondVenus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_VENUS];
-            thirdVenus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_VENUS];
-            fourthVenus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_VENUS];
-            fifthVenus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_VENUS];
-
-            firstMars.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_MARS];
-            secondMars.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_MARS];
-            thirdMars.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_MARS];
-            fourthMars.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_MARS];
-            fifthMars.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_MARS];
-
-            firstJupiter.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_JUPITER];
-            secondJupiter.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_JUPITER];
-            thirdJupiter.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_JUPITER];
-            fourthJupiter.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_JUPITER];
-            fifthJupiter.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_JUPITER];
-
-            firstSaturn.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_SATURN];
-            secondSaturn.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_SATURN];
-            thirdSaturn.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_SATURN];
-            fourthSaturn.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_SATURN];
-            fifthSaturn.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_SATURN];
-
-            firstUranus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_URANUS];
-            secondUranus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_URANUS];
-            thirdUranus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_URANUS];
-            fourthUranus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_URANUS];
-            fifthUranus.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_URANUS];
-
-            firstNeptune.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_NEPTUNE];
-            secondNeptune.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_NEPTUNE];
-            thirdNeptune.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_NEPTUNE];
-            fourthNeptune.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_NEPTUNE];
-            fifthNeptune.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_NEPTUNE];
-
-            firstPluto.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_PLUTO];
-            secondPluto.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_PLUTO];
-            thirdPluto.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_PLUTO];
-            fourthPluto.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_PLUTO];
-            fifthPluto.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_PLUTO];
-
-            firstDH.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_DH_TRUENODE];
-            secondDH.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_DH_TRUENODE];
-            thirdDH.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_DH_TRUENODE];
-            fourthDH.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_DH_TRUENODE];
-            fifthDH.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_DH_TRUENODE];
-
-            firstChiron.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_CHIRON];
-            secondChiron.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_CHIRON];
-            thirdChiron.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_CHIRON];
-            fourthChiron.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_CHIRON];
-            fifthChiron.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_CHIRON];
-
-            firstEarth.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_EARTH];
-            secondEarth.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_EARTH];
-            thirdEarth.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_EARTH];
-            fourthEarth.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_EARTH];
-            fifthEarth.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_EARTH];
-
-            firstLilith.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_LILITH];
-            secondLilith.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_LILITH];
-            thirdLilith.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_LILITH];
-            fourthLilith.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_LILITH];
-            fifthLilith.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_LILITH];
-
-            firstCeles.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_CELES];
-            secondCeles.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_CELES];
-            thirdCeles.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_CELES];
-            fourthCeles.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_CELES];
-            fifthCeles.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_CELES];
-
-            firstParas.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_PARAS];
-            secondParas.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_PARAS];
-            thirdParas.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_PARAS];
-            fourthParas.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_PARAS];
-            fifthParas.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_PARAS];
-
-            firstJuno.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_JUNO];
-            secondJuno.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_JUNO];
-            thirdJuno.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_JUNO];
-            fourthJuno.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_JUNO];
-            fifthJuno.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_JUNO];
-
-            firstVesta.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_VESTA];
-            secondVesta.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_VESTA];
-            thirdVesta.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_VESTA];
-            fourthVesta.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_VESTA];
-            fifthVesta.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_VESTA];
-
-            firstDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[0][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
-            secondDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[1][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
-            thirdDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[2][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
-            fourthDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[3][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
-            fifthDT.IsChecked = main.settings[list.SelectedIndex].dispPlanet[4][CommonData.ZODIAC_DT_OSCULATE_APOGEE];
 
             if (aspectSunOn11 == null)
             {
@@ -244,7 +163,7 @@ namespace microcosm.Config
                 for (int j = 0; j < 10; j++)
                 {
                     int commonDataNo = controlTable[targetNames[i]].commonDataNo;
-                    controlTable[targetNames[i]].tempArray[j, subIndex] = main.settings[j].dispPlanet[subIndex][commonDataNo];
+                    controlTable[targetNames[i]].tempArray[j, subIndex] = main.settings[j].dispAspectPlanet[subIndex][commonDataNo];
                 }
                 if (controlTable[targetNames[i]].tempArray[main.dispSettingBox.SelectedIndex, subIndex])
                 {
@@ -283,6 +202,31 @@ namespace microcosm.Config
                     aspectControlTable[aspectTargetNames[i]].aspectSelfElement.Height = 0;
                     aspectControlTable[aspectTargetNames[i]].aspectAnotherElement.Visibility = Visibility.Visible;
                     aspectControlTable[aspectTargetNames[i]].aspectAnotherElement.Height = 24;
+                }
+            }
+
+            // 天体表示設定
+            for (int i = 0; i < planetTargetNames.Count; i++)
+            {
+                int subIndex = planetDispControlTable[planetTargetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    int commonDataNo = planetDispControlTable[planetTargetNames[i]].commonDataNo;
+                    planetDispControlTable[planetTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispPlanet[subIndex][commonDataNo];
+                }
+                if (planetDispControlTable[planetTargetNames[i]].tempArray[main.dispSettingBox.SelectedIndex, subIndex])
+                {
+                    planetDispControlTable[planetTargetNames[i]].selfElement.Visibility = Visibility.Visible;
+                    planetDispControlTable[planetTargetNames[i]].selfElement.Height = 24;
+                    planetDispControlTable[planetTargetNames[i]].anotherElement.Visibility = Visibility.Hidden;
+                    planetDispControlTable[planetTargetNames[i]].anotherElement.Height = 0;
+                }
+                else
+                {
+                    planetDispControlTable[planetTargetNames[i]].selfElement.Visibility = Visibility.Hidden;
+                    planetDispControlTable[planetTargetNames[i]].selfElement.Height = 0;
+                    planetDispControlTable[planetTargetNames[i]].anotherElement.Visibility = Visibility.Visible;
+                    planetDispControlTable[planetTargetNames[i]].anotherElement.Height = 24;
                 }
             }
 
@@ -620,6 +564,34 @@ namespace microcosm.Config
             main.ReRender();
         }
 
+
+        private void planetDispMouseDownCommon(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+
+            Image ctl = (Image)(planetDispControlTable[img.Name].anotherElement);
+            ctl.Visibility = Visibility.Visible;
+            ctl.Height = 24;
+
+            int index = dispList.SelectedIndex;
+            int subindex = planetDispControlTable[img.Name].subIndex;
+
+            planetDispControlTable[img.Name].targetBoolean = !planetDispControlTable[img.Name].targetBoolean;
+            planetDispControlTable[img.Name].tempArray[index, subindex] = planetDispControlTable[img.Name].targetBoolean;
+
+            foreach (var data in main.list1)
+            {
+                if (data.no == planetDispControlTable[img.Name].commonDataNo)
+                {
+                    data.isAspectDisp = true;
+                    break;
+                }
+            }
+            main.ReRender();
+        }
+
         private void createControlTable()
         {
             int subIndexNo = 0;
@@ -879,6 +851,259 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectMcOff" + n),
                     anotherElement = (FrameworkElement)FindName("aspectMcOn" + n),
                     tempArray = aspectMc,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MC
+                });
+
+                planetDispControlTable.Add("planetSunOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetSunOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetSunOff" + n),
+                    tempArray = planetDispSun,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_SUN
+                });
+                planetDispControlTable.Add("planetMoonOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMoonOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMoonOff" + n),
+                    tempArray = planetDispMoon,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MOON
+                });
+                planetDispControlTable.Add("planetMercuryOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMercuryOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMercuryOff" + n),
+                    tempArray = planetDispMercury,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MERCURY
+                });
+                planetDispControlTable.Add("planetVenusOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetVenusOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetVenusOff" + n),
+                    tempArray = planetDispVenus,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_VENUS
+                });
+                planetDispControlTable.Add("planetMarsOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMarsOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMarsOff" + n),
+                    tempArray = planetDispMars,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MARS
+                });
+                planetDispControlTable.Add("planetJupiterOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetJupiterOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetJupiterOff" + n),
+                    tempArray = planetDispJupiter,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_JUPITER
+                });
+                planetDispControlTable.Add("planetSaturnOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetSaturnOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetSaturnOff" + n),
+                    tempArray = planetDispSaturn,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_SATURN
+                });
+                planetDispControlTable.Add("planetUranusOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetUranusOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetUranusOff" + n),
+                    tempArray = planetDispUranus,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_URANUS
+                });
+                planetDispControlTable.Add("planetNeptuneOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetNeptuneOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetNeptuneOff" + n),
+                    tempArray = planetDispNeptune,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_NEPTUNE
+                });
+                planetDispControlTable.Add("planetPlutoOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetPlutoOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetPlutoOff" + n),
+                    tempArray = planetDispPluto,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_PLUTO
+                });
+                planetDispControlTable.Add("planetDhOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetDhOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetDhOff" + n),
+                    tempArray = planetDispDh,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_DH_TRUENODE
+                });
+                planetDispControlTable.Add("planetChironOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetChironOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetChironOff" + n),
+                    tempArray = planetDispChiron,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_CHIRON
+                });
+                planetDispControlTable.Add("planetAscOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetAscOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetAscOff" + n),
+                    tempArray = planetDispAsc,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_ASC
+                });
+                planetDispControlTable.Add("planetMcOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMcOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMcOff" + n),
+                    tempArray = planetDispMc,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MC
+                });
+                planetDispControlTable.Add("planetSunOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetSunOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetSunOn" + n),
+                    tempArray = planetDispSun,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_SUN
+                });
+                planetDispControlTable.Add("planetMoonOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMoonOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMoonOn" + n),
+                    tempArray = planetDispMoon,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MOON
+                });
+                planetDispControlTable.Add("planetMercuryOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMercuryOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMercuryOn" + n),
+                    tempArray = planetDispMercury,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MERCURY
+                });
+                planetDispControlTable.Add("planetVenusOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetVenusOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetVenusOn" + n),
+                    tempArray = planetDispVenus,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_VENUS
+                });
+                planetDispControlTable.Add("planetMarsOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMarsOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMarsOn" + n),
+                    tempArray = planetDispMars,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_MARS
+                });
+                planetDispControlTable.Add("planetJupiterOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetJupiterOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetJupiterOn" + n),
+                    tempArray = planetDispJupiter,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_JUPITER
+                });
+                planetDispControlTable.Add("planetSaturnOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetSaturnOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetSaturnOn" + n),
+                    tempArray = planetDispSaturn,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_SATURN
+                });
+                planetDispControlTable.Add("planetUranusOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetUranusOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetUranusOn" + n),
+                    tempArray = planetDispUranus,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_URANUS
+                });
+                planetDispControlTable.Add("planetNeptuneOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetNeptuneOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetNeptuneOn" + n),
+                    tempArray = planetDispNeptune,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_NEPTUNE
+                });
+                planetDispControlTable.Add("planetPlutoOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetPlutoOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetPlutoOn" + n),
+                    tempArray = planetDispPluto,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_PLUTO
+                });
+                planetDispControlTable.Add("planetDhOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetDhOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetDhOn" + n),
+                    tempArray = planetDispDh,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_DH_TRUENODE
+                });
+                planetDispControlTable.Add("planetChironOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetChironOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetChironOn" + n),
+                    tempArray = planetDispChiron,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_CHIRON
+                });
+                planetDispControlTable.Add("planetAscOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetAscOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetAscOn" + n),
+                    tempArray = planetDispAsc,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_ASC
+                });
+                planetDispControlTable.Add("planetMcOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetMcOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetMcOn" + n),
+                    tempArray = planetDispMc,
                     targetBoolean = true,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MC

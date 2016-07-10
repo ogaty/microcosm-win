@@ -22,6 +22,7 @@ namespace microcosm.Config
         // 0:11～15:45
         public List<Dictionary<OrbKind, double>> orbs;
         public List<Dictionary<int, bool>> dispPlanet;
+        public List<Dictionary<int, bool>> dispAspectPlanet;
         public List<Dictionary<AspectKind, bool>> dispAspectCategory;
 
         // [from, to]
@@ -47,8 +48,10 @@ namespace microcosm.Config
             this.dispName = "表示設定" + no.ToString();
             dispCircle = new bool[6] { true, false, false, false, false, false };
 
+
             // dispPlanet[subIndex][commonDataNo]
             dispPlanet = new List<Dictionary<int, bool>>();
+            dispAspectPlanet = new List<Dictionary<int, bool>>();
             dispAspectCategory = new List<Dictionary<AspectKind, bool>>();
             orbs = new List<Dictionary<OrbKind, double>>();
             dispAspect = new bool[6, 6] {
