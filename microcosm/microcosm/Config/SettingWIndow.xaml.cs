@@ -71,6 +71,26 @@ namespace microcosm.Config
 
         public bool[,] aspectDispChecked = new bool[10, 15];
 
+        public double[,] orbSunHard1st = new double[10, 15];
+        public double[,] orbSunHard2nd = new double[10, 15];
+        public double[,] orbSunHard150 = new double[10, 15];
+        public double[,] orbSunSoft1st = new double[10, 15];
+        public double[,] orbSunSoft2nd = new double[10, 15];
+        public double[,] orbSunSoft150 = new double[10, 15];
+        public double[,] orbMoonHard1st = new double[10, 15];
+        public double[,] orbMoonHard2nd = new double[10, 15];
+        public double[,] orbMoonHard150 = new double[10, 15];
+        public double[,] orbMoonSoft1st = new double[10, 15];
+        public double[,] orbMoonSoft2nd = new double[10, 15];
+        public double[,] orbMoonSoft150 = new double[10, 15];
+        public double[,] orbOtherHard1st = new double[10, 15];
+        public double[,] orbOtherHard2nd = new double[10, 15];
+        public double[,] orbOtherHard150 = new double[10, 15];
+        public double[,] orbOtherSoft1st = new double[10, 15];
+        public double[,] orbOtherSoft2nd = new double[10, 15];
+        public double[,] orbOtherSoft150 = new double[10, 15];
+
+
         public Dictionary<string, AspectControlTable> controlTable = new Dictionary<string, AspectControlTable>();
         public Dictionary<string, AspectControlTable> aspectControlTable = new Dictionary<string, AspectControlTable>();
         public Dictionary<string, AspectControlTable> planetDispControlTable = new Dictionary<string, AspectControlTable>();
@@ -265,9 +285,6 @@ namespace microcosm.Config
         private void setOrb()
         {
             int index = orbRing.SelectedIndex;
-            ringSubIndex subidx = CommonData.getRingSubIndex(index);
-            int from = subidx.from;
-            int to = subidx.to;
 
             sunSoft1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_1ST].ToString();
             sunHard1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_1ST].ToString();
@@ -287,6 +304,31 @@ namespace microcosm.Config
             otherHard2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_2ND].ToString();
             otherSoft150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_150].ToString();
             otherHard150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_150].ToString();
+
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    orbSunSoft1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_1ST];
+                    orbSunHard1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_1ST];
+                    orbSunSoft2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_2ND];
+                    orbSunHard2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_2ND];
+                    orbSunSoft150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_150];
+                    orbSunHard150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_150];
+                    orbMoonSoft1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_1ST];
+                    orbMoonHard1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_1ST];
+                    orbMoonSoft2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_2ND];
+                    orbMoonHard2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_2ND];
+                    orbMoonSoft150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_150];
+                    orbMoonHard150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_150];
+                    orbOtherSoft1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_1ST];
+                    orbOtherHard1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_1ST];
+                    orbOtherSoft2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_2ND];
+                    orbOtherHard2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_2ND];
+                    orbOtherSoft150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_150];
+                    orbOtherHard150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_150];
+                }
+            }
         }
 
         private void conjunction11_MouseDown(object sender, MouseButtonEventArgs e)
@@ -1244,489 +1286,69 @@ namespace microcosm.Config
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
             SettingXml xmldata = new SettingXml();
-            if (aspectSunOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSun11 = true;
-            }
-            else
-            {
-                xmldata.aspectSun11 = false;
-            }
-            if (aspectMoonOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMoon11 = true;
-            }
-            else
-            {
-                xmldata.aspectMoon11 = false;
-            }
-            if (aspectMercuryOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMercury11 = true;
-            }
-            else
-            {
-                xmldata.aspectMercury11 = false;
-            }
-            if (aspectVenusOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectVenus11 = true;
-            }
-            else
-            {
-                xmldata.aspectVenus11 = false;
-            }
-            if (aspectMarsOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMars11 = true;
-            }
-            else
-            {
-                xmldata.aspectMars11 = false;
-            }
-            if (aspectJupiterOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectJupiter11 = true;
-            }
-            else
-            {
-                xmldata.aspectJupiter11 = false;
-            }
-            if (aspectSaturnOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSaturn11 = true;
-            }
-            else
-            {
-                xmldata.aspectSaturn11 = false;
-            }
-            if (aspectUranusOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectUranus11 = true;
-            }
-            else
-            {
-                xmldata.aspectUranus11 = false;
-            }
-            if (aspectNeptuneOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectNeptune11 = true;
-            }
-            else
-            {
-                xmldata.aspectNeptune11 = false;
-            }
-            if (aspectPlutoOn11.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectPluto11 = true;
-            }
-            else
-            {
-                xmldata.aspectPluto11 = false;
-            }
-            if (aspectSunOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSun22 = true;
-            }
-            else
-            {
-                xmldata.aspectSun22 = false;
-            }
-            if (aspectMoonOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMoon22 = true;
-            }
-            else
-            {
-                xmldata.aspectMoon22 = false;
-            }
-            if (aspectMercuryOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMercury22 = true;
-            }
-            else
-            {
-                xmldata.aspectMercury22 = false;
-            }
-            if (aspectVenusOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectVenus22 = true;
-            }
-            else
-            {
-                xmldata.aspectVenus22 = false;
-            }
-            if (aspectMarsOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMars22 = true;
-            }
-            else
-            {
-                xmldata.aspectMars22 = false;
-            }
-            if (aspectJupiterOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectJupiter22 = true;
-            }
-            else
-            {
-                xmldata.aspectJupiter22 = false;
-            }
-            if (aspectSaturnOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSaturn22 = true;
-            }
-            else
-            {
-                xmldata.aspectSaturn22 = false;
-            }
-            if (aspectUranusOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectUranus22 = true;
-            }
-            else
-            {
-                xmldata.aspectUranus22 = false;
-            }
-            if (aspectNeptuneOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectNeptune22 = true;
-            }
-            else
-            {
-                xmldata.aspectNeptune22 = false;
-            }
-            if (aspectPlutoOn22.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectPluto22 = true;
-            }
-            else
-            {
-                xmldata.aspectPluto22 = false;
-            }
-            if (aspectSunOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSun33 = true;
-            }
-            else
-            {
-                xmldata.aspectSun33 = false;
-            }
-            if (aspectMoonOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMoon33 = true;
-            }
-            else
-            {
-                xmldata.aspectMoon33 = false;
-            }
-            if (aspectMercuryOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMercury33 = true;
-            }
-            else
-            {
-                xmldata.aspectMercury33 = false;
-            }
-            if (aspectVenusOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectVenus33 = true;
-            }
-            else
-            {
-                xmldata.aspectVenus33 = false;
-            }
-            if (aspectMarsOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMars33 = true;
-            }
-            else
-            {
-                xmldata.aspectMars33 = false;
-            }
-            if (aspectJupiterOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectJupiter33 = true;
-            }
-            else
-            {
-                xmldata.aspectJupiter33 = false;
-            }
-            if (aspectSaturnOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSaturn33 = true;
-            }
-            else
-            {
-                xmldata.aspectSaturn33 = false;
-            }
-            if (aspectUranusOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectUranus33 = true;
-            }
-            else
-            {
-                xmldata.aspectUranus33 = false;
-            }
-            if (aspectNeptuneOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectNeptune33 = true;
-            }
-            else
-            {
-                xmldata.aspectNeptune33 = false;
-            }
-            if (aspectPlutoOn33.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectPluto33 = true;
-            }
-            else
-            {
-                xmldata.aspectPluto33 = false;
-            }
-            if (aspectSunOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSun12 = true;
-            }
-            else
-            {
-                xmldata.aspectSun12 = false;
-            }
-            if (aspectMoonOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMoon12 = true;
-            }
-            else
-            {
-                xmldata.aspectMoon12 = false;
-            }
-            if (aspectMercuryOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMercury12 = true;
-            }
-            else
-            {
-                xmldata.aspectMercury12 = false;
-            }
-            if (aspectVenusOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectVenus12 = true;
-            }
-            else
-            {
-                xmldata.aspectVenus12 = false;
-            }
-            if (aspectMarsOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMars12 = true;
-            }
-            else
-            {
-                xmldata.aspectMars12 = false;
-            }
-            if (aspectJupiterOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectJupiter12 = true;
-            }
-            else
-            {
-                xmldata.aspectJupiter12 = false;
-            }
-            if (aspectSaturnOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSaturn12 = true;
-            }
-            else
-            {
-                xmldata.aspectSaturn12 = false;
-            }
-            if (aspectUranusOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectUranus12 = true;
-            }
-            else
-            {
-                xmldata.aspectUranus12 = false;
-            }
-            if (aspectNeptuneOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectNeptune12 = true;
-            }
-            else
-            {
-                xmldata.aspectNeptune12 = false;
-            }
-            if (aspectPlutoOn12.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectPluto12 = true;
-            }
-            else
-            {
-                xmldata.aspectPluto12 = false;
-            }
-            if (aspectSunOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSun13 = true;
-            }
-            else
-            {
-                xmldata.aspectSun13 = false;
-            }
-            if (aspectMoonOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMoon13 = true;
-            }
-            else
-            {
-                xmldata.aspectMoon13 = false;
-            }
-            if (aspectMercuryOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMercury13 = true;
-            }
-            else
-            {
-                xmldata.aspectMercury13 = false;
-            }
-            if (aspectVenusOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectVenus13 = true;
-            }
-            else
-            {
-                xmldata.aspectVenus13 = false;
-            }
-            if (aspectMarsOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMars13 = true;
-            }
-            else
-            {
-                xmldata.aspectMars13 = false;
-            }
-            if (aspectJupiterOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectJupiter13 = true;
-            }
-            else
-            {
-                xmldata.aspectJupiter13 = false;
-            }
-            if (aspectSaturnOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSaturn13 = true;
-            }
-            else
-            {
-                xmldata.aspectSaturn13 = false;
-            }
-            if (aspectUranusOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectUranus13 = true;
-            }
-            else
-            {
-                xmldata.aspectUranus13 = false;
-            }
-            if (aspectNeptuneOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectNeptune13 = true;
-            }
-            else
-            {
-                xmldata.aspectNeptune13 = false;
-            }
-            if (aspectPlutoOn13.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectPluto13 = true;
-            }
-            else
-            {
-                xmldata.aspectPluto13 = false;
-            }
-            if (aspectSunOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSun23 = true;
-            }
-            else
-            {
-                xmldata.aspectSun23 = false;
-            }
-            if (aspectMoonOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMoon23 = true;
-            }
-            else
-            {
-                xmldata.aspectMoon23 = false;
-            }
-            if (aspectMercuryOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMercury23 = true;
-            }
-            else
-            {
-                xmldata.aspectMercury23 = false;
-            }
-            if (aspectVenusOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectVenus23 = true;
-            }
-            else
-            {
-                xmldata.aspectVenus23 = false;
-            }
-            if (aspectMarsOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectMars23 = true;
-            }
-            else
-            {
-                xmldata.aspectMars23 = false;
-            }
-            if (aspectJupiterOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectJupiter23 = true;
-            }
-            else
-            {
-                xmldata.aspectJupiter23 = false;
-            }
-            if (aspectSaturnOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectSaturn23 = true;
-            }
-            else
-            {
-                xmldata.aspectSaturn23 = false;
-            }
-            if (aspectUranusOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectUranus23 = true;
-            }
-            else
-            {
-                xmldata.aspectUranus23 = false;
-            }
-            if (aspectNeptuneOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectNeptune23 = true;
-            }
-            else
-            {
-                xmldata.aspectNeptune23 = false;
-            }
-            if (aspectPlutoOn23.Visibility == Visibility.Visible)
-            {
-                xmldata.aspectPluto23 = true;
-            }
-            else
-            {
-                xmldata.aspectPluto23 = false;
-            }
 
             for (int index = 0; index < 10; index++)
             {
+                xmldata.aspectSun11 = aspectSun[index, 0];
+                xmldata.aspectSun22 = aspectSun[index, 1];
+                xmldata.aspectSun33 = aspectSun[index, 2];
+                xmldata.aspectSun12 = aspectSun[index, 3];
+                xmldata.aspectSun13 = aspectSun[index, 4];
+                xmldata.aspectSun23 = aspectSun[index, 5];
+                xmldata.aspectMoon11 = aspectMoon[index, 0];
+                xmldata.aspectMoon22 = aspectMoon[index, 1];
+                xmldata.aspectMoon33 = aspectMoon[index, 2];
+                xmldata.aspectMoon12 = aspectMoon[index, 3];
+                xmldata.aspectMoon13 = aspectMoon[index, 4];
+                xmldata.aspectMoon23 = aspectMoon[index, 5];
+                xmldata.aspectMercury11 = aspectMercury[index, 0];
+                xmldata.aspectMercury22 = aspectMercury[index, 1];
+                xmldata.aspectMercury33 = aspectMercury[index, 2];
+                xmldata.aspectMercury12 = aspectMercury[index, 3];
+                xmldata.aspectMercury13 = aspectMercury[index, 4];
+                xmldata.aspectMercury23 = aspectMercury[index, 5];
+                xmldata.aspectVenus11 = aspectVenus[index, 0];
+                xmldata.aspectVenus22 = aspectVenus[index, 1];
+                xmldata.aspectVenus33 = aspectVenus[index, 2];
+                xmldata.aspectVenus12 = aspectVenus[index, 3];
+                xmldata.aspectVenus13 = aspectVenus[index, 4];
+                xmldata.aspectVenus23 = aspectVenus[index, 5];
+                xmldata.aspectMars11 = aspectMars[index, 0];
+                xmldata.aspectMars22 = aspectMars[index, 1];
+                xmldata.aspectMars33 = aspectMars[index, 2];
+                xmldata.aspectMars12 = aspectMars[index, 3];
+                xmldata.aspectMars13 = aspectMars[index, 4];
+                xmldata.aspectMars23 = aspectMars[index, 5];
+                xmldata.aspectJupiter11 = aspectJupiter[index, 0];
+                xmldata.aspectJupiter22 = aspectJupiter[index, 1];
+                xmldata.aspectJupiter33 = aspectJupiter[index, 2];
+                xmldata.aspectJupiter12 = aspectJupiter[index, 3];
+                xmldata.aspectJupiter13 = aspectJupiter[index, 4];
+                xmldata.aspectJupiter23 = aspectJupiter[index, 5];
+                xmldata.aspectSaturn11 = aspectSaturn[index, 0];
+                xmldata.aspectSaturn22 = aspectSaturn[index, 1];
+                xmldata.aspectSaturn33 = aspectSaturn[index, 2];
+                xmldata.aspectSaturn12 = aspectSaturn[index, 3];
+                xmldata.aspectSaturn13 = aspectSaturn[index, 4];
+                xmldata.aspectSaturn23 = aspectSaturn[index, 5];
+                xmldata.aspectUranus11 = aspectUranus[index, 0];
+                xmldata.aspectUranus22 = aspectUranus[index, 1];
+                xmldata.aspectUranus33 = aspectUranus[index, 2];
+                xmldata.aspectUranus12 = aspectUranus[index, 3];
+                xmldata.aspectUranus13 = aspectUranus[index, 4];
+                xmldata.aspectUranus23 = aspectUranus[index, 5];
+                xmldata.aspectNeptune11 = aspectNeptune[index, 0];
+                xmldata.aspectNeptune22 = aspectNeptune[index, 1];
+                xmldata.aspectNeptune33 = aspectNeptune[index, 2];
+                xmldata.aspectNeptune12 = aspectNeptune[index, 3];
+                xmldata.aspectNeptune13 = aspectNeptune[index, 4];
+                xmldata.aspectNeptune23 = aspectNeptune[index, 5];
+                xmldata.aspectPluto11 = aspectPluto[index, 0];
+                xmldata.aspectPluto22 = aspectPluto[index, 1];
+                xmldata.aspectPluto33 = aspectPluto[index, 2];
+                xmldata.aspectPluto12 = aspectPluto[index, 3];
+                xmldata.aspectPluto13 = aspectPluto[index, 4];
+                xmldata.aspectPluto23 = aspectPluto[index, 5];
                 xmldata.aspectDh11 = aspectDh[index, 0];
                 xmldata.aspectDh22 = aspectDh[index, 1];
                 xmldata.aspectDh33 = aspectDh[index, 2];
@@ -1803,6 +1425,200 @@ namespace microcosm.Config
                 xmldata.dispAspect[4] = aspectDispChecked[index, 4];
                 xmldata.dispAspect[5] = aspectDispChecked[index, 5];
 
+                xmldata.dispPlanetSun11 = planetDispSun[index, 0];
+                xmldata.dispPlanetSun22 = planetDispSun[index, 1];
+                xmldata.dispPlanetSun33 = planetDispSun[index, 2];
+                xmldata.dispPlanetSun12 = planetDispSun[index, 3];
+                xmldata.dispPlanetSun13 = planetDispSun[index, 4];
+                xmldata.dispPlanetSun23 = planetDispSun[index, 5];
+                xmldata.dispPlanetMoon11 = planetDispMoon[index, 0];
+                xmldata.dispPlanetMoon22 = planetDispMoon[index, 1];
+                xmldata.dispPlanetMoon33 = planetDispMoon[index, 2];
+                xmldata.dispPlanetMoon12 = planetDispMoon[index, 3];
+                xmldata.dispPlanetMoon13 = planetDispMoon[index, 4];
+                xmldata.dispPlanetMoon23 = planetDispMoon[index, 5];
+                xmldata.dispPlanetMercury11 = planetDispMercury[index, 0];
+                xmldata.dispPlanetMercury22 = planetDispMercury[index, 1];
+                xmldata.dispPlanetMercury33 = planetDispMercury[index, 2];
+                xmldata.dispPlanetMercury12 = planetDispMercury[index, 3];
+                xmldata.dispPlanetMercury13 = planetDispMercury[index, 4];
+                xmldata.dispPlanetMercury23 = planetDispMercury[index, 5];
+                xmldata.dispPlanetVenus11 = planetDispVenus[index, 0];
+                xmldata.dispPlanetVenus22 = planetDispVenus[index, 1];
+                xmldata.dispPlanetVenus33 = planetDispVenus[index, 2];
+                xmldata.dispPlanetVenus12 = planetDispVenus[index, 3];
+                xmldata.dispPlanetVenus13 = planetDispVenus[index, 4];
+                xmldata.dispPlanetVenus23 = planetDispVenus[index, 5];
+                xmldata.dispPlanetMars11 = planetDispMars[index, 0];
+                xmldata.dispPlanetMars22 = planetDispMars[index, 1];
+                xmldata.dispPlanetMars33 = planetDispMars[index, 2];
+                xmldata.dispPlanetMars12 = planetDispMars[index, 3];
+                xmldata.dispPlanetMars13 = planetDispMars[index, 4];
+                xmldata.dispPlanetMars23 = planetDispMars[index, 5];
+                xmldata.dispPlanetJupiter11 = planetDispJupiter[index, 0];
+                xmldata.dispPlanetJupiter22 = planetDispJupiter[index, 1];
+                xmldata.dispPlanetJupiter33 = planetDispJupiter[index, 2];
+                xmldata.dispPlanetJupiter12 = planetDispJupiter[index, 3];
+                xmldata.dispPlanetJupiter13 = planetDispJupiter[index, 4];
+                xmldata.dispPlanetJupiter23 = planetDispJupiter[index, 5];
+                xmldata.dispPlanetSaturn11 = planetDispSaturn[index, 0];
+                xmldata.dispPlanetSaturn22 = planetDispSaturn[index, 1];
+                xmldata.dispPlanetSaturn33 = planetDispSaturn[index, 2];
+                xmldata.dispPlanetSaturn12 = planetDispSaturn[index, 3];
+                xmldata.dispPlanetSaturn13 = planetDispSaturn[index, 4];
+                xmldata.dispPlanetSaturn23 = planetDispSaturn[index, 5];
+                xmldata.dispPlanetUranus11 = planetDispUranus[index, 0];
+                xmldata.dispPlanetUranus22 = planetDispUranus[index, 1];
+                xmldata.dispPlanetUranus33 = planetDispUranus[index, 2];
+                xmldata.dispPlanetUranus12 = planetDispUranus[index, 3];
+                xmldata.dispPlanetUranus13 = planetDispUranus[index, 4];
+                xmldata.dispPlanetUranus23 = planetDispUranus[index, 5];
+                xmldata.dispPlanetNeptune11 = planetDispNeptune[index, 0];
+                xmldata.dispPlanetNeptune22 = planetDispNeptune[index, 1];
+                xmldata.dispPlanetNeptune33 = planetDispNeptune[index, 2];
+                xmldata.dispPlanetNeptune12 = planetDispNeptune[index, 3];
+                xmldata.dispPlanetNeptune13 = planetDispNeptune[index, 4];
+                xmldata.dispPlanetNeptune23 = planetDispNeptune[index, 5];
+                xmldata.dispPlanetPluto11 = planetDispPluto[index, 0];
+                xmldata.dispPlanetPluto22 = planetDispPluto[index, 1];
+                xmldata.dispPlanetPluto33 = planetDispPluto[index, 2];
+                xmldata.dispPlanetPluto12 = planetDispPluto[index, 3];
+                xmldata.dispPlanetPluto13 = planetDispPluto[index, 4];
+                xmldata.dispPlanetPluto23 = planetDispPluto[index, 5];
+                xmldata.dispPlanetDh11 = planetDispDh[index, 0];
+                xmldata.dispPlanetDh22 = planetDispDh[index, 1];
+                xmldata.dispPlanetDh33 = planetDispDh[index, 2];
+                xmldata.dispPlanetDh12 = planetDispDh[index, 3];
+                xmldata.dispPlanetDh13 = planetDispDh[index, 4];
+                xmldata.dispPlanetDh23 = planetDispDh[index, 5];
+                xmldata.dispPlanetChiron11 = planetDispChiron[index, 0];
+                xmldata.dispPlanetChiron22 = planetDispChiron[index, 1];
+                xmldata.dispPlanetChiron33 = planetDispChiron[index, 2];
+                xmldata.dispPlanetChiron12 = planetDispChiron[index, 3];
+                xmldata.dispPlanetChiron13 = planetDispChiron[index, 4];
+                xmldata.dispPlanetChiron23 = planetDispChiron[index, 5];
+                xmldata.dispPlanetAsc11 = planetDispAsc[index, 0];
+                xmldata.dispPlanetAsc22 = planetDispAsc[index, 1];
+                xmldata.dispPlanetAsc33 = planetDispAsc[index, 2];
+                xmldata.dispPlanetAsc12 = planetDispAsc[index, 3];
+                xmldata.dispPlanetAsc13 = planetDispAsc[index, 4];
+                xmldata.dispPlanetAsc23 = planetDispAsc[index, 5];
+                xmldata.dispPlanetMc11 = planetDispMc[index, 0];
+                xmldata.dispPlanetMc22 = planetDispMc[index, 1];
+                xmldata.dispPlanetMc33 = planetDispMc[index, 2];
+                xmldata.dispPlanetMc12 = planetDispMc[index, 3];
+                xmldata.dispPlanetMc13 = planetDispMc[index, 4];
+                xmldata.dispPlanetMc23 = planetDispMc[index, 5];
+
+                xmldata.orb_sun_hard_1st_0 = orbSunHard1st[index, 0];
+                xmldata.orb_sun_hard_2nd_0 = orbSunHard2nd[index, 0];
+                xmldata.orb_sun_hard_150_0 = orbSunHard150[index, 0];
+                xmldata.orb_sun_soft_1st_0 = orbSunSoft1st[index, 0];
+                xmldata.orb_sun_soft_2nd_0 = orbSunSoft2nd[index, 0];
+                xmldata.orb_sun_soft_150_0 = orbSunSoft150[index, 0];
+                xmldata.orb_moon_hard_1st_0 = orbMoonHard1st[index, 0];
+                xmldata.orb_moon_hard_2nd_0 = orbMoonHard2nd[index, 0];
+                xmldata.orb_moon_hard_150_0 = orbMoonHard150[index, 0];
+                xmldata.orb_moon_soft_1st_0 = orbMoonSoft1st[index, 0];
+                xmldata.orb_moon_soft_2nd_0 = orbMoonSoft2nd[index, 0];
+                xmldata.orb_moon_soft_150_0 = orbMoonSoft150[index, 0];
+                xmldata.orb_other_hard_1st_0 = orbOtherHard1st[index, 0];
+                xmldata.orb_other_hard_2nd_0 = orbOtherHard2nd[index, 0];
+                xmldata.orb_other_hard_150_0 = orbOtherHard150[index, 0];
+                xmldata.orb_other_soft_1st_0 = orbOtherSoft1st[index, 0];
+                xmldata.orb_other_soft_2nd_0 = orbOtherSoft2nd[index, 0];
+                xmldata.orb_other_soft_150_0 = orbOtherSoft150[index, 0];
+                xmldata.orb_sun_hard_1st_1 = orbSunHard1st[index, 1];
+                xmldata.orb_sun_hard_2nd_1 = orbSunHard2nd[index, 1];
+                xmldata.orb_sun_hard_150_1 = orbSunHard150[index, 1];
+                xmldata.orb_sun_soft_1st_1 = orbSunSoft1st[index, 1];
+                xmldata.orb_sun_soft_2nd_1 = orbSunSoft2nd[index, 1];
+                xmldata.orb_sun_soft_150_1 = orbSunSoft150[index, 1];
+                xmldata.orb_moon_hard_1st_1 = orbMoonHard1st[index, 1];
+                xmldata.orb_moon_hard_2nd_1 = orbMoonHard2nd[index, 1];
+                xmldata.orb_moon_hard_150_1 = orbMoonHard150[index, 1];
+                xmldata.orb_moon_soft_1st_1 = orbMoonSoft1st[index, 1];
+                xmldata.orb_moon_soft_2nd_1 = orbMoonSoft2nd[index, 1];
+                xmldata.orb_moon_soft_150_1 = orbMoonSoft150[index, 1];
+                xmldata.orb_other_hard_1st_1 = orbOtherHard1st[index, 1];
+                xmldata.orb_other_hard_2nd_1 = orbOtherHard2nd[index, 1];
+                xmldata.orb_other_hard_150_1 = orbOtherHard150[index, 1];
+                xmldata.orb_other_soft_1st_1 = orbOtherSoft1st[index, 1];
+                xmldata.orb_other_soft_2nd_1 = orbOtherSoft2nd[index, 1];
+                xmldata.orb_other_soft_150_1 = orbOtherSoft150[index, 1];
+                xmldata.orb_sun_hard_1st_2 = orbSunHard1st[index, 2];
+                xmldata.orb_sun_hard_2nd_2 = orbSunHard2nd[index, 2];
+                xmldata.orb_sun_hard_150_2 = orbSunHard150[index, 2];
+                xmldata.orb_sun_soft_1st_2 = orbSunSoft1st[index, 2];
+                xmldata.orb_sun_soft_2nd_2 = orbSunSoft2nd[index, 2];
+                xmldata.orb_sun_soft_150_2 = orbSunSoft150[index, 2];
+                xmldata.orb_moon_hard_1st_2 = orbMoonHard1st[index, 2];
+                xmldata.orb_moon_hard_2nd_2 = orbMoonHard2nd[index, 2];
+                xmldata.orb_moon_hard_150_2 = orbMoonHard150[index, 2];
+                xmldata.orb_moon_soft_1st_2 = orbMoonSoft1st[index, 2];
+                xmldata.orb_moon_soft_2nd_2 = orbMoonSoft2nd[index, 2];
+                xmldata.orb_moon_soft_150_2 = orbMoonSoft150[index, 2];
+                xmldata.orb_other_hard_1st_2 = orbOtherHard1st[index, 2];
+                xmldata.orb_other_hard_2nd_2 = orbOtherHard2nd[index, 2];
+                xmldata.orb_other_hard_150_2 = orbOtherHard150[index, 2];
+                xmldata.orb_other_soft_1st_2 = orbOtherSoft1st[index, 2];
+                xmldata.orb_other_soft_2nd_2 = orbOtherSoft2nd[index, 2];
+                xmldata.orb_other_soft_150_2 = orbOtherSoft150[index, 2];
+                xmldata.orb_sun_hard_1st_3 = orbSunHard1st[index, 3];
+                xmldata.orb_sun_hard_2nd_3 = orbSunHard2nd[index, 3];
+                xmldata.orb_sun_hard_150_3 = orbSunHard150[index, 3];
+                xmldata.orb_sun_soft_1st_3 = orbSunSoft1st[index, 3];
+                xmldata.orb_sun_soft_2nd_3 = orbSunSoft2nd[index, 3];
+                xmldata.orb_sun_soft_150_3 = orbSunSoft150[index, 3];
+                xmldata.orb_moon_hard_1st_3 = orbMoonHard1st[index, 3];
+                xmldata.orb_moon_hard_2nd_3 = orbMoonHard2nd[index, 3];
+                xmldata.orb_moon_hard_150_3 = orbMoonHard150[index, 3];
+                xmldata.orb_moon_soft_1st_3 = orbMoonSoft1st[index, 3];
+                xmldata.orb_moon_soft_2nd_3 = orbMoonSoft2nd[index, 3];
+                xmldata.orb_moon_soft_150_3 = orbMoonSoft150[index, 3];
+                xmldata.orb_other_hard_1st_3 = orbOtherHard1st[index, 3];
+                xmldata.orb_other_hard_2nd_3 = orbOtherHard2nd[index, 3];
+                xmldata.orb_other_hard_150_3 = orbOtherHard150[index, 3];
+                xmldata.orb_other_soft_1st_3 = orbOtherSoft1st[index, 3];
+                xmldata.orb_other_soft_2nd_3 = orbOtherSoft2nd[index, 3];
+                xmldata.orb_other_soft_150_3 = orbOtherSoft150[index, 3];
+                xmldata.orb_sun_hard_1st_4 = orbSunHard1st[index, 4];
+                xmldata.orb_sun_hard_2nd_4 = orbSunHard2nd[index, 4];
+                xmldata.orb_sun_hard_150_4 = orbSunHard150[index, 4];
+                xmldata.orb_sun_soft_1st_4 = orbSunSoft1st[index, 4];
+                xmldata.orb_sun_soft_2nd_4 = orbSunSoft2nd[index, 4];
+                xmldata.orb_sun_soft_150_4 = orbSunSoft150[index, 4];
+                xmldata.orb_moon_hard_1st_4 = orbMoonHard1st[index, 4];
+                xmldata.orb_moon_hard_2nd_4 = orbMoonHard2nd[index, 4];
+                xmldata.orb_moon_hard_150_4 = orbMoonHard150[index, 4];
+                xmldata.orb_moon_soft_1st_4 = orbMoonSoft1st[index, 4];
+                xmldata.orb_moon_soft_2nd_4 = orbMoonSoft2nd[index, 4];
+                xmldata.orb_moon_soft_150_4 = orbMoonSoft150[index, 4];
+                xmldata.orb_other_hard_1st_4 = orbOtherHard1st[index, 4];
+                xmldata.orb_other_hard_2nd_4 = orbOtherHard2nd[index, 4];
+                xmldata.orb_other_hard_150_4 = orbOtherHard150[index, 4];
+                xmldata.orb_other_soft_1st_4 = orbOtherSoft1st[index, 4];
+                xmldata.orb_other_soft_2nd_4 = orbOtherSoft2nd[index, 4];
+                xmldata.orb_other_soft_150_4 = orbOtherSoft150[index, 4];
+                xmldata.orb_sun_hard_1st_5 = orbSunHard1st[index, 5];
+                xmldata.orb_sun_hard_2nd_5 = orbSunHard2nd[index, 5];
+                xmldata.orb_sun_hard_150_5 = orbSunHard150[index, 5];
+                xmldata.orb_sun_soft_1st_5 = orbSunSoft1st[index, 5];
+                xmldata.orb_sun_soft_2nd_5 = orbSunSoft2nd[index, 5];
+                xmldata.orb_sun_soft_150_5 = orbSunSoft150[index, 5];
+                xmldata.orb_moon_hard_1st_5 = orbMoonHard1st[index, 5];
+                xmldata.orb_moon_hard_2nd_5 = orbMoonHard2nd[index, 5];
+                xmldata.orb_moon_hard_150_5 = orbMoonHard150[index, 5];
+                xmldata.orb_moon_soft_1st_5 = orbMoonSoft1st[index, 5];
+                xmldata.orb_moon_soft_2nd_5 = orbMoonSoft2nd[index, 5];
+                xmldata.orb_moon_soft_150_5 = orbMoonSoft150[index, 5];
+                xmldata.orb_other_hard_1st_5 = orbOtherHard1st[index, 5];
+                xmldata.orb_other_hard_2nd_5 = orbOtherHard2nd[index, 5];
+                xmldata.orb_other_hard_150_5 = orbOtherHard150[index, 5];
+                xmldata.orb_other_soft_1st_5 = orbOtherSoft1st[index, 5];
+                xmldata.orb_other_soft_2nd_5 = orbOtherSoft2nd[index, 5];
+                xmldata.orb_other_soft_150_5 = orbOtherSoft150[index, 5];
+
                 string filename = @"system\setting" + index + ".csm";
                 XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
                 FileStream fs = new FileStream(filename, FileMode.Create);
@@ -1815,48 +1631,468 @@ namespace microcosm.Config
             }
 
             int currentIndex = main.dispSettingBox.SelectedIndex;
-            main.currentSetting.aspectConjunction[0, 0] = aspectConjunction[currentIndex, 0];
-            main.currentSetting.aspectConjunction[1, 1] = aspectConjunction[currentIndex, 1];
-            main.currentSetting.aspectConjunction[2, 2] = aspectConjunction[currentIndex, 2];
-            main.currentSetting.aspectConjunction[0, 1] = aspectConjunction[currentIndex, 3];
-            main.currentSetting.aspectConjunction[0, 2] = aspectConjunction[currentIndex, 4];
-            main.currentSetting.aspectConjunction[1, 2] = aspectConjunction[currentIndex, 5];
-            main.currentSetting.aspectOpposition[0, 0] = aspectOpposition[currentIndex, 0];
-            main.currentSetting.aspectOpposition[1, 1] = aspectOpposition[currentIndex, 1];
-            main.currentSetting.aspectOpposition[2, 2] = aspectOpposition[currentIndex, 2];
-            main.currentSetting.aspectOpposition[0, 1] = aspectOpposition[currentIndex, 3];
-            main.currentSetting.aspectOpposition[0, 2] = aspectOpposition[currentIndex, 4];
-            main.currentSetting.aspectOpposition[1, 2] = aspectOpposition[currentIndex, 5];
-            main.currentSetting.aspectTrine[0, 0] = aspectTrine[currentIndex, 0];
-            main.currentSetting.aspectTrine[1, 1] = aspectTrine[currentIndex, 1];
-            main.currentSetting.aspectTrine[2, 2] = aspectTrine[currentIndex, 2];
-            main.currentSetting.aspectTrine[0, 1] = aspectTrine[currentIndex, 3];
-            main.currentSetting.aspectTrine[0, 2] = aspectTrine[currentIndex, 4];
-            main.currentSetting.aspectTrine[1, 2] = aspectTrine[currentIndex, 5];
-            main.currentSetting.aspectSquare[0, 0] = aspectSquare[currentIndex, 0];
-            main.currentSetting.aspectSquare[1, 1] = aspectSquare[currentIndex, 1];
-            main.currentSetting.aspectSquare[2, 2] = aspectSquare[currentIndex, 2];
-            main.currentSetting.aspectSquare[0, 1] = aspectSquare[currentIndex, 3];
-            main.currentSetting.aspectSquare[0, 2] = aspectSquare[currentIndex, 4];
-            main.currentSetting.aspectSquare[1, 2] = aspectSquare[currentIndex, 5];
-            main.currentSetting.aspectSextile[0, 0] = aspectSextile[currentIndex, 0];
-            main.currentSetting.aspectSextile[1, 1] = aspectSextile[currentIndex, 1];
-            main.currentSetting.aspectSextile[2, 2] = aspectSextile[currentIndex, 2];
-            main.currentSetting.aspectSextile[0, 1] = aspectSextile[currentIndex, 3];
-            main.currentSetting.aspectSextile[0, 2] = aspectSextile[currentIndex, 4];
-            main.currentSetting.aspectSextile[1, 2] = aspectSextile[currentIndex, 5];
-            main.currentSetting.aspectInconjunct[0, 0] = aspectInconjunct[currentIndex, 0];
-            main.currentSetting.aspectInconjunct[1, 1] = aspectInconjunct[currentIndex, 1];
-            main.currentSetting.aspectInconjunct[2, 2] = aspectInconjunct[currentIndex, 2];
-            main.currentSetting.aspectInconjunct[0, 1] = aspectInconjunct[currentIndex, 3];
-            main.currentSetting.aspectInconjunct[0, 2] = aspectInconjunct[currentIndex, 4];
-            main.currentSetting.aspectInconjunct[1, 2] = aspectInconjunct[currentIndex, 5];
-            main.currentSetting.aspectSesquiquadrate[0, 0] = aspectSesquiquadrate[currentIndex, 0];
-            main.currentSetting.aspectSesquiquadrate[1, 1] = aspectSesquiquadrate[currentIndex, 1];
-            main.currentSetting.aspectSesquiquadrate[2, 2] = aspectSesquiquadrate[currentIndex, 2];
-            main.currentSetting.aspectSesquiquadrate[0, 1] = aspectSesquiquadrate[currentIndex, 3];
-            main.currentSetting.aspectSesquiquadrate[0, 2] = aspectSesquiquadrate[currentIndex, 4];
-            main.currentSetting.aspectSesquiquadrate[1, 2] = aspectSesquiquadrate[currentIndex, 5];
+
+            for (int i = 0; i < 10; i++)
+            {
+                main.settings[i].dispPlanet.Clear();
+                Dictionary<int, bool> dp11 = new Dictionary<int, bool>();
+                dp11.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun11);
+                dp11.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon11);
+                dp11.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury11);
+                dp11.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus11);
+                dp11.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars11);
+                dp11.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter11);
+                dp11.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn11);
+                dp11.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus11);
+                dp11.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune11);
+                dp11.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto11);
+                dp11.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh11);
+                dp11.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc11);
+                dp11.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc11);
+                dp11.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron11);
+                dp11.Add(CommonData.ZODIAC_EARTH, false);
+                dp11.Add(CommonData.ZODIAC_LILITH, false);
+                dp11.Add(CommonData.ZODIAC_CELES, false);
+                dp11.Add(CommonData.ZODIAC_PARAS, false);
+                dp11.Add(CommonData.ZODIAC_JUNO, false);
+                dp11.Add(CommonData.ZODIAC_VESTA, false);
+                dp11.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispPlanet.Add(dp11);
+                Dictionary<int, bool> dp22 = new Dictionary<int, bool>();
+                dp22.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun22);
+                dp22.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon22);
+                dp22.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury22);
+                dp22.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus22);
+                dp22.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars22);
+                dp22.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter22);
+                dp22.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn22);
+                dp22.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus22);
+                dp22.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune22);
+                dp22.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto22);
+                dp22.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh22);
+                dp22.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc22);
+                dp22.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc22);
+                dp22.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron22);
+                dp22.Add(CommonData.ZODIAC_EARTH, false);
+                dp22.Add(CommonData.ZODIAC_LILITH, false);
+                dp22.Add(CommonData.ZODIAC_CELES, false);
+                dp22.Add(CommonData.ZODIAC_PARAS, false);
+                dp22.Add(CommonData.ZODIAC_JUNO, false);
+                dp22.Add(CommonData.ZODIAC_VESTA, false);
+                dp22.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispPlanet.Add(dp22);
+                Dictionary<int, bool> dp33 = new Dictionary<int, bool>();
+                dp33.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun33);
+                dp33.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon33);
+                dp33.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury33);
+                dp33.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus33);
+                dp33.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars33);
+                dp33.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter33);
+                dp33.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn33);
+                dp33.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus33);
+                dp33.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune33);
+                dp33.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto33);
+                dp33.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh33);
+                dp33.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc33);
+                dp33.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc33);
+                dp33.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron33);
+                dp33.Add(CommonData.ZODIAC_EARTH, false);
+                dp33.Add(CommonData.ZODIAC_LILITH, false);
+                dp33.Add(CommonData.ZODIAC_CELES, false);
+                dp33.Add(CommonData.ZODIAC_PARAS, false);
+                dp33.Add(CommonData.ZODIAC_JUNO, false);
+                dp33.Add(CommonData.ZODIAC_VESTA, false);
+                dp33.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispPlanet.Add(dp33);
+                Dictionary<int, bool> dp12 = new Dictionary<int, bool>();
+                dp12.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun12);
+                dp12.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon12);
+                dp12.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury12);
+                dp12.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus12);
+                dp12.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars12);
+                dp12.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter12);
+                dp12.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn12);
+                dp12.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus12);
+                dp12.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune12);
+                dp12.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto12);
+                dp12.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh12);
+                dp12.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc12);
+                dp12.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc12);
+                dp12.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron12);
+                dp12.Add(CommonData.ZODIAC_EARTH, false);
+                dp12.Add(CommonData.ZODIAC_LILITH, false);
+                dp12.Add(CommonData.ZODIAC_CELES, false);
+                dp12.Add(CommonData.ZODIAC_PARAS, false);
+                dp12.Add(CommonData.ZODIAC_JUNO, false);
+                dp12.Add(CommonData.ZODIAC_VESTA, false);
+                dp12.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispPlanet.Add(dp12);
+                Dictionary<int, bool> dp13 = new Dictionary<int, bool>();
+                dp13.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun13);
+                dp13.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon13);
+                dp13.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury13);
+                dp13.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus13);
+                dp13.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars13);
+                dp13.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter13);
+                dp13.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn13);
+                dp13.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus13);
+                dp13.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune13);
+                dp13.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto13);
+                dp13.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh13);
+                dp13.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc13);
+                dp13.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc13);
+                dp13.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron13);
+                dp13.Add(CommonData.ZODIAC_EARTH, false);
+                dp13.Add(CommonData.ZODIAC_LILITH, false);
+                dp13.Add(CommonData.ZODIAC_CELES, false);
+                dp13.Add(CommonData.ZODIAC_PARAS, false);
+                dp13.Add(CommonData.ZODIAC_JUNO, false);
+                dp13.Add(CommonData.ZODIAC_VESTA, false);
+                dp13.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispPlanet.Add(dp13);
+                Dictionary<int, bool> dp23 = new Dictionary<int, bool>();
+                dp23.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun23);
+                dp23.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon23);
+                dp23.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury23);
+                dp23.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus23);
+                dp23.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars23);
+                dp23.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter23);
+                dp23.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn23);
+                dp23.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus23);
+                dp23.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune23);
+                dp23.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto23);
+                dp23.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh23);
+                dp23.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc23);
+                dp23.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc23);
+                dp23.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron23);
+                dp23.Add(CommonData.ZODIAC_EARTH, false);
+                dp23.Add(CommonData.ZODIAC_LILITH, false);
+                dp23.Add(CommonData.ZODIAC_CELES, false);
+                dp23.Add(CommonData.ZODIAC_PARAS, false);
+                dp23.Add(CommonData.ZODIAC_JUNO, false);
+                dp23.Add(CommonData.ZODIAC_VESTA, false);
+                dp23.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispPlanet.Add(dp23);
+
+                main.settings[i].dispAspectPlanet.Clear();
+                Dictionary<int, bool> d11 = new Dictionary<int, bool>();
+                d11.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun11);
+                d11.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.aspectMoon11);
+                d11.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.aspectMercury11);
+                d11.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.aspectVenus11);
+                d11.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.aspectMars11);
+                d11.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.aspectJupiter11);
+                d11.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.aspectSaturn11);
+                d11.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.aspectUranus11);
+                d11.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune11);
+                d11.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto11);
+                d11.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh11);
+                d11.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc11);
+                d11.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc11);
+                d11.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron11);
+                d11.Add(CommonData.ZODIAC_EARTH, false);
+                d11.Add(CommonData.ZODIAC_LILITH, false);
+                d11.Add(CommonData.ZODIAC_CELES, false);
+                d11.Add(CommonData.ZODIAC_PARAS, false);
+                d11.Add(CommonData.ZODIAC_JUNO, false);
+                d11.Add(CommonData.ZODIAC_VESTA, false);
+                d11.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispAspectPlanet.Add(d11);
+                Dictionary<int, bool> d22 = new Dictionary<int, bool>();
+                d22.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun22);
+                d22.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.aspectMoon22);
+                d22.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.aspectMercury22);
+                d22.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.aspectVenus22);
+                d22.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.aspectMars22);
+                d22.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.aspectJupiter22);
+                d22.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.aspectSaturn22);
+                d22.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.aspectUranus22);
+                d22.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune22);
+                d22.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto22);
+                d22.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh22);
+                d22.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc22);
+                d22.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc22);
+                d22.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron22);
+                d22.Add(CommonData.ZODIAC_EARTH, false);
+                d22.Add(CommonData.ZODIAC_LILITH, false);
+                d22.Add(CommonData.ZODIAC_CELES, false);
+                d22.Add(CommonData.ZODIAC_PARAS, false);
+                d22.Add(CommonData.ZODIAC_JUNO, false);
+                d22.Add(CommonData.ZODIAC_VESTA, false);
+                d22.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispAspectPlanet.Add(d22);
+                Dictionary<int, bool> d33 = new Dictionary<int, bool>();
+                d33.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun33);
+                d33.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.aspectMoon33);
+                d33.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.aspectMercury33);
+                d33.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.aspectVenus33);
+                d33.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.aspectMars33);
+                d33.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.aspectJupiter33);
+                d33.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.aspectSaturn33);
+                d33.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.aspectUranus33);
+                d33.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune33);
+                d33.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto33);
+                d33.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh33);
+                d33.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc33);
+                d33.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc33);
+                d33.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron33);
+                d33.Add(CommonData.ZODIAC_EARTH, false);
+                d33.Add(CommonData.ZODIAC_LILITH, false);
+                d33.Add(CommonData.ZODIAC_CELES, false);
+                d33.Add(CommonData.ZODIAC_PARAS, false);
+                d33.Add(CommonData.ZODIAC_JUNO, false);
+                d33.Add(CommonData.ZODIAC_VESTA, false);
+                d33.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispAspectPlanet.Add(d33);
+                Dictionary<int, bool> d12 = new Dictionary<int, bool>();
+                d12.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun12);
+                d12.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.aspectMoon12);
+                d12.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.aspectMercury12);
+                d12.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.aspectVenus12);
+                d12.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.aspectMars12);
+                d12.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.aspectJupiter12);
+                d12.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.aspectSaturn12);
+                d12.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.aspectUranus12);
+                d12.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune12);
+                d12.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto12);
+                d12.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh12);
+                d12.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc12);
+                d12.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc12);
+                d12.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron12);
+                d12.Add(CommonData.ZODIAC_EARTH, false);
+                d12.Add(CommonData.ZODIAC_LILITH, false);
+                d12.Add(CommonData.ZODIAC_CELES, false);
+                d12.Add(CommonData.ZODIAC_PARAS, false);
+                d12.Add(CommonData.ZODIAC_JUNO, false);
+                d12.Add(CommonData.ZODIAC_VESTA, false);
+                d12.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispAspectPlanet.Add(d12);
+                Dictionary<int, bool> d13 = new Dictionary<int, bool>();
+                d13.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun13);
+                d13.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.aspectMoon13);
+                d13.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.aspectMercury13);
+                d13.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.aspectVenus13);
+                d13.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.aspectMars13);
+                d13.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.aspectJupiter13);
+                d13.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.aspectSaturn13);
+                d13.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.aspectUranus13);
+                d13.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune13);
+                d13.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto13);
+                d13.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh13);
+                d13.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc13);
+                d13.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc13);
+                d13.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron13);
+                d13.Add(CommonData.ZODIAC_EARTH, false);
+                d13.Add(CommonData.ZODIAC_LILITH, false);
+                d13.Add(CommonData.ZODIAC_CELES, false);
+                d13.Add(CommonData.ZODIAC_PARAS, false);
+                d13.Add(CommonData.ZODIAC_JUNO, false);
+                d13.Add(CommonData.ZODIAC_VESTA, false);
+                d13.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispAspectPlanet.Add(d13);
+                Dictionary<int, bool> d23 = new Dictionary<int, bool>();
+                d23.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun23);
+                d23.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.aspectMoon23);
+                d23.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.aspectMercury23);
+                d23.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.aspectVenus23);
+                d23.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.aspectMars23);
+                d23.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.aspectJupiter23);
+                d23.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.aspectSaturn23);
+                d23.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.aspectUranus23);
+                d23.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune23);
+                d23.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto23);
+                d23.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh23);
+                d23.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc23);
+                d23.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc23);
+                d23.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron23);
+                d23.Add(CommonData.ZODIAC_EARTH, false);
+                d23.Add(CommonData.ZODIAC_LILITH, false);
+                d23.Add(CommonData.ZODIAC_CELES, false);
+                d23.Add(CommonData.ZODIAC_PARAS, false);
+                d23.Add(CommonData.ZODIAC_JUNO, false);
+                d23.Add(CommonData.ZODIAC_VESTA, false);
+                d23.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
+                main.settings[i].dispAspectPlanet.Add(d23);
+
+                main.settings[i].dispAspectCategory.Clear();
+                Dictionary<AspectKind, bool> a11 = new Dictionary<AspectKind, bool>();
+                a11.Add(AspectKind.CONJUNCTION, main.settings[i].xmlData.aspectConjunction11);
+                a11.Add(AspectKind.OPPOSITION, main.settings[i].xmlData.aspectOpposition11);
+                a11.Add(AspectKind.TRINE, main.settings[i].xmlData.aspectTrine11);
+                a11.Add(AspectKind.SQUARE, main.settings[i].xmlData.aspectSquare11);
+                a11.Add(AspectKind.SEXTILE, main.settings[i].xmlData.aspectSextile11);
+                a11.Add(AspectKind.INCONJUNCT, main.settings[i].xmlData.aspectInconjunct11);
+                a11.Add(AspectKind.SESQUIQUADRATE, main.settings[i].xmlData.aspectSesquiquadrate11);
+                main.settings[i].dispAspectCategory.Add(a11);
+                Dictionary<AspectKind, bool> a22 = new Dictionary<AspectKind, bool>();
+                a22.Add(AspectKind.CONJUNCTION, main.settings[i].xmlData.aspectConjunction22);
+                a22.Add(AspectKind.OPPOSITION, main.settings[i].xmlData.aspectOpposition22);
+                a22.Add(AspectKind.TRINE, main.settings[i].xmlData.aspectTrine22);
+                a22.Add(AspectKind.SQUARE, main.settings[i].xmlData.aspectSquare22);
+                a22.Add(AspectKind.SEXTILE, main.settings[i].xmlData.aspectSextile22);
+                a22.Add(AspectKind.INCONJUNCT, main.settings[i].xmlData.aspectInconjunct22);
+                a22.Add(AspectKind.SESQUIQUADRATE, main.settings[i].xmlData.aspectSesquiquadrate22);
+                main.settings[i].dispAspectCategory.Add(a22);
+                Dictionary<AspectKind, bool> a33 = new Dictionary<AspectKind, bool>();
+                a33.Add(AspectKind.CONJUNCTION, main.settings[i].xmlData.aspectConjunction33);
+                a33.Add(AspectKind.OPPOSITION, main.settings[i].xmlData.aspectOpposition33);
+                a33.Add(AspectKind.TRINE, main.settings[i].xmlData.aspectTrine33);
+                a33.Add(AspectKind.SQUARE, main.settings[i].xmlData.aspectSquare33);
+                a33.Add(AspectKind.SEXTILE, main.settings[i].xmlData.aspectSextile33);
+                a33.Add(AspectKind.INCONJUNCT, main.settings[i].xmlData.aspectInconjunct33);
+                a33.Add(AspectKind.SESQUIQUADRATE, main.settings[i].xmlData.aspectSesquiquadrate33);
+                main.settings[i].dispAspectCategory.Add(a33);
+                Dictionary<AspectKind, bool> a12 = new Dictionary<AspectKind, bool>();
+                a12.Add(AspectKind.CONJUNCTION, main.settings[i].xmlData.aspectConjunction12);
+                a12.Add(AspectKind.OPPOSITION, main.settings[i].xmlData.aspectOpposition12);
+                a12.Add(AspectKind.TRINE, main.settings[i].xmlData.aspectTrine12);
+                a12.Add(AspectKind.SQUARE, main.settings[i].xmlData.aspectSquare12);
+                a12.Add(AspectKind.SEXTILE, main.settings[i].xmlData.aspectSextile12);
+                a12.Add(AspectKind.INCONJUNCT, main.settings[i].xmlData.aspectInconjunct12);
+                a12.Add(AspectKind.SESQUIQUADRATE, main.settings[i].xmlData.aspectSesquiquadrate12);
+                main.settings[i].dispAspectCategory.Add(a12);
+                Dictionary<AspectKind, bool> a13 = new Dictionary<AspectKind, bool>();
+                a13.Add(AspectKind.CONJUNCTION, main.settings[i].xmlData.aspectConjunction13);
+                a13.Add(AspectKind.OPPOSITION, main.settings[i].xmlData.aspectOpposition13);
+                a13.Add(AspectKind.TRINE, main.settings[i].xmlData.aspectTrine13);
+                a13.Add(AspectKind.SQUARE, main.settings[i].xmlData.aspectSquare13);
+                a13.Add(AspectKind.SEXTILE, main.settings[i].xmlData.aspectSextile13);
+                a13.Add(AspectKind.INCONJUNCT, main.settings[i].xmlData.aspectInconjunct13);
+                a13.Add(AspectKind.SESQUIQUADRATE, main.settings[i].xmlData.aspectSesquiquadrate13);
+                main.settings[i].dispAspectCategory.Add(a13);
+                Dictionary<AspectKind, bool> a23 = new Dictionary<AspectKind, bool>();
+                a23.Add(AspectKind.CONJUNCTION, main.settings[i].xmlData.aspectConjunction23);
+                a23.Add(AspectKind.OPPOSITION, main.settings[i].xmlData.aspectOpposition23);
+                a23.Add(AspectKind.TRINE, main.settings[i].xmlData.aspectTrine23);
+                a23.Add(AspectKind.SQUARE, main.settings[i].xmlData.aspectSquare23);
+                a23.Add(AspectKind.SEXTILE, main.settings[i].xmlData.aspectSextile23);
+                a23.Add(AspectKind.INCONJUNCT, main.settings[i].xmlData.aspectInconjunct23);
+                a23.Add(AspectKind.SESQUIQUADRATE, main.settings[i].xmlData.aspectSesquiquadrate23);
+                main.settings[i].dispAspectCategory.Add(a23);
+
+                main.settings[i].orbs.Clear();
+                Dictionary<OrbKind, double> o11 = new Dictionary<OrbKind, double>();
+                o11.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_0);
+                o11.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_0);
+                o11.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_0);
+                o11.Add(OrbKind.SUN_SOFT_2ND, main.settings[i].xmlData.orb_sun_soft_2nd_0);
+                o11.Add(OrbKind.SUN_HARD_150, main.settings[i].xmlData.orb_sun_hard_150_0);
+                o11.Add(OrbKind.SUN_SOFT_150, main.settings[i].xmlData.orb_sun_soft_150_0);
+                o11.Add(OrbKind.MOON_HARD_1ST, main.settings[i].xmlData.orb_moon_hard_1st_0);
+                o11.Add(OrbKind.MOON_SOFT_1ST, main.settings[i].xmlData.orb_moon_soft_1st_0);
+                o11.Add(OrbKind.MOON_HARD_2ND, main.settings[i].xmlData.orb_moon_hard_2nd_0);
+                o11.Add(OrbKind.MOON_SOFT_2ND, main.settings[i].xmlData.orb_moon_soft_2nd_0);
+                o11.Add(OrbKind.MOON_HARD_150, main.settings[i].xmlData.orb_moon_hard_150_0);
+                o11.Add(OrbKind.MOON_SOFT_150, main.settings[i].xmlData.orb_moon_soft_150_0);
+                o11.Add(OrbKind.OTHER_HARD_1ST, main.settings[i].xmlData.orb_other_hard_1st_0);
+                o11.Add(OrbKind.OTHER_SOFT_1ST, main.settings[i].xmlData.orb_other_soft_1st_0);
+                o11.Add(OrbKind.OTHER_HARD_2ND, main.settings[i].xmlData.orb_other_hard_2nd_0);
+                o11.Add(OrbKind.OTHER_SOFT_2ND, main.settings[i].xmlData.orb_other_soft_2nd_0);
+                o11.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_0);
+                o11.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_0);
+                main.settings[i].orbs.Add(o11);
+                Dictionary<OrbKind, double> o22 = new Dictionary<OrbKind, double>();
+                o22.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_1);
+                o22.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_1);
+                o22.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_1);
+                o22.Add(OrbKind.SUN_SOFT_2ND, main.settings[i].xmlData.orb_sun_soft_2nd_1);
+                o22.Add(OrbKind.SUN_HARD_150, main.settings[i].xmlData.orb_sun_hard_150_1);
+                o22.Add(OrbKind.SUN_SOFT_150, main.settings[i].xmlData.orb_sun_soft_150_1);
+                o22.Add(OrbKind.MOON_HARD_1ST, main.settings[i].xmlData.orb_moon_hard_1st_1);
+                o22.Add(OrbKind.MOON_SOFT_1ST, main.settings[i].xmlData.orb_moon_soft_1st_1);
+                o22.Add(OrbKind.MOON_HARD_2ND, main.settings[i].xmlData.orb_moon_hard_2nd_1);
+                o22.Add(OrbKind.MOON_SOFT_2ND, main.settings[i].xmlData.orb_moon_soft_2nd_1);
+                o22.Add(OrbKind.MOON_HARD_150, main.settings[i].xmlData.orb_moon_hard_150_1);
+                o22.Add(OrbKind.MOON_SOFT_150, main.settings[i].xmlData.orb_moon_soft_150_1);
+                o22.Add(OrbKind.OTHER_HARD_1ST, main.settings[i].xmlData.orb_other_hard_1st_1);
+                o22.Add(OrbKind.OTHER_SOFT_1ST, main.settings[i].xmlData.orb_other_soft_1st_1);
+                o22.Add(OrbKind.OTHER_HARD_2ND, main.settings[i].xmlData.orb_other_hard_2nd_1);
+                o22.Add(OrbKind.OTHER_SOFT_2ND, main.settings[i].xmlData.orb_other_soft_2nd_1);
+                o22.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_1);
+                o22.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_1);
+                main.settings[i].orbs.Add(o22);
+                Dictionary<OrbKind, double> o33 = new Dictionary<OrbKind, double>();
+                o33.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_2);
+                o33.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_2);
+                o33.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_2);
+                o33.Add(OrbKind.SUN_SOFT_2ND, main.settings[i].xmlData.orb_sun_soft_2nd_2);
+                o33.Add(OrbKind.SUN_HARD_150, main.settings[i].xmlData.orb_sun_hard_150_2);
+                o33.Add(OrbKind.SUN_SOFT_150, main.settings[i].xmlData.orb_sun_soft_150_2);
+                o33.Add(OrbKind.MOON_HARD_1ST, main.settings[i].xmlData.orb_moon_hard_1st_2);
+                o33.Add(OrbKind.MOON_SOFT_1ST, main.settings[i].xmlData.orb_moon_soft_1st_2);
+                o33.Add(OrbKind.MOON_HARD_2ND, main.settings[i].xmlData.orb_moon_hard_2nd_2);
+                o33.Add(OrbKind.MOON_SOFT_2ND, main.settings[i].xmlData.orb_moon_soft_2nd_2);
+                o33.Add(OrbKind.MOON_HARD_150, main.settings[i].xmlData.orb_moon_hard_150_2);
+                o33.Add(OrbKind.MOON_SOFT_150, main.settings[i].xmlData.orb_moon_soft_150_2);
+                o33.Add(OrbKind.OTHER_HARD_1ST, main.settings[i].xmlData.orb_other_hard_1st_2);
+                o33.Add(OrbKind.OTHER_SOFT_1ST, main.settings[i].xmlData.orb_other_soft_1st_2);
+                o33.Add(OrbKind.OTHER_HARD_2ND, main.settings[i].xmlData.orb_other_hard_2nd_2);
+                o33.Add(OrbKind.OTHER_SOFT_2ND, main.settings[i].xmlData.orb_other_soft_2nd_2);
+                o33.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_2);
+                o33.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_2);
+                main.settings[i].orbs.Add(o33);
+                Dictionary<OrbKind, double> o12 = new Dictionary<OrbKind, double>();
+                o12.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_3);
+                o12.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_3);
+                o12.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_3);
+                o12.Add(OrbKind.SUN_SOFT_2ND, main.settings[i].xmlData.orb_sun_soft_2nd_3);
+                o12.Add(OrbKind.SUN_HARD_150, main.settings[i].xmlData.orb_sun_hard_150_3);
+                o12.Add(OrbKind.SUN_SOFT_150, main.settings[i].xmlData.orb_sun_soft_150_3);
+                o12.Add(OrbKind.MOON_HARD_1ST, main.settings[i].xmlData.orb_moon_hard_1st_3);
+                o12.Add(OrbKind.MOON_SOFT_1ST, main.settings[i].xmlData.orb_moon_soft_1st_3);
+                o12.Add(OrbKind.MOON_HARD_2ND, main.settings[i].xmlData.orb_moon_hard_2nd_3);
+                o12.Add(OrbKind.MOON_SOFT_2ND, main.settings[i].xmlData.orb_moon_soft_2nd_3);
+                o12.Add(OrbKind.MOON_HARD_150, main.settings[i].xmlData.orb_moon_hard_150_3);
+                o12.Add(OrbKind.MOON_SOFT_150, main.settings[i].xmlData.orb_moon_soft_150_3);
+                o12.Add(OrbKind.OTHER_HARD_1ST, main.settings[i].xmlData.orb_other_hard_1st_3);
+                o12.Add(OrbKind.OTHER_SOFT_1ST, main.settings[i].xmlData.orb_other_soft_1st_3);
+                o12.Add(OrbKind.OTHER_HARD_2ND, main.settings[i].xmlData.orb_other_hard_2nd_3);
+                o12.Add(OrbKind.OTHER_SOFT_2ND, main.settings[i].xmlData.orb_other_soft_2nd_3);
+                o12.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_3);
+                o12.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_3);
+                main.settings[i].orbs.Add(o12);
+                Dictionary<OrbKind, double> o13 = new Dictionary<OrbKind, double>();
+                o13.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_4);
+                o13.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_4);
+                o13.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_4);
+                o13.Add(OrbKind.SUN_SOFT_2ND, main.settings[i].xmlData.orb_sun_soft_2nd_4);
+                o13.Add(OrbKind.SUN_HARD_150, main.settings[i].xmlData.orb_sun_hard_150_4);
+                o13.Add(OrbKind.SUN_SOFT_150, main.settings[i].xmlData.orb_sun_soft_150_4);
+                o13.Add(OrbKind.MOON_HARD_1ST, main.settings[i].xmlData.orb_moon_hard_1st_4);
+                o13.Add(OrbKind.MOON_SOFT_1ST, main.settings[i].xmlData.orb_moon_soft_1st_4);
+                o13.Add(OrbKind.MOON_HARD_2ND, main.settings[i].xmlData.orb_moon_hard_2nd_4);
+                o13.Add(OrbKind.MOON_SOFT_2ND, main.settings[i].xmlData.orb_moon_soft_2nd_4);
+                o13.Add(OrbKind.MOON_HARD_150, main.settings[i].xmlData.orb_moon_hard_150_4);
+                o13.Add(OrbKind.MOON_SOFT_150, main.settings[i].xmlData.orb_moon_soft_150_4);
+                o13.Add(OrbKind.OTHER_HARD_1ST, main.settings[i].xmlData.orb_other_hard_1st_4);
+                o13.Add(OrbKind.OTHER_SOFT_1ST, main.settings[i].xmlData.orb_other_soft_1st_4);
+                o13.Add(OrbKind.OTHER_HARD_2ND, main.settings[i].xmlData.orb_other_hard_2nd_4);
+                o13.Add(OrbKind.OTHER_SOFT_2ND, main.settings[i].xmlData.orb_other_soft_2nd_4);
+                o13.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_4);
+                o13.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_4);
+                main.settings[i].orbs.Add(o13);
+                Dictionary<OrbKind, double> o23 = new Dictionary<OrbKind, double>();
+                o23.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_5);
+                o23.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_5);
+                o23.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_5);
+                o23.Add(OrbKind.SUN_SOFT_2ND, main.settings[i].xmlData.orb_sun_soft_2nd_5);
+                o23.Add(OrbKind.SUN_HARD_150, main.settings[i].xmlData.orb_sun_hard_150_5);
+                o23.Add(OrbKind.SUN_SOFT_150, main.settings[i].xmlData.orb_sun_soft_150_5);
+                o23.Add(OrbKind.MOON_HARD_1ST, main.settings[i].xmlData.orb_moon_hard_1st_5);
+                o23.Add(OrbKind.MOON_SOFT_1ST, main.settings[i].xmlData.orb_moon_soft_1st_5);
+                o23.Add(OrbKind.MOON_HARD_2ND, main.settings[i].xmlData.orb_moon_hard_2nd_5);
+                o23.Add(OrbKind.MOON_SOFT_2ND, main.settings[i].xmlData.orb_moon_soft_2nd_5);
+                o23.Add(OrbKind.MOON_HARD_150, main.settings[i].xmlData.orb_moon_hard_150_5);
+                o23.Add(OrbKind.MOON_SOFT_150, main.settings[i].xmlData.orb_moon_soft_150_5);
+                o23.Add(OrbKind.OTHER_HARD_1ST, main.settings[i].xmlData.orb_other_hard_1st_5);
+                o23.Add(OrbKind.OTHER_SOFT_1ST, main.settings[i].xmlData.orb_other_soft_1st_5);
+                o23.Add(OrbKind.OTHER_HARD_2ND, main.settings[i].xmlData.orb_other_hard_2nd_5);
+                o23.Add(OrbKind.OTHER_SOFT_2ND, main.settings[i].xmlData.orb_other_soft_2nd_5);
+                o23.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_5);
+                o23.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_5);
+                main.settings[i].orbs.Add(o23);
+            }
+
 
             main.currentSetting.dispAspect[0, 0] = aspectDispChecked[currentIndex, 0];
             main.currentSetting.dispAspect[1, 1] = aspectDispChecked[currentIndex, 1];
@@ -1971,6 +2207,275 @@ namespace microcosm.Config
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
+        }
+
+        private void sunSoft1st_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbSunSoft1st[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+            }
+        }
+
+        private void sunHard1st_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbSunHard1st[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void sunSoft150_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbSunSoft150[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void sunHard150_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbSunHard150[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void sunSoft2nd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbSunSoft2nd[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void sunHard2nd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbSunHard2nd[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void moonSoft1st_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbMoonSoft1st[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void moonSoft150_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbMoonSoft150[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void moonSoft2nd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbMoonSoft2nd[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void moonHard1st_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbMoonHard1st[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void moonHard150_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbMoonHard150[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void moonHard2nd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbMoonHard2nd[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void otherSoft1st_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbOtherSoft1st[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void otherSoft150_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbOtherSoft150[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void otherSoft2nd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbOtherSoft2nd[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void otherHard1st_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbOtherHard1st[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void otherHard150_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbOtherHard150[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
+        }
+
+        private void otherHard2nd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
+            try
+            {
+                orbOtherHard2nd[index, orbIndex] = double.Parse(box.Text);
+            }
+            catch (FormatException except)
+            {
+
+            }
         }
     }
 }

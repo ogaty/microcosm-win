@@ -1897,12 +1897,12 @@ namespace microcosm
                     if (ringCanvas.ActualWidth > ringStack.ActualHeight)
                     {
                         // 横長
-                        startRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 3;
+                        startRingX = (ringStack.ActualHeight + 2 * tempSettings.zodiacCenter - 90) / 6;
                     }
                     else
                     {
                         // 縦長
-                        startRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 3;
+                        startRingX = (ringStack.ActualWidth + 2 * tempSettings.zodiacCenter - 90) / 6;
                     }
                 }
                 else
@@ -1911,12 +1911,12 @@ namespace microcosm
                     if (ringCanvas.ActualWidth > ringStack.ActualHeight)
                     {
                         // 横長
-                        startRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4;
+                        startRingX = (2 * ringStack.ActualHeight + tempSettings.zodiacCenter - 180) / 6;
                     }
                     else
                     {
                         // 縦長
-                        startRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4;
+                        startRingX = (2 * ringStack.ActualWidth + tempSettings.zodiacCenter - 180) / 6;
                     }
                 }
                 if (endPosition == 1)
@@ -1930,12 +1930,12 @@ namespace microcosm
                     if (ringCanvas.ActualWidth > ringStack.ActualHeight)
                     {
                         // 横長
-                        endRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 3;
+                        endRingX = (ringStack.ActualHeight + 2 * tempSettings.zodiacCenter - 90) / 6;
                     }
                     else
                     {
                         // 縦長
-                        endRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 3;
+                        endRingX = (ringStack.ActualWidth + 2 * tempSettings.zodiacCenter - 90) / 6;
                     }
                 }
                 else
@@ -1944,12 +1944,12 @@ namespace microcosm
                     if (ringCanvas.ActualWidth > ringStack.ActualHeight)
                     {
                         // 横長
-                        endRingX = (ringStack.ActualHeight + tempSettings.zodiacCenter - 90) / 4;
+                        endRingX = (2 * ringStack.ActualHeight + tempSettings.zodiacCenter - 180) / 6;
                     }
                     else
                     {
                         // 縦長
-                        endRingX = (ringStack.ActualWidth + tempSettings.zodiacCenter - 90) / 4;
+                        endRingX = (2 * ringStack.ActualWidth + tempSettings.zodiacCenter - 180) / 6;
                     }
                 }
 

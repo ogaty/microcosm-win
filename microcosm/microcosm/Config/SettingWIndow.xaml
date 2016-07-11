@@ -1891,40 +1891,40 @@
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                         <TextBlock Width="30"></TextBlock>
                                         <TextBlock Width="70" Text="１種" Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft1st"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="sunHard1st"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft1st" LostKeyboardFocus="sunSoft1st_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="sunHard1st" LostKeyboardFocus="sunHard1st_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                         <TextBlock Width="30" Text="太陽"></TextBlock>
                                         <TextBlock Width="70" Text="150° / 135° " Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft150"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="sunHard150"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft150" LostKeyboardFocus="sunSoft150_LostKeyboardFocus"/>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="sunHard150" LostKeyboardFocus="sunHard150_LostKeyboardFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
                                         <TextBlock Width="30" Text=""></TextBlock>
                                         <TextBlock Width="70" Text="２種・３種 " Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft2nd"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="sunHard2nd"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="sunSoft2nd" LostKeyboardFocus="sunSoft2nd_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="sunHard2nd" LostKeyboardFocus="sunHard2nd_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                 </StackPanel>
                                 <StackPanel Background="#FFF7F9CE">
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                         <TextBlock Width="30"></TextBlock>
                                         <TextBlock Width="70" Text="１種" Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft1st"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="moonHard1st"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft1st" LostKeyboardFocus="moonSoft1st_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="moonHard1st" LostKeyboardFocus="moonHard1st_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                         <TextBlock Text="月" Width="30"></TextBlock>
                                         <TextBlock Width="70" Text="150° / 135° " Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft150"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="moonHard150"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft150" LostKeyboardFocus="moonSoft150_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="moonHard150" LostKeyboardFocus="moonHard150_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
                                         <TextBlock Width="30"></TextBlock>
                                         <TextBlock Width="70" Text="２種・３種" Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft2nd"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="moonHard2nd"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="moonSoft2nd" LostKeyboardFocus="moonSoft2nd_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="moonHard2nd" LostKeyboardFocus="moonHard2nd_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                 </StackPanel>
 
@@ -1932,20 +1932,20 @@
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                         <TextBlock Width="30"></TextBlock>
                                         <TextBlock Width="70" Text="１種" Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft1st"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="otherHard1st"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft1st" LostKeyboardFocus="otherSoft1st_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,50,0" x:Name="otherHard1st" LostKeyboardFocus="otherHard1st_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                         <TextBlock Text="その他" Width="30"></TextBlock>
                                         <TextBlock Width="70" Text="150° / 135° " Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft150"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="otherHard150"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft150" LostKeyboardFocus="otherSoft150_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="otherHard150" LostKeyboardFocus="otherHard150_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
                                         <TextBlock Width="30"></TextBlock>
                                         <TextBlock Width="70" Text="２種・３種" Margin="20,0,0,0"></TextBlock>
-                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft2nd"></TextBox>
-                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="otherHard2nd"></TextBox>
+                                        <TextBox Width="50" Margin="20,0,0,0" x:Name="otherSoft2nd" LostKeyboardFocus="otherSoft2nd_LostKeyboardFocus"></TextBox>
+                                        <TextBox Width="50" Margin="30,0,0,0" x:Name="otherHard2nd" LostKeyboardFocus="otherHard2nd_LostKeyboardFocus"></TextBox>
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
