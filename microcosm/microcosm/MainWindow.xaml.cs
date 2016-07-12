@@ -722,7 +722,8 @@ namespace microcosm
             ReCalc(edata, userdata, userdata, userdata, userdata, userdata, userdata);
         }
 
-
+        // 再計算
+        // 表示可否の時はここは呼ばない
         public void ReCalc(
                 UserEventData list1Data,
                 UserEventData list2Data,
@@ -1309,6 +1310,7 @@ namespace microcosm
         }
 
         // レンダリングメイン
+        // disp変更の場合はこれだけ呼ぶ
         public void ReRender()
         {
             AllClear();
@@ -1746,7 +1748,7 @@ namespace microcosm
                 // start座標が変わる
                 Enumerable.Range(1, 12).ToList().ForEach(i =>
                 {
-                    double degree = cusp2[i] - cusp2[1];
+                    double degree = cusp2[i] - natalcusp[1];
 
                     startX = (rcanvas.outerWidth - 90) / 2;
                     PointF newStart = rotate(startX, startY, degree);
@@ -1797,7 +1799,7 @@ namespace microcosm
                 // start座標、end座標が変わる
                 Enumerable.Range(1, 12).ToList().ForEach(i =>
                 {
-                    double degree = cusp2[i] - cusp2[1];
+                    double degree = cusp2[i] - natalcusp[1];
 
                     startX = (rcanvas.outerWidth + 2 * tempSettings.zodiacCenter - 90) / 6;
                     PointF newStart = rotate(startX, startY, degree);
@@ -1806,7 +1808,7 @@ namespace microcosm
                     newStart.Y = newStart.Y * -1;
                     newStart.Y += (float)rcanvas.outerHeight / 2;
 
-                    endX = (2 * rcanvas.outerWidth + tempSettings.zodiacCenter - 90) / 6;
+                    endX = (2 * rcanvas.outerWidth + tempSettings.zodiacCenter - 180) / 6;
                     PointF newEnd = rotate(endX, endY, degree);
                     newEnd.X += (float)rcanvas.outerWidth / 2;
                     // Formの座標は下がプラス、数学では上がマイナス
@@ -1821,9 +1823,9 @@ namespace microcosm
                 });
                 Enumerable.Range(1, 12).ToList().ForEach(i =>
                 {
-                    double degree = cusp3[i] - cusp3[1];
+                    double degree = cusp3[i] - natalcusp[1];
 
-                    startX = (2 * rcanvas.outerWidth + tempSettings.zodiacCenter - 90) / 6;
+                    startX = (2 * rcanvas.outerWidth + tempSettings.zodiacCenter - 180) / 6;
                     PointF newStart = rotate(startX, startY, degree);
                     newStart.X += (float)rcanvas.outerWidth / 2;
                     // Formの座標は下がプラス、数学では上がマイナス

@@ -846,7 +846,7 @@ namespace microcosm
                 main.userdata.birth_year = dt.Year;
                 main.userdata.birth_month = dt.Month;
                 main.userdata.birth_day = dt.Day;
-                main.userdata.birth_hour = dt.Month;
+                main.userdata.birth_hour = dt.Hour;
                 main.userdata.birth_minute = dt.Minute;
                 main.userdata.birth_second = dt.Second;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "/" + setMonth.Text + "/" + setDay.Text + " " +

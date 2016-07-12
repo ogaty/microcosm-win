@@ -200,7 +200,17 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = 0;
+                    int absolute_position = 0;
+                    if (planet.absolute_position < 0)
+                    {
+                        absolute_position = (int)planet.absolute_position + 360;
+                    }
+                    else
+                    {
+                        absolute_position = (int)planet.absolute_position;
+                    }
+                    index = (int)(absolute_position / 6);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
@@ -261,7 +271,17 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = 0;
+                    int absolute_position = 0;
+                    if (planet.absolute_position < 0)
+                    {
+                        absolute_position = (int)planet.absolute_position + 360;
+                    }
+                    else
+                    {
+                        absolute_position = (int)planet.absolute_position;
+                    }
+                    index = (int)(absolute_position / 6);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
@@ -338,7 +358,17 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = 0;
+                    int absolute_position = 0;
+                    if (planet.absolute_position < 0)
+                    {
+                        absolute_position = (int)planet.absolute_position + 360;
+                    }
+                    else
+                    {
+                        absolute_position = (int)planet.absolute_position;
+                    }
+                    index = (int)(absolute_position / 6);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
@@ -399,7 +429,17 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = 0;
+                    int absolute_position = 0;
+                    if (planet.absolute_position < 0)
+                    {
+                        absolute_position = (int)planet.absolute_position + 360;
+                    }
+                    else
+                    {
+                        absolute_position = (int)planet.absolute_position;
+                    }
+                    index = (int)(absolute_position / 6);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
@@ -471,7 +511,17 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = 0;
+                    int absolute_position = 0;
+                    if (planet.absolute_position < 0)
+                    {
+                        absolute_position = (int)planet.absolute_position + 360;
+                    }
+                    else
+                    {
+                        absolute_position = (int)planet.absolute_position;
+                    }
+                    index = (int)(absolute_position / 6);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
