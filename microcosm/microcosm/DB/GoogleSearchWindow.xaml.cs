@@ -55,18 +55,24 @@ namespace microcosm.DB
 
             var contents = await response.Content.ReadAsStringAsync();
 
-            var jsonresult = JsonConvert.DeserializeObject<GoogleLatLng>(contents);
-            if (jsonresult.status == "OK")
+            try
             {
-                List<AddrSearchResult> resultList = new List<AddrSearchResult>();
-                foreach (Result res in jsonresult.results)
+                var jsonresult = JsonConvert.DeserializeObject<GoogleLatLng>(contents);
+                if (jsonresult.status == "OK")
                 {
-                    resultList.Add(new AddrSearchResult(res.formatted_address,
-                        res.geometry.location.lat, res.geometry.location.lng));
+                    List<AddrSearchResult> resultList = new List<AddrSearchResult>();
+                    foreach (Result res in jsonresult.results)
+                    {
+                        resultList.Add(new AddrSearchResult(res.formatted_address,
+                            res.geometry.location.lat, res.geometry.location.lng));
+                    }
+                    searchResultList.resultList = resultList;
                 }
-                searchResultList.resultList = resultList;
-            }
-            else
+                else
+                {
+                    MessageBox.Show(Properties.Resources.ERROR_ERROR_RESPONSE);
+                }
+            } catch (Exception err)
             {
                 MessageBox.Show(Properties.Resources.ERROR_ERROR_RESPONSE);
             }

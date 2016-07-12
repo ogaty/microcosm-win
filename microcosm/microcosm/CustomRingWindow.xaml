@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="カスタム円設定" Height="300" Width="300" Closing="Window_Closing">
+        Title="カスタム円設定" Height="410" Width="300" Closing="Window_Closing">
     <Grid>
         <StackPanel>
             <StackPanel Margin="10">
-                <ComboBox x:Name="ringSelector" SelectionChanged="ringSelector_SelectionChanged">
+                <ComboBox x:Name="ringSelector" SelectionChanged="ringSelector_SelectionChanged" Width="90" HorizontalAlignment="Left">
                     <ComboBoxItem Content="一重円" IsSelected="True"/>
                     <ComboBoxItem Content="二重円"/>
                     <ComboBoxItem Content="三重円"/>
@@ -23,6 +23,12 @@
                         <ComboBoxItem Content="プログレス"></ComboBoxItem>
                         <ComboBoxItem Content="トランジット"></ComboBoxItem>
                     </ComboBox>
+                    <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="house1" Width="119" HorizontalAlignment="Right">
+                        <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
+                        <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel x:Name="no2" Visibility="Hidden">
                     <Label Content="２"></Label>
@@ -31,6 +37,12 @@
                         <ComboBoxItem Content="プログレス" IsSelected="True"></ComboBoxItem>
                         <ComboBoxItem Content="トランジット"></ComboBoxItem>
                     </ComboBox>
+                    <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="house2" Width="119" HorizontalAlignment="Right">
+                        <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
+                        <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel x:Name="no3" Visibility="Hidden">
                     <Label Content="３"></Label>
@@ -38,6 +50,12 @@
                         <ComboBoxItem Content="ネイタル"></ComboBoxItem>
                         <ComboBoxItem Content="プログレス"></ComboBoxItem>
                         <ComboBoxItem Content="トランジット" IsSelected="True"></ComboBoxItem>
+                    </ComboBox>
+                    <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="house3" Width="119" HorizontalAlignment="Right">
+                        <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
+                        <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
+                        <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </StackPanel>

@@ -821,8 +821,21 @@ namespace microcosm
 
         private void setButton_Click(object sender, RoutedEventArgs e)
         {
+            DateTime dt = new DateTime(int.Parse(setYear.Text),
+                int.Parse(setMonth.Text),
+                int.Parse(setDay.Text),
+                int.Parse(setHour.Text),
+                int.Parse(setMinute.Text),
+                int.Parse(setSecond.Text));
+
             if (natalTime.IsChecked == true)
             {
+                main.targetUser.birth_year = dt.Year;
+                main.targetUser.birth_month = dt.Month;
+                main.targetUser.birth_day = dt.Day;
+                main.targetUser.birth_hour = dt.Month;
+                main.targetUser.birth_minute = dt.Minute;
+                main.targetUser.birth_second = dt.Second;
                 main.mainWindowVM.userBirthStr = string.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + 
                     string.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + 
                     string.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
@@ -830,6 +843,12 @@ namespace microcosm
             }
             else
             {
+                main.userdata.birth_year = dt.Year;
+                main.userdata.birth_month = dt.Month;
+                main.userdata.birth_day = dt.Day;
+                main.userdata.birth_hour = dt.Month;
+                main.userdata.birth_minute = dt.Minute;
+                main.userdata.birth_second = dt.Second;
                 main.mainWindowVM.transitBirthStr = setYear.Text + "/" + setMonth.Text + "/" + setDay.Text + " " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }

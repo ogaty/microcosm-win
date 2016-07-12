@@ -130,39 +130,31 @@ namespace microcosm.Common
             {
                 case ZODIAC_SUN:
                     return "\u2609";
-                // return "A";
                 case ZODIAC_MOON:
                     return "\u263d";
-                // return "B";
                 case ZODIAC_MERCURY:
                     return "\u263f";
-                // return "C";
                 case ZODIAC_VENUS:
                     return "\u2640";
-                // return "D";
                 case ZODIAC_MARS:
                     return "\u2642";
-                // return "E";
                 case ZODIAC_JUPITER:
                     return "\u2643";
-                // return "F";
                 case ZODIAC_SATURN:
                     return "\u2644";
-                // return "G";
                 case ZODIAC_URANUS:
                     return "\u2645";
-                // return "H";
                 case ZODIAC_NEPTUNE:
                     return "\u2646";
-                // return "I";
                 case ZODIAC_PLUTO:
                     return "\u2647";
                 // 外部フォントだと天文学用のPLUTOになっているのが困りどころ
-                // return "J";
                 case ZODIAC_DH_TRUENODE:
                     return "\u260a";
                 case ZODIAC_EARTH:
                     return "\u2641";
+                case ZODIAC_CHIRON:
+                    return "\u26b7";
             }
             return "";
         }

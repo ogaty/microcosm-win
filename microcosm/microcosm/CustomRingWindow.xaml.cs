@@ -55,6 +55,21 @@ namespace microcosm
                         main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
                         break;
                 }
+                switch (house1.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                    case 1:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.EVENT1;
+                        break;
+                    case 2:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.PROGRESS;
+                        break;
+                    default:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                }
             }
             else if (ringSelector.SelectedIndex == 1)
             {
@@ -74,6 +89,21 @@ namespace microcosm
                         main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
                         break;
                 }
+                switch (house1.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                    case 1:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.EVENT1;
+                        break;
+                    case 2:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.PROGRESS;
+                        break;
+                    default:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                }
 
                 switch (ring2.SelectedIndex)
                 {
@@ -88,6 +118,21 @@ namespace microcosm
                         break;
                     default:
                         main.tempSettings.secondBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+                switch (house2.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                    case 1:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.EVENT1;
+                        break;
+                    case 2:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.PROGRESS;
+                        break;
+                    default:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.USER1;
                         break;
                 }
             }
@@ -110,6 +155,21 @@ namespace microcosm
                         main.tempSettings.firstBand = TempSetting.BandKind.TRANSIT;
                         break;
                 }
+                switch (house1.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                    case 1:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.EVENT1;
+                        break;
+                    case 2:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.PROGRESS;
+                        break;
+                    default:
+                        main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                }
 
                 switch (ring2.SelectedIndex)
                 {
@@ -126,6 +186,21 @@ namespace microcosm
                         main.tempSettings.secondBand = TempSetting.BandKind.TRANSIT;
                         break;
                 }
+                switch (house2.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                    case 1:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.EVENT1;
+                        break;
+                    case 2:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.PROGRESS;
+                        break;
+                    default:
+                        main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                }
 
                 switch (ring3.SelectedIndex)
                 {
@@ -140,6 +215,21 @@ namespace microcosm
                         break;
                     default:
                         main.tempSettings.thirdBand = TempSetting.BandKind.TRANSIT;
+                        break;
+                }
+                switch (house3.SelectedIndex)
+                {
+                    case 0:
+                        main.tempSettings.thirdHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                    case 1:
+                        main.tempSettings.thirdHouseDiv = TempSetting.HouseDivide.EVENT1;
+                        break;
+                    case 2:
+                        main.tempSettings.thirdHouseDiv = TempSetting.HouseDivide.PROGRESS;
+                        break;
+                    default:
+                        main.tempSettings.thirdHouseDiv = TempSetting.HouseDivide.USER1;
                         break;
                 }
             }

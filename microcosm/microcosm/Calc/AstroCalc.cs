@@ -225,7 +225,7 @@ namespace microcosm.Calc
         // 一度ずらすので再計算不要
         // 一年を365.24日で計算、当然ずれが生じる
         // 面倒なのでとりあえず放置
-        public List<PlanetData> PrimaryProgressionCalc(List<PlanetData> natallist, DateTime natalTime, DateTime transitTime, int ringIndex)
+        public List<PlanetData> PrimaryProgressionCalc(List<PlanetData> natallist, DateTime natalTime, DateTime transitTime)
         {
             List<PlanetData> progresslist = new List<PlanetData>();
             TimeSpan ts = transitTime - natalTime;
@@ -245,6 +245,37 @@ namespace microcosm.Calc
                     isDisp = true,
                     isAspectDisp = true
                 };
+                if (config.centric == ECentric.HELIO_CENTRIC && data.no == 0)
+                {
+                    // ヘリオセントリック太陽
+                    progressdata.isDisp = false;
+                    progressdata.isAspectDisp = false;
+                }
+                if (data.no == 10)
+                {
+                    // MEAN NODE
+                    progressdata.isDisp = false;
+                    progressdata.isAspectDisp = false;
+                }
+                if (data.no == 12)
+                {
+                    // mean apogee、どうでもいい
+                    progressdata.isDisp = false;
+                    progressdata.isAspectDisp = false;
+                }
+                if (data.no == 13)
+                {
+                    // true apogee、リリス
+                    progressdata.isDisp = false;
+                    progressdata.isAspectDisp = false;
+                }
+                if (config.centric == ECentric.HELIO_CENTRIC && data.no == 14)
+                {
+                    // ヘリオセントリック地球
+                    progressdata.isDisp = true;
+                    progressdata.isAspectDisp = true;
+                }
+
                 progressdata.absolute_position += years;
                 progressdata.absolute_position %= 365;
                 progresslist.Add(progressdata);
@@ -252,6 +283,19 @@ namespace microcosm.Calc
 
             return progresslist;
         }
+        public double[] PrimaryProgressionHouseCalc(double[] houseList, DateTime natalTime, DateTime transitTime)
+        {
+            List<PlanetData> progresslist = new List<PlanetData>();
+            TimeSpan ts = transitTime - natalTime;
+            double years = ts.TotalDays / year_days;
+            for (int i = 0; i < houseList.Count(); i++)
+            {
+                houseList[i] += years;
+            }
+
+            return houseList;
+        }
+
 
         // 一日一年法
         // 一年を365.24日で計算、当然ずれが生じる
@@ -324,6 +368,24 @@ namespace microcosm.Calc
             });
 
             return progresslist;
+        }
+        public double[] SecondaryProgressionHouseCalc(double[] houseList, List<PlanetData> natallist, DateTime natalTime, DateTime transitTime, double lat, double lng, string timezone)
+        {
+            List<PlanetData> progresslist = new List<PlanetData>();
+            TimeSpan ts = transitTime - natalTime;
+            double years = ts.TotalDays / year_days;
+
+            // 日付を秒数に変換する
+            int seconds = (int)(years * 86400);
+
+            TimeSpan add = TimeSpan.FromSeconds(seconds);
+
+            DateTime newTime = natalTime + add;
+
+
+            double[] retHouse = CuspCalc(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, lat, lng, main.config.houseCalc);
+
+            return retHouse;
         }
 
         // CPS
@@ -413,6 +475,11 @@ namespace microcosm.Calc
 
 
             return progresslist;
+        }
+        public double[] CompositProgressionHouseCalc(double[] houseList, List<PlanetData> natallist, DateTime natalTime, DateTime transitTime, double lat, double lng, string timezone)
+        {
+            // AMATERU、SG共にSecondaryで計算されてた
+            return SecondaryProgressionHouseCalc(houseList, natallist, natalTime, transitTime, lat, lng, timezone);
         }
 
         private double getDegree(AspectKind kind)

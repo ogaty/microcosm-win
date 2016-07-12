@@ -26,6 +26,12 @@ namespace microcosm.Config
             NEPTUNE_RETURN = 18,
             PLUTO_RETURN = 19
         }
+        public enum HouseDivide
+        {
+            USER1 = 0,
+            EVENT1 = 1,
+            PROGRESS = 2
+        }
 
         public int bands = 1;
         public BandKind firstBand;
@@ -35,6 +41,13 @@ namespace microcosm.Config
         public BandKind fifthBand;
         public BandKind sixthBand;
         public BandKind seventhBand;
+        public HouseDivide firstHouseDiv;
+        public HouseDivide secondHouseDiv;
+        public HouseDivide thirdHouseDiv;
+        public HouseDivide fourthHouseDiv;
+        public HouseDivide fifthHouseDiv;
+        public HouseDivide sixthHouseDiv;
+        public HouseDivide seventhHouseDiv;
         public double zodiacCenter;
 
         public TempSetting(ConfigData config)
@@ -46,6 +59,20 @@ namespace microcosm.Config
             {
                 bands = config.defaultBands;
             }
+            firstBand = BandKind.NATAL;
+            secondBand = BandKind.PROGRESS;
+            thirdBand = BandKind.TRANSIT;
+            fourthBand = BandKind.TRANSIT;
+            fifthBand = BandKind.TRANSIT;
+            sixthBand = BandKind.TRANSIT;
+            seventhBand = BandKind.TRANSIT;
+            firstHouseDiv = HouseDivide.USER1;
+            secondHouseDiv = HouseDivide.PROGRESS;
+            thirdHouseDiv = HouseDivide.EVENT1;
+            fourthHouseDiv = HouseDivide.EVENT1;
+            fifthHouseDiv = HouseDivide.EVENT1;
+            sixthHouseDiv = HouseDivide.EVENT1;
+            seventhHouseDiv = HouseDivide.EVENT1;
         }
     }
 }

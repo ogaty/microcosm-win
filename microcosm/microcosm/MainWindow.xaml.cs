@@ -759,9 +759,27 @@ namespace microcosm
                                     userdata.birth_hour,
                                     userdata.birth_minute,
                                     userdata.birth_second
-                                ),
-                                0
+                                )
                             );
+                            if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList1 = calc.PrimaryProgressionHouseCalc(houseList1,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    )
+                                );
+                            }
 
                             break;
 
@@ -786,6 +804,30 @@ namespace microcosm
                                     userdata.birth_second
                                 )
                             );
+                            if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList1 = calc.SecondaryProgressionHouseCalc(houseList1,
+                                    tempList,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    ),
+                                    targetUser.lat,
+                                    targetUser.lng,
+                                    targetUser.timezone
+                                );
+
+                            }
 
                             break;
 
@@ -810,6 +852,30 @@ namespace microcosm
                                     userdata.birth_second
                                 )
                             );
+                            if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList1 = calc.CompositProgressionHouseCalc(houseList1,
+                                    tempList,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    ),
+                                    targetUser.lat,
+                                    targetUser.lng,
+                                    targetUser.timezone
+                                );
+
+                            }
 
                             break;
                     }
@@ -820,9 +886,18 @@ namespace microcosm
                         list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
                         list1Data.lat, list1Data.lng, config.houseCalc);
                 }
-                houseList1 = calc.CuspCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
-                    list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
-                    list1Data.lat, list1Data.lng, config.houseCalc);
+                if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.USER1)
+                {
+                    houseList1 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
+                        targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second,
+                        targetUser.lat, targetUser.lng, config.houseCalc);
+                }
+                else if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.EVENT1)
+                {
+                    houseList1 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
+                        userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
+                        userdata.lat, userdata.lng, config.houseCalc);
+                }
             }
             if (list2Data != null)
             {
@@ -845,11 +920,29 @@ namespace microcosm
                                     userdata.birth_hour,
                                     userdata.birth_minute,
                                     userdata.birth_second
-                                ),
-                                1
+                                )
                             );
+                            if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList2 = calc.PrimaryProgressionHouseCalc(houseList1,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    )
+                                );
+                            }
 
-                        break;
+                            break;
 
                         case EProgression.SECONDARY:
                             list2 = calc.SecondaryProgressionCalc(list1,
@@ -868,8 +961,32 @@ namespace microcosm
                                     userdata.birth_second
                                 )
                             );
+                            if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList2 = calc.SecondaryProgressionHouseCalc(houseList1,
+                                    list1,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    ),
+                                    targetUser.lat,
+                                    targetUser.lng,
+                                    targetUser.timezone
+                                );
 
-                        break;
+                            }
+
+                            break;
 
                         case EProgression.CPS:
                             list2 = calc.CompositProgressionCalc(list1,
@@ -888,8 +1005,32 @@ namespace microcosm
                                     userdata.birth_second
                                 )
                             );
+                            if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList2 = calc.CompositProgressionHouseCalc(houseList1,
+                                    list1,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    ),
+                                    targetUser.lat,
+                                    targetUser.lng,
+                                    targetUser.timezone
+                                );
 
-                        break;
+                            }
+
+                            break;
                     }
                 }
                 else
@@ -898,10 +1039,18 @@ namespace microcosm
                         list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
                         list2Data.lat, list2Data.lng, config.houseCalc);
                 }
-
-                houseList2 = calc.CuspCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
-                    list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
-                    list2Data.lat, list2Data.lng, config.houseCalc);
+                if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.USER1)
+                {
+                    houseList2 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
+                        targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second,
+                        targetUser.lat, targetUser.lng, config.houseCalc);
+                }
+                else if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.EVENT1)
+                {
+                    houseList2 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
+                        userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
+                        userdata.lat, userdata.lng, config.houseCalc);
+                }
             }
             if (list3Data != null)
             {
@@ -924,9 +1073,27 @@ namespace microcosm
                                     userdata.birth_hour,
                                     userdata.birth_minute,
                                     userdata.birth_second
-                                ),
-                                2
+                                )
                             );
+                            if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList3 = calc.PrimaryProgressionHouseCalc(houseList3,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    )
+                                );
+                            }
 
                             break;
 
@@ -947,6 +1114,30 @@ namespace microcosm
                                     userdata.birth_second
                                 )
                             );
+                            if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList3 = calc.SecondaryProgressionHouseCalc(houseList3,
+                                    list1,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    ),
+                                    targetUser.lat,
+                                    targetUser.lng,
+                                    targetUser.timezone
+                                );
+
+                            }
 
                             break;
 
@@ -967,6 +1158,30 @@ namespace microcosm
                                     userdata.birth_second
                                 )
                             );
+                            if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.PROGRESS)
+                            {
+                                houseList3 = calc.CompositProgressionHouseCalc(houseList3,
+                                    list1,
+                                    new DateTime(targetUser.birth_year,
+                                        targetUser.birth_month,
+                                        targetUser.birth_day,
+                                        targetUser.birth_hour,
+                                        targetUser.birth_minute,
+                                        targetUser.birth_second
+                                    ),
+                                    new DateTime(userdata.birth_year,
+                                        userdata.birth_month,
+                                        userdata.birth_day,
+                                        userdata.birth_hour,
+                                        userdata.birth_minute,
+                                        userdata.birth_second
+                                    ),
+                                    targetUser.lat,
+                                    targetUser.lng,
+                                    targetUser.timezone
+                                );
+
+                            }
 
                             break;
                     }
@@ -977,9 +1192,18 @@ namespace microcosm
                         list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
                         list3Data.lat, list3Data.lng, config.houseCalc);
                 }
-                houseList3 = calc.CuspCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
-                    list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
-                    list3Data.lat, list3Data.lng, config.houseCalc);
+                if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.USER1)
+                {
+                    houseList3 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
+                        targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second,
+                        targetUser.lat, targetUser.lng, config.houseCalc);
+                }
+                else if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.EVENT1)
+                {
+                    houseList3 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
+                        userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
+                        userdata.lat, userdata.lng, config.houseCalc);
+                }
             }
             if (list4Data != null)
             {
@@ -1464,28 +1688,162 @@ namespace microcosm
             double startY = 0;
             double endY = 0;
             List<PointF[]> pList = new List<PointF[]>();
-            Enumerable.Range(1, 12).ToList().ForEach(i =>
+            List<PointF[]> pListSecond = new List<PointF[]>();
+            List<PointF[]> pListThird = new List<PointF[]>();
+
+            // 最適化と五重円は後で
+            if (tempSettings.bands == 1)
             {
-                double degree = natalcusp[i] - natalcusp[1];
+                Enumerable.Range(1, 12).ToList().ForEach(i =>
+                {
+                    double degree = natalcusp[i] - natalcusp[1];
 
-                PointF newStart = rotate(startX, startY, degree);
-                newStart.X += (float)rcanvas.outerWidth / 2;
-                // Formの座標は下がプラス、数学では上がマイナス
-                newStart.Y = newStart.Y * -1;
-                newStart.Y += (float)rcanvas.outerHeight / 2;
+                    PointF newStart = rotate(startX, startY, degree);
+                    newStart.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newStart.Y = newStart.Y * -1;
+                    newStart.Y += (float)rcanvas.outerHeight / 2;
 
-                PointF newEnd = rotate(endX, endY, degree);
-                newEnd.X += (float)rcanvas.outerWidth / 2;
-                // Formの座標は下がプラス、数学では上がマイナス
-                newEnd.Y = newEnd.Y * -1;
-                newEnd.Y += (float)rcanvas.outerHeight / 2;
+                    PointF newEnd = rotate(endX, endY, degree);
+                    newEnd.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newEnd.Y = newEnd.Y * -1;
+                    newEnd.Y += (float)rcanvas.outerHeight / 2;
 
-                PointF[] pointList = new PointF[2];
-                pointList[0] = newStart;
-                pointList[1] = newEnd;
-                pList.Add(pointList);
+                    PointF[] pointList = new PointF[2];
+                    pointList[0] = newStart;
+                    pointList[1] = newEnd;
+                    pList.Add(pointList);
 
-            });
+                });
+            }
+            else if (tempSettings.bands == 2)
+            {
+                // end座標が変わる
+                Enumerable.Range(1, 12).ToList().ForEach(i =>
+                {
+                    double degree = natalcusp[i] - natalcusp[1];
+
+                    PointF newStart = rotate(startX, startY, degree);
+                    newStart.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newStart.Y = newStart.Y * -1;
+                    newStart.Y += (float)rcanvas.outerHeight / 2;
+
+                    endX = (rcanvas.outerWidth - 90) / 2;
+                    PointF newEnd = rotate(endX, endY, degree);
+                    newEnd.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newEnd.Y = newEnd.Y * -1;
+                    newEnd.Y += (float)rcanvas.outerHeight / 2;
+
+                    PointF[] pointList = new PointF[2];
+                    pointList[0] = newStart;
+                    pointList[1] = newEnd;
+                    pList.Add(pointList);
+
+                });
+                // start座標が変わる
+                Enumerable.Range(1, 12).ToList().ForEach(i =>
+                {
+                    double degree = cusp2[i] - cusp2[1];
+
+                    startX = (rcanvas.outerWidth - 90) / 2;
+                    PointF newStart = rotate(startX, startY, degree);
+                    newStart.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newStart.Y = newStart.Y * -1;
+                    newStart.Y += (float)rcanvas.outerHeight / 2;
+
+                    PointF newEnd = rotate(endX, endY, degree);
+                    newEnd.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newEnd.Y = newEnd.Y * -1;
+                    newEnd.Y += (float)rcanvas.outerHeight / 2;
+
+                    PointF[] pointList = new PointF[2];
+                    pointList[0] = newStart;
+                    pointList[1] = newEnd;
+                    pListSecond.Add(pointList);
+
+                });
+            }
+            if (tempSettings.bands == 3)
+            {
+                // end座標が変わる
+                Enumerable.Range(1, 12).ToList().ForEach(i =>
+                {
+                    double degree = natalcusp[i] - natalcusp[1];
+
+                    PointF newStart = rotate(startX, startY, degree);
+                    newStart.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newStart.Y = newStart.Y * -1;
+                    newStart.Y += (float)rcanvas.outerHeight / 2;
+
+                    endX = (rcanvas.outerWidth + 2 * tempSettings.zodiacCenter - 90) / 6;
+                    PointF newEnd = rotate(endX, endY, degree);
+                    newEnd.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newEnd.Y = newEnd.Y * -1;
+                    newEnd.Y += (float)rcanvas.outerHeight / 2;
+
+                    PointF[] pointList = new PointF[2];
+                    pointList[0] = newStart;
+                    pointList[1] = newEnd;
+                    pList.Add(pointList);
+
+                });
+                // start座標、end座標が変わる
+                Enumerable.Range(1, 12).ToList().ForEach(i =>
+                {
+                    double degree = cusp2[i] - cusp2[1];
+
+                    startX = (rcanvas.outerWidth + 2 * tempSettings.zodiacCenter - 90) / 6;
+                    PointF newStart = rotate(startX, startY, degree);
+                    newStart.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newStart.Y = newStart.Y * -1;
+                    newStart.Y += (float)rcanvas.outerHeight / 2;
+
+                    endX = (2 * rcanvas.outerWidth + tempSettings.zodiacCenter - 90) / 6;
+                    PointF newEnd = rotate(endX, endY, degree);
+                    newEnd.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newEnd.Y = newEnd.Y * -1;
+                    newEnd.Y += (float)rcanvas.outerHeight / 2;
+
+                    PointF[] pointList = new PointF[2];
+                    pointList[0] = newStart;
+                    pointList[1] = newEnd;
+                    pListSecond.Add(pointList);
+
+                });
+                Enumerable.Range(1, 12).ToList().ForEach(i =>
+                {
+                    double degree = cusp3[i] - cusp3[1];
+
+                    startX = (2 * rcanvas.outerWidth + tempSettings.zodiacCenter - 90) / 6;
+                    PointF newStart = rotate(startX, startY, degree);
+                    newStart.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newStart.Y = newStart.Y * -1;
+                    newStart.Y += (float)rcanvas.outerHeight / 2;
+
+                    endX = (ringCanvas.ActualWidth - 90) / 2;
+                    PointF newEnd = rotate(endX, endY, degree);
+                    newEnd.X += (float)rcanvas.outerWidth / 2;
+                    // Formの座標は下がプラス、数学では上がマイナス
+                    newEnd.Y = newEnd.Y * -1;
+                    newEnd.Y += (float)rcanvas.outerHeight / 2;
+
+                    PointF[] pointList = new PointF[2];
+                    pointList[0] = newStart;
+                    pointList[1] = newEnd;
+                    pListThird.Add(pointList);
+
+                });
+            }
 
             Enumerable.Range(0, 12).ToList().ForEach(i =>
             {
@@ -1515,6 +1873,68 @@ namespace microcosm
                 l.MouseEnter += houseCuspMouseEnter;
                 ringCanvas.Children.Add(l);
             });
+            if (tempSettings.bands >= 2)
+            {
+                Enumerable.Range(0, 12).ToList().ForEach(i =>
+                {
+                    Line l = new Line();
+                    l.X1 = pListSecond[i][0].X;
+                    l.Y1 = pListSecond[i][0].Y;
+                    l.X2 = pListSecond[i][1].X;
+                    l.Y2 = pListSecond[i][1].Y;
+                    if (i % 3 == 0)
+                    {
+                        l.Stroke = System.Windows.Media.Brushes.Gray;
+                    }
+                    else
+                    {
+                        l.Stroke = System.Windows.Media.Brushes.LightGray;
+                        l.StrokeDashArray = new DoubleCollection();
+                        l.StrokeDashArray.Add(4.0);
+                        l.StrokeDashArray.Add(4.0);
+                    }
+                    l.StrokeThickness = 2.0;
+                    l.Tag = new Explanation()
+                    {
+                        before = (i + 1).ToString() + "ハウス　",
+                        sign = CommonData.getSignTextJp(natalcusp[i + 1]),
+                        degree = DecimalToHex((natalcusp[i + 1] % 30).ToString())
+                    };
+                    l.MouseEnter += houseCuspMouseEnter;
+                    ringCanvas.Children.Add(l);
+                });
+            }
+            if (tempSettings.bands >= 3)
+            {
+                Enumerable.Range(0, 12).ToList().ForEach(i =>
+                {
+                    Line l = new Line();
+                    l.X1 = pListThird[i][0].X;
+                    l.Y1 = pListThird[i][0].Y;
+                    l.X2 = pListThird[i][1].X;
+                    l.Y2 = pListThird[i][1].Y;
+                    if (i % 3 == 0)
+                    {
+                        l.Stroke = System.Windows.Media.Brushes.Gray;
+                    }
+                    else
+                    {
+                        l.Stroke = System.Windows.Media.Brushes.LightGray;
+                        l.StrokeDashArray = new DoubleCollection();
+                        l.StrokeDashArray.Add(4.0);
+                        l.StrokeDashArray.Add(4.0);
+                    }
+                    l.StrokeThickness = 2.0;
+                    l.Tag = new Explanation()
+                    {
+                        before = (i + 1).ToString() + "ハウス　",
+                        sign = CommonData.getSignTextJp(natalcusp[i + 1]),
+                        degree = DecimalToHex((natalcusp[i + 1] % 30).ToString())
+                    };
+                    l.MouseEnter += houseCuspMouseEnter;
+                    ringCanvas.Children.Add(l);
+                });
+            }
         }
 
         // サインカスプレンダリング
