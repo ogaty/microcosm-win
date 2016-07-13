@@ -786,7 +786,14 @@ namespace microcosm
                         string line = sr.ReadLine();
                         if (line.IndexOf(",") > 0)
                         {
-                            string[] data = line.Split(' ');
+                            string trimdata = line.Replace("  ", " ");
+                            string[] data = trimdata.Split(' ');
+                            // data[0] ymd
+                            // data[1] his
+                            // data[2] lat
+                            // data[3] lng
+                            // data[4] other
+
                             int year = int.Parse(data[0].Substring(0, 4));
                             int month = int.Parse(data[0].Substring(4, 2));
                             int day = int.Parse(data[0].Substring(6, 2));
@@ -795,7 +802,7 @@ namespace microcosm
                             int minute = int.Parse(data[1].Substring(2, 2));
                             int second = int.Parse(data[1].Substring(4, 2));
 
-                            string[] name = data[6].Split(',');
+                            string[] name = data[4].Split(',');
                             name[0] = name[0].Replace("\"", "");
                             name[1] = name[1].Replace("\"", "");
 
@@ -872,12 +879,33 @@ namespace microcosm
                         {
                             timezone = "JST";
                         }
-                        string lat = data[5].Replace('n', '.');
-                        string lng = data[6].Replace('e', '.');
+                        double dlat = 35.679567;
+                        if (data[5].IndexOf('n') > 0)
+                        {
+                            string[] lats = data[5].Split('n');
+                            dlat = double.Parse(lats[0]) + double.Parse(lats[1]) / 60;
+                        }
+                        else
+                        {
+                            string[] lats = data[5].Split('s');
+                            dlat = double.Parse(lats[0]) + double.Parse(lats[1]) / 60;
+                        }
+                        double dlng = 139.772003;
+                        if (data[6].IndexOf('w') > 0)
+                        {
+                            string[] lngs = data[6].Split('w');
+                            dlng = double.Parse(lngs[0]) + double.Parse(lngs[1]) / 60;
+                        }
+                        else
+                        {
+                            string[] lngs = data[6].Split('e');
+                            dlng = double.Parse(lngs[0]) + double.Parse(lngs[1]) / 60;
+                        }
+
                         UserData udata = new UserData(data[0], "",
                             int.Parse(days[2]), int.Parse(days[1]), int.Parse(days[0]),
                             int.Parse(hours[0]), int.Parse(hours[1]), 0,
-                            double.Parse(lat), double.Parse(lng), data[4], data[8], timezone);
+                            dlat, dlng, data[4], data[8], timezone);
                         string filename = data[0] + ".csm";
                         Assembly myAssembly = Assembly.GetEntryAssembly();
                         string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\ZET\" + filename;
@@ -1043,7 +1071,9 @@ namespace microcosm
                     string timezone = "JST";
                     string place = "";
                     string lat = "35.670587";
+                    double dlat = 35.679567;
                     string lng = "139.772003";
+                    double dlng = 139.772003;
                     string memo = "";
                     bool dataSet = false;
                     StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
@@ -1068,10 +1098,29 @@ namespace microcosm
                             {
                                 timezone = "UTC";
                             }
+                            // Astrologは時分秒表記
                             string[] lngs = data[7].Split('\'');
-                            lng = lngs[0].Replace(':', '.');
-                            string[] lats = data[7].Split('\'');
-                            lng = lats[0].Replace(':', ',');
+                            string[] deglngs = lngs[0].Split(':');
+                            lng = deglngs[0];
+                            if (lngs[1].IndexOf('W') > 0)
+                            {
+                                dlng = double.Parse(lng) * -1 + double.Parse(deglngs[1]) / 60;
+                            }
+                            else
+                            {
+                                dlng = double.Parse(lng) + double.Parse(deglngs[1]) / 60;
+                            }
+                            string[] lats = data[8].Split('\'');
+                            string[] deglats = lats[0].Split(':');
+                            lat = deglats[0];
+                            if (lats[1].IndexOf('S') > 0)
+                            {
+                                dlat = double.Parse(lat) * -1 + double.Parse(deglats[1]) / 60;
+                            }
+                            else
+                            {
+                                dlat = double.Parse(lat) + double.Parse(deglats[1]) / 60;
+                            }
                         }
                         else if (data[0].IndexOf("/zi") == 0)
                         {
@@ -1090,7 +1139,7 @@ namespace microcosm
                         UserData udata = new UserData(name, "",
                             year, month, day,
                             hour, minute, second,
-                            double.Parse(lat), double.Parse(lng), place, memo, timezone);
+                            dlat, dlng, place, memo, timezone);
                         string filename = name + ".csm";
                         Assembly myAssembly = Assembly.GetEntryAssembly();
                         string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Astrolog32\" + filename;
@@ -1140,7 +1189,9 @@ namespace microcosm
                     int second = 0;
                     string place = "";
                     string lat = "35.670587";
+                    double dlat = 35.670587;
                     string lng = "139.772003";
+                    double dlng = 139.772003;
                     string timezone = "JST";
                     string memo = "";
                     bool dataSet = false;
@@ -1151,14 +1202,32 @@ namespace microcosm
                         if (line.IndexOf("Latitude") > 0)
                         {
                             string[] datainfo = line.Split('\"');
-                            lat = datainfo[1];
-                            lat = "38";
+                            string[] lats = datainfo[1].Split('\'');
+                            if (lats[0].IndexOf("S") > 0)
+                            {
+                                string[] dlats = lats[0].Split('S');
+                                dlat = double.Parse(dlats[0]) * -1 + double.Parse(dlats[1]) / 60;
+                            }
+                            else
+                            {
+                                string[] dlats = lats[0].Split('N');
+                                dlat = double.Parse(dlats[0]) + double.Parse(dlats[1]) / 60;
+                            }
                         }
                         if (line.IndexOf("Longitude") > 0)
                         {
                             string[] datainfo = line.Split('\"');
-                            lng = datainfo[1];
-                            lng = "138";
+                            string[] lngs = datainfo[1].Split('\'');
+                            if (lngs[0].IndexOf("W") > 0)
+                            {
+                                string[] dlngs = lngs[0].Split('W');
+                                dlng = double.Parse(dlngs[0]) * -1 + double.Parse(dlngs[1]) / 60;
+                            }
+                            else
+                            {
+                                string[] dlngs = lngs[0].Split('E');
+                                dlng = double.Parse(dlngs[0]) + double.Parse(dlngs[1]) / 60;
+                            }
                         }
                         if (line.IndexOf("Date") > 0)
                         {
@@ -1192,7 +1261,7 @@ namespace microcosm
                         UserData udata = new UserData(name, "",
                             year, month, day,
                             hour, minute, second,
-                            double.Parse(lat), double.Parse(lng), place, memo, timezone);
+                            dlat, dlng, place, memo, timezone);
                         string filename = name + ".csm";
                         Assembly myAssembly = Assembly.GetEntryAssembly();
                         string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\StarFisher\" + filename;

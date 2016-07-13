@@ -155,7 +155,8 @@ namespace microcosm
                         symbolPt = pointsymbol,
                         symbolTxt = CommonData.getSignText(planet.absolute_position),
                         minutePt = pointminute,
-                        minuteTxt = ((planet.absolute_position % 1) / 100 * 60 * 100).ToString("00") + "'",
+                        // 小数点以下切り捨て 59.9->59
+                        minuteTxt = ((planet.absolute_position % 1) * 60 - 0.5).ToString("00") + "'",
                         retrogradePt = pointretrograde,
                         retrogradeTxt = CommonData.getRetrograde(planet.speed),
                         symbolColor = CommonData.getSignColor(planet.absolute_position)

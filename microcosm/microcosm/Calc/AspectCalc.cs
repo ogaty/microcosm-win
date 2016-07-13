@@ -74,7 +74,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -86,7 +88,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -102,7 +106,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -114,7 +120,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -129,7 +137,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -141,7 +151,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -164,7 +176,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -176,7 +190,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -196,7 +212,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -208,7 +226,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -223,7 +243,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -235,6 +257,7 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
+                                        srcPlanetNo = list[i].no,
                                         targetPlanetNo = list[j].no
                                     });
                                     break;
@@ -258,7 +281,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -270,7 +295,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -286,7 +313,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -298,7 +327,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -313,7 +344,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -325,7 +358,9 @@ namespace microcosm.Calc
                                         targetPosition = list[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = list[j].no
+                                        srcPlanetNo = list[i].no,
+                                        targetPlanetNo = list[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -390,14 +425,20 @@ namespace microcosm.Calc
                                     aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no });
+                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no,
+                                        srcPlanetNo = fromList[i].no,
+                                        absoluteDegree = aspect_degree
+                                    });
                                     break;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_SOFT_1ST] &&
                                   aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_SOFT_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no });
+                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no,
+                                        srcPlanetNo = fromList[i].no,
+                                        absoluteDegree = aspect_degree
+                                    });
                                     break;
                                 }
                             }
@@ -407,14 +448,20 @@ namespace microcosm.Calc
                                     aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no });
+                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no,
+                                        srcPlanetNo = fromList[i].no,
+                                        absoluteDegree = aspect_degree
+                                    });
                                     break;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.MOON_HARD_1ST] &&
                                   aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no });
+                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no,
+                                        srcPlanetNo = fromList[i].no,
+                                        absoluteDegree = aspect_degree
+                                    });
                                     break;
                                 }
 
@@ -425,14 +472,20 @@ namespace microcosm.Calc
                                     aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_HARD_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no });
+                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no,
+                                        srcPlanetNo = fromList[i].no,
+                                        absoluteDegree = aspect_degree
+                                    });
                                     break;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_SOFT_1ST] &&
                                      aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_SOFT_1ST])
                                 {
                                     fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no });
+                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no,
+                                        srcPlanetNo = fromList[i].no,
+                                        absoluteDegree = aspect_degree
+                                    });
                                     break;
                                 }
 
@@ -453,7 +506,9 @@ namespace microcosm.Calc
                                         targetPosition = toList[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = toList[j].no
+                                        srcPlanetNo = fromList[i].no,
+                                        targetPlanetNo = toList[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -465,7 +520,9 @@ namespace microcosm.Calc
                                         targetPosition = toList[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = toList[j].no
+                                        srcPlanetNo = fromList[i].no,
+                                        targetPlanetNo = toList[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -480,7 +537,9 @@ namespace microcosm.Calc
                                         targetPosition = toList[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = toList[j].no
+                                        srcPlanetNo = fromList[i].no,
+                                        targetPlanetNo = toList[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -492,7 +551,9 @@ namespace microcosm.Calc
                                         targetPosition = toList[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = toList[j].no
+                                        srcPlanetNo = fromList[i].no,
+                                        targetPlanetNo = toList[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -508,7 +569,9 @@ namespace microcosm.Calc
                                         targetPosition = toList[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.SOFT,
-                                        targetPlanetNo = toList[j].no
+                                        srcPlanetNo = fromList[i].no,
+                                        targetPlanetNo = toList[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }
@@ -520,7 +583,9 @@ namespace microcosm.Calc
                                         targetPosition = toList[j].absolute_position,
                                         aspectKind = kind,
                                         softHard = SoftHard.HARD,
-                                        targetPlanetNo = toList[j].no
+                                        srcPlanetNo = fromList[i].no,
+                                        targetPlanetNo = toList[j].no,
+                                        absoluteDegree = aspect_degree
                                     });
                                     break;
                                 }

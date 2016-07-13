@@ -24,7 +24,7 @@
 
         <StackPanel Grid.Column="1" Margin="10,10,0,0" x:Name="leftPane">
             <TextBlock Text="名称"></TextBlock>
-            <TextBox x:Name="settingName" Text="{Binding dispName}"></TextBox>
+            <TextBox x:Name="settingName" Text="{Binding dispName}" Width="200" HorizontalAlignment="Left" LostKeyboardFocus="settingName_LostKeyboardFocus"></TextBox>
             <TabControl Margin="0,10,0,0">
                 <TabItem Header="天体表示">
                     <StackPanel>

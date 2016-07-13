@@ -90,6 +90,7 @@ namespace microcosm.Config
         public double[,] orbOtherSoft2nd = new double[10, 15];
         public double[,] orbOtherSoft150 = new double[10, 15];
 
+        public string[] tempDispName = new string[10];
 
         public Dictionary<string, AspectControlTable> controlTable = new Dictionary<string, AspectControlTable>();
         public Dictionary<string, AspectControlTable> aspectControlTable = new Dictionary<string, AspectControlTable>();
@@ -154,6 +155,10 @@ namespace microcosm.Config
             leftPane.DataContext = settingVM;
 
             settingVM.dispName = main.currentSetting.dispName;
+            for (int i = 0; i < 10; i++)
+            {
+                tempDispName[i] = main.settings[i].dispName;
+            }
             setAspect();
         }
 
@@ -1618,11 +1623,12 @@ namespace microcosm.Config
                 xmldata.orb_other_soft_1st_5 = orbOtherSoft1st[index, 5];
                 xmldata.orb_other_soft_2nd_5 = orbOtherSoft2nd[index, 5];
                 xmldata.orb_other_soft_150_5 = orbOtherSoft150[index, 5];
+                xmldata.dispname = tempDispName[index];
 
                 string filename = @"system\setting" + index + ".csm";
                 XmlSerializer serializer = new XmlSerializer(typeof(SettingXml));
                 FileStream fs = new FileStream(filename, FileMode.Create);
-                StreamWriter sw = new StreamWriter(fs);
+                StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
                 serializer.Serialize(sw, xmldata);
                 sw.Close();
                 fs.Close();
@@ -2476,6 +2482,12 @@ namespace microcosm.Config
             {
 
             }
+        }
+
+        private void settingName_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            tempDispName[index] = settingName.Text;
         }
     }
 }

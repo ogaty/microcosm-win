@@ -466,6 +466,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_second = newDt.Second;
+                main.targetUser.birth_minute = newDt.Minute;
+                main.targetUser.birth_hour = newDt.Hour;
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
@@ -487,6 +490,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_second = newDt.Second;
+                main.userdata.birth_minute = newDt.Minute;
+                main.userdata.birth_hour = newDt.Hour;
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
@@ -516,6 +522,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_second = newDt.Second;
+                main.targetUser.birth_minute = newDt.Minute;
+                main.targetUser.birth_hour = newDt.Hour;
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
@@ -537,6 +546,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_second = newDt.Second;
+                main.userdata.birth_minute = newDt.Minute;
+                main.userdata.birth_hour = newDt.Hour;
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
@@ -566,6 +578,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_second = newDt.Second;
+                main.targetUser.birth_minute = newDt.Minute;
+                main.targetUser.birth_hour = newDt.Hour;
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
@@ -587,6 +602,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_second = newDt.Second;
+                main.userdata.birth_minute = newDt.Minute;
+                main.userdata.birth_hour = newDt.Hour;
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
@@ -616,6 +634,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_second = newDt.Second;
+                main.targetUser.birth_minute = newDt.Minute;
+                main.targetUser.birth_hour = newDt.Hour;
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
@@ -637,6 +658,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_second = newDt.Second;
+                main.userdata.birth_minute = newDt.Minute;
+                main.userdata.birth_hour = newDt.Hour;
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
@@ -666,6 +690,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_second = newDt.Second;
+                main.targetUser.birth_minute = newDt.Minute;
+                main.targetUser.birth_hour = newDt.Hour;
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
@@ -687,6 +714,9 @@ namespace microcosm
                 setHour.Text = newDt.Hour.ToString();
                 setMinute.Text = newDt.Minute.ToString();
                 setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_second = newDt.Second;
+                main.userdata.birth_minute = newDt.Minute;
+                main.userdata.birth_hour = newDt.Hour;
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;

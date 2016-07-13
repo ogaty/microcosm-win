@@ -23,6 +23,7 @@ using microcosm.Planet;
 using System.Drawing;
 using microcosm.Common;
 using microcosm.Aspect;
+using Microsoft.Win32;
 
 namespace microcosm
 {
@@ -168,6 +169,7 @@ namespace microcosm
                 settings[i].dispAspect[0, 1] = settings[i].xmlData.dispAspect[3];
                 settings[i].dispAspect[0, 2] = settings[i].xmlData.dispAspect[4];
                 settings[i].dispAspect[1, 2] = settings[i].xmlData.dispAspect[5];
+                settings[i].dispName = settings[i].xmlData.dispname;
                 Dictionary<int, bool> dp11 = new Dictionary<int, bool>();
                 dp11.Add(CommonData.ZODIAC_SUN, settings[i].xmlData.dispPlanetSun11);
                 dp11.Add(CommonData.ZODIAC_MOON, settings[i].xmlData.dispPlanetMoon11);
@@ -1354,6 +1356,17 @@ namespace microcosm
             planetRender(houseList1[1], list1, list2, list3, list4, list5);
             planetLine(houseList1[1], list1, list2, list3, list4, list5);
             aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
+
+            Label copy = new Label();
+            copy.Content = "microcosm";
+            copy.Margin = new Thickness(ringCanvas.ActualWidth - 70, ringStack.ActualHeight - 45, 0, 0);
+            Label url = new Label();
+            url.Content = "http://ogatism.jp/";
+            url.Margin = new Thickness(ringCanvas.ActualWidth - 105, ringStack.ActualHeight - 30, 0, 0);
+
+            ringCanvas.Children.Add(copy);
+            ringCanvas.Children.Add(url);
+
         }
 
         // 円レンダリング
@@ -2496,7 +2509,6 @@ namespace microcosm
                     aspectLbl.VerticalAlignment = VerticalAlignment.Top;
                 }
                 aspectLine.MouseEnter += new MouseEventHandler(aspectMouseEnter);
-                aspectLine.MouseLeave += new MouseEventHandler(explanationClear);
                 aspectLine.Tag = aspects[j];
                 ringCanvas.Children.Add(aspectLine);
                 ringCanvas.Children.Add(aspectLbl);
@@ -2531,7 +2543,9 @@ namespace microcosm
         {
             Line l = (Line)sender;
             AspectInfo info = (AspectInfo)l.Tag;
-            mainWindowVM.explanationTxt = info.aspectKind.ToString();
+            mainWindowVM.explanationTxt = CommonData.getPlanetText(info.srcPlanetNo) + "-" +
+                CommonData.getPlanetText(info.targetPlanetNo) + " " + 
+                info.aspectKind.ToString() + " " + info.absoluteDegree.ToString("0.00") + "°";
         }
         public void explanationClear(object sender, System.EventArgs e)
         {
@@ -2759,11 +2773,23 @@ namespace microcosm
             var enc = new PngBitmapEncoder();
             enc.Frames.Add(BitmapFrame.Create(render));
 
-            using (FileStream fs = new FileStream("horoscope.png", FileMode.Create))
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = "horoscope.png";
+            sfd.Filter = "pngファイル(*.png)|*.png|すべてのファイル(*.*)|*.*";
+            sfd.Title = "画像ファイル名を選択してください";
+
+            string pngFile;
+            sfd.ShowDialog();
+            if (sfd.FileName != "")
             {
-                enc.Save(fs);
-                fs.Close();
+                pngFile = sfd.FileName;
+                using (FileStream fs = new FileStream(pngFile, FileMode.Create))
+                {
+                    enc.Save(fs);
+                    fs.Close();
+                }
             }
+
 
             ringCanvas.Measure(oldSize);
             ringCanvas.Arrange(new Rect(oldSize));

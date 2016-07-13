@@ -184,6 +184,14 @@ namespace microcosm.Common
                     return "海王星";
                 case ZODIAC_PLUTO:
                     return "冥王星";
+                case ZODIAC_DH_TRUENODE:
+                    return "ヘッド";
+                case ZODIAC_CHIRON:
+                    return "キロン";
+                case ZODIAC_ASC:
+                    return "ASC";
+                case ZODIAC_MC:
+                    return "MC";
             }
             return "";
         }
