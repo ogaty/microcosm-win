@@ -97,6 +97,7 @@ namespace microcosm.Config
         public Dictionary<string, AspectControlTable> planetDispControlTable = new Dictionary<string, AspectControlTable>();
 
         string[] strNumbers = { "11", "22", "33", "12", "13", "23" };
+        string[] strNumbers2 = { "11", "22", "33" };
 
         public List<string> targetNames = new List<string>();
         public List<string> aspectTargetNames = new List<string>();
@@ -132,6 +133,9 @@ namespace microcosm.Config
                 aspectTargetNames.Add("aspectInconjunctOn" + s);
                 aspectTargetNames.Add("aspectSesquiquadrateOn" + s);
 
+            }
+            foreach (var s in strNumbers2)
+            {
                 planetTargetNames.Add("planetSunOn" + s);
                 planetTargetNames.Add("planetMoonOn" + s);
                 planetTargetNames.Add("planetMercuryOn" + s);
@@ -625,17 +629,20 @@ namespace microcosm.Config
             int index = dispList.SelectedIndex;
             int subindex = planetDispControlTable[img.Name].subIndex;
 
-            planetDispControlTable[img.Name].targetBoolean = !planetDispControlTable[img.Name].targetBoolean;
-            planetDispControlTable[img.Name].tempArray[index, subindex] = planetDispControlTable[img.Name].targetBoolean;
 
-            foreach (var data in main.list1)
+            if (subindex == 0)
             {
-                if (data.no == planetDispControlTable[img.Name].commonDataNo)
+                for (int i = 0; i < main.list1.Count(); i++)
                 {
-                    data.isAspectDisp = true;
-                    break;
+                    if (main.list1[i].no == planetDispControlTable[img.Name].commonDataNo)
+                    {
+                        planetDispControlTable[img.Name].tempArray[index, subindex] = !main.list1[i].isDisp;
+                        main.list1[i].isDisp = !main.list1[i].isDisp;
+                        break;
+                    }
                 }
             }
+
             main.ReRender();
         }
 
@@ -903,6 +910,141 @@ namespace microcosm.Config
                     commonDataNo = (int)CommonData.ZODIAC_MC
                 });
 
+
+                aspectControlTable.Add("aspectConjunctionOn" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectConjunctionOn" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectConjunctionOff" + n),
+                    tempArray = aspectConjunction,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.CONJUNCTION
+                });
+                aspectControlTable.Add("aspectOppositionOn" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectOppositionOn" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectOppositionOff" + n),
+                    tempArray = aspectOpposition,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.OPPOSITION
+                });
+                aspectControlTable.Add("aspectSquareOn" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSquareOn" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectSquareOff" + n),
+                    tempArray = aspectSquare,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SQUARE
+                });
+                aspectControlTable.Add("aspectTrineOn" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectTrineOn" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectTrineOff" + n),
+                    tempArray = aspectTrine,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.TRINE
+                });
+                aspectControlTable.Add("aspectSextileOn" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSextileOn" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectSextileOff" + n),
+                    tempArray = aspectSextile,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SEXTILE
+                });
+                aspectControlTable.Add("aspectInconjunctOn" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectInconjunctOn" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectInconjunctOff" + n),
+                    tempArray = aspectInconjunct,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.INCONJUNCT
+                });
+                aspectControlTable.Add("aspectSesquiquadrateOn" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSesquiquadrateOn" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectSesquiquadrateOff" + n),
+                    tempArray = aspectSesquiquadrate,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SESQUIQUADRATE
+                });
+                aspectControlTable.Add("aspectConjunctionOff" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectConjunctionOff" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectConjunctionOn" + n),
+                    tempArray = aspectConjunction,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.CONJUNCTION
+                });
+                aspectControlTable.Add("aspectOppositionOff" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectOppositionOff" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectOppositionOn" + n),
+                    tempArray = aspectOpposition,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.OPPOSITION
+                });
+                aspectControlTable.Add("aspectSquareOff" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSquareOff" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectSquareOn" + n),
+                    tempArray = aspectSquare,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SQUARE
+                });
+                aspectControlTable.Add("aspectTrineOff" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectTrineOff" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectTrineOn" + n),
+                    tempArray = aspectTrine,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.TRINE
+                });
+                aspectControlTable.Add("aspectSextileOff" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSextileOff" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectSextileOn" + n),
+                    tempArray = aspectSextile,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SEXTILE
+                });
+                aspectControlTable.Add("aspectInconjunctOff" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectInconjunctOff" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectInconjunctOn" + n),
+                    tempArray = aspectInconjunct,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.INCONJUNCT
+                });
+                aspectControlTable.Add("aspectSesquiquadrateOff" + n, new AspectControlTable()
+                {
+                    aspectSelfElement = (FrameworkElement)FindName("aspectSesquiquadrateOff" + n),
+                    aspectAnotherElement = (FrameworkElement)FindName("aspectSesquiquadrateOn" + n),
+                    tempArray = aspectSesquiquadrate,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    aspectKindNo = AspectKind.SESQUIQUADRATE
+                });
+
+            }
+            foreach (string n in strNumbers2)
+            {
+                if (n == "11") subIndexNo = 0;
+                else if (n == "22") subIndexNo = 1;
+                else if (n == "33") subIndexNo = 2;
+
                 planetDispControlTable.Add("planetSunOn" + n, new AspectControlTable()
                 {
                     selfElement = (FrameworkElement)FindName("planetSunOn" + n),
@@ -1156,133 +1298,6 @@ namespace microcosm.Config
                     commonDataNo = (int)CommonData.ZODIAC_MC
                 });
 
-                aspectControlTable.Add("aspectConjunctionOn" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectConjunctionOn" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectConjunctionOff" + n),
-                    tempArray = aspectConjunction,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.CONJUNCTION
-                });
-                aspectControlTable.Add("aspectOppositionOn" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectOppositionOn" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectOppositionOff" + n),
-                    tempArray = aspectOpposition,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.OPPOSITION
-                });
-                aspectControlTable.Add("aspectSquareOn" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectSquareOn" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectSquareOff" + n),
-                    tempArray = aspectSquare,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.SQUARE
-                });
-                aspectControlTable.Add("aspectTrineOn" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectTrineOn" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectTrineOff" + n),
-                    tempArray = aspectTrine,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.TRINE
-                });
-                aspectControlTable.Add("aspectSextileOn" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectSextileOn" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectSextileOff" + n),
-                    tempArray = aspectSextile,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.SEXTILE
-                });
-                aspectControlTable.Add("aspectInconjunctOn" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectInconjunctOn" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectInconjunctOff" + n),
-                    tempArray = aspectInconjunct,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.INCONJUNCT
-                });
-                aspectControlTable.Add("aspectSesquiquadrateOn" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectSesquiquadrateOn" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectSesquiquadrateOff" + n),
-                    tempArray = aspectSesquiquadrate,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.SESQUIQUADRATE
-                });
-                aspectControlTable.Add("aspectConjunctionOff" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectConjunctionOff" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectConjunctionOn" + n),
-                    tempArray = aspectConjunction,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.CONJUNCTION
-                });
-                aspectControlTable.Add("aspectOppositionOff" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectOppositionOff" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectOppositionOn" + n),
-                    tempArray = aspectOpposition,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.OPPOSITION
-                });
-                aspectControlTable.Add("aspectSquareOff" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectSquareOff" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectSquareOn" + n),
-                    tempArray = aspectSquare,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.SQUARE
-                });
-                aspectControlTable.Add("aspectTrineOff" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectTrineOff" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectTrineOn" + n),
-                    tempArray = aspectTrine,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.TRINE
-                });
-                aspectControlTable.Add("aspectSextileOff" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectSextileOff" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectSextileOn" + n),
-                    tempArray = aspectSextile,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.SEXTILE
-                });
-                aspectControlTable.Add("aspectInconjunctOff" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectInconjunctOff" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectInconjunctOn" + n),
-                    tempArray = aspectInconjunct,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.INCONJUNCT
-                });
-                aspectControlTable.Add("aspectSesquiquadrateOff" + n, new AspectControlTable()
-                {
-                    aspectSelfElement = (FrameworkElement)FindName("aspectSesquiquadrateOff" + n),
-                    aspectAnotherElement = (FrameworkElement)FindName("aspectSesquiquadrateOn" + n),
-                    tempArray = aspectSesquiquadrate,
-                    targetBoolean = true,
-                    subIndex = subIndexNo,
-                    aspectKindNo = AspectKind.SESQUIQUADRATE
-                });
-
             }
 
 
@@ -1433,87 +1448,45 @@ namespace microcosm.Config
                 xmldata.dispPlanetSun11 = planetDispSun[index, 0];
                 xmldata.dispPlanetSun22 = planetDispSun[index, 1];
                 xmldata.dispPlanetSun33 = planetDispSun[index, 2];
-                xmldata.dispPlanetSun12 = planetDispSun[index, 3];
-                xmldata.dispPlanetSun13 = planetDispSun[index, 4];
-                xmldata.dispPlanetSun23 = planetDispSun[index, 5];
                 xmldata.dispPlanetMoon11 = planetDispMoon[index, 0];
                 xmldata.dispPlanetMoon22 = planetDispMoon[index, 1];
                 xmldata.dispPlanetMoon33 = planetDispMoon[index, 2];
-                xmldata.dispPlanetMoon12 = planetDispMoon[index, 3];
-                xmldata.dispPlanetMoon13 = planetDispMoon[index, 4];
-                xmldata.dispPlanetMoon23 = planetDispMoon[index, 5];
                 xmldata.dispPlanetMercury11 = planetDispMercury[index, 0];
                 xmldata.dispPlanetMercury22 = planetDispMercury[index, 1];
                 xmldata.dispPlanetMercury33 = planetDispMercury[index, 2];
-                xmldata.dispPlanetMercury12 = planetDispMercury[index, 3];
-                xmldata.dispPlanetMercury13 = planetDispMercury[index, 4];
-                xmldata.dispPlanetMercury23 = planetDispMercury[index, 5];
                 xmldata.dispPlanetVenus11 = planetDispVenus[index, 0];
                 xmldata.dispPlanetVenus22 = planetDispVenus[index, 1];
                 xmldata.dispPlanetVenus33 = planetDispVenus[index, 2];
-                xmldata.dispPlanetVenus12 = planetDispVenus[index, 3];
-                xmldata.dispPlanetVenus13 = planetDispVenus[index, 4];
-                xmldata.dispPlanetVenus23 = planetDispVenus[index, 5];
                 xmldata.dispPlanetMars11 = planetDispMars[index, 0];
                 xmldata.dispPlanetMars22 = planetDispMars[index, 1];
                 xmldata.dispPlanetMars33 = planetDispMars[index, 2];
-                xmldata.dispPlanetMars12 = planetDispMars[index, 3];
-                xmldata.dispPlanetMars13 = planetDispMars[index, 4];
-                xmldata.dispPlanetMars23 = planetDispMars[index, 5];
                 xmldata.dispPlanetJupiter11 = planetDispJupiter[index, 0];
                 xmldata.dispPlanetJupiter22 = planetDispJupiter[index, 1];
                 xmldata.dispPlanetJupiter33 = planetDispJupiter[index, 2];
-                xmldata.dispPlanetJupiter12 = planetDispJupiter[index, 3];
-                xmldata.dispPlanetJupiter13 = planetDispJupiter[index, 4];
-                xmldata.dispPlanetJupiter23 = planetDispJupiter[index, 5];
                 xmldata.dispPlanetSaturn11 = planetDispSaturn[index, 0];
                 xmldata.dispPlanetSaturn22 = planetDispSaturn[index, 1];
                 xmldata.dispPlanetSaturn33 = planetDispSaturn[index, 2];
-                xmldata.dispPlanetSaturn12 = planetDispSaturn[index, 3];
-                xmldata.dispPlanetSaturn13 = planetDispSaturn[index, 4];
-                xmldata.dispPlanetSaturn23 = planetDispSaturn[index, 5];
                 xmldata.dispPlanetUranus11 = planetDispUranus[index, 0];
                 xmldata.dispPlanetUranus22 = planetDispUranus[index, 1];
                 xmldata.dispPlanetUranus33 = planetDispUranus[index, 2];
-                xmldata.dispPlanetUranus12 = planetDispUranus[index, 3];
-                xmldata.dispPlanetUranus13 = planetDispUranus[index, 4];
-                xmldata.dispPlanetUranus23 = planetDispUranus[index, 5];
                 xmldata.dispPlanetNeptune11 = planetDispNeptune[index, 0];
                 xmldata.dispPlanetNeptune22 = planetDispNeptune[index, 1];
                 xmldata.dispPlanetNeptune33 = planetDispNeptune[index, 2];
-                xmldata.dispPlanetNeptune12 = planetDispNeptune[index, 3];
-                xmldata.dispPlanetNeptune13 = planetDispNeptune[index, 4];
-                xmldata.dispPlanetNeptune23 = planetDispNeptune[index, 5];
                 xmldata.dispPlanetPluto11 = planetDispPluto[index, 0];
                 xmldata.dispPlanetPluto22 = planetDispPluto[index, 1];
                 xmldata.dispPlanetPluto33 = planetDispPluto[index, 2];
-                xmldata.dispPlanetPluto12 = planetDispPluto[index, 3];
-                xmldata.dispPlanetPluto13 = planetDispPluto[index, 4];
-                xmldata.dispPlanetPluto23 = planetDispPluto[index, 5];
                 xmldata.dispPlanetDh11 = planetDispDh[index, 0];
                 xmldata.dispPlanetDh22 = planetDispDh[index, 1];
                 xmldata.dispPlanetDh33 = planetDispDh[index, 2];
-                xmldata.dispPlanetDh12 = planetDispDh[index, 3];
-                xmldata.dispPlanetDh13 = planetDispDh[index, 4];
-                xmldata.dispPlanetDh23 = planetDispDh[index, 5];
                 xmldata.dispPlanetChiron11 = planetDispChiron[index, 0];
                 xmldata.dispPlanetChiron22 = planetDispChiron[index, 1];
                 xmldata.dispPlanetChiron33 = planetDispChiron[index, 2];
-                xmldata.dispPlanetChiron12 = planetDispChiron[index, 3];
-                xmldata.dispPlanetChiron13 = planetDispChiron[index, 4];
-                xmldata.dispPlanetChiron23 = planetDispChiron[index, 5];
                 xmldata.dispPlanetAsc11 = planetDispAsc[index, 0];
                 xmldata.dispPlanetAsc22 = planetDispAsc[index, 1];
                 xmldata.dispPlanetAsc33 = planetDispAsc[index, 2];
-                xmldata.dispPlanetAsc12 = planetDispAsc[index, 3];
-                xmldata.dispPlanetAsc13 = planetDispAsc[index, 4];
-                xmldata.dispPlanetAsc23 = planetDispAsc[index, 5];
                 xmldata.dispPlanetMc11 = planetDispMc[index, 0];
                 xmldata.dispPlanetMc22 = planetDispMc[index, 1];
                 xmldata.dispPlanetMc33 = planetDispMc[index, 2];
-                xmldata.dispPlanetMc12 = planetDispMc[index, 3];
-                xmldata.dispPlanetMc13 = planetDispMc[index, 4];
-                xmldata.dispPlanetMc23 = planetDispMc[index, 5];
 
                 xmldata.orb_sun_hard_1st_0 = orbSunHard1st[index, 0];
                 xmldata.orb_sun_hard_2nd_0 = orbSunHard2nd[index, 0];
@@ -1710,75 +1683,6 @@ namespace microcosm.Config
                 dp33.Add(CommonData.ZODIAC_VESTA, false);
                 dp33.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispPlanet.Add(dp33);
-                Dictionary<int, bool> dp12 = new Dictionary<int, bool>();
-                dp12.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun12);
-                dp12.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon12);
-                dp12.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury12);
-                dp12.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus12);
-                dp12.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars12);
-                dp12.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter12);
-                dp12.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn12);
-                dp12.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus12);
-                dp12.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune12);
-                dp12.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto12);
-                dp12.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh12);
-                dp12.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc12);
-                dp12.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc12);
-                dp12.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron12);
-                dp12.Add(CommonData.ZODIAC_EARTH, false);
-                dp12.Add(CommonData.ZODIAC_LILITH, false);
-                dp12.Add(CommonData.ZODIAC_CELES, false);
-                dp12.Add(CommonData.ZODIAC_PARAS, false);
-                dp12.Add(CommonData.ZODIAC_JUNO, false);
-                dp12.Add(CommonData.ZODIAC_VESTA, false);
-                dp12.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
-                main.settings[i].dispPlanet.Add(dp12);
-                Dictionary<int, bool> dp13 = new Dictionary<int, bool>();
-                dp13.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun13);
-                dp13.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon13);
-                dp13.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury13);
-                dp13.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus13);
-                dp13.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars13);
-                dp13.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter13);
-                dp13.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn13);
-                dp13.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus13);
-                dp13.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune13);
-                dp13.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto13);
-                dp13.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh13);
-                dp13.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc13);
-                dp13.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc13);
-                dp13.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron13);
-                dp13.Add(CommonData.ZODIAC_EARTH, false);
-                dp13.Add(CommonData.ZODIAC_LILITH, false);
-                dp13.Add(CommonData.ZODIAC_CELES, false);
-                dp13.Add(CommonData.ZODIAC_PARAS, false);
-                dp13.Add(CommonData.ZODIAC_JUNO, false);
-                dp13.Add(CommonData.ZODIAC_VESTA, false);
-                dp13.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
-                main.settings[i].dispPlanet.Add(dp13);
-                Dictionary<int, bool> dp23 = new Dictionary<int, bool>();
-                dp23.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun23);
-                dp23.Add(CommonData.ZODIAC_MOON, main.settings[i].xmlData.dispPlanetMoon23);
-                dp23.Add(CommonData.ZODIAC_MERCURY, main.settings[i].xmlData.dispPlanetMercury23);
-                dp23.Add(CommonData.ZODIAC_VENUS, main.settings[i].xmlData.dispPlanetVenus23);
-                dp23.Add(CommonData.ZODIAC_MARS, main.settings[i].xmlData.dispPlanetMars23);
-                dp23.Add(CommonData.ZODIAC_JUPITER, main.settings[i].xmlData.dispPlanetJupiter23);
-                dp23.Add(CommonData.ZODIAC_SATURN, main.settings[i].xmlData.dispPlanetSaturn23);
-                dp23.Add(CommonData.ZODIAC_URANUS, main.settings[i].xmlData.dispPlanetUranus23);
-                dp23.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune23);
-                dp23.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto23);
-                dp23.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh23);
-                dp23.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc23);
-                dp23.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc23);
-                dp23.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron23);
-                dp23.Add(CommonData.ZODIAC_EARTH, false);
-                dp23.Add(CommonData.ZODIAC_LILITH, false);
-                dp23.Add(CommonData.ZODIAC_CELES, false);
-                dp23.Add(CommonData.ZODIAC_PARAS, false);
-                dp23.Add(CommonData.ZODIAC_JUNO, false);
-                dp23.Add(CommonData.ZODIAC_VESTA, false);
-                dp23.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
-                main.settings[i].dispPlanet.Add(dp23);
 
                 main.settings[i].dispAspectPlanet.Clear();
                 Dictionary<int, bool> d11 = new Dictionary<int, bool>();
