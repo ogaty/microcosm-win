@@ -66,6 +66,26 @@ namespace microcosm.Calc
                                 kind == AspectKind.SQUARE ||
                                 kind == AspectKind.SEXTILE)
                             {
+                                if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[0][AspectKind.CONJUNCTION])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[0][AspectKind.OPPOSITION])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[0][AspectKind.TRINE])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[0][AspectKind.SQUARE])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[0][AspectKind.SEXTILE])
+                                {
+                                    continue;
+                                }
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_1ST])
                                 {
@@ -101,6 +121,14 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_150] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_150])
                                 {
+                                    if (kind == AspectKind.INCONJUNCT && !a_setting.dispAspectCategory[0][AspectKind.INCONJUNCT])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SESQUIQUADRATE && !a_setting.dispAspectCategory[0][AspectKind.SESQUIQUADRATE])
+                                    {
+                                        continue;
+                                    }
                                     list[i].aspects.Add(new AspectInfo()
                                     {
                                         targetPosition = list[j].absolute_position,
@@ -168,6 +196,27 @@ namespace microcosm.Calc
                                 kind == AspectKind.SQUARE ||
                                 kind == AspectKind.SEXTILE)
                             {
+                                if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[0][AspectKind.CONJUNCTION])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[0][AspectKind.OPPOSITION])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[0][AspectKind.TRINE])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[0][AspectKind.SQUARE])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[0][AspectKind.SEXTILE])
+                                {
+                                    continue;
+                                }
+
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_1ST])
                                 {
@@ -200,6 +249,15 @@ namespace microcosm.Calc
                             else if (kind == AspectKind.INCONJUNCT ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
+                                if (kind == AspectKind.INCONJUNCT && !a_setting.dispAspectCategory[0][AspectKind.INCONJUNCT])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SESQUIQUADRATE && !a_setting.dispAspectCategory[0][AspectKind.SESQUIQUADRATE])
+                                {
+                                    continue;
+                                }
+
                                 // Console.WriteLine(aspect_degree);
                                 // Console.WriteLine(getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_150]);
                                 // Console.WriteLine(getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_150]);
@@ -273,6 +331,27 @@ namespace microcosm.Calc
                                 kind == AspectKind.SQUARE ||
                                 kind == AspectKind.SEXTILE)
                             {
+                                if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[0][AspectKind.CONJUNCTION])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[0][AspectKind.OPPOSITION])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[0][AspectKind.TRINE])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[0][AspectKind.SQUARE])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[0][AspectKind.SEXTILE])
+                                {
+                                    continue;
+                                }
+
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_1ST])
                                 {
@@ -305,6 +384,15 @@ namespace microcosm.Calc
                             else if (kind == AspectKind.INCONJUNCT ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
+                                if (kind == AspectKind.INCONJUNCT && !a_setting.dispAspectCategory[0][AspectKind.INCONJUNCT])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SESQUIQUADRATE && !a_setting.dispAspectCategory[0][AspectKind.SESQUIQUADRATE])
+                                {
+                                    continue;
+                                }
+
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_150] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_150])
                                 {
@@ -396,7 +484,6 @@ namespace microcosm.Calc
             List<PlanetData> fromList, List<PlanetData> toList, 
             int listKind)
         {
-            int n = 0; // TODO
             for (int i = 0; i < fromList.Count - 1; i++)
             {
                 for (int j = 0; j < toList.Count - 1; j++)
@@ -421,74 +508,376 @@ namespace microcosm.Calc
                             // 1-2
                             if (i == CommonData.ZODIAC_SUN)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_HARD_1ST] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_HARD_1ST])
+                                if (kind == AspectKind.CONJUNCTION ||
+                                    kind == AspectKind.OPPOSITION ||
+                                    kind == AspectKind.TRINE ||
+                                    kind == AspectKind.SQUARE ||
+                                    kind == AspectKind.SEXTILE)
                                 {
-                                    fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no,
-                                        srcPlanetNo = fromList[i].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[listKind][AspectKind.CONJUNCTION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[listKind][AspectKind.OPPOSITION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[listKind][AspectKind.TRINE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[listKind][AspectKind.SQUARE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[listKind][AspectKind.SEXTILE])
+                                    {
+                                        continue;
+                                    }
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_HARD_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_1ST])
+                                    {
+
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_SOFT_1ST] &&
-                                  aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_SOFT_1ST])
+                                else if (kind == AspectKind.INCONJUNCT ||
+                                         kind == AspectKind.SESQUIQUADRATE)
                                 {
-                                    fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no,
-                                        srcPlanetNo = fromList[i].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_HARD_150] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_150])
+                                    {
+
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_150] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_150])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
                                 }
+                                else
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_HARD_2ND] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_2ND])
+                                    {
+
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_2ND] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_2ND])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+
                             }
                             else if (i == CommonData.ZODIAC_MOON)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.MOON_HARD_1ST] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
+                                if (kind == AspectKind.CONJUNCTION ||
+                                    kind == AspectKind.OPPOSITION ||
+                                    kind == AspectKind.TRINE ||
+                                    kind == AspectKind.SQUARE ||
+                                    kind == AspectKind.SEXTILE)
                                 {
-                                    fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no,
-                                        srcPlanetNo = fromList[i].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
-                                }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.MOON_HARD_1ST] &&
-                                  aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
-                                {
-                                    fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no,
-                                        srcPlanetNo = fromList[i].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
-                                }
+                                    if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[listKind][AspectKind.CONJUNCTION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[listKind][AspectKind.OPPOSITION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[listKind][AspectKind.TRINE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[listKind][AspectKind.SQUARE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[listKind][AspectKind.SEXTILE])
+                                    {
+                                        continue;
+                                    }
 
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST] &&
+                                    aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST] &&
+                                             aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else if (kind == AspectKind.INCONJUNCT ||
+                                         kind == AspectKind.SESQUIQUADRATE)
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_150] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_150])
+                                    {
+
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_150] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_150])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
+                                    {
+
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_HARD_1ST] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_HARD_1ST])
-                                {
-                                    fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.SOFT, targetPlanetNo = toList[j].no,
-                                        srcPlanetNo = fromList[i].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
-                                }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_SOFT_1ST] &&
-                                     aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_SOFT_1ST])
-                                {
-                                    fromList[i].secondAspects.Add(new AspectInfo() { targetPosition = toList[j].absolute_position, aspectKind = kind,
-                                        softHard = SoftHard.HARD, targetPlanetNo = toList[j].no,
-                                        srcPlanetNo = fromList[i].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
-                                }
 
+                                if (kind == AspectKind.CONJUNCTION ||
+                                    kind == AspectKind.OPPOSITION ||
+                                    kind == AspectKind.TRINE ||
+                                    kind == AspectKind.SQUARE ||
+                                    kind == AspectKind.SEXTILE)
+                                {
+                                    if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[listKind][AspectKind.CONJUNCTION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[listKind][AspectKind.OPPOSITION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[listKind][AspectKind.TRINE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[listKind][AspectKind.SQUARE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[listKind][AspectKind.SEXTILE])
+                                    {
+                                        continue;
+                                    }
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST] &&
+                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else if (kind == AspectKind.INCONJUNCT ||
+                                         kind == AspectKind.SESQUIQUADRATE)
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_150] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_150])
+                                    {
+
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_150] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_150])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_2ND] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_2ND])
+                                    {
+
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_2ND] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_2ND])
+                                    {
+                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
                             }
                         }
                         else
@@ -498,96 +887,376 @@ namespace microcosm.Calc
                             // 2-3
                             if (i == CommonData.ZODIAC_SUN)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_HARD_1ST] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_HARD_1ST])
+                                if (kind == AspectKind.CONJUNCTION ||
+                                    kind == AspectKind.OPPOSITION ||
+                                    kind == AspectKind.TRINE ||
+                                    kind == AspectKind.SQUARE ||
+                                    kind == AspectKind.SEXTILE)
                                 {
-                                    fromList[i].thirdAspects.Add(new AspectInfo()
+                                    if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[listKind][AspectKind.CONJUNCTION])
                                     {
-                                        targetPosition = toList[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = fromList[i].no,
-                                        targetPlanetNo = toList[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[listKind][AspectKind.OPPOSITION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[listKind][AspectKind.TRINE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[listKind][AspectKind.SQUARE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[listKind][AspectKind.SEXTILE])
+                                    {
+                                        continue;
+                                    }
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_HARD_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_1ST])
+                                    {
+
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = toList[j].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = toList[j].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.SUN_SOFT_1ST] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.SUN_SOFT_1ST])
+                                else if (kind == AspectKind.INCONJUNCT ||
+                                         kind == AspectKind.SESQUIQUADRATE)
                                 {
-                                    fromList[i].thirdAspects.Add(new AspectInfo()
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_150] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_150])
                                     {
-                                        targetPosition = toList[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = fromList[i].no,
-                                        targetPlanetNo = toList[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_150] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_150])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
+                                    {
+
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
                                 }
                             }
                             else if (i == CommonData.ZODIAC_MOON)
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.MOON_HARD_1ST] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.MOON_HARD_1ST])
+                                if (kind == AspectKind.CONJUNCTION ||
+                                    kind == AspectKind.OPPOSITION ||
+                                    kind == AspectKind.TRINE ||
+                                    kind == AspectKind.SQUARE ||
+                                    kind == AspectKind.SEXTILE)
                                 {
-                                    fromList[i].thirdAspects.Add(new AspectInfo()
+                                    if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[listKind][AspectKind.CONJUNCTION])
                                     {
-                                        targetPosition = toList[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = fromList[i].no,
-                                        targetPlanetNo = toList[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
-                                }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_HARD_1ST] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_HARD_1ST])
-                                {
-                                    fromList[i].thirdAspects.Add(new AspectInfo()
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[listKind][AspectKind.OPPOSITION])
                                     {
-                                        targetPosition = toList[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = fromList[i].no,
-                                        targetPlanetNo = toList[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
-                                }
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[listKind][AspectKind.TRINE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[listKind][AspectKind.SQUARE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[listKind][AspectKind.SEXTILE])
+                                    {
+                                        continue;
+                                    }
 
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = toList[j].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = toList[j].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else if (kind == AspectKind.INCONJUNCT ||
+                                         kind == AspectKind.SESQUIQUADRATE)
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_150] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_150])
+                                    {
+
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_150] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_150])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
+                                    {
+
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {
-                                if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_HARD_2ND] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_HARD_2ND])
+                                if (kind == AspectKind.CONJUNCTION ||
+                                    kind == AspectKind.OPPOSITION ||
+                                    kind == AspectKind.TRINE ||
+                                    kind == AspectKind.SQUARE ||
+                                    kind == AspectKind.SEXTILE)
                                 {
-                                    fromList[i].thirdAspects.Add(new AspectInfo()
+                                    if (kind == AspectKind.CONJUNCTION && !a_setting.dispAspectCategory[listKind][AspectKind.CONJUNCTION])
                                     {
-                                        targetPosition = toList[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = fromList[i].no,
-                                        targetPlanetNo = toList[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.OPPOSITION && !a_setting.dispAspectCategory[listKind][AspectKind.OPPOSITION])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.TRINE && !a_setting.dispAspectCategory[listKind][AspectKind.TRINE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SQUARE && !a_setting.dispAspectCategory[listKind][AspectKind.SQUARE])
+                                    {
+                                        continue;
+                                    }
+                                    if (kind == AspectKind.SEXTILE && !a_setting.dispAspectCategory[listKind][AspectKind.SEXTILE])
+                                    {
+                                        continue;
+                                    }
+
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = toList[j].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = toList[j].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
                                 }
-                                else if (aspect_degree < getDegree(kind) + a_setting.orbs[n][OrbKind.OTHER_SOFT_2ND] &&
-                                    aspect_degree > getDegree(kind) - a_setting.orbs[n][OrbKind.OTHER_SOFT_2ND])
+
+
+                                else if (kind == AspectKind.INCONJUNCT ||
+                                         kind == AspectKind.SESQUIQUADRATE)
                                 {
-                                    fromList[i].thirdAspects.Add(new AspectInfo()
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_150] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_150])
                                     {
-                                        targetPosition = toList[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = fromList[i].no,
-                                        targetPlanetNo = toList[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_150] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_150])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND] &&
+                                        aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
+                                    {
+
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.SOFT,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
+                                    else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
+                                      aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
+                                    {
+                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        {
+                                            targetPosition = toList[j].absolute_position,
+                                            aspectKind = kind,
+                                            softHard = SoftHard.HARD,
+                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = fromList[i].no,
+                                            absoluteDegree = aspect_degree
+                                        });
+                                        break;
+                                    }
                                 }
 
                             }

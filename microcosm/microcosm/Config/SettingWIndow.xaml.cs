@@ -1305,10 +1305,10 @@ namespace microcosm.Config
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            SettingXml xmldata = new SettingXml();
 
             for (int index = 0; index < 10; index++)
             {
+                SettingXml xmldata = new SettingXml();
                 xmldata.aspectSun11 = aspectSun[index, 0];
                 xmldata.aspectSun22 = aspectSun[index, 1];
                 xmldata.aspectSun33 = aspectSun[index, 2];
@@ -2001,15 +2001,18 @@ namespace microcosm.Config
                 o23.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_5);
                 o23.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_5);
                 main.settings[i].orbs.Add(o23);
+
+                main.settings[i].dispAspect[0, 0] = aspectDispChecked[currentIndex, 0];
+                main.settings[i].dispAspect[1, 1] = aspectDispChecked[currentIndex, 1];
+                main.settings[i].dispAspect[2, 2] = aspectDispChecked[currentIndex, 2];
+                main.settings[i].dispAspect[0, 1] = aspectDispChecked[currentIndex, 3];
+                main.settings[i].dispAspect[0, 2] = aspectDispChecked[currentIndex, 4];
+                main.settings[i].dispAspect[1, 2] = aspectDispChecked[currentIndex, 5];
+
             }
 
 
-            main.currentSetting.dispAspect[0, 0] = aspectDispChecked[currentIndex, 0];
-            main.currentSetting.dispAspect[1, 1] = aspectDispChecked[currentIndex, 1];
-            main.currentSetting.dispAspect[2, 2] = aspectDispChecked[currentIndex, 2];
-            main.currentSetting.dispAspect[0, 1] = aspectDispChecked[currentIndex, 3];
-            main.currentSetting.dispAspect[0, 2] = aspectDispChecked[currentIndex, 4];
-            main.currentSetting.dispAspect[1, 2] = aspectDispChecked[currentIndex, 5];
+            main.currentSetting = main.settings[currentIndex];
 
 
             main.ReCalc();
@@ -2031,7 +2034,7 @@ namespace microcosm.Config
             int index = dispList.SelectedIndex;
             int subIndex = aspectControlTable[img.Name].subIndex;
 
-            aspectControlTable[img.Name].tempArray[index, subIndex] = aspectControlTable[img.Name].targetBoolean;
+            aspectControlTable[img.Name].tempArray[index, subIndex] = !aspectControlTable[img.Name].tempArray[index, subIndex];
 
             main.ReRender();
         }
@@ -2052,7 +2055,7 @@ namespace microcosm.Config
         private void disp22_Click(object sender, RoutedEventArgs e)
         {
             int index = dispList.SelectedIndex;
-            if (disp11.IsChecked == true)
+            if (disp22.IsChecked == true)
             {
                 aspectDispChecked[index, 1] = true;
             }
@@ -2065,7 +2068,7 @@ namespace microcosm.Config
         private void disp33_Click(object sender, RoutedEventArgs e)
         {
             int index = dispList.SelectedIndex;
-            if (disp11.IsChecked == true)
+            if (disp33.IsChecked == true)
             {
                 aspectDispChecked[index, 2] = true;
             }
@@ -2078,7 +2081,7 @@ namespace microcosm.Config
         private void disp12_Click(object sender, RoutedEventArgs e)
         {
             int index = dispList.SelectedIndex;
-            if (disp11.IsChecked == true)
+            if (disp12.IsChecked == true)
             {
                 aspectDispChecked[index, 3] = true;
             }
@@ -2091,7 +2094,7 @@ namespace microcosm.Config
         private void disp13_Click(object sender, RoutedEventArgs e)
         {
             int index = dispList.SelectedIndex;
-            if (disp11.IsChecked == true)
+            if (disp13.IsChecked == true)
             {
                 aspectDispChecked[index, 4] = true;
             }
@@ -2104,7 +2107,7 @@ namespace microcosm.Config
         private void disp23_Click(object sender, RoutedEventArgs e)
         {
             int index = dispList.SelectedIndex;
-            if (disp11.IsChecked == true)
+            if (disp23.IsChecked == true)
             {
                 aspectDispChecked[index, 5] = true;
             }

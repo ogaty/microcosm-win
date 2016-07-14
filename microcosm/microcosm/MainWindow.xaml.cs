@@ -1284,26 +1284,26 @@ namespace microcosm
 
             AspectCalc aspect = new AspectCalc(this);
             list1 = aspect.AspectCalcSame(currentSetting, list1);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 4);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 5);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list4, 9);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list5, 10);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list6, 20);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 3);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 4);
+//            list1 = aspect.AspectCalcOther(currentSetting, list1, list4, 9);
+//            list1 = aspect.AspectCalcOther(currentSetting, list1, list5, 10);
+//            list1 = aspect.AspectCalcOther(currentSetting, list1, list6, 20);
             list2 = aspect.AspectCalcSame(currentSetting, list2);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list3, 6);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list4, 11);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list5, 12);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list6, 20);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list3, 5);
+//            list2 = aspect.AspectCalcOther(currentSetting, list2, list4, 11);
+//            list2 = aspect.AspectCalcOther(currentSetting, list2, list5, 12);
+//            list2 = aspect.AspectCalcOther(currentSetting, list2, list6, 20);
             list3 = aspect.AspectCalcSame(currentSetting, list3);
-            list3 = aspect.AspectCalcOther(currentSetting, list3, list4, 13);
-            list3 = aspect.AspectCalcOther(currentSetting, list3, list5, 14);
-            list3 = aspect.AspectCalcOther(currentSetting, list3, list6, 20);
-            list4 = aspect.AspectCalcSame(currentSetting, list4);
-            list4 = aspect.AspectCalcOther(currentSetting, list4, list5, 15);
-            list4 = aspect.AspectCalcOther(currentSetting, list4, list6, 20);
-            list5 = aspect.AspectCalcSame(currentSetting, list5);
-            list5 = aspect.AspectCalcOther(currentSetting, list5, list6, 20);
-            list6 = aspect.AspectCalcSame(currentSetting, list6);
+//            list3 = aspect.AspectCalcOther(currentSetting, list3, list4, 13);
+//            list3 = aspect.AspectCalcOther(currentSetting, list3, list5, 14);
+//            list3 = aspect.AspectCalcOther(currentSetting, list3, list6, 20);
+//            list4 = aspect.AspectCalcSame(currentSetting, list4);
+//            list4 = aspect.AspectCalcOther(currentSetting, list4, list5, 15);
+//            list4 = aspect.AspectCalcOther(currentSetting, list4, list6, 20);
+//            list5 = aspect.AspectCalcSame(currentSetting, list5);
+//            list5 = aspect.AspectCalcOther(currentSetting, list5, list6, 20);
+//            list6 = aspect.AspectCalcSame(currentSetting, list6);
         }
 
         private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -2222,12 +2222,30 @@ namespace microcosm
             }
             if (tempSettings.bands == 3)
             {
-                aspectRender(startDegree, list1, 1, 1, 3, 1);
-                aspectRender(startDegree, list2, 2, 2, 3, 1);
-                aspectRender(startDegree, list3, 3, 3, 3, 1);
-                aspectRender(startDegree, list1, 1, 2, 3, 2);
-                aspectRender(startDegree, list1, 1, 3, 3, 3);
-                aspectRender(startDegree, list2, 2, 3, 3, 3);
+                if (currentSetting.dispAspect[0, 0])
+                {
+                    aspectRender(startDegree, list1, 1, 1, 3, 1);
+                }
+                if (currentSetting.dispAspect[1, 1])
+                {
+                    aspectRender(startDegree, list2, 2, 2, 3, 1);
+                }
+                if (currentSetting.dispAspect[2, 2])
+                {
+                    aspectRender(startDegree, list3, 3, 3, 3, 1);
+                }
+                if (currentSetting.dispAspect[0, 1])
+                {
+                    aspectRender(startDegree, list1, 1, 2, 3, 2);
+                }
+                if (currentSetting.dispAspect[0, 2])
+                {
+                    aspectRender(startDegree, list1, 1, 3, 3, 3);
+                }
+                if (currentSetting.dispAspect[1, 2])
+                {
+                    aspectRender(startDegree, list2, 2, 3, 3, 3);
+                }
             }
             /*
             if (aspectSetting.n_n)
