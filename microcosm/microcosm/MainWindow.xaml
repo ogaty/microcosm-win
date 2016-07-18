@@ -85,10 +85,10 @@
                 </ListView.View>
             </ListView>
 
-            <TextBlock Name="centric" Text="geoCentric"></TextBlock>
-            <TextBlock Name="tropical" Text="tropical"></TextBlock>
-            <TextBlock Name="houseCalc" Text="placidus"></TextBlock>
-            <TextBlock Name="progressCalc" Text="一日一年法"></TextBlock>
+            <TextBlock Name="centric" Text="{Binding centric}"></TextBlock>
+            <TextBlock Name="tropical" Text="{Binding siderealStr}"></TextBlock>
+            <TextBlock Name="houseCalc" Text="{Binding houseDivide}"></TextBlock>
+            <TextBlock Name="progressCalc" Text="{Binding progressionCalc}"></TextBlock>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" x:Name="xxx">

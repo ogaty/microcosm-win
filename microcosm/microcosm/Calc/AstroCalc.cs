@@ -336,6 +336,31 @@ namespace microcosm.Calc
 
             natallist.ForEach(data =>
             {
+                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_SUN)
+                {
+                    // ヘリオセントリック太陽
+                    return;
+                }
+                if (data.no == 10)
+                {
+                    // MEAN NODE
+                    return;
+                }
+                if (data.no == 12)
+                {
+                    // mean apogee、どうでもいい
+                    return;
+                }
+                if (data.no == 13)
+                {
+                    // true apogee、リリス
+                    return;
+                }
+                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_EARTH)
+                {
+                    // ヘリオセントリック地球
+                    return;
+                }
                 int flag = SwissEph.SEFLG_SWIEPH | SwissEph.SEFLG_SPEED;
                 if (config.centric == ECentric.HELIO_CENTRIC) flag |= SwissEph.SEFLG_HELCTR;
                 if (config.sidereal == Esidereal.SIDEREAL)
@@ -386,7 +411,7 @@ namespace microcosm.Calc
             DateTime newTime = natalTime + add;
 
 
-            double[] retHouse = CuspCalc(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, lat, lng, main.config.houseCalc);
+            double[] retHouse = CuspCalc(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, lat, lng, (int)main.config.houseCalc);
 
             return retHouse;
         }
@@ -430,13 +455,51 @@ namespace microcosm.Calc
             natallist.ForEach(data =>
             {
                 PlanetData progressdata;
+                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_SUN)
+                {
+                    // ヘリオセントリック太陽
+                    return;
+                }
+                if (data.no == 10)
+                {
+                    // MEAN NODE
+                    return;
+                }
+                if (data.no == 12)
+                {
+                    // mean apogee、どうでもいい
+                    return;
+                }
+                if (data.no == 13)
+                {
+                    // true apogee、リリス
+                    return;
+                }
+                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_EARTH)
+                {
+                    // ヘリオセントリック地球
+                    return;
+                }
+
                 if ((data.no != CommonData.ZODIAC_MOON) && 
                     (data.no != CommonData.ZODIAC_MERCURY) && 
                     (data.no != CommonData.ZODIAC_VENUS) && 
                     (data.no != CommonData.ZODIAC_SUN))
                 {
-                    progressdata = new PlanetData() { absolute_position = data.absolute_position, no = data.no, sensitive = data.sensitive, speed = data.speed,
-                        aspects = new List<AspectInfo>(), secondAspects = new List<AspectInfo>(), thirdAspects = new List<AspectInfo>() };
+                    progressdata = new PlanetData() {
+                        absolute_position = data.absolute_position,
+                        no = data.no,
+                        sensitive = data.sensitive,
+                        speed = data.speed,
+                        aspects = new List<AspectInfo>(),
+                        secondAspects = new List<AspectInfo>(),
+                        thirdAspects = new List<AspectInfo>(),
+                        fourthAspects = null,
+                        fifthAspects = null,
+                        sixthAspects = null,
+                        seventhAspects = null,
+                        isDisp = true,
+                    };
                     progressdata.absolute_position += years;
                     progressdata.absolute_position %= 365;
                     progresslist.Add(progressdata);

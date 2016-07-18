@@ -91,6 +91,63 @@ namespace microcosm.ViewModel
             }
         }
 
+        // 左下現在設定
+        public string _centricMode;
+        public string centricMode
+        {
+            get
+            {
+                return _centricMode;
+            }
+            set
+            {
+                _centricMode = value;
+                OnPropertyChanged("centricMode");
+            }
+        }
+
+        public string _siderealStr;
+        public string siderealStr
+        {
+            get
+            {
+                return _siderealStr;
+            }
+            set
+            {
+                _siderealStr = value;
+                OnPropertyChanged("siderealStr");
+            }
+        }
+
+        public string _houseDivide;
+        public string houseDivide
+        {
+            get
+            {
+                return _houseDivide;
+            }
+            set
+            {
+                _houseDivide = value;
+                OnPropertyChanged("houseDivide");
+            }
+        }
+
+        public string _progressionCalc;
+        public string progressionCalc
+        {
+            get
+            {
+                return _progressionCalc;
+            }
+            set
+            {
+                _progressionCalc = value;
+                OnPropertyChanged("progressionCalc");
+            }
+        }
+
         // 右上イベント
         public string _transitName;
         public string transitName

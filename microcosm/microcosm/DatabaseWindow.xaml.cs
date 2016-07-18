@@ -164,7 +164,6 @@ namespace microcosm
             {
                 return;
             }
-            DbItem item;
             if (UserEvent.SelectedItem is UserData)
             {
                 UserData data = (UserData)UserEvent.SelectedItem;
@@ -184,7 +183,7 @@ namespace microcosm
                     data.birth_second,
                     data.lat,
                     data.lng,
-                    mainwindow.config.houseCalc);
+                    (int)mainwindow.config.houseCalc);
 
                 DateTime calcDate = currentDate.AddDays(364.5);
                 for (int i = 0; i < 40; i++)
@@ -198,7 +197,7 @@ namespace microcosm
                         calcDate.Day,
                         data.lat,
                         data.lng,
-                        mainwindow.config.houseCalc);
+                        (int)mainwindow.config.houseCalc);
                     if (Math.Abs(currentPlanet[0].absolute_position - planet[0].absolute_position) < 0.01)
                     {
                         Console.WriteLine(currentPlanet[0].absolute_position.ToString());
@@ -228,11 +227,21 @@ namespace microcosm
             string userTimezone
         )
         {
+            TreeViewItem parentItem;
             TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
             if (item == null)
             {
                 item = (TreeViewItem)UserDirTree.Items[0];
             }
+            if (item.Parent is TreeViewItem)
+            {
+                parentItem = (TreeViewItem)item.Parent;
+                if (parentItem.Tag == null)
+                {
+                    item = (TreeViewItem)UserDirTree.Items[0];
+                }
+            }
+
             DbItem iteminfo = (DbItem)item.Tag;
             string newDir;
             if (iteminfo == null)
@@ -264,7 +273,7 @@ namespace microcosm
             }
             else
             {
-                TreeViewItem parentItem = (TreeViewItem)item.Parent;
+                parentItem = (TreeViewItem)item.Parent;
                 DbItem parentIteminfo = (DbItem)parentItem.Tag;
                 string parentDir = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
                 newPath = parentDir + @"\" + fileName + ".csm";
@@ -620,6 +629,10 @@ namespace microcosm
         {
             TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
             DbItem iteminfo = (DbItem)item.Tag;
+            if (Directory.Exists(iteminfo.fileName))
+            {
+                return;
+            }
             XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
             UserData data = DBMgr.getObject();
             iteminfo.fileName = System.IO.Path.GetFileNameWithoutExtension(iteminfo.fileName);
@@ -1191,9 +1204,7 @@ namespace microcosm
                     int minute = 0;
                     int second = 0;
                     string place = "";
-                    string lat = "35.670587";
                     double dlat = 35.670587;
-                    string lng = "139.772003";
                     double dlng = 139.772003;
                     string timezone = "JST";
                     string memo = "";

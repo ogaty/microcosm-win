@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <SettingXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <dispname>設定０</dispname>
   <orb_sun_soft_1st_0>8</orb_sun_soft_1st_0>
@@ -154,50 +154,50 @@
   <dispPlanetAsc33>true</dispPlanetAsc33>
   <dispPlanetMc33>true</dispPlanetMc33>
   <dispPlanetEarth33>false</dispPlanetEarth33>
-  <dispPlanetSun12>true</dispPlanetSun12>
-  <dispPlanetMoon12>true</dispPlanetMoon12>
-  <dispPlanetMercury12>true</dispPlanetMercury12>
-  <dispPlanetVenus12>true</dispPlanetVenus12>
-  <dispPlanetMars12>true</dispPlanetMars12>
-  <dispPlanetJupiter12>true</dispPlanetJupiter12>
-  <dispPlanetSaturn12>true</dispPlanetSaturn12>
-  <dispPlanetUranus12>true</dispPlanetUranus12>
-  <dispPlanetNeptune12>true</dispPlanetNeptune12>
-  <dispPlanetPluto12>true</dispPlanetPluto12>
-  <dispPlanetDh12>true</dispPlanetDh12>
-  <dispPlanetChiron12>true</dispPlanetChiron12>
-  <dispPlanetAsc12>true</dispPlanetAsc12>
-  <dispPlanetMc12>true</dispPlanetMc12>
+  <dispPlanetSun12>false</dispPlanetSun12>
+  <dispPlanetMoon12>false</dispPlanetMoon12>
+  <dispPlanetMercury12>false</dispPlanetMercury12>
+  <dispPlanetVenus12>false</dispPlanetVenus12>
+  <dispPlanetMars12>false</dispPlanetMars12>
+  <dispPlanetJupiter12>false</dispPlanetJupiter12>
+  <dispPlanetSaturn12>false</dispPlanetSaturn12>
+  <dispPlanetUranus12>false</dispPlanetUranus12>
+  <dispPlanetNeptune12>false</dispPlanetNeptune12>
+  <dispPlanetPluto12>false</dispPlanetPluto12>
+  <dispPlanetDh12>false</dispPlanetDh12>
+  <dispPlanetChiron12>false</dispPlanetChiron12>
+  <dispPlanetAsc12>false</dispPlanetAsc12>
+  <dispPlanetMc12>false</dispPlanetMc12>
   <dispPlanetEarth12>false</dispPlanetEarth12>
-  <dispPlanetSun13>true</dispPlanetSun13>
-  <dispPlanetMoon13>true</dispPlanetMoon13>
-  <dispPlanetMercury13>true</dispPlanetMercury13>
-  <dispPlanetVenus13>true</dispPlanetVenus13>
-  <dispPlanetMars13>true</dispPlanetMars13>
-  <dispPlanetJupiter13>true</dispPlanetJupiter13>
-  <dispPlanetSaturn13>true</dispPlanetSaturn13>
-  <dispPlanetUranus13>true</dispPlanetUranus13>
-  <dispPlanetNeptune13>true</dispPlanetNeptune13>
-  <dispPlanetPluto13>true</dispPlanetPluto13>
-  <dispPlanetDh13>true</dispPlanetDh13>
-  <dispPlanetChiron13>true</dispPlanetChiron13>
-  <dispPlanetAsc13>true</dispPlanetAsc13>
-  <dispPlanetMc13>true</dispPlanetMc13>
+  <dispPlanetSun13>false</dispPlanetSun13>
+  <dispPlanetMoon13>false</dispPlanetMoon13>
+  <dispPlanetMercury13>false</dispPlanetMercury13>
+  <dispPlanetVenus13>false</dispPlanetVenus13>
+  <dispPlanetMars13>false</dispPlanetMars13>
+  <dispPlanetJupiter13>false</dispPlanetJupiter13>
+  <dispPlanetSaturn13>false</dispPlanetSaturn13>
+  <dispPlanetUranus13>false</dispPlanetUranus13>
+  <dispPlanetNeptune13>false</dispPlanetNeptune13>
+  <dispPlanetPluto13>false</dispPlanetPluto13>
+  <dispPlanetDh13>false</dispPlanetDh13>
+  <dispPlanetChiron13>false</dispPlanetChiron13>
+  <dispPlanetAsc13>false</dispPlanetAsc13>
+  <dispPlanetMc13>false</dispPlanetMc13>
   <dispPlanetEarth13>false</dispPlanetEarth13>
-  <dispPlanetSun23>true</dispPlanetSun23>
-  <dispPlanetMoon23>true</dispPlanetMoon23>
-  <dispPlanetMercury23>true</dispPlanetMercury23>
-  <dispPlanetVenus23>true</dispPlanetVenus23>
-  <dispPlanetMars23>true</dispPlanetMars23>
-  <dispPlanetJupiter23>true</dispPlanetJupiter23>
-  <dispPlanetSaturn23>true</dispPlanetSaturn23>
-  <dispPlanetUranus23>true</dispPlanetUranus23>
-  <dispPlanetNeptune23>true</dispPlanetNeptune23>
-  <dispPlanetPluto23>true</dispPlanetPluto23>
-  <dispPlanetDh23>true</dispPlanetDh23>
-  <dispPlanetChiron23>true</dispPlanetChiron23>
-  <dispPlanetAsc23>true</dispPlanetAsc23>
-  <dispPlanetMc23>true</dispPlanetMc23>
+  <dispPlanetSun23>false</dispPlanetSun23>
+  <dispPlanetMoon23>false</dispPlanetMoon23>
+  <dispPlanetMercury23>false</dispPlanetMercury23>
+  <dispPlanetVenus23>false</dispPlanetVenus23>
+  <dispPlanetMars23>false</dispPlanetMars23>
+  <dispPlanetJupiter23>false</dispPlanetJupiter23>
+  <dispPlanetSaturn23>false</dispPlanetSaturn23>
+  <dispPlanetUranus23>false</dispPlanetUranus23>
+  <dispPlanetNeptune23>false</dispPlanetNeptune23>
+  <dispPlanetPluto23>false</dispPlanetPluto23>
+  <dispPlanetDh23>false</dispPlanetDh23>
+  <dispPlanetChiron23>false</dispPlanetChiron23>
+  <dispPlanetAsc23>false</dispPlanetAsc23>
+  <dispPlanetMc23>false</dispPlanetMc23>
   <dispPlanetEarth23>false</dispPlanetEarth23>
   <dispAspect>true</dispAspect>
   <dispAspect>false</dispAspect>

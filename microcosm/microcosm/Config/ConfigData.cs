@@ -83,7 +83,7 @@ namespace microcosm.Config
 
         // ハウス
         [XmlElement("house")]
-        public int houseCalc { get; set; }
+        public EHouseCalc houseCalc { get; set; }
 
         // 獣帯外側幅
         [XmlElement("zodiacOuterWidth")]
@@ -99,7 +99,7 @@ namespace microcosm.Config
 
         // 10進、60進
         [XmlElement("decimalDisp")]
-        public int decimalDisp { get; set; }
+        public EDecimalDisp decimalDisp { get; set; }
 
         // SolarFireっぽく表示orAMATERUっぽく表示
         [XmlElement("dispPattern")]
@@ -113,12 +113,12 @@ namespace microcosm.Config
             defaultPlace = "東京都中央区";
             lat = 35.670587;
             lng = 139.772003;
-            houseCalc = (int)EHouseCalc.PLACIDUS;
+            houseCalc = EHouseCalc.PLACIDUS;
             zodiacOuterWidth = 470;
             zodiacWidth = 60;
             zodiacCenter = 250;
             defaultTimezone = "JST";
-            decimalDisp = (int)EDecimalDisp.DECIMAL;
+            decimalDisp = EDecimalDisp.DECIMAL;
             dispPattern = 0;
             progression = EProgression.PRIMARY;
         }
@@ -130,12 +130,12 @@ namespace microcosm.Config
             defaultPlace = "東京都中央区";
             lat = 35.670587;
             lng = 139.772003;
-            houseCalc = (int)EHouseCalc.PLACIDUS;
+            houseCalc = EHouseCalc.PLACIDUS;
             zodiacOuterWidth = 470;
             zodiacWidth = 60;
             zodiacCenter = 250;
             defaultTimezone = "JST";
-            decimalDisp = (int)EDecimalDisp.DECIMAL;
+            decimalDisp = EDecimalDisp.DECIMAL;
             dispPattern = 0;
             progression = EProgression.PRIMARY;
         }

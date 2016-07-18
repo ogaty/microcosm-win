@@ -38,109 +38,6 @@ namespace microcosm
             this.Visibility = Visibility.Hidden;
         }
 
-        private void LeftYear_Click(object sender, RoutedEventArgs e)
-        {
-            int count = int.Parse(unitYear.Text);
-            int year = int.Parse(setYear.Text);
-            if (natalTime.IsChecked == true)
-            {
-                DateTime dt = new DateTime(int.Parse(setYear.Text),
-                    int.Parse(setMonth.Text),
-                    int.Parse(setDay.Text),
-                    int.Parse(setHour.Text),
-                    int.Parse(setMinute.Text),
-                    int.Parse(setSecond.Text));
-                DateTime newDt = dt.AddYears(-1 * count);
-                setDay.Text = newDt.Day.ToString();
-                setMonth.Text = newDt.Month.ToString();
-                setYear.Text = newDt.Year.ToString();
-                setHour.Text = newDt.Hour.ToString();
-                setMinute.Text = newDt.Minute.ToString();
-                setSecond.Text = newDt.Second.ToString();
-                main.targetUser.birth_day = newDt.Day;
-                main.targetUser.birth_month = newDt.Month;
-                main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
-            }
-            else
-            {
-                DateTime dt = new DateTime(int.Parse(setYear.Text),
-                    int.Parse(setMonth.Text),
-                    int.Parse(setDay.Text),
-                    int.Parse(setHour.Text),
-                    int.Parse(setMinute.Text),
-                    int.Parse(setSecond.Text));
-                DateTime newDt = dt.AddYears(-1 * count);
-                setDay.Text = newDt.Day.ToString();
-                setMonth.Text = newDt.Month.ToString();
-                setYear.Text = newDt.Year.ToString();
-                setHour.Text = newDt.Hour.ToString();
-                setMinute.Text = newDt.Minute.ToString();
-                setSecond.Text = newDt.Second.ToString();
-                main.userdata.birth_day = newDt.Day;
-                main.userdata.birth_month = newDt.Month;
-                main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
-            }
-            main.ReCalc();
-            main.ReRender();
-
-        }
-
-        private void RightYear_Click(object sender, RoutedEventArgs e)
-        {
-            int count = int.Parse(unitYear.Text);
-            int year = int.Parse(setYear.Text);
-            if (natalTime.IsChecked == true)
-            {
-                DateTime dt = new DateTime(int.Parse(setYear.Text),
-                    int.Parse(setMonth.Text),
-                    int.Parse(setDay.Text),
-                    int.Parse(setHour.Text),
-                    int.Parse(setMinute.Text),
-                    int.Parse(setSecond.Text));
-                DateTime newDt = dt.AddYears(count);
-                setDay.Text = newDt.Day.ToString();
-                setMonth.Text = newDt.Month.ToString();
-                setYear.Text = newDt.Year.ToString();
-                setHour.Text = newDt.Hour.ToString();
-                setMinute.Text = newDt.Minute.ToString();
-                setSecond.Text = newDt.Second.ToString();
-                main.targetUser.birth_day = newDt.Day;
-                main.targetUser.birth_month = newDt.Month;
-                main.targetUser.birth_year = newDt.Year;
-
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
-            }
-            else
-            {
-                DateTime dt = new DateTime(int.Parse(setYear.Text),
-                    int.Parse(setMonth.Text),
-                    int.Parse(setDay.Text),
-                    int.Parse(setHour.Text),
-                    int.Parse(setMinute.Text),
-                    int.Parse(setSecond.Text));
-                DateTime newDt = dt.AddYears(count);
-                setDay.Text = newDt.Day.ToString();
-                setMonth.Text = newDt.Month.ToString();
-                setYear.Text = newDt.Year.ToString();
-                setHour.Text = newDt.Hour.ToString();
-                setMinute.Text = newDt.Minute.ToString();
-                setSecond.Text = newDt.Second.ToString();
-                main.userdata.birth_day = newDt.Day;
-                main.userdata.birth_month = newDt.Month;
-                main.userdata.birth_year = newDt.Year;
-
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
-            }
-            main.ReCalc();
-            main.ReRender();
-        }
-
         private void natalTime_Checked(object sender, RoutedEventArgs e)
         {
             if (setYear == null)
@@ -228,6 +125,109 @@ namespace microcosm
             }
         }
 
+        private void LeftYear_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitYear.Text);
+            int year = int.Parse(setYear.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
+            }
+            main.ReCalc();
+            main.ReRender();
+
+        }
+
+        private void RightYear_Click(object sender, RoutedEventArgs e)
+        {
+            int count = int.Parse(unitYear.Text);
+            int year = int.Parse(setYear.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.targetUser.birth_day = newDt.Day;
+                main.targetUser.birth_month = newDt.Month;
+                main.targetUser.birth_year = newDt.Year;
+
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                main.userdata.birth_day = newDt.Day;
+                main.userdata.birth_month = newDt.Month;
+                main.userdata.birth_year = newDt.Year;
+
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
+            }
+            main.ReCalc();
+            main.ReRender();
+        }
+
         private void LeftMonth_Click(object sender, RoutedEventArgs e)
         {
             int count = int.Parse(unitMonth.Text);
@@ -247,8 +247,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -265,8 +265,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -288,8 +288,8 @@ namespace microcosm
                 setYear.Text = newDt.Year.ToString();
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -304,8 +304,8 @@ namespace microcosm
                 setYear.Text = newDt.Year.ToString();
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -330,8 +330,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -348,8 +348,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -374,8 +374,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -392,8 +392,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -420,8 +420,8 @@ namespace microcosm
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
                 main.targetUser.birth_hour = newDt.Hour;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -440,8 +440,8 @@ namespace microcosm
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
                 main.userdata.birth_hour = newDt.Hour;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -472,8 +472,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -496,8 +496,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -528,8 +528,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -552,8 +552,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -584,8 +584,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -608,8 +608,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -640,8 +640,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -664,8 +664,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -696,8 +696,8 @@ namespace microcosm
                 main.targetUser.birth_day = newDt.Day;
                 main.targetUser.birth_month = newDt.Month;
                 main.targetUser.birth_year = newDt.Year;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -720,8 +720,8 @@ namespace microcosm
                 main.userdata.birth_day = newDt.Day;
                 main.userdata.birth_month = newDt.Month;
                 main.userdata.birth_year = newDt.Year;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -768,8 +768,8 @@ namespace microcosm
                 main.targetUser.birth_hour = newDt.Month;
                 main.targetUser.birth_minute = newDt.Minute;
                 main.targetUser.birth_second = newDt.Second;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -780,8 +780,8 @@ namespace microcosm
                 main.userdata.birth_minute = newDt.Minute;
                 main.userdata.birth_second = newDt.Second;
 
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -830,8 +830,8 @@ namespace microcosm
                 main.targetUser.birth_hour = newDt.Month;
                 main.targetUser.birth_minute = newDt.Minute;
                 main.targetUser.birth_second = newDt.Second;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -841,9 +841,9 @@ namespace microcosm
                 main.userdata.birth_hour = newDt.Month;
                 main.userdata.birth_minute = newDt.Minute;
                 main.userdata.birth_second = newDt.Second;
-                
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();
@@ -866,8 +866,8 @@ namespace microcosm
                 main.targetUser.birth_hour = dt.Month;
                 main.targetUser.birth_minute = dt.Minute;
                 main.targetUser.birth_second = dt.Second;
-                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             else
             {
@@ -877,8 +877,8 @@ namespace microcosm
                 main.userdata.birth_hour = dt.Hour;
                 main.userdata.birth_minute = dt.Minute;
                 main.userdata.birth_second = dt.Second;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
+                main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text)) + " " + main.config.defaultTimezone;
             }
             main.ReCalc();
             main.ReRender();

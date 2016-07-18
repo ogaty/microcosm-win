@@ -8,11 +8,11 @@
   <lng>139.772003</lng>
   <defaultTimezone>JST</defaultTimezone>
   <progression>PRIMARY</progression>
-  <defaultbands>0</defaultbands>
-  <house>0</house>
+  <defaultbands>1</defaultbands>
+  <house>PLACIDUS</house>
   <zodiacOuterWidth>470</zodiacOuterWidth>
   <zodiacWidth>60</zodiacWidth>
   <zodiacCenter>250</zodiacCenter>
-  <decimalDisp>0</decimalDisp>
+  <decimalDisp>DECIMAL</decimalDisp>
   <dispPattern>0</dispPattern>
 </ConfigData>

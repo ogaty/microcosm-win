@@ -108,22 +108,25 @@ namespace microcosm.Config
             if (primaryProgression.IsChecked == true)
             {
                 main.config.progression = EProgression.PRIMARY;
+                main.mainWindowVM.progressionCalc = "一度一年法";
             }
             else if (secondaryProgression.IsChecked == true)
             {
                 main.config.progression = EProgression.SECONDARY;
+                main.mainWindowVM.progressionCalc = "一日一年法";
             }
             else
             {
                 main.config.progression = EProgression.CPS;
+                main.mainWindowVM.progressionCalc = "CPS";
             }
             if (decimalDisp.IsChecked == true)
             {
-                main.config.decimalDisp = (int)EDecimalDisp.DECIMAL;
+                main.config.decimalDisp = EDecimalDisp.DECIMAL;
             }
             else
             {
-                main.config.decimalDisp = (int)EDecimalDisp.DEGREE;
+                main.config.decimalDisp = EDecimalDisp.DEGREE;
             }
             if (fullDisp.IsChecked == true)
             {

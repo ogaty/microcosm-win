@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<userdata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <name>オガティ</name>
+  <furigana>おがてぃ</furigana>
+  <birth_year>1980</birth_year>
+  <birth_month>12</birth_month>
+  <birth_day>21</birth_day>
+  <birth_hour>7</birth_hour>
+  <birth_minute>0</birth_minute>
+  <birth_second>0</birth_second>
+  <lat>35.5309058</lat>
+  <lng>139.7030511</lng>
+  <birth_place>日本, 神奈川県川崎市</birth_place>
+  <memo />
+  <timezone>JST(日本標準)</timezone>
+</userdata>

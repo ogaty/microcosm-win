@@ -465,21 +465,21 @@ namespace microcosm.Calc
         // 違うリストのアスペクトを計算する
         // fromListにアスペクトを追加して返却
         // listKindはpositionを決める
-        // 1: from1 to1
-        // 2: from2 to2
-        // 3: from3 to3
-        // 4: from1 to2
-        // 5: from1 to3
-        // 6: from2 to3
-        // 7: from4 to4
-        // 8: from5 to5
-        // 9: from1 to4
-        // 10: from1 to5
-        // 11: from2 to4
-        // 12: from2 to5
-        // 13: from3 to4
-        // 14: from3 to5
-        // 15: from4 to5
+        // 0: from1 to1
+        // 1: from2 to2
+        // 2: from3 to3
+        // 3: from1 to2
+        // 4: from1 to3
+        // 5: from2 to3
+        // 6: from4 to4
+        // 7: from5 to5
+        // 8: from1 to4
+        // 9: from1 to5
+        // 10: from2 to4
+        // 11: from2 to5
+        // 12: from3 to4
+        // 13: from3 to5
+        // 14: from4 to5
         public List<PlanetData> AspectCalcOther(SettingData a_setting, 
             List<PlanetData> fromList, List<PlanetData> toList, 
             int listKind)
@@ -493,7 +493,7 @@ namespace microcosm.Calc
 
                     if (aspect_degree > 180)
                     {
-                        aspect_degree = fromList[j].absolute_position + 360 - toList[i].absolute_position;
+                        aspect_degree = fromList[i].absolute_position + 360 - toList[j].absolute_position;
                     }
                     if (aspect_degree < 0)
                     {
