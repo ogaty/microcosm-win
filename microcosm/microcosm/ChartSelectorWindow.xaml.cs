@@ -866,10 +866,8 @@ namespace microcosm
                 main.targetUser.birth_hour = dt.Month;
                 main.targetUser.birth_minute = dt.Minute;
                 main.targetUser.birth_second = dt.Second;
-                main.mainWindowVM.userBirthStr = string.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + 
-                    string.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + 
-                    string.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
-                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text + " " + main.userdata.timezone;
+                main.mainWindowVM.userBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
+                    setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             else
             {
@@ -879,11 +877,23 @@ namespace microcosm
                 main.userdata.birth_hour = dt.Hour;
                 main.userdata.birth_minute = dt.Minute;
                 main.userdata.birth_second = dt.Second;
-                main.mainWindowVM.transitBirthStr = setYear.Text + "/" + setMonth.Text + "/" + setDay.Text + " " +
+                main.mainWindowVM.transitBirthStr = setYear.Text + "年" + setMonth.Text + "月" + setDay.Text + "日 " +
                     setHour.Text + ":" + setMinute.Text + ":" + setSecond.Text;
             }
             main.ReCalc();
             main.ReRender();
+        }
+
+        private void setYear_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox item = (TextBox)sender;
+            item.SelectAll();
+        }
+
+        private void GotKeyboardFocusCommon(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            TextBox item = (TextBox)sender;
+            item.SelectAll();
         }
     }
 }

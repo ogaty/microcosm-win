@@ -23,16 +23,16 @@
 
             </ComboBox>
             <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Center">
-                <TextBox x:Name="setYear" Margin="5,0" Width="35" Text="2016"></TextBox>
+                <TextBox x:Name="setYear" Margin="5,0" Width="35" Text="2016" GotKeyboardFocus="GotKeyboardFocusCommon"/>
                 <TextBlock Text="/"></TextBlock>
-                <TextBox x:Name="setMonth" Margin="5,0" Width="20" Text="12"></TextBox>
+                <TextBox x:Name="setMonth" Margin="5,0" Width="20" Text="12" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
                 <TextBlock Text="/"></TextBlock>
-                <TextBox x:Name="setDay" Margin="5,0" Width="20" Text="31"></TextBox>
-                <TextBox x:Name="setHour" Margin="5,0" Width="20" Text="12"></TextBox>
+                <TextBox x:Name="setDay" Margin="5,0" Width="20" Text="31" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
+                <TextBox x:Name="setHour" Margin="5,0" Width="20" Text="12" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
                 <TextBlock Text=":"></TextBlock>
-                <TextBox x:Name="setMinute" Margin="5,0" Width="20" Text="30"></TextBox>
+                <TextBox x:Name="setMinute" Margin="5,0" Width="20" Text="30" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
                 <TextBlock Text=":"></TextBlock>
-                <TextBox x:Name="setSecond" Margin="5,0" Width="20" Text="45"></TextBox>
+                <TextBox x:Name="setSecond" Margin="5,0" Width="20" Text="45" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
             </StackPanel>
             <Button x:Name="setButton" Content="SET" Margin="10,10,10,0" Width="60" HorizontalAlignment="Right" Click="setButton_Click"></Button>
 

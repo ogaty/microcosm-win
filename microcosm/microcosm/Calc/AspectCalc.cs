@@ -503,7 +503,7 @@ namespace microcosm.Calc
 
                     foreach (AspectKind kind in Enum.GetValues(typeof(AspectKind)))
                     {
-                        if (listKind == 4)
+                        if (listKind == 3)
                         {
                             // 1-2
                             if (i == CommonData.ZODIAC_SUN)

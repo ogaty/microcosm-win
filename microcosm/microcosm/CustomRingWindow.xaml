@@ -24,7 +24,7 @@
                         <ComboBoxItem Content="トランジット"></ComboBoxItem>
                     </ComboBox>
                     <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
-                    <ComboBox x:Name="house1" Width="119" HorizontalAlignment="Right">
+                    <ComboBox x:Name="house1" Width="139" HorizontalAlignment="Right">
                         <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
                         <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
                         <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
@@ -38,7 +38,7 @@
                         <ComboBoxItem Content="トランジット"></ComboBoxItem>
                     </ComboBox>
                     <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
-                    <ComboBox x:Name="house2" Width="119" HorizontalAlignment="Right">
+                    <ComboBox x:Name="house2" Width="139" HorizontalAlignment="Right">
                         <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
                         <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
                         <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
@@ -52,7 +52,7 @@
                         <ComboBoxItem Content="トランジット" IsSelected="True"></ComboBoxItem>
                     </ComboBox>
                     <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
-                    <ComboBox x:Name="house3" Width="119" HorizontalAlignment="Right">
+                    <ComboBox x:Name="house3" Width="139" HorizontalAlignment="Right">
                         <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
                         <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
                         <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>

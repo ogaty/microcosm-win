@@ -1284,13 +1284,13 @@ namespace microcosm
 
             AspectCalc aspect = new AspectCalc(this);
             list1 = aspect.AspectCalcSame(currentSetting, list1);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 3);
-            list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 4);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list2, 2);
+            list1 = aspect.AspectCalcOther(currentSetting, list1, list3, 3);
 //            list1 = aspect.AspectCalcOther(currentSetting, list1, list4, 9);
 //            list1 = aspect.AspectCalcOther(currentSetting, list1, list5, 10);
 //            list1 = aspect.AspectCalcOther(currentSetting, list1, list6, 20);
             list2 = aspect.AspectCalcSame(currentSetting, list2);
-            list2 = aspect.AspectCalcOther(currentSetting, list2, list3, 5);
+            list2 = aspect.AspectCalcOther(currentSetting, list2, list3, 4);
 //            list2 = aspect.AspectCalcOther(currentSetting, list2, list4, 11);
 //            list2 = aspect.AspectCalcOther(currentSetting, list2, list5, 12);
 //            list2 = aspect.AspectCalcOther(currentSetting, list2, list6, 20);
@@ -1698,7 +1698,15 @@ namespace microcosm
         {
             //内側がstart, 外側がend
             double startX = tempSettings.zodiacCenter / 2;
-            double endX = (ringCanvas.ActualWidth - 90) / 2;
+            double endX;
+            if (ringStack.ActualHeight < ringStack.ActualWidth)
+            {
+                endX = (ringStack.ActualHeight - 90) / 2;
+            }
+            else
+            {
+                endX = (ringCanvas.ActualWidth - 90) / 2;
+            }
 
             double startY = 0;
             double endY = 0;
@@ -2781,7 +2789,7 @@ namespace microcosm
             }
             else
             {
-                renderSize = new System.Windows.Size(cnvs.ActualWidth, cnvs.ActualWidth);
+                renderSize = new System.Windows.Size(cnvs.ActualWidth, ringStack.ActualHeight);
             }
             cnvs.Measure(renderSize);
             cnvs.Arrange(new Rect(renderSize));

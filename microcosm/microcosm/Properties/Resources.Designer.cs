@@ -480,16 +480,6 @@ namespace microcosm.Properties {
         }
         
         /// <summary>
-        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Icon planet {
-            get {
-                object obj = ResourceManager.GetObject("planet", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Bitmap pluto_off {
@@ -662,6 +652,16 @@ namespace microcosm.Properties {
             get {
                 object obj = ResourceManager.GetObject("trine_on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon universe {
+            get {
+                object obj = ResourceManager.GetObject("universe", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

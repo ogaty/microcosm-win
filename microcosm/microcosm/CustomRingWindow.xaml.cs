@@ -261,10 +261,13 @@ namespace microcosm
                 case 1:
                     no2.Visibility = Visibility.Visible;
                     no3.Visibility = Visibility.Hidden;
+                    house2.SelectedIndex = 2;
                     break;
                 case 2:
                     no2.Visibility = Visibility.Visible;
                     no3.Visibility = Visibility.Visible;
+                    house2.SelectedIndex = 2;
+                    house3.SelectedIndex = 1;
                     break;
                 default:
                     break;

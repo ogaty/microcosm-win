@@ -285,15 +285,18 @@ namespace microcosm.Calc
         }
         public double[] PrimaryProgressionHouseCalc(double[] houseList, DateTime natalTime, DateTime transitTime)
         {
+            double[] retHouse = new double[13];
+            houseList.CopyTo(retHouse, 0);
+
             List<PlanetData> progresslist = new List<PlanetData>();
             TimeSpan ts = transitTime - natalTime;
             double years = ts.TotalDays / year_days;
             for (int i = 0; i < houseList.Count(); i++)
             {
-                houseList[i] += years;
+                retHouse[i] += years;
             }
 
-            return houseList;
+            return retHouse;
         }
 
 

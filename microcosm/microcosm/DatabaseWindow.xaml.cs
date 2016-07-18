@@ -426,7 +426,10 @@ namespace microcosm
                 fullpath = udata.filename,
                 lat_lng = String.Format("{0:00.000}/{1:000.000}", eventLat, eventLng)
             };
-            udata.userevent[index] = uevent;
+            if (index > 0)
+            {
+                udata.userevent[index] = uevent;
+            }
             UserEvent.Items[index] = ueventdata;
             XmlSerializer serializer = new XmlSerializer(typeof(UserData));
             FileStream fs = new FileStream(udata.filename, FileMode.Create);
