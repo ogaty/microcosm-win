@@ -1,0 +1,34 @@
+﻿<Window x:Class="microcosm.VersionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:microcosm"
+        mc:Ignorable="d"
+        Title="microcosm" Height="300" Width="440">
+    <Grid>
+        <StackPanel Margin="15,20,15,10">
+            <Label Content="microcosm Version 0.2" FontWeight="Bold"></Label>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="(C) オガティ" Margin="20,0,0,0"></Label>
+                <Label Content="http://ogatism.jp/" Margin="80,0,0,0"/>
+            </StackPanel>
+            <GroupBox Header="Libraries">
+                <StackPanel>
+                    <Label Content="Swiss Ephemeris" FontWeight="Bold"></Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="(C) Astrodientist AG" Margin="20,0,0,0" Width="130"></Label>
+                        <Label Content="http://www.astro.com/" />
+                    </StackPanel>
+                    <Label Content="SwissEphNet" FontWeight="Bold"></Label>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <Label Content="" Margin="20,0,0,0" Width="110"></Label>
+                        <Label Content="http://github.com/ygrenier/SwissEphNet/" Margin="20,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <Button x:Name="okButton" Content="OK" Width="80" Margin="0,10,0,0" Click="okButton_Click"></Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

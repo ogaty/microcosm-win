@@ -69,6 +69,7 @@ namespace microcosm
         public ChartSelectorWindow chartSelecterWindow;
         public DatabaseWindow dbWindow;
         public CustomRingWindow ringWindow;
+        public VersionWindow versionWindow;
 
         public MainWindow()
         {
@@ -2863,6 +2864,16 @@ namespace microcosm
 
             ringCanvas.Measure(oldSize);
             ringCanvas.Arrange(new Rect(oldSize));
+
+        }
+
+        private void VersionWindow_Click(object sender, RoutedEventArgs e)
+        {
+            if (versionWindow == null)
+            {
+                versionWindow = new VersionWindow();
+            }
+            versionWindow.Visibility = Visibility.Visible;
 
         }
     }

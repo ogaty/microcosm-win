@@ -122,6 +122,9 @@
     </Compile>
     <Compile Include="Setting\AspectSetting.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="VersionWindow.xaml.cs">
+      <DependentUpon>VersionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\DatabaseWindowViewModel.cs" />
     <Compile Include="ViewModel\HouseList.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -181,6 +184,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VersionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
