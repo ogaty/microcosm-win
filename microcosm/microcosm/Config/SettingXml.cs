@@ -1040,6 +1040,7 @@ namespace microcosm.Config
             aspectSextile23 = true;
             aspectInconjunct23 = true;
             aspectSesquiquadrate23 = true;
+            dispname = "名称未設定";
         }
     }
 }

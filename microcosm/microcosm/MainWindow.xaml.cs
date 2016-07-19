@@ -2876,5 +2876,17 @@ namespace microcosm
             versionWindow.Visibility = Visibility.Visible;
 
         }
+
+        private void dispSettingBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (userdata == null || targetUser == null)
+            {
+                return;
+            }
+            int index = dispSettingBox.SelectedIndex;
+            currentSetting = settings[index];
+            ReCalc();
+            ReRender();
+        }
     }
 }

@@ -164,6 +164,17 @@ namespace microcosm.Config
                 tempDispName[i] = main.settings[i].dispName;
             }
             setAspect();
+
+            for (int i = 0; i < planetTargetNames.Count; i++)
+            {
+                int subIndex = planetDispControlTable[planetTargetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    int commonDataNo = planetDispControlTable[planetTargetNames[i]].commonDataNo;
+                    planetDispControlTable[planetTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispPlanet[subIndex][commonDataNo];
+                }
+            }
+            ReRender(dispList);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -175,6 +186,11 @@ namespace microcosm.Config
         private void dispList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox list = (ListBox)sender;
+            ReRender(list);
+        }
+
+        private void ReRender(ListBox list)
+        {
             settingName.Text = main.settings[list.SelectedIndex].dispName;
 
             if (aspectSunOn11 == null)
@@ -238,12 +254,7 @@ namespace microcosm.Config
             for (int i = 0; i < planetTargetNames.Count; i++)
             {
                 int subIndex = planetDispControlTable[planetTargetNames[i]].subIndex;
-                for (int j = 0; j < 10; j++)
-                {
-                    int commonDataNo = planetDispControlTable[planetTargetNames[i]].commonDataNo;
-                    planetDispControlTable[planetTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispPlanet[subIndex][commonDataNo];
-                }
-                if (planetDispControlTable[planetTargetNames[i]].tempArray[main.dispSettingBox.SelectedIndex, subIndex])
+                if (planetDispControlTable[planetTargetNames[i]].tempArray[list.SelectedIndex, subIndex])
                 {
                     planetDispControlTable[planetTargetNames[i]].selfElement.Visibility = Visibility.Visible;
                     planetDispControlTable[planetTargetNames[i]].selfElement.Height = 24;
@@ -636,8 +647,11 @@ namespace microcosm.Config
                 {
                     if (main.list1[i].no == planetDispControlTable[img.Name].commonDataNo)
                     {
-                        planetDispControlTable[img.Name].tempArray[index, subindex] = !main.list1[i].isDisp;
-                        main.list1[i].isDisp = !main.list1[i].isDisp;
+                        planetDispControlTable[img.Name].tempArray[index, subindex] = !planetDispControlTable[img.Name].tempArray[index, subindex];
+                        if (index == main.dispSettingBox.SelectedIndex)
+                        {
+                            main.list1[i].isDisp = !main.list1[i].isDisp;
+                        }
                         break;
                     }
                 }

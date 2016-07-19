@@ -629,6 +629,10 @@ namespace microcosm
         {
             TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
             DbItem iteminfo = (DbItem)item.Tag;
+            if (iteminfo == null)
+            {
+                return;
+            }
             if (Directory.Exists(iteminfo.fileName))
             {
                 return;
