@@ -36,7 +36,7 @@ namespace microcosm.Calc
         }
 
         // 天体の位置を計算する
-        public List<PlanetData> PositionCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind)
+        public List<PlanetData> PositionCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind, int subIndex)
         {
             List<PlanetData> planetdata = new List<PlanetData>(); ;
 
@@ -88,14 +88,33 @@ namespace microcosm.Calc
                 PlanetData p = new PlanetData() { no = i, absolute_position = x[0], speed = x[3], aspects = new List<AspectInfo>(),
                     secondAspects = new List<AspectInfo>(),
                     thirdAspects = new List<AspectInfo>(),
-                    sensitive = false, isDisp = true, isAspectDisp = true };
+                    sensitive = false };
+                if (i < 10 && subIndex >= 0)
+                {
+                    if (main.currentSetting.dispPlanet[subIndex][main.dispListMap[i]])
+                    {
+                        p.isDisp = true;
+                    }
+                    else
+                    {
+                        p.isDisp = false;
+                    }
+                    if (main.currentSetting.dispAspectPlanet[subIndex][main.dispListMap[i]])
+                    {
+                        p.isAspectDisp = true;
+                    }
+                    else
+                    {
+                        p.isAspectDisp = false;
+                    }
+                }
                 if (config.centric == ECentric.HELIO_CENTRIC && i == 0)
                 {
                     // ヘリオセントリック太陽
                     p.isDisp = false;
                     p.isAspectDisp = false;
                 }
-                if (i >= 10)
+                if (i == 10)
                 {
                     // MEAN NODE
                     p.isDisp = false;
@@ -138,8 +157,6 @@ namespace microcosm.Calc
             double[] houses = CuspCalc(year, month, day, hour, min, sec, lat, lng, houseKind);
             PlanetData pAsc = new PlanetData()
             {
-                isAspectDisp = true,
-                isDisp = true,
                 absolute_position = houses[1],
                 no = CommonData.ZODIAC_ASC,
                 sensitive = true,
@@ -148,6 +165,26 @@ namespace microcosm.Calc
                 secondAspects = new List<AspectInfo>(),
                 thirdAspects = new List<AspectInfo>()
             };
+            if (subIndex >= 0)
+            {
+                if (main.currentSetting.dispPlanet[subIndex][CommonData.ZODIAC_ASC])
+                {
+                    pAsc.isDisp = true;
+                }
+                else
+                {
+                    pAsc.isDisp = false;
+                }
+                if (main.currentSetting.dispAspectPlanet[subIndex][CommonData.ZODIAC_ASC])
+                {
+                    pAsc.isAspectDisp = true;
+                }
+                else
+                {
+                    pAsc.isAspectDisp = false;
+                }
+            }
+
             if (!targetNoList.ContainsKey(CommonData.ZODIAC_ASC))
             {
                 targetNoList.Add(CommonData.ZODIAC_ASC, ++ii);
@@ -165,6 +202,26 @@ namespace microcosm.Calc
                 secondAspects = new List<AspectInfo>(),
                 thirdAspects = new List<AspectInfo>()
             };
+            if (subIndex >= 0)
+            {
+                if (main.currentSetting.dispPlanet[subIndex][CommonData.ZODIAC_MC])
+                {
+                    pMc.isDisp = true;
+                }
+                else
+                {
+                    pMc.isDisp = false;
+                }
+                if (main.currentSetting.dispAspectPlanet[subIndex][CommonData.ZODIAC_MC])
+                {
+                    pMc.isAspectDisp = true;
+                }
+                else
+                {
+                    pMc.isAspectDisp = false;
+                }
+            }
+
             if (!targetNoList.ContainsKey(CommonData.ZODIAC_MC))
             {
                 targetNoList.Add(CommonData.ZODIAC_MC, ++ii);

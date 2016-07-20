@@ -48,6 +48,8 @@ namespace microcosm
         public UserData targetUser;
         public UserEventData userdata;
 
+        public Dictionary<int, int> dispListMap;
+
         public List<PlanetData> list1;
         public List<PlanetData> list2;
         public List<PlanetData> list3;
@@ -625,6 +627,23 @@ namespace microcosm
             currentSetting = settings[0];
 
 
+            dispListMap = new Dictionary<int, int>();
+            dispListMap.Add(CommonData.ZODIAC_SUN, 0);
+            dispListMap.Add(CommonData.ZODIAC_MOON, 1);
+            dispListMap.Add(CommonData.ZODIAC_MERCURY, 2);
+            dispListMap.Add(CommonData.ZODIAC_VENUS, 3);
+            dispListMap.Add(CommonData.ZODIAC_MARS, 4);
+            dispListMap.Add(CommonData.ZODIAC_JUPITER, 5);
+            dispListMap.Add(CommonData.ZODIAC_SATURN, 6);
+            dispListMap.Add(CommonData.ZODIAC_URANUS, 7);
+            dispListMap.Add(CommonData.ZODIAC_NEPTUNE, 8);
+            dispListMap.Add(CommonData.ZODIAC_PLUTO, 9);
+            dispListMap.Add(CommonData.ZODIAC_DH_TRUENODE, 10);
+            dispListMap.Add(CommonData.ZODIAC_CHIRON, 11);
+            dispListMap.Add(CommonData.ZODIAC_ASC, 12);
+            dispListMap.Add(CommonData.ZODIAC_MC, 13);
+            dispListMap.Add(CommonData.ZODIAC_EARTH, 14);
+
             rcanvas = new RingCanvasViewModel(config);
             ringStack.Background = System.Windows.Media.Brushes.GhostWhite;
 
@@ -791,7 +810,7 @@ namespace microcosm
                         case EProgression.PRIMARY:
                             tempList = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
                                 list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
-                                list1Data.lat, list1Data.lng, (int)config.houseCalc);
+                                list1Data.lat, list1Data.lng, (int)config.houseCalc, 0);
 
                             list1 = calc.PrimaryProgressionCalc(tempList,
                                 new DateTime(targetUser.birth_year,
@@ -834,7 +853,7 @@ namespace microcosm
                         case EProgression.SECONDARY:
                             tempList = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
                                 list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
-                                list1Data.lat, list1Data.lng, (int)config.houseCalc);
+                                list1Data.lat, list1Data.lng, (int)config.houseCalc, 0);
 
                             list1 = calc.SecondaryProgressionCalc(tempList,
                                 new DateTime(targetUser.birth_year,
@@ -882,7 +901,7 @@ namespace microcosm
                         case EProgression.CPS:
                             tempList = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
                                 list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
-                                list1Data.lat, list1Data.lng, (int)config.houseCalc);
+                                list1Data.lat, list1Data.lng, (int)config.houseCalc, 0);
 
                             list1 = calc.CompositProgressionCalc(tempList,
                                 new DateTime(targetUser.birth_year,
@@ -932,7 +951,7 @@ namespace microcosm
                 {
                     list1 = calc.PositionCalc(list1Data.birth_year, list1Data.birth_month, list1Data.birth_day,
                         list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
-                        list1Data.lat, list1Data.lng, (int)config.houseCalc);
+                        list1Data.lat, list1Data.lng, (int)config.houseCalc, 0);
                 }
                 if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.USER1)
                 {
@@ -1085,7 +1104,7 @@ namespace microcosm
                 {
                     list2 = calc.PositionCalc(list2Data.birth_year, list2Data.birth_month, list2Data.birth_day,
                         list2Data.birth_hour, list2Data.birth_minute, list2Data.birth_second,
-                        list2Data.lat, list2Data.lng, (int)config.houseCalc);
+                        list2Data.lat, list2Data.lng, (int)config.houseCalc, 1);
                 }
                 if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.USER1)
                 {
@@ -1238,7 +1257,7 @@ namespace microcosm
                 {
                     list3 = calc.PositionCalc(list3Data.birth_year, list3Data.birth_month, list3Data.birth_day,
                         list3Data.birth_hour, list3Data.birth_minute, list3Data.birth_second,
-                        list3Data.lat, list3Data.lng, (int)config.houseCalc);
+                        list3Data.lat, list3Data.lng, (int)config.houseCalc, 2);
                 }
                 if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.USER1)
                 {
@@ -1259,13 +1278,13 @@ namespace microcosm
                 {
                     list4 = calc.PositionCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
                         list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
-                        list4Data.lat, list4Data.lng, (int)config.houseCalc);
+                        list4Data.lat, list4Data.lng, (int)config.houseCalc, -1);
                 }
                 else
                 {
                     list4 = calc.PositionCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
                         list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
-                        list4Data.lat, list4Data.lng, (int)config.houseCalc);
+                        list4Data.lat, list4Data.lng, (int)config.houseCalc, -1);
                 }
                 houseList4 = calc.CuspCalc(list4Data.birth_year, list4Data.birth_month, list4Data.birth_day,
                     list4Data.birth_hour, list4Data.birth_minute, list4Data.birth_second,
@@ -1277,13 +1296,13 @@ namespace microcosm
                 {
                     list5 = calc.PositionCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
                         list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
-                        list5Data.lat, list5Data.lng, (int)config.houseCalc);
+                        list5Data.lat, list5Data.lng, (int)config.houseCalc, -1);
                 }
                 else
                 {
                     list5 = calc.PositionCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
                         list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
-                        list5Data.lat, list5Data.lng, (int)config.houseCalc);
+                        list5Data.lat, list5Data.lng, (int)config.houseCalc, -1);
                 }
                 houseList5 = calc.CuspCalc(list5Data.birth_year, list5Data.birth_month, list5Data.birth_day,
                     list5Data.birth_hour, list5Data.birth_minute, list5Data.birth_second,
@@ -1295,13 +1314,13 @@ namespace microcosm
                 {
                     list6 = calc.PositionCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
                         list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
-                        list6Data.lat, list6Data.lng, (int)config.houseCalc);
+                        list6Data.lat, list6Data.lng, (int)config.houseCalc, -1);
                 }
                 else
                 {
                     list6 = calc.PositionCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
                         list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
-                        list6Data.lat, list6Data.lng, (int)config.houseCalc);
+                        list6Data.lat, list6Data.lng, (int)config.houseCalc, -1);
                 }
                 houseList6 = calc.CuspCalc(list6Data.birth_year, list6Data.birth_month, list6Data.birth_day,
                     list6Data.birth_hour, list6Data.birth_minute, list6Data.birth_second,
@@ -1313,13 +1332,13 @@ namespace microcosm
                 {
                     list7 = calc.PositionCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
                         list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
-                        list7Data.lat, list7Data.lng, (int)config.houseCalc);
+                        list7Data.lat, list7Data.lng, (int)config.houseCalc, -1);
                 }
                 else
                 {
                     list7 = calc.PositionCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
                         list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,
-                        list7Data.lat, list7Data.lng, (int)config.houseCalc);
+                        list7Data.lat, list7Data.lng, (int)config.houseCalc, -1);
                 }
                 houseList7 = calc.CuspCalc(list7Data.birth_year, list7Data.birth_month, list7Data.birth_day,
                     list7Data.birth_hour, list7Data.birth_minute, list7Data.birth_second,

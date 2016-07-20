@@ -174,6 +174,7 @@ namespace microcosm.Config
                     planetDispControlTable[planetTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispPlanet[subIndex][commonDataNo];
                 }
             }
+            setOrb();
             ReRender(dispList);
         }
 
@@ -286,7 +287,7 @@ namespace microcosm.Config
                 aspectDispChecked[i, 5] = main.settings[i].dispAspect[1, 2];
             }
 
-            setOrb();
+            reOrb();
         }
 
         private void setAspect()
@@ -304,300 +305,73 @@ namespace microcosm.Config
 
         private void setOrb()
         {
-            int index = orbRing.SelectedIndex;
-
-            sunSoft1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_1ST].ToString();
-            sunHard1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_1ST].ToString();
-            sunSoft2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_2ND].ToString();
-            sunHard2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_2ND].ToString();
-            sunSoft150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_150].ToString();
-            sunHard150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_150].ToString();
-            moonSoft1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_1ST].ToString();
-            moonHard1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_1ST].ToString();
-            moonSoft2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_2ND].ToString();
-            moonHard2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_2ND].ToString();
-            moonSoft150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_150].ToString();
-            moonHard150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_150].ToString();
-            otherSoft1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_1ST].ToString();
-            otherHard1st.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_1ST].ToString();
-            otherSoft2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_2ND].ToString();
-            otherHard2nd.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_2ND].ToString();
-            otherSoft150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_150].ToString();
-            otherHard150.Text = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_150].ToString();
-
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    orbSunSoft1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_1ST];
-                    orbSunHard1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_1ST];
-                    orbSunSoft2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_2ND];
-                    orbSunHard2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_2ND];
-                    orbSunSoft150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_SOFT_150];
-                    orbSunHard150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.SUN_HARD_150];
-                    orbMoonSoft1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_1ST];
-                    orbMoonHard1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_1ST];
-                    orbMoonSoft2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_2ND];
-                    orbMoonHard2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_2ND];
-                    orbMoonSoft150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_SOFT_150];
-                    orbMoonHard150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.MOON_HARD_150];
-                    orbOtherSoft1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_1ST];
-                    orbOtherHard1st[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_1ST];
-                    orbOtherSoft2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_2ND];
-                    orbOtherHard2nd[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_2ND];
-                    orbOtherSoft150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_SOFT_150];
-                    orbOtherHard150[i, j] = main.settings[dispList.SelectedIndex].orbs[index][OrbKind.OTHER_HARD_150];
+                    orbSunSoft1st[i, j] = main.settings[i].orbs[j][OrbKind.SUN_SOFT_1ST];
+                    orbSunHard1st[i, j] = main.settings[i].orbs[j][OrbKind.SUN_HARD_1ST];
+                    orbSunSoft2nd[i, j] = main.settings[i].orbs[j][OrbKind.SUN_SOFT_2ND];
+                    orbSunHard2nd[i, j] = main.settings[i].orbs[j][OrbKind.SUN_HARD_2ND];
+                    orbSunSoft150[i, j] = main.settings[i].orbs[j][OrbKind.SUN_SOFT_150];
+                    orbSunHard150[i, j] = main.settings[i].orbs[j][OrbKind.SUN_HARD_150];
+                    orbMoonSoft1st[i, j] = main.settings[i].orbs[j][OrbKind.MOON_SOFT_1ST];
+                    orbMoonHard1st[i, j] = main.settings[i].orbs[j][OrbKind.MOON_HARD_1ST];
+                    orbMoonSoft2nd[i, j] = main.settings[i].orbs[j][OrbKind.MOON_SOFT_2ND];
+                    orbMoonHard2nd[i, j] = main.settings[i].orbs[j][OrbKind.MOON_HARD_2ND];
+                    orbMoonSoft150[i, j] = main.settings[i].orbs[j][OrbKind.MOON_SOFT_150];
+                    orbMoonHard150[i, j] = main.settings[i].orbs[j][OrbKind.MOON_HARD_150];
+                    orbOtherSoft1st[i, j] = main.settings[i].orbs[j][OrbKind.OTHER_SOFT_1ST];
+                    orbOtherHard1st[i, j] = main.settings[i].orbs[j][OrbKind.OTHER_HARD_1ST];
+                    orbOtherSoft2nd[i, j] = main.settings[i].orbs[j][OrbKind.OTHER_SOFT_2ND];
+                    orbOtherHard2nd[i, j] = main.settings[i].orbs[j][OrbKind.OTHER_HARD_2ND];
+                    orbOtherSoft150[i, j] = main.settings[i].orbs[j][OrbKind.OTHER_SOFT_150];
+                    orbOtherHard150[i, j] = main.settings[i].orbs[j][OrbKind.OTHER_HARD_150];
                 }
             }
+
+            reOrb();
         }
 
-        private void conjunction11_MouseDown(object sender, MouseButtonEventArgs e)
+        private void reOrb()
         {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-            if ((int)img.Tag == 1)
+            if (sunSoft1st == null)
             {
-                // on->off
-                // main.list1['sun'] = false;
-            } else
-            {
+                return;
             }
 
-        }
+            int index = dispList.SelectedIndex;
+            int orbIndex = orbRing.SelectedIndex;
 
-        private void opposition11_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-            if ((int)img.Tag == 1)
-            {
-                // on->off
-            }
-            else
-            {
-            }
-        }
-
-        private void trine11_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-            if ((int)img.Tag == 1)
-            {
-                // on->off
-            }
-            else
-            {
-            }
-        }
-
-        private void square11_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-            if ((int)img.Tag == 1)
-            {
-                // on->off
-            }
-            else
-            {
-            }
-        }
-
-        private void sextile11_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-            if ((int)img.Tag == 1)
-            {
-                // on->off
-            }
-            else
-            {
-            }
-        }
-
-        private void inconjunct11_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-            if ((int)img.Tag == 1)
-            {
-                // on->off
-            }
-            else
-            {
-            }
-        }
-
-        private void sesquiquadrate11_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-            if ((int)img.Tag == 1)
-            {
-                // on->off
-            }
-            else
-            {
-            }
+            sunSoft1st.Text = orbSunSoft1st[index, orbIndex].ToString();
+            sunHard1st.Text = orbSunHard1st[index, orbIndex].ToString();
+            sunSoft2nd.Text = orbSunSoft2nd[index, orbIndex].ToString();
+            sunHard2nd.Text = orbSunHard2nd[index, orbIndex].ToString();
+            sunSoft150.Text = orbSunSoft150[index, orbIndex].ToString();
+            sunHard150.Text = orbSunHard150[index, orbIndex].ToString();
+            moonSoft1st.Text = orbMoonSoft1st[index, orbIndex].ToString();
+            moonHard1st.Text = orbMoonSoft1st[index, orbIndex].ToString();
+            moonSoft2nd.Text = orbMoonSoft2nd[index, orbIndex].ToString();
+            moonHard2nd.Text = orbMoonHard2nd[index, orbIndex].ToString();
+            moonSoft150.Text = orbMoonSoft150[index, orbIndex].ToString();
+            moonHard150.Text = orbMoonHard150[index, orbIndex].ToString();
+            otherSoft1st.Text = orbOtherSoft1st[index, orbIndex].ToString();
+            otherHard1st.Text = orbOtherHard1st[index, orbIndex].ToString();
+            otherSoft2nd.Text = orbOtherSoft2nd[index, orbIndex].ToString();
+            otherHard2nd.Text = orbOtherHard2nd[index, orbIndex].ToString();
+            otherSoft150.Text = orbOtherSoft150[index, orbIndex].ToString();
+            otherHard150.Text = orbOtherHard150[index, orbIndex].ToString();
         }
 
         private void orbRing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sunSoft1st != null)
             {
-                setOrb();
+                reOrb();
             }
         }
 
         // aspect
-        private void aspectSunOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSunOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMoonOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMercuryOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectVenusOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMarsOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectJupiterOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectSaturnOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectUranusOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectNeptuneOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectPlutoOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectDhOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectChironOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectAscOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOn12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
-
-        private void aspectMcOff12_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            aspectMouseDownCommon(sender, e);
-        }
 
         private void aspectMouseDownCommon(object sender, MouseButtonEventArgs e)
         {
@@ -612,17 +386,24 @@ namespace microcosm.Config
             int index = dispList.SelectedIndex;
             int subindex = controlTable[img.Name].subIndex;
 
-            controlTable[img.Name].targetBoolean = !controlTable[img.Name].targetBoolean;
             controlTable[img.Name].tempArray[index, subindex] = controlTable[img.Name].targetBoolean;
 
-            foreach (var data in main.list1)
+            if (subindex == 0)
             {
-                if (data.no == controlTable[img.Name].commonDataNo)
+                for (int i = 0; i < main.list1.Count(); i++)
                 {
-                    data.isAspectDisp = true;
-                    break;
+                    if (main.list1[i].no == controlTable[img.Name].commonDataNo)
+                    {
+                        if (index == main.dispSettingBox.SelectedIndex)
+                        {
+                            main.list1[i].isAspectDisp = controlTable[img.Name].targetBoolean;
+                        }
+                        break;
+                    }
+
                 }
             }
+
             main.ReRender();
         }
 
@@ -640,6 +421,7 @@ namespace microcosm.Config
             int index = dispList.SelectedIndex;
             int subindex = planetDispControlTable[img.Name].subIndex;
 
+            planetDispControlTable[img.Name].tempArray[index, subindex] = planetDispControlTable[img.Name].targetBoolean;
 
             if (subindex == 0)
             {
@@ -647,10 +429,9 @@ namespace microcosm.Config
                 {
                     if (main.list1[i].no == planetDispControlTable[img.Name].commonDataNo)
                     {
-                        planetDispControlTable[img.Name].tempArray[index, subindex] = !planetDispControlTable[img.Name].tempArray[index, subindex];
                         if (index == main.dispSettingBox.SelectedIndex)
                         {
-                            main.list1[i].isDisp = !main.list1[i].isDisp;
+                            main.list1[i].isDisp = planetDispControlTable[img.Name].targetBoolean;
                         }
                         break;
                     }
@@ -659,6 +440,26 @@ namespace microcosm.Config
 
             main.ReRender();
         }
+
+        private void aspect2MouseDownCommon(object sender, MouseButtonEventArgs e)
+        {
+            Image img = (Image)sender;
+            img.Visibility = Visibility.Hidden;
+            img.Height = 0;
+
+            Image ctl = (Image)aspectControlTable[img.Name].aspectAnotherElement;
+            ctl.Visibility = Visibility.Visible;
+            ctl.Height = 24;
+
+            int index = dispList.SelectedIndex;
+            int subIndex = aspectControlTable[img.Name].subIndex;
+
+            aspectControlTable[img.Name].tempArray[index, subIndex] = aspectControlTable[img.Name].targetBoolean;
+
+            main.ReRender();
+        }
+
+
 
         private void createControlTable()
         {
@@ -676,7 +477,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectSunOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectSunOff" + n),
                     tempArray = aspectSun,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_SUN
                 });
@@ -685,7 +486,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectMoonOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectMoonOff" + n),
                     tempArray = aspectMoon,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MOON
                 });
@@ -694,7 +495,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectMercuryOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectMercuryOff" + n),
                     tempArray = aspectMercury,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MERCURY
                 });
@@ -703,7 +504,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectVenusOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectVenusOff" + n),
                     tempArray = aspectVenus,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_VENUS
                 });
@@ -712,7 +513,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectMarsOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectMarsOff" + n),
                     tempArray = aspectMars,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MARS
                 });
@@ -721,7 +522,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectJupiterOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectJupiterOff" + n),
                     tempArray = aspectJupiter,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_JUPITER
                 });
@@ -730,7 +531,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectSaturnOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectSaturnOff" + n),
                     tempArray = aspectSaturn,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_SATURN
                 });
@@ -739,7 +540,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectUranusOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectUranusOff" + n),
                     tempArray = aspectUranus,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_URANUS
                 });
@@ -748,7 +549,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectNeptuneOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectNeptuneOff" + n),
                     tempArray = aspectNeptune,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_NEPTUNE
                 });
@@ -757,7 +558,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectPlutoOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectPlutoOff" + n),
                     tempArray = aspectPluto,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_PLUTO
                 });
@@ -766,7 +567,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectDhOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectDhOff" + n),
                     tempArray = aspectDh,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_DH_TRUENODE
                 });
@@ -775,7 +576,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectChironOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectChironOff" + n),
                     tempArray = aspectChiron,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_CHIRON
                 });
@@ -784,7 +585,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectAscOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectAscOff" + n),
                     tempArray = aspectAsc,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_ASC
                 });
@@ -793,7 +594,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("aspectMcOn" + n),
                     anotherElement = (FrameworkElement)FindName("aspectMcOff" + n),
                     tempArray = aspectMc,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MC
                 });
@@ -930,7 +731,7 @@ namespace microcosm.Config
                     aspectSelfElement = (FrameworkElement)FindName("aspectConjunctionOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectConjunctionOff" + n),
                     tempArray = aspectConjunction,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     aspectKindNo = AspectKind.CONJUNCTION
                 });
@@ -939,7 +740,7 @@ namespace microcosm.Config
                     aspectSelfElement = (FrameworkElement)FindName("aspectOppositionOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectOppositionOff" + n),
                     tempArray = aspectOpposition,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     aspectKindNo = AspectKind.OPPOSITION
                 });
@@ -948,7 +749,7 @@ namespace microcosm.Config
                     aspectSelfElement = (FrameworkElement)FindName("aspectSquareOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSquareOff" + n),
                     tempArray = aspectSquare,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     aspectKindNo = AspectKind.SQUARE
                 });
@@ -957,7 +758,7 @@ namespace microcosm.Config
                     aspectSelfElement = (FrameworkElement)FindName("aspectTrineOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectTrineOff" + n),
                     tempArray = aspectTrine,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     aspectKindNo = AspectKind.TRINE
                 });
@@ -966,7 +767,7 @@ namespace microcosm.Config
                     aspectSelfElement = (FrameworkElement)FindName("aspectSextileOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSextileOff" + n),
                     tempArray = aspectSextile,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     aspectKindNo = AspectKind.SEXTILE
                 });
@@ -975,7 +776,7 @@ namespace microcosm.Config
                     aspectSelfElement = (FrameworkElement)FindName("aspectInconjunctOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectInconjunctOff" + n),
                     tempArray = aspectInconjunct,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     aspectKindNo = AspectKind.INCONJUNCT
                 });
@@ -984,7 +785,7 @@ namespace microcosm.Config
                     aspectSelfElement = (FrameworkElement)FindName("aspectSesquiquadrateOn" + n),
                     aspectAnotherElement = (FrameworkElement)FindName("aspectSesquiquadrateOff" + n),
                     tempArray = aspectSesquiquadrate,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     aspectKindNo = AspectKind.SESQUIQUADRATE
                 });
@@ -1064,7 +865,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetSunOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetSunOff" + n),
                     tempArray = planetDispSun,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_SUN
                 });
@@ -1073,7 +874,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetMoonOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetMoonOff" + n),
                     tempArray = planetDispMoon,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MOON
                 });
@@ -1082,7 +883,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetMercuryOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetMercuryOff" + n),
                     tempArray = planetDispMercury,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MERCURY
                 });
@@ -1091,7 +892,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetVenusOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetVenusOff" + n),
                     tempArray = planetDispVenus,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_VENUS
                 });
@@ -1100,7 +901,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetMarsOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetMarsOff" + n),
                     tempArray = planetDispMars,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MARS
                 });
@@ -1109,7 +910,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetJupiterOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetJupiterOff" + n),
                     tempArray = planetDispJupiter,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_JUPITER
                 });
@@ -1118,7 +919,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetSaturnOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetSaturnOff" + n),
                     tempArray = planetDispSaturn,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_SATURN
                 });
@@ -1127,7 +928,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetUranusOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetUranusOff" + n),
                     tempArray = planetDispUranus,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_URANUS
                 });
@@ -1136,7 +937,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetNeptuneOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetNeptuneOff" + n),
                     tempArray = planetDispNeptune,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_NEPTUNE
                 });
@@ -1145,7 +946,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetPlutoOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetPlutoOff" + n),
                     tempArray = planetDispPluto,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_PLUTO
                 });
@@ -1154,7 +955,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetDhOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetDhOff" + n),
                     tempArray = planetDispDh,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_DH_TRUENODE
                 });
@@ -1163,7 +964,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetChironOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetChironOff" + n),
                     tempArray = planetDispChiron,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_CHIRON
                 });
@@ -1172,7 +973,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetAscOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetAscOff" + n),
                     tempArray = planetDispAsc,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_ASC
                 });
@@ -1181,7 +982,7 @@ namespace microcosm.Config
                     selfElement = (FrameworkElement)FindName("planetMcOn" + n),
                     anotherElement = (FrameworkElement)FindName("planetMcOff" + n),
                     tempArray = planetDispMc,
-                    targetBoolean = true,
+                    targetBoolean = false,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MC
                 });
@@ -1316,6 +1117,7 @@ namespace microcosm.Config
 
 
         }
+
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -2033,24 +1835,6 @@ namespace microcosm.Config
             main.ReRender();
 
             this.Visibility = Visibility.Hidden;
-        }
-
-        private void aspect2MouseDownCommon(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            img.Visibility = Visibility.Hidden;
-            img.Height = 0;
-
-            Image ctl = (Image)aspectControlTable[img.Name].aspectAnotherElement;
-            ctl.Visibility = Visibility.Visible;
-            ctl.Height = 24;
-
-            int index = dispList.SelectedIndex;
-            int subIndex = aspectControlTable[img.Name].subIndex;
-
-            aspectControlTable[img.Name].tempArray[index, subIndex] = !aspectControlTable[img.Name].tempArray[index, subIndex];
-
-            main.ReRender();
         }
 
         private void disp11_Click(object sender, RoutedEventArgs e)
