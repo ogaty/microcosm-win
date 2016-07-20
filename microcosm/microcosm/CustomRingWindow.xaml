@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="カスタム円設定" Height="410" Width="300" Closing="Window_Closing">
+        Title="カスタム円設定" Height="440" Width="300" Closing="Window_Closing">
     <Grid>
         <StackPanel>
             <StackPanel Margin="10">

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="microcosm" Height="300" Width="440">
+        Title="microcosm" Height="320" Width="440">
     <Grid>
         <StackPanel Margin="15,20,15,10">
             <Label Content="microcosm Version 0.2" FontWeight="Bold"></Label>

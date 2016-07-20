@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm.DB"
         mc:Ignorable="d"
-        Title="イベント編集" Height="530" Width="290" Closing="Window_Closing">
+        Title="イベント編集" Height="570" Width="290" Closing="Window_Closing">
     <Grid>
         <StackPanel>
             <Menu>

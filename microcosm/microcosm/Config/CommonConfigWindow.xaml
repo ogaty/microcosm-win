@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm.Config"
         mc:Ignorable="d"
-        Title="共通設定" Height="260" Width="460" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="共通設定" Height="290" Width="460" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"></ColumnDefinition>
