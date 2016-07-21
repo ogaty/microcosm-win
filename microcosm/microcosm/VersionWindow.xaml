@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="microcosm" Height="320" Width="440">
+        Title="microcosm" Height="324" Width="440">
     <Grid>
-        <StackPanel Margin="15,20,15,10">
-            <Label Content="microcosm Version 0.2" FontWeight="Bold"></Label>
+        <StackPanel Margin="15,15,15,10">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="microcosm" FontWeight="Bold" FontSize="18"></Label>
+                <Label Content="Version 0.3" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="(C) オガティ" Margin="20,0,0,0"></Label>
                 <Label Content="http://ogatism.jp/" Margin="80,0,0,0"/>

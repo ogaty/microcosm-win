@@ -34,7 +34,10 @@
                 <TextBlock Text=":"></TextBlock>
                 <TextBox x:Name="setSecond" Margin="5,0" Width="20" Text="45" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
             </StackPanel>
-            <Button x:Name="setButton" Content="SET" Margin="10,10,10,0" Width="60" HorizontalAlignment="Right" Click="setButton_Click"></Button>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="nowButton" Content="NOW" Margin="10,10,30,0" Width="80" HorizontalAlignment="Left" Click="nowButton_Click"></Button>
+                <Button x:Name="setButton" Content="SET" Margin="30,10,10,0" Width="80" Click="setButton_Click" HorizontalAlignment="Right"/>
+            </StackPanel>
 
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                 <Label Content="年" Margin="5,0"></Label>

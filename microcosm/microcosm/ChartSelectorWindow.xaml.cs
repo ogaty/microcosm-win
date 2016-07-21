@@ -895,5 +895,15 @@ namespace microcosm
             TextBox item = (TextBox)sender;
             item.SelectAll();
         }
+
+        private void nowButton_Click(object sender, RoutedEventArgs e)
+        {
+            setYear.Text = DateTime.Now.Year.ToString();
+            setMonth.Text = DateTime.Now.Month.ToString();
+            setDay.Text = DateTime.Now.Day.ToString();
+            setHour.Text = DateTime.Now.Hour.ToString();
+            setMinute.Text = DateTime.Now.Minute.ToString();
+            setSecond.Text = DateTime.Now.Second.ToString();
+        }
     }
 }

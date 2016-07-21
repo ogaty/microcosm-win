@@ -45,6 +45,7 @@ namespace microcosm.Config
         public bool[,] planetDispChiron = new bool[10, 15];
         public bool[,] planetDispAsc = new bool[10, 15];
         public bool[,] planetDispMc = new bool[10, 15];
+        public bool[,] planetDispEarth = new bool[10, 15];
 
         public bool[,] aspectSun = new bool[10, 15];
         public bool[,] aspectMoon = new bool[10, 15];
@@ -60,6 +61,7 @@ namespace microcosm.Config
         public bool[,] aspectChiron = new bool[10, 15];
         public bool[,] aspectAsc = new bool[10, 15];
         public bool[,] aspectMc = new bool[10, 15];
+        public bool[,] aspectEarth = new bool[10, 15];
 
         public bool[,] aspectConjunction = new bool[10, 15];
         public bool[,] aspectOpposition = new bool[10, 15];
@@ -124,6 +126,7 @@ namespace microcosm.Config
                 targetNames.Add("aspectChironOn" + s);
                 targetNames.Add("aspectAscOn" + s);
                 targetNames.Add("aspectMcOn" + s);
+                targetNames.Add("aspectEarthOn" + s);
 
                 aspectTargetNames.Add("aspectConjunctionOn" + s);
                 aspectTargetNames.Add("aspectOppositionOn" + s);
@@ -150,6 +153,7 @@ namespace microcosm.Config
                 planetTargetNames.Add("planetChironOn" + s);
                 planetTargetNames.Add("planetAscOn" + s);
                 planetTargetNames.Add("planetMcOn" + s);
+                planetTargetNames.Add("planetEarthOn" + s);
             }
             createControlTable();
 
@@ -598,6 +602,15 @@ namespace microcosm.Config
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MC
                 });
+                controlTable.Add("aspectEarthOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("aspectEarthOn" + n),
+                    anotherElement = (FrameworkElement)FindName("aspectEarthOff" + n),
+                    tempArray = aspectEarth,
+                    targetBoolean = false,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_EARTH
+                });
                 controlTable.Add("aspectSunOff" + n, new AspectControlTable()
                 {
                     selfElement = (FrameworkElement)FindName("aspectSunOff" + n),
@@ -723,6 +736,15 @@ namespace microcosm.Config
                     targetBoolean = true,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MC
+                });
+                controlTable.Add("aspectEarthOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("aspectEarthOff" + n),
+                    anotherElement = (FrameworkElement)FindName("aspectEarthOn" + n),
+                    tempArray = aspectEarth,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_EARTH
                 });
 
 
@@ -986,6 +1008,15 @@ namespace microcosm.Config
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MC
                 });
+                planetDispControlTable.Add("planetEarthOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetEarthOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetEarthOff" + n),
+                    tempArray = planetDispEarth,
+                    targetBoolean = false,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_EARTH
+                });
                 planetDispControlTable.Add("planetSunOff" + n, new AspectControlTable()
                 {
                     selfElement = (FrameworkElement)FindName("planetSunOff" + n),
@@ -1112,6 +1143,15 @@ namespace microcosm.Config
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_MC
                 });
+                planetDispControlTable.Add("planetEarthOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetEarthOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetEarthOn" + n),
+                    tempArray = planetDispEarth,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_EARTH
+                });
 
             }
 
@@ -1209,6 +1249,12 @@ namespace microcosm.Config
                 xmldata.aspectMc12 = aspectMc[index, 3];
                 xmldata.aspectMc13 = aspectMc[index, 4];
                 xmldata.aspectMc23 = aspectMc[index, 5];
+                xmldata.aspectEarth11 = aspectEarth[index, 0];
+                xmldata.aspectEarth22 = aspectEarth[index, 1];
+                xmldata.aspectEarth33 = aspectEarth[index, 2];
+                xmldata.aspectEarth12 = aspectEarth[index, 3];
+                xmldata.aspectEarth13 = aspectEarth[index, 4];
+                xmldata.aspectEarth23 = aspectEarth[index, 5];
                 xmldata.aspectConjunction11 = aspectConjunction[index, 0];
                 xmldata.aspectConjunction22 = aspectConjunction[index, 1];
                 xmldata.aspectConjunction33 = aspectConjunction[index, 2];
@@ -1303,6 +1349,9 @@ namespace microcosm.Config
                 xmldata.dispPlanetMc11 = planetDispMc[index, 0];
                 xmldata.dispPlanetMc22 = planetDispMc[index, 1];
                 xmldata.dispPlanetMc33 = planetDispMc[index, 2];
+                xmldata.dispPlanetEarth11 = planetDispEarth[index, 0];
+                xmldata.dispPlanetEarth22 = planetDispEarth[index, 1];
+                xmldata.dispPlanetEarth33 = planetDispEarth[index, 2];
 
                 xmldata.orb_sun_hard_1st_0 = orbSunHard1st[index, 0];
                 xmldata.orb_sun_hard_2nd_0 = orbSunHard2nd[index, 0];
@@ -1442,10 +1491,10 @@ namespace microcosm.Config
                 dp11.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune11);
                 dp11.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto11);
                 dp11.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh11);
+                dp11.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron11);
                 dp11.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc11);
                 dp11.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc11);
-                dp11.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron11);
-                dp11.Add(CommonData.ZODIAC_EARTH, false);
+                dp11.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.dispPlanetEarth11);
                 dp11.Add(CommonData.ZODIAC_LILITH, false);
                 dp11.Add(CommonData.ZODIAC_CELES, false);
                 dp11.Add(CommonData.ZODIAC_PARAS, false);
@@ -1465,10 +1514,10 @@ namespace microcosm.Config
                 dp22.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune22);
                 dp22.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto22);
                 dp22.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh22);
+                dp22.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron22);
                 dp22.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc22);
                 dp22.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc22);
-                dp22.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron22);
-                dp22.Add(CommonData.ZODIAC_EARTH, false);
+                dp22.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.dispPlanetEarth22);
                 dp22.Add(CommonData.ZODIAC_LILITH, false);
                 dp22.Add(CommonData.ZODIAC_CELES, false);
                 dp22.Add(CommonData.ZODIAC_PARAS, false);
@@ -1488,10 +1537,10 @@ namespace microcosm.Config
                 dp33.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.dispPlanetNeptune33);
                 dp33.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.dispPlanetPluto33);
                 dp33.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.dispPlanetDh33);
+                dp33.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron33);
                 dp33.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc33);
                 dp33.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc33);
-                dp33.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.dispPlanetChiron33);
-                dp33.Add(CommonData.ZODIAC_EARTH, false);
+                dp33.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.dispPlanetEarth33);
                 dp33.Add(CommonData.ZODIAC_LILITH, false);
                 dp33.Add(CommonData.ZODIAC_CELES, false);
                 dp33.Add(CommonData.ZODIAC_PARAS, false);
@@ -1513,10 +1562,10 @@ namespace microcosm.Config
                 d11.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune11);
                 d11.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto11);
                 d11.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh11);
+                d11.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron11);
                 d11.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc11);
                 d11.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc11);
-                d11.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron11);
-                d11.Add(CommonData.ZODIAC_EARTH, false);
+                d11.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth11);
                 d11.Add(CommonData.ZODIAC_LILITH, false);
                 d11.Add(CommonData.ZODIAC_CELES, false);
                 d11.Add(CommonData.ZODIAC_PARAS, false);
@@ -1536,10 +1585,10 @@ namespace microcosm.Config
                 d22.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune22);
                 d22.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto22);
                 d22.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh22);
+                d22.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron22);
                 d22.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc22);
                 d22.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc22);
-                d22.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron22);
-                d22.Add(CommonData.ZODIAC_EARTH, false);
+                d22.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth22);
                 d22.Add(CommonData.ZODIAC_LILITH, false);
                 d22.Add(CommonData.ZODIAC_CELES, false);
                 d22.Add(CommonData.ZODIAC_PARAS, false);
@@ -1559,10 +1608,10 @@ namespace microcosm.Config
                 d33.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune33);
                 d33.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto33);
                 d33.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh33);
+                d33.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron33);
                 d33.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc33);
                 d33.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc33);
-                d33.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron33);
-                d33.Add(CommonData.ZODIAC_EARTH, false);
+                d33.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth33);
                 d33.Add(CommonData.ZODIAC_LILITH, false);
                 d33.Add(CommonData.ZODIAC_CELES, false);
                 d33.Add(CommonData.ZODIAC_PARAS, false);
@@ -1582,10 +1631,10 @@ namespace microcosm.Config
                 d12.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune12);
                 d12.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto12);
                 d12.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh12);
+                d12.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron12);
                 d12.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc12);
                 d12.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc12);
-                d12.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron12);
-                d12.Add(CommonData.ZODIAC_EARTH, false);
+                d12.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth12);
                 d12.Add(CommonData.ZODIAC_LILITH, false);
                 d12.Add(CommonData.ZODIAC_CELES, false);
                 d12.Add(CommonData.ZODIAC_PARAS, false);
@@ -1608,7 +1657,7 @@ namespace microcosm.Config
                 d13.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc13);
                 d13.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc13);
                 d13.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron13);
-                d13.Add(CommonData.ZODIAC_EARTH, false);
+                d13.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth13);
                 d13.Add(CommonData.ZODIAC_LILITH, false);
                 d13.Add(CommonData.ZODIAC_CELES, false);
                 d13.Add(CommonData.ZODIAC_PARAS, false);
@@ -1628,10 +1677,10 @@ namespace microcosm.Config
                 d23.Add(CommonData.ZODIAC_NEPTUNE, main.settings[i].xmlData.aspectNeptune23);
                 d23.Add(CommonData.ZODIAC_PLUTO, main.settings[i].xmlData.aspectPluto23);
                 d23.Add(CommonData.ZODIAC_DH_TRUENODE, main.settings[i].xmlData.aspectDh23);
+                d23.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron23);
                 d23.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc23);
                 d23.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc23);
-                d23.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron23);
-                d23.Add(CommonData.ZODIAC_EARTH, false);
+                d23.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth23);
                 d23.Add(CommonData.ZODIAC_LILITH, false);
                 d23.Add(CommonData.ZODIAC_CELES, false);
                 d23.Add(CommonData.ZODIAC_PARAS, false);

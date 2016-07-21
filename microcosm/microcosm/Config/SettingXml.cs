@@ -489,6 +489,8 @@ namespace microcosm.Config
         public bool aspectAsc11;
         [XmlElement("aspectMc11")]
         public bool aspectMc11;
+        [XmlElement("aspectEarth11")]
+        public bool aspectEarth11;
         [XmlElement("aspectSun22")]
         public bool aspectSun22;
         [XmlElement("aspectMoon22")]
@@ -517,6 +519,8 @@ namespace microcosm.Config
         public bool aspectAsc22;
         [XmlElement("aspectMc22")]
         public bool aspectMc22;
+        [XmlElement("aspectEarth22")]
+        public bool aspectEarth22;
         [XmlElement("aspectSun33")]
         public bool aspectSun33;
         [XmlElement("aspectMoon33")]
@@ -545,6 +549,8 @@ namespace microcosm.Config
         public bool aspectAsc33;
         [XmlElement("aspectMc33")]
         public bool aspectMc33;
+        [XmlElement("aspectEarth33")]
+        public bool aspectEarth33;
         [XmlElement("aspectSun12")]
         public bool aspectSun12;
         [XmlElement("aspectMoon12")]
@@ -573,6 +579,8 @@ namespace microcosm.Config
         public bool aspectAsc12;
         [XmlElement("aspectMc12")]
         public bool aspectMc12;
+        [XmlElement("aspectEarth12")]
+        public bool aspectEarth12;
         [XmlElement("aspectSun13")]
         public bool aspectSun13;
         [XmlElement("aspectMoon13")]
@@ -601,6 +609,8 @@ namespace microcosm.Config
         public bool aspectAsc13;
         [XmlElement("aspectMc13")]
         public bool aspectMc13;
+        [XmlElement("aspectEarth13")]
+        public bool aspectEarth13;
         [XmlElement("aspectSun23")]
         public bool aspectSun23;
         [XmlElement("aspectMoon23")]
@@ -629,6 +639,8 @@ namespace microcosm.Config
         public bool aspectAsc23;
         [XmlElement("aspectMc23")]
         public bool aspectMc23;
+        [XmlElement("aspectEarth23")]
+        public bool aspectEarth23;
         #endregion
 
         #region aspect Aspect
@@ -844,6 +856,7 @@ namespace microcosm.Config
             dispPlanetChiron11 = true;
             dispPlanetAsc11 = true;
             dispPlanetMc11 = true;
+            dispPlanetEarth11 = true;
             dispPlanetSun22 = true;
             dispPlanetMoon22 = true;
             dispPlanetMercury22 = true;
@@ -858,6 +871,7 @@ namespace microcosm.Config
             dispPlanetChiron22 = true;
             dispPlanetAsc22 = true;
             dispPlanetMc22 = true;
+            dispPlanetEarth22 = true;
             dispPlanetSun33 = true;
             dispPlanetMoon33 = true;
             dispPlanetMercury33 = true;
@@ -872,6 +886,7 @@ namespace microcosm.Config
             dispPlanetChiron33 = true;
             dispPlanetAsc33 = true;
             dispPlanetMc33 = true;
+            dispPlanetEarth33 = true;
             dispPlanetSun12 = true;
             dispPlanetMoon12 = true;
             dispPlanetMercury12 = true;
@@ -886,6 +901,7 @@ namespace microcosm.Config
             dispPlanetChiron12 = true;
             dispPlanetAsc12 = true;
             dispPlanetMc12 = true;
+            dispPlanetEarth12 = true;
             dispPlanetSun13 = true;
             dispPlanetMoon13 = true;
             dispPlanetMercury13 = true;
@@ -900,6 +916,7 @@ namespace microcosm.Config
             dispPlanetChiron13 = true;
             dispPlanetAsc13 = true;
             dispPlanetMc13 = true;
+            dispPlanetEarth13 = true;
             dispPlanetSun23 = true;
             dispPlanetMoon23 = true;
             dispPlanetMercury23 = true;
@@ -914,6 +931,7 @@ namespace microcosm.Config
             dispPlanetChiron23 = true;
             dispPlanetAsc23 = true;
             dispPlanetMc23 = true;
+            dispPlanetEarth23 = true;
             aspectSun11 = true;
             aspectMoon11 = true;
             aspectMercury11 = true;
@@ -928,6 +946,7 @@ namespace microcosm.Config
             aspectChiron11 = true;
             aspectAsc11 = true;
             aspectMc11 = true;
+            aspectEarth11 = true;
             aspectSun22 = true;
             aspectMoon22 = true;
             aspectMercury22 = true;
@@ -942,6 +961,7 @@ namespace microcosm.Config
             aspectChiron22 = true;
             aspectAsc22 = true;
             aspectMc22 = true;
+            aspectEarth22 = true;
             aspectSun33 = true;
             aspectMoon33 = true;
             aspectMercury33 = true;
@@ -956,6 +976,7 @@ namespace microcosm.Config
             aspectChiron33 = true;
             aspectAsc33 = true;
             aspectMc33 = true;
+            aspectEarth33 = true;
             aspectSun12 = true;
             aspectMoon12 = true;
             aspectMercury12 = true;
@@ -970,6 +991,7 @@ namespace microcosm.Config
             aspectChiron12 = true;
             aspectAsc12 = true;
             aspectMc12 = true;
+            aspectEarth12 = true;
             aspectSun13 = true;
             aspectMoon13 = true;
             aspectMercury13 = true;
@@ -984,6 +1006,7 @@ namespace microcosm.Config
             aspectChiron13 = true;
             aspectAsc13 = true;
             aspectMc13 = true;
+            aspectEarth13 = true;
             aspectSun23 = true;
             aspectMoon23 = true;
             aspectMercury23 = true;
@@ -998,6 +1021,7 @@ namespace microcosm.Config
             aspectChiron23 = true;
             aspectAsc23 = true;
             aspectMc23 = true;
+            aspectEarth23 = true;
             aspectConjunction11 = true;
             aspectOpposition11 = true;
             aspectTrine11 = true;

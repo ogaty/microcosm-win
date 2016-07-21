@@ -470,38 +470,38 @@
                                     <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff11" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal">
                                 <Label Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn11"></Image>
-                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff11"></Image>
+                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff11" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn11"></Image>
                                     <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff11"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn11"></Image>
                                     <Image Source="/Resources/ceres_off.png" Height="0" Visibility="Hidden" x:Name="aspectCeresOff11"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/paras_on.png" x:Name="aspectParasOn11"></Image>
                                     <Image Source="/Resources/paras_off.png" Height="0" Visibility="Hidden" x:Name="aspectParasOff11"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/juno_on.png" x:Name="aspectJunoOn11"></Image>
                                     <Image Source="/Resources/juno_off.png" Height="0" Visibility="Hidden" x:Name="aspectJunoOff11"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/vesta_on.png" x:Name="aspectVestaOn11"></Image>
                                     <Image Source="/Resources/vesta_off.png" Height="0" Visibility="Hidden" x:Name="aspectVestaOff11"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="116,0,0,0">
+                                <StackPanel Margin="116,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/dt_on.png" x:Name="aspectDtOn11"></Image>
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden" x:Name="aspectDtOff11"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="2-2 (Progress)" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn22" MouseDown="aspectMouseDownCommon"/>
@@ -560,38 +560,38 @@
                                     <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff22" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal">
                                 <Label Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn22"></Image>
-                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff22"></Image>
+                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn22" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff22" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn22"></Image>
                                     <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff22"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn22"></Image>
                                     <Image Source="/Resources/ceres_off.png" Height="0" Visibility="Hidden" x:Name="aspectCeresOff22"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/paras_on.png" x:Name="aspectParasOn22"></Image>
                                     <Image Source="/Resources/paras_off.png" Height="0" Visibility="Hidden" x:Name="aspectParasOff22"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/juno_on.png" x:Name="aspectJunoOn22"></Image>
                                     <Image Source="/Resources/juno_off.png" Height="0" Visibility="Hidden" x:Name="aspectJunoOff22"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/vesta_on.png" x:Name="aspectVestaOn22"></Image>
                                     <Image Source="/Resources/vesta_off.png" Height="0" Visibility="Hidden" x:Name="aspectVestaOff22"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="116,0,0,0">
+                                <StackPanel Margin="116,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/dt_on.png" x:Name="aspectDtOn22"></Image>
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden" x:Name="aspectDtOff22"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="3-3 (Transit)" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn33" MouseDown="aspectMouseDownCommon"/>
@@ -650,38 +650,38 @@
                                     <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff33" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal">
                                 <Label Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn33"></Image>
-                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff33"></Image>
+                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn33" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff33" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn33"></Image>
                                     <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff33"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn33"></Image>
                                     <Image Source="/Resources/ceres_off.png" Height="0" Visibility="Hidden" x:Name="aspectCeresOff33"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/paras_on.png" x:Name="aspectParasOn33"></Image>
                                     <Image Source="/Resources/paras_off.png" Height="0" Visibility="Hidden" x:Name="aspectParasOff33"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/juno_on.png" x:Name="aspectJunoOn33"></Image>
                                     <Image Source="/Resources/juno_off.png" Height="0" Visibility="Hidden" x:Name="aspectJunoOff33"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/vesta_on.png" x:Name="aspectVestaOn33"></Image>
                                     <Image Source="/Resources/vesta_off.png" Height="0" Visibility="Hidden" x:Name="aspectVestaOff33"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="116,0,0,0">
+                                <StackPanel Margin="116,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/dt_on.png" x:Name="aspectDtOn33"></Image>
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden" x:Name="aspectDtOff33"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="1-2 (N-P)" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn12" MouseDown="aspectMouseDownCommon"/>
@@ -740,38 +740,38 @@
                                     <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff12" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal">
                                 <Label Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn12"></Image>
-                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff12"></Image>
+                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn12" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff12" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn12"></Image>
                                     <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff12"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn12"></Image>
                                     <Image Source="/Resources/ceres_off.png" Height="0" Visibility="Hidden" x:Name="aspectCeresOff12"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/paras_on.png" x:Name="aspectParasOn12"></Image>
                                     <Image Source="/Resources/paras_off.png" Height="0" Visibility="Hidden" x:Name="aspectParasOff12"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/juno_on.png" x:Name="aspectJunoOn12"></Image>
                                     <Image Source="/Resources/juno_off.png" Height="0" Visibility="Hidden" x:Name="aspectJunoOff12"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/vesta_on.png" x:Name="aspectVestaOn12"></Image>
                                     <Image Source="/Resources/vesta_off.png" Height="0" Visibility="Hidden" x:Name="aspectVestaOff12"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="116,0,0,0">
+                                <StackPanel Margin="116,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/dt_on.png" x:Name="aspectDtOn12"></Image>
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden" x:Name="aspectDtOff12"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
                                 <Label Content="1-3 (N-T)" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn13" MouseDown="aspectMouseDownCommon"/>
@@ -830,38 +830,38 @@
                                     <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff13" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal">
                                 <Label Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn13"></Image>
-                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff13"></Image>
+                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn13" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff13" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn13"></Image>
                                     <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff13"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn13"></Image>
                                     <Image Source="/Resources/ceres_off.png" Height="0" Visibility="Hidden" x:Name="aspectCeresOff13"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/paras_on.png" x:Name="aspectParasOn13"></Image>
                                     <Image Source="/Resources/paras_off.png" Height="0" Visibility="Hidden" x:Name="aspectParasOff13"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/juno_on.png" x:Name="aspectJunoOn13"></Image>
                                     <Image Source="/Resources/juno_off.png" Height="0" Visibility="Hidden" x:Name="aspectJunoOff13"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/vesta_on.png" x:Name="aspectVestaOn13"></Image>
                                     <Image Source="/Resources/vesta_off.png" Height="0" Visibility="Hidden" x:Name="aspectVestaOff13"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="116,0,0,0">
+                                <StackPanel Margin="116,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/dt_on.png" x:Name="aspectDtOn13"></Image>
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden" x:Name="aspectDtOff13"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="2-3 (P-T)" Width="100"></Label>
                                 <StackPanel>
                                     <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn23" MouseDown="aspectMouseDownCommon"/>
@@ -920,33 +920,33 @@
                                     <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="aspectMcOff23" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
+                            <StackPanel Orientation="Horizontal">
                                 <Label Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn23"></Image>
-                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff23"></Image>
+                                    <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn23" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff23" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn23"></Image>
                                     <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff23"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn23"></Image>
                                     <Image Source="/Resources/ceres_off.png" Height="0" Visibility="Hidden" x:Name="aspectCeresOff23"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/paras_on.png" x:Name="aspectParasOn23"></Image>
                                     <Image Source="/Resources/paras_off.png" Height="0" Visibility="Hidden" x:Name="aspectParasOff23"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/juno_on.png" x:Name="aspectJunoOn23"></Image>
                                     <Image Source="/Resources/juno_off.png" Height="0" Visibility="Hidden" x:Name="aspectJunoOff23"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
+                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/vesta_on.png" x:Name="aspectVestaOn23"></Image>
                                     <Image Source="/Resources/vesta_off.png" Height="0" Visibility="Hidden" x:Name="aspectVestaOff23"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="116,0,0,0">
+                                <StackPanel Margin="116,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/dt_on.png" x:Name="aspectDtOn23"></Image>
                                     <Image Source="/Resources/dt_off.png" Height="0" Visibility="Hidden" x:Name="aspectDtOff23"></Image>
                                 </StackPanel>
