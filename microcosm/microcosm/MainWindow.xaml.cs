@@ -2738,11 +2738,53 @@ namespace microcosm
         {
             if (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
             {
+
                 if (e.Key == Key.A)
                 {
                     // MessageBox.Show("Ctrl + A");
                 }
             }
+            if (e.Key == Key.D0)
+            {
+                dispSettingBox.SelectedIndex = 0;
+            }
+            if (e.Key == Key.D1)
+            {
+                dispSettingBox.SelectedIndex = 1;
+            }
+            if (e.Key == Key.D2)
+            {
+                dispSettingBox.SelectedIndex = 2;
+            }
+            if (e.Key == Key.D3)
+            {
+                dispSettingBox.SelectedIndex = 3;
+            }
+            if (e.Key == Key.D4)
+            {
+                dispSettingBox.SelectedIndex = 4;
+            }
+            if (e.Key == Key.D5)
+            {
+                dispSettingBox.SelectedIndex = 5;
+            }
+            if (e.Key == Key.D6)
+            {
+                dispSettingBox.SelectedIndex = 6;
+            }
+            if (e.Key == Key.D7)
+            {
+                dispSettingBox.SelectedIndex = 7;
+            }
+            if (e.Key == Key.D8)
+            {
+                dispSettingBox.SelectedIndex = 8;
+            }
+            if (e.Key == Key.D9)
+            {
+                dispSettingBox.SelectedIndex = 9;
+            }
+
         }
 
         private void Natal_Current_Click(object sender, RoutedEventArgs e)

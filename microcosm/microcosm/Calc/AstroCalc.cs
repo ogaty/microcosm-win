@@ -120,11 +120,25 @@ namespace microcosm.Calc
                     p.isDisp = false;
                     p.isAspectDisp = false;
                 }
-                if (i == 11)
+                if (i == 11 && subIndex >= 0)
                 {
                     // TRUE NODE ヘッド
-                    p.isDisp = true;
-                    p.isAspectDisp = true;
+                    if (main.currentSetting.dispPlanet[subIndex][main.dispListMap[i]])
+                    {
+                        p.isDisp = true;
+                    }
+                    else
+                    {
+                        p.isDisp = false;
+                    }
+                    if (main.currentSetting.dispAspectPlanet[subIndex][main.dispListMap[i]])
+                    {
+                        p.isAspectDisp = true;
+                    }
+                    else
+                    {
+                        p.isAspectDisp = false;
+                    }
                 }
                 if (i == 12)
                 {
@@ -138,11 +152,25 @@ namespace microcosm.Calc
                     p.isDisp = false;
                     p.isAspectDisp = false;
                 }
-                if (config.centric == ECentric.HELIO_CENTRIC && i == 14)
+                if (config.centric == ECentric.HELIO_CENTRIC && i == 14 && subIndex >= 0)
                 {
                     // ヘリオセントリック地球
-                    p.isDisp = true;
-                    p.isAspectDisp = true;
+                    if (main.currentSetting.dispPlanet[subIndex][main.dispListMap[i]])
+                    {
+                        p.isDisp = true;
+                    }
+                    else
+                    {
+                        p.isDisp = false;
+                    }
+                    if (main.currentSetting.dispAspectPlanet[subIndex][main.dispListMap[i]])
+                    {
+                        p.isAspectDisp = true;
+                    }
+                    else
+                    {
+                        p.isAspectDisp = false;
+                    }
                 }
                 if (!targetNoList.ContainsKey(i))
                 {

@@ -192,6 +192,8 @@ namespace microcosm.Common
                     return "ASC";
                 case ZODIAC_MC:
                     return "MC";
+                case ZODIAC_EARTH:
+                    return "地球";
             }
             return "";
         }

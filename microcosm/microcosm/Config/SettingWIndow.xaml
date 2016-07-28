@@ -29,182 +29,209 @@
                 <TabItem Header="天体表示">
                     <StackPanel>
                         <StackPanel Margin="5">
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="1 (Natal)" Width="100" />
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/sun_on.png" x:Name="planetSunOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="planetSunOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="planetMoonOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="planetMoonOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="planetMercuryOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="planetMercuryOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="planetVenusOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="planetVenusOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="planetMarsOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="planetMarsOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="planetJupiterOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="planetJupiterOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="planetSaturnOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="planetSaturnOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="planetUranusOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="planetUranusOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="planetNeptuneOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="planetNeptuneOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="planetPlutoOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="planetPlutoOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="planetDhOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="planetDhOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="planetChironOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="planetChironOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/asc_on.png" x:Name="planetAscOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="planetAscOff11" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mc_on.png" x:Name="planetMcOn11" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="planetMcOff11" MouseDown="planetDispMouseDownCommon"/>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="1 (Natal)" Width="100" />
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/sun_on.png" x:Name="planetSunOn11" MouseDown="planetDispMouseDownCommon" ToolTip="太陽"/>
+                                        <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="planetSunOff11" MouseDown="planetDispMouseDownCommon" ToolTip="太陽"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/moon_on.png" x:Name="planetMoonOn11" MouseDown="planetDispMouseDownCommon" ToolTip="月"/>
+                                        <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="planetMoonOff11" MouseDown="planetDispMouseDownCommon" ToolTip="月"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mercury_on.png" x:Name="planetMercuryOn11" MouseDown="planetDispMouseDownCommon" ToolTip="水星"/>
+                                        <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="planetMercuryOff11" MouseDown="planetDispMouseDownCommon" ToolTip="水星"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/venus_on.png" x:Name="planetVenusOn11" MouseDown="planetDispMouseDownCommon" ToolTip="金星"/>
+                                        <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="planetVenusOff11" MouseDown="planetDispMouseDownCommon" ToolTip="金星"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mars_on.png" x:Name="planetMarsOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="planetMarsOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/jupiter_on.png" x:Name="planetJupiterOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="planetJupiterOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/saturn_on.png" x:Name="planetSaturnOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="planetSaturnOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/uranus_on.png" x:Name="planetUranusOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="planetUranusOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/neptune_on.png" x:Name="planetNeptuneOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="planetNeptuneOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/pluto_on.png" x:Name="planetPlutoOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="planetPlutoOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/dh_on.png" x:Name="planetDhOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="planetDhOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/chiron_on.png" x:Name="planetChironOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="planetChironOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/asc_on.png" x:Name="planetAscOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="planetAscOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mc_on.png" x:Name="planetMcOn11" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="planetMcOff11" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Label Content="2 (Progress)" Width="100" />
+                                <Label Content="" Width="100" />
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/sun_on.png" x:Name="planetSunOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="planetSunOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    <Image Source="/Resources/earth_on.png" x:Name="planetEarthOn11" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
+                                    <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="planetEarthOff11" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="planetMoonOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="planetMoonOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="planetMercuryOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="planetMercuryOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="planetVenusOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="planetVenusOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="planetMarsOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="planetMarsOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="planetJupiterOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="planetJupiterOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="planetSaturnOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="planetSaturnOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="planetUranusOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="planetUranusOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="planetNeptuneOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="planetNeptuneOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="planetPlutoOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="planetPlutoOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="planetDhOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="planetDhOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="planetChironOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="planetChironOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/asc_on.png" x:Name="planetAscOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="planetAscOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mc_on.png" x:Name="planetMcOn22" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="planetMcOff22" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
+                            </StackPanel>
 
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="2 (Progress)" Width="100" />
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/sun_on.png" x:Name="planetSunOn22" MouseDown="planetDispMouseDownCommon" ToolTip="太陽"/>
+                                        <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="planetSunOff22" MouseDown="planetDispMouseDownCommon" ToolTip="太陽"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/moon_on.png" x:Name="planetMoonOn22" MouseDown="planetDispMouseDownCommon" ToolTip="月"/>
+                                        <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="planetMoonOff22" MouseDown="planetDispMouseDownCommon" ToolTip="月"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mercury_on.png" x:Name="planetMercuryOn22" MouseDown="planetDispMouseDownCommon" ToolTip="水星"/>
+                                        <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="planetMercuryOff22" MouseDown="planetDispMouseDownCommon" ToolTip="水星"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/venus_on.png" x:Name="planetVenusOn22" MouseDown="planetDispMouseDownCommon" ToolTip="金星"/>
+                                        <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="planetVenusOff22" MouseDown="planetDispMouseDownCommon" ToolTip="金星"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mars_on.png" x:Name="planetMarsOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="planetMarsOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/jupiter_on.png" x:Name="planetJupiterOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="planetJupiterOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/saturn_on.png" x:Name="planetSaturnOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="planetSaturnOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/uranus_on.png" x:Name="planetUranusOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="planetUranusOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/neptune_on.png" x:Name="planetNeptuneOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="planetNeptuneOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/pluto_on.png" x:Name="planetPlutoOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="planetPlutoOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/dh_on.png" x:Name="planetDhOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="planetDhOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/chiron_on.png" x:Name="planetChironOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="planetChironOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/asc_on.png" x:Name="planetAscOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="planetAscOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mc_on.png" x:Name="planetMcOn22" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="planetMcOff22" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="" Width="100" />
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/earth_on.png" x:Name="planetEarthOn22" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
+                                        <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="planetEarthOff22" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
+                                    </StackPanel>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="3 (Transit)" Width="100" />
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/sun_on.png" x:Name="planetSunOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="planetSunOff33" MouseDown="planetDispMouseDownCommon"/>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="3 (Transit)" Width="100" />
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/sun_on.png" x:Name="planetSunOn33" MouseDown="planetDispMouseDownCommon" ToolTip="太陽"/>
+                                        <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="planetSunOff33" MouseDown="planetDispMouseDownCommon" ToolTip="太陽"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/moon_on.png" x:Name="planetMoonOn33" MouseDown="planetDispMouseDownCommon" ToolTip="月"/>
+                                        <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="planetMoonOff33" MouseDown="planetDispMouseDownCommon" ToolTip="月"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mercury_on.png" x:Name="planetMercuryOn33" MouseDown="planetDispMouseDownCommon" ToolTip="水星"/>
+                                        <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="planetMercuryOff33" MouseDown="planetDispMouseDownCommon" ToolTip="水星"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/venus_on.png" x:Name="planetVenusOn33" MouseDown="planetDispMouseDownCommon" ToolTip="金星"/>
+                                        <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="planetVenusOff33" MouseDown="planetDispMouseDownCommon" ToolTip="金星"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mars_on.png" x:Name="planetMarsOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="planetMarsOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/jupiter_on.png" x:Name="planetJupiterOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="planetJupiterOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/saturn_on.png" x:Name="planetSaturnOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="planetSaturnOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/uranus_on.png" x:Name="planetUranusOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="planetUranusOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/neptune_on.png" x:Name="planetNeptuneOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="planetNeptuneOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/pluto_on.png" x:Name="planetPlutoOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="planetPlutoOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/dh_on.png" x:Name="planetDhOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="planetDhOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/chiron_on.png" x:Name="planetChironOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="planetChironOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/asc_on.png" x:Name="planetAscOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="planetAscOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/mc_on.png" x:Name="planetMcOn33" MouseDown="planetDispMouseDownCommon"/>
+                                        <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="planetMcOff33" MouseDown="planetDispMouseDownCommon"/>
+                                    </StackPanel>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="planetMoonOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="planetMoonOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="planetMercuryOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="planetMercuryOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="planetVenusOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="planetVenusOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="planetMarsOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="planetMarsOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="planetJupiterOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="planetJupiterOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="planetSaturnOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="planetSaturnOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/uranus_on.png" x:Name="planetUranusOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/uranus_off.png" Height="0" Visibility="Hidden" x:Name="planetUranusOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/neptune_on.png" x:Name="planetNeptuneOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/neptune_off.png" Height="0" Visibility="Hidden" x:Name="planetNeptuneOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/pluto_on.png" x:Name="planetPlutoOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/pluto_off.png" Height="0" Visibility="Hidden" x:Name="planetPlutoOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/dh_on.png" x:Name="planetDhOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/dh_off.png" Height="0" Visibility="Hidden" x:Name="planetDhOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/chiron_on.png" x:Name="planetChironOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/chiron_off.png" Height="0" Visibility="Hidden" x:Name="planetChironOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/asc_on.png" x:Name="planetAscOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/asc_off.png" Height="0" Visibility="Hidden" x:Name="planetAscOff33" MouseDown="planetDispMouseDownCommon"/>
-                                </StackPanel>
-                                <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mc_on.png" x:Name="planetMcOn33" MouseDown="planetDispMouseDownCommon"/>
-                                    <Image Source="/Resources/mc_off.png" Height="0" Visibility="Hidden" x:Name="planetMcOff33" MouseDown="planetDispMouseDownCommon"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="" Width="100" />
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/earth_on.png" x:Name="planetEarthOn33" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
+                                        <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="planetEarthOff33" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
@@ -414,20 +441,20 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="1-1 (Natal)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn11" MouseDown="aspectMouseDownCommon"></Image>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn11" MouseDown="aspectMouseDownCommon" ToolTip="太陽"></Image>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff11" MouseDown="aspectMouseDownCommon" ToolTip="太陽"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn11" MouseDown="aspectMouseDownCommon"></Image>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn11" MouseDown="aspectMouseDownCommon" ToolTip="月"></Image>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff11" MouseDown="aspectMouseDownCommon" ToolTip="月"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn11" MouseDown="aspectMouseDownCommon"></Image>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn11" MouseDown="aspectMouseDownCommon" ToolTip="水星"></Image>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff11" MouseDown="aspectMouseDownCommon" ToolTip="水星"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn11" MouseDown="aspectMouseDownCommon"></Image>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn11" MouseDown="aspectMouseDownCommon" ToolTip="金星"></Image>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff11" MouseDown="aspectMouseDownCommon" ToolTip="金星"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn11" MouseDown="aspectMouseDownCommon"></Image>
@@ -504,20 +531,20 @@
                             <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="2-2 (Progress)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn22" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff22" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn22" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff22" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn22" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff22" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn22" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff22" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn22" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff22" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn22" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff22" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn22" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff22" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn22" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff22" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn22" MouseDown="aspectMouseDownCommon"/>
@@ -594,20 +621,20 @@
                             <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="3-3 (Transit)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn33" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff33" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn33" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff33" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn33" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff33" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn33" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff33" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn33" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff33" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn33" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff33" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn33" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff33" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn33" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff33" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn33" MouseDown="aspectMouseDownCommon"/>
@@ -684,20 +711,20 @@
                             <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="1-2 (N-P)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn12" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff12" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn12" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff12" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn12" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff12" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn12" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff12" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn12" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff12" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn12" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff12" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn12" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff12" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn12" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff12" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn12" MouseDown="aspectMouseDownCommon"/>
@@ -774,20 +801,20 @@
                             <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
                                 <Label Content="1-3 (N-T)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn13" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff13" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn13" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff13" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn13" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff13" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn13" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff13" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn13" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff13" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn13" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff13" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn13" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff13" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn13" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff13" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn13" MouseDown="aspectMouseDownCommon"/>
@@ -864,20 +891,20 @@
                             <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
                                 <Label Content="2-3 (P-T)" Width="100"></Label>
                                 <StackPanel>
-                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn23" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff23" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/sun_on.png" x:Name="aspectSunOn23" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
+                                    <Image Source="/Resources/sun_off.png" Height="0" Visibility="Hidden" x:Name="aspectSunOff23" MouseDown="aspectMouseDownCommon" ToolTip="太陽"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn23" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff23" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/moon_on.png" x:Name="aspectMoonOn23" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
+                                    <Image Source="/Resources/moon_off.png" Height="0" Visibility="Hidden" x:Name="aspectMoonOff23" MouseDown="aspectMouseDownCommon" ToolTip="月"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn23" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff23" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mercury_on.png" x:Name="aspectMercuryOn23" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
+                                    <Image Source="/Resources/mercury_off.png" Height="0" Visibility="Hidden" x:Name="aspectMercuryOff23" MouseDown="aspectMouseDownCommon" ToolTip="水星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn23" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff23" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/venus_on.png" x:Name="aspectVenusOn23" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
+                                    <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff23" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn23" MouseDown="aspectMouseDownCommon"/>
