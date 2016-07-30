@@ -36,7 +36,8 @@
                 <MenuItem Header="png書き出し" Click="Png_Export"></MenuItem>
             </MenuItem>
             <MenuItem Header="表示(_D)">
-                <MenuItem Header="一重円(_Q)" Click="SingleRing_Click"/>
+                <MenuItem Header="一重円(出生時刻)(_Q)" Click="SingleRing_Click"/>
+                <MenuItem Header="一重円(イベント時刻)(_U)" Click="SingleRingEvent_Click"/>
                 <MenuItem Header="三重円(_W)" Click="TripleRing_Click"/>
                 <MenuItem Header="カスタム(_E)" Click="MultipleRing_Click"/>
             </MenuItem>

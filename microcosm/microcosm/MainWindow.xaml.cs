@@ -784,8 +784,14 @@ namespace microcosm
 
         public void ReCalc()
         {
-            UserEventData edata = CommonData.udata2event(targetUser);
-            ReCalc(edata, userdata, userdata, userdata, userdata, userdata, userdata);
+            if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.USER1)
+            {
+                UserEventData edata = CommonData.udata2event(targetUser);
+                ReCalc(edata, userdata, userdata, userdata, userdata, userdata, userdata);
+            } else
+            {
+                ReCalc(userdata, userdata, userdata, userdata, userdata, userdata, userdata);
+            }
         }
 
         // 再計算
@@ -804,6 +810,7 @@ namespace microcosm
             {
                 if (tempSettings.firstBand == TempSetting.BandKind.PROGRESS)
                 {
+                    // プログレスの場合（まず使わないけど）
                     List<PlanetData> tempList;
                     switch (config.progression)
                     {
@@ -1417,9 +1424,21 @@ namespace microcosm
             // houseCuspRender2(houseList1);
             signCuspRender(houseList1[1]);
             zodiacRender(houseList1[1]);
+            list1.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
+            list2.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
+            list3.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
+            list4.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
+            list5.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
             planetRender(houseList1[1], list1, list2, list3, list4, list5);
             planetLine(houseList1[1], list1, list2, list3, list4, list5);
             aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
+
+            // 大丈夫だと思うけど戻しておく
+            list1.Sort((a, b) => (int)(a.no - b.no));
+            list2.Sort((a, b) => (int)(a.no - b.no));
+            list3.Sort((a, b) => (int)(a.no - b.no));
+            list4.Sort((a, b) => (int)(a.no - b.no));
+            list5.Sort((a, b) => (int)(a.no - b.no));
 
             Label copy = new Label();
             copy.Content = "microcosm";
@@ -2111,7 +2130,7 @@ namespace microcosm
 
             if (tempSettings.bands == 1)
             {
-                int[] box = new int[60];
+                int[] box = new int[72];
                 list1.ForEach(planet =>
                 {
                     if (planet.isDisp == false)
@@ -2128,13 +2147,13 @@ namespace microcosm
                     }
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -2148,7 +2167,7 @@ namespace microcosm
 
                     PointF pointPlanet;
                     PointF pointRing;
-                    pointPlanet = rotate(rcanvas.outerWidth / 3 - 65, 0, 6 * index - startdegree);
+                    pointPlanet = rotate(rcanvas.outerWidth / 3 - 65, 0, 5 * index - startdegree + 3);
                     pointRing = rotate(tempSettings.zodiacCenter / 2, 0, planet.absolute_position - startdegree);
 
                     pointPlanet.X += (float)(rcanvas.outerWidth / 2);
@@ -2697,6 +2716,8 @@ namespace microcosm
         private void SingleRing_Click(object sender, RoutedEventArgs e)
         {
             tempSettings.bands = 1;
+            tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+            ReCalc();
             ReRender();
         }
 
@@ -2946,6 +2967,14 @@ namespace microcosm
             }
             int index = dispSettingBox.SelectedIndex;
             currentSetting = settings[index];
+            ReCalc();
+            ReRender();
+        }
+
+        private void SingleRingEvent_Click(object sender, RoutedEventArgs e)
+        {
+            tempSettings.bands = 1;
+            tempSettings.firstHouseDiv = TempSetting.HouseDivide.EVENT1;
             ReCalc();
             ReRender();
         }

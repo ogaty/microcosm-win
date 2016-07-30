@@ -92,18 +92,22 @@ namespace microcosm.Config
             if (geoCentric.IsChecked == true)
             {
                 main.config.centric = ECentric.GEO_CENTRIC;
+                main.mainWindowVM.centricMode = "GeoCentric";
             }
             else
             {
                 main.config.centric = ECentric.HELIO_CENTRIC;
+                main.mainWindowVM.centricMode = "HelioCentric";
             }
             if (tropical.IsChecked == true)
             {
                 main.config.sidereal = Esidereal.TROPICAL;
+                main.mainWindowVM.siderealStr = "TROPICAL";
             }
             else
             {
                 main.config.sidereal = Esidereal.SIDEREAL;
+                main.mainWindowVM.siderealStr = "SIDEREAL";
             }
             if (primaryProgression.IsChecked == true)
             {

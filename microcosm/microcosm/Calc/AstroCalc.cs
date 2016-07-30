@@ -120,10 +120,10 @@ namespace microcosm.Calc
                     p.isDisp = false;
                     p.isAspectDisp = false;
                 }
-                if (i == 11 && subIndex >= 0)
+                if (i == 11 && subIndex >= 0 && config.centric == ECentric.GEO_CENTRIC)
                 {
                     // TRUE NODE ヘッド
-                    if (main.currentSetting.dispPlanet[subIndex][main.dispListMap[i]])
+                    if (main.currentSetting.dispPlanet[subIndex][11])
                     {
                         p.isDisp = true;
                     }
@@ -131,7 +131,7 @@ namespace microcosm.Calc
                     {
                         p.isDisp = false;
                     }
-                    if (main.currentSetting.dispAspectPlanet[subIndex][main.dispListMap[i]])
+                    if (main.currentSetting.dispAspectPlanet[subIndex][11])
                     {
                         p.isAspectDisp = true;
                     }

@@ -27,8 +27,8 @@ namespace microcosm
 
             if (tempSettings.bands == 1)
             {
-                int[] box = new int[60];
-                for (int i = 0; i < 60; i++)
+                int[] box = new int[72];
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -65,13 +65,13 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
-                    index = (int)(absolute_position / 6);
+                    index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -85,17 +85,17 @@ namespace microcosm
 
                     if (ringCanvas.ActualWidth < 470)
                     {
-                        point = rotate(rcanvas.outerWidth / 3 - 20, 0, 6 * index - startdegree);
-                        pointdegree = rotate(rcanvas.outerWidth / 3 - 40, 0, 6 * index - startdegree);
+                        point = rotate(rcanvas.outerWidth / 3 - 20, 0, 5 * index - startdegree + 3);
+                        pointdegree = rotate(rcanvas.outerWidth / 3 - 40, 0, 5 * index - startdegree + 3);
                     }
                     else
                     {
-                        point = rotate(rcanvas.outerWidth / 3 + 20, 0, 6 * index - startdegree);
-                        pointdegree = rotate(rcanvas.outerWidth / 3, 0, 6 * index - startdegree);
+                        point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree + 3);
+                        pointdegree = rotate(rcanvas.outerWidth / 3, 0, 5 * index - startdegree + 3);
                     }
-                    pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, 6 * index - startdegree);
-                    pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, 6 * index - startdegree);
-                    pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, 6 * index - startdegree);
+                    pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, 5 * index - startdegree + 3);
+                    pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, 5 * index - startdegree + 3);
+                    pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, 5 * index - startdegree + 3);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
                     pointdegree.X += (float)rcanvas.outerWidth / 2;
@@ -142,6 +142,24 @@ namespace microcosm
                         retrograde = retrograde
                     };
 
+                    string degreeTxt;
+                    if (mainWindow.config.decimalDisp == Config.EDecimalDisp.DECIMAL)
+                    {
+                        degreeTxt = ((planet.absolute_position) % 30 - 0.5).ToString("00");
+                    }
+                    else
+                    {
+                        degreeTxt = ((planet.absolute_position) % 30 - 0.5).ToString("00°");
+                    }
+                    string minuteTxt;
+                    if (mainWindow.config.decimalDisp == Config.EDecimalDisp.DECIMAL)
+                    {
+                        minuteTxt = ((planet.absolute_position % 1 * 100) - 0.5).ToString("00");
+                    }
+                    else
+                    {
+                        minuteTxt = ((planet.absolute_position % 1) * 60 - 0.5).ToString("00") + "'";
+                    }
                     PlanetDisplay display = new PlanetDisplay()
                     {
                         planetNo = planet.no,
@@ -151,12 +169,12 @@ namespace microcosm
                         planetTxt = CommonData.getPlanetSymbol(planet.no),
                         planetColor = CommonData.getPlanetColor(planet.no),
                         degreePt = pointdegree,
-                        degreeTxt = ((planet.absolute_position) % 30 - 0.5).ToString("00°"),
+                        degreeTxt = degreeTxt,
                         symbolPt = pointsymbol,
                         symbolTxt = CommonData.getSignText(planet.absolute_position),
                         minutePt = pointminute,
                         // 小数点以下切り捨て 59.9->59
-                        minuteTxt = ((planet.absolute_position % 1) * 60 - 0.5).ToString("00") + "'",
+                        minuteTxt = minuteTxt,
                         retrogradePt = pointretrograde,
                         retrogradeTxt = CommonData.getRetrograde(planet.speed),
                         symbolColor = CommonData.getSignColor(planet.absolute_position)
@@ -185,8 +203,8 @@ namespace microcosm
             // 二重円
             else if (tempSettings.bands == 2)
             {
-                int[] box = new int[60];
-                for (int i = 0; i < 60; i++)
+                int[] box = new int[72];
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -211,13 +229,13 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
-                    index = (int)(absolute_position / 6);
+                    index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -229,7 +247,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 5 + 20, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 5 + 20, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -256,7 +274,7 @@ namespace microcosm
                     };
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -282,13 +300,13 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
-                    index = (int)(absolute_position / 6);
+                    index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -300,7 +318,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -343,8 +361,8 @@ namespace microcosm
             // 三重円
             else if (tempSettings.bands == 3)
             {
-                int[] box = new int[60];
-                for (int i = 0; i < 60; i++)
+                int[] box = new int[72];
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -369,13 +387,13 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
-                    index = (int)(absolute_position / 6);
+                    index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -387,7 +405,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 5, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 5, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -414,7 +432,7 @@ namespace microcosm
                     };
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -440,13 +458,13 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
-                    index = (int)(absolute_position / 6);
+                    index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -458,7 +476,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 4 + 20, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 4 + 20, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -496,7 +514,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -522,13 +540,13 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
-                    index = (int)(absolute_position / 6);
+                    index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -540,7 +558,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -583,8 +601,8 @@ namespace microcosm
             // 四重円
             else if (tempSettings.bands == 4)
             {
-                int[] box = new int[60];
-                for (int i = 0; i < 60; i++)
+                int[] box = new int[72];
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -599,13 +617,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -617,7 +635,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 5, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 5, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -644,7 +662,7 @@ namespace microcosm
                     };
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -666,7 +684,7 @@ namespace microcosm
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -678,7 +696,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 4, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 4, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -716,7 +734,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -732,13 +750,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -750,7 +768,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 3 - 5, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 3 - 5, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -788,7 +806,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -804,13 +822,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -822,7 +840,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -865,8 +883,8 @@ namespace microcosm
             // 五重円
             else if (tempSettings.bands == 5)
             {
-                int[] box = new int[60];
-                for (int i = 0; i < 60; i++)
+                int[] box = new int[72];
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -881,13 +899,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -899,7 +917,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 5, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 5, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -926,7 +944,7 @@ namespace microcosm
                     };
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -942,13 +960,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -960,7 +978,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 4, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 4, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -998,7 +1016,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -1014,13 +1032,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -1032,7 +1050,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 4 + 20, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 4 + 20, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -1070,7 +1088,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -1086,13 +1104,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -1104,7 +1122,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 3, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 3, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 
@@ -1142,7 +1160,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 60; i++)
+                for (int i = 0; i < 72; i++)
                 {
                     box[i] = 0;
                 }
@@ -1158,13 +1176,13 @@ namespace microcosm
                     PointF point;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
+                    int index = (int)(planet.absolute_position / 5);
                     if (box[index] == 1)
                     {
                         while (box[index] == 1)
                         {
                             index++;
-                            if (index == 60)
+                            if (index == 72)
                             {
                                 index = 0;
                             }
@@ -1176,7 +1194,7 @@ namespace microcosm
                         box[index] = 1;
                     }
 
-                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 6 * index - startdegree);
+                    point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
                     point.X -= 8;
 

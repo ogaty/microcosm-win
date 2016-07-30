@@ -863,7 +863,7 @@ namespace microcosm
                 main.targetUser.birth_year = dt.Year;
                 main.targetUser.birth_month = dt.Month;
                 main.targetUser.birth_day = dt.Day;
-                main.targetUser.birth_hour = dt.Month;
+                main.targetUser.birth_hour = dt.Hour;
                 main.targetUser.birth_minute = dt.Minute;
                 main.targetUser.birth_second = dt.Second;
                 main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +

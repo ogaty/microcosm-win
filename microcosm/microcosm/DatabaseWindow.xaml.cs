@@ -154,6 +154,31 @@ namespace microcosm
             editEventData();
         }
 
+        // イベントリスト右クリック→削除
+        public void deleteEvent_Click(object sender, EventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            if (UserEvent.SelectedIndex == 0)
+            {
+                MessageBox.Show("出生時刻は削除できません。");
+            }
+
+            UserData udata = (UserData)UserEvent.Tag;
+            udata.userevent.RemoveAt(UserEvent.SelectedIndex - 1);
+
+            UserEvent.Items.RemoveAt(UserEvent.SelectedIndex);
+            XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+            File.Delete(udata.filename);
+            FileStream fs = new FileStream(udata.filename, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            serializer.Serialize(sw, udata);
+            sw.Close();
+            fs.Close();
+        }
+
         // イベントリスト右クリック→回帰計算
         public void returnEvent_Click(object sender, EventArgs e)
         {
