@@ -23,6 +23,7 @@
                     <MenuItem Header="Stargazer" Click="Stargazer_Click"/>
                     <MenuItem Header="Astrolog32 (dat)" Click="Astrolog_Click"/>
                     <MenuItem Header="StarFisher (sfs)" Click="StarFisher_Click"/>
+                    <MenuItem Header="Morinus (hor)" Click="Morinus_Click"/>
                     <MenuItem Header="ZET (zbs)" Click="Zet_Click"/>
                     <MenuItem Header="TimePassager (chw)" Click="TimePassages_Click"/>
                 </MenuItem>

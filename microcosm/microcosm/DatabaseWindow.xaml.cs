@@ -1333,6 +1333,126 @@ namespace microcosm
             }
         }
 
+        private void Morinus_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.FilterIndex = 1;
+            oFD.Filter = "Morinus Horoscope Files|*.hor";
+            oFD.Title = "チャートファイルを選択してください";
+            bool? result = oFD.ShowDialog();
+            if (result == true)
+            {
+                string fileName = oFD.FileName;
+                using (Stream fileStream = oFD.OpenFile())
+                {
+                    int i = 0;
+                    string name = "";
+                    int year = 2000;
+                    int month = 1;
+                    int day = 1;
+                    int hour = 12;
+                    int minute = 0;
+                    int second = 0;
+                    string place = "";
+                    double dlat = 35.670587;
+                    double dlng = 139.772003;
+                    string timezone = "JST";
+                    string memo = "";
+                    StreamReader sr = new StreamReader(fileStream, true);
+                    while (sr.Peek() >= 0)
+                    {
+                        string line = sr.ReadLine();
+                        i++;
+                        switch (i)
+                        {
+                            case 1:
+                                name = line.Substring(1);
+                                break;
+                            case 6:
+                                year = int.Parse(line.Substring(2));
+                                break;
+                            case 7:
+                                month = int.Parse(line.Substring(2));
+                                break;
+                            case 8:
+                                day = int.Parse(line.Substring(2));
+                                break;
+                            case 9:
+                                hour = int.Parse(line.Substring(2));
+                                break;
+                            case 10:
+                                minute = int.Parse(line.Substring(2));
+                                break;
+                            case 11:
+                                second = int.Parse(line.Substring(2));
+                                break;
+                            case 18:
+                                place = line.Substring(1);
+                                break;
+                            case 20:
+                                dlat = double.Parse(line.Substring(2));
+                                break;
+                            case 21:
+                                dlat += double.Parse(line.Substring(2)) / 100;
+                                break;
+                            case 23:
+                                string lat = line.Substring(2);
+                                if (lat == "00")
+                                {
+                                    dlat *= -1;
+                                }
+                                break;
+                            case 24:
+                                dlng = double.Parse(line.Substring(2));
+                                break;
+                            case 25:
+                                dlng += double.Parse(line.Substring(2)) / 100;
+                                break;
+                            case 27:
+                                string lng = line.Substring(2);
+                                if (lng == "00")
+                                {
+                                    dlng *= -1;
+                                }
+                                break;
+
+                        }
+
+                    }
+
+                    UserData udata = new UserData(name, "",
+                        year, month, day,
+                        hour, minute, second,
+                        dlat, dlng, place, memo, timezone);
+                    string filename = name + ".csm";
+                    Assembly myAssembly = Assembly.GetEntryAssembly();
+                    string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Morinus\" + filename;
+
+                    try
+                    {
+                        if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+                        {
+                            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
+                        }
+                        XmlSerializer serializer = new XmlSerializer(typeof(UserData));
+                        FileStream fs = new FileStream(path, FileMode.Create);
+                        StreamWriter sw = new StreamWriter(fs);
+                        serializer.Serialize(sw, udata);
+                        sw.Close();
+                        fs.Close();
+                    }
+                    catch (IOException)
+                    {
+
+                    }
+                    window.CreateTree();
+
+                }
+                MessageBox.Show("完了しました。");
+
+            }
+        }
+
         private void Amateru_Export(object sender, RoutedEventArgs e)
         {
         }
