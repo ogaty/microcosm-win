@@ -764,6 +764,8 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
+                int success = 0;
+                int err = 0;
                 using (Stream fileStream = oFD.OpenFile())
                 {
                     StreamReader sr = new StreamReader(fileStream, true);
@@ -795,10 +797,11 @@ namespace microcosm
                                 serializer.Serialize(sw, udata);
                                 sw.Close();
                                 fs.Close();
+                                success++;
                             }
                             catch (IOException)
                             {
-
+                                err++;
                             }
 
                         }
@@ -809,7 +812,14 @@ namespace microcosm
                     }
                     window.CreateTree();
                 }
-                MessageBox.Show("完了しました。");
+                if (err == 0)
+                {
+                    MessageBox.Show("完了しました。");
+                }
+                else
+                {
+                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
+                }
             }
 
         }
@@ -823,6 +833,8 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
+                int success = 0;
+                int err = 0;
                 using (Stream fileStream = oFD.OpenFile())
                 {
                     StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
@@ -871,10 +883,11 @@ namespace microcosm
                                 serializer.Serialize(sw, udata);
                                 sw.Close();
                                 fs.Close();
+                                success++;
                             } 
                             catch (IOException)
                             {
-
+                                err++;
                             }
 
                         }
@@ -885,7 +898,14 @@ namespace microcosm
                     }
                     window.CreateTree();
                 }
-                MessageBox.Show("完了しました。");
+                if (err == 0)
+                {
+                    MessageBox.Show("完了しました。");
+                }
+                else
+                {
+                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
+                }
             }
         }
 
@@ -905,6 +925,8 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
+                int success = 0;
+                int err = 0;
                 using (Stream fileStream = oFD.OpenFile())
                 {
                     StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
@@ -967,15 +989,23 @@ namespace microcosm
                             serializer.Serialize(sw, udata);
                             sw.Close();
                             fs.Close();
+                            success++;
                         }
                         catch (IOException)
                         {
-
+                            err++;
                         }
                     }
                     window.CreateTree();
                 }
-                MessageBox.Show("完了しました。");
+                if (err == 0)
+                {
+                    MessageBox.Show("完了しました。");
+                }
+                else
+                {
+                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
+                }
             }
         }
 
@@ -989,6 +1019,8 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
+                int success = 0;
+                int err = 0;
                 using (Stream fileStream = oFD.OpenFile())
                 {
                     StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
@@ -1080,9 +1112,11 @@ namespace microcosm
                                 serializer.Serialize(sw, udata);
                                 sw.Close();
                                 fs.Close();
+                                success++;
                             }
                             catch (IOException)
                             {
+                                err++;
                             }
                             break;
                         }
@@ -1090,7 +1124,14 @@ namespace microcosm
                     }
                     window.CreateTree();
                 }
-                MessageBox.Show("完了しました。");
+                if (err == 0)
+                {
+                    MessageBox.Show("完了しました。");
+                }
+                else
+                {
+                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
+                }
             }
         }
 
@@ -1104,6 +1145,8 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
+                int success = 0;
+                int err = 0;
                 using (Stream fileStream = oFD.OpenFile())
                 {
                     string name = "";
@@ -1201,15 +1244,23 @@ namespace microcosm
                             serializer.Serialize(sw, udata);
                             sw.Close();
                             fs.Close();
+                            success++;
                         }
                         catch (IOException)
                         {
-
+                            err++;
                         }
                     }
                     window.CreateTree();
                 }
-                MessageBox.Show("完了しました。");
+                if (err == 0)
+                {
+                    MessageBox.Show("完了しました。");
+                }
+                else
+                {
+                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
+                }
             }
         }
 
@@ -1223,6 +1274,8 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
+                int err = 0;
+                int success = 0;
                 using (Stream fileStream = oFD.OpenFile())
                 {
                     string name = "";
@@ -1321,15 +1374,23 @@ namespace microcosm
                             serializer.Serialize(sw, udata);
                             sw.Close();
                             fs.Close();
+                            success++;
                         }
                         catch (IOException)
                         {
-
+                            err++;
                         }
                     }
                     window.CreateTree();
                 }
-                MessageBox.Show("完了しました。");
+                if (err == 0)
+                {
+                    MessageBox.Show("完了しました。");
+                }
+                else
+                {
+                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
+                }
             }
         }
 
@@ -1343,6 +1404,8 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
+                int success = 0;
+                int err = 0;
                 using (Stream fileStream = oFD.OpenFile())
                 {
                     int i = 0;
@@ -1440,15 +1503,22 @@ namespace microcosm
                         serializer.Serialize(sw, udata);
                         sw.Close();
                         fs.Close();
+                        success++;
                     }
                     catch (IOException)
                     {
-
+                        err++;
                     }
                     window.CreateTree();
 
                 }
-                MessageBox.Show("完了しました。");
+                if (err == 0)
+                {
+                    MessageBox.Show("完了しました。");
+                } else
+                {
+                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
+                }
 
             }
         }

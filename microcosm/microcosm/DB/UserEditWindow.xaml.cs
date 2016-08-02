@@ -151,5 +151,55 @@ namespace microcosm.DB
                 }
             }
         }
+
+        private void fileName_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            fileName.SelectAll();
+        }
+
+        private void userName_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userName.SelectAll();
+        }
+
+        private void userFurigana_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userFurigana.SelectAll();
+        }
+
+        private void userHour_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userHour.SelectAll();
+        }
+
+        private void userMinute_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userMinute.SelectAll();
+        }
+
+        private void userSecond_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userSecond.SelectAll();
+        }
+
+        private void userPlace_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userPlace.SelectAll();
+        }
+
+        private void userLat_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userLat.SelectAll();
+        }
+
+        private void userLng_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userLng.SelectAll();
+        }
+
+        private void userMemo_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            userMemo.SelectAll();
+        }
     }
 }

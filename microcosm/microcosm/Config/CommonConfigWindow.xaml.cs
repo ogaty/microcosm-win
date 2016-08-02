@@ -140,6 +140,26 @@ namespace microcosm.Config
             {
                 main.config.dispPattern = (int)DispPetern.MINI;
             }
+            if (placidus.IsChecked == true)
+            {
+                main.config.houseCalc = EHouseCalc.PLACIDUS;
+                main.houseCalc.Text = "PLACIDUS";
+            }
+            else if (koch.IsChecked == true)
+            {
+                main.config.houseCalc = EHouseCalc.KOCH;
+                main.houseCalc.Text = "KOCH";
+            }
+            else if (campanus.IsChecked == true)
+            {
+                main.config.houseCalc = EHouseCalc.CAMPANUS;
+                main.houseCalc.Text = "CAMPANUS";
+            }
+            else if (equal.IsChecked == true)
+            {
+                main.config.houseCalc = EHouseCalc.EQUAL;
+                main.houseCalc.Text = "EQUAL";
+            }
 
             string filename = @"system\config.csm";
             XmlSerializer serializer = new XmlSerializer(typeof(ConfigData));
