@@ -135,10 +135,12 @@ namespace microcosm.Config
             if (fullDisp.IsChecked == true)
             {
                 main.config.dispPattern = (int)DispPetern.FULL;
+                main.tempSettings.centerPattern = (int)DispPetern.FULL;
             }
             else
             {
                 main.config.dispPattern = (int)DispPetern.MINI;
+                main.tempSettings.centerPattern = (int)DispPetern.MINI;
             }
             if (placidus.IsChecked == true)
             {

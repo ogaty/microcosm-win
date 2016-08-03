@@ -48,6 +48,7 @@ namespace microcosm.Config
         public HouseDivide fifthHouseDiv;
         public HouseDivide sixthHouseDiv;
         public HouseDivide seventhHouseDiv;
+        public int centerPattern;
         public double zodiacCenter;
 
         public TempSetting(ConfigData config)
@@ -73,6 +74,7 @@ namespace microcosm.Config
             fifthHouseDiv = HouseDivide.EVENT1;
             sixthHouseDiv = HouseDivide.EVENT1;
             seventhHouseDiv = HouseDivide.EVENT1;
+            centerPattern = config.dispPattern;
         }
     }
 }

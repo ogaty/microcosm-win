@@ -1391,7 +1391,14 @@ namespace microcosm
             rcanvas.innerTop = config.zodiacWidth / 2;
             if (ringCanvas.ActualWidth > ringStack.ActualHeight)
             {
-                tempSettings.zodiacCenter = (int)(ringStack.ActualHeight * 0.7 / 2);
+                if (tempSettings.centerPattern == 0 || tempSettings.bands > 1)
+                {
+                    tempSettings.zodiacCenter = (int)(ringStack.ActualHeight * 0.7 / 2);
+                }
+                else
+                {
+                    tempSettings.zodiacCenter = (int)(ringStack.ActualHeight * 0.6);
+                }
 
                 rcanvas.outerWidth = ringStack.ActualHeight;
                 rcanvas.outerHeight = ringStack.ActualHeight;
@@ -1402,7 +1409,14 @@ namespace microcosm
             }
             else
             {
-                tempSettings.zodiacCenter = ringCanvas.ActualWidth * 0.7 / 2;
+                if (tempSettings.centerPattern == 0 || tempSettings.bands > 1)
+                {
+                    tempSettings.zodiacCenter = (int)(ringCanvas.ActualWidth * 0.7 / 2);
+                }
+                else
+                {
+                    tempSettings.zodiacCenter = (int)(ringCanvas.ActualWidth * 0.6);
+                }
 
                 rcanvas.outerWidth = ringCanvas.ActualWidth;
                 rcanvas.outerHeight = ringCanvas.ActualWidth;
@@ -2128,6 +2142,11 @@ namespace microcosm
             List<bool> dispList = new List<bool>();
             List<PlanetDisplay> pDisplayList = new List<PlanetDisplay>();
 
+            if (tempSettings.centerPattern == 1)
+            {
+                return;
+            }
+
             if (tempSettings.bands == 1)
             {
                 int[] box = new int[72];
@@ -2276,6 +2295,10 @@ namespace microcosm
 
             Label degreeLbl = new Label();
             degreeLbl.Content = displayData.degreeTxt;
+            if (displayData.retrogradeTxt == "")
+            {
+                // todo
+            }
             degreeLbl.Margin = new Thickness(displayData.degreePt.X, displayData.degreePt.Y, 0, 0);
             degreeLbl.Tag = displayData.explanation;
             degreeLbl.MouseEnter += planetMouseEnter;

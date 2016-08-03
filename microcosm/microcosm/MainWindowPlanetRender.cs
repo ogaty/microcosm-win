@@ -189,7 +189,7 @@ namespace microcosm
                     {
                         return;
                     }
-                    if (ringCanvas.ActualWidth < 470)
+                    if (ringCanvas.ActualWidth < 470 || tempSettings.centerPattern == 1)
                     {
                         SetOnlySignDegree(displayData);
                     }

@@ -101,7 +101,7 @@ namespace microcosm.Config
         [XmlElement("decimalDisp")]
         public EDecimalDisp decimalDisp { get; set; }
 
-        // SolarFireっぽく表示orAMATERUっぽく表示
+        // フル表示かミニ表示か
         [XmlElement("dispPattern")]
         public int dispPattern { get; set; }
 

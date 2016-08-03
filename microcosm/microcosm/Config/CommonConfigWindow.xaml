@@ -44,7 +44,7 @@
                         <RadioButton x:Name="degreeDisp" Content="60進数(15.59°)"></RadioButton>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="天体表示" Visibility="Hidden">
+                <GroupBox Header="天体表示">
                     <StackPanel>
                         <RadioButton x:Name="fullDisp" Content="フル　　  (☉29°♈59'℞)"></RadioButton>
                         <RadioButton x:Name="miniDisp" Content="シンプル　(☉29°)"></RadioButton>
