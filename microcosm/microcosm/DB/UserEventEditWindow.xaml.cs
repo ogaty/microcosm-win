@@ -43,7 +43,14 @@ namespace microcosm.DB
         // 表示文字設定
         public void UserEditSet(DbItem item)
         {
-            eventName.Text = item.userName;
+            if (item.userName.IndexOf("- ") == 0)
+            {
+                eventName.Text = item.userName.Substring(2);
+            }
+            else
+            {
+                eventName.Text = item.userName;
+            }
             eventBirth.SelectedDate = item.userBirth;
             eventHour.Text = item.userHour;
             eventMinute.Text = item.userMinute;
@@ -84,9 +91,18 @@ namespace microcosm.DB
         {
             if (isEdit)
             {
+                string evTxt = "";
+                if (eventName.Text.IndexOf("- ") == 0)
+                {
+                    evTxt = eventName.Text;
+                }
+                else
+                {
+                    evTxt = "- " + eventName.Text;
+                }
                 dbwindow.editEvent_Click_CB(
                     index,
-                    eventName.Text,
+                    evTxt,
                     eventBirth.DisplayDate,
                     int.Parse(eventHour.Text),
                     int.Parse(eventMinute.Text),
@@ -100,8 +116,17 @@ namespace microcosm.DB
             }
             else
             {
+                string evTxt = "";
+                if (eventName.Text.IndexOf("- ") == 0)
+                {
+                    evTxt = eventName.Text;
+                }
+                else
+                {
+                    evTxt = "- " + eventName.Text;
+                }
                 dbwindow.newEvent_Click_CB(
-                    eventName.Text,
+                    evTxt,
                     eventBirth.DisplayDate,
                     int.Parse(eventHour.Text),
                     int.Parse(eventMinute.Text),

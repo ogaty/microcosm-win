@@ -45,7 +45,14 @@ namespace microcosm.DB
         public void UserEditSet(DbItem item)
         {
             fileName.Text = item.fileName;
-            userName.Text = item.userName;
+            if (userName.Text.IndexOf("- ") == 0)
+            {
+                userName.Text = item.userName.Substring(2);
+            }
+            else
+            {
+                userName.Text = item.userName;
+            }
             userFurigana.Text = item.userFurigana;
             userBirth.SelectedDate = item.userBirth;
             userHour.Text = item.userHour;

@@ -257,20 +257,20 @@
                                 <Image Source="/Resources/trine_off.png" Height="0" Visibility="Hidden" x:Name="aspectTrineOff11" MouseDown="aspect2MouseDownCommon" ToolTip="トライン"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn11" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff11" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn11" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
+                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff11" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn11" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff11" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn11" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
+                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff11" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn11" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff11" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn11" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
+                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff11" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn11" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff11" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn11" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
+                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff11" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -289,20 +289,20 @@
                                 <Image Source="/Resources/trine_off.png" Height="0" Visibility="Hidden" x:Name="aspectTrineOff22" MouseDown="aspect2MouseDownCommon" ToolTip="トライン"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn22" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff22" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn22" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
+                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff22" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn22" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff22" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn22" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
+                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff22" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn22" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff22" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn22" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
+                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff22" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn22" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff22" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn22" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
+                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff22" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -321,20 +321,20 @@
                                 <Image Source="/Resources/trine_off.png" Height="0" Visibility="Hidden" x:Name="aspectTrineOff33" MouseDown="aspect2MouseDownCommon" ToolTip="トライン"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn33" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff33" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn33" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
+                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff33" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn33" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff33" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn33" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
+                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff33" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn33" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff33" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn33" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
+                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff33" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn33" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff33" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn33" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
+                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff33" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -353,20 +353,20 @@
                                 <Image Source="/Resources/trine_off.png" Height="0" Visibility="Hidden" x:Name="aspectTrineOff12" MouseDown="aspect2MouseDownCommon" ToolTip="トライン"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn12" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff12" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn12" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
+                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff12" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn12" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff12" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn12" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
+                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff12" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn12" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff12" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn12" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
+                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff12" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn12" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff12" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn12" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
+                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff12" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -385,20 +385,20 @@
                                 <Image Source="/Resources/trine_off.png" Height="0" Visibility="Hidden" x:Name="aspectTrineOff13" MouseDown="aspect2MouseDownCommon" ToolTip="トライン"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn13" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff13" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn13" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
+                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff13" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn13" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff13" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn13" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
+                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff13" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn13" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff13" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn13" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
+                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff13" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn13" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff13" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn13" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
+                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff13" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -417,20 +417,20 @@
                                 <Image Source="/Resources/trine_off.png" Height="0" Visibility="Hidden" x:Name="aspectTrineOff23" MouseDown="aspect2MouseDownCommon" ToolTip="トライン"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn23" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff23" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/square_on.png" x:Name="aspectSquareOn23" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
+                                <Image Source="/Resources/square_off.png" Height="0" Visibility="Hidden" x:Name="aspectSquareOff23" MouseDown="aspect2MouseDownCommon" ToolTip="スクエア"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn23" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff23" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sextile_on.png" x:Name="aspectSextileOn23" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
+                                <Image Source="/Resources/sextile_off.png" Height="0" Visibility="Hidden" x:Name="aspectSextileOff23" MouseDown="aspect2MouseDownCommon" ToolTip="セクスタイル"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn23" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff23" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/inconjunct_on.png" x:Name="aspectInconjunctOn23" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
+                                <Image Source="/Resources/inconjunct_off.png" Height="0" Visibility="Hidden" x:Name="aspectInconjunctOff23" MouseDown="aspect2MouseDownCommon" ToolTip="インコンジャンクト"/>
                             </StackPanel>
                             <StackPanel Margin="5,0,0,0">
-                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn23" MouseDown="aspect2MouseDownCommon"/>
-                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff23" MouseDown="aspect2MouseDownCommon"/>
+                                <Image Source="/Resources/sesquiquadrate_on.png" x:Name="aspectSesquiquadrateOn23" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
+                                <Image Source="/Resources/sesquiquadrate_off.png" Height="0" Visibility="Hidden" x:Name="aspectSesquiquadrateOff23" MouseDown="aspect2MouseDownCommon" ToolTip="セスキコードレート"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -457,16 +457,16 @@
                                     <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff11" MouseDown="aspectMouseDownCommon" ToolTip="金星"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn11" MouseDown="aspectMouseDownCommon"></Image>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn11" MouseDown="aspectMouseDownCommon" ToolTip="火星"></Image>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff11" MouseDown="aspectMouseDownCommon" ToolTip="火星"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn11" MouseDown="aspectMouseDownCommon"></Image>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn11" MouseDown="aspectMouseDownCommon" ToolTip="木星"></Image>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff11" MouseDown="aspectMouseDownCommon" ToolTip="木星"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn11" MouseDown="aspectMouseDownCommon"></Image>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff11" MouseDown="aspectMouseDownCommon"></Image>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn11" MouseDown="aspectMouseDownCommon" ToolTip="土星"></Image>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff11" MouseDown="aspectMouseDownCommon" ToolTip="土星"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn11" MouseDown="aspectMouseDownCommon"></Image>
@@ -547,16 +547,16 @@
                                     <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff22" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn22" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff22" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn22" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff22" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn22" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff22" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn22" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff22" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn22" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff22" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn22" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff22" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn22" MouseDown="aspectMouseDownCommon"/>
@@ -637,16 +637,16 @@
                                     <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff33" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn33" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff33" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn33" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff33" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn33" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff33" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn33" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff33" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn33" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff33" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn33" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff33" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn33" MouseDown="aspectMouseDownCommon"/>
@@ -727,16 +727,16 @@
                                     <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff12" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn12" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff12" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn12" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff12" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn12" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff12" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn12" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff12" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn12" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff12" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn12" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff12" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn12" MouseDown="aspectMouseDownCommon"/>
@@ -817,16 +817,16 @@
                                     <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff13" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn13" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff13" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn13" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff13" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn13" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff13" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn13" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff13" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn13" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff13" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn13" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff13" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn13" MouseDown="aspectMouseDownCommon"/>
@@ -907,16 +907,16 @@
                                     <Image Source="/Resources/venus_off.png" Height="0" Visibility="Hidden" x:Name="aspectVenusOff23" MouseDown="aspectMouseDownCommon" ToolTip="金星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn23" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff23" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/mars_on.png" x:Name="aspectMarsOn23" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
+                                    <Image Source="/Resources/mars_off.png" Height="0" Visibility="Hidden" x:Name="aspectMarsOff23" MouseDown="aspectMouseDownCommon" ToolTip="火星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn23" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff23" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/jupiter_on.png" x:Name="aspectJupiterOn23" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
+                                    <Image Source="/Resources/jupiter_off.png" Height="0" Visibility="Hidden" x:Name="aspectJupiterOff23" MouseDown="aspectMouseDownCommon" ToolTip="木星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
-                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn23" MouseDown="aspectMouseDownCommon"/>
-                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff23" MouseDown="aspectMouseDownCommon"/>
+                                    <Image Source="/Resources/saturn_on.png" x:Name="aspectSaturnOn23" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
+                                    <Image Source="/Resources/saturn_off.png" Height="0" Visibility="Hidden" x:Name="aspectSaturnOff23" MouseDown="aspectMouseDownCommon" ToolTip="土星"/>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0">
                                     <Image Source="/Resources/uranus_on.png" x:Name="aspectUranusOn23" MouseDown="aspectMouseDownCommon"/>

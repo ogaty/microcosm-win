@@ -352,9 +352,18 @@ namespace microcosm
         )
         {
             UserData udata = (UserData)UserEvent.Tag;
+            string evTxt = "";
+            if (eventName.IndexOf("- ") == 0)
+            {
+                evTxt = eventName;
+            }
+            else
+            {
+                evTxt = "- " + eventName;
+            }
             UserEvent uevent = new UserEvent()
             {
-                event_name = eventName,
+                event_name = evTxt,
                 event_year = eventBirth.Year,
                 event_month = eventBirth.Month,
                 event_day = eventBirth.Day,
@@ -369,7 +378,7 @@ namespace microcosm
             };
             UserEventData ueventdata = new UserEventData()
             {
-                name = eventName,
+                name = evTxt,
                 birth_year = eventBirth.Year,
                 birth_month = eventBirth.Month,
                 birth_day = eventBirth.Day,
@@ -393,6 +402,7 @@ namespace microcosm
                 lat_lng = String.Format("{0:00.000}/{1:000.000}", eventLat, eventLng)
             };
             udata.userevent.Add(uevent);
+            UserEvent.Tag = udata;
 
             UserEvent.Items.Add(ueventdata);
             XmlSerializer serializer = new XmlSerializer(typeof(UserData));
@@ -420,9 +430,18 @@ namespace microcosm
             )
         {
             UserData udata = (UserData)UserEvent.Tag;
+            string evTxt = "";
+            if (eventName.IndexOf("- ") == 0)
+            {
+                evTxt = eventName;
+            }
+            else
+            {
+                evTxt = "- " + eventName;
+            }
             UserEvent uevent = new UserEvent()
             {
-                event_name = eventName,
+                event_name = evTxt,
                 event_year = eventBirth.Year,
                 event_month = eventBirth.Month,
                 event_day = eventBirth.Day,
@@ -437,7 +456,7 @@ namespace microcosm
             };
             UserEventData ueventdata = new UserEventData()
             {
-                name = eventName,
+                name = evTxt,
                 birth_year = eventBirth.Year,
                 birth_month = eventBirth.Month,
                 birth_day = eventBirth.Day,
@@ -462,7 +481,7 @@ namespace microcosm
             };
             if (index > 0)
             {
-                udata.userevent[index] = uevent;
+                udata.userevent[index - 1] = uevent;
             }
             UserEvent.Items[index] = ueventdata;
             XmlSerializer serializer = new XmlSerializer(typeof(UserData));
