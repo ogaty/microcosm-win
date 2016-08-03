@@ -64,7 +64,10 @@
             <TextBox Height="100" Margin="0,20,0,0" x:Name="UserMemo" Text="{Binding Memo}">
 
             </TextBox>
-            <Button x:Name="SubmitBtn" Content="決定" Margin="0,10,0,0" Width="100" HorizontalAlignment="Right" Click="Submit_Click"></Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="SubmitBtn" Content="決定" Margin="0,10,0,0" Width="100" HorizontalAlignment="Right" Click="Submit_Click"></Button>
+                <Button x:Name="CancelBtn" Content="キャンセル" Margin="20,10,1,0" Width="100" HorizontalAlignment="Right" Click="Cancel_Click"></Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

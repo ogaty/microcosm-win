@@ -42,7 +42,7 @@
                 <MenuItem Header="カスタム(_E)" Click="MultipleRing_Click"/>
             </MenuItem>
             <MenuItem Header="ウィンドウ(_W)">
-                <MenuItem Header="時刻設定(_T)" Click="ChartSelector_Click"></MenuItem>
+                <MenuItem Header="時刻設定(_T)" InputGestureText="Ctrl+T"  Click="ChartSelector_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="設定(_C)">
                 <MenuItem Header="共通設定(_C)" Click="OpenCommonConfig_Click"></MenuItem>

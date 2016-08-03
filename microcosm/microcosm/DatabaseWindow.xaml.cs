@@ -1572,5 +1572,10 @@ namespace microcosm
                 memo = ""
             });
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }

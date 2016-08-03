@@ -2787,6 +2787,16 @@ namespace microcosm
                 {
                     // MessageBox.Show("Ctrl + A");
                 }
+
+                if (e.Key == Key.T)
+                {
+                    // メニュー
+                    if (chartSelecterWindow == null)
+                    {
+                        chartSelecterWindow = new ChartSelectorWindow(this);
+                    }
+                    chartSelecterWindow.Visibility = Visibility.Visible;
+                }
             }
             if (e.Key == Key.D0)
             {
