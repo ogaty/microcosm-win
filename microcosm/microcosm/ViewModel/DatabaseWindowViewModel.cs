@@ -177,6 +177,7 @@ namespace microcosm.ViewModel
             //            context.Items.Add(returnEventItem);
 
             dbwindow.UserEvent.ContextMenu = context;
+            dbwindow.UserEvent.MouseDoubleClick += dbwindow.userEvent_DoubleClick;
         }
 
         // リスト上に表示されるデータを作成

@@ -236,6 +236,58 @@ namespace microcosm
 
         }
 
+        public void userEvent_DoubleClick(object sender, EventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            UserData udata = (UserData)UserEvent.Tag;
+            UserEventData edata;
+            mainwindow.targetUser = udata;
+            if (UserEvent.SelectedItem is UserData)
+            {
+                edata = new UserEventData()
+                {
+                    name = udata.name,
+                    birth_year = udata.birth_year,
+                    birth_month = udata.birth_month,
+                    birth_day = udata.birth_day,
+                    birth_hour = udata.birth_hour,
+                    birth_minute = udata.birth_minute,
+                    birth_second = udata.birth_second,
+                    birth_place = udata.birth_place,
+                    lat = udata.lat,
+                    lng = udata.lng,
+                    timezone = udata.timezone,
+                    memo = udata.memo,
+                    birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                        udata.birth_year,
+                        udata.birth_month,
+                        udata.birth_day,
+                        udata.birth_hour,
+                        udata.birth_minute,
+                        udata.birth_second
+                    ),
+                    lat_lng = String.Format("{0:00.000}/{1:000.000}", udata.lat, udata.lng),
+                    fullpath = udata.filename
+                };
+                mainwindow.userdata = edata;
+            }
+            else
+            {
+                mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
+                edata = (UserEventData)UserEvent.SelectedItem;
+            }
+            mainwindow.userdata = edata;
+            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString());
+            mainwindow.ReCalc();
+            mainwindow.ReRender();
+
+            this.Visibility = Visibility.Hidden;
+        }
+
         // 新規作成(ファイル)コールバック
         public void newUser_Click_CB(
             string fileName,
