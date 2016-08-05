@@ -46,6 +46,7 @@ namespace microcosm.Config
         public bool[,] planetDispAsc = new bool[10, 15];
         public bool[,] planetDispMc = new bool[10, 15];
         public bool[,] planetDispEarth = new bool[10, 15];
+        public bool[,] planetDispLilith = new bool[10, 15];
 
         public bool[,] aspectSun = new bool[10, 15];
         public bool[,] aspectMoon = new bool[10, 15];
@@ -62,6 +63,7 @@ namespace microcosm.Config
         public bool[,] aspectAsc = new bool[10, 15];
         public bool[,] aspectMc = new bool[10, 15];
         public bool[,] aspectEarth = new bool[10, 15];
+        public bool[,] aspectLilith = new bool[10, 15];
 
         public bool[,] aspectConjunction = new bool[10, 15];
         public bool[,] aspectOpposition = new bool[10, 15];
@@ -1158,6 +1160,83 @@ namespace microcosm.Config
 
         }
 
+        private void disp11_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp11.IsChecked == true)
+            {
+                aspectDispChecked[index, 0] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 0] = false;
+            }
+        }
+
+        private void disp22_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp22.IsChecked == true)
+            {
+                aspectDispChecked[index, 1] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 1] = false;
+            }
+        }
+
+        private void disp33_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp33.IsChecked == true)
+            {
+                aspectDispChecked[index, 2] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 2] = false;
+            }
+        }
+
+        private void disp12_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp12.IsChecked == true)
+            {
+                aspectDispChecked[index, 3] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 3] = false;
+            }
+        }
+
+        private void disp13_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp13.IsChecked == true)
+            {
+                aspectDispChecked[index, 4] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 4] = false;
+            }
+        }
+
+        private void disp23_Click(object sender, RoutedEventArgs e)
+        {
+            int index = dispList.SelectedIndex;
+            if (disp23.IsChecked == true)
+            {
+                aspectDispChecked[index, 5] = true;
+            }
+            else
+            {
+                aspectDispChecked[index, 5] = false;
+            }
+        }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1165,6 +1244,7 @@ namespace microcosm.Config
             for (int index = 0; index < 10; index++)
             {
                 SettingXml xmldata = new SettingXml();
+                #region xmldata-aspectPlanet
                 xmldata.aspectSun11 = aspectSun[index, 0];
                 xmldata.aspectSun22 = aspectSun[index, 1];
                 xmldata.aspectSun33 = aspectSun[index, 2];
@@ -1255,6 +1335,15 @@ namespace microcosm.Config
                 xmldata.aspectEarth12 = aspectEarth[index, 3];
                 xmldata.aspectEarth13 = aspectEarth[index, 4];
                 xmldata.aspectEarth23 = aspectEarth[index, 5];
+                xmldata.aspectLilith11 = false;
+                xmldata.aspectLilith22 = false;
+                xmldata.aspectLilith33 = false;
+                xmldata.aspectLilith12 = false;
+                xmldata.aspectLilith13 = false;
+                xmldata.aspectLilith23 = false;
+                #endregion
+
+                #region xmldata-aspectAspect
                 xmldata.aspectConjunction11 = aspectConjunction[index, 0];
                 xmldata.aspectConjunction22 = aspectConjunction[index, 1];
                 xmldata.aspectConjunction33 = aspectConjunction[index, 2];
@@ -1298,6 +1387,7 @@ namespace microcosm.Config
                 xmldata.aspectSesquiquadrate12 = aspectSesquiquadrate[index, 3];
                 xmldata.aspectSesquiquadrate13 = aspectSesquiquadrate[index, 4];
                 xmldata.aspectSesquiquadrate23 = aspectSesquiquadrate[index, 5];
+                #endregion
 
                 xmldata.dispAspect = new bool[6];
                 xmldata.dispAspect[0] = aspectDispChecked[index, 0];
@@ -1352,7 +1442,11 @@ namespace microcosm.Config
                 xmldata.dispPlanetEarth11 = planetDispEarth[index, 0];
                 xmldata.dispPlanetEarth22 = planetDispEarth[index, 1];
                 xmldata.dispPlanetEarth33 = planetDispEarth[index, 2];
+                xmldata.dispPlanetLilith11 = false;
+                xmldata.dispPlanetLilith22 = false;
+                xmldata.dispPlanetLilith33 = false;
 
+                #region xmldata-orb
                 xmldata.orb_sun_hard_1st_0 = orbSunHard1st[index, 0];
                 xmldata.orb_sun_hard_2nd_0 = orbSunHard2nd[index, 0];
                 xmldata.orb_sun_hard_150_0 = orbSunHard150[index, 0];
@@ -1461,6 +1555,7 @@ namespace microcosm.Config
                 xmldata.orb_other_soft_1st_5 = orbOtherSoft1st[index, 5];
                 xmldata.orb_other_soft_2nd_5 = orbOtherSoft2nd[index, 5];
                 xmldata.orb_other_soft_150_5 = orbOtherSoft150[index, 5];
+                #endregion
                 xmldata.dispname = tempDispName[index];
 
                 string filename = @"system\setting" + index + ".csm";
@@ -1747,6 +1842,7 @@ namespace microcosm.Config
 
                 main.settings[i].orbs.Clear();
                 Dictionary<OrbKind, double> o11 = new Dictionary<OrbKind, double>();
+                #region o11
                 o11.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_0);
                 o11.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_0);
                 o11.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_0);
@@ -1766,7 +1862,9 @@ namespace microcosm.Config
                 o11.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_0);
                 o11.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_0);
                 main.settings[i].orbs.Add(o11);
+                #endregion
                 Dictionary<OrbKind, double> o22 = new Dictionary<OrbKind, double>();
+                #region o22
                 o22.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_1);
                 o22.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_1);
                 o22.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_1);
@@ -1786,7 +1884,9 @@ namespace microcosm.Config
                 o22.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_1);
                 o22.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_1);
                 main.settings[i].orbs.Add(o22);
+                #endregion
                 Dictionary<OrbKind, double> o33 = new Dictionary<OrbKind, double>();
+                #region o33
                 o33.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_2);
                 o33.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_2);
                 o33.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_2);
@@ -1806,7 +1906,9 @@ namespace microcosm.Config
                 o33.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_2);
                 o33.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_2);
                 main.settings[i].orbs.Add(o33);
+                #endregion
                 Dictionary<OrbKind, double> o12 = new Dictionary<OrbKind, double>();
+                #region o12
                 o12.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_3);
                 o12.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_3);
                 o12.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_3);
@@ -1826,7 +1928,9 @@ namespace microcosm.Config
                 o12.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_3);
                 o12.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_3);
                 main.settings[i].orbs.Add(o12);
+                #endregion
                 Dictionary<OrbKind, double> o13 = new Dictionary<OrbKind, double>();
+                #region o13
                 o13.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_4);
                 o13.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_4);
                 o13.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_4);
@@ -1846,7 +1950,9 @@ namespace microcosm.Config
                 o13.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_4);
                 o13.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_4);
                 main.settings[i].orbs.Add(o13);
+                #endregion
                 Dictionary<OrbKind, double> o23 = new Dictionary<OrbKind, double>();
+                #region o23
                 o23.Add(OrbKind.SUN_HARD_1ST, main.settings[i].xmlData.orb_sun_hard_1st_5);
                 o23.Add(OrbKind.SUN_SOFT_1ST, main.settings[i].xmlData.orb_sun_soft_1st_5);
                 o23.Add(OrbKind.SUN_HARD_2ND, main.settings[i].xmlData.orb_sun_hard_2nd_5);
@@ -1866,6 +1972,7 @@ namespace microcosm.Config
                 o23.Add(OrbKind.OTHER_HARD_150, main.settings[i].xmlData.orb_other_hard_150_5);
                 o23.Add(OrbKind.OTHER_SOFT_150, main.settings[i].xmlData.orb_other_soft_150_5);
                 main.settings[i].orbs.Add(o23);
+                #endregion
 
                 main.settings[i].dispAspect[0, 0] = aspectDispChecked[currentIndex, 0];
                 main.settings[i].dispAspect[1, 1] = aspectDispChecked[currentIndex, 1];
@@ -1886,83 +1993,8 @@ namespace microcosm.Config
             this.Visibility = Visibility.Hidden;
         }
 
-        private void disp11_Click(object sender, RoutedEventArgs e)
-        {
-            int index = dispList.SelectedIndex;
-            if (disp11.IsChecked == true)
-            {
-                aspectDispChecked[index, 0] = true;
-            }
-            else
-            {
-                aspectDispChecked[index, 0] = false;
-            }
-        }
 
-        private void disp22_Click(object sender, RoutedEventArgs e)
-        {
-            int index = dispList.SelectedIndex;
-            if (disp22.IsChecked == true)
-            {
-                aspectDispChecked[index, 1] = true;
-            }
-            else
-            {
-                aspectDispChecked[index, 1] = false;
-            }
-        }
 
-        private void disp33_Click(object sender, RoutedEventArgs e)
-        {
-            int index = dispList.SelectedIndex;
-            if (disp33.IsChecked == true)
-            {
-                aspectDispChecked[index, 2] = true;
-            }
-            else
-            {
-                aspectDispChecked[index, 2] = false;
-            }
-        }
-
-        private void disp12_Click(object sender, RoutedEventArgs e)
-        {
-            int index = dispList.SelectedIndex;
-            if (disp12.IsChecked == true)
-            {
-                aspectDispChecked[index, 3] = true;
-            }
-            else
-            {
-                aspectDispChecked[index, 3] = false;
-            }
-        }
-
-        private void disp13_Click(object sender, RoutedEventArgs e)
-        {
-            int index = dispList.SelectedIndex;
-            if (disp13.IsChecked == true)
-            {
-                aspectDispChecked[index, 4] = true;
-            }
-            else
-            {
-                aspectDispChecked[index, 4] = false;
-            }
-        }
-
-        private void disp23_Click(object sender, RoutedEventArgs e)
-        {
-            int index = dispList.SelectedIndex;
-            if (disp23.IsChecked == true)
-            {
-                aspectDispChecked[index, 5] = true;
-            }
-            else
-            {
-                aspectDispChecked[index, 5] = false;
-            }
-        }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {

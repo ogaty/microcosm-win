@@ -155,6 +155,8 @@ namespace microcosm.Common
                     return "\u2641";
                 case ZODIAC_CHIRON:
                     return "\u26b7";
+                case ZODIAC_LILITH:
+                    return "\u26b8";
             }
             return "";
         }
@@ -194,6 +196,8 @@ namespace microcosm.Common
                     return "MC";
                 case ZODIAC_EARTH:
                     return "地球";
+                case ZODIAC_LILITH:
+                    return "リリス";
             }
             return "";
         }
@@ -315,6 +319,10 @@ namespace microcosm.Common
             else if (number == (int)CommonData.ZODIAC_DH_TRUENODE)
             {
                 return System.Windows.Media.Brushes.DarkCyan;
+            }
+            else if (number == (int)CommonData.ZODIAC_LILITH)
+            {
+                return System.Windows.Media.Brushes.MediumSeaGreen;
             }
             return System.Windows.Media.Brushes.Black;
         }

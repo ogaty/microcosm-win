@@ -1991,6 +1991,26 @@ namespace microcosm
                     degree = DecimalToHex((natalcusp[i + 1] % 30).ToString())
                 };
                 l.MouseEnter += houseCuspMouseEnter;
+                if (i == 0)
+                {
+                    l.ToolTip = "ASC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                }
+                else if (i == 3)
+                {
+                    l.ToolTip = "IC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                }
+                else if (i == 6)
+                {
+                    l.ToolTip = "DSC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                }
+                else if (i == 9)
+                {
+                    l.ToolTip = "MC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                }
+                else
+                {
+                    l.ToolTip = (i + 1).ToString() + "ハウスカスプ " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                }
                 ringCanvas.Children.Add(l);
             });
             if (tempSettings.bands >= 2)
@@ -2021,6 +2041,26 @@ namespace microcosm
                         degree = DecimalToHex((natalcusp[i + 1] % 30).ToString())
                     };
                     l.MouseEnter += houseCuspMouseEnter;
+                    if (i == 0)
+                    {
+                        l.ToolTip = "ASC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else if (i == 3)
+                    {
+                        l.ToolTip = "IC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else if (i == 6)
+                    {
+                        l.ToolTip = "DSC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else if (i == 9)
+                    {
+                        l.ToolTip = "MC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else
+                    {
+                        l.ToolTip = (i + 1).ToString() + "ハウスカスプ " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
                     ringCanvas.Children.Add(l);
                 });
             }
@@ -2052,6 +2092,26 @@ namespace microcosm
                         degree = DecimalToHex((natalcusp[i + 1] % 30).ToString())
                     };
                     l.MouseEnter += houseCuspMouseEnter;
+                    if (i == 0)
+                    {
+                        l.ToolTip = "ASC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else if (i == 3)
+                    {
+                        l.ToolTip = "IC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else if (i == 6)
+                    {
+                        l.ToolTip = "DSC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else if (i == 9)
+                    {
+                        l.ToolTip = "MC " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
+                    else
+                    {
+                        l.ToolTip = (i + 1).ToString() + "ハウスカスプ " + CommonData.getSignTextJp(natalcusp[i + 1]) + (natalcusp[i + 1] % 30).ToString("0") + "度";
+                    }
                     ringCanvas.Children.Add(l);
                 });
             }
@@ -2126,6 +2186,7 @@ namespace microcosm
                 zodiacLabel.Content = CommonData.getSignSymbol(i);
                 zodiacLabel.Margin = new Thickness(pList[i].X, pList[i].Y, 0, 0);
                 zodiacLabel.Foreground = CommonData.getSignColor(i * 30);
+                zodiacLabel.ToolTip = CommonData.getSignTextJp(i * 30);
                 ringCanvas.Children.Add(zodiacLabel);
             });
         }

@@ -305,6 +305,8 @@ namespace microcosm.Config
         public bool dispPlanetMc11;
         [XmlElement("dispPlanetEarth11")]
         public bool dispPlanetEarth11;
+        [XmlElement("dispPlanetLilith11")]
+        public bool dispPlanetLilith11;
         [XmlElement("dispPlanetSun22")]
         public bool dispPlanetSun22;
         [XmlElement("dispPlanetMoon22")]
@@ -335,6 +337,8 @@ namespace microcosm.Config
         public bool dispPlanetMc22;
         [XmlElement("dispPlanetEarth22")]
         public bool dispPlanetEarth22;
+        [XmlElement("dispPlanetLilith22")]
+        public bool dispPlanetLilith22;
         [XmlElement("dispPlanetSun33")]
         public bool dispPlanetSun33;
         [XmlElement("dispPlanetMoon33")]
@@ -365,6 +369,8 @@ namespace microcosm.Config
         public bool dispPlanetMc33;
         [XmlElement("dispPlanetEarth33")]
         public bool dispPlanetEarth33;
+        [XmlElement("dispPlanetLilith33")]
+        public bool dispPlanetLilith33;
         [XmlElement("dispPlanetSun12")]
         public bool dispPlanetSun12;
         [XmlElement("dispPlanetMoon12")]
@@ -395,6 +401,8 @@ namespace microcosm.Config
         public bool dispPlanetMc12;
         [XmlElement("dispPlanetEarth12")]
         public bool dispPlanetEarth12;
+        [XmlElement("dispPlanetLilith12")]
+        public bool dispPlanetLilith12;
         [XmlElement("dispPlanetSun13")]
         public bool dispPlanetSun13;
         [XmlElement("dispPlanetMoon13")]
@@ -425,6 +433,8 @@ namespace microcosm.Config
         public bool dispPlanetMc13;
         [XmlElement("dispPlanetEarth13")]
         public bool dispPlanetEarth13;
+        [XmlElement("dispPlanetLilith13")]
+        public bool dispPlanetLilith13;
         [XmlElement("dispPlanetSun23")]
         public bool dispPlanetSun23;
         [XmlElement("dispPlanetMoon23")]
@@ -455,6 +465,8 @@ namespace microcosm.Config
         public bool dispPlanetMc23;
         [XmlElement("dispPlanetEarth23")]
         public bool dispPlanetEarth23;
+        [XmlElement("dispPlanetLilith23")]
+        public bool dispPlanetLilith23;
         #endregion
 
         [XmlElement("dispAspect")]
@@ -491,6 +503,8 @@ namespace microcosm.Config
         public bool aspectMc11;
         [XmlElement("aspectEarth11")]
         public bool aspectEarth11;
+        [XmlElement("aspectLilith11")]
+        public bool aspectLilith11;
         [XmlElement("aspectSun22")]
         public bool aspectSun22;
         [XmlElement("aspectMoon22")]
@@ -521,6 +535,8 @@ namespace microcosm.Config
         public bool aspectMc22;
         [XmlElement("aspectEarth22")]
         public bool aspectEarth22;
+        [XmlElement("aspectLilith22")]
+        public bool aspectLilith22;
         [XmlElement("aspectSun33")]
         public bool aspectSun33;
         [XmlElement("aspectMoon33")]
@@ -551,6 +567,8 @@ namespace microcosm.Config
         public bool aspectMc33;
         [XmlElement("aspectEarth33")]
         public bool aspectEarth33;
+        [XmlElement("aspectLilith33")]
+        public bool aspectLilith33;
         [XmlElement("aspectSun12")]
         public bool aspectSun12;
         [XmlElement("aspectMoon12")]
@@ -581,6 +599,8 @@ namespace microcosm.Config
         public bool aspectMc12;
         [XmlElement("aspectEarth12")]
         public bool aspectEarth12;
+        [XmlElement("aspectLilith12")]
+        public bool aspectLilith12;
         [XmlElement("aspectSun13")]
         public bool aspectSun13;
         [XmlElement("aspectMoon13")]
@@ -611,6 +631,8 @@ namespace microcosm.Config
         public bool aspectMc13;
         [XmlElement("aspectEarth13")]
         public bool aspectEarth13;
+        [XmlElement("aspectLilith13")]
+        public bool aspectLilith13;
         [XmlElement("aspectSun23")]
         public bool aspectSun23;
         [XmlElement("aspectMoon23")]
@@ -641,6 +663,8 @@ namespace microcosm.Config
         public bool aspectMc23;
         [XmlElement("aspectEarth23")]
         public bool aspectEarth23;
+        [XmlElement("aspectLilith23")]
+        public bool aspectLilith23;
         #endregion
 
         #region aspect Aspect
@@ -857,6 +881,7 @@ namespace microcosm.Config
             dispPlanetAsc11 = true;
             dispPlanetMc11 = true;
             dispPlanetEarth11 = true;
+            dispPlanetLilith11 = false;
             dispPlanetSun22 = true;
             dispPlanetMoon22 = true;
             dispPlanetMercury22 = true;
@@ -872,6 +897,7 @@ namespace microcosm.Config
             dispPlanetAsc22 = true;
             dispPlanetMc22 = true;
             dispPlanetEarth22 = true;
+            dispPlanetLilith22 = false;
             dispPlanetSun33 = true;
             dispPlanetMoon33 = true;
             dispPlanetMercury33 = true;
@@ -887,6 +913,7 @@ namespace microcosm.Config
             dispPlanetAsc33 = true;
             dispPlanetMc33 = true;
             dispPlanetEarth33 = true;
+            dispPlanetLilith33 = false;
             dispPlanetSun12 = true;
             dispPlanetMoon12 = true;
             dispPlanetMercury12 = true;
@@ -902,6 +929,7 @@ namespace microcosm.Config
             dispPlanetAsc12 = true;
             dispPlanetMc12 = true;
             dispPlanetEarth12 = true;
+            dispPlanetLilith12 = false;
             dispPlanetSun13 = true;
             dispPlanetMoon13 = true;
             dispPlanetMercury13 = true;
@@ -917,6 +945,7 @@ namespace microcosm.Config
             dispPlanetAsc13 = true;
             dispPlanetMc13 = true;
             dispPlanetEarth13 = true;
+            dispPlanetLilith13 = false;
             dispPlanetSun23 = true;
             dispPlanetMoon23 = true;
             dispPlanetMercury23 = true;
@@ -932,6 +961,7 @@ namespace microcosm.Config
             dispPlanetAsc23 = true;
             dispPlanetMc23 = true;
             dispPlanetEarth23 = true;
+            dispPlanetLilith23 = false;
             aspectSun11 = true;
             aspectMoon11 = true;
             aspectMercury11 = true;
@@ -947,6 +977,7 @@ namespace microcosm.Config
             aspectAsc11 = true;
             aspectMc11 = true;
             aspectEarth11 = true;
+            aspectLilith11 = false;
             aspectSun22 = true;
             aspectMoon22 = true;
             aspectMercury22 = true;
@@ -962,6 +993,7 @@ namespace microcosm.Config
             aspectAsc22 = true;
             aspectMc22 = true;
             aspectEarth22 = true;
+            aspectLilith22 = false;
             aspectSun33 = true;
             aspectMoon33 = true;
             aspectMercury33 = true;
@@ -977,6 +1009,7 @@ namespace microcosm.Config
             aspectAsc33 = true;
             aspectMc33 = true;
             aspectEarth33 = true;
+            aspectLilith33 = false;
             aspectSun12 = true;
             aspectMoon12 = true;
             aspectMercury12 = true;
@@ -992,6 +1025,7 @@ namespace microcosm.Config
             aspectAsc12 = true;
             aspectMc12 = true;
             aspectEarth12 = true;
+            aspectLilith12 = false;
             aspectSun13 = true;
             aspectMoon13 = true;
             aspectMercury13 = true;
@@ -1007,6 +1041,7 @@ namespace microcosm.Config
             aspectAsc13 = true;
             aspectMc13 = true;
             aspectEarth13 = true;
+            aspectLilith13 = false;
             aspectSun23 = true;
             aspectMoon23 = true;
             aspectMercury23 = true;
@@ -1022,6 +1057,7 @@ namespace microcosm.Config
             aspectAsc23 = true;
             aspectMc23 = true;
             aspectEarth23 = true;
+            aspectLilith23 = false;
             aspectConjunction11 = true;
             aspectOpposition11 = true;
             aspectTrine11 = true;
