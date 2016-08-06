@@ -146,11 +146,25 @@ namespace microcosm.Calc
                     p.isDisp = false;
                     p.isAspectDisp = false;
                 }
-                if (i == 13)
+                if (i == 13 && subIndex >= 0)
                 {
                     // true apogee、要はリリス
-                    p.isDisp = false;
-                    p.isAspectDisp = false;
+                    if (main.currentSetting.dispPlanet[subIndex][CommonData.ZODIAC_LILITH])
+                    {
+                        p.isDisp = true;
+                    }
+                    else
+                    {
+                        p.isDisp = false;
+                    }
+                    if (main.currentSetting.dispAspectPlanet[subIndex][CommonData.ZODIAC_LILITH])
+                    {
+                        p.isAspectDisp = true;
+                    }
+                    else
+                    {
+                        p.isAspectDisp = false;
+                    }
                 }
                 if (config.centric == ECentric.HELIO_CENTRIC && i == 14 && subIndex >= 0)
                 {

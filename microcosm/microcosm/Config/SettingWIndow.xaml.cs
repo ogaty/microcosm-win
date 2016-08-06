@@ -129,6 +129,7 @@ namespace microcosm.Config
                 targetNames.Add("aspectAscOn" + s);
                 targetNames.Add("aspectMcOn" + s);
                 targetNames.Add("aspectEarthOn" + s);
+                targetNames.Add("aspectLilithOn" + s);
 
                 aspectTargetNames.Add("aspectConjunctionOn" + s);
                 aspectTargetNames.Add("aspectOppositionOn" + s);
@@ -156,6 +157,7 @@ namespace microcosm.Config
                 planetTargetNames.Add("planetAscOn" + s);
                 planetTargetNames.Add("planetMcOn" + s);
                 planetTargetNames.Add("planetEarthOn" + s);
+                planetTargetNames.Add("planetLilithOn" + s);
             }
             createControlTable();
 
@@ -613,6 +615,15 @@ namespace microcosm.Config
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_EARTH
                 });
+                controlTable.Add("aspectLilithOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("aspectLilithOn" + n),
+                    anotherElement = (FrameworkElement)FindName("aspectLilithOff" + n),
+                    tempArray = aspectLilith,
+                    targetBoolean = false,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_LILITH
+                });
                 controlTable.Add("aspectSunOff" + n, new AspectControlTable()
                 {
                     selfElement = (FrameworkElement)FindName("aspectSunOff" + n),
@@ -747,6 +758,15 @@ namespace microcosm.Config
                     targetBoolean = true,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_EARTH
+                });
+                controlTable.Add("aspectLilithOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("aspectLilithOff" + n),
+                    anotherElement = (FrameworkElement)FindName("aspectLilithOn" + n),
+                    tempArray = aspectLilith,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_LILITH
                 });
 
 
@@ -1019,6 +1039,15 @@ namespace microcosm.Config
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_EARTH
                 });
+                planetDispControlTable.Add("planetLilithOn" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetLilithOn" + n),
+                    anotherElement = (FrameworkElement)FindName("planetLilithOff" + n),
+                    tempArray = planetDispLilith,
+                    targetBoolean = false,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_LILITH
+                });
                 planetDispControlTable.Add("planetSunOff" + n, new AspectControlTable()
                 {
                     selfElement = (FrameworkElement)FindName("planetSunOff" + n),
@@ -1153,6 +1182,15 @@ namespace microcosm.Config
                     targetBoolean = true,
                     subIndex = subIndexNo,
                     commonDataNo = (int)CommonData.ZODIAC_EARTH
+                });
+                planetDispControlTable.Add("planetLilithOff" + n, new AspectControlTable()
+                {
+                    selfElement = (FrameworkElement)FindName("planetLilithOff" + n),
+                    anotherElement = (FrameworkElement)FindName("planetLilithOn" + n),
+                    tempArray = planetDispLilith,
+                    targetBoolean = true,
+                    subIndex = subIndexNo,
+                    commonDataNo = (int)CommonData.ZODIAC_LILITH
                 });
 
             }
@@ -1335,12 +1373,12 @@ namespace microcosm.Config
                 xmldata.aspectEarth12 = aspectEarth[index, 3];
                 xmldata.aspectEarth13 = aspectEarth[index, 4];
                 xmldata.aspectEarth23 = aspectEarth[index, 5];
-                xmldata.aspectLilith11 = false;
-                xmldata.aspectLilith22 = false;
-                xmldata.aspectLilith33 = false;
-                xmldata.aspectLilith12 = false;
-                xmldata.aspectLilith13 = false;
-                xmldata.aspectLilith23 = false;
+                xmldata.aspectLilith11 = aspectLilith[index, 0];
+                xmldata.aspectLilith22 = aspectLilith[index, 1];
+                xmldata.aspectLilith33 = aspectLilith[index, 2];
+                xmldata.aspectLilith12 = aspectLilith[index, 3];
+                xmldata.aspectLilith13 = aspectLilith[index, 4];
+                xmldata.aspectLilith23 = aspectLilith[index, 5];
                 #endregion
 
                 #region xmldata-aspectAspect
@@ -1442,9 +1480,9 @@ namespace microcosm.Config
                 xmldata.dispPlanetEarth11 = planetDispEarth[index, 0];
                 xmldata.dispPlanetEarth22 = planetDispEarth[index, 1];
                 xmldata.dispPlanetEarth33 = planetDispEarth[index, 2];
-                xmldata.dispPlanetLilith11 = false;
-                xmldata.dispPlanetLilith22 = false;
-                xmldata.dispPlanetLilith33 = false;
+                xmldata.dispPlanetLilith11 = planetDispLilith[index, 0];
+                xmldata.dispPlanetLilith22 = planetDispLilith[index, 1];
+                xmldata.dispPlanetLilith33 = planetDispLilith[index, 2];
 
                 #region xmldata-orb
                 xmldata.orb_sun_hard_1st_0 = orbSunHard1st[index, 0];
@@ -1571,6 +1609,7 @@ namespace microcosm.Config
 
             int currentIndex = main.dispSettingBox.SelectedIndex;
 
+            // settingへのコピー
             for (int i = 0; i < 10; i++)
             {
                 main.settings[i].dispPlanet.Clear();
@@ -1590,12 +1629,11 @@ namespace microcosm.Config
                 dp11.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc11);
                 dp11.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc11);
                 dp11.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.dispPlanetEarth11);
-                dp11.Add(CommonData.ZODIAC_LILITH, false);
+                dp11.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith11);
                 dp11.Add(CommonData.ZODIAC_CELES, false);
                 dp11.Add(CommonData.ZODIAC_PARAS, false);
                 dp11.Add(CommonData.ZODIAC_JUNO, false);
                 dp11.Add(CommonData.ZODIAC_VESTA, false);
-                dp11.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispPlanet.Add(dp11);
                 Dictionary<int, bool> dp22 = new Dictionary<int, bool>();
                 dp22.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun22);
@@ -1613,12 +1651,11 @@ namespace microcosm.Config
                 dp22.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc22);
                 dp22.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc22);
                 dp22.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.dispPlanetEarth22);
-                dp22.Add(CommonData.ZODIAC_LILITH, false);
+                dp22.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith22);
                 dp22.Add(CommonData.ZODIAC_CELES, false);
                 dp22.Add(CommonData.ZODIAC_PARAS, false);
                 dp22.Add(CommonData.ZODIAC_JUNO, false);
                 dp22.Add(CommonData.ZODIAC_VESTA, false);
-                dp22.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispPlanet.Add(dp22);
                 Dictionary<int, bool> dp33 = new Dictionary<int, bool>();
                 dp33.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.dispPlanetSun33);
@@ -1636,12 +1673,11 @@ namespace microcosm.Config
                 dp33.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.dispPlanetAsc33);
                 dp33.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.dispPlanetMc33);
                 dp33.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.dispPlanetEarth33);
-                dp33.Add(CommonData.ZODIAC_LILITH, false);
+                dp33.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith33);
                 dp33.Add(CommonData.ZODIAC_CELES, false);
                 dp33.Add(CommonData.ZODIAC_PARAS, false);
                 dp33.Add(CommonData.ZODIAC_JUNO, false);
                 dp33.Add(CommonData.ZODIAC_VESTA, false);
-                dp33.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispPlanet.Add(dp33);
 
                 main.settings[i].dispAspectPlanet.Clear();
@@ -1661,12 +1697,11 @@ namespace microcosm.Config
                 d11.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc11);
                 d11.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc11);
                 d11.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth11);
-                d11.Add(CommonData.ZODIAC_LILITH, false);
+                d11.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith11);
                 d11.Add(CommonData.ZODIAC_CELES, false);
                 d11.Add(CommonData.ZODIAC_PARAS, false);
                 d11.Add(CommonData.ZODIAC_JUNO, false);
                 d11.Add(CommonData.ZODIAC_VESTA, false);
-                d11.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispAspectPlanet.Add(d11);
                 Dictionary<int, bool> d22 = new Dictionary<int, bool>();
                 d22.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun22);
@@ -1684,12 +1719,11 @@ namespace microcosm.Config
                 d22.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc22);
                 d22.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc22);
                 d22.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth22);
-                d22.Add(CommonData.ZODIAC_LILITH, false);
+                d22.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith22);
                 d22.Add(CommonData.ZODIAC_CELES, false);
                 d22.Add(CommonData.ZODIAC_PARAS, false);
                 d22.Add(CommonData.ZODIAC_JUNO, false);
                 d22.Add(CommonData.ZODIAC_VESTA, false);
-                d22.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispAspectPlanet.Add(d22);
                 Dictionary<int, bool> d33 = new Dictionary<int, bool>();
                 d33.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun33);
@@ -1707,12 +1741,11 @@ namespace microcosm.Config
                 d33.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc33);
                 d33.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc33);
                 d33.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth33);
-                d33.Add(CommonData.ZODIAC_LILITH, false);
+                d33.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith33);
                 d33.Add(CommonData.ZODIAC_CELES, false);
                 d33.Add(CommonData.ZODIAC_PARAS, false);
                 d33.Add(CommonData.ZODIAC_JUNO, false);
                 d33.Add(CommonData.ZODIAC_VESTA, false);
-                d33.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispAspectPlanet.Add(d33);
                 Dictionary<int, bool> d12 = new Dictionary<int, bool>();
                 d12.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun12);
@@ -1730,12 +1763,11 @@ namespace microcosm.Config
                 d12.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc12);
                 d12.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc12);
                 d12.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth12);
-                d12.Add(CommonData.ZODIAC_LILITH, false);
+                d12.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith12);
                 d12.Add(CommonData.ZODIAC_CELES, false);
                 d12.Add(CommonData.ZODIAC_PARAS, false);
                 d12.Add(CommonData.ZODIAC_JUNO, false);
                 d12.Add(CommonData.ZODIAC_VESTA, false);
-                d12.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispAspectPlanet.Add(d12);
                 Dictionary<int, bool> d13 = new Dictionary<int, bool>();
                 d13.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun13);
@@ -1753,12 +1785,11 @@ namespace microcosm.Config
                 d13.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc13);
                 d13.Add(CommonData.ZODIAC_CHIRON, main.settings[i].xmlData.aspectChiron13);
                 d13.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth13);
-                d13.Add(CommonData.ZODIAC_LILITH, false);
+                d13.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith13);
                 d13.Add(CommonData.ZODIAC_CELES, false);
                 d13.Add(CommonData.ZODIAC_PARAS, false);
                 d13.Add(CommonData.ZODIAC_JUNO, false);
                 d13.Add(CommonData.ZODIAC_VESTA, false);
-                d13.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispAspectPlanet.Add(d13);
                 Dictionary<int, bool> d23 = new Dictionary<int, bool>();
                 d23.Add(CommonData.ZODIAC_SUN, main.settings[i].xmlData.aspectSun23);
@@ -1776,15 +1807,15 @@ namespace microcosm.Config
                 d23.Add(CommonData.ZODIAC_ASC, main.settings[i].xmlData.aspectAsc23);
                 d23.Add(CommonData.ZODIAC_MC, main.settings[i].xmlData.aspectMc23);
                 d23.Add(CommonData.ZODIAC_EARTH, main.settings[i].xmlData.aspectEarth23);
-                d23.Add(CommonData.ZODIAC_LILITH, false);
+                d23.Add(CommonData.ZODIAC_LILITH, main.settings[i].xmlData.dispPlanetLilith23);
                 d23.Add(CommonData.ZODIAC_CELES, false);
                 d23.Add(CommonData.ZODIAC_PARAS, false);
                 d23.Add(CommonData.ZODIAC_JUNO, false);
                 d23.Add(CommonData.ZODIAC_VESTA, false);
-                d23.Add(CommonData.ZODIAC_DT_OSCULATE_APOGEE, false);
                 main.settings[i].dispAspectPlanet.Add(d23);
 
                 main.settings[i].dispAspectCategory.Clear();
+                #region settings-dispAspectCategory
                 Dictionary<AspectKind, bool> a11 = new Dictionary<AspectKind, bool>();
                 a11.Add(AspectKind.CONJUNCTION, main.settings[i].xmlData.aspectConjunction11);
                 a11.Add(AspectKind.OPPOSITION, main.settings[i].xmlData.aspectOpposition11);
@@ -1839,6 +1870,7 @@ namespace microcosm.Config
                 a23.Add(AspectKind.INCONJUNCT, main.settings[i].xmlData.aspectInconjunct23);
                 a23.Add(AspectKind.SESQUIQUADRATE, main.settings[i].xmlData.aspectSesquiquadrate23);
                 main.settings[i].dispAspectCategory.Add(a23);
+                #endregion
 
                 main.settings[i].orbs.Clear();
                 Dictionary<OrbKind, double> o11 = new Dictionary<OrbKind, double>();

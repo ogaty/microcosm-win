@@ -52,13 +52,13 @@ namespace microcosm.Common
         public const int ZODIAC_PLUTO = 9;
         public const int ZODIAC_DH_TRUENODE = 11;
         public const int ZODIAC_DT_OSCULATE_APOGEE = 13;
+        public const int ZODIAC_LILITH = 13; // 小惑星のリリス(1181)と混同しないこと
         public const int ZODIAC_EARTH = 14;
         public const int ZODIAC_CHIRON = 15;
         public const int ZODIAC_CELES = 17;
         public const int ZODIAC_PARAS = 18;
         public const int ZODIAC_JUNO = 19;
         public const int ZODIAC_VESTA = 20;
-        public const int ZODIAC_LILITH = 1181;
         public const int ZODIAC_ASC = 10000;
         public const int ZODIAC_MC = 10001;
 
@@ -231,6 +231,51 @@ namespace microcosm.Common
                     return "\u2652";
                 case SIGN_PISCES:
                     return "\u2653";
+            }
+            return "";
+        }
+
+        // 番号を引数にサインルーラーのシンボルを返す
+        public static string getSignRulersSymbol(int number)
+        {
+            switch (number)
+            {
+                case SIGN_ARIES:
+                    // 火星
+                    return "\u2642";
+                case SIGN_TAURUS:
+                    // 金星
+                    return "\u2640";
+                case SIGN_GEMINI:
+                    // 水星
+                    return "\u263f";
+                case SIGN_CANCER:
+                    // 月
+                    return "\u263d";
+                case SIGN_LEO:
+                    // 太陽
+                    return "\u2609";
+                case SIGN_VIRGO:
+                    // 水星
+                    return "\u263f";
+                case SIGN_LIBRA:
+                    // 金星
+                    return "\u2640";
+                case SIGN_SCORPIO:
+                    // 冥王星
+                    return "\u2647";
+                case SIGN_SAGITTARIUS:
+                    // 木星
+                    return "\u2643";
+                case SIGN_CAPRICORN:
+                    // 土星
+                    return "\u2644";
+                case SIGN_AQUARIUS:
+                    // 天王星
+                    return "\u2645";
+                case SIGN_PISCES:
+                    // 海王星
+                    return "\u2646";
             }
             return "";
         }

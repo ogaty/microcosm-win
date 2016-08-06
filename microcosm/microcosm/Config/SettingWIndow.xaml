@@ -96,6 +96,10 @@
                                     <Image Source="/Resources/earth_on.png" x:Name="planetEarthOn11" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
                                     <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="planetEarthOff11" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
                                 </StackPanel>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/lilith_on.png" x:Name="planetLilithOn11" MouseDown="planetDispMouseDownCommon" ToolTip="リリス"/>
+                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="planetLilithOff11" MouseDown="planetDispMouseDownCommon" ToolTip="リリス"/>
+                                </StackPanel>
                             </StackPanel>
 
                             <StackPanel>
@@ -164,6 +168,10 @@
                                         <Image Source="/Resources/earth_on.png" x:Name="planetEarthOn22" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
                                         <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="planetEarthOff22" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
                                     </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/lilith_on.png" x:Name="planetLilithOn22" MouseDown="planetDispMouseDownCommon" ToolTip="リリス"/>
+                                        <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="planetLilithOff22" MouseDown="planetDispMouseDownCommon" ToolTip="リリス"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel>
@@ -231,6 +239,10 @@
                                     <StackPanel Margin="5,0,0,0">
                                         <Image Source="/Resources/earth_on.png" x:Name="planetEarthOn33" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
                                         <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="planetEarthOff33" MouseDown="planetDispMouseDownCommon" ToolTip="地球"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="5,0,0,0">
+                                        <Image Source="/Resources/lilith_on.png" x:Name="planetLilithOn33" MouseDown="planetDispMouseDownCommon" ToolTip="リリス"/>
+                                        <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="planetLilithOff33" MouseDown="planetDispMouseDownCommon" ToolTip="リリス"/>
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
@@ -503,9 +515,9 @@
                                     <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn11" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                     <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff11" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
-                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn11"></Image>
-                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff11"></Image>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn11" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
+                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff11" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn11"></Image>
@@ -593,9 +605,9 @@
                                     <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn22" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                     <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff22" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
-                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn22"></Image>
-                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff22"></Image>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn22" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
+                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff22" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn22"></Image>
@@ -683,9 +695,9 @@
                                     <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn33" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                     <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff33" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
-                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn33"></Image>
-                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff33"></Image>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn33" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
+                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff33" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn33"></Image>
@@ -773,9 +785,9 @@
                                     <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn12" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                     <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff12" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
-                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn12"></Image>
-                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff12"></Image>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn12" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
+                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff12" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn12"></Image>
@@ -863,9 +875,9 @@
                                     <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn13" MouseDown="aspectMouseDownCommon"></Image>
                                     <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff13" MouseDown="aspectMouseDownCommon"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
-                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn13"></Image>
-                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff13"></Image>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn13" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
+                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff13" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn13"></Image>
@@ -953,9 +965,9 @@
                                     <Image Source="/Resources/earth_on.png" x:Name="aspectEarthOn23" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                     <Image Source="/Resources/earth_off.png" Height="0" Visibility="Hidden" x:Name="aspectEarthOff23" MouseDown="aspectMouseDownCommon" ToolTip="地球"></Image>
                                 </StackPanel>
-                                <StackPanel Margin="5,0,0,0" Visibility="Hidden">
-                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn23"></Image>
-                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff23"></Image>
+                                <StackPanel Margin="5,0,0,0">
+                                    <Image Source="/Resources/lilith_on.png" x:Name="aspectLilithOn23" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
+                                    <Image Source="/Resources/lilith_off.png" Height="0" Visibility="Hidden" x:Name="aspectLilithOff23" MouseDown="aspectMouseDownCommon" ToolTip="リリス"></Image>
                                 </StackPanel>
                                 <StackPanel Margin="5,0,0,0" Visibility="Hidden">
                                     <Image Source="/Resources/ceres_on.png" x:Name="aspectCeresOn23"></Image>
