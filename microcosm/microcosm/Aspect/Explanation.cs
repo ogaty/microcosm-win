@@ -13,5 +13,6 @@ namespace microcosm.Aspect
         public string sign;
         public double degree;
         public bool retrograde;
+        public int planetNo = -1;
     }
 }

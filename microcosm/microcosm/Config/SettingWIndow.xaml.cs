@@ -96,16 +96,21 @@ namespace microcosm.Config
 
         public string[] tempDispName = new string[10];
 
-        public Dictionary<string, AspectControlTable> controlTable = new Dictionary<string, AspectControlTable>();
+        // アスペクト表示（１）
         public Dictionary<string, AspectControlTable> aspectControlTable = new Dictionary<string, AspectControlTable>();
+        public List<string> aspectTargetNames = new List<string>();
+
+        // アスペクト表示（２）
+        public Dictionary<string, AspectControlTable> controlTable = new Dictionary<string, AspectControlTable>();
+        public List<string> targetNames = new List<string>();
+
+        // 天体表示
         public Dictionary<string, AspectControlTable> planetDispControlTable = new Dictionary<string, AspectControlTable>();
+        public List<string> planetTargetNames = new List<string>();
 
         string[] strNumbers = { "11", "22", "33", "12", "13", "23" };
         string[] strNumbers2 = { "11", "22", "33" };
 
-        public List<string> targetNames = new List<string>();
-        public List<string> aspectTargetNames = new List<string>();
-        public List<string> planetTargetNames = new List<string>();
 
         public SettingWIndow(MainWindow main)
         {
@@ -173,15 +178,42 @@ namespace microcosm.Config
             }
             setAspect();
 
+            // 天体表示初期化
             for (int i = 0; i < planetTargetNames.Count; i++)
             {
                 int subIndex = planetDispControlTable[planetTargetNames[i]].subIndex;
                 for (int j = 0; j < 10; j++)
                 {
+                    // commonNo: ipl
+                    // tempArray: 設定切り替え時に一時的に保存しておく場所
                     int commonDataNo = planetDispControlTable[planetTargetNames[i]].commonDataNo;
                     planetDispControlTable[planetTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispPlanet[subIndex][commonDataNo];
                 }
             }
+            // アスペクト（１）初期化
+            for (int i = 0; i < aspectTargetNames.Count; i++)
+            {
+                int subIndex = aspectControlTable[aspectTargetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    AspectKind aspectKindNo = aspectControlTable[aspectTargetNames[i]].aspectKindNo;
+                    aspectControlTable[aspectTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispAspectCategory[subIndex][aspectKindNo];
+                }
+            }
+
+            // アスペクト（２）初期化
+            for (int i = 0; i < targetNames.Count; i++)
+            {
+                int subIndex = controlTable[targetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    // commonNo: ipl
+                    // tempArray: 設定切り替え時に一時的に保存しておく場所
+                    int commonDataNo = controlTable[targetNames[i]].commonDataNo;
+                    controlTable[targetNames[i]].tempArray[j, subIndex] = main.settings[j].dispAspectPlanet[subIndex][commonDataNo];
+                }
+            }
+
             setOrb();
             ReRender(dispList);
         }
@@ -214,12 +246,7 @@ namespace microcosm.Config
             for (int i = 0; i < targetNames.Count; i++)
             {
                 int subIndex = controlTable[targetNames[i]].subIndex;
-                for (int j = 0; j < 10; j++)
-                {
-                    int commonDataNo = controlTable[targetNames[i]].commonDataNo;
-                    controlTable[targetNames[i]].tempArray[j, subIndex] = main.settings[j].dispAspectPlanet[subIndex][commonDataNo];
-                }
-                if (controlTable[targetNames[i]].tempArray[main.dispSettingBox.SelectedIndex, subIndex])
+                if (controlTable[targetNames[i]].tempArray[list.SelectedIndex, subIndex])
                 {
                     controlTable[targetNames[i]].selfElement.Visibility = Visibility.Visible;
                     controlTable[targetNames[i]].selfElement.Height = 24;
@@ -238,12 +265,7 @@ namespace microcosm.Config
             for (int i = 0; i < aspectTargetNames.Count; i++)
             {
                 int subIndex = aspectControlTable[aspectTargetNames[i]].subIndex;
-                for (int j = 0; j < 10; j++)
-                {
-                    AspectKind aspectKindNo = aspectControlTable[aspectTargetNames[i]].aspectKindNo;
-                    aspectControlTable[aspectTargetNames[i]].tempArray[j, subIndex] = main.settings[j].dispAspectCategory[subIndex][aspectKindNo];
-                }
-                if (aspectControlTable[aspectTargetNames[i]].tempArray[main.dispSettingBox.SelectedIndex, subIndex])
+                if (aspectControlTable[aspectTargetNames[i]].tempArray[list.SelectedIndex, subIndex])
                 {
                     aspectControlTable[aspectTargetNames[i]].aspectSelfElement.Visibility = Visibility.Visible;
                     aspectControlTable[aspectTargetNames[i]].aspectSelfElement.Height = 24;
@@ -279,6 +301,7 @@ namespace microcosm.Config
                 }
             }
 
+            // アスペクト表示（１）のチェック
             disp11.IsChecked = main.settings[list.SelectedIndex].dispAspect[0, 0];
             disp22.IsChecked = main.settings[list.SelectedIndex].dispAspect[1, 1];
             disp33.IsChecked = main.settings[list.SelectedIndex].dispAspect[2, 2];
@@ -379,8 +402,7 @@ namespace microcosm.Config
             }
         }
 
-        // aspect
-
+        // アスペクト（２）のマウスダウン
         private void aspectMouseDownCommon(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
@@ -396,6 +418,7 @@ namespace microcosm.Config
 
             controlTable[img.Name].tempArray[index, subindex] = controlTable[img.Name].targetBoolean;
 
+            /* リアルタイムはややこしくなるから一度コメントアウト
             if (subindex == 0)
             {
                 for (int i = 0; i < main.list1.Count(); i++)
@@ -411,11 +434,41 @@ namespace microcosm.Config
 
                 }
             }
+            else if (subindex == 1)
+            {
+                for (int i = 0; i < main.list1.Count(); i++)
+                {
+                    if (main.list2[i].no == controlTable[img.Name].commonDataNo)
+                    {
+                        if (index == main.dispSettingBox.SelectedIndex)
+                        {
+                            main.list2[i].isAspectDisp = controlTable[img.Name].targetBoolean;
+                        }
+                        break;
+                    }
 
+                }
+            }
+            else if (subindex == 2)
+            {
+                for (int i = 0; i < main.list1.Count(); i++)
+                {
+                    if (main.list3[i].no == controlTable[img.Name].commonDataNo)
+                    {
+                        if (index == main.dispSettingBox.SelectedIndex)
+                        {
+                            main.list3[i].isAspectDisp = controlTable[img.Name].targetBoolean;
+                        }
+                        break;
+                    }
+
+                }
+            }
+            */
             main.ReRender();
         }
 
-
+        // 天体表示のマウスクリック
         private void planetDispMouseDownCommon(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
@@ -431,24 +484,59 @@ namespace microcosm.Config
 
             planetDispControlTable[img.Name].tempArray[index, subindex] = planetDispControlTable[img.Name].targetBoolean;
 
-            if (subindex == 0)
+
+            /* リアルタイムはややこしくなるから一度コメントアウト
+            switch (subindex)
             {
-                for (int i = 0; i < main.list1.Count(); i++)
-                {
-                    if (main.list1[i].no == planetDispControlTable[img.Name].commonDataNo)
+                case 0:
+                    // natalの場合
+                    for (int i = 0; i < main.list1.Count(); i++)
                     {
-                        if (index == main.dispSettingBox.SelectedIndex)
+                        if (main.list1[i].no == planetDispControlTable[img.Name].commonDataNo)
                         {
-                            main.list1[i].isDisp = planetDispControlTable[img.Name].targetBoolean;
+                            if (index == main.dispSettingBox.SelectedIndex)
+                            {
+                                main.list1[i].isDisp = planetDispControlTable[img.Name].targetBoolean;
+                            }
+                            break;
                         }
-                        break;
                     }
-                }
+                    break;
+                case 1:
+                    // progressの場合
+                    for (int i = 0; i < main.list2.Count(); i++)
+                    {
+                        if (main.list2[i].no == planetDispControlTable[img.Name].commonDataNo)
+                        {
+                            if (index == main.dispSettingBox.SelectedIndex)
+                            {
+                                main.list2[i].isDisp = planetDispControlTable[img.Name].targetBoolean;
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    // transitの場合
+                    for (int i = 0; i < main.list3.Count(); i++)
+                    {
+                        if (main.list3[i].no == planetDispControlTable[img.Name].commonDataNo)
+                        {
+                            if (index == main.dispSettingBox.SelectedIndex)
+                            {
+                                main.list3[i].isDisp = planetDispControlTable[img.Name].targetBoolean;
+                            }
+                            break;
+                        }
+                    }
+                    break;
             }
+            */
 
             main.ReRender();
         }
 
+        // アスペクト（１）のマウスダウン
         private void aspect2MouseDownCommon(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
@@ -2306,6 +2394,190 @@ namespace microcosm.Config
         {
             int index = dispList.SelectedIndex;
             tempDispName[index] = settingName.Text;
+        }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            // 天体表示
+            for (int i = 0; i < planetTargetNames.Count; i++)
+            {
+                // subIndex: 11～23を表す値
+                int subIndex = planetDispControlTable[planetTargetNames[i]].subIndex;
+
+                // dispList Counter
+                for (int j = 0; j < 10; j++)
+                {
+                    int commonDataNo = planetDispControlTable[planetTargetNames[i]].commonDataNo;
+                    if ((13 < i && i < 16) ||
+                        (29 < i && i < 32) ||
+                        (45 < i && i < 48))
+                    {
+                        planetDispControlTable[planetTargetNames[i]].tempArray[j, subIndex] = false;
+                        // planetサポートで変わるよ
+                        int index = i % 16;
+
+                        // こういう書き方バグを生む
+                        if (index == 10)
+                        {
+                            // true node
+                            index = 11;
+                        }
+                        else if (index == 11)
+                        {
+                            // chiron
+                            index = 15;
+                        }
+                        else if (index == 12)
+                        {
+                            // ASC
+                            index = 16;
+                        }
+                        else if (index == 13)
+                        {
+                            // MC
+                            index = 17;
+                        }
+                        else if (index == 14)
+                        {
+                            // Earth
+                            index = 14;
+                        }
+                        else if (index == 15)
+                        {
+                            // Lilith
+                            index = 13;
+                        }
+
+                        if (i < 16)
+                        {
+                            main.list1[index].isDisp = false;
+                        }
+                        else if (i < 32)
+                        {
+                            main.list2[index].isDisp = false;
+                        }
+                        else if (i < 48)
+                        {
+                            main.list3[index].isDisp = false;
+                        }
+                    }
+                    else
+                    {
+                        planetDispControlTable[planetTargetNames[i]].tempArray[j, subIndex] = true;
+                        // planetサポートで変わるよ
+                        int index = i % 16;
+                        if (index == 10)
+                        {
+                            // true node
+                            index = 11;
+                        }
+                        else if (index == 11)
+                        {
+                            // chiron
+                            index = 15;
+                        }
+                        else if (index == 12)
+                        {
+                            // ASC
+                            index = 16;
+                        }
+                        else if (index == 13)
+                        {
+                            // MC
+                            index = 17;
+                        }
+                        else if (index == 14)
+                        {
+                            // Earth
+                            index = 14;
+                        }
+                        else if (index == 15)
+                        {
+                            // Lilith
+                            index = 13;
+                        }
+                        if (i < 16) {
+                            main.list1[index].isDisp = true;
+                        } else if (i < 32)
+                        {
+                            main.list2[index].isDisp = true;
+                        }
+                        else if (i < 48)
+                        {
+                            main.list3[index].isDisp = true;
+                        }
+                    }
+                }
+
+            }
+
+            // アスペクト設定（２）
+            for (int i = 0; i < targetNames.Count; i++)
+            {
+                // subIndex: 11～23を表す値
+                int subIndex = controlTable[targetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    // commonNo: ipl
+                    // tempArray: 設定切り替え時に一時的に保存しておく場所
+                    int commonDataNo = controlTable[targetNames[i]].commonDataNo;
+                    if (targetNames[i].IndexOf("aspectEarthOn") == 0 ||
+                        targetNames[i].IndexOf("aspectLilithOn") == 0)
+                    {
+                        controlTable[targetNames[i]].tempArray[j, subIndex] = false;
+                    }
+                    else
+                    {
+                        controlTable[targetNames[i]].tempArray[j, subIndex] = true;
+                    }
+                }
+
+            }
+
+            // アスペクト設定（１）
+            for (int i = 0; i < aspectTargetNames.Count; i++)
+            {
+                // subIndex: 11～23を表す値
+                int subIndex = aspectControlTable[aspectTargetNames[i]].subIndex;
+                for (int j = 0; j < 10; j++)
+                {
+                    // commonNo: ipl
+                    // tempArray: 設定切り替え時に一時的に保存しておく場所
+                    int commonDataNo = aspectControlTable[aspectTargetNames[i]].commonDataNo;
+                    aspectControlTable[aspectTargetNames[i]].tempArray[j, subIndex] = true;
+                }
+
+            }
+
+            for (int index = 0; index < 10; index++)
+            {
+                for (int orbIndex = 0; orbIndex < 6; orbIndex++)
+                {
+                    orbSunSoft1st[index, orbIndex] = 8;
+                    orbSunHard1st[index, orbIndex] = 4;
+                    orbSunSoft2nd[index, orbIndex] = 2;
+                    orbSunHard2nd[index, orbIndex] = 1;
+                    orbSunSoft150[index, orbIndex] = 3;
+                    orbSunHard150[index, orbIndex] = 1.5;
+                    orbMoonSoft1st[index, orbIndex] = 8;
+                    orbMoonSoft1st[index, orbIndex] = 4;
+                    orbMoonSoft2nd[index, orbIndex] = 3;
+                    orbMoonHard2nd[index, orbIndex] = 1.5;
+                    orbMoonSoft150[index, orbIndex] = 2;
+                    orbMoonHard150[index, orbIndex] = 1;
+                    orbOtherSoft1st[index, orbIndex] = 6;
+                    orbOtherHard1st[index, orbIndex] = 4;
+                    orbOtherSoft2nd[index, orbIndex] = 2;
+                    orbOtherHard2nd[index, orbIndex] = 1;
+                    orbOtherSoft150[index, orbIndex] = 1.5;
+                    orbOtherHard150[index, orbIndex] = 1;
+                }
+            }
+
+            ReRender(dispList);
+            main.ReRender();
+
         }
     }
 }

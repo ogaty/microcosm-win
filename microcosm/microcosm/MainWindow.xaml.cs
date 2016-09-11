@@ -66,6 +66,8 @@ namespace microcosm
         public double[] houseList6;
         public double[] houseList7;
 
+        public bool ctrl_a = false;
+
         public CommonConfigWindow configWindow;
         public SettingWIndow setWindow;
         public ChartSelectorWindow chartSelecterWindow;
@@ -635,7 +637,11 @@ namespace microcosm
 
             rcanvas = new RingCanvasViewModel(config);
             ringStack.Background = System.Windows.Media.Brushes.GhostWhite;
-
+            ContextMenu context = new ContextMenu();
+            MenuItem fullAspectItem = new MenuItem { Header = "全ての天体のアスペクトだけ表示" };
+            fullAspectItem.Click += FullAspect_Click;
+            context.Items.Add(fullAspectItem);
+            ringStack.ContextMenu = context;
         }
 
         // AstroCalcインスタンス
@@ -1427,21 +1433,21 @@ namespace microcosm
             // houseCuspRender2(houseList1);
             signCuspRender(houseList1[1]);
             zodiacRender(houseList1[1]);
-            list1.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
-            list2.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
-            list3.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
-            list4.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
-            list5.Sort((a, b) => (int)(a.absolute_position - b.absolute_position));
+            list1.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            list2.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            list3.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            list4.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            list5.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
             planetRender(houseList1[1], list1, list2, list3, list4, list5);
             planetLine(houseList1[1], list1, list2, list3, list4, list5);
-            aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
 
-            // 大丈夫だと思うけど戻しておく
+            // アスペクト描画がおかしくなるので戻しておく
             list1.Sort((a, b) => (int)(a.no - b.no));
             list2.Sort((a, b) => (int)(a.no - b.no));
             list3.Sort((a, b) => (int)(a.no - b.no));
             list4.Sort((a, b) => (int)(a.no - b.no));
             list5.Sort((a, b) => (int)(a.no - b.no));
+            aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
 
             Label copy = new Label();
             copy.Content = "microcosm";
@@ -2313,6 +2319,17 @@ namespace microcosm
             retrogradeLbel.Margin = new Thickness(displayData.retrogradePt.X, displayData.retrogradePt.Y, 0, 0);
             retrogradeLbel.Tag = displayData.explanation;
             retrogradeLbel.MouseEnter += planetMouseEnter;
+
+            ContextMenu context = new ContextMenu();
+            MenuItem onlyAspectItem = new MenuItem { Header = "この天体のアスペクトだけ表示" };
+            onlyAspectItem.Click += OnlyAspect_Click;
+            context.Items.Add(onlyAspectItem);
+            MenuItem fullAspectItem = new MenuItem { Header = "全ての天体のアスペクトだけ表示" };
+            fullAspectItem.Click += FullAspect_Click;
+            context.Items.Add(fullAspectItem);
+
+            txtLbl.ContextMenu = context;
+
             ringCanvas.Children.Add(retrogradeLbel);
         }
 
@@ -2327,6 +2344,15 @@ namespace microcosm
             txtLbl.Tag = displayData.explanation;
             txtLbl.FontSize = 16;
             txtLbl.MouseEnter += planetMouseEnter;
+            ContextMenu context = new ContextMenu();
+            MenuItem newItem = new MenuItem { Header = "この天体のアスペクトだけ表示" };
+            newItem.Click += OnlyAspect_Click;
+            context.Items.Add(newItem);
+            MenuItem fullAspectItem = new MenuItem { Header = "全ての天体のアスペクトだけ表示" };
+            fullAspectItem.Click += FullAspect_Click;
+            context.Items.Add(fullAspectItem);
+
+            txtLbl.ContextMenu = context;
             ringCanvas.Children.Add(txtLbl);
         }
 
@@ -2343,16 +2369,103 @@ namespace microcosm
             txtLbl.MouseEnter += planetMouseEnter;
             ringCanvas.Children.Add(txtLbl);
 
-            Label degreeLbl = new Label();
-            degreeLbl.Content = displayData.degreeTxt;
-            if (displayData.retrogradeTxt == "")
+            TextBlock degreeLbl = new TextBlock();
+            degreeLbl.Text = displayData.degreeTxt;
+            if (displayData.retrogradeTxt != "")
             {
-                // todo
+                degreeLbl.TextDecorations = TextDecorations.Underline;
             }
             degreeLbl.Margin = new Thickness(displayData.degreePt.X, displayData.degreePt.Y, 0, 0);
             degreeLbl.Tag = displayData.explanation;
             degreeLbl.MouseEnter += planetMouseEnter;
+
+            ContextMenu context = new ContextMenu();
+            MenuItem newItem = new MenuItem { Header = "この天体のアスペクトだけ表示" };
+            newItem.Click += OnlyAspect_Click;
+            context.Items.Add(newItem);
+            MenuItem fullAspectItem = new MenuItem { Header = "全ての天体のアスペクトだけ表示" };
+            fullAspectItem.Click += FullAspect_Click;
+            context.Items.Add(fullAspectItem);
+
+            txtLbl.ContextMenu = context;
+
             ringCanvas.Children.Add(degreeLbl);
+        }
+
+        public void OnlyAspect_Click(object sender, EventArgs e)
+        {
+            Label l;
+            TextBlock t;
+            Explanation data;
+            MenuItem s = (MenuItem)sender;
+            ContextMenu m = (ContextMenu)s.Parent;
+            if (m.PlacementTarget is Label)
+            {
+                l = (Label)m.PlacementTarget;
+                data = (Explanation)l.Tag;
+            }
+            else if (m.PlacementTarget is TextBlock)
+            {
+                t = (TextBlock)m.PlacementTarget;
+                data = (Explanation)t.Tag;
+            }
+            else
+            {
+                return;
+            }
+
+            foreach (object planet in ringCanvas.Children)
+            {
+                if (planet is Line)
+                {
+                    FrameworkElement elem = (FrameworkElement)planet;
+                    if (elem.Tag is AspectInfo)
+                    {
+                        AspectInfo info = (AspectInfo)elem.Tag;
+                        if (data.planetNo != -1 &&
+                            data.planetNo != info.srcPlanetNo &&
+                            data.planetNo != info.targetPlanetNo)
+                        {
+                            elem.Visibility = Visibility.Hidden;
+                        } else
+                        {
+                            elem.Visibility = Visibility.Visible;
+                        }
+                    }
+                }
+                else if (planet is TextBlock)
+                {
+                    TextBlock aspectTxt = (TextBlock)planet;
+                    if (aspectTxt.Text == "☍" ||
+                        aspectTxt.Text == "△" ||
+                        aspectTxt.Text == "□" ||
+                        aspectTxt.Text == "⚹" ||
+                        aspectTxt.Text == "⚻" ||
+                        aspectTxt.Text == "⚼")
+                    {
+                        AspectInfo info = (AspectInfo)aspectTxt.Tag;
+                        if (data.planetNo != -1 &&
+                            data.planetNo != info.srcPlanetNo &&
+                            data.planetNo != info.targetPlanetNo)
+                        {
+                            aspectTxt.Visibility = Visibility.Hidden;
+                        }
+                        else
+                        {
+                            aspectTxt.Visibility = Visibility.Visible;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void FullAspect_Click(object sender, EventArgs e)
+        {
+            foreach (object planet in ringCanvas.Children)
+            {
+                FrameworkElement elem = (FrameworkElement)planet;
+                elem.Visibility = Visibility.Visible;
+            }
         }
 
         // アスペクト表示
@@ -2690,6 +2803,7 @@ namespace microcosm
                     aspectLbl.TextAlignment = TextAlignment.Left;
                     aspectLbl.VerticalAlignment = VerticalAlignment.Top;
                 }
+                aspectLbl.Tag = aspects[j];
                 aspectLine.MouseEnter += new MouseEventHandler(aspectMouseEnter);
                 aspectLine.Tag = aspects[j];
                 ringCanvas.Children.Add(aspectLine);
@@ -2708,8 +2822,23 @@ namespace microcosm
 
         private void planetMouseEnter(object sender, System.EventArgs e)
         {
-            Label l = (Label)sender;
-            Explanation data = (Explanation)l.Tag;
+            Label l;
+            TextBlock t;
+            Explanation data;
+            if (sender is Label)
+            {
+                l = (Label)sender;
+                data = (Explanation)l.Tag;
+            }
+            else if (sender is TextBlock)
+            {
+                t = (TextBlock)sender;
+                data = (Explanation)t.Tag;
+            }
+            else
+            {
+                return;
+            }
             string retro;
             if (data.retrograde)
             {
@@ -2786,6 +2915,7 @@ namespace microcosm
             configWindow.Visibility = Visibility.Visible;
         }
 
+        // 一重円
         private void SingleRing_Click(object sender, RoutedEventArgs e)
         {
             tempSettings.bands = 1;
@@ -2793,7 +2923,17 @@ namespace microcosm
             ReCalc();
             ReRender();
         }
+        // 一重円イベント
+        private void SingleRingEvent_Click(object sender, RoutedEventArgs e)
+        {
+            tempSettings.bands = 1;
+            tempSettings.firstHouseDiv = TempSetting.HouseDivide.EVENT1;
+            ReCalc();
+            ReRender();
+        }
 
+
+        // 三重円
         private void TripleRing_Click(object sender, RoutedEventArgs e)
         {
             tempSettings.bands = 3;
@@ -2824,8 +2964,21 @@ namespace microcosm
             {
                 chartSelecterWindow = new ChartSelectorWindow(this);
             }
+            chartSelecterWindow.natalTime.IsChecked = true;
+            chartSelecterWindow.transitTime.IsChecked = false;
             chartSelecterWindow.Visibility = Visibility.Visible;
-
+            chartSelecterWindow.Activate();
+        }
+        private void ChartSelectorEvent_Click(object sender, RoutedEventArgs e)
+        {
+            if (chartSelecterWindow == null)
+            {
+                chartSelecterWindow = new ChartSelectorWindow(this);
+            }
+            chartSelecterWindow.natalTime.IsChecked = false;
+            chartSelecterWindow.transitTime.IsChecked = true;
+            chartSelecterWindow.Visibility = Visibility.Visible;
+            chartSelecterWindow.Activate();
         }
 
         private void mainWindow_KeyDown(object sender, KeyEventArgs e)
@@ -2835,59 +2988,103 @@ namespace microcosm
 
                 if (e.Key == Key.A)
                 {
-                    // MessageBox.Show("Ctrl + A");
+                    noAspectClick();
                 }
 
-                if (e.Key == Key.T)
+                else if (e.Key == Key.N)
                 {
                     // メニュー
                     if (chartSelecterWindow == null)
                     {
                         chartSelecterWindow = new ChartSelectorWindow(this);
                     }
+                    chartSelecterWindow.natalTime.IsChecked = true;
+                    chartSelecterWindow.transitTime.IsChecked = false;
                     chartSelecterWindow.Visibility = Visibility.Visible;
+                    chartSelecterWindow.Activate();
+                }
+                else if (e.Key == Key.T)
+                {
+                    // メニュー
+                    if (chartSelecterWindow == null)
+                    {
+                        chartSelecterWindow = new ChartSelectorWindow(this);
+                    }
+                    chartSelecterWindow.natalTime.IsChecked = false;
+                    chartSelecterWindow.transitTime.IsChecked = true;
+                    chartSelecterWindow.Visibility = Visibility.Visible;
+                    chartSelecterWindow.Activate();
                 }
             }
-            if (e.Key == Key.D0)
+            else if (e.KeyboardDevice.IsKeyDown(Key.LeftShift) || e.KeyboardDevice.IsKeyDown(Key.RightShift))
             {
-                dispSettingBox.SelectedIndex = 0;
+                if (e.Key == Key.F6)
+                {
+                    // 一重円
+                    tempSettings.bands = 1;
+                    tempSettings.firstHouseDiv = TempSetting.HouseDivide.EVENT1;
+                    ReCalc();
+                    ReRender();
+                }
             }
-            if (e.Key == Key.D1)
+            else
             {
-                dispSettingBox.SelectedIndex = 1;
+                if (e.Key == Key.F4)
+                {
+                    // 三重円
+                    tempSettings.bands = 3;
+                    ReRender();
+                }
+                else if (e.Key == Key.F6)
+                {
+                    // 一重円
+                    tempSettings.bands = 1;
+                    tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
+                    ReCalc();
+                    ReRender();
+                }
+                if (e.Key == Key.D0)
+                {
+                    dispSettingBox.SelectedIndex = 0;
+                }
+                if (e.Key == Key.D1)
+                {
+                    dispSettingBox.SelectedIndex = 1;
+                }
+                if (e.Key == Key.D2)
+                {
+                    dispSettingBox.SelectedIndex = 2;
+                }
+                if (e.Key == Key.D3)
+                {
+                    dispSettingBox.SelectedIndex = 3;
+                }
+                if (e.Key == Key.D4)
+                {
+                    dispSettingBox.SelectedIndex = 4;
+                }
+                if (e.Key == Key.D5)
+                {
+                    dispSettingBox.SelectedIndex = 5;
+                }
+                if (e.Key == Key.D6)
+                {
+                    dispSettingBox.SelectedIndex = 6;
+                }
+                if (e.Key == Key.D7)
+                {
+                    dispSettingBox.SelectedIndex = 7;
+                }
+                if (e.Key == Key.D8)
+                {
+                    dispSettingBox.SelectedIndex = 8;
+                }
+                if (e.Key == Key.D9)
+                {
+                    dispSettingBox.SelectedIndex = 9;
+                }
             }
-            if (e.Key == Key.D2)
-            {
-                dispSettingBox.SelectedIndex = 2;
-            }
-            if (e.Key == Key.D3)
-            {
-                dispSettingBox.SelectedIndex = 3;
-            }
-            if (e.Key == Key.D4)
-            {
-                dispSettingBox.SelectedIndex = 4;
-            }
-            if (e.Key == Key.D5)
-            {
-                dispSettingBox.SelectedIndex = 5;
-            }
-            if (e.Key == Key.D6)
-            {
-                dispSettingBox.SelectedIndex = 6;
-            }
-            if (e.Key == Key.D7)
-            {
-                dispSettingBox.SelectedIndex = 7;
-            }
-            if (e.Key == Key.D8)
-            {
-                dispSettingBox.SelectedIndex = 8;
-            }
-            if (e.Key == Key.D9)
-            {
-                dispSettingBox.SelectedIndex = 9;
-            }
+
 
         }
 
@@ -3054,12 +3251,35 @@ namespace microcosm
             ReRender();
         }
 
-        private void SingleRingEvent_Click(object sender, RoutedEventArgs e)
+        private void noAspect_Click(object sender, RoutedEventArgs e)
         {
-            tempSettings.bands = 1;
-            tempSettings.firstHouseDiv = TempSetting.HouseDivide.EVENT1;
-            ReCalc();
-            ReRender();
+            noAspectClick();
         }
+
+        private void noAspectClick()
+        {
+            if (ctrl_a)
+            {
+                foreach (object planet in ringCanvas.Children)
+                {
+                    FrameworkElement elem = (FrameworkElement)planet;
+                    elem.Visibility = Visibility.Visible;
+                }
+                ctrl_a = false;
+            }
+            else
+            {
+                foreach (object planet in ringCanvas.Children)
+                {
+                    FrameworkElement elem = (FrameworkElement)planet;
+                    if (elem.Tag is AspectInfo)
+                    {
+                        elem.Visibility = Visibility.Hidden;
+                    }
+                }
+                ctrl_a = true;
+            }
+        }
+
     }
 }

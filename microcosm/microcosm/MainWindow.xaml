@@ -36,13 +36,15 @@
                 <MenuItem Header="png書き出し" Click="Png_Export"></MenuItem>
             </MenuItem>
             <MenuItem Header="表示(_D)">
-                <MenuItem Header="一重円(出生時刻)(_Q)" Click="SingleRing_Click"/>
-                <MenuItem Header="一重円(イベント時刻)(_U)" Click="SingleRingEvent_Click"/>
-                <MenuItem Header="三重円(_W)" Click="TripleRing_Click"/>
+                <MenuItem Header="一重円(出生時刻)(_Q)" Click="SingleRing_Click" InputGestureText="F6"/>
+                <MenuItem Header="一重円(イベント時刻)(_U)" Click="SingleRingEvent_Click" InputGestureText="Shift + F6"/>
+                <MenuItem Header="三重円(_W)" Click="TripleRing_Click" InputGestureText="F4"/>
                 <MenuItem Header="カスタム(_E)" Click="MultipleRing_Click"/>
+                <MenuItem x:Name="noAspect" Header="アスペクト線非表示" Click="noAspect_Click" InputGestureText="Ctrl+A"></MenuItem>
             </MenuItem>
             <MenuItem Header="ウィンドウ(_W)">
-                <MenuItem Header="時刻設定(_T)" InputGestureText="Ctrl+T"  Click="ChartSelector_Click"></MenuItem>
+                <MenuItem Header="時刻設定・出生(_N)" InputGestureText="Ctrl+N"  Click="ChartSelector_Click"></MenuItem>
+                <MenuItem Header="時刻設定・イベント(_T)" InputGestureText="Ctrl+T"  Click="ChartSelectorEvent_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="設定(_C)">
                 <MenuItem Header="共通設定(_C)" Click="OpenCommonConfig_Click"></MenuItem>

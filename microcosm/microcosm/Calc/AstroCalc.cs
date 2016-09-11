@@ -186,6 +186,26 @@ namespace microcosm.Calc
                         p.isAspectDisp = false;
                     }
                 }
+                if (i == 15 && subIndex >= 0)
+                {
+                    if (main.currentSetting.dispPlanet[subIndex][CommonData.ZODIAC_CHIRON])
+                    {
+                        p.isDisp = true;
+                    }
+                    else
+                    {
+                        p.isDisp = false;
+                    }
+                    if (main.currentSetting.dispAspectPlanet[subIndex][CommonData.ZODIAC_CHIRON])
+                    {
+                        p.isAspectDisp = true;
+                    }
+                    else
+                    {
+                        p.isAspectDisp = false;
+                    }
+                }
+
                 if (!targetNoList.ContainsKey(i))
                 {
                     targetNoList.Add(i, i);

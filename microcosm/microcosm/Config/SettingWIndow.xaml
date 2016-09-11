@@ -1819,7 +1819,8 @@
 
             </TabControl>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                <Button x:Name="okButton" Content="保存" Width="40" Click="okButton_Click"/>
+                <Button x:Name="resetButton" Content="設定を初期化" Width="100" Click="resetButton_Click"/>
+                <Button x:Name="okButton" Content="保存" Margin="10,0,0,0" Width="40" Click="okButton_Click"/>
                 <Button x:Name="cancelButton" Content="キャンセル" Margin="10,0,0,0" Width="60" Click="cancelButton_Click"></Button>
             </StackPanel>
 

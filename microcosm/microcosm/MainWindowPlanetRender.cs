@@ -139,7 +139,8 @@ namespace microcosm
                         planet = CommonData.getPlanetText(planet.no),
                         degree = planet.absolute_position % 30,
                         sign = CommonData.getSignTextJp(planet.absolute_position),
-                        retrograde = retrograde
+                        retrograde = retrograde,
+                        planetNo = planet.no
                     };
 
                     string degreeTxt;
@@ -260,7 +261,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -331,7 +333,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -418,7 +421,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -489,7 +493,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -571,7 +576,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -648,7 +654,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -709,7 +716,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -781,7 +789,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -853,7 +862,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -930,7 +940,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -991,7 +1002,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -1063,7 +1075,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -1135,7 +1148,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
@@ -1207,7 +1221,8 @@ namespace microcosm
                     Explanation exp = new Explanation()
                     {
                         degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position)
+                        sign = CommonData.getSignTextJp(planet.absolute_position),
+                        planetNo = planet.no
                     };
 
                     PlanetDisplay display = new PlanetDisplay()
