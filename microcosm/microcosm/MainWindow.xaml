@@ -121,6 +121,58 @@
                 <ComboBoxItem>設定8</ComboBoxItem>
                 <ComboBoxItem>設定9</ComboBoxItem>
             </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="" HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="↑"  HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘"  HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Width="16" HorizontalAlignment="Center"/>
+                <TextBlock Width="16" Text="┘"  HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Margin="10" Grid.Row="2" Grid.Column="1">

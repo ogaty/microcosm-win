@@ -2166,8 +2166,8 @@ namespace microcosm
             List<PointF> pList = new List<PointF>();
             Enumerable.Range(0, 12).ToList().ForEach(i =>
             {
-                PointF point = rotate(rcanvas.outerWidth / 2 - 33, 0, (30 * (i + 1)) - startdegree - 15.0);
-                point.X += (float)rcanvas.outerWidth / 2 - 10;
+                PointF point = rotate(rcanvas.outerWidth / 2 - 31, 0, (30 * (i + 1)) - startdegree - 15.0);
+                point.X += (float)rcanvas.outerWidth / 2 - 12;
 //                point.X -= (float)rcanvas.outerWidth - (float)rcanvas.innerWidth;
                 point.Y *= -1;
                 point.Y += (float)rcanvas.outerHeight / 2 - 12;

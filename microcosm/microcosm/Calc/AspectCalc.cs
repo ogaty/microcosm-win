@@ -60,6 +60,8 @@ namespace microcosm.Calc
                     {
                         if (i == CommonData.ZODIAC_SUN)
                         {
+                            SoftHard sh = SoftHard.HARD;
+                            bool isAspect = false;
                             if (kind == AspectKind.CONJUNCTION ||
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
@@ -89,70 +91,39 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_1ST])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_SOFT_1ST] &&
                                   aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_SOFT_1ST])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                     break;
                                 }
                             }
                             else if (kind == AspectKind.INCONJUNCT ||
                                 kind == AspectKind.SESQUIQUADRATE)
                             {
+                                if (kind == AspectKind.INCONJUNCT && !a_setting.dispAspectCategory[0][AspectKind.INCONJUNCT])
+                                {
+                                    continue;
+                                }
+                                if (kind == AspectKind.SESQUIQUADRATE && !a_setting.dispAspectCategory[0][AspectKind.SESQUIQUADRATE])
+                                {
+                                    continue;
+                                }
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_150] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_150])
                                 {
-                                    if (kind == AspectKind.INCONJUNCT && !a_setting.dispAspectCategory[0][AspectKind.INCONJUNCT])
-                                    {
-                                        continue;
-                                    }
-                                    if (kind == AspectKind.SESQUIQUADRATE && !a_setting.dispAspectCategory[0][AspectKind.SESQUIQUADRATE])
-                                    {
-                                        continue;
-                                    }
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_SOFT_150] &&
                                   aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_SOFT_150])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
                             }
                             else
@@ -160,36 +131,36 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_HARD_2ND] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_HARD_2ND])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.SUN_SOFT_2ND] &&
                                   aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.SUN_SOFT_2ND])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
+                            }
+                            if (isAspect)
+                            {
+                                list[i].aspects.Add(new AspectInfo()
+                                {
+                                    targetPosition = list[j].absolute_position,
+                                    aspectKind = kind,
+                                    softHard = sh,
+                                    srcPlanetNo = list[i].no,
+                                    targetPlanetNo = list[j].no,
+                                    absoluteDegree = aspect_degree
+                                });
+                                break;
                             }
 
                         }
                         else if (i == CommonData.ZODIAC_MOON)
                         {
+                            SoftHard sh = SoftHard.HARD;
+                            bool isAspect = false;
+
                             if (kind == AspectKind.CONJUNCTION ||
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
@@ -220,30 +191,14 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_1ST])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_SOFT_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_SOFT_1ST])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
                             }
                             else if (kind == AspectKind.INCONJUNCT ||
@@ -265,30 +220,14 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_150] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_150])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_SOFT_150] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_SOFT_150])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
                             }
                             else
@@ -296,35 +235,35 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_HARD_2ND] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_HARD_2ND])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.MOON_SOFT_2ND] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.MOON_SOFT_2ND])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
+                            }
+                            if (isAspect)
+                            {
+                                list[i].aspects.Add(new AspectInfo()
+                                {
+                                    targetPosition = list[j].absolute_position,
+                                    aspectKind = kind,
+                                    softHard = sh,
+                                    srcPlanetNo = list[i].no,
+                                    targetPlanetNo = list[j].no,
+                                    absoluteDegree = aspect_degree
+                                });
+                                break;
                             }
 
                         }
                         else
                         {
+                            SoftHard sh = SoftHard.HARD;
+                            bool isAspect = false;
                             if (kind == AspectKind.CONJUNCTION ||
                                 kind == AspectKind.OPPOSITION ||
                                 kind == AspectKind.TRINE ||
@@ -355,30 +294,14 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_1ST])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_SOFT_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_SOFT_1ST])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
                             }
                             else if (kind == AspectKind.INCONJUNCT ||
@@ -396,63 +319,46 @@ namespace microcosm.Calc
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_150] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_150])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_SOFT_150] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_SOFT_150])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
+
                             }
                             else
                             {
                                 if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_HARD_2ND] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_HARD_2ND])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.HARD,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.HARD;
                                 }
                                 else if (aspect_degree < getDegree(kind) + a_setting.orbs[0][OrbKind.OTHER_SOFT_2ND] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[0][OrbKind.OTHER_SOFT_2ND])
                                 {
-                                    list[i].aspects.Add(new AspectInfo()
-                                    {
-                                        targetPosition = list[j].absolute_position,
-                                        aspectKind = kind,
-                                        softHard = SoftHard.SOFT,
-                                        srcPlanetNo = list[i].no,
-                                        targetPlanetNo = list[j].no,
-                                        absoluteDegree = aspect_degree
-                                    });
-                                    break;
+                                    isAspect = true;
+                                    sh = SoftHard.SOFT;
                                 }
                             }
+                            if (isAspect)
+                            {
+                                list[i].aspects.Add(new AspectInfo()
+                                {
+                                    targetPosition = list[j].absolute_position,
+                                    aspectKind = kind,
+                                    softHard = sh,
+                                    srcPlanetNo = list[i].no,
+                                    targetPlanetNo = list[j].no,
+                                    absoluteDegree = aspect_degree
+                                });
+                                break;
+                            }
+
                         }
                     }
 
