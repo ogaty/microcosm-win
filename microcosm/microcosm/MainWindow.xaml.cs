@@ -66,6 +66,9 @@ namespace microcosm
         public double[] houseList6;
         public double[] houseList7;
 
+        public Dispositer[] dispositerList = new Dispositer[10];
+        public Dictionary<int, bool> checkList = new Dictionary<int, bool>();
+
         public bool ctrl_a = false;
 
         public CommonConfigWindow configWindow;
@@ -638,10 +641,11 @@ namespace microcosm
             rcanvas = new RingCanvasViewModel(config);
             ringStack.Background = System.Windows.Media.Brushes.GhostWhite;
             ContextMenu context = new ContextMenu();
-            MenuItem fullAspectItem = new MenuItem { Header = "全ての天体のアスペクトだけ表示" };
+            MenuItem fullAspectItem = new MenuItem { Header = "全ての天体のアスペクトを表示" };
             fullAspectItem.Click += FullAspect_Click;
             context.Items.Add(fullAspectItem);
             ringStack.ContextMenu = context;
+
         }
 
         // AstroCalcインスタンス
@@ -1361,15 +1365,58 @@ namespace microcosm
 //            list2 = aspect.AspectCalcOther(currentSetting, list2, list5, 12);
 //            list2 = aspect.AspectCalcOther(currentSetting, list2, list6, 20);
             list3 = aspect.AspectCalcSame(currentSetting, list3);
-//            list3 = aspect.AspectCalcOther(currentSetting, list3, list4, 13);
-//            list3 = aspect.AspectCalcOther(currentSetting, list3, list5, 14);
-//            list3 = aspect.AspectCalcOther(currentSetting, list3, list6, 20);
-//            list4 = aspect.AspectCalcSame(currentSetting, list4);
-//            list4 = aspect.AspectCalcOther(currentSetting, list4, list5, 15);
-//            list4 = aspect.AspectCalcOther(currentSetting, list4, list6, 20);
-//            list5 = aspect.AspectCalcSame(currentSetting, list5);
-//            list5 = aspect.AspectCalcOther(currentSetting, list5, list6, 20);
-//            list6 = aspect.AspectCalcSame(currentSetting, list6);
+            //            list3 = aspect.AspectCalcOther(currentSetting, list3, list4, 13);
+            //            list3 = aspect.AspectCalcOther(currentSetting, list3, list5, 14);
+            //            list3 = aspect.AspectCalcOther(currentSetting, list3, list6, 20);
+            //            list4 = aspect.AspectCalcSame(currentSetting, list4);
+            //            list4 = aspect.AspectCalcOther(currentSetting, list4, list5, 15);
+            //            list4 = aspect.AspectCalcOther(currentSetting, list4, list6, 20);
+            //            list5 = aspect.AspectCalcSame(currentSetting, list5);
+            //            list5 = aspect.AspectCalcOther(currentSetting, list5, list6, 20);
+            //            list6 = aspect.AspectCalcSame(currentSetting, list6);
+
+            // 太陽はXX座(getSign)
+            // XX座のルーラーはYY(getSignRulersNo)
+            // YYはZZ座
+            for (int i = 0; i < 10; i++)
+            {
+                dispositerList[i] = new Dispositer();
+            }
+            dispositerList[0].x = 0;
+            dispositerList[0].y = 0;
+            checkList[0] = true;
+            int targetNo = CommonData.getSignRulersNo(CommonData.getSign(list1[0].absolute_position));
+            dispositerList[0].next = targetNo;
+            calcDispositer(targetNo, 0, 0);
+        }
+
+        private void calcDispositer(int targetNo, int x, int y)
+        {
+            int limit = 0;
+            int oldNo = targetNo;
+            while (limit < 10)
+            {
+                oldNo = targetNo;
+                int tmp = CommonData.getSign(list1[targetNo].absolute_position);
+                targetNo = CommonData.getSignRulersNo(CommonData.getSign(list1[targetNo].absolute_position));
+                dispositerList[oldNo].next = targetNo;
+                dispositerList[oldNo].x = x++;
+                dispositerList[oldNo].y = y;
+                if (checkList.ContainsKey(targetNo)) break;
+                if (targetNo == oldNo) break;
+                checkList[targetNo] = true;
+                limit++;
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                if (!checkList.ContainsKey(i))
+                {
+                    targetNo = i;
+                    checkList[targetNo] = true;
+                    calcDispositer(targetNo, 0, y + 1);
+                }
+            }
+            return;
         }
 
         private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)

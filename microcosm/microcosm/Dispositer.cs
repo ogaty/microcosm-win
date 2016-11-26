@@ -9,7 +9,9 @@ namespace microcosm
     public class Dispositer
     {
         public int no;
-        public Dispositer next;
-        public List<Dispositer> prev;
+        public int next;
+        public List<int> prev;
+        public int x;
+        public int y;
     }
 }

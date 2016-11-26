@@ -280,6 +280,51 @@ namespace microcosm.Common
             return "";
         }
 
+        // planetNoを引数に所属するサインルーラーの番号を返す
+        public static int getSignRulersNo(int planetNo)
+        {
+            switch (planetNo)
+            {
+                case SIGN_ARIES:
+                    // 火星
+                    return 4;
+                case SIGN_TAURUS:
+                    // 金星
+                    return 3;
+                case SIGN_GEMINI:
+                    // 水星
+                    return 2;
+                case SIGN_CANCER:
+                    // 月
+                    return 1;
+                case SIGN_LEO:
+                    // 太陽
+                    return 0;
+                case SIGN_VIRGO:
+                    // 水星
+                    return 2;
+                case SIGN_LIBRA:
+                    // 金星
+                    return 3;
+                case SIGN_SCORPIO:
+                    // 冥王星
+                    return 9;
+                case SIGN_SAGITTARIUS:
+                    // 木星
+                    return 5;
+                case SIGN_CAPRICORN:
+                    // 土星
+                    return 6;
+                case SIGN_AQUARIUS:
+                    // 天王星
+                    return 7;
+                case SIGN_PISCES:
+                    // 海王星
+                    return 8;
+            }
+            return 0;
+        }
+
         // 番号を引数に感受点のシンボルを返す
         public static string getSensitiveSymbol(int number)
         {

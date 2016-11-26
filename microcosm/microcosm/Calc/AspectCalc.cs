@@ -99,7 +99,6 @@ namespace microcosm.Calc
                                 {
                                     isAspect = true;
                                     sh = SoftHard.SOFT;
-                                    break;
                                 }
                             }
                             else if (kind == AspectKind.INCONJUNCT ||

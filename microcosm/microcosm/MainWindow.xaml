@@ -121,57 +121,7 @@
                 <ComboBoxItem>設定8</ComboBoxItem>
                 <ComboBoxItem>設定9</ComboBoxItem>
             </ComboBox>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="→" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="" HorizontalAlignment="Center"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="↑" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="↑"  HorizontalAlignment="Center"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘"  HorizontalAlignment="Center"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Width="16" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" Text="" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Width="16" HorizontalAlignment="Center"/>
-                <TextBlock Width="16" Text="┘"  HorizontalAlignment="Center"></TextBlock>
+            <StackPanel Orientation="Horizontal" Name="dispositerBox">
             </StackPanel>
         </StackPanel>
 

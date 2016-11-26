@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="時刻設定" Height="430" Width="250" Closing="Window_Closing" ResizeMode="CanMinimize">
+        Title="時刻設定" Height="440" Width="280" Closing="Window_Closing" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <GroupBox Header="時刻" Height="55" Margin="5,10">
+            <GroupBox Header="時刻" Height="60" Margin="5,10">
                 <StackPanel Orientation="Vertical">
                     <RadioButton x:Name="natalTime" Content="出生時刻" IsChecked="True" Checked="natalTime_Checked" ></RadioButton>
                     <RadioButton x:Name="transitTime" Content="イベント時刻" Checked="transitTime_Checked"></RadioButton>
@@ -23,16 +23,16 @@
 
             </ComboBox>
             <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Center">
-                <TextBox x:Name="setYear" Margin="5,0" Width="35" Text="2016" GotKeyboardFocus="GotKeyboardFocusCommon"/>
+                <TextBox x:Name="setYear" Margin="5,0" Width="40" Text="2016" GotKeyboardFocus="GotKeyboardFocusCommon"/>
                 <TextBlock Text="/"></TextBlock>
-                <TextBox x:Name="setMonth" Margin="5,0" Width="20" Text="12" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
+                <TextBox x:Name="setMonth" Margin="5,0" Width="25" Text="12" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
                 <TextBlock Text="/"></TextBlock>
-                <TextBox x:Name="setDay" Margin="5,0" Width="20" Text="31" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
-                <TextBox x:Name="setHour" Margin="5,0" Width="20" Text="12" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
+                <TextBox x:Name="setDay" Margin="5,0" Width="25" Text="31" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
+                <TextBox x:Name="setHour" Margin="5,0" Width="25" Text="12" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
                 <TextBlock Text=":"></TextBlock>
-                <TextBox x:Name="setMinute" Margin="5,0" Width="20" Text="30" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
+                <TextBox x:Name="setMinute" Margin="5,0" Width="25" Text="30" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
                 <TextBlock Text=":"></TextBlock>
-                <TextBox x:Name="setSecond" Margin="5,0" Width="20" Text="45" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
+                <TextBox x:Name="setSecond" Margin="5,0" Width="25" Text="45" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="nowButton" Content="NOW" Margin="10,10,30,0" Width="80" HorizontalAlignment="Left" Click="nowButton_Click"></Button>
