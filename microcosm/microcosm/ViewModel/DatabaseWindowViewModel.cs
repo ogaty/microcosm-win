@@ -178,6 +178,9 @@ namespace microcosm.ViewModel
 
             dbwindow.UserEvent.ContextMenu = context;
             dbwindow.UserEvent.MouseDoubleClick += dbwindow.userEvent_DoubleClick;
+            dbwindow.UserEvent.SelectedIndex = 0;
+            UserData data = (UserData)dbwindow.UserEvent.Items[0];
+            Memo = data.memo;
         }
 
         // リスト上に表示されるデータを作成

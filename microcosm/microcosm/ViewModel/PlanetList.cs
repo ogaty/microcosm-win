@@ -68,12 +68,12 @@ namespace microcosm.ViewModel
 
         public PlanetListViewModel(
             MainWindow main,
-            List<PlanetData> list1,
-            List<PlanetData> list2,
-            List<PlanetData> list3,
-            List<PlanetData> list4,
-            List<PlanetData> list5,
-            List<PlanetData> list6
+            Dictionary<int, PlanetData> list1,
+            Dictionary<int, PlanetData> list2,
+            Dictionary<int, PlanetData> list3,
+            Dictionary<int, PlanetData> list4,
+            Dictionary<int, PlanetData> list5,
+            Dictionary<int, PlanetData> list6
             )
         {
             this.main = main;
@@ -92,12 +92,12 @@ namespace microcosm.ViewModel
         }
 
         public void ReRender(
-            List<PlanetData> list1,
-            List<PlanetData> list2,
-            List<PlanetData> list3,
-            List<PlanetData> list4,
-            List<PlanetData> list5,
-            List<PlanetData> list6
+            Dictionary<int, PlanetData> list1,
+            Dictionary<int, PlanetData> list2,
+            Dictionary<int, PlanetData> list3,
+            Dictionary<int, PlanetData> list4,
+            Dictionary<int, PlanetData> list5,
+            Dictionary<int, PlanetData> list6
             )
         {
             pList.Clear();

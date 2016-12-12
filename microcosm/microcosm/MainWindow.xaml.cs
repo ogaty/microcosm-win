@@ -50,13 +50,13 @@ namespace microcosm
 
         public Dictionary<int, int> dispListMap;
 
-        public List<PlanetData> list1;
-        public List<PlanetData> list2;
-        public List<PlanetData> list3;
-        public List<PlanetData> list4;
-        public List<PlanetData> list5;
-        public List<PlanetData> list6;
-        public List<PlanetData> list7;
+        public Dictionary<int, PlanetData> list1;
+        public Dictionary<int, PlanetData> list2;
+        public Dictionary<int, PlanetData> list3;
+        public Dictionary<int, PlanetData> list4;
+        public Dictionary<int, PlanetData> list5;
+        public Dictionary<int, PlanetData> list6;
+        public Dictionary<int, PlanetData> list7;
 
         public double[] houseList1;
         public double[] houseList2;
@@ -810,7 +810,7 @@ namespace microcosm
                 if (tempSettings.firstBand == TempSetting.BandKind.PROGRESS)
                 {
                     // プログレスの場合（まず使わないけど）
-                    List<PlanetData> tempList;
+                    Dictionary<int, PlanetData> tempList;
                     switch (config.progression)
                     {
                         case EProgression.PRIMARY:
@@ -1480,28 +1480,53 @@ namespace microcosm
             // houseCuspRender2(houseList1);
             signCuspRender(houseList1[1]);
             zodiacRender(houseList1[1]);
-            list1.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
-            list2.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
-            list3.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
-            list4.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
-            list5.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
-            planetRender(houseList1[1], list1, list2, list3, list4, list5);
-            planetLine(houseList1[1], list1, list2, list3, list4, list5);
+            List<PlanetData> newList1 = new List<PlanetData>();
+            foreach (var keys in list1.Keys)
+            {
+                newList1.Add(list1[keys]);
+            }
+            List<PlanetData> newList2 = new List<PlanetData>();
+            foreach (var keys in list2.Keys)
+            {
+                newList2.Add(list2[keys]);
+            }
+            List<PlanetData> newList3 = new List<PlanetData>();
+            foreach (var keys in list3.Keys)
+            {
+                newList3.Add(list3[keys]);
+            }
+            List<PlanetData> newList4 = new List<PlanetData>();
+            foreach (var keys in list4.Keys)
+            {
+                newList4.Add(list4[keys]);
+            }
+            List<PlanetData> newList5 = new List<PlanetData>();
+            foreach (var keys in list5.Keys)
+            {
+                newList4.Add(list5[keys]);
+            }
+            newList1.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            newList2.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            newList3.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            newList4.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            newList5.Sort((a, b) => (int)(a.absolute_position * 100 - b.absolute_position * 100));
+            planetRender(houseList1[1], newList1, newList2, newList3, newList4, newList5);
+            planetLine(houseList1[1], newList1, newList2, newList3, newList4, newList5);
 
             // アスペクト描画がおかしくなるので戻しておく
-            list1.Sort((a, b) => (int)(a.no - b.no));
-            list2.Sort((a, b) => (int)(a.no - b.no));
-            list3.Sort((a, b) => (int)(a.no - b.no));
-            list4.Sort((a, b) => (int)(a.no - b.no));
-            list5.Sort((a, b) => (int)(a.no - b.no));
+            newList1.Sort((a, b) => (int)(a.no - b.no));
+            newList2.Sort((a, b) => (int)(a.no - b.no));
+            newList3.Sort((a, b) => (int)(a.no - b.no));
+            newList4.Sort((a, b) => (int)(a.no - b.no));
+            newList5.Sort((a, b) => (int)(a.no - b.no));
             aspectsRendering(houseList1[1], list1, list2, list3, list4, list5);
 
             Label copy = new Label();
             copy.Content = "microcosm";
             copy.Margin = new Thickness(ringCanvas.ActualWidth - 70, ringStack.ActualHeight - 45, 0, 0);
             Label url = new Label();
-            url.Content = "http://ogatism.jp/";
-            url.Margin = new Thickness(ringCanvas.ActualWidth - 105, ringStack.ActualHeight - 30, 0, 0);
+            url.Content = "http://microcosm.ogatism.com/";
+            url.Margin = new Thickness(ringCanvas.ActualWidth - 180, ringStack.ActualHeight - 30, 0, 0);
 
             ringCanvas.Children.Add(copy);
             ringCanvas.Children.Add(url);
@@ -2518,11 +2543,11 @@ namespace microcosm
         // アスペクト表示
         public void aspectsRendering(
                 double startDegree, 
-                List<PlanetData> list1, 
-                List<PlanetData> list2, 
-                List<PlanetData> list3,
-                List<PlanetData> list4,
-                List<PlanetData> list5
+                Dictionary<int, PlanetData> list1,
+                Dictionary<int, PlanetData> list2,
+                Dictionary<int, PlanetData> list3,
+                Dictionary<int, PlanetData> list4,
+                Dictionary<int, PlanetData> list5
             )
         {
             if (currentSetting.dispAspect[0, 0])
@@ -2602,7 +2627,7 @@ namespace microcosm
 
         // startPosition、endPosition : n-pの線は1-2となる
         // aspectKind1 : aspectを使う 2: secondAspectを使う
-        private void aspectRender(double startDegree, List<PlanetData> list, 
+        private void aspectRender(double startDegree, Dictionary<int, PlanetData> list, 
             int startPosition, int endPosition, int aspectRings,
             int aspectKind)
         {
@@ -2732,40 +2757,46 @@ namespace microcosm
 
             }
 
-            for (int i = 0; i < list.Count; i++)
+            List<PlanetData> newList = new List<PlanetData>();
+
+            foreach (KeyValuePair<int, PlanetData> pair in list)
             {
-                if (!list[i].isAspectDisp)
+                newList.Add(pair.Value);
+            }
+
+            for (int i = 0; i < newList.Count; i++)
+            {
+                if (!newList[i].isAspectDisp)
                 {
                     // 表示対象外
                     continue;
                 }
                 PointF startPoint;
-                startPoint = rotate(startRingX, 0, list[i].absolute_position - startDegree);
+                startPoint = rotate(startRingX, 0, newList[i].absolute_position - startDegree);
                 startPoint.X += (float)((rcanvas.outerWidth) / 2);
                 startPoint.Y *= -1;
                 startPoint.Y += (float)((rcanvas.outerHeight) / 2);
                 if (aspectKind == 1)
                 {
-                    aspectListRender(startDegree, list, list[i].aspects, startPoint, endRingX);
+                    aspectListRender(startDegree, list, newList[i].aspects, startPoint, endRingX, endPosition);
                 }
                 else if (aspectKind == 2)
                 {
-                    aspectListRender(startDegree, list, list[i].secondAspects, startPoint, endRingX);
+                    aspectListRender(startDegree, list, newList[i].secondAspects, startPoint, endRingX, endPosition);
                 }
                 else if (aspectKind == 3)
                 {
-                    aspectListRender(startDegree, list, list[i].thirdAspects, startPoint, endRingX);
+                    aspectListRender(startDegree, list, newList[i].thirdAspects, startPoint, endRingX, endPosition);
                 }
             }
         }
 
         // aspectRender サブ関数
-        private void aspectListRender(double startDegree, List<PlanetData> list, List<AspectInfo> aspects, PointF startPoint, double endRingX)
+        private void aspectListRender(double startDegree, Dictionary<int, PlanetData> list, List<AspectInfo> aspects, PointF startPoint, double endRingX, int endPosition)
         {
             for (int j = 0; j < aspects.Count; j++)
             {
-                int tNo = calc.targetNoList[aspects[j].targetPlanetNo];
-                if (!list[tNo].isAspectDisp)
+                if (!list[aspects[j].targetPlanetNo].isAspectDisp)
                 {
                     continue;
                 }

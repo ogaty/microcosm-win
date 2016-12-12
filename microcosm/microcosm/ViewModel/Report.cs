@@ -35,12 +35,12 @@ namespace microcosm.ViewModel
         public string houseSuccedent { get; set; }
 
         public ReportViewModel(
-            List<PlanetData> signList1,
-            List<PlanetData> signList2,
-            List<PlanetData> signList3,
-            List<PlanetData> signList4,
-            List<PlanetData> signList5,
-            List<PlanetData> signList6,
+            Dictionary<int, PlanetData> signList1,
+            Dictionary<int, PlanetData> signList2,
+            Dictionary<int, PlanetData> signList3,
+            Dictionary<int, PlanetData> signList4,
+            Dictionary<int, PlanetData> signList5,
+            Dictionary<int, PlanetData> signList6,
             double[] list1,
             double[] list2,
             double[] list3,

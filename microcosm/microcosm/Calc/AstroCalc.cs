@@ -21,6 +21,8 @@ namespace microcosm.Calc
         public double year_days = 365.2424;
         public SwissEph s;
         public Dictionary<int, int> targetNoList = new Dictionary<int, int>();
+        public Dictionary<int, int> targetNoList2 = new Dictionary<int, int>();
+        public Dictionary<int, int> targetNoList3 = new Dictionary<int, int>();
 
         public AstroCalc(MainWindow main, ConfigData config)
         {
@@ -36,9 +38,9 @@ namespace microcosm.Calc
         }
 
         // 天体の位置を計算する
-        public List<PlanetData> PositionCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind, int subIndex)
+        public Dictionary<int, PlanetData> PositionCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind, int subIndex)
         {
-            List<PlanetData> planetdata = new List<PlanetData>(); ;
+            Dictionary<int, PlanetData> planetdata = new Dictionary<int, PlanetData>(); ;
 
             // absolute position
             double[] x = { 0, 0, 0, 0, 0, 0 };
@@ -55,6 +57,8 @@ namespace microcosm.Calc
             double[] dret = { 0.0, 0.0 };
 
             int ii = 0;
+
+            int target = 0;
 
             // utcに変換
             s.swe_utc_time_zone(year, month, day, hour, min, sec, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
@@ -206,12 +210,29 @@ namespace microcosm.Calc
                     }
                 }
 
-                if (!targetNoList.ContainsKey(i))
+                if (subIndex == 0)
                 {
-                    targetNoList.Add(i, i);
+                    if (!targetNoList.ContainsKey(i))
+                    {
+                        targetNoList.Add(i, target);
+                    }
+                }
+                else if (subIndex == 1)
+                {
+                    if (!targetNoList2.ContainsKey(i))
+                    {
+                        targetNoList2.Add(i, target);
+                    }
+                }
+                else if (subIndex == 2)
+                {
+                    if (!targetNoList3.ContainsKey(i))
+                    {
+                        targetNoList3.Add(i, target);
+                    }
                 }
                 ii = i;
-                planetdata.Add(p);
+                planetdata[i] = p;
             });
 
             s.swe_close();
@@ -245,13 +266,32 @@ namespace microcosm.Calc
                 {
                     pAsc.isAspectDisp = false;
                 }
+                target = ii++;
             }
 
-            if (!targetNoList.ContainsKey(CommonData.ZODIAC_ASC))
+            if (subIndex == 0)
             {
-                targetNoList.Add(CommonData.ZODIAC_ASC, ++ii);
+                if (!targetNoList.ContainsKey(CommonData.ZODIAC_ASC))
+                {
+                    targetNoList.Add(CommonData.ZODIAC_ASC, target);
+                }
             }
-            planetdata.Add(pAsc);
+            else if (subIndex == 1)
+            {
+                if (!targetNoList2.ContainsKey(CommonData.ZODIAC_ASC))
+                {
+                    targetNoList2.Add(CommonData.ZODIAC_ASC, target);
+                }
+            }
+            else if (subIndex == 2)
+            {
+                if (!targetNoList3.ContainsKey(CommonData.ZODIAC_ASC))
+                {
+                    targetNoList3.Add(CommonData.ZODIAC_ASC, target);
+                }
+            }
+
+            planetdata[CommonData.ZODIAC_ASC] = pAsc;
             PlanetData pMc = new PlanetData()
             {
                 isAspectDisp = true,
@@ -282,13 +322,31 @@ namespace microcosm.Calc
                 {
                     pMc.isAspectDisp = false;
                 }
+                target = ii++;
             }
 
-            if (!targetNoList.ContainsKey(CommonData.ZODIAC_MC))
+            if (subIndex == 0)
             {
-                targetNoList.Add(CommonData.ZODIAC_MC, ++ii);
+                if (!targetNoList.ContainsKey(CommonData.ZODIAC_MC))
+                {
+                    targetNoList.Add(CommonData.ZODIAC_MC, target);
+                }
             }
-            planetdata.Add(pMc);
+            else if (subIndex == 1)
+            {
+                if (!targetNoList2.ContainsKey(CommonData.ZODIAC_MC))
+                {
+                    targetNoList2.Add(CommonData.ZODIAC_MC, target);
+                }
+            }
+            else if (subIndex == 2)
+            {
+                if (!targetNoList3.ContainsKey(CommonData.ZODIAC_MC))
+                {
+                    targetNoList3.Add(CommonData.ZODIAC_MC, target);
+                }
+            }
+            planetdata[CommonData.ZODIAC_MC] = pMc;
 
             return planetdata;
         }
@@ -344,51 +402,52 @@ namespace microcosm.Calc
         // 一度ずらすので再計算不要
         // 一年を365.24日で計算、当然ずれが生じる
         // 面倒なのでとりあえず放置
-        public List<PlanetData> PrimaryProgressionCalc(List<PlanetData> natallist, DateTime natalTime, DateTime transitTime)
+        public Dictionary<int, PlanetData> PrimaryProgressionCalc(Dictionary<int, PlanetData> natallist, DateTime natalTime, DateTime transitTime)
         {
-            List<PlanetData> progresslist = new List<PlanetData>();
+            Dictionary<int, PlanetData> progresslist = new Dictionary<int, PlanetData>();
             TimeSpan ts = transitTime - natalTime;
             double years = ts.TotalDays / year_days;
-            natallist.ForEach(data =>
+            foreach (KeyValuePair<int, PlanetData> pair in natallist)
             {
-                PlanetData progressdata = new PlanetData() {
-                    absolute_position = data.absolute_position,
-                    no = data.no,
-                    sensitive = data.sensitive,
-                    speed = data.speed,
+                PlanetData progressdata = new PlanetData()
+                {
+                    absolute_position = pair.Value.absolute_position,
+                    no = pair.Key,
+                    sensitive = pair.Value.sensitive,
+                    speed = pair.Value.speed,
                     aspects = new List<AspectInfo>(),
                     secondAspects = new List<AspectInfo>(),
-                    thirdAspects= new List<AspectInfo>(),
+                    thirdAspects = new List<AspectInfo>(),
                     fourthAspects = new List<AspectInfo>(),
                     fifthAspects = new List<AspectInfo>(),
                     isDisp = true,
                     isAspectDisp = true
                 };
-                if (config.centric == ECentric.HELIO_CENTRIC && data.no == 0)
+                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == 0)
                 {
                     // ヘリオセントリック太陽
                     progressdata.isDisp = false;
                     progressdata.isAspectDisp = false;
                 }
-                if (data.no == 10)
+                if (pair.Key == 10)
                 {
                     // MEAN NODE
                     progressdata.isDisp = false;
                     progressdata.isAspectDisp = false;
                 }
-                if (data.no == 12)
+                if (pair.Key == 12)
                 {
                     // mean apogee、どうでもいい
                     progressdata.isDisp = false;
                     progressdata.isAspectDisp = false;
                 }
-                if (data.no == 13)
+                if (pair.Key == 13)
                 {
                     // true apogee、リリス
                     progressdata.isDisp = false;
                     progressdata.isAspectDisp = false;
                 }
-                if (config.centric == ECentric.HELIO_CENTRIC && data.no == 14)
+                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == 14)
                 {
                     // ヘリオセントリック地球
                     progressdata.isDisp = true;
@@ -397,8 +456,8 @@ namespace microcosm.Calc
 
                 progressdata.absolute_position += years;
                 progressdata.absolute_position %= 365;
-                progresslist.Add(progressdata);
-            });
+                progresslist[pair.Key] = progressdata;
+            }
 
             return progresslist;
         }
@@ -422,9 +481,9 @@ namespace microcosm.Calc
         // 一日一年法
         // 一年を365.24日で計算、当然ずれが生じる
         // 面倒なのでとりあえず放置
-        public List<PlanetData> SecondaryProgressionCalc(List<PlanetData> natallist, DateTime natalTime, DateTime transitTime)
+        public Dictionary<int, PlanetData> SecondaryProgressionCalc(Dictionary<int, PlanetData> natallist, DateTime natalTime, DateTime transitTime)
         {
-            List<PlanetData> progresslist = new List<PlanetData>();
+            Dictionary<int, PlanetData> progresslist = new Dictionary<int, PlanetData>();
             TimeSpan ts = transitTime - natalTime;
             double years = ts.TotalDays / year_days;
 
@@ -453,32 +512,32 @@ namespace microcosm.Calc
             s.swe_utc_time_zone(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
 
-            natallist.ForEach(data =>
+            foreach (KeyValuePair<int, PlanetData> pair in natallist)
             {
-                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_SUN)
+                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == CommonData.ZODIAC_SUN)
                 {
                     // ヘリオセントリック太陽
-                    return;
+                    continue;
                 }
-                if (data.no == 10)
+                if (pair.Key == 10)
                 {
                     // MEAN NODE
-                    return;
+                    continue;
                 }
-                if (data.no == 12)
+                if (pair.Key == 12)
                 {
                     // mean apogee、どうでもいい
-                    return;
+                    continue;
                 }
-                if (data.no == 13)
+                if (pair.Key == 13)
                 {
                     // true apogee、リリス
-                    return;
+                    continue;
                 }
-                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_EARTH)
+                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == CommonData.ZODIAC_EARTH)
                 {
                     // ヘリオセントリック地球
-                    return;
+                    continue;
                 }
                 int flag = SwissEph.SEFLG_SWIEPH | SwissEph.SEFLG_SPEED;
                 if (config.centric == ECentric.HELIO_CENTRIC) flag |= SwissEph.SEFLG_HELCTR;
@@ -491,17 +550,22 @@ namespace microcosm.Calc
                     double ut = s.swe_get_ayanamsa_ex_ut(dret[1], SwissEph.SEFLG_SWIEPH, out daya, ref serr);
 
                     // Ephemeris Timeで計算, 結果はxに入る
-                    s.swe_calc_ut(dret[1], data.no, flag, x, ref serr);
+                    s.swe_calc_ut(dret[1], pair.Key, flag, x, ref serr);
                     // tropicalからayanamsaをマイナス
                     x[0] = x[0] > daya ? x[0] - daya : x[0] - daya + 360;
                 }
                 else
                 {
                     // Universal Timeで計算, 結果はxに入る
-                    s.swe_calc_ut(dret[1], data.no, flag, x, ref serr);
+                    s.swe_calc_ut(dret[1], pair.Key, flag, x, ref serr);
                 }
 
-                PlanetData progressdata = new PlanetData() { absolute_position = x[0], no = data.no, sensitive = data.sensitive, speed = data.speed,
+                PlanetData progressdata = new PlanetData()
+                {
+                    absolute_position = x[0],
+                    no = pair.Key,
+                    sensitive = pair.Value.sensitive,
+                    speed = pair.Value.speed,
                     aspects = new List<AspectInfo>(),
                     secondAspects = new List<AspectInfo>(),
                     thirdAspects = new List<AspectInfo>(),
@@ -510,13 +574,12 @@ namespace microcosm.Calc
                     isDisp = true,
                     isAspectDisp = true
                 };
-                progresslist.Add(progressdata);
-
-            });
+                progresslist[pair.Key] = progressdata;
+            }
 
             return progresslist;
         }
-        public double[] SecondaryProgressionHouseCalc(double[] houseList, List<PlanetData> natallist, DateTime natalTime, DateTime transitTime, double lat, double lng, string timezone)
+        public double[] SecondaryProgressionHouseCalc(double[] houseList, Dictionary<int, PlanetData> natallist, DateTime natalTime, DateTime transitTime, double lat, double lng, string timezone)
         {
             List<PlanetData> progresslist = new List<PlanetData>();
             TimeSpan ts = transitTime - natalTime;
@@ -540,9 +603,9 @@ namespace microcosm.Calc
         // 火星以降および感受点は一度一年法
         // 一年を365.24日で計算、当然ずれが生じる
         // 面倒なのでとりあえず放置
-        public List<PlanetData> CompositProgressionCalc(List<PlanetData> natallist, DateTime natalTime, DateTime transitTime)
+        public Dictionary<int, PlanetData> CompositProgressionCalc(Dictionary<int, PlanetData> natallist, DateTime natalTime, DateTime transitTime)
         {
-            List<PlanetData> progresslist = new List<PlanetData>();
+            Dictionary<int, PlanetData> progresslist = new Dictionary<int, PlanetData>();
             TimeSpan ts = transitTime - natalTime;
             double years = ts.TotalDays / year_days;
 
@@ -571,45 +634,46 @@ namespace microcosm.Calc
             s.swe_utc_time_zone(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
 
-            natallist.ForEach(data =>
+            foreach (KeyValuePair<int, PlanetData> pair in natallist)
             {
                 PlanetData progressdata;
-                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_SUN)
+                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == CommonData.ZODIAC_SUN)
                 {
                     // ヘリオセントリック太陽
-                    return;
+                    continue;
                 }
-                if (data.no == 10)
+                if (pair.Key == 10)
                 {
                     // MEAN NODE
-                    return;
+                    continue;
                 }
-                if (data.no == 12)
+                if (pair.Key == 12)
                 {
                     // mean apogee、どうでもいい
-                    return;
+                    continue;
                 }
-                if (data.no == 13)
+                if (pair.Key == 13)
                 {
                     // true apogee、リリス
-                    return;
+                    continue;
                 }
-                if (config.centric == ECentric.HELIO_CENTRIC && data.no == CommonData.ZODIAC_EARTH)
+                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == CommonData.ZODIAC_EARTH)
                 {
                     // ヘリオセントリック地球
-                    return;
+                    continue;
                 }
 
-                if ((data.no != CommonData.ZODIAC_MOON) && 
-                    (data.no != CommonData.ZODIAC_MERCURY) && 
-                    (data.no != CommonData.ZODIAC_VENUS) && 
-                    (data.no != CommonData.ZODIAC_SUN))
+                if ((pair.Key != CommonData.ZODIAC_MOON) &&
+                    (pair.Key != CommonData.ZODIAC_MERCURY) &&
+                    (pair.Key != CommonData.ZODIAC_VENUS) &&
+                    (pair.Key != CommonData.ZODIAC_SUN))
                 {
-                    progressdata = new PlanetData() {
-                        absolute_position = data.absolute_position,
-                        no = data.no,
-                        sensitive = data.sensitive,
-                        speed = data.speed,
+                    progressdata = new PlanetData()
+                    {
+                        absolute_position = pair.Value.absolute_position,
+                        no = pair.Key,
+                        sensitive = pair.Value.sensitive,
+                        speed = pair.Value.speed,
                         aspects = new List<AspectInfo>(),
                         secondAspects = new List<AspectInfo>(),
                         thirdAspects = new List<AspectInfo>(),
@@ -621,8 +685,8 @@ namespace microcosm.Calc
                     };
                     progressdata.absolute_position += years;
                     progressdata.absolute_position %= 365;
-                    progresslist.Add(progressdata);
-                    return;
+                    progresslist[pair.Key] = progressdata;
+                    continue;
                 }
                 int flag = SwissEph.SEFLG_SWIEPH | SwissEph.SEFLG_SPEED;
                 if (config.centric == ECentric.HELIO_CENTRIC)
@@ -636,32 +700,38 @@ namespace microcosm.Calc
                     double ut = s.swe_get_ayanamsa_ex_ut(dret[1], SwissEph.SEFLG_SWIEPH, out daya, ref serr);
 
                     // Ephemeris Timeで計算, 結果はxに入る
-                    s.swe_calc_ut(dret[1], data.no, flag, x, ref serr);
+                    s.swe_calc_ut(dret[1], pair.Key, flag, x, ref serr);
                     // tropicalからayanamsaをマイナス
                     x[0] = x[0] > daya ? x[0] - daya : x[0] - daya + 360;
                 }
                 else
                 {
                     // Universal Timeで計算, 結果はxに入る
-                    s.swe_calc_ut(dret[1], data.no, flag, x, ref serr);
+                    s.swe_calc_ut(dret[1], pair.Key, flag, x, ref serr);
                 }
 
-                progressdata = new PlanetData() { absolute_position = x[0], no = data.no, sensitive = data.sensitive,
-                    speed = data.speed, aspects = new List<AspectInfo>(),
-                    secondAspects = new List<AspectInfo>(), thirdAspects = new List<AspectInfo>(),
+                progressdata = new PlanetData()
+                {
+                    absolute_position = x[0],
+                    no = pair.Key,
+                    sensitive = pair.Value.sensitive,
+                    speed = pair.Value.speed,
+                    aspects = new List<AspectInfo>(),
+                    secondAspects = new List<AspectInfo>(),
+                    thirdAspects = new List<AspectInfo>(),
                     fourthAspects = new List<AspectInfo>(),
                     fifthAspects = new List<AspectInfo>(),
                     isDisp = true,
                     isAspectDisp = true
                 };
-                progresslist.Add(progressdata);
+                progresslist[pair.Key] = progressdata;
+            }
 
-            });
 
 
             return progresslist;
         }
-        public double[] CompositProgressionHouseCalc(double[] houseList, List<PlanetData> natallist, DateTime natalTime, DateTime transitTime, double lat, double lng, string timezone)
+        public double[] CompositProgressionHouseCalc(double[] houseList, Dictionary<int, PlanetData> natallist, DateTime natalTime, DateTime transitTime, double lat, double lng, string timezone)
         {
             // AMATERU、SG共にSecondaryで計算されてた
             return SecondaryProgressionHouseCalc(houseList, natallist, natalTime, transitTime, lat, lng, timezone);

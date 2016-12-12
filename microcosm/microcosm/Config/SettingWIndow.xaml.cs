@@ -2132,6 +2132,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2146,7 +2147,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2161,7 +2162,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2176,7 +2177,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2191,7 +2192,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2206,7 +2207,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2221,7 +2222,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2236,7 +2237,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2251,7 +2252,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2266,7 +2267,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2281,7 +2282,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2296,7 +2297,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2311,7 +2312,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2326,7 +2327,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2341,7 +2342,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2356,7 +2357,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2371,7 +2372,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 
@@ -2386,7 +2387,7 @@ namespace microcosm.Config
             }
             catch (FormatException except)
             {
-
+                Console.WriteLine(except.Message);
             }
         }
 

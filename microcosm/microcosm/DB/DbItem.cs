@@ -9,6 +9,7 @@ namespace microcosm.DB
     public class DbItem
     {
         public string fileName;
+        public string fileNameNoExt;
         public bool isDir;
 
         public string userName;

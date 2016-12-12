@@ -21,18 +21,25 @@ namespace microcosm.Calc
         }
 
         // 同じリストのアスペクトを計算する
-        public List<PlanetData> AspectCalcSame(SettingData a_setting, List<PlanetData> list)
+        public Dictionary<int, PlanetData> AspectCalcSame(SettingData a_setting, Dictionary<int, PlanetData> list)
         {
-            // if (natal-natal)
-            for (int i = 0; i < list.Count - 1; i++)
+            List<PlanetData> calcList = new List<PlanetData>();
+
+            foreach (KeyValuePair<int, PlanetData> pair in list)
             {
-                if (!list[i].isAspectDisp)
+                calcList.Add(pair.Value);
+            }
+
+            // if (natal-natal)
+            for (int i = 0; i < calcList.Count - 1; i++)
+            {
+                if (!calcList[i].isAspectDisp)
                 {
                     continue;
                 }
-                for (int j = i + 1; j < list.Count; j++)
+                for (int j = i + 1; j < calcList.Count; j++)
                 {
-                    if (!list[j].isAspectDisp)
+                    if (!calcList[j].isAspectDisp)
                     {
                         continue;
                     }
@@ -41,14 +48,14 @@ namespace microcosm.Calc
                     // アスペクトは180°以上にはならない
                     double from;
                     double to;
-                    if (list[i].absolute_position - list[j].absolute_position < 0) {
-                        to = list[j].absolute_position;
-                        from = list[i].absolute_position;
+                    if (calcList[i].absolute_position - calcList[j].absolute_position < 0) {
+                        to = calcList[j].absolute_position;
+                        from = calcList[i].absolute_position;
                     }
                     else
                     {
-                        to = list[i].absolute_position;
-                        from = list[j].absolute_position;
+                        to = calcList[i].absolute_position;
+                        from = calcList[j].absolute_position;
                     }
                     double aspect_degree = to - from;
                     if (aspect_degree > 180)
@@ -142,13 +149,13 @@ namespace microcosm.Calc
                             }
                             if (isAspect)
                             {
-                                list[i].aspects.Add(new AspectInfo()
+                                calcList[i].aspects.Add(new AspectInfo()
                                 {
-                                    targetPosition = list[j].absolute_position,
+                                    targetPosition = calcList[j].absolute_position,
                                     aspectKind = kind,
                                     softHard = sh,
-                                    srcPlanetNo = list[i].no,
-                                    targetPlanetNo = list[j].no,
+                                    srcPlanetNo = calcList[i].no,
+                                    targetPlanetNo = calcList[j].no,
                                     absoluteDegree = aspect_degree
                                 });
                                 break;
@@ -246,13 +253,13 @@ namespace microcosm.Calc
                             }
                             if (isAspect)
                             {
-                                list[i].aspects.Add(new AspectInfo()
+                                calcList[i].aspects.Add(new AspectInfo()
                                 {
-                                    targetPosition = list[j].absolute_position,
+                                    targetPosition = calcList[j].absolute_position,
                                     aspectKind = kind,
                                     softHard = sh,
-                                    srcPlanetNo = list[i].no,
-                                    targetPlanetNo = list[j].no,
+                                    srcPlanetNo = calcList[i].no,
+                                    targetPlanetNo = calcList[j].no,
                                     absoluteDegree = aspect_degree
                                 });
                                 break;
@@ -346,13 +353,13 @@ namespace microcosm.Calc
                             }
                             if (isAspect)
                             {
-                                list[i].aspects.Add(new AspectInfo()
+                                calcList[i].aspects.Add(new AspectInfo()
                                 {
-                                    targetPosition = list[j].absolute_position,
+                                    targetPosition = calcList[j].absolute_position,
                                     aspectKind = kind,
                                     softHard = sh,
-                                    srcPlanetNo = list[i].no,
-                                    targetPlanetNo = list[j].no,
+                                    srcPlanetNo = calcList[i].no,
+                                    targetPlanetNo = calcList[j].no,
                                     absoluteDegree = aspect_degree
                                 });
                                 break;
@@ -364,7 +371,13 @@ namespace microcosm.Calc
                 }
             }
 
-            return list;
+            Dictionary<int, PlanetData> ret = new Dictionary<int, PlanetData>();
+            for (int i = 0; i < calcList.Count; i++)
+            {
+                ret[calcList[i].no] = calcList[i];
+            }
+
+            return ret;
         }
 
         // 違うリストのアスペクトを計算する
@@ -385,20 +398,41 @@ namespace microcosm.Calc
         // 12: from3 to4
         // 13: from3 to5
         // 14: from4 to5
-        public List<PlanetData> AspectCalcOther(SettingData a_setting, 
-            List<PlanetData> fromList, List<PlanetData> toList, 
+        public Dictionary<int, PlanetData> AspectCalcOther(SettingData a_setting, 
+            Dictionary<int, PlanetData> fromList, Dictionary<int, PlanetData> toList, 
             int listKind)
         {
-            for (int i = 0; i < fromList.Count - 1; i++)
+            List<PlanetData> calcFromList = new List<PlanetData>();
+
+            foreach (KeyValuePair<int, PlanetData> pair in fromList)
             {
-                for (int j = 0; j < toList.Count - 1; j++)
+                calcFromList.Add(pair.Value);
+            }
+            List<PlanetData> calcToList = new List<PlanetData>();
+
+            foreach (KeyValuePair<int, PlanetData> pair in toList)
+            {
+                calcToList.Add(pair.Value);
+            }
+
+            for (int i = 0; i < calcFromList.Count - 1; i++)
+            {
+                if (!calcFromList[i].isAspectDisp)
                 {
+                    continue;
+                }
+                for (int j = 0; j < calcToList.Count - 1; j++)
+                {
+                    if (!calcToList[j].isAspectDisp)
+                    {
+                        continue;
+                    }
                     // 90.0 と　300.0では210度ではなく150度にならなければいけない
-                    double aspect_degree = fromList[i].absolute_position - toList[j].absolute_position;
+                    double aspect_degree = calcFromList[i].absolute_position - calcToList[j].absolute_position;
 
                     if (aspect_degree > 180)
                     {
-                        aspect_degree = fromList[i].absolute_position + 360 - toList[j].absolute_position;
+                        aspect_degree = calcFromList[i].absolute_position + 360 - calcToList[j].absolute_position;
                     }
                     if (aspect_degree < 0)
                     {
@@ -443,13 +477,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_1ST])
                                     {
 
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -457,13 +491,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -476,13 +510,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_150])
                                     {
 
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -490,13 +524,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_150] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_150])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -508,13 +542,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_2ND])
                                     {
 
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -522,13 +556,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_2ND] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_2ND])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -568,13 +602,13 @@ namespace microcosm.Calc
                                     if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST] &&
                                     aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -582,13 +616,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST] &&
                                              aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
                                             targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -601,13 +635,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_150])
                                     {
 
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -617,10 +651,10 @@ namespace microcosm.Calc
                                     {
                                         fromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             srcPlanetNo = fromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
@@ -633,13 +667,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
                                     {
 
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -647,13 +681,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -692,13 +726,13 @@ namespace microcosm.Calc
                                     if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST] &&
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -706,13 +740,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST] &&
                                          aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -725,13 +759,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_150])
                                     {
 
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -739,13 +773,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_150] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_150])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -757,13 +791,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_2ND])
                                     {
 
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -771,13 +805,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_2ND] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_2ND])
                                     {
-                                        fromList[i].secondAspects.Add(new AspectInfo()
+                                        calcFromList[i].secondAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -822,13 +856,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_HARD_1ST])
                                     {
 
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            srcPlanetNo = fromList[i].no,
-                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -836,13 +870,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST] &&
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.SUN_SOFT_1ST])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            srcPlanetNo = fromList[i].no,
-                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -857,10 +891,10 @@ namespace microcosm.Calc
 
                                         fromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             srcPlanetNo = fromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
@@ -869,13 +903,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_150] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_150])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -887,13 +921,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
                                     {
 
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -901,13 +935,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -946,13 +980,13 @@ namespace microcosm.Calc
                                     if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST] &&
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_1ST])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            srcPlanetNo = fromList[i].no,
-                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -960,13 +994,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST] &&
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            srcPlanetNo = fromList[i].no,
-                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -979,13 +1013,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_150])
                                     {
 
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -993,13 +1027,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_150] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_150])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1011,13 +1045,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
                                     {
 
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1025,13 +1059,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1070,13 +1104,13 @@ namespace microcosm.Calc
                                     if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST] &&
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_HARD_1ST])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            srcPlanetNo = fromList[i].no,
-                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1084,13 +1118,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST] &&
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.OTHER_SOFT_1ST])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            srcPlanetNo = fromList[i].no,
-                                            targetPlanetNo = toList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1105,13 +1139,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_150])
                                     {
 
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1119,13 +1153,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_150] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_150])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1137,13 +1171,13 @@ namespace microcosm.Calc
                                         aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_HARD_2ND])
                                     {
 
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.SOFT,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;
@@ -1151,13 +1185,13 @@ namespace microcosm.Calc
                                     else if (aspect_degree < getDegree(kind) + a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND] &&
                                       aspect_degree > getDegree(kind) - a_setting.orbs[listKind][OrbKind.MOON_SOFT_2ND])
                                     {
-                                        fromList[i].thirdAspects.Add(new AspectInfo()
+                                        calcFromList[i].thirdAspects.Add(new AspectInfo()
                                         {
-                                            targetPosition = toList[j].absolute_position,
+                                            targetPosition = calcToList[j].absolute_position,
                                             aspectKind = kind,
                                             softHard = SoftHard.HARD,
-                                            targetPlanetNo = toList[j].no,
-                                            srcPlanetNo = fromList[i].no,
+                                            targetPlanetNo = calcToList[j].no,
+                                            srcPlanetNo = calcFromList[i].no,
                                             absoluteDegree = aspect_degree
                                         });
                                         break;

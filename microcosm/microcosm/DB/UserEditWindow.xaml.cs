@@ -27,6 +27,8 @@ namespace microcosm.DB
         public PlaceSearchWindow searchWindow;
         public GoogleSearchWindow googleSearchWindow;
         public DateTime defaultDate { get; } = new DateTime(2000, 1, 1, 12, 0, 0);
+        public bool isEdit = false;
+        public TreeViewItem selected = null;
         public UserEditWindow(DatabaseWindow dbwindow, DbItem item)
         {
             this.dbwindow = dbwindow;
@@ -44,7 +46,7 @@ namespace microcosm.DB
         // 表示文字設定
         public void UserEditSet(DbItem item)
         {
-            fileName.Text = item.fileName;
+            fileName.Text = item.fileNameNoExt;
             if (userName.Text.IndexOf("- ") == 0)
             {
                 userName.Text = item.userName.Substring(2);
@@ -98,11 +100,25 @@ namespace microcosm.DB
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
+            DateTime d;
+            
+            if (userBirth.SelectedDate != null)
+            {
+                d = new DateTime(
+                        (int)userBirth.SelectedDate?.Year,
+                        (int)userBirth.SelectedDate?.Month,
+                        (int)userBirth.SelectedDate?.Day
+                    );
+            }
+            else
+            {
+                d = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            }
             dbwindow.newUser_Click_CB(
                 fileName.Text,
                 userName.Text,
                 userFurigana.Text,
-                userBirth.DisplayDate,
+                d,
                 int.Parse(userHour.Text),
                 int.Parse(userMinute.Text),
                 int.Parse(userSecond.Text),
@@ -110,7 +126,9 @@ namespace microcosm.DB
                 double.Parse(userLat.Text),
                 double.Parse(userLng.Text),
                 userMemo.Text,
-                userTimezone.Text
+                userTimezone.Text,
+                isEdit,
+                selected
                 );
             dbwindow.setEnable();
             this.Visibility = Visibility.Hidden;

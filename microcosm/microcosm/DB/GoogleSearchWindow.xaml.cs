@@ -72,7 +72,7 @@ namespace microcosm.DB
                 {
                     MessageBox.Show(Properties.Resources.ERROR_ERROR_RESPONSE);
                 }
-            } catch (Exception err)
+            } catch 
             {
                 MessageBox.Show(Properties.Resources.ERROR_ERROR_RESPONSE);
             }

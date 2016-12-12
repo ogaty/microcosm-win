@@ -124,11 +124,25 @@ namespace microcosm
             this.Visibility = Visibility.Hidden;
         }
 
+        // 新規作成(何もないところ右クリック)
+        private void NewDataContext_Click(object sender, RoutedEventArgs e)
+        {
+            newData();
+        }
+
         // 新規作成(ファイル)
+        // 選択状態の場合こちらが呼ばれる
         public void newItem_Click(object sender, EventArgs e)
         {
             newData();
         }
+
+        // メニュー新規作成
+        private void NewMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            newData();
+        }
+
 
         // イベントリスト右クリック→表示
         public void disp_Click(object sender, EventArgs e)
@@ -200,7 +214,7 @@ namespace microcosm
                     data.birth_minute,
                     data.birth_second
                     );
-                List<PlanetData> currentPlanet = mainwindow.calc.PositionCalc(data.birth_year,
+                Dictionary<int, PlanetData> currentPlanet = mainwindow.calc.PositionCalc(data.birth_year,
                     data.birth_month,
                     data.birth_day,
                     data.birth_hour,
@@ -214,7 +228,7 @@ namespace microcosm
                 for (int i = 0; i < 40; i++)
                 {
                     calcDate = calcDate.AddHours(1);
-                    List<PlanetData> planet = mainwindow.calc.PositionCalc(calcDate.Year,
+                    Dictionary<int, PlanetData> planet = mainwindow.calc.PositionCalc(calcDate.Year,
                         calcDate.Month,
                         calcDate.Day,
                         calcDate.Hour,
@@ -289,6 +303,8 @@ namespace microcosm
         }
 
         // 新規作成(ファイル)コールバック
+        // 編集の場合もここが呼ばれる
+        // ここに来るfileNameはNoExt、拡張子なし
         public void newUser_Click_CB(
             string fileName,
             string userName,
@@ -301,59 +317,67 @@ namespace microcosm
             double userLat,
             double userLng,
             string userMemo,
-            string userTimezone
+            string userTimezone,
+            bool isEdit,
+            TreeViewItem selectedItem
         )
         {
-            TreeViewItem parentItem;
-            TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
-            if (item == null)
-            {
-                item = (TreeViewItem)UserDirTree.Items[0];
-            }
-            if (item.Parent is TreeViewItem)
-            {
-                parentItem = (TreeViewItem)item.Parent;
-                if (parentItem.Tag == null)
-                {
-                    item = (TreeViewItem)UserDirTree.Items[0];
-                }
-            }
-
-            DbItem iteminfo = (DbItem)item.Tag;
+            // 可能性があるのは
+            // 新規作成＋未選択
+            // 新規作成＋ディレクトリ選択
+            // 新規作成＋ファイル選択
+            // 編集＋ファイル選択
+            // 編集の場合、必ずファイル選択のはず
+            // 欲しいのはパスだけ
             string newDir;
-            if (iteminfo == null)
-            {
-                iteminfo = new DbItem()
-                {
-                    fileName = "data",
-                    isDir = true
-                };
-                newDir = @"data\";
-            } else
-            {
-                newDir = System.IO.Path.GetDirectoryName(iteminfo.fileName);
-            }
             string newPath;
-            TreeViewItem newItem = new TreeViewItem { Header = fileName };
-            if (iteminfo.isDir)
+
+            if (isEdit)
             {
+                // 必ず存在、無ければバグ
+                DbItem item0 = (DbItem)selectedItem.Tag;
+                newDir = System.IO.Path.GetDirectoryName(item0.fileName);
+                // 編集はファイル名も変えられる
                 newPath = newDir + @"\" + fileName + ".csm";
-                newItem.Tag = new DbItem
-                {
-                    fileName = newPath,
-                    isDir = false,
-                    userName = userName,
-                    userFurigana = userFurigana
-                };
-                newItem.Selected += window.UserItem_Selected;
-                item.Items.Add(newItem);
+
+                // 前のファイルを削除
+                File.Delete(item0.fileName);
+                // オブジェクトは消さない
+                selectedItem.Header = fileName;
+                item0.fileName = newPath;
+                item0.userName = userName;
+                item0.userFurigana = userFurigana;
             }
             else
             {
-                parentItem = (TreeViewItem)item.Parent;
-                DbItem parentIteminfo = (DbItem)parentItem.Tag;
-                string parentDir = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
-                newPath = parentDir + @"\" + fileName + ".csm";
+                // 新規作成の場合TreeViewにaddする
+                TreeViewItem parentItem;
+
+                if (selectedItem == null)
+                {
+                    newDir = @"data";
+                    parentItem = (TreeViewItem)UserDirTree.Items[0];
+                }
+                else
+                {
+                    // ファイル or ディレクトリ選択状態で新規作成
+                    DbItem item0 = (DbItem)selectedItem.Tag;
+                    if (item0.isDir)
+                    {
+                        // ディレクトリ選択時はその配下に作成
+                        newDir = item0.fileName;
+                        parentItem = (TreeViewItem)selectedItem;
+                    }
+                    else
+                    {
+                        // ファイル選択時は親のディレクトリ配下にぶら下げる
+                        newDir = System.IO.Path.GetDirectoryName(item0.fileName);
+                        parentItem = (TreeViewItem)selectedItem.Parent;
+                    }
+                }
+                newPath = newDir + @"\" + fileName + ".csm";
+
+                TreeViewItem newItem = new TreeViewItem { Header = fileName };
                 newItem.Tag = new DbItem
                 {
                     fileName = newPath,
@@ -550,13 +574,21 @@ namespace microcosm
             setDisable();
             AddUserEditWindow(new DbItem
             {
-                fileName = "新規データ"
+                fileNameNoExt = "新規データ"
                 + DateTime.Now.Year
                 + DateTime.Now.Month.ToString("00")
                 + DateTime.Now.Day.ToString("00")
                 + DateTime.Now.Hour.ToString("00")
                 + DateTime.Now.Minute.ToString("00")
                 + DateTime.Now.Second.ToString("00"),
+                fileName = "新規データ"
+                + DateTime.Now.Year
+                + DateTime.Now.Month.ToString("00")
+                + DateTime.Now.Day.ToString("00")
+                + DateTime.Now.Hour.ToString("00")
+                + DateTime.Now.Minute.ToString("00")
+                + DateTime.Now.Second.ToString("00")
+                + ".csm",
                 isDir = false,
                 userName = "新規データ",
                 userFurigana = "しんきでーた",
@@ -569,7 +601,7 @@ namespace microcosm
                 userLng = "139.7528",
                 userTimezone = "JST",
                 memo = ""
-            });
+            }, false);
         }
 
         // 右クリックイベントデータ追加
@@ -674,10 +706,12 @@ namespace microcosm
             string parentPath;
             if (iteminfo.isDir)
             {
+                // ディレクトリを選択していた場合はその下に
                 string dirName = iteminfo.fileName + @"\" + newDir;
                 newItem.Tag = new DbItem
                 {
                     fileName = dirName,
+                    fileNameNoExt = dirName,
                     isDir = true
                 };
                 item.Items.Add(newItem);
@@ -685,12 +719,15 @@ namespace microcosm
             }
             else
             {
+                // ファイルを選択していた場合は並列に
                 if (item.Parent is TreeView)
                 {
+                    // 親が存在する
                     string dirName = @"data\" + newDir;
                     newItem.Tag = new DbItem
                     {
                         fileName = dirName,
+                        fileNameNoExt = dirName,
                         isDir = true
                     };
                     item.Items.Add(newItem);
@@ -698,10 +735,12 @@ namespace microcosm
                 }
                 else
                 {
+                    // 親が存在しない
                     TreeViewItem parentItem = (TreeViewItem)item.Parent;
                     DbItem parentIteminfo = (DbItem)parentItem.Tag;
                     if (parentIteminfo == null)
                     {
+                        // dataを選択している
                         parentPath = "data";
                     }
                     else
@@ -712,6 +751,7 @@ namespace microcosm
                     newItem.Tag = new DbItem
                     {
                         fileName = dirName,
+                        fileNameNoExt = dirName,
                         isDir = true
                     };
                     parentItem.Items.Add(newItem);
@@ -735,7 +775,7 @@ namespace microcosm
             }
             XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
             UserData data = DBMgr.getObject();
-            iteminfo.fileName = System.IO.Path.GetFileNameWithoutExtension(iteminfo.fileName);
+            iteminfo.fileNameNoExt = System.IO.Path.GetFileNameWithoutExtension(iteminfo.fileName);
             iteminfo.userName = data.name;
             iteminfo.userFurigana = data.furigana;
             iteminfo.userBirth = new DateTime(data.birth_year, data.birth_month, data.birth_day, data.birth_hour, data.birth_minute, data.birth_second);
@@ -749,7 +789,7 @@ namespace microcosm
             iteminfo.memo = data.memo;
 
             setDisable();
-            AddUserEditWindow(iteminfo);
+            AddUserEditWindow(iteminfo, true);
         }
 
         // 削除
@@ -792,7 +832,7 @@ namespace microcosm
             window.CreateTree();
         }
 
-        public void AddUserEditWindow(DbItem item)
+        public void AddUserEditWindow(DbItem item, bool isEdit)
         {
             if (editwindow == null)
             {
@@ -802,6 +842,8 @@ namespace microcosm
             {
                 editwindow.UserEditRefresh(item);
             }
+            editwindow.isEdit = isEdit;
+            editwindow.selected = (TreeViewItem)UserDirTree.SelectedItem;
             editwindow.Visibility = Visibility.Visible;
         }
 
@@ -812,12 +854,6 @@ namespace microcosm
         public void setDisable()
         {
             this.IsEnabled = false;
-        }
-
-        // 新規作成(何もないところ右クリック)
-        private void NewDataContext_Click(object sender, RoutedEventArgs e)
-        {
-            newData();
         }
 
         private void Import_Click(object sender, RoutedEventArgs e)
@@ -1596,33 +1632,6 @@ namespace microcosm
 
         private void Amateru_Export(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void NewMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            setDisable();
-            AddUserEditWindow(new DbItem
-            {
-                fileName = "新規データ"
-                + DateTime.Now.Year
-                + DateTime.Now.Month.ToString("00")
-                + DateTime.Now.Day.ToString("00")
-                + DateTime.Now.Hour.ToString("00")
-                + DateTime.Now.Minute.ToString("00")
-                + DateTime.Now.Second.ToString("00"),
-                isDir = false,
-                userName = "新規データ",
-                userFurigana = "しんきでーた",
-                userBirth = DateTime.Today,
-                userHour = "12",
-                userMinute = "0",
-                userSecond = "0",
-                userPlace = "東京都中央区",
-                userLat = "35.685175",
-                userLng = "139.7528",
-                userTimezone = "JST",
-                memo = ""
-            });
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
