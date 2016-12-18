@@ -60,6 +60,10 @@ namespace microcosm
                     if (planet.absolute_position < 0)
                     {
                         absolute_position = (int)planet.absolute_position + 360;
+                        if (absolute_position == 360)
+                        {
+                            absolute_position = 0;
+                        }
                     }
                     else
                     {
@@ -225,6 +229,10 @@ namespace microcosm
                     if (planet.absolute_position < 0)
                     {
                         absolute_position = (int)planet.absolute_position + 360;
+                        if (absolute_position == 360)
+                        {
+                            absolute_position = 0;
+                        }
                     }
                     else
                     {
@@ -297,6 +305,10 @@ namespace microcosm
                     if (planet.absolute_position < 0)
                     {
                         absolute_position = (int)planet.absolute_position + 360;
+                        if (absolute_position == 360)
+                        {
+                            absolute_position = 0;
+                        }
                     }
                     else
                     {
@@ -385,6 +397,10 @@ namespace microcosm
                     if (planet.absolute_position < 0)
                     {
                         absolute_position = (int)planet.absolute_position + 360;
+                        if (absolute_position == 360)
+                        {
+                            absolute_position = 0;
+                        }
                     }
                     else
                     {
@@ -457,6 +473,10 @@ namespace microcosm
                     if (planet.absolute_position < 0)
                     {
                         absolute_position = (int)planet.absolute_position + 360;
+                        if (absolute_position == 360)
+                        {
+                            absolute_position = 0;
+                        }
                     }
                     else
                     {
@@ -540,6 +560,10 @@ namespace microcosm
                     if (planet.absolute_position < 0)
                     {
                         absolute_position = (int)planet.absolute_position + 360;
+                        if (absolute_position == 360)
+                        {
+                            absolute_position = 0;
+                        }
                     }
                     else
                     {
