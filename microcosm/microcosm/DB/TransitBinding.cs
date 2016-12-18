@@ -15,8 +15,8 @@ namespace microcosm.DB
         }
         public TransitBinding(UserData data)
         {
-            birthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2} {6}", data.birth_year,
-                data.birth_month, data.birth_day, data.birth_hour, data.birth_minute, data.birth_second, data.timezone);
+            birthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", data.birth_year,
+                data.birth_month, data.birth_day, data.birth_hour, data.birth_minute, data.birth_second);
 
         }
 

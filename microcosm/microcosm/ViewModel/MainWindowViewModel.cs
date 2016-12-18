@@ -251,8 +251,11 @@ namespace microcosm.ViewModel
 
         }
 
+        /// <summary>
+        /// 右上、左上のボックスに表示させる
+        /// </summary>
         public void ReSet(string uName, string uBirthStr, string uBirthPlace, string uLat, string uLng, 
-            string tName, string tBirthStr, string tBirthPlace, string tLat, string tLng)
+            string tName, string tBirthStr, string tBirthPlace, string tLat, string tLng, string uTimezone, string tTimezone)
         {
             this.userName = uName;
             this.userBirthStr = uBirthStr;
@@ -264,6 +267,22 @@ namespace microcosm.ViewModel
             this.transitPlace = tBirthPlace;
             this.transitLat = tLat;
             this.transitLng = tLng;
+            if (uTimezone == "JST(日本標準)")
+            {
+                this.userTimezone = "JST";
+            }
+            else
+            {
+                this.userTimezone = uTimezone;
+            }
+            if (tTimezone == "JST(日本標準)")
+            {
+                this.transitTimezone = "JST";
+            }
+            else
+            {
+                this.transitTimezone = tTimezone;
+            }
         }
     }
 }

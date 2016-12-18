@@ -110,7 +110,7 @@ namespace microcosm.Config
             ephepath = path;
             centric = ECentric.GEO_CENTRIC;
             sidereal = Esidereal.TROPICAL;
-            defaultPlace = "東京都中央区";
+            defaultPlace = "東京都千代田区";
             lat = 35.670587;
             lng = 139.772003;
             houseCalc = EHouseCalc.PLACIDUS;
@@ -127,7 +127,7 @@ namespace microcosm.Config
         {
             centric = ECentric.GEO_CENTRIC;
             sidereal = Esidereal.TROPICAL;
-            defaultPlace = "東京都中央区";
+            defaultPlace = "東京都千代田区";
             lat = 35.670587;
             lng = 139.772003;
             houseCalc = EHouseCalc.PLACIDUS;

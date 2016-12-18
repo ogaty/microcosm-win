@@ -28,7 +28,7 @@ namespace microcosm
     public partial class DatabaseWindow : Window
     {
         public MainWindow mainwindow;
-        public DatabaseWindowViewModel window;
+        public DatabaseWindowViewModel vm;
         public UserEditWindow editwindow;
         public UserEventEditWindow eventEditWindow;
         public DatabaseWindow(MainWindow mainwindow)
@@ -36,8 +36,8 @@ namespace microcosm
             this.mainwindow = mainwindow;
             InitializeComponent();
 
-            window = new DatabaseWindowViewModel(this);
-            this.DataContext = window;
+            vm = new DatabaseWindowViewModel(this);
+            this.DataContext = vm;
         }
 
         private void UserTree_MouseDown(object sender, MouseButtonEventArgs e)
@@ -48,27 +48,7 @@ namespace microcosm
         // イベントリストの選択
         private void UserEvent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListView item = (ListView)sender;
-            if (item.SelectedItem == null) {
-                return;
-            }
-            if (item.SelectedItem is UserEventData)
-            {
-                UserEventData data = (UserEventData)item.SelectedItem;
-                if (data != null)
-                {
-                    window.Memo = data.memo;
-                }
-            }
-            else
-            {
-                UserData data = (UserData)item.SelectedItem;
-                if (data != null)
-                {
-                    window.Memo = data.memo;
-                }
-
-            }
+            vm.SelectionChanged((ListView)sender);
         }
 
         // 決定ボタン
@@ -97,7 +77,7 @@ namespace microcosm
                     lng = udata.lng,
                     timezone = udata.timezone,
                     memo = udata.memo,
-                    birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                    birth_str = String.Format("{0}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}",
                         udata.birth_year,
                         udata.birth_month,
                         udata.birth_day,
@@ -108,7 +88,6 @@ namespace microcosm
                     lat_lng = String.Format("{0:00.000}/{1:000.000}", udata.lat, udata.lng),
                     fullpath = udata.filename
                 };
-                mainwindow.userdata = edata;
             }
             else
             {
@@ -117,7 +96,7 @@ namespace microcosm
             }
             mainwindow.userdata = edata;
             mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString());
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
             mainwindow.ReCalc();
             mainwindow.ReRender();
 
@@ -144,13 +123,17 @@ namespace microcosm
         }
 
 
-        // イベントリスト右クリック→表示
+        /// <summary>
+        /// イベントリスト右クリック→表示
+        /// 決定と同様の動作
+        /// </summary>
         public void disp_Click(object sender, EventArgs e)
         {
             if (UserEvent.SelectedItem == null)
             {
                 return;
             }
+            // FIXME 間違ってるよ！
             mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
 
             this.Visibility = Visibility.Hidden;
@@ -250,6 +233,10 @@ namespace microcosm
 
         }
 
+        /// <summary>
+        /// イベントリストダブルクリック
+        /// OK押下と同様
+        /// </summary>
         public void userEvent_DoubleClick(object sender, EventArgs e)
         {
             if (UserEvent.SelectedItem == null)
@@ -275,7 +262,7 @@ namespace microcosm
                     lng = udata.lng,
                     timezone = udata.timezone,
                     memo = udata.memo,
-                    birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                    birth_str = String.Format("{0}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}",
                         udata.birth_year,
                         udata.birth_month,
                         udata.birth_day,
@@ -295,16 +282,32 @@ namespace microcosm
             }
             mainwindow.userdata = edata;
             mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString());
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
             mainwindow.ReCalc();
             mainwindow.ReRender();
 
             this.Visibility = Visibility.Hidden;
         }
 
-        // 新規作成(ファイル)コールバック
-        // 編集の場合もここが呼ばれる
-        // ここに来るfileNameはNoExt、拡張子なし
+        /// <summary>
+        /// 新規作成(ファイル)コールバック
+        /// 編集の場合もここが呼ばれる
+        /// ここに来るfileNameはNoExt、拡張子なし
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="userName"></param>
+        /// <param name="userFurigana"></param>
+        /// <param name="userBirth"></param>
+        /// <param name="userHour"></param>
+        /// <param name="userMinute"></param>
+        /// <param name="userSecond"></param>
+        /// <param name="userPlace"></param>
+        /// <param name="userLat"></param>
+        /// <param name="userLng"></param>
+        /// <param name="userMemo"></param>
+        /// <param name="userTimezone"></param>
+        /// <param name="isEdit">新規 or 編集</param>
+        /// <param name="selectedItem">選択していたアイテム</param>
         public void newUser_Click_CB(
             string fileName,
             string userName,
@@ -355,6 +358,7 @@ namespace microcosm
 
                 if (selectedItem == null)
                 {
+                    // 未選択の場合data直下に生成
                     newDir = @"data";
                     parentItem = (TreeViewItem)UserDirTree.Items[0];
                 }
@@ -377,6 +381,7 @@ namespace microcosm
                 }
                 newPath = newDir + @"\" + fileName + ".csm";
 
+                // 新規作成時なのでオブジェクトも作成
                 TreeViewItem newItem = new TreeViewItem { Header = fileName };
                 newItem.Tag = new DbItem
                 {
@@ -385,7 +390,7 @@ namespace microcosm
                     userName = userName,
                     userFurigana = userFurigana
                 };
-                newItem.Selected += window.UserItem_Selected;
+                newItem.Selected += vm.UserItem_Selected;
                 parentItem.Items.Add(newItem);
             }
             UserData udata = new UserData()
@@ -466,7 +471,7 @@ namespace microcosm
                 lng = eventLng,
                 memo = eventMemo,
                 timezone = eventTimezone,
-                birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                birth_str = String.Format("{0}/{1}/{2} {3:00}:{4:00}:{5:00}",
                         eventBirth.Year,
                         eventBirth.Month,
                         eventBirth.Day,
@@ -544,7 +549,7 @@ namespace microcosm
                 lng = eventLng,
                 memo = eventMemo,
                 timezone = eventTimezone,
-                birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                birth_str = String.Format("{0}/{1}/{2} {3:00}:{4:00}:{5:00}",
                         eventBirth.Year,
                         eventBirth.Month,
                         eventBirth.Day,
@@ -572,6 +577,7 @@ namespace microcosm
         public void newData()
         {
             setDisable();
+            // TODO DbItemコンストラクタ
             AddUserEditWindow(new DbItem
             {
                 fileNameNoExt = "新規データ"
@@ -596,7 +602,7 @@ namespace microcosm
                 userHour = "12",
                 userMinute = "0",
                 userSecond = "0",
-                userPlace = "東京都中央区",
+                userPlace = "東京都千代田区",
                 userLat = "35.685175",
                 userLng = "139.7528",
                 userTimezone = "JST",
@@ -615,7 +621,7 @@ namespace microcosm
                 userHour = "12",
                 userMinute = "0",
                 userSecond = "0",
-                userPlace = "東京都中央区",
+                userPlace = "東京都千代田区",
                 userLat = "35.685175",
                 userLng = "139.7528",
                 userTimezone = "JST",
@@ -760,33 +766,15 @@ namespace microcosm
             }
         }
 
-        // 編集
+        // ツリー右クリック編集
         public void edit_Click(object sender, EventArgs e)
         {
             TreeViewItem item = (TreeViewItem)UserDirTree.SelectedItem;
-            DbItem iteminfo = (DbItem)item.Tag;
+            DbItem iteminfo = vm.createItem((DbItem)item.Tag);
             if (iteminfo == null)
             {
                 return;
             }
-            if (Directory.Exists(iteminfo.fileName))
-            {
-                return;
-            }
-            XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
-            UserData data = DBMgr.getObject();
-            iteminfo.fileNameNoExt = System.IO.Path.GetFileNameWithoutExtension(iteminfo.fileName);
-            iteminfo.userName = data.name;
-            iteminfo.userFurigana = data.furigana;
-            iteminfo.userBirth = new DateTime(data.birth_year, data.birth_month, data.birth_day, data.birth_hour, data.birth_minute, data.birth_second);
-            iteminfo.userHour = data.birth_hour.ToString();
-            iteminfo.userMinute = data.birth_minute.ToString();
-            iteminfo.userSecond = data.birth_second.ToString();
-            iteminfo.userPlace = data.birth_place;
-            iteminfo.userLat = data.lat.ToString("00.000");
-            iteminfo.userLng = data.lng.ToString("000.000");
-            iteminfo.userTimezone = data.timezone;
-            iteminfo.memo = data.memo;
 
             setDisable();
             AddUserEditWindow(iteminfo, true);
@@ -829,9 +817,10 @@ namespace microcosm
                     }
                 }
             }
-            window.CreateTree();
+            vm.CreateTree();
         }
 
+        // 編集ウィンドウ表示
         public void AddUserEditWindow(DbItem item, bool isEdit)
         {
             if (editwindow == null)
@@ -917,7 +906,7 @@ namespace microcosm
                             continue;
                         }
                     }
-                    window.CreateTree();
+                    vm.CreateTree();
                 }
                 if (err == 0)
                 {
@@ -1003,7 +992,7 @@ namespace microcosm
                             continue;
                         }
                     }
-                    window.CreateTree();
+                    vm.CreateTree();
                 }
                 if (err == 0)
                 {
@@ -1103,7 +1092,7 @@ namespace microcosm
                             err++;
                         }
                     }
-                    window.CreateTree();
+                    vm.CreateTree();
                 }
                 if (err == 0)
                 {
@@ -1229,7 +1218,7 @@ namespace microcosm
                         }
 
                     }
-                    window.CreateTree();
+                    vm.CreateTree();
                 }
                 if (err == 0)
                 {
@@ -1358,7 +1347,7 @@ namespace microcosm
                             err++;
                         }
                     }
-                    window.CreateTree();
+                    vm.CreateTree();
                 }
                 if (err == 0)
                 {
@@ -1488,7 +1477,7 @@ namespace microcosm
                             err++;
                         }
                     }
-                    window.CreateTree();
+                    vm.CreateTree();
                 }
                 if (err == 0)
                 {
@@ -1616,7 +1605,7 @@ namespace microcosm
                     {
                         err++;
                     }
-                    window.CreateTree();
+                    vm.CreateTree();
 
                 }
                 if (err == 0)

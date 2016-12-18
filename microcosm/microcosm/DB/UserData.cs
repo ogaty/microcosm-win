@@ -49,7 +49,7 @@ namespace microcosm.DB
         {
             get
             {
-                return birth_year.ToString("0000") + "年" + birth_month.ToString("00") + "月" + birth_day.ToString("00") + "日 " +
+                return birth_year.ToString("0000") + "/" + birth_month.ToString("00") + "/" + birth_day.ToString("00") + " " +
                     birth_hour.ToString("00") + ":" + birth_minute.ToString("00") + ":" + birth_second.ToString("00");
             }
         }
@@ -72,7 +72,7 @@ namespace microcosm.DB
             this.birth_hour = DateTime.Now.Hour;
             this.birth_minute = DateTime.Now.Minute;
             this.birth_second = DateTime.Now.Second;
-            this.birth_place = "東京都中央区";
+            this.birth_place = "東京都千代田区";
             this.lat = 35.685175;
             this.lng = 139.7528;
             this.memo = "";
@@ -124,7 +124,14 @@ namespace microcosm.DB
             this.lng = lng;
             this.birth_place = birth_place;
             this.memo = memo;
-            this.timezone = timezone;
+            if (timezone == "JST(日本標準")
+            {
+                this.timezone = "JST";
+            }
+            else
+            {
+                this.timezone = timezone;
+            }
         }
 
         public void setData(
@@ -155,7 +162,14 @@ namespace microcosm.DB
             this.lng = lng;
             this.birth_place = birth_place;
             this.memo = memo;
-            this.timezone = timezone;
+            if (timezone == "JST(日本標準")
+            {
+                this.timezone = "JST";
+            }
+            else
+            {
+                this.timezone = timezone;
+            }
         }
 
         public static explicit operator UserEvent(UserData val)

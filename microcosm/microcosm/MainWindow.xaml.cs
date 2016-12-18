@@ -648,7 +648,9 @@ namespace microcosm
 
         }
 
-        // AstroCalcインスタンス
+        /// <summary>
+        /// AstroCalcインスタンス
+        /// </summary>
         private void DataCalc()
         {
             calc = new AstroCalc(this, config);
@@ -692,7 +694,11 @@ namespace microcosm
                 transitLat = String.Format("{0:f4}", targetUser.lat),
                 transitLng = String.Format("{0:f4}", targetUser.lng),
             };
+            // 左上、右上表示
             this.DataContext = mainWindowVM;
+
+
+
             if (config.progression == EProgression.PRIMARY)
             {
                 mainWindowVM.progressionCalc = "一度一年法";
@@ -783,6 +789,10 @@ namespace microcosm
 
         public void ReCalc()
         {
+#if DEBUG
+            DateTime startDt = DateTime.Now;
+#endif
+
             if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.USER1)
             {
                 UserEventData edata = CommonData.udata2event(targetUser);
@@ -791,6 +801,12 @@ namespace microcosm
             {
                 ReCalc(userdata, userdata, userdata, userdata, userdata, userdata, userdata);
             }
+#if DEBUG
+            DateTime endDt = DateTime.Now;
+            TimeSpan ts = endDt - startDt; // 時間の差分を取得
+            Console.WriteLine("Recalc " + ts.TotalSeconds + " sec"); // 経過時間（秒）
+#endif
+
         }
 
         // 再計算
@@ -1428,6 +1444,9 @@ namespace microcosm
         // disp変更の場合はこれだけ呼ぶ
         public void ReRender()
         {
+#if DEBUG
+            DateTime startDt = DateTime.Now;
+#endif
             AllClear();
             rcanvas.innerLeft = config.zodiacWidth / 2;
             rcanvas.innerTop = config.zodiacWidth / 2;
@@ -1530,7 +1549,11 @@ namespace microcosm
 
             ringCanvas.Children.Add(copy);
             ringCanvas.Children.Add(url);
-
+#if DEBUG
+            DateTime endDt = DateTime.Now;
+            TimeSpan ts = endDt - startDt; // 時間の差分を取得
+            Console.WriteLine("ReRender " + ts.TotalSeconds + " sec"); // 経過時間（秒）
+#endif
         }
 
         // 円レンダリング

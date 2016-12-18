@@ -23,5 +23,11 @@ namespace microcosm.DB
         public string userLng;
         public string userTimezone;
         public string memo;
+
+        // コンストラクタは２パターンある
+        public DbItem()
+        {
+
+        }
     }
 }

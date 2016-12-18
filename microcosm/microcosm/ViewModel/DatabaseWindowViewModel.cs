@@ -189,7 +189,7 @@ namespace microcosm.ViewModel
             return new UserEventData()
             {
                 name = "- " + uevent.event_name,
-                birth_str = String.Format("{0}年{1}月{2}日 {3:00}:{4:00}:{5:00}",
+                birth_str = String.Format("{0}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}",
                         uevent.event_year,
                         uevent.event_month,
                         uevent.event_day,
@@ -307,7 +307,7 @@ namespace microcosm.ViewModel
 
             dbwindow.mainwindow.userdata = edata;
             dbwindow.mainwindow.mainWindowVM.ReSet(data.name, data.birth_str, data.birth_place, data.lat.ToString(), data.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString());
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), data.timezone, edata.timezone);
             dbwindow.mainwindow.ReCalc();
             dbwindow.mainwindow.ReRender();
 
@@ -318,5 +318,64 @@ namespace microcosm.ViewModel
         {
             TreeViewItem item = (TreeViewItem)sender;
         }
+
+        public DbItem createItem(DbItem item)
+        {
+            if (item == null)
+            {
+                return null;
+            }
+            if (Directory.Exists(item.fileName))
+            {
+                return null;
+            }
+            // xmlパースして編集ウィンドウを表示
+            XMLDBManager DBMgr = new XMLDBManager(item.fileName);
+            UserData data = DBMgr.getObject();
+
+            item.fileNameNoExt = System.IO.Path.GetFileNameWithoutExtension(item.fileName);
+            item.userName = data.name;
+            item.userFurigana = data.furigana;
+            item.userBirth = new DateTime(data.birth_year, data.birth_month, data.birth_day, data.birth_hour, data.birth_minute, data.birth_second);
+            item.userHour = data.birth_hour.ToString();
+            item.userMinute = data.birth_minute.ToString();
+            item.userSecond = data.birth_second.ToString();
+            item.userPlace = data.birth_place;
+            item.userLat = data.lat.ToString("00.000");
+            item.userLng = data.lng.ToString("000.000");
+            item.userTimezone = data.timezone;
+            item.memo = data.memo;
+
+            return item;
+        }
+
+
+        // イベントリストの選択
+        public void SelectionChanged(ListView item)
+        {
+            if (item.SelectedItem == null)
+            {
+                return;
+            }
+            if (item.SelectedItem is UserEventData)
+            {
+                UserEventData data = (UserEventData)item.SelectedItem;
+                if (data != null)
+                {
+                    Memo = data.memo;
+                }
+            }
+            else
+            {
+                UserData data = (UserData)item.SelectedItem;
+                if (data != null)
+                {
+                    Memo = data.memo;
+                }
+            }
+        }
+
+
+
     }
 }
