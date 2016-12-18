@@ -2432,12 +2432,12 @@ namespace microcosm.Config
                         else if (index == 12)
                         {
                             // ASC
-                            index = 16;
+                            index = 10000;
                         }
                         else if (index == 13)
                         {
                             // MC
-                            index = 17;
+                            index = 10001;
                         }
                         else if (index == 14)
                         {
@@ -2452,15 +2452,24 @@ namespace microcosm.Config
 
                         if (i < 16)
                         {
-                            main.list1[index].isDisp = false;
+                            if (main.list1.ContainsKey(index)) 
+                            {
+                                main.list1[index].isDisp = false;
+                            }
                         }
                         else if (i < 32)
                         {
-                            main.list2[index].isDisp = false;
+                            if (main.list2.ContainsKey(index))
+                            {
+                                main.list2[index].isDisp = false;
+                            }
                         }
                         else if (i < 48)
                         {
-                            main.list3[index].isDisp = false;
+                            if (main.list3.ContainsKey(index))
+                            {
+                                main.list3[index].isDisp = false;
+                            }
                         }
                     }
                     else
@@ -2481,12 +2490,12 @@ namespace microcosm.Config
                         else if (index == 12)
                         {
                             // ASC
-                            index = 16;
+                            index = 10000;
                         }
                         else if (index == 13)
                         {
                             // MC
-                            index = 17;
+                            index = 10001;
                         }
                         else if (index == 14)
                         {
@@ -2498,15 +2507,26 @@ namespace microcosm.Config
                             // Lilith
                             index = 13;
                         }
-                        if (i < 16) {
-                            main.list1[index].isDisp = true;
-                        } else if (i < 32)
+                        if (i < 16)
                         {
-                            main.list2[index].isDisp = true;
+                            if (main.list1.ContainsKey(index))
+                            {
+                                main.list1[index].isDisp = false;
+                            }
+                        }
+                        else if (i < 32)
+                        {
+                            if (main.list2.ContainsKey(index))
+                            {
+                                main.list2[index].isDisp = false;
+                            }
                         }
                         else if (i < 48)
                         {
-                            main.list3[index].isDisp = true;
+                            if (main.list3.ContainsKey(index))
+                            {
+                                main.list3[index].isDisp = false;
+                            }
                         }
                     }
                 }
