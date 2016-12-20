@@ -43,6 +43,11 @@ namespace microcosm.Config
         FULL = 0,
         MINI = 1
     }
+    public enum Color29
+    {
+        NOCHANGE = 0,
+        CHANGE = 1
+    }
     public class ConfigData
     {
         // 天文データパス
@@ -105,6 +110,10 @@ namespace microcosm.Config
         [XmlElement("dispPattern")]
         public int dispPattern { get; set; }
 
+        // 29度で色変える
+        [XmlElement("color29")]
+        public Color29 color29 { get; set; }
+
         public ConfigData(string path)
         {
             ephepath = path;
@@ -121,6 +130,7 @@ namespace microcosm.Config
             decimalDisp = EDecimalDisp.DECIMAL;
             dispPattern = 0;
             progression = EProgression.PRIMARY;
+            color29 = Color29.NOCHANGE;
         }
 
         public ConfigData()
@@ -138,6 +148,7 @@ namespace microcosm.Config
             decimalDisp = EDecimalDisp.DECIMAL;
             dispPattern = 0;
             progression = EProgression.PRIMARY;
+            color29 = Color29.NOCHANGE;
         }
 
     }

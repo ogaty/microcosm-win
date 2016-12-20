@@ -29,5 +29,13 @@ namespace microcosm.DB
         {
 
         }
+
+        public UserData getUserdata()
+        {
+            XMLDBManager DBMgr = new XMLDBManager(fileName);
+            UserData udata = DBMgr.getObject();
+            udata.filename = fileName;
+            return udata;
+        }
     }
 }

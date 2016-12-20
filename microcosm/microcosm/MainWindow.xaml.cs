@@ -801,6 +801,9 @@ namespace microcosm
             {
                 ReCalc(userdata, userdata, userdata, userdata, userdata, userdata, userdata);
             }
+
+            reportVM.ReCalcReport(list1, list2, list3, list4, list5, list6,
+                houseList1, houseList2, houseList3, houseList4, houseList5, houseList6);
 #if DEBUG
             DateTime endDt = DateTime.Now;
             TimeSpan ts = endDt - startDt; // 時間の差分を取得
@@ -2392,6 +2395,11 @@ namespace microcosm
             degreeLbl.Margin = new Thickness(displayData.degreePt.X, displayData.degreePt.Y, 0, 0);
             degreeLbl.Tag = displayData.explanation;
             degreeLbl.MouseEnter += planetMouseEnter;
+            if (config.color29 == Config.Color29.CHANGE && (displayData.degreeTxt == "29°" || displayData.degreeTxt == "00°"))
+            {
+                degreeLbl.Foreground = new SolidColorBrush(Colors.Red);
+                degreeLbl.FontWeight = FontWeights.Bold;
+            }
             ringCanvas.Children.Add(degreeLbl);
 
             Label signLbl = new Label();
@@ -2470,6 +2478,12 @@ namespace microcosm
             {
                 degreeLbl.TextDecorations = TextDecorations.Underline;
             }
+            if (config.color29 == Config.Color29.CHANGE && (displayData.degreeTxt == "29°" || displayData.degreeTxt == "00°"))
+            {
+                degreeLbl.Foreground = new SolidColorBrush(Colors.Red);
+                degreeLbl.FontWeight = FontWeights.Bold;
+            }
+
             degreeLbl.Margin = new Thickness(displayData.degreePt.X, displayData.degreePt.Y, 0, 0);
             degreeLbl.Tag = displayData.explanation;
             degreeLbl.MouseEnter += planetMouseEnter;

@@ -20,9 +20,6 @@ namespace microcosm.Calc
         public ConfigData config;
         public double year_days = 365.2424;
         public SwissEph s;
-        public Dictionary<int, int> targetNoList = new Dictionary<int, int>();
-        public Dictionary<int, int> targetNoList2 = new Dictionary<int, int>();
-        public Dictionary<int, int> targetNoList3 = new Dictionary<int, int>();
 
         public AstroCalc(MainWindow main, ConfigData config)
         {
@@ -30,6 +27,21 @@ namespace microcosm.Calc
             this.config = config;
             s = new SwissEph();
             // http://www.astro.com/ftp/swisseph/ephe/archive_zip/ からDL
+            s.swe_set_ephe_path(config.ephepath);
+            s.OnLoadFile += (sender, ev) => {
+                if (File.Exists(ev.FileName))
+                    ev.File = new FileStream(ev.FileName, FileMode.Open);
+            };
+        }
+
+        /// <summary>
+        /// for unit test
+        /// </summary>
+        /// <param name="config"></param>
+        public AstroCalc(ConfigData config)
+        {
+            this.config = config;
+            s = new SwissEph();
             s.swe_set_ephe_path(config.ephepath);
             s.OnLoadFile += (sender, ev) => {
                 if (File.Exists(ev.FileName))
@@ -209,28 +221,6 @@ namespace microcosm.Calc
                         p.isAspectDisp = false;
                     }
                 }
-
-                if (subIndex == 0)
-                {
-                    if (!targetNoList.ContainsKey(i))
-                    {
-                        targetNoList.Add(i, target);
-                    }
-                }
-                else if (subIndex == 1)
-                {
-                    if (!targetNoList2.ContainsKey(i))
-                    {
-                        targetNoList2.Add(i, target);
-                    }
-                }
-                else if (subIndex == 2)
-                {
-                    if (!targetNoList3.ContainsKey(i))
-                    {
-                        targetNoList3.Add(i, target);
-                    }
-                }
                 ii = i;
                 planetdata[i] = p;
             });
@@ -238,6 +228,18 @@ namespace microcosm.Calc
             s.swe_close();
             // ハウスを後ろにくっつける
             double[] houses = CuspCalc(year, month, day, hour, min, sec, lat, lng, houseKind);
+            planetdata = setHouse(planetdata, houses, main.currentSetting, subIndex);
+
+            return planetdata;
+        }
+
+        /// <summary>
+        /// unittest用
+        /// </summary>
+        /// <param name="subIndex">targetNoList決定に使用</param>
+        /// <returns></returns>
+        public Dictionary<int, PlanetData> setHouse(Dictionary<int, PlanetData> pdata, double[] houses, SettingData setting, int subIndex)
+        {
             PlanetData pAsc = new PlanetData()
             {
                 absolute_position = houses[1],
@@ -250,7 +252,7 @@ namespace microcosm.Calc
             };
             if (subIndex >= 0)
             {
-                if (main.currentSetting.dispPlanet[subIndex][CommonData.ZODIAC_ASC])
+                if (setting.dispPlanet[subIndex][CommonData.ZODIAC_ASC])
                 {
                     pAsc.isDisp = true;
                 }
@@ -258,7 +260,7 @@ namespace microcosm.Calc
                 {
                     pAsc.isDisp = false;
                 }
-                if (main.currentSetting.dispAspectPlanet[subIndex][CommonData.ZODIAC_ASC])
+                if (setting.dispAspectPlanet[subIndex][CommonData.ZODIAC_ASC])
                 {
                     pAsc.isAspectDisp = true;
                 }
@@ -266,32 +268,11 @@ namespace microcosm.Calc
                 {
                     pAsc.isAspectDisp = false;
                 }
-                target = ii++;
             }
 
-            if (subIndex == 0)
-            {
-                if (!targetNoList.ContainsKey(CommonData.ZODIAC_ASC))
-                {
-                    targetNoList.Add(CommonData.ZODIAC_ASC, target);
-                }
-            }
-            else if (subIndex == 1)
-            {
-                if (!targetNoList2.ContainsKey(CommonData.ZODIAC_ASC))
-                {
-                    targetNoList2.Add(CommonData.ZODIAC_ASC, target);
-                }
-            }
-            else if (subIndex == 2)
-            {
-                if (!targetNoList3.ContainsKey(CommonData.ZODIAC_ASC))
-                {
-                    targetNoList3.Add(CommonData.ZODIAC_ASC, target);
-                }
-            }
+            pdata[CommonData.ZODIAC_ASC] = pAsc;
 
-            planetdata[CommonData.ZODIAC_ASC] = pAsc;
+
             PlanetData pMc = new PlanetData()
             {
                 isAspectDisp = true,
@@ -306,7 +287,7 @@ namespace microcosm.Calc
             };
             if (subIndex >= 0)
             {
-                if (main.currentSetting.dispPlanet[subIndex][CommonData.ZODIAC_MC])
+                if (setting.dispPlanet[subIndex][CommonData.ZODIAC_MC])
                 {
                     pMc.isDisp = true;
                 }
@@ -314,7 +295,7 @@ namespace microcosm.Calc
                 {
                     pMc.isDisp = false;
                 }
-                if (main.currentSetting.dispAspectPlanet[subIndex][CommonData.ZODIAC_MC])
+                if (setting.dispAspectPlanet[subIndex][CommonData.ZODIAC_MC])
                 {
                     pMc.isAspectDisp = true;
                 }
@@ -322,33 +303,10 @@ namespace microcosm.Calc
                 {
                     pMc.isAspectDisp = false;
                 }
-                target = ii++;
             }
 
-            if (subIndex == 0)
-            {
-                if (!targetNoList.ContainsKey(CommonData.ZODIAC_MC))
-                {
-                    targetNoList.Add(CommonData.ZODIAC_MC, target);
-                }
-            }
-            else if (subIndex == 1)
-            {
-                if (!targetNoList2.ContainsKey(CommonData.ZODIAC_MC))
-                {
-                    targetNoList2.Add(CommonData.ZODIAC_MC, target);
-                }
-            }
-            else if (subIndex == 2)
-            {
-                if (!targetNoList3.ContainsKey(CommonData.ZODIAC_MC))
-                {
-                    targetNoList3.Add(CommonData.ZODIAC_MC, target);
-                }
-            }
-            planetdata[CommonData.ZODIAC_MC] = pMc;
-
-            return planetdata;
+            pdata[CommonData.ZODIAC_MC] = pMc;
+            return pdata;
         }
 
         // カスプを計算

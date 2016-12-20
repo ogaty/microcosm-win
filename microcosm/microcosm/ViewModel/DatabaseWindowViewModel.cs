@@ -140,9 +140,7 @@ namespace microcosm.ViewModel
         {
             TreeViewItem item = (TreeViewItem)sender;
             DbItem iteminfo = (DbItem)item.Tag;
-            XMLDBManager DBMgr = new XMLDBManager(iteminfo.fileName);
-            UserData udata = DBMgr.getObject();
-            udata.filename = iteminfo.fileName;
+            UserData udata = iteminfo.getUserdata();
 
             dbwindow.UserEvent.Items.Clear();
             dbwindow.UserEvent.Items.Add(udata);
@@ -218,7 +216,9 @@ namespace microcosm.ViewModel
         {
         }
 
-        // ディレクトリ再帰的呼び出し
+        /// <summary>
+        /// ディレクトリ再帰的呼び出し
+        /// </summary>
         private TreeViewItem CreateDirectoryNode(DirectoryInfo directoryInfo)
         {
             if (!Directory.Exists(directoryInfo.FullName))

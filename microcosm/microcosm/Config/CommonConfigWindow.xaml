@@ -50,6 +50,7 @@
                         <RadioButton x:Name="miniDisp" Content="シンプル　(☉29°)"></RadioButton>
                     </StackPanel>
                 </GroupBox>
+                <CheckBox x:Name="color29" Content="29度、0度を目立たせる" Margin="0,5,0,0"></CheckBox>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="2">
@@ -63,7 +64,7 @@
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,60,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,95,0,0">
                 <Button Content="決定" Margin="0,0,10,0" Click="OkClick"/>
                 <Button Content="キャンセル" Click="CancelClick" Margin="0,0,10,0"/>
             </StackPanel>

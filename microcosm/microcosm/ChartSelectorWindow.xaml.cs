@@ -30,6 +30,8 @@ namespace microcosm
             setHour.Text = DateTime.Now.Hour.ToString();
             setMinute.Text = DateTime.Now.Minute.ToString();
             setSecond.Text = DateTime.Now.Second.ToString();
+            setLat.Text = main.targetUser.lat.ToString();
+            setLng.Text = main.targetUser.lng.ToString();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -866,8 +868,12 @@ namespace microcosm
                 main.targetUser.birth_hour = dt.Hour;
                 main.targetUser.birth_minute = dt.Minute;
                 main.targetUser.birth_second = dt.Second;
+                main.targetUser.lat = double.Parse(setLat.Text);
+                main.targetUser.lng = double.Parse(setLng.Text);
                 main.mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
                     String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+                main.mainWindowVM.userLat = setLat.Text;
+                main.mainWindowVM.userLng = setLng.Text;
             }
             else
             {
@@ -877,8 +883,12 @@ namespace microcosm
                 main.userdata.birth_hour = dt.Hour;
                 main.userdata.birth_minute = dt.Minute;
                 main.userdata.birth_second = dt.Second;
+                main.userdata.lat = double.Parse(setLat.Text);
+                main.userdata.lng = double.Parse(setLng.Text);
                 main.mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
                     String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+                main.mainWindowVM.transitLat = setLat.Text;
+                main.mainWindowVM.transitLng = setLng.Text;
             }
             main.ReCalc();
             main.ReRender();

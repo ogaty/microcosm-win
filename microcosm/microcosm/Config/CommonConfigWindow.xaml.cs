@@ -80,6 +80,14 @@ namespace microcosm.Config
                 fullDisp.IsChecked = false;
                 miniDisp.IsChecked = true;
             }
+            if (main.config.color29 == Color29.CHANGE)
+            {
+                color29.IsChecked = true;
+            }
+            else
+            {
+                color29.IsChecked = false;
+            }
         }
 
         private void Centric_Checked(object sender, RoutedEventArgs e)
@@ -161,6 +169,14 @@ namespace microcosm.Config
             {
                 main.config.houseCalc = EHouseCalc.EQUAL;
                 main.houseCalc.Text = "EQUAL";
+            }
+            if (color29.IsChecked == true)
+            {
+                main.config.color29 = Color29.CHANGE;
+            }
+            else
+            {
+                main.config.color29 = Color29.NOCHANGE;
             }
 
             string filename = @"system\config.csm";

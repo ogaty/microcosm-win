@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="DB\AddrSearchResult.cs" />
     <Compile Include="DB\DbItem.cs" />
+    <Compile Include="DB\DBTree.cs" />
     <Compile Include="DB\GoogleLatLng.cs" />
     <Compile Include="DB\GoogleSearchWindow.xaml.cs">
       <DependentUpon>GoogleSearchWindow.xaml</DependentUpon>

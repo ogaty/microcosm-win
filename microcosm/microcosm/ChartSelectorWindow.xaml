@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="時刻設定" Height="440" Width="280" Closing="Window_Closing" ResizeMode="CanMinimize">
+        Title="時刻設定" Height="470" Width="280" Closing="Window_Closing" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel Orientation="Vertical">
             <GroupBox Header="時刻" Height="60" Margin="5,10">
@@ -33,6 +33,12 @@
                 <TextBox x:Name="setMinute" Margin="5,0" Width="25" Text="30" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
                 <TextBlock Text=":"></TextBlock>
                 <TextBox x:Name="setSecond" Margin="5,0" Width="25" Text="45" GotKeyboardFocus="GotKeyboardFocusCommon"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock Text="緯度" />
+                <TextBox Name="setLat" Width="80"></TextBox>
+                <TextBlock Text="経度" Margin="20,0,0,0" />
+                <TextBox Name="setLng" Width="80"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="nowButton" Content="NOW" Margin="10,10,30,0" Width="80" HorizontalAlignment="Left" Click="nowButton_Click"></Button>
