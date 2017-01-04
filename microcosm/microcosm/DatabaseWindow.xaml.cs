@@ -962,7 +962,7 @@ namespace microcosm
                             UserData udata = new UserData(name[1], "",
                                 year, month, day,
                                 hour, minute, second,
-                                double.Parse(data[3]), double.Parse(data[5]), name[0], "", "JST");
+                                double.Parse(data[2]), double.Parse(data[3]), name[0], "", "JST");
                             string filename = name[1] + ".csm";
                             Assembly myAssembly = Assembly.GetEntryAssembly();
                             string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Stargazer\" + filename;

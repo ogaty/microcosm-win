@@ -3411,6 +3411,220 @@ namespace microcosm
             }
         }
 
+        private void natalTime_Checked(object sender, RoutedEventArgs e)
+        {
+            if (setYear == null)
+            {
+                // initialize前に呼ばれてしまうのでリターン
+                return;
+            }
+            setYear.Text = targetUser.birth_year.ToString();
+            setMonth.Text = targetUser.birth_month.ToString();
+            setDay.Text = targetUser.birth_day.ToString();
+            setHour.Text = targetUser.birth_hour.ToString();
+            setMinute.Text = targetUser.birth_minute.ToString();
+            setSecond.Text = targetUser.birth_second.ToString();
+        }
+
+        private void transitTime_Checked(object sender, RoutedEventArgs e)
+        {
+            setYear.Text = userdata.birth_year.ToString();
+            setMonth.Text = userdata.birth_month.ToString();
+            setDay.Text = userdata.birth_day.ToString();
+            setHour.Text = userdata.birth_hour.ToString();
+            setMinute.Text = userdata.birth_minute.ToString();
+            setSecond.Text = userdata.birth_second.ToString();
+        }
+
+        private void timeSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (setYear == null)
+            {
+                // initialize前に呼ばれてしまうのでリターン
+                return;
+            }
+            ComboBox item = (ComboBox)sender;
+            int index = item.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    // 1時間
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "0";
+                    unitHour.Text = "1";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 1:
+                    // 1日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "1";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 2:
+                    // 7日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "7";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 3:
+                    // 30日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "30";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                case 4:
+                    // 365日
+                    unitYear.Text = "0";
+                    unitMonth.Text = "0";
+                    unitDay.Text = "365";
+                    unitHour.Text = "0";
+                    unitMinute.Text = "0";
+                    unitSecond.Text = "0";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void nowButton_Click(object sender, RoutedEventArgs e)
+        {
+            setYear.Text = DateTime.Now.Year.ToString();
+            setMonth.Text = DateTime.Now.Month.ToString();
+            setDay.Text = DateTime.Now.Day.ToString();
+            setHour.Text = DateTime.Now.Hour.ToString();
+            setMinute.Text = DateTime.Now.Minute.ToString();
+            setSecond.Text = DateTime.Now.Second.ToString();
+        }
+
+        private void setButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime dt = new DateTime(int.Parse(setYear.Text),
+                int.Parse(setMonth.Text),
+                int.Parse(setDay.Text),
+                int.Parse(setHour.Text),
+                int.Parse(setMinute.Text),
+                int.Parse(setSecond.Text));
+
+            if (natalTime.IsChecked == true)
+            {
+                targetUser.birth_year = dt.Year;
+                targetUser.birth_month = dt.Month;
+                targetUser.birth_day = dt.Day;
+                targetUser.birth_hour = dt.Hour;
+                targetUser.birth_minute = dt.Minute;
+                targetUser.birth_second = dt.Second;
+                targetUser.lat = double.Parse(setLat.Text);
+                targetUser.lng = double.Parse(setLng.Text);
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+                mainWindowVM.userLat = setLat.Text;
+                mainWindowVM.userLng = setLng.Text;
+            }
+            else
+            {
+                userdata.birth_year = dt.Year;
+                userdata.birth_month = dt.Month;
+                userdata.birth_day = dt.Day;
+                userdata.birth_hour = dt.Hour;
+                userdata.birth_minute = dt.Minute;
+                userdata.birth_second = dt.Second;
+                userdata.lat = double.Parse(setLat.Text);
+                userdata.lng = double.Parse(setLng.Text);
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+                mainWindowVM.transitLat = setLat.Text;
+                mainWindowVM.transitLng = setLng.Text;
+            }
+            ReCalc();
+            ReRender();
+        }
+
+        private void LeftYear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightYear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LeftMonth_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightMonth_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LeftDay_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightDay_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LeftHour_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightHour_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LeftMinute_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightMinute_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LeftSecond_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightSecond_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GotKeyboardFocusCommon(object sender, KeyboardFocusChangedEventArgs e)
+        {
+
+        }
+
+        private void LeftChange_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightChange_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         /*
         private void color_Click(object sender, RoutedEventArgs e)
         {
