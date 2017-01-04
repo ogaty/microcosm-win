@@ -13,6 +13,7 @@ namespace microcosm
 {
     partial class MainWindow
     {
+        int[] box = new int[72];
         // 天体の表示
         private void planetRender(double startdegree,
             List<PlanetData> list1,
@@ -27,11 +28,7 @@ namespace microcosm
 
             if (tempSettings.bands == 1)
             {
-                int[] box = new int[72];
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
                 list1.ForEach(planet =>
                 {
                     // 天体表示させない
@@ -55,37 +52,8 @@ namespace microcosm
                     PointF pointretrograde;
                     // 重ならないようにずらしを入れる
                     // 1サインに6度単位5個までデータが入る
-                    int index = 0;
-                    int absolute_position = 0;
-                    if (planet.absolute_position < 0)
-                    {
-                        absolute_position = (int)planet.absolute_position + 360;
-                        if (absolute_position == 360)
-                        {
-                            absolute_position = 0;
-                        }
-                    }
-                    else
-                    {
-                        absolute_position = (int)planet.absolute_position;
-                    }
-                    index = (int)(absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int absolute_position = getNewAbsPosition(planet);
+                    int index = boxSet(absolute_position);
 
                     if (ringCanvas.ActualWidth < 470)
                     {
@@ -100,8 +68,8 @@ namespace microcosm
                     pointsymbol = rotate(rcanvas.outerWidth / 3 - 20, 0, 5 * index - startdegree + 3);
                     pointminute = rotate(rcanvas.outerWidth / 3 - 40, 0, 5 * index - startdegree + 3);
                     pointretrograde = rotate(rcanvas.outerWidth / 3 - 60, 0, 5 * index - startdegree + 3);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
+                    point = getNewPoint(point);
+
                     pointdegree.X += (float)rcanvas.outerWidth / 2;
                     pointdegree.X -= 8;
                     pointsymbol.X += (float)rcanvas.outerWidth / 2;
@@ -111,9 +79,6 @@ namespace microcosm
                     pointretrograde.X += (float)rcanvas.outerWidth / 2;
                     pointretrograde.X -= 8;
 
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
                     pointdegree.Y *= -1;
                     pointdegree.Y += (float)rcanvas.outerHeight / 2;
                     pointdegree.Y -= 15;
@@ -208,11 +173,7 @@ namespace microcosm
             // 二重円
             else if (tempSettings.bands == 2)
             {
-                int[] box = new int[72];
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
                 list1.ForEach(planet =>
                 {
                     // 天体表示させない
@@ -222,72 +183,19 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = 0;
-                    int absolute_position = 0;
-                    if (planet.absolute_position < 0)
-                    {
-                        absolute_position = (int)planet.absolute_position + 360;
-                        if (absolute_position == 360)
-                        {
-                            absolute_position = 0;
-                        }
-                    }
-                    else
-                    {
-                        absolute_position = (int)planet.absolute_position;
-                    }
-                    index = (int)(absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int absolute_position = getNewAbsPosition(planet);
+                    int index = boxSet(absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 5 + 20, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
 
                 list2.ForEach(planet =>
                 {
@@ -298,66 +206,16 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = 0;
-                    int absolute_position = 0;
-                    if (planet.absolute_position < 0)
-                    {
-                        absolute_position = (int)planet.absolute_position + 360;
-                        if (absolute_position == 360)
-                        {
-                            absolute_position = 0;
-                        }
-                    }
-                    else
-                    {
-                        absolute_position = (int)planet.absolute_position;
-                    }
-                    index = (int)(absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int absolute_position = getNewAbsPosition(planet);
+                    int index = boxSet(absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -376,11 +234,7 @@ namespace microcosm
             // 三重円
             else if (tempSettings.bands == 3)
             {
-                int[] box = new int[72];
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
                 list1.ForEach(planet =>
                 {
                     // 天体表示させない
@@ -390,72 +244,20 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = 0;
-                    int absolute_position = 0;
-                    if (planet.absolute_position < 0)
-                    {
-                        absolute_position = (int)planet.absolute_position + 360;
-                        if (absolute_position == 360)
-                        {
-                            absolute_position = 0;
-                        }
-                    }
-                    else
-                    {
-                        absolute_position = (int)planet.absolute_position;
-                    }
-                    index = (int)(absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int absolute_position = getNewAbsPosition(planet);
+                    int index = boxSet(absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 5, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+
+                boxReset();
 
                 list2.ForEach(planet =>
                 {
@@ -466,66 +268,16 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = 0;
-                    int absolute_position = 0;
-                    if (planet.absolute_position < 0)
-                    {
-                        absolute_position = (int)planet.absolute_position + 360;
-                        if (absolute_position == 360)
-                        {
-                            absolute_position = 0;
-                        }
-                    }
-                    else
-                    {
-                        absolute_position = (int)planet.absolute_position;
-                    }
-                    index = (int)(absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int absolute_position = getNewAbsPosition(planet);
+                    int index = boxSet(absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 4 + 20, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -539,10 +291,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
 
                 list3.ForEach(planet =>
                 {
@@ -553,66 +302,16 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = 0;
-                    int absolute_position = 0;
-                    if (planet.absolute_position < 0)
-                    {
-                        absolute_position = (int)planet.absolute_position + 360;
-                        if (absolute_position == 360)
-                        {
-                            absolute_position = 0;
-                        }
-                    }
-                    else
-                    {
-                        absolute_position = (int)planet.absolute_position;
-                    }
-                    index = (int)(absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int absolute_position = getNewAbsPosition(planet);
+                    int index = boxSet(absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -631,11 +330,7 @@ namespace microcosm
             // 四重円
             else if (tempSettings.bands == 4)
             {
-                int[] box = new int[72];
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
                 list1.ForEach(planet =>
                 {
                     // 天体表示させない
@@ -645,42 +340,14 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 5, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
+                    Explanation exp = getExp(planet);
 
                     PlanetDisplay display = new PlanetDisplay()
                     {
@@ -693,10 +360,8 @@ namespace microcosm
                     };
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+
+                boxReset();
 
                 list2.ForEach(planet =>
                 {
@@ -707,52 +372,15 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 6);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 4, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -766,10 +394,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
 
                 list3.ForEach(planet =>
                 {
@@ -780,52 +405,15 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 3 - 5, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -839,10 +427,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
 
                 list4.ForEach(planet =>
                 {
@@ -853,52 +438,15 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -917,11 +465,7 @@ namespace microcosm
             // 五重円
             else if (tempSettings.bands == 5)
             {
-                int[] box = new int[72];
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
                 list1.ForEach(planet =>
                 {
                     // 天体表示させない
@@ -931,25 +475,7 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 5, 0, 5 * index - startdegree);
                     point.X += (float)rcanvas.outerWidth / 2;
@@ -961,28 +487,12 @@ namespace microcosm
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
                 });
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+
+                boxReset();
 
                 list2.ForEach(planet =>
                 {
@@ -993,52 +503,15 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 4, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -1052,10 +525,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
 
                 list3.ForEach(planet =>
                 {
@@ -1066,52 +536,15 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 4 + 20, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -1125,10 +558,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
 
                 list4.ForEach(planet =>
                 {
@@ -1139,52 +569,15 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 3, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
-
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    Explanation exp = getExp(planet);
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -1198,10 +591,7 @@ namespace microcosm
                     SetOnlySign(displayData);
                 });
 
-                for (int i = 0; i < 72; i++)
-                {
-                    box[i] = 0;
-                }
+                boxReset();
 
                 list5.ForEach(planet =>
                 {
@@ -1212,52 +602,16 @@ namespace microcosm
                     }
 
                     PointF point;
-                    // 重ならないようにずらしを入れる
-                    // 1サインに6度単位5個までデータが入る
-                    int index = (int)(planet.absolute_position / 5);
-                    if (box[index] == 1)
-                    {
-                        while (box[index] == 1)
-                        {
-                            index++;
-                            if (index == 72)
-                            {
-                                index = 0;
-                            }
-                        }
-                        box[index] = 1;
-                    }
-                    else
-                    {
-                        box[index] = 1;
-                    }
+                    int index = boxSet(planet.absolute_position);
 
                     point = rotate(rcanvas.outerWidth / 3 + 20, 0, 5 * index - startdegree);
-                    point.X += (float)rcanvas.outerWidth / 2;
-                    point.X -= 8;
-
-                    point.Y *= -1;
-                    point.Y += (float)rcanvas.outerHeight / 2;
-                    point.Y -= 18;
+                    point = getNewPoint(point);
 
                     dispList.Add(planet.isDisp);
 
-                    Explanation exp = new Explanation()
-                    {
-                        degree = planet.absolute_position % 30,
-                        sign = CommonData.getSignTextJp(planet.absolute_position),
-                        planetNo = planet.no
-                    };
+                    Explanation exp = getExp(planet);
 
-                    PlanetDisplay display = new PlanetDisplay()
-                    {
-                        planetNo = planet.no,
-                        isDisp = planet.isDisp,
-                        explanation = exp,
-                        planetPt = point,
-                        planetTxt = CommonData.getPlanetSymbol(planet.no),
-                        planetColor = CommonData.getPlanetColor(planet.no)
-                    };
+                    PlanetDisplay display = createPlanetDisplay(planet, exp, point);
                     pDisplayList.Add(display);
 
                 });
@@ -1275,6 +629,97 @@ namespace microcosm
 
         }
 
+        private int boxSet(double absolute_position)
+        {
+            // 重ならないようにずらしを入れる
+            // 1サインに6度単位5個までデータが入る
+            int index = (int)(absolute_position / 5);
+            if (box[index] == 1)
+            {
+                while (box[index] == 1)
+                {
+                    index++;
+                    index = boxMax(index);
+                }
+                box[index] = 1;
+            }
+            else
+            {
+                box[index] = 1;
+            }
+            return index;
+        }
+
+        private void boxReset()
+        {
+            for (int i = 0; i < 72; i++)
+            {
+                box[i] = 0;
+            }
+        }
+
+        private int boxMax(int index)
+        {
+            if (index == 72)
+            {
+                return 0;
+            }
+            return index;
+        }
+
+        private int getNewAbsPosition(PlanetData planet)
+        {
+            int absolute_position = 0;
+            if (planet.absolute_position < 0)
+            {
+                absolute_position = (int)planet.absolute_position + 360;
+                if (absolute_position == 360)
+                {
+                    absolute_position = 0;
+                }
+            }
+            else
+            {
+                absolute_position = (int)planet.absolute_position;
+            }
+
+            return absolute_position;
+        }
+
+
+        private PointF getNewPoint(PointF point)
+        {
+            point.X += (float)rcanvas.outerWidth / 2;
+            point.X -= 8;
+
+            point.Y *= -1;
+            point.Y += (float)rcanvas.outerHeight / 2;
+            point.Y -= 18;
+            return point;
+        }
+
+        private Explanation getExp(PlanetData planet)
+        {
+            return new Explanation()
+            {
+                degree = planet.absolute_position % 30,
+                sign = CommonData.getSignTextJp(planet.absolute_position),
+                planetNo = planet.no
+            };
+        }
+
+        private PlanetDisplay createPlanetDisplay(PlanetData planet, Explanation exp, PointF point)
+        {
+            return new PlanetDisplay()
+            {
+                planetNo = planet.no,
+                isDisp = planet.isDisp,
+                explanation = exp,
+                planetPt = point,
+                planetTxt = CommonData.getPlanetSymbol(planet.no),
+                planetColor = CommonData.getPlanetColor(planet.no)
+            };
+        }
 
     }
 }

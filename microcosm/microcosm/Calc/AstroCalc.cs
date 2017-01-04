@@ -70,8 +70,6 @@ namespace microcosm.Calc
 
             int ii = 0;
 
-            int target = 0;
-
             // utcに変換
             s.swe_utc_time_zone(year, month, day, hour, min, sec, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
@@ -492,9 +490,9 @@ namespace microcosm.Calc
                     // true apogee、リリス
                     continue;
                 }
-                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == CommonData.ZODIAC_EARTH)
+                if (config.centric == ECentric.GEO_CENTRIC && pair.Key == CommonData.ZODIAC_EARTH)
                 {
-                    // ヘリオセントリック地球
+                    // ジオセントリック地球
                     continue;
                 }
                 int flag = SwissEph.SEFLG_SWIEPH | SwissEph.SEFLG_SPEED;
@@ -615,9 +613,9 @@ namespace microcosm.Calc
                     // true apogee、リリス
                     continue;
                 }
-                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == CommonData.ZODIAC_EARTH)
+                if (config.centric == ECentric.GEO_CENTRIC && pair.Key == CommonData.ZODIAC_EARTH)
                 {
-                    // ヘリオセントリック地球
+                    // ジオセントリック地球
                     continue;
                 }
 

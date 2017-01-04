@@ -1,0 +1,14 @@
+﻿<Window x:Class="microcosm.ColorPick"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:microcosm"
+        mc:Ignorable="d"
+        Title="ColorPick" Height="300" Width="300">
+    <Grid>
+        <xctk:ColorPicker x:Name="_colorPicker"
+                           VerticalAlignment="Top" SelectedColorChanged="_colorPicker_SelectedColorChanged" />
+    </Grid>
+</Window>

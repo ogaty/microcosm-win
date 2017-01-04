@@ -2395,7 +2395,14 @@ namespace microcosm
             degreeLbl.Margin = new Thickness(displayData.degreePt.X, displayData.degreePt.Y, 0, 0);
             degreeLbl.Tag = displayData.explanation;
             degreeLbl.MouseEnter += planetMouseEnter;
-            if (config.color29 == Config.Color29.CHANGE && (displayData.degreeTxt == "29°" || displayData.degreeTxt == "00°"))
+            if (config.color29 == Config.Color29.CHANGE &&
+                (
+                    displayData.degreeTxt == "29°" ||
+                    displayData.degreeTxt == "00°" ||
+                    displayData.degreeTxt == "29" ||
+                    displayData.degreeTxt == "00"
+                    )
+                )
             {
                 degreeLbl.Foreground = new SolidColorBrush(Colors.Red);
                 degreeLbl.FontWeight = FontWeights.Bold;
@@ -2478,7 +2485,14 @@ namespace microcosm
             {
                 degreeLbl.TextDecorations = TextDecorations.Underline;
             }
-            if (config.color29 == Config.Color29.CHANGE && (displayData.degreeTxt == "29°" || displayData.degreeTxt == "00°"))
+            if (config.color29 == Config.Color29.CHANGE && 
+                    (
+                    displayData.degreeTxt == "29°" || 
+                    displayData.degreeTxt == "00°" ||
+                    displayData.degreeTxt == "29" ||
+                    displayData.degreeTxt == "00"
+                    )
+                )
             {
                 degreeLbl.Foreground = new SolidColorBrush(Colors.Red);
                 degreeLbl.FontWeight = FontWeights.Bold;
@@ -2865,7 +2879,8 @@ namespace microcosm
                 }
                 else if (aspects[j].aspectKind == Aspect.AspectKind.OPPOSITION)
                 {
-                    aspectLine.Stroke = System.Windows.Media.Brushes.Red;
+                    aspectLine.Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
+//                    aspectLine.Stroke = System.Windows.Media.Brushes.Red;
                     aspectLbl.Foreground = System.Windows.Media.Brushes.Red;
                     aspectLbl.Text = "☍";
                     aspectLbl.HorizontalAlignment = HorizontalAlignment.Left;
@@ -3396,5 +3411,12 @@ namespace microcosm
             }
         }
 
+        /*
+        private void color_Click(object sender, RoutedEventArgs e)
+        {
+            ColorPick c = new ColorPick();
+            c.Show();
+        }
+        */
     }
 }
