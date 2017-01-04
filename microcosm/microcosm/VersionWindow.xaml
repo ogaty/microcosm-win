@@ -10,7 +10,7 @@
         <StackPanel Margin="15,15,15,10">
             <StackPanel Orientation="Horizontal">
                 <Label Content="microcosm" FontWeight="Bold" FontSize="18"></Label>
-                <Label Content="Version 0.3" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
+                <Label Content="Version 0.4.2" FontWeight="Bold" VerticalAlignment="Bottom"></Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Label Content="(C) オガティ" Margin="20,0,0,0"></Label>

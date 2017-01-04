@@ -69,6 +69,7 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
+                    absolute_position %= 360;
                     index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
@@ -238,6 +239,7 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
+                    absolute_position %= 360;
                     index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
@@ -314,6 +316,7 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
+                    absolute_position %= 360;
                     index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
@@ -406,6 +409,7 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
+                    absolute_position %= 360;
                     index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
@@ -482,6 +486,7 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
+                    absolute_position %= 360;
                     index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
@@ -569,6 +574,7 @@ namespace microcosm
                     {
                         absolute_position = (int)planet.absolute_position;
                     }
+                    absolute_position %= 360;
                     index = (int)(absolute_position / 5);
                     if (box[index] == 1)
                     {
