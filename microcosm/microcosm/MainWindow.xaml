@@ -42,10 +42,6 @@
                 <MenuItem Header="カスタム(_E)" Click="MultipleRing_Click"/>
                 <MenuItem x:Name="noAspect" Header="アスペクト線非表示" Click="noAspect_Click" InputGestureText="Ctrl+A"></MenuItem>
             </MenuItem>
-            <MenuItem Header="ウィンドウ(_W)">
-                <MenuItem Header="時刻設定・出生(_N)" InputGestureText="Ctrl+N"  Click="ChartSelector_Click"></MenuItem>
-                <MenuItem Header="時刻設定・イベント(_T)" InputGestureText="Ctrl+T"  Click="ChartSelectorEvent_Click"></MenuItem>
-            </MenuItem>
             <MenuItem Header="設定(_C)">
                 <MenuItem Header="共通設定(_C)" Click="OpenCommonConfig_Click"></MenuItem>
                 <MenuItem Header="表示設定(_D)" Click="OpenDisplayConfig_Click"></MenuItem>
@@ -127,9 +123,9 @@
                 <ComboBoxItem>設定8</ComboBoxItem>
                 <ComboBoxItem>設定9</ComboBoxItem>
             </ComboBox>
-            <StackPanel>
+            <StackPanel Margin="0,10,0,0">
                 <TabControl x:Name="optionTab" Height="550">
-                    <TabItem Header="分布">
+                    <TabItem Header="時刻設定">
                         <Grid>
                             <StackPanel Orientation="Vertical">
                                 <GroupBox Header="時刻" Height="60" Margin="5,10">

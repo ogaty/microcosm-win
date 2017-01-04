@@ -73,7 +73,6 @@ namespace microcosm
 
         public CommonConfigWindow configWindow;
         public SettingWIndow setWindow;
-        public ChartSelectorWindow chartSelecterWindow;
         public DatabaseWindow dbWindow;
         public CustomRingWindow ringWindow;
         public VersionWindow versionWindow;
@@ -785,6 +784,14 @@ namespace microcosm
             houseSuccedent.DataContext = reportVM;
             houseCadent.DataContext = reportVM;
 
+            setYear.Text = targetUser.birth_year.ToString();
+            setMonth.Text = targetUser.birth_month.ToString();
+            setDay.Text = targetUser.birth_day.ToString();
+            setHour.Text = targetUser.birth_hour.ToString();
+            setMinute.Text = targetUser.birth_minute.ToString();
+            setSecond.Text = targetUser.birth_second.ToString();
+            setLat.Text = String.Format("{0:f4}", targetUser.lat);
+            setLng.Text = String.Format("{0:f4}", targetUser.lng);
         }
 
         public void ReCalc()
@@ -3088,29 +3095,6 @@ namespace microcosm
             setWindow.Visibility = Visibility.Visible;
         }
 
-        private void ChartSelector_Click(object sender, RoutedEventArgs e)
-        {
-            if (chartSelecterWindow == null)
-            {
-                chartSelecterWindow = new ChartSelectorWindow(this);
-            }
-            chartSelecterWindow.natalTime.IsChecked = true;
-            chartSelecterWindow.transitTime.IsChecked = false;
-            chartSelecterWindow.Visibility = Visibility.Visible;
-            chartSelecterWindow.Activate();
-        }
-        private void ChartSelectorEvent_Click(object sender, RoutedEventArgs e)
-        {
-            if (chartSelecterWindow == null)
-            {
-                chartSelecterWindow = new ChartSelectorWindow(this);
-            }
-            chartSelecterWindow.natalTime.IsChecked = false;
-            chartSelecterWindow.transitTime.IsChecked = true;
-            chartSelecterWindow.Visibility = Visibility.Visible;
-            chartSelecterWindow.Activate();
-        }
-
         private void mainWindow_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
@@ -3124,26 +3108,16 @@ namespace microcosm
                 else if (e.Key == Key.N)
                 {
                     // メニュー
-                    if (chartSelecterWindow == null)
-                    {
-                        chartSelecterWindow = new ChartSelectorWindow(this);
-                    }
-                    chartSelecterWindow.natalTime.IsChecked = true;
-                    chartSelecterWindow.transitTime.IsChecked = false;
-                    chartSelecterWindow.Visibility = Visibility.Visible;
-                    chartSelecterWindow.Activate();
+                    natalTime.IsChecked = true;
+                    transitTime.IsChecked = false;
+                    setYear.Focus();
                 }
                 else if (e.Key == Key.T)
                 {
                     // メニュー
-                    if (chartSelecterWindow == null)
-                    {
-                        chartSelecterWindow = new ChartSelectorWindow(this);
-                    }
-                    chartSelecterWindow.natalTime.IsChecked = false;
-                    chartSelecterWindow.transitTime.IsChecked = true;
-                    chartSelecterWindow.Visibility = Visibility.Visible;
-                    chartSelecterWindow.Activate();
+                    natalTime.IsChecked = false;
+                    transitTime.IsChecked = true;
+                    setYear.Focus();
                 }
             }
             else if (e.KeyboardDevice.IsKeyDown(Key.LeftShift) || e.KeyboardDevice.IsKeyDown(Key.RightShift))
@@ -3552,77 +3526,730 @@ namespace microcosm
 
         private void LeftYear_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitYear.Text);
+            int year = int.Parse(setYear.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void RightYear_Click(object sender, RoutedEventArgs e)
         {
+            int count = int.Parse(unitYear.Text);
+            int year = int.Parse(setYear.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
 
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddYears(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void LeftMonth_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitMonth.Text);
+            int month = int.Parse(setMonth.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void RightMonth_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitMonth.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(count);
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMonths(count);
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void LeftDay_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitDay.Text);
+            int month = int.Parse(setDay.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void RightDay_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitDay.Text);
+            int day = int.Parse(setDay.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddDays(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void LeftHour_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitHour.Text);
+            int hour = int.Parse(setHour.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                targetUser.birth_hour = newDt.Hour;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                userdata.birth_hour = newDt.Hour;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void RightHour_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitHour.Text);
+            int hour = int.Parse(setHour.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                targetUser.birth_second = newDt.Second;
+                targetUser.birth_minute = newDt.Minute;
+                targetUser.birth_hour = newDt.Hour;
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddHours(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                userdata.birth_second = newDt.Second;
+                userdata.birth_minute = newDt.Minute;
+                userdata.birth_hour = newDt.Hour;
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void LeftMinute_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitMinute.Text);
+            int minute = int.Parse(setMinute.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                targetUser.birth_second = newDt.Second;
+                targetUser.birth_minute = newDt.Minute;
+                targetUser.birth_hour = newDt.Hour;
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                userdata.birth_second = newDt.Second;
+                userdata.birth_minute = newDt.Minute;
+                userdata.birth_hour = newDt.Hour;
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void RightMinute_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitMinute.Text);
+            int minute = int.Parse(setMinute.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                targetUser.birth_second = newDt.Second;
+                targetUser.birth_minute = newDt.Minute;
+                targetUser.birth_hour = newDt.Hour;
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddMinutes(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                userdata.birth_second = newDt.Second;
+                userdata.birth_minute = newDt.Minute;
+                userdata.birth_hour = newDt.Hour;
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void LeftSecond_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitSecond.Text);
+            int second = int.Parse(setSecond.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                targetUser.birth_second = newDt.Second;
+                targetUser.birth_minute = newDt.Minute;
+                targetUser.birth_hour = newDt.Hour;
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(-1 * count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                userdata.birth_second = newDt.Second;
+                userdata.birth_minute = newDt.Minute;
+                userdata.birth_hour = newDt.Hour;
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void RightSecond_Click(object sender, RoutedEventArgs e)
         {
-
+            int count = int.Parse(unitSecond.Text);
+            int second = int.Parse(setSecond.Text);
+            if (natalTime.IsChecked == true)
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                targetUser.birth_second = newDt.Second;
+                targetUser.birth_minute = newDt.Minute;
+                targetUser.birth_hour = newDt.Hour;
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_year = newDt.Year;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                DateTime dt = new DateTime(int.Parse(setYear.Text),
+                    int.Parse(setMonth.Text),
+                    int.Parse(setDay.Text),
+                    int.Parse(setHour.Text),
+                    int.Parse(setMinute.Text),
+                    int.Parse(setSecond.Text));
+                DateTime newDt = dt.AddSeconds(count);
+                setDay.Text = newDt.Day.ToString();
+                setMonth.Text = newDt.Month.ToString();
+                setYear.Text = newDt.Year.ToString();
+                setHour.Text = newDt.Hour.ToString();
+                setMinute.Text = newDt.Minute.ToString();
+                setSecond.Text = newDt.Second.ToString();
+                userdata.birth_second = newDt.Second;
+                userdata.birth_minute = newDt.Minute;
+                userdata.birth_hour = newDt.Hour;
+                userdata.birth_day = newDt.Day;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_year = newDt.Year;
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void GotKeyboardFocusCommon(object sender, KeyboardFocusChangedEventArgs e)
         {
-
+            TextBox item = (TextBox)sender;
+            item.SelectAll();
         }
 
         private void LeftChange_Click(object sender, RoutedEventArgs e)
         {
+            int yearCount = int.Parse(unitYear.Text);
+            int monthCount = int.Parse(unitMonth.Text);
+            int dayCount = int.Parse(unitDay.Text);
+            int hourCount = int.Parse(unitHour.Text);
+            int minuteCount = int.Parse(unitMinute.Text);
+            int secondCount = int.Parse(unitSecond.Text);
+            int year = int.Parse(setYear.Text);
+            int month = int.Parse(setMonth.Text);
+            int day = int.Parse(setDay.Text);
+            int hour = int.Parse(setHour.Text);
+            int minute = int.Parse(setMinute.Text);
+            int second = int.Parse(setSecond.Text);
+            DateTime dt = new DateTime(int.Parse(setYear.Text),
+                int.Parse(setMonth.Text),
+                int.Parse(setDay.Text),
+                int.Parse(setHour.Text),
+                int.Parse(setMinute.Text),
+                int.Parse(setSecond.Text));
+            DateTime newDt = dt.AddSeconds(-1 * secondCount);
+            newDt = newDt.AddMinutes(-1 * minuteCount);
+            newDt = newDt.AddHours(-1 * hourCount);
+            newDt = newDt.AddDays(-1 * dayCount);
+            newDt = newDt.AddMonths(-1 * monthCount);
+            newDt = newDt.AddYears(-1 * yearCount);
+            setDay.Text = newDt.Day.ToString();
+            setMonth.Text = newDt.Month.ToString();
+            setYear.Text = newDt.Year.ToString();
+            setHour.Text = newDt.Hour.ToString();
+            setMinute.Text = newDt.Minute.ToString();
+            setSecond.Text = newDt.Second.ToString();
 
+            if (natalTime.IsChecked == true)
+            {
+                targetUser.birth_year = newDt.Year;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_hour = newDt.Month;
+                targetUser.birth_minute = newDt.Minute;
+                targetUser.birth_second = newDt.Second;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                userdata.birth_year = newDt.Year;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_day = newDt.Day;
+                userdata.birth_hour = newDt.Month;
+                userdata.birth_minute = newDt.Minute;
+                userdata.birth_second = newDt.Second;
+
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         private void RightChange_Click(object sender, RoutedEventArgs e)
         {
+            int yearCount = int.Parse(unitYear.Text);
+            int monthCount = int.Parse(unitMonth.Text);
+            int dayCount = int.Parse(unitDay.Text);
+            int hourCount = int.Parse(unitHour.Text);
+            int minuteCount = int.Parse(unitMinute.Text);
+            int secondCount = int.Parse(unitSecond.Text);
+            int year = int.Parse(setYear.Text);
+            int month = int.Parse(setMonth.Text);
+            int day = int.Parse(setDay.Text);
+            int hour = int.Parse(setHour.Text);
+            int minute = int.Parse(setMinute.Text);
+            int second = int.Parse(setSecond.Text);
+            DateTime dt = new DateTime(int.Parse(setYear.Text),
+                int.Parse(setMonth.Text),
+                int.Parse(setDay.Text),
+                int.Parse(setHour.Text),
+                int.Parse(setMinute.Text),
+                int.Parse(setSecond.Text));
+            DateTime newDt = dt.AddSeconds(secondCount);
+            newDt = newDt.AddMinutes(minuteCount);
+            newDt = newDt.AddHours(hourCount);
+            newDt = newDt.AddDays(dayCount);
+            newDt = newDt.AddMonths(monthCount);
+            newDt = newDt.AddYears(yearCount);
+            setDay.Text = newDt.Day.ToString();
+            setMonth.Text = newDt.Month.ToString();
+            setYear.Text = newDt.Year.ToString();
+            setHour.Text = newDt.Hour.ToString();
+            setMinute.Text = newDt.Minute.ToString();
+            setSecond.Text = newDt.Second.ToString();
 
+
+            if (natalTime.IsChecked == true)
+            {
+                targetUser.birth_year = newDt.Year;
+                targetUser.birth_month = newDt.Month;
+                targetUser.birth_day = newDt.Day;
+                targetUser.birth_hour = newDt.Month;
+                targetUser.birth_minute = newDt.Minute;
+                targetUser.birth_second = newDt.Second;
+                mainWindowVM.userBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            else
+            {
+                userdata.birth_year = newDt.Year;
+                userdata.birth_month = newDt.Month;
+                userdata.birth_day = newDt.Day;
+                userdata.birth_hour = newDt.Month;
+                userdata.birth_minute = newDt.Minute;
+                userdata.birth_second = newDt.Second;
+
+                mainWindowVM.transitBirthStr = String.Format("{0:D4}", int.Parse(setYear.Text)) + "/" + String.Format("{0:D2}", int.Parse(setMonth.Text)) + "/" + String.Format("{0:D2}", int.Parse(setDay.Text)) + " " +
+                    String.Format("{0:D2}", int.Parse(setHour.Text)) + ":" + String.Format("{0:D2}", int.Parse(setMinute.Text)) + ":" + String.Format("{0:D2}", int.Parse(setSecond.Text));
+            }
+            ReCalc();
+            ReRender();
         }
 
         /*
