@@ -872,11 +872,41 @@ namespace microcosm
                         {
                             string[] data = line.Split('\t');
                             string[] days = data[6].Split('-');
-                            string[] hours = data[7].Split(':');
+                            string[] hours = new string[3];
+                            double lat;
+                            double lng;
+                            if (data[7] == "")
+                            {
+                                hours[0] = "12";
+                                hours[1] = "0";
+                                hours[2] = "0";
+                            }
+                            else
+                            {
+                                hours = data[7].Split(':');
+                            }
+                            if (data[9] == "")
+                            {
+                                // TODO
+                                lat = 35.670587;
+                            }
+                            else
+                            {
+                                lat = double.Parse(data[9]);
+                            }
+                            if (data[10] == "")
+                            {
+                                lng = 139.772003;
+                            }
+                            else
+                            {
+                                lng = double.Parse(data[10]);
+                            }
+
                             UserData udata = new UserData(data[1], data[2], 
                                 int.Parse(days[0]), int.Parse(days[1]), int.Parse(days[2]), 
                                 int.Parse(hours[0]), int.Parse(hours[1]), int.Parse(hours[2]), 
-                                double.Parse(data[9]), double.Parse(data[10]), data[8], data[6], data[11]);
+                                lat, lng, data[8], data[6], data[11]);
                             string filename = data[1] + ".csm";
                             Assembly myAssembly = Assembly.GetEntryAssembly();
                             string path =  System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\AMATERU\" + filename;
@@ -946,26 +976,40 @@ namespace microcosm
                             // data[2] lat
                             // data[3] lng
                             // data[4] other
-
-                            int year = int.Parse(data[0].Substring(0, 4));
-                            int month = int.Parse(data[0].Substring(4, 2));
-                            int day = int.Parse(data[0].Substring(6, 2));
-
-                            int hour = int.Parse(data[1].Substring(0, 2));
-                            int minute = int.Parse(data[1].Substring(2, 2));
-                            int second = int.Parse(data[1].Substring(4, 2));
-
-                            string[] name = data[4].Split(',');
-                            name[0] = name[0].Replace("\"", "");
-                            name[1] = name[1].Replace("\"", "");
-
-                            UserData udata = new UserData(name[1], "",
-                                year, month, day,
-                                hour, minute, second,
-                                double.Parse(data[2]), double.Parse(data[3]), name[0], "", "JST");
-                            string filename = name[1] + ".csm";
+                            UserData udata = new UserData();
+                            string filename = "";
                             Assembly myAssembly = Assembly.GetEntryAssembly();
                             string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Stargazer\" + filename;
+
+                            try
+                            {
+                                int year = int.Parse(data[0].Substring(0, 4));
+                                int month = int.Parse(data[0].Substring(4, 2));
+                                int day = int.Parse(data[0].Substring(6, 2));
+
+                                int hour = int.Parse(data[1].Substring(0, 2));
+                                int minute = int.Parse(data[1].Substring(2, 2));
+                                int second = int.Parse(data[1].Substring(4, 2));
+
+                                string[] name = data[4].Split(',');
+                                name[0] = name[0].Replace("\"", "");
+                                name[1] = name[1].Replace("\"", "");
+                                udata = new UserData(name[1], "",
+                                    year, month, day,
+                                    hour, minute, second,
+                                    double.Parse(data[2]), double.Parse(data[3]), name[0], "", "JST");
+                                filename = name[1] + ".csm";
+                                path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Stargazer\" + filename;
+                            }
+                            catch (FormatException fe)
+                            {
+                                Console.WriteLine(fe.Message);
+                            }
+                            catch(ArgumentOutOfRangeException oe)
+                            {
+                                Console.WriteLine(oe.Message);
+                            }
+
 
                             try
                             {

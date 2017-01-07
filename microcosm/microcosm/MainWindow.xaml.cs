@@ -3095,6 +3095,9 @@ namespace microcosm
             setWindow.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// 右クリック関連
+        /// </summary>
         private void mainWindow_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
@@ -3119,6 +3122,47 @@ namespace microcosm
                     transitTime.IsChecked = true;
                     setYear.Focus();
                 }
+                else if (e.Key == Key.D0)
+                {
+                    dispSettingBox.SelectedIndex = 0;
+                }
+                else if (e.Key == Key.D1)
+                {
+                    dispSettingBox.SelectedIndex = 1;
+                }
+                else if (e.Key == Key.D2)
+                {
+                    dispSettingBox.SelectedIndex = 2;
+                }
+                else if (e.Key == Key.D3)
+                {
+                    dispSettingBox.SelectedIndex = 3;
+                }
+                else if (e.Key == Key.D4)
+                {
+                    dispSettingBox.SelectedIndex = 4;
+                }
+                else if (e.Key == Key.D5)
+                {
+                    dispSettingBox.SelectedIndex = 5;
+                }
+                else if (e.Key == Key.D6)
+                {
+                    dispSettingBox.SelectedIndex = 6;
+                }
+                else if (e.Key == Key.D7)
+                {
+                    dispSettingBox.SelectedIndex = 7;
+                }
+                else if (e.Key == Key.D8)
+                {
+                    dispSettingBox.SelectedIndex = 8;
+                }
+                else if (e.Key == Key.D9)
+                {
+                    dispSettingBox.SelectedIndex = 9;
+                }
+
             }
             else if (e.KeyboardDevice.IsKeyDown(Key.LeftShift) || e.KeyboardDevice.IsKeyDown(Key.RightShift))
             {
@@ -3146,46 +3190,6 @@ namespace microcosm
                     tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
                     ReCalc();
                     ReRender();
-                }
-                if (e.Key == Key.D0)
-                {
-                    dispSettingBox.SelectedIndex = 0;
-                }
-                if (e.Key == Key.D1)
-                {
-                    dispSettingBox.SelectedIndex = 1;
-                }
-                if (e.Key == Key.D2)
-                {
-                    dispSettingBox.SelectedIndex = 2;
-                }
-                if (e.Key == Key.D3)
-                {
-                    dispSettingBox.SelectedIndex = 3;
-                }
-                if (e.Key == Key.D4)
-                {
-                    dispSettingBox.SelectedIndex = 4;
-                }
-                if (e.Key == Key.D5)
-                {
-                    dispSettingBox.SelectedIndex = 5;
-                }
-                if (e.Key == Key.D6)
-                {
-                    dispSettingBox.SelectedIndex = 6;
-                }
-                if (e.Key == Key.D7)
-                {
-                    dispSettingBox.SelectedIndex = 7;
-                }
-                if (e.Key == Key.D8)
-                {
-                    dispSettingBox.SelectedIndex = 8;
-                }
-                if (e.Key == Key.D9)
-                {
-                    dispSettingBox.SelectedIndex = 9;
                 }
             }
 

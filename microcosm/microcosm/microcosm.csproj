@@ -95,9 +95,6 @@
     <Compile Include="Aspect\Explanation.cs" />
     <Compile Include="Calc\AspectCalc.cs" />
     <Compile Include="Calc\AstroCalc.cs" />
-    <Compile Include="ChartSelectorWindow.xaml.cs">
-      <DependentUpon>ChartSelectorWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ColorPick.xaml.cs">
       <DependentUpon>ColorPick.xaml</DependentUpon>
     </Compile>
@@ -161,10 +158,6 @@
     <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\RingCanvasViewModel.cs" />
     <Compile Include="ViewModel\SettingWindowViewModel.cs" />
-    <Page Include="ChartSelectorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ColorPick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
