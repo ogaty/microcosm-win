@@ -75,6 +75,9 @@ namespace microcosm.Common
         public const int SIGN_AQUARIUS = 10;
         public const int SIGN_PISCES = 11;
 
+        public static double defaultLat = 35.670587;
+        public static double defaultLng = 139.772003;
+
         // タイムゾーンを返す
         public static double getTimezone(string timezone)
         {

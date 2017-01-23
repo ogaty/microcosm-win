@@ -113,6 +113,9 @@
     <Compile Include="CustomRingWindow.xaml.cs">
       <DependentUpon>CustomRingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseProcessWindow.xaml.cs">
+      <DependentUpon>DatabaseProcessWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseWindow.xaml.cs">
       <DependentUpon>DatabaseWindow.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,7 @@
     <Compile Include="ViewModel\Report.cs" />
     <Compile Include="ViewModel\RingCanvasViewModel.cs" />
     <Compile Include="ViewModel\SettingWindowViewModel.cs" />
+    <Compile Include="ViewModel\UserEventTag.cs" />
     <Page Include="ColorPick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomRingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DatabaseProcessWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

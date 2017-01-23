@@ -31,6 +31,7 @@ namespace microcosm
         public DatabaseWindowViewModel vm;
         public UserEditWindow editwindow;
         public UserEventEditWindow eventEditWindow;
+        public DatabaseProcessWindow processWindow;
         public DatabaseWindow(MainWindow mainwindow)
         {
             this.mainwindow = mainwindow;
@@ -58,36 +59,23 @@ namespace microcosm
             {
                 return;
             }
-            UserData udata = (UserData)UserEvent.Tag;
+            UserEventTag utag = (UserEventTag)UserEvent.Tag;
+            UserData udata;
+            if (utag.ecsm)
+            {
+                udata = (UserData)UserEvent.SelectedItem;
+            }
+            else
+            {
+                udata = (UserData)utag.udata;
+            }
+
             UserEventData edata;
             mainwindow.targetUser = udata;
             if (UserEvent.SelectedItem is UserData)
             {
-                edata = new UserEventData()
-                {
-                    name = udata.name,
-                    birth_year = udata.birth_year,
-                    birth_month = udata.birth_month,
-                    birth_day = udata.birth_day,
-                    birth_hour = udata.birth_hour,
-                    birth_minute = udata.birth_minute,
-                    birth_second = udata.birth_second,
-                    birth_place = udata.birth_place,
-                    lat = udata.lat,
-                    lng = udata.lng,
-                    timezone = udata.timezone,
-                    memo = udata.memo,
-                    birth_str = String.Format("{0}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}",
-                        udata.birth_year,
-                        udata.birth_month,
-                        udata.birth_day,
-                        udata.birth_hour,
-                        udata.birth_minute,
-                        udata.birth_second
-                    ),
-                    lat_lng = String.Format("{0:00.000}/{1:000.000}", udata.lat, udata.lng),
-                    fullpath = udata.filename
-                };
+                // edataは変更しない（でいいよね）
+                edata = mainwindow.userdata;
             }
             else
             {
@@ -860,92 +848,13 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
-                int success = 0;
-                int err = 0;
-                using (Stream fileStream = oFD.OpenFile())
+                if (processWindow == null)
                 {
-                    StreamReader sr = new StreamReader(fileStream, true);
-                    while (sr.Peek() >= 0)
-                    {
-                        string line = sr.ReadLine();
-                        if (line.IndexOf("NATAL") == 0)
-                        {
-                            string[] data = line.Split('\t');
-                            string[] days = data[6].Split('-');
-                            string[] hours = new string[3];
-                            double lat;
-                            double lng;
-                            if (data[7] == "")
-                            {
-                                hours[0] = "12";
-                                hours[1] = "0";
-                                hours[2] = "0";
-                            }
-                            else
-                            {
-                                hours = data[7].Split(':');
-                            }
-                            if (data[9] == "")
-                            {
-                                // TODO
-                                lat = 35.670587;
-                            }
-                            else
-                            {
-                                lat = double.Parse(data[9]);
-                            }
-                            if (data[10] == "")
-                            {
-                                lng = 139.772003;
-                            }
-                            else
-                            {
-                                lng = double.Parse(data[10]);
-                            }
-
-                            UserData udata = new UserData(data[1], data[2], 
-                                int.Parse(days[0]), int.Parse(days[1]), int.Parse(days[2]), 
-                                int.Parse(hours[0]), int.Parse(hours[1]), int.Parse(hours[2]), 
-                                lat, lng, data[8], data[6], data[11]);
-                            string filename = data[1] + ".csm";
-                            Assembly myAssembly = Assembly.GetEntryAssembly();
-                            string path =  System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\AMATERU\" + filename;
-
-                            try
-                            {
-                                if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
-                                {
-                                    Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
-                                }
-                                XmlSerializer serializer = new XmlSerializer(typeof(UserData));
-                                FileStream fs = new FileStream(path, FileMode.Create);
-                                StreamWriter sw = new StreamWriter(fs);
-                                serializer.Serialize(sw, udata);
-                                sw.Close();
-                                fs.Close();
-                                success++;
-                            }
-                            catch (IOException)
-                            {
-                                err++;
-                            }
-
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                    vm.CreateTree();
+                    processWindow = new DatabaseProcessWindow(this);
                 }
-                if (err == 0)
-                {
-                    MessageBox.Show("完了しました。");
-                }
-                else
-                {
-                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
-                }
+                processWindow.Visibility = Visibility.Visible;
+                processWindow.Focus();
+                processWindow.startAmateru(oFD);
             }
 
         }
@@ -959,93 +868,13 @@ namespace microcosm
             if (result == true)
             {
                 string fileName = oFD.FileName;
-                int success = 0;
-                int err = 0;
-                using (Stream fileStream = oFD.OpenFile())
+                if (processWindow == null)
                 {
-                    StreamReader sr = new StreamReader(fileStream, Encoding.GetEncoding("shift-jis"), true);
-                    while (sr.Peek() >= 0)
-                    {
-                        string line = sr.ReadLine();
-                        if (line.IndexOf(",") > 0)
-                        {
-                            string trimdata = line.Replace("  ", " ");
-                            string[] data = trimdata.Split(' ');
-                            // data[0] ymd
-                            // data[1] his
-                            // data[2] lat
-                            // data[3] lng
-                            // data[4] other
-                            UserData udata = new UserData();
-                            string filename = "";
-                            Assembly myAssembly = Assembly.GetEntryAssembly();
-                            string path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Stargazer\" + filename;
-
-                            try
-                            {
-                                int year = int.Parse(data[0].Substring(0, 4));
-                                int month = int.Parse(data[0].Substring(4, 2));
-                                int day = int.Parse(data[0].Substring(6, 2));
-
-                                int hour = int.Parse(data[1].Substring(0, 2));
-                                int minute = int.Parse(data[1].Substring(2, 2));
-                                int second = int.Parse(data[1].Substring(4, 2));
-
-                                string[] name = data[4].Split(',');
-                                name[0] = name[0].Replace("\"", "");
-                                name[1] = name[1].Replace("\"", "");
-                                udata = new UserData(name[1], "",
-                                    year, month, day,
-                                    hour, minute, second,
-                                    double.Parse(data[2]), double.Parse(data[3]), name[0], "", "JST");
-                                filename = name[1] + ".csm";
-                                path = System.IO.Path.GetDirectoryName(myAssembly.Location) + @"\data\Stargazer\" + filename;
-                            }
-                            catch (FormatException fe)
-                            {
-                                Console.WriteLine(fe.Message);
-                            }
-                            catch(ArgumentOutOfRangeException oe)
-                            {
-                                Console.WriteLine(oe.Message);
-                            }
-
-
-                            try
-                            {
-                                if (!Directory.Exists(System.IO.Path.GetDirectoryName(path)))
-                                {
-                                    Directory.CreateDirectory(System.IO.Path.GetDirectoryName(path));
-                                }
-                                XmlSerializer serializer = new XmlSerializer(typeof(UserData));
-                                FileStream fs = new FileStream(path, FileMode.Create);
-                                StreamWriter sw = new StreamWriter(fs);
-                                serializer.Serialize(sw, udata);
-                                sw.Close();
-                                fs.Close();
-                                success++;
-                            } 
-                            catch (IOException)
-                            {
-                                err++;
-                            }
-
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                    vm.CreateTree();
+                    processWindow = new DatabaseProcessWindow(this);
                 }
-                if (err == 0)
-                {
-                    MessageBox.Show("完了しました。");
-                }
-                else
-                {
-                    MessageBox.Show("完了しました。(エラー" + err.ToString() + "件発生");
-                }
+                processWindow.Visibility = Visibility.Visible;
+                processWindow.Focus();
+                processWindow.startSG(oFD);
             }
         }
 

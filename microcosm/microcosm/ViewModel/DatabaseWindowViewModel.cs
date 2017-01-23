@@ -140,11 +140,30 @@ namespace microcosm.ViewModel
         {
             TreeViewItem item = (TreeViewItem)sender;
             DbItem iteminfo = (DbItem)item.Tag;
+            if (iteminfo.ecsm)
+            {
+                List<UserData> ulist = iteminfo.getUserlist();
+                dbwindow.UserEvent.Items.Clear();
+                foreach (UserData d in ulist)
+                {
+                    dbwindow.UserEvent.Items.Add(d);
+                    // コンテキストメニューは生成しない
+                }
+                dbwindow.UserEvent.Tag = new UserEventTag()
+                {
+                    ecsm = true
+                };
+                return;
+            }
             UserData udata = iteminfo.getUserdata();
 
             dbwindow.UserEvent.Items.Clear();
             dbwindow.UserEvent.Items.Add(udata);
-            dbwindow.UserEvent.Tag = udata;
+            dbwindow.UserEvent.Tag = new UserEventTag()
+            {
+                ecsm = false,
+                udata = udata
+            };
 
             if (udata.userevent == null)
             {
@@ -263,14 +282,27 @@ namespace microcosm.ViewModel
 
             foreach (var file in directoryInfo.GetFiles())
             {
+                if (file.Extension != ".csm" && file.Extension != ".ecsm") continue;
                 // ファイル
                 string trimName = System.IO.Path.GetFileNameWithoutExtension(file.Name);
                 TreeViewItem item = new TreeViewItem { Header = trimName };
-                item.Tag = new DbItem
+                if (file.Extension == ".ecsm")
                 {
-                    fileName = file.FullName,
-                    isDir = false
-                };
+                    item.Tag = new DbItem
+                    {
+                        fileName = file.FullName,
+                        isDir = false,
+                        ecsm = true
+                    };
+                }
+                else
+                {
+                    item.Tag = new DbItem
+                    {
+                        fileName = file.FullName,
+                        isDir = false
+                    };
+                }
                 item.ContextMenu = context;
                 item.Selected += UserItem_Selected;
                 item.MouseDoubleClick += UserItem_MouseDoubleClick;

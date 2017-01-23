@@ -120,8 +120,8 @@ namespace microcosm.Config
             centric = ECentric.GEO_CENTRIC;
             sidereal = Esidereal.TROPICAL;
             defaultPlace = "東京都千代田区";
-            lat = 35.670587;
-            lng = 139.772003;
+            lat = Common.CommonData.defaultLat;
+            lng = Common.CommonData.defaultLng;
             houseCalc = EHouseCalc.PLACIDUS;
             zodiacOuterWidth = 470;
             zodiacWidth = 60;
@@ -138,8 +138,8 @@ namespace microcosm.Config
             centric = ECentric.GEO_CENTRIC;
             sidereal = Esidereal.TROPICAL;
             defaultPlace = "東京都千代田区";
-            lat = 35.670587;
-            lng = 139.772003;
+            lat = Common.CommonData.defaultLat;
+            lng = Common.CommonData.defaultLng;
             houseCalc = EHouseCalc.PLACIDUS;
             zodiacOuterWidth = 470;
             zodiacWidth = 60;
