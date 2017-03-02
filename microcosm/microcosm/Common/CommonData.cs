@@ -126,7 +126,12 @@ namespace microcosm.Common
             }
             return 0;
         }
-        // 番号を引数に天体のシンボルを返す
+
+        /// <summary>
+        /// 番号を引数に天体のシンボルを返す
+        /// </summary>
+        /// <param name="number">天体番号</param>
+        /// <returns></returns>
         public static string getPlanetSymbol(int number)
         {
             switch (number)
@@ -164,7 +169,11 @@ namespace microcosm.Common
             return "";
         }
 
-        // 番号を引数に天体の文字列を返す
+        /// <summary>
+        /// 番号を引数に天体の文字列を返す
+        /// </summary>
+        /// <param name="number">天体番号</param>
+        /// <returns></returns>
         public static string getPlanetText(int number)
         {
             switch (number)
@@ -205,7 +214,11 @@ namespace microcosm.Common
             return "";
         }
 
-        // 番号を引数にサインのシンボルを返す
+        /// <summary>
+        /// 番号を引数にサインのシンボルを返す
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static string getSignSymbol(int number)
         {
             switch (number)
@@ -238,7 +251,11 @@ namespace microcosm.Common
             return "";
         }
 
-        // 番号を引数にサインルーラーのシンボルを返す
+        /// <summary>
+        /// 番号を引数にサインルーラーのシンボル(UTF文字)を返す
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static string getSignRulersSymbol(int number)
         {
             switch (number)
@@ -283,7 +300,11 @@ namespace microcosm.Common
             return "";
         }
 
-        // planetNoを引数に所属するサインルーラーの番号を返す
+        /// <summary>
+        /// planetNoを引数に所属するサインルーラーの番号を返す
+        /// </summary>
+        /// <param name="planetNo"></param>
+        /// <returns></returns>
         public static int getSignRulersNo(int planetNo)
         {
             switch (planetNo)
@@ -433,7 +454,11 @@ namespace microcosm.Common
             return getSignSymbol((int)absolute_position / 30);
         }
 
-        // サインテキストを返す(0:♈、11:♓)
+        /// <summary>
+        /// サインテキストを返す(0:♈、11:♓)
+        /// </summary>
+        /// <param name="absolute_position"></param>
+        /// <returns></returns>
         public static string getSignTextJp(double absolute_position)
         {
             switch((int)absolute_position / 30)

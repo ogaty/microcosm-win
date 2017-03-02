@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace microcosm
 {
-    public class Dispositer
+    public class Dispositor
     {
-        public int no;
-        public int next;
+        public int no = 0;
+        public int next = 0;
         public List<int> prev;
-        public int x;
-        public int y;
+        public int x = 0;
+        public int y = 0;
+        public bool final = false;
     }
 }

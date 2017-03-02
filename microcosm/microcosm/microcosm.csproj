@@ -140,7 +140,7 @@
       <DependentUpon>PlaceSearchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DB\XMLDBManager.cs" />
-    <Compile Include="Dispositer.cs" />
+    <Compile Include="Dispositor.cs" />
     <Compile Include="MainWindowPlanetRender.cs" />
     <Compile Include="Planet\PlanetData.cs" />
     <Compile Include="Planet\PlanetDisplay.cs" />

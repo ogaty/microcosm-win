@@ -633,7 +633,7 @@ namespace microcosm
         {
             // 重ならないようにずらしを入れる
             // 1サインに6度単位5個までデータが入る
-            int index = (int)(absolute_position / 5);
+            int index = (int)(absolute_position / 5) % 72;
             if (box[index] == 1)
             {
                 while (box[index] == 1)
