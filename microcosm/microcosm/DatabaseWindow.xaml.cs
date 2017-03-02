@@ -231,11 +231,11 @@ namespace microcosm
             {
                 return;
             }
-            UserData udata = (UserData)UserEvent.Tag;
+            UserData udata;
             UserEventData edata;
-            mainwindow.targetUser = udata;
             if (UserEvent.SelectedItem is UserData)
             {
+                udata = (UserData)UserEvent.SelectedItem;
                 edata = new UserEventData()
                 {
                     name = udata.name,
@@ -262,11 +262,28 @@ namespace microcosm
                     fullpath = udata.filename
                 };
                 mainwindow.userdata = edata;
+                mainwindow.targetUser = udata;
             }
             else
             {
                 mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
                 edata = (UserEventData)UserEvent.SelectedItem;
+                udata = new UserData()
+                {
+                    name = edata.name,
+                    birth_year = edata.birth_year,
+                    birth_month = edata.birth_month,
+                    birth_day = edata.birth_day,
+                    birth_hour = edata.birth_hour,
+                    birth_minute = edata.birth_minute,
+                    birth_second = edata.birth_second,
+                    birth_place = edata.birth_place,
+                    lat = edata.lat,
+                    lng = edata.lng,
+                    timezone = edata.timezone,
+                    memo = edata.memo,
+                };
+                mainwindow.targetUser = udata;
             }
             mainwindow.userdata = edata;
             mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
