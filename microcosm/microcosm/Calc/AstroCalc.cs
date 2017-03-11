@@ -231,6 +231,54 @@ namespace microcosm.Calc
             return planetdata;
         }
 
+        public PlanetData PositionCalcSingle(int no, DateTime d)
+        {
+            // absolute position
+            double[] x = { 0, 0, 0, 0, 0, 0 };
+            string serr = "";
+
+            int utc_year = 0;
+            int utc_month = 0;
+            int utc_day = 0;
+            int utc_hour = 0;
+            int utc_minute = 0;
+            double utc_second = 0;
+
+            // [0]:Ephemeris Time [1]:Universal Time
+            double[] dret = { 0.0, 0.0 };
+
+            // utcに変換
+            s.swe_utc_time_zone(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
+            s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
+
+
+            int flag = SwissEph.SEFLG_SWIEPH | SwissEph.SEFLG_SPEED;
+            if (config.centric == ECentric.HELIO_CENTRIC)
+                flag |= SwissEph.SEFLG_HELCTR;
+            if (config.sidereal == Esidereal.SIDEREAL)
+            {
+                flag |= SwissEph.SEFLG_SIDEREAL;
+                s.swe_set_sid_mode(SwissEph.SE_SIDM_LAHIRI, 0, 0);
+                // ayanamsa計算
+                double daya = 0.0;
+                double ut = s.swe_get_ayanamsa_ex_ut(dret[1], SwissEph.SEFLG_SWIEPH, out daya, ref serr);
+
+                // Ephemeris Timeで計算, 結果はxに入る
+                s.swe_calc_ut(dret[1], no, flag, x, ref serr);
+            }
+            else
+            {
+                // Universal Timeで計算, 結果はxに入る
+                s.swe_calc_ut(dret[1], no, flag, x, ref serr);
+            }
+
+
+            PlanetData planetData = new PlanetData();
+            planetData.no = no;
+
+            return planetData;
+        }
+
         /// <summary>
         /// unittest用
         /// </summary>

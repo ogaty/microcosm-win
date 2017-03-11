@@ -46,7 +46,9 @@ namespace microcosm
         public ReportViewModel reportVM;
 
         public UserData targetUser;
+        public UserData targetUser2;
         public UserEventData userdata;
+        public UserEventData userdata2;
 
         public Dictionary<int, int> dispListMap;
 
@@ -72,6 +74,8 @@ namespace microcosm
         public Dictionary<int, bool> checkList = new Dictionary<int, bool>();
 
         public bool ctrl_a = false;
+
+        public int currentTarget = 1;
 
         public CommonConfigWindow configWindow;
         public SettingWIndow setWindow;
@@ -660,7 +664,26 @@ namespace microcosm
         private void SetViewModel()
         {
             targetUser = new UserData(config);
+            targetUser2 = new UserData(config);
             userdata = new UserEventData()
+            {
+                name = targetUser.name,
+                birth_year = targetUser.birth_year,
+                birth_month = targetUser.birth_month,
+                birth_day = targetUser.birth_day,
+                birth_hour = targetUser.birth_hour,
+                birth_minute = targetUser.birth_minute,
+                birth_second = targetUser.birth_second,
+                birth_place = targetUser.birth_place,
+                birth_str = targetUser.birth_str,
+                lat = targetUser.lat,
+                lng = targetUser.lng,
+                lat_lng = targetUser.lat_lng,
+                timezone = targetUser.timezone,
+                memo = targetUser.memo,
+                fullpath = targetUser.filename
+            };
+            userdata2 = new UserEventData()
             {
                 name = targetUser.name,
                 birth_year = targetUser.birth_year,
@@ -688,7 +711,7 @@ namespace microcosm
                 userBirthPlace = targetUser.birth_place,
                 userLat = String.Format("{0:f4}", targetUser.lat),
                 userLng = String.Format("{0:f4}", targetUser.lng),
-                transitName = "イベント未設定",
+                transitName = "現在時刻",
                 transitBirthStr = tb.birthStr,
                 transitTimezone = targetUser.timezone,
                 transitPlace = targetUser.birth_place,
@@ -747,7 +770,16 @@ namespace microcosm
             }
 
             UserEventData edata = CommonData.udata2event(targetUser);
-            ReCalc(edata, edata, edata, edata, edata, edata, edata);
+            List<UserEventData> listEventData = new List<UserEventData>();
+            listEventData.Add(edata);
+            listEventData.Add(edata);
+            listEventData.Add(edata);
+            listEventData.Add(edata);
+            listEventData.Add(edata);
+            listEventData.Add(edata);
+            listEventData.Add(edata);
+            // 一番最初のReCalc
+            ReCalc(listEventData);
 
             //viewmodel設定
             firstPList = new PlanetListViewModel(this, list1, list2, list3, list4, list5, list6);
@@ -804,11 +836,29 @@ namespace microcosm
 
             if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.USER1)
             {
+                // 1番目の円がnatalの場合、userDataをuserEventDataにする
                 UserEventData edata = CommonData.udata2event(targetUser);
-                ReCalc(edata, userdata, userdata, userdata, userdata, userdata, userdata);
+                List<UserEventData> listEventData = new List<UserEventData>();
+                listEventData.Add(edata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                ReCalc(listEventData);
             } else
             {
-                ReCalc(userdata, userdata, userdata, userdata, userdata, userdata, userdata);
+                // 1番目の円がnatalじゃない場合
+                List<UserEventData> listEventData = new List<UserEventData>();
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                listEventData.Add(userdata);
+                ReCalc(listEventData);
             }
 
             reportVM.ReCalcReport(list1, list2, list3, list4, list5, list6,
@@ -824,15 +874,47 @@ namespace microcosm
         // 再計算
         // 表示可否の時はここは呼ばない
         public void ReCalc(
-                UserEventData list1Data,
-                UserEventData list2Data,
-                UserEventData list3Data,
-                UserEventData list4Data,
-                UserEventData list5Data,
-                UserEventData list6Data,
-                UserEventData list7Data
+                List<UserEventData> listEventData
             )
         {
+            // 次のリファクタリングできれいにしよう
+            UserEventData list1Data = null;
+            UserEventData list2Data = null;
+            UserEventData list3Data = null;
+            UserEventData list4Data = null;
+            UserEventData list5Data = null;
+            UserEventData list6Data = null;
+            UserEventData list7Data = null;
+            if (listEventData.Count > 0)
+            {
+                list1Data = listEventData[0];
+            }
+            if (listEventData.Count > 1)
+            {
+                list2Data = listEventData[1];
+            }
+            if (listEventData.Count > 2)
+            {
+                list3Data = listEventData[2];
+            }
+            if (listEventData.Count > 3)
+            {
+                list4Data = listEventData[3];
+            }
+            if (listEventData.Count > 4)
+            {
+                list5Data = listEventData[4];
+            }
+            if (listEventData.Count > 5)
+            {
+                list6Data = listEventData[5];
+            }
+            if (listEventData.Count > 6)
+            {
+                list7Data = listEventData[6];
+            }
+
+
             if (list1Data != null)
             {
                 if (tempSettings.firstBand == TempSetting.BandKind.PROGRESS)
@@ -3206,14 +3288,21 @@ namespace microcosm
         {
             natalSet();
             UserEventData edata = CommonData.udata2event(targetUser);
-            ReCalc(edata, null, null, null, null, null, null);
+
+            List<UserEventData> listEventData = new List<UserEventData>();
+            listEventData.Add(edata);
+            ReCalc(listEventData);
             ReRender();
         }
 
         private void Transit_Current_Click(object sender, RoutedEventArgs e)
         {
             transitSet();
-            ReCalc(null, userdata, null, null, null, null, null);
+            UserEventData edata = CommonData.udata2event(targetUser);
+            List<UserEventData> listEventData = new List<UserEventData>();
+            listEventData.Add(edata);
+            listEventData.Add(userdata);
+            ReCalc(listEventData);
             ReRender();
         }
 
@@ -3222,7 +3311,12 @@ namespace microcosm
             natalSet();
             transitSet();
             UserEventData edata = CommonData.udata2event(targetUser);
-            ReCalc(edata, userdata, null, null, null, null, null);
+
+            List<UserEventData> listEventData = new List<UserEventData>();
+            listEventData.Add(edata);
+            listEventData.Add(userdata);
+
+            ReCalc(listEventData);
             ReRender();
         }
 
@@ -4260,6 +4354,58 @@ namespace microcosm
             }
             ReCalc();
             ReRender();
+        }
+
+        private void changeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentTarget == 1)
+            {
+                mainWindowVM.transitName = userdata2.name;
+                mainWindowVM.transitBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", userdata2.birth_year,
+                    userdata2.birth_month, userdata2.birth_day, userdata2.birth_hour, userdata2.birth_minute, userdata2.birth_second);
+                mainWindowVM.transitTimezone = userdata2.timezone;
+                mainWindowVM.transitPlace = userdata2.birth_place;
+                mainWindowVM.transitLat = String.Format("{0:f4}", userdata2.lat);
+                mainWindowVM.transitLng = String.Format("{0:f4}", userdata2.lng);
+                currentTarget = 2;
+            }
+            else
+            {
+                mainWindowVM.transitName = userdata.name;
+                mainWindowVM.transitBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", userdata.birth_year,
+                    userdata.birth_month, userdata.birth_day, userdata.birth_hour, userdata.birth_minute, userdata.birth_second);
+                mainWindowVM.transitTimezone = userdata.timezone;
+                mainWindowVM.transitPlace = userdata.birth_place;
+                mainWindowVM.transitLat = String.Format("{0:f4}", userdata.lat);
+                mainWindowVM.transitLng = String.Format("{0:f4}", userdata.lng);
+                currentTarget = 1;
+            }
+        }
+
+        private void changeUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentTarget == 1)
+            {
+                mainWindowVM.userName = targetUser2.name;
+                mainWindowVM.userBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", targetUser2.birth_year,
+                    targetUser2.birth_month, targetUser2.birth_day, targetUser2.birth_hour, targetUser2.birth_minute, targetUser2.birth_second);
+                mainWindowVM.userTimezone = targetUser2.timezone;
+                mainWindowVM.userBirthPlace = targetUser2.birth_place;
+                mainWindowVM.userLat = String.Format("{0:f4}", targetUser2.lat);
+                mainWindowVM.userLng = String.Format("{0:f4}", targetUser2.lng);
+                currentTarget = 2;
+            }
+            else
+            {
+                mainWindowVM.userName = targetUser.name;
+                mainWindowVM.userBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", targetUser.birth_year,
+                    targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second);
+                mainWindowVM.userTimezone = targetUser.timezone;
+                mainWindowVM.userBirthPlace = targetUser.birth_place;
+                mainWindowVM.userLat = String.Format("{0:f4}", targetUser.lat);
+                mainWindowVM.userLng = String.Format("{0:f4}", targetUser.lng);
+                currentTarget = 1;
+            }
         }
 
         /*

@@ -55,40 +55,6 @@ namespace microcosm
         // 決定ボタン
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (UserEvent.SelectedItem == null)
-            {
-                return;
-            }
-            UserEventTag utag = (UserEventTag)UserEvent.Tag;
-            UserData udata;
-            if (utag.ecsm)
-            {
-                udata = (UserData)UserEvent.SelectedItem;
-            }
-            else
-            {
-                udata = (UserData)utag.udata;
-            }
-
-            UserEventData edata;
-            mainwindow.targetUser = udata;
-            if (UserEvent.SelectedItem is UserData)
-            {
-                // edataは変更しない（でいいよね）
-                edata = mainwindow.userdata;
-            }
-            else
-            {
-                mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
-                edata = (UserEventData)UserEvent.SelectedItem;
-            }
-            mainwindow.userdata = edata;
-            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
-            mainwindow.ReCalc();
-            mainwindow.ReRender();
-
-            this.Visibility = Visibility.Hidden;
         }
 
         // 新規作成(何もないところ右クリック)
@@ -1515,6 +1481,82 @@ namespace microcosm
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void data2Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            UserEventTag utag = (UserEventTag)UserEvent.Tag;
+            UserData udata;
+            if (utag.ecsm)
+            {
+                udata = (UserData)UserEvent.SelectedItem;
+            }
+            else
+            {
+                udata = (UserData)utag.udata;
+            }
+
+            UserEventData edata;
+            mainwindow.targetUser = udata;
+            if (UserEvent.SelectedItem is UserData)
+            {
+                // edataは変更しない（でいいよね）
+                edata = mainwindow.userdata;
+            }
+            else
+            {
+                mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
+                edata = (UserEventData)UserEvent.SelectedItem;
+            }
+            mainwindow.userdata = edata;
+            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
+            mainwindow.ReCalc();
+            mainwindow.ReRender();
+
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void data1Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            UserEventTag utag = (UserEventTag)UserEvent.Tag;
+            UserData udata;
+            if (utag.ecsm)
+            {
+                udata = (UserData)UserEvent.SelectedItem;
+            }
+            else
+            {
+                udata = (UserData)utag.udata;
+            }
+
+            UserEventData edata;
+            mainwindow.targetUser = udata;
+            if (UserEvent.SelectedItem is UserData)
+            {
+                // edataは変更しない（でいいよね）
+                edata = mainwindow.userdata;
+            }
+            else
+            {
+                mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
+                edata = (UserEventData)UserEvent.SelectedItem;
+            }
+            mainwindow.userdata = edata;
+            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
+                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
+            mainwindow.ReCalc();
+            mainwindow.ReRender();
+
             this.Visibility = Visibility.Hidden;
         }
     }
