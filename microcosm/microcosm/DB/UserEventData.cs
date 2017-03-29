@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace microcosm.DB
 {
-    // DatabaseWindowにバインドするリスト
+    /// <summary>
+    /// DatabaseWindowにバインドするリスト
+    /// </summary>
     public class UserEventData
     {
         public string name { get; set; }
-        public string birth_str { get; set; }
         public int birth_year { get; set; }
         public int birth_month { get; set; }
         public int birth_day { get; set; }
@@ -24,5 +25,69 @@ namespace microcosm.DB
         public string timezone { get; set; }
         public string memo { get; set; }
         public string fullpath { get; set; }
+        public string birth_str
+        {
+            get
+            {
+                return birth_year.ToString("0000") + "/" + birth_month.ToString("00") + "/" + birth_day.ToString("00") + " " +
+                    birth_hour.ToString("00") + ":" + birth_minute.ToString("00") + ":" + birth_second.ToString("00");
+            }
+        }
+        public string birth_str_ymd
+        {
+            get
+            {
+                return birth_year.ToString("0000") + "/" + birth_month.ToString("00") + "/" + birth_day.ToString("00") + " ";
+            }
+        }
+        public string birth_str_his
+        {
+            get
+            {
+                return birth_hour.ToString("00") + ":" + birth_minute.ToString("00") + ":" + birth_second.ToString("00");
+            }
+        }
+
+        public UserEventData()
+        {
+
+        }
+
+        public UserEventData(string name,
+            int year, int month, int day,
+            int hour, int minute, int second,
+            double lat, double lng, string place,
+            string memo, string timezone)
+        {
+            this.name = name;
+            this.birth_year = year;
+            this.birth_month = month;
+            this.birth_day = day;
+            this.birth_hour = hour;
+            this.birth_minute = minute;
+            this.birth_second = second;
+            this.birth_place = place;
+            this.lat = lat;
+            this.lng = lng;
+            this.memo = memo;
+            this.timezone = timezone;
+        }
+
+        public static explicit operator UserData(UserEventData ev) {
+            return new UserData(ev.name,
+                "",
+                ev.birth_year,
+                ev.birth_month,
+                ev.birth_day,
+                ev.birth_hour,
+                ev.birth_minute,
+                ev.birth_second,
+                ev.lat,
+                ev.lng,
+                ev.birth_place,
+                ev.memo,
+                ev.timezone);
+        }
+
     }
 }

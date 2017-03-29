@@ -53,6 +53,21 @@ namespace microcosm.DB
                     birth_hour.ToString("00") + ":" + birth_minute.ToString("00") + ":" + birth_second.ToString("00");
             }
         }
+        public string birth_str_ymd
+        {
+            get
+            {
+                return birth_year.ToString("0000") + "/" + birth_month.ToString("00") + "/" + birth_day.ToString("00") + " ";
+            }
+        }
+        public string birth_str_his
+        {
+            get
+            {
+                return birth_hour.ToString("00") + ":" + birth_minute.ToString("00") + ":" + birth_second.ToString("00");
+            }
+        }
+
 
         public string lat_lng
         {
@@ -177,6 +192,13 @@ namespace microcosm.DB
             return new UserEvent(val.name, val.birth_year, val.birth_month, val.birth_day,
                 val.birth_hour, val.birth_minute, val.birth_second, val.birth_place,
                 val.lat, val.lng, val.timezone, val.memo);
+        }
+
+        public static explicit operator UserEventData(UserData val)
+        {
+            return new UserEventData(val.name, val.birth_year, val.birth_month, val.birth_day,
+                val.birth_hour, val.birth_minute, val.birth_second, 
+                val.lat, val.lng, val.birth_place, val.timezone, val.memo);
         }
 
         public override string ToString()

@@ -77,6 +77,9 @@ namespace microcosm
 
         public int currentTarget = 1;
 
+        public int[] calcTargetUser = { 1, 1, 1, 1, 1, 1, 1 };
+        public int[] calcTargetEvent = { 1, 1, 1, 1, 1, 1, 1 };
+
         public CommonConfigWindow configWindow;
         public SettingWIndow setWindow;
         public DatabaseWindow dbWindow;
@@ -675,7 +678,6 @@ namespace microcosm
                 birth_minute = targetUser.birth_minute,
                 birth_second = targetUser.birth_second,
                 birth_place = targetUser.birth_place,
-                birth_str = targetUser.birth_str,
                 lat = targetUser.lat,
                 lng = targetUser.lng,
                 lat_lng = targetUser.lat_lng,
@@ -693,7 +695,6 @@ namespace microcosm
                 birth_minute = targetUser.birth_minute,
                 birth_second = targetUser.birth_second,
                 birth_place = targetUser.birth_place,
-                birth_str = targetUser.birth_str,
                 lat = targetUser.lat,
                 lng = targetUser.lng,
                 lat_lng = targetUser.lat_lng,
@@ -709,14 +710,14 @@ namespace microcosm
                 userBirthStr = ub.birthStr,
                 userTimezone = targetUser.timezone,
                 userBirthPlace = targetUser.birth_place,
-                userLat = String.Format("{0:f4}", targetUser.lat),
-                userLng = String.Format("{0:f4}", targetUser.lng),
+                userLat = String.Format("{0:f6}", targetUser.lat),
+                userLng = String.Format("{0:f6}", targetUser.lng),
                 transitName = "現在時刻",
                 transitBirthStr = tb.birthStr,
                 transitTimezone = targetUser.timezone,
                 transitPlace = targetUser.birth_place,
-                transitLat = String.Format("{0:f4}", targetUser.lat),
-                transitLng = String.Format("{0:f4}", targetUser.lng),
+                transitLat = String.Format("{0:f6}", targetUser.lat),
+                transitLng = String.Format("{0:f6}", targetUser.lng),
             };
             // 左上、右上表示
             this.DataContext = mainWindowVM;
@@ -828,36 +829,58 @@ namespace microcosm
             setLng.Text = String.Format("{0:f4}", targetUser.lng);
         }
 
+        /// <summary>
+        /// 再計算
+        /// </summary>
         public void ReCalc()
         {
 #if DEBUG
             DateTime startDt = DateTime.Now;
 #endif
 
-            if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.USER1)
+            if (tempSettings.firstBand == TempSetting.BandKind.NATAL)
             {
+                UserEventData edata;
                 // 1番目の円がnatalの場合、userDataをuserEventDataにする
-                UserEventData edata = CommonData.udata2event(targetUser);
+                if (calcTargetUser[0] == 1)
+                {
+                    edata = CommonData.udata2event(targetUser);
+                }
+                else
+                {
+                    edata = CommonData.udata2event(targetUser2);
+                }
+
                 List<UserEventData> listEventData = new List<UserEventData>();
                 listEventData.Add(edata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
+                for (int i = 1; i < 7; i++)
+                {
+                    if (calcTargetUser[1] == 1)
+                    {
+                        listEventData.Add(userdata);
+                    }
+                    else
+                    {
+                        listEventData.Add(userdata2);
+                    }
+                }
                 ReCalc(listEventData);
-            } else
+            }
+            else
             {
                 // 1番目の円がnatalじゃない場合
                 List<UserEventData> listEventData = new List<UserEventData>();
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
-                listEventData.Add(userdata);
+                for (int i = 0; i < 7; i++)
+                {
+                    if (calcTargetEvent[0] == 1)
+                    {
+                        listEventData.Add(userdata);
+                    }
+                    else
+                    {
+                        listEventData.Add(userdata2);
+                    }
+                }
                 ReCalc(listEventData);
             }
 
@@ -914,6 +937,68 @@ namespace microcosm
                 list7Data = listEventData[6];
             }
 
+            DateTime udata1;
+            DateTime edata1;
+            if (calcTargetUser[0] == 1)
+            {
+                udata1 = new DateTime(targetUser.birth_year,
+                        targetUser.birth_month,
+                        targetUser.birth_day,
+                        targetUser.birth_hour,
+                        targetUser.birth_minute,
+                        targetUser.birth_second
+                    );
+                if (calcTargetEvent[0] == 1)
+                {
+                    edata1 = new DateTime(userdata.birth_year,
+                            userdata.birth_month,
+                            userdata.birth_day,
+                            userdata.birth_hour,
+                            userdata.birth_minute,
+                            userdata.birth_second
+                        );
+                }
+                else
+                {
+                    edata1 = new DateTime(userdata2.birth_year,
+                            userdata2.birth_month,
+                            userdata2.birth_day,
+                            userdata2.birth_hour,
+                            userdata2.birth_minute,
+                            userdata2.birth_second
+                        );
+                }
+            }
+            else
+            {
+                udata1 = new DateTime(targetUser2.birth_year,
+                        targetUser2.birth_month,
+                        targetUser2.birth_day,
+                        targetUser2.birth_hour,
+                        targetUser2.birth_minute,
+                        targetUser2.birth_second
+                    );
+                if (calcTargetEvent[0] == 1)
+                {
+                    edata1 = new DateTime(userdata.birth_year,
+                            userdata.birth_month,
+                            userdata.birth_day,
+                            userdata.birth_hour,
+                            userdata.birth_minute,
+                            userdata.birth_second
+                        );
+                }
+                else
+                {
+                    edata1 = new DateTime(userdata2.birth_year,
+                            userdata2.birth_month,
+                            userdata2.birth_day,
+                            userdata2.birth_hour,
+                            userdata2.birth_minute,
+                            userdata2.birth_second
+                        );
+                }
+            }
 
             if (list1Data != null)
             {
@@ -921,6 +1006,7 @@ namespace microcosm
                 {
                     // プログレスの場合（まず使わないけど）
                     Dictionary<int, PlanetData> tempList;
+
                     switch (config.progression)
                     {
                         case EProgression.PRIMARY:
@@ -928,40 +1014,11 @@ namespace microcosm
                                 list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
                                 list1Data.lat, list1Data.lng, (int)config.houseCalc, 0);
 
-                            list1 = calc.PrimaryProgressionCalc(tempList,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
-                            );
+                            list1 = calc.PrimaryProgressionCalc(tempList, udata1, edata1);
                             if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
-                                houseList1 = calc.PrimaryProgressionHouseCalc(houseList1,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    )
-                                );
+                                houseList1 = calc.PrimaryProgressionHouseCalc(houseList1, udata1, edata1);
+
                             }
 
                             break;
@@ -971,40 +1028,12 @@ namespace microcosm
                                 list1Data.birth_hour, list1Data.birth_minute, list1Data.birth_second,
                                 list1Data.lat, list1Data.lng, (int)config.houseCalc, 0);
 
-                            list1 = calc.SecondaryProgressionCalc(tempList,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
-                            );
+
+                            list1 = calc.SecondaryProgressionCalc(tempList, udata1, edata1);
                             if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
                                 houseList1 = calc.SecondaryProgressionHouseCalc(houseList1,
-                                    tempList,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    ),
+                                    tempList, udata1, edata1,
                                     targetUser.lat,
                                     targetUser.lng,
                                     targetUser.timezone
@@ -1020,39 +1049,13 @@ namespace microcosm
                                 list1Data.lat, list1Data.lng, (int)config.houseCalc, 0);
 
                             list1 = calc.CompositProgressionCalc(tempList,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
+                                udata1, edata1
                             );
                             if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
                                 houseList1 = calc.CompositProgressionHouseCalc(houseList1,
                                     tempList,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    ),
+                                    udata1, edata1,
                                     targetUser.lat,
                                     targetUser.lng,
                                     targetUser.timezone
@@ -1071,9 +1074,18 @@ namespace microcosm
                 }
                 if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.USER1)
                 {
-                    houseList1 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
+                    if (calcTargetUser[0] == 1)
+                    {
+                        houseList1 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
                         targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second,
                         targetUser.lat, targetUser.lng, (int)config.houseCalc);
+                    }
+                    else
+                    {
+                        houseList1 = calc.CuspCalc(targetUser2.birth_year, targetUser2.birth_month, targetUser2.birth_day,
+                        targetUser2.birth_hour, targetUser2.birth_minute, targetUser2.birth_second,
+                        targetUser2.lat, targetUser2.lng, (int)config.houseCalc);
+                    }
                 }
                 else if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.EVENT1)
                 {
@@ -1090,38 +1102,12 @@ namespace microcosm
                     {
                         case EProgression.PRIMARY:
                             list2 = calc.PrimaryProgressionCalc(list1,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
+                                udata1, edata1
                             );
                             if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
                                 houseList2 = calc.PrimaryProgressionHouseCalc(houseList1,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    )
+                                    udata1, edata1
                                 );
                             }
 
@@ -1129,39 +1115,12 @@ namespace microcosm
 
                         case EProgression.SECONDARY:
                             list2 = calc.SecondaryProgressionCalc(list1,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
+                                udata1, edata1
                             );
                             if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
                                 houseList2 = calc.SecondaryProgressionHouseCalc(houseList1,
-                                    list1,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    ),
+                                    list1, udata1, edata1,
                                     targetUser.lat,
                                     targetUser.lng,
                                     targetUser.timezone
@@ -1173,39 +1132,14 @@ namespace microcosm
 
                         case EProgression.CPS:
                             list2 = calc.CompositProgressionCalc(list1,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
+                                udata1, edata1
                             );
                             if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
                                 houseList2 = calc.CompositProgressionHouseCalc(houseList1,
                                     list1,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    ),
+                                    udata1,
+                                    edata1,
                                     targetUser.lat,
                                     targetUser.lng,
                                     targetUser.timezone
@@ -1224,15 +1158,33 @@ namespace microcosm
                 }
                 if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.USER1)
                 {
-                    houseList2 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
+                    if (calcTargetUser[1] == 1)
+                    {
+                        houseList2 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
                         targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second,
                         targetUser.lat, targetUser.lng, (int)config.houseCalc);
+                    }
+                    else
+                    {
+                        houseList2 = calc.CuspCalc(targetUser2.birth_year, targetUser2.birth_month, targetUser2.birth_day,
+                        targetUser2.birth_hour, targetUser2.birth_minute, targetUser2.birth_second,
+                        targetUser2.lat, targetUser2.lng, (int)config.houseCalc);
+                    }
                 }
                 else if (tempSettings.secondHouseDiv == TempSetting.HouseDivide.EVENT1)
                 {
-                    houseList2 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
-                        userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
-                        userdata.lat, userdata.lng, (int)config.houseCalc);
+                    if (calcTargetEvent[1] == 1)
+                    {
+                        houseList2 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
+                            userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
+                            userdata.lat, userdata.lng, (int)config.houseCalc);
+                    }
+                    else
+                    {
+                        houseList2 = calc.CuspCalc(userdata2.birth_year, userdata2.birth_month, userdata2.birth_day,
+                            userdata2.birth_hour, userdata2.birth_minute, userdata2.birth_second,
+                            userdata2.lat, userdata2.lng, (int)config.houseCalc);
+                    }
                 }
             }
             if (list3Data != null)
@@ -1242,79 +1194,23 @@ namespace microcosm
                     switch (config.progression)
                     {
                         case EProgression.PRIMARY:
-                            list3 = calc.PrimaryProgressionCalc(list1,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
+                            list3 = calc.PrimaryProgressionCalc(list1, udata1, edata1
                             );
                             if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
-                                houseList3 = calc.PrimaryProgressionHouseCalc(houseList3,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    )
+                                houseList3 = calc.PrimaryProgressionHouseCalc(houseList3, udata1, edata1
                                 );
                             }
 
                             break;
 
                         case EProgression.SECONDARY:
-                            list3 = calc.SecondaryProgressionCalc(list1,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
+                            list3 = calc.SecondaryProgressionCalc(list1, udata1, edata1
                             );
                             if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
                                 houseList3 = calc.SecondaryProgressionHouseCalc(houseList3,
-                                    list1,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    ),
+                                    list1, udata1, edata1,
                                     targetUser.lat,
                                     targetUser.lng,
                                     targetUser.timezone
@@ -1325,40 +1221,12 @@ namespace microcosm
                             break;
 
                         case EProgression.CPS:
-                            list3 = calc.CompositProgressionCalc(list1,
-                                new DateTime(targetUser.birth_year,
-                                    targetUser.birth_month,
-                                    targetUser.birth_day,
-                                    targetUser.birth_hour,
-                                    targetUser.birth_minute,
-                                    targetUser.birth_second
-                                ),
-                                new DateTime(userdata.birth_year,
-                                    userdata.birth_month,
-                                    userdata.birth_day,
-                                    userdata.birth_hour,
-                                    userdata.birth_minute,
-                                    userdata.birth_second
-                                )
+                            list3 = calc.CompositProgressionCalc(list1, udata1, edata1
                             );
                             if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.PROGRESS)
                             {
                                 houseList3 = calc.CompositProgressionHouseCalc(houseList3,
-                                    list1,
-                                    new DateTime(targetUser.birth_year,
-                                        targetUser.birth_month,
-                                        targetUser.birth_day,
-                                        targetUser.birth_hour,
-                                        targetUser.birth_minute,
-                                        targetUser.birth_second
-                                    ),
-                                    new DateTime(userdata.birth_year,
-                                        userdata.birth_month,
-                                        userdata.birth_day,
-                                        userdata.birth_hour,
-                                        userdata.birth_minute,
-                                        userdata.birth_second
-                                    ),
+                                    list1, udata1, edata1,
                                     targetUser.lat,
                                     targetUser.lng,
                                     targetUser.timezone
@@ -1377,17 +1245,36 @@ namespace microcosm
                 }
                 if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.USER1)
                 {
-                    houseList3 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
+                    if (calcTargetUser[2] == 1)
+                    {
+                        houseList3 = calc.CuspCalc(targetUser.birth_year, targetUser.birth_month, targetUser.birth_day,
                         targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second,
                         targetUser.lat, targetUser.lng, (int)config.houseCalc);
+                    }
+                    else
+                    {
+                        houseList3 = calc.CuspCalc(targetUser2.birth_year, targetUser2.birth_month, targetUser2.birth_day,
+                        targetUser2.birth_hour, targetUser2.birth_minute, targetUser2.birth_second,
+                        targetUser2.lat, targetUser2.lng, (int)config.houseCalc);
+                    }
                 }
                 else if (tempSettings.thirdHouseDiv == TempSetting.HouseDivide.EVENT1)
                 {
-                    houseList3 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
-                        userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
-                        userdata.lat, userdata.lng, (int)config.houseCalc);
+                    if (calcTargetUser[2] == 1)
+                    {
+                        houseList3 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
+                            userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
+                            userdata.lat, userdata.lng, (int)config.houseCalc);
+                    }
+                    else
+                    {
+                        houseList3 = calc.CuspCalc(userdata2.birth_year, userdata2.birth_month, userdata2.birth_day,
+                            userdata2.birth_hour, userdata2.birth_minute, userdata2.birth_second,
+                            userdata2.lat, userdata2.lng, (int)config.houseCalc);
+                    }
                 }
             }
+            // 以下未実装
             if (list4Data != null)
             {
                 if (tempSettings.fourthBand == TempSetting.BandKind.PROGRESS)
@@ -1538,8 +1425,10 @@ namespace microcosm
             ReRender();
         }
 
-        // レンダリングメイン
-        // disp変更の場合はこれだけ呼ぶ
+        /// <summary>
+        /// レンダリングメイン
+        /// disp変更の場合はこれだけ呼ぶ
+        /// </summary>
         public void ReRender()
         {
 #if DEBUG
@@ -3284,6 +3173,12 @@ namespace microcosm
 
         }
 
+        /// <summary>
+        /// 現在時刻を開く
+        /// targetUserを現在時刻にする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Natal_Current_Click(object sender, RoutedEventArgs e)
         {
             natalSet();
@@ -3295,6 +3190,12 @@ namespace microcosm
             ReRender();
         }
 
+        /// <summary>
+        /// 現在時刻を開く
+        /// userdataを現在時刻にする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Transit_Current_Click(object sender, RoutedEventArgs e)
         {
             transitSet();
@@ -3306,6 +3207,12 @@ namespace microcosm
             ReRender();
         }
 
+        /// <summary>
+        /// 現在時刻を開く
+        /// 両方とも現在時刻にする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Both_Current_Click(object sender, RoutedEventArgs e)
         {
             natalSet();
@@ -3447,6 +3354,12 @@ namespace microcosm
 
         }
 
+        /// <summary>
+        /// コールバック
+        /// 設定xのコンボボックス
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dispSettingBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (userdata == null || targetUser == null)
@@ -3489,6 +3402,11 @@ namespace microcosm
             }
         }
 
+        /// <summary>
+        /// タイムセレクターコールバック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void natalTime_Checked(object sender, RoutedEventArgs e)
         {
             if (setYear == null)
@@ -4356,56 +4274,90 @@ namespace microcosm
             ReRender();
         }
 
+        /// <summary>
+        /// イベントインフォ　イベント１クリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changeButton_Click(object sender, RoutedEventArgs e)
         {
-            if (currentTarget == 1)
-            {
-                mainWindowVM.transitName = userdata2.name;
-                mainWindowVM.transitBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", userdata2.birth_year,
-                    userdata2.birth_month, userdata2.birth_day, userdata2.birth_hour, userdata2.birth_minute, userdata2.birth_second);
-                mainWindowVM.transitTimezone = userdata2.timezone;
-                mainWindowVM.transitPlace = userdata2.birth_place;
-                mainWindowVM.transitLat = String.Format("{0:f4}", userdata2.lat);
-                mainWindowVM.transitLng = String.Format("{0:f4}", userdata2.lng);
-                currentTarget = 2;
-            }
-            else
-            {
-                mainWindowVM.transitName = userdata.name;
-                mainWindowVM.transitBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", userdata.birth_year,
-                    userdata.birth_month, userdata.birth_day, userdata.birth_hour, userdata.birth_minute, userdata.birth_second);
-                mainWindowVM.transitTimezone = userdata.timezone;
-                mainWindowVM.transitPlace = userdata.birth_place;
-                mainWindowVM.transitLat = String.Format("{0:f4}", userdata.lat);
-                mainWindowVM.transitLng = String.Format("{0:f4}", userdata.lng);
-                currentTarget = 1;
-            }
+            mainWindowVM.transitName = userdata.name;
+            mainWindowVM.transitBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", userdata.birth_year,
+                userdata.birth_month, userdata.birth_day, userdata.birth_hour, userdata.birth_minute, userdata.birth_second);
+            mainWindowVM.transitTimezone = userdata.timezone;
+            mainWindowVM.transitPlace = userdata.birth_place;
+            mainWindowVM.transitLat = String.Format("{0:f6}", userdata.lat);
+            mainWindowVM.transitLng = String.Format("{0:f6}", userdata.lng);
+            currentTarget = 1;
         }
 
+        /// <summary>
+        /// イベントインフォ　イベント２クリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void event2Button_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindowVM.transitName = userdata2.name;
+            mainWindowVM.transitBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", userdata2.birth_year,
+                userdata2.birth_month, userdata2.birth_day, userdata2.birth_hour, userdata2.birth_minute, userdata2.birth_second);
+            mainWindowVM.transitTimezone = userdata2.timezone;
+            mainWindowVM.transitPlace = userdata2.birth_place;
+            mainWindowVM.transitLat = String.Format("{0:f6}", userdata2.lat);
+            mainWindowVM.transitLng = String.Format("{0:f6}", userdata2.lng);
+            currentTarget = 2;
+        }
+
+        /// <summary>
+        /// ユーザーインフォ　ユーザー１クリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changeUserButton_Click(object sender, RoutedEventArgs e)
         {
-            if (currentTarget == 1)
+            mainWindowVM.userName = targetUser.name;
+            mainWindowVM.userBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", targetUser.birth_year,
+                targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second);
+            mainWindowVM.userTimezone = targetUser.timezone;
+            mainWindowVM.userBirthPlace = targetUser.birth_place;
+            mainWindowVM.userLat = String.Format("{0:f6}", targetUser.lat);
+            mainWindowVM.userLng = String.Format("{0:f6}", targetUser.lng);
+            currentTarget = 1;
+        }
+
+        /// <summary>
+        /// ユーザーインフォ　ユーザー２クリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void user2Button_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindowVM.userName = targetUser2.name;
+            mainWindowVM.userBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", targetUser2.birth_year,
+                targetUser2.birth_month, targetUser2.birth_day, targetUser2.birth_hour, targetUser2.birth_minute, targetUser2.birth_second);
+            mainWindowVM.userTimezone = targetUser2.timezone;
+            mainWindowVM.userBirthPlace = targetUser2.birth_place;
+            mainWindowVM.userLat = String.Format("{0:f6}", targetUser2.lat);
+            mainWindowVM.userLng = String.Format("{0:f6}", targetUser2.lng);
+            currentTarget = 2;
+        }
+
+        public UserData getUserData(int n)
+        {
+            if (calcTargetUser[n] == 1)
             {
-                mainWindowVM.userName = targetUser2.name;
-                mainWindowVM.userBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", targetUser2.birth_year,
-                    targetUser2.birth_month, targetUser2.birth_day, targetUser2.birth_hour, targetUser2.birth_minute, targetUser2.birth_second);
-                mainWindowVM.userTimezone = targetUser2.timezone;
-                mainWindowVM.userBirthPlace = targetUser2.birth_place;
-                mainWindowVM.userLat = String.Format("{0:f4}", targetUser2.lat);
-                mainWindowVM.userLng = String.Format("{0:f4}", targetUser2.lng);
-                currentTarget = 2;
+                return targetUser;
             }
-            else
+            return targetUser2;
+        }
+
+        public UserEventData getUserEvent(int n)
+        {
+            if (calcTargetEvent[n] == 1)
             {
-                mainWindowVM.userName = targetUser.name;
-                mainWindowVM.userBirthStr = String.Format("{0}/{1:D2}/{2:D2} {3:D2}:{4:D2}:{5:D2}", targetUser.birth_year,
-                    targetUser.birth_month, targetUser.birth_day, targetUser.birth_hour, targetUser.birth_minute, targetUser.birth_second);
-                mainWindowVM.userTimezone = targetUser.timezone;
-                mainWindowVM.userBirthPlace = targetUser.birth_place;
-                mainWindowVM.userLat = String.Format("{0:f4}", targetUser.lat);
-                mainWindowVM.userLng = String.Format("{0:f4}", targetUser.lng);
-                currentTarget = 1;
+                return userdata;
             }
+            return userdata2;
         }
 
         /*

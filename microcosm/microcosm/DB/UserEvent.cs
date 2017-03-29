@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 namespace microcosm.DB
 {
+    /// <summary>
+    /// xmlからシリアライズされて入ってくる場所
+    /// </summary>
     public class UserEvent
     {
         [XmlElement("event_name")]

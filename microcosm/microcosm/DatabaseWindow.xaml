@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:microcosm"
         mc:Ignorable="d"
-        Title="データベース" Height="500" Width="720" Closing="Window_Closing">
+        Title="データベース" Height="520" Width="720" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"></ColumnDefinition>
@@ -66,22 +66,26 @@
             </TextBox>
             <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
                 <Border BorderBrush="LightGray" BorderThickness="1" Margin="5,0">
-                    <TextBlock x:Name="u1" Width="100" Height="40"></TextBlock>
+                    <TextBlock x:Name="u1" Width="100" Height="50"></TextBlock>
                 </Border>
                 <Border BorderBrush="LightGray" BorderThickness="1" Margin="5,0">
-                    <TextBlock x:Name="u2" Width="100" Height="40"></TextBlock>
+                    <TextBlock x:Name="u2" Width="100" Height="50"></TextBlock>
                 </Border>
                 <Border BorderBrush="LightGray" BorderThickness="1" Margin="5,0">
-                    <TextBlock x:Name="t1" Width="100" Height="40"></TextBlock>
+                    <TextBlock x:Name="t1" Width="100" Height="50"></TextBlock>
                 </Border>
                 <Border BorderBrush="LightGray" BorderThickness="1" Margin="5,0">
-                    <TextBlock x:Name="t2" Width="100" Height="40"></TextBlock>
+                    <TextBlock x:Name="t2" Width="100" Height="50"></TextBlock>
                 </Border>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="data1Button" Content="出生データ1に設定" Margin="0,0,0,0" Width="100" HorizontalAlignment="Right" Click="data1Button_Click"></Button>
-                <Button x:Name="data2Button" Content="出生データ1に設定" Margin="20,0,0,0" Width="100" HorizontalAlignment="Right" Click="data2Button_Click"></Button>
-                <Button x:Name="CancelBtn" Content="終了" Margin="20,0,1,0" Width="100" HorizontalAlignment="Right" Click="Cancel_Click"></Button>
+                <Button x:Name="data2Button" Content="出生データ2に設定" Margin="15,0,0,0" Width="100" HorizontalAlignment="Right" Click="data2Button_Click"></Button>
+                <Button x:Name="data3Button" Content="イベントデータ1に設定" Margin="15,0,0,0" Width="110" HorizontalAlignment="Right" Click="data3Button_Click"></Button>
+                <Button x:Name="data4Button" Content="イベントデータ2に設定" Margin="15,0,0,0" Width="110" HorizontalAlignment="Right" Click="data4Button_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="SubmitBtn" Content="終了" Margin="20,10,1,0" Width="100" HorizontalAlignment="Right" Click="Submit_Click"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

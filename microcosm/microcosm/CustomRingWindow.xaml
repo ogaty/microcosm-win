@@ -23,12 +23,25 @@
                         <ComboBoxItem Content="プログレス"></ComboBoxItem>
                         <ComboBoxItem Content="トランジット"></ComboBoxItem>
                     </ComboBox>
-                    <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
-                    <ComboBox x:Name="house1" Width="139" HorizontalAlignment="Right">
-                        <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
-                        <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
-                        <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
-                    </ComboBox>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,10,0">
+                            <Label Content="ハウスカスプ" HorizontalAlignment="Right"></Label>
+                            <ComboBox x:Name="house1" Width="130" HorizontalAlignment="Right">
+                                <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
+                                <ComboBoxItem Content="プログレスから"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="計算元" HorizontalAlignment="Right"></Label>
+                            <ComboBox x:Name="data1" Width="130" HorizontalAlignment="Right">
+                                <ComboBoxItem Content="ユーザー1" IsSelected="True"></ComboBoxItem>
+                                <ComboBoxItem Content="ユーザー2"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント1"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント2"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="no2" Visibility="Hidden">
                     <Label Content="２"></Label>
@@ -37,12 +50,25 @@
                         <ComboBoxItem Content="プログレス" IsSelected="True"></ComboBoxItem>
                         <ComboBoxItem Content="トランジット"></ComboBoxItem>
                     </ComboBox>
-                    <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
-                    <ComboBox x:Name="house2" Width="139" HorizontalAlignment="Right">
-                        <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
-                        <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
-                        <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
-                    </ComboBox>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,10,0">
+                            <Label Content="ハウスカスプ" HorizontalAlignment="Right"></Label>
+                            <ComboBox x:Name="house2" Width="130" HorizontalAlignment="Right">
+                                <ComboBoxItem Content="出生時刻から"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
+                                <ComboBoxItem Content="プログレスから" IsSelected="True"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="計算元" HorizontalAlignment="Right"></Label>
+                            <ComboBox x:Name="data2" Width="130" HorizontalAlignment="Right">
+                                <ComboBoxItem Content="ユーザー1"></ComboBoxItem>
+                                <ComboBoxItem Content="ユーザー2"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント1" IsSelected="True"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント2"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="no3" Visibility="Hidden">
                     <Label Content="３"></Label>
@@ -51,12 +77,25 @@
                         <ComboBoxItem Content="プログレス"></ComboBoxItem>
                         <ComboBoxItem Content="トランジット" IsSelected="True"></ComboBoxItem>
                     </ComboBox>
-                    <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
-                    <ComboBox x:Name="house3" Width="139" HorizontalAlignment="Right">
-                        <ComboBoxItem Content="出生時刻から" IsSelected="True"></ComboBoxItem>
-                        <ComboBoxItem Content="イベント時刻から"></ComboBoxItem>
-                        <ComboBoxItem Content="プログレス計算と同様"></ComboBoxItem>
-                    </ComboBox>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,10,0">
+                            <Label Content="ハウス計算元" HorizontalAlignment="Right"></Label>
+                            <ComboBox x:Name="house3" Width="130" HorizontalAlignment="Right">
+                                <ComboBoxItem Content="出生時刻から"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント時刻から" IsSelected="True"></ComboBoxItem>
+                                <ComboBoxItem Content="プログレス計算から"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label Content="計算元" HorizontalAlignment="Right"></Label>
+                            <ComboBox x:Name="data3" Width="130" HorizontalAlignment="Right">
+                                <ComboBoxItem Content="ユーザー1"></ComboBoxItem>
+                                <ComboBoxItem Content="ユーザー2"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント1" IsSelected="True"></ComboBoxItem>
+                                <ComboBoxItem Content="イベント2"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">

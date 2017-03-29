@@ -135,9 +135,14 @@ namespace microcosm.ViewModel
             treeItem.IsExpanded = true;
         }
 
-        // ツリー選択
+        /// <summary>
+        /// ツリー選択
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void UserItem_Selected(object sender, System.Windows.RoutedEventArgs e)
         {
+            // todo 編集後にこの関数を呼ばせる
             TreeViewItem item = (TreeViewItem)sender;
             DbItem iteminfo = (DbItem)item.Tag;
             if (iteminfo.ecsm)
@@ -206,14 +211,6 @@ namespace microcosm.ViewModel
             return new UserEventData()
             {
                 name = "- " + uevent.event_name,
-                birth_str = String.Format("{0}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}",
-                        uevent.event_year,
-                        uevent.event_month,
-                        uevent.event_day,
-                        uevent.event_hour,
-                        uevent.event_minute,
-                        uevent.event_second
-                    ),
                 birth_year = uevent.event_year,
                 birth_month = uevent.event_month,
                 birth_minute = uevent.event_day,
@@ -321,7 +318,6 @@ namespace microcosm.ViewModel
             UserEventData edata = new UserEventData()
             {
                 name = data.name,
-                birth_str = data.birth_str,
                 birth_place = data.birth_place,
                 birth_year = data.birth_year,
                 birth_month = data.birth_month,

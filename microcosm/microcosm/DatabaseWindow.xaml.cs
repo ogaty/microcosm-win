@@ -19,6 +19,7 @@ using System.IO;
 using Microsoft.Win32;
 using System.Reflection;
 using microcosm.Planet;
+using microcosm.Common;
 
 namespace microcosm
 {
@@ -39,6 +40,14 @@ namespace microcosm
 
             vm = new DatabaseWindowViewModel(this);
             this.DataContext = vm;
+            u1.Tag = mainwindow.targetUser;
+            u2.Tag = mainwindow.targetUser2;
+            t1.Tag = mainwindow.userdata;
+            t2.Tag = mainwindow.userdata2;
+            u1.Text = mainwindow.targetUser.name + "\n" + mainwindow.targetUser.birth_str_ymd + "\n" + mainwindow.targetUser.birth_str_his;
+            u2.Text = mainwindow.targetUser2.name + "\n" + mainwindow.targetUser2.birth_str_ymd + "\n" + mainwindow.targetUser2.birth_str_his;
+            t1.Text = mainwindow.userdata.name + "\n" + mainwindow.userdata.birth_str_ymd + "\n" + mainwindow.userdata.birth_str_his;
+            t2.Text = mainwindow.userdata2.name + "\n" + mainwindow.userdata2.birth_str_ymd + "\n" + mainwindow.userdata2.birth_str_his;
         }
 
         private void UserTree_MouseDown(object sender, MouseButtonEventArgs e)
@@ -55,6 +64,19 @@ namespace microcosm
         // 決定ボタン
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            mainwindow.targetUser = (UserData)u1.Tag;
+            mainwindow.targetUser2 = (UserData)u2.Tag;
+            mainwindow.userdata = (UserEventData)t1.Tag;
+            mainwindow.userdata2 = (UserEventData)t2.Tag;
+            UserData udata = (UserData)u1.Tag;
+            UserEventData edata = (UserEventData)t1.Tag;
+
+            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
+            edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
+            mainwindow.ReCalc();
+            mainwindow.ReRender();
+
+            this.Visibility = Visibility.Hidden;
         }
 
         // 新規作成(何もないところ右クリック)
@@ -216,14 +238,6 @@ namespace microcosm
                     lng = udata.lng,
                     timezone = udata.timezone,
                     memo = udata.memo,
-                    birth_str = String.Format("{0}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}",
-                        udata.birth_year,
-                        udata.birth_month,
-                        udata.birth_day,
-                        udata.birth_hour,
-                        udata.birth_minute,
-                        udata.birth_second
-                    ),
                     lat_lng = String.Format("{0:00.000}/{1:000.000}", udata.lat, udata.lng),
                     fullpath = udata.filename
                 };
@@ -442,14 +456,6 @@ namespace microcosm
                 lng = eventLng,
                 memo = eventMemo,
                 timezone = eventTimezone,
-                birth_str = String.Format("{0}/{1}/{2} {3:00}:{4:00}:{5:00}",
-                        eventBirth.Year,
-                        eventBirth.Month,
-                        eventBirth.Day,
-                        eventHour,
-                        eventMinute,
-                        eventSecond
-                    ),
                 fullpath = udata.filename,
                 lat_lng = String.Format("{0:00.000}/{1:000.000}", eventLat, eventLng)
             };
@@ -520,14 +526,6 @@ namespace microcosm
                 lng = eventLng,
                 memo = eventMemo,
                 timezone = eventTimezone,
-                birth_str = String.Format("{0}/{1}/{2} {3:00}:{4:00}:{5:00}",
-                        eventBirth.Year,
-                        eventBirth.Month,
-                        eventBirth.Day,
-                        eventHour,
-                        eventMinute,
-                        eventSecond
-                    ),
                 fullpath = udata.filename,
                 lat_lng = String.Format("{0:00.000}/{1:000.000}", eventLat, eventLng)
             };
@@ -1500,26 +1498,10 @@ namespace microcosm
             {
                 udata = (UserData)utag.udata;
             }
+            udata.timezone = CommonData.getTimezoneShortText(udata.timezone);
 
-            UserEventData edata;
-            mainwindow.targetUser = udata;
-            if (UserEvent.SelectedItem is UserData)
-            {
-                // edataは変更しない（でいいよね）
-                edata = mainwindow.userdata;
-            }
-            else
-            {
-                mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
-                edata = (UserEventData)UserEvent.SelectedItem;
-            }
-            mainwindow.userdata = edata;
-            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
-            mainwindow.ReCalc();
-            mainwindow.ReRender();
-
-            this.Visibility = Visibility.Hidden;
+            u2.Tag = udata;
+            u2.Text = udata.name + "\n" + udata.birth_str_ymd + "\n" + udata.birth_str_his;
         }
 
         private void data1Button_Click(object sender, RoutedEventArgs e)
@@ -1538,26 +1520,53 @@ namespace microcosm
             {
                 udata = (UserData)utag.udata;
             }
+            udata.timezone = CommonData.getTimezoneShortText(udata.timezone);
 
+            u1.Tag = udata;
+            u1.Text = udata.name + "\n" + udata.birth_str_ymd + "\n" + udata.birth_str_his;
+        }
+
+        private void data3Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
             UserEventData edata;
-            mainwindow.targetUser = udata;
             if (UserEvent.SelectedItem is UserData)
             {
                 // edataは変更しない（でいいよね）
-                edata = mainwindow.userdata;
+                edata = (UserEventData)((UserData)UserEvent.SelectedItem);
             }
             else
             {
-                mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
                 edata = (UserEventData)UserEvent.SelectedItem;
             }
-            mainwindow.userdata = edata;
-            mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
-                edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
-            mainwindow.ReCalc();
-            mainwindow.ReRender();
+            edata.timezone = CommonData.getTimezoneShortText(edata.timezone);
+            t1.Tag = edata;
+            t1.Text = edata.name + "\n" + edata.birth_str_ymd + "\n" + edata.birth_str_his;
+        }
 
-            this.Visibility = Visibility.Hidden;
+        private void data4Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            UserEventData edata;
+            if (UserEvent.SelectedItem is UserData)
+            {
+                // edataは変更しない（でいいよね）
+                UserData u = (UserData)UserEvent.SelectedItem;
+                edata = (UserEventData)((UserData)UserEvent.SelectedItem);
+            }
+            else
+            {
+                edata = (UserEventData)UserEvent.SelectedItem;
+            }
+            edata.timezone = CommonData.getTimezoneShortText(edata.timezone);
+            t2.Text = edata.name + "\n" + edata.birth_str_ymd + "\n" + edata.birth_str_his;
+            t2.Tag = edata;
         }
     }
 }

@@ -61,6 +61,7 @@ namespace microcosm.Common
         public const int ZODIAC_VESTA = 20;
         public const int ZODIAC_ASC = 10000;
         public const int ZODIAC_MC = 10001;
+        public const int ZODIAC_ERIS = 136199;
 
         public const int SIGN_ARIES = 0;
         public const int SIGN_TAURUS = 1;
@@ -108,6 +109,20 @@ namespace microcosm.Common
             switch (index)
             {
                 case 0:
+                    return Properties.Resources.TIMEZONE_JST_STR_SHORT;
+                default:
+                    break;
+            }
+            return Properties.Resources.TIMEZONE_UTC_STR_SHORT;
+        }
+        // JSTのみを返す
+        public static string getTimezoneShortText(string timezone)
+        {
+            switch (timezone)
+            {
+                case "JST(日本標準)":
+                    return Properties.Resources.TIMEZONE_JST_STR_SHORT;
+                case "JST":
                     return Properties.Resources.TIMEZONE_JST_STR_SHORT;
                 default:
                     break;
@@ -165,6 +180,8 @@ namespace microcosm.Common
                     return "\u26b7";
                 case ZODIAC_LILITH:
                     return "\u26b8";
+                case ZODIAC_ERIS:
+                    return "\u2641";
             }
             return "";
         }
@@ -210,6 +227,8 @@ namespace microcosm.Common
                     return "地球";
                 case ZODIAC_LILITH:
                     return "リリス";
+                case ZODIAC_ERIS:
+                    return "エリス";
             }
             return "";
         }
@@ -658,7 +677,6 @@ namespace microcosm.Common
                 birth_minute = udata.birth_minute,
                 birth_second = udata.birth_second,
                 birth_place = udata.birth_place,
-                birth_str = udata.birth_str,
                 lat = udata.lat,
                 lng = udata.lng,
                 lat_lng = udata.lat_lng,

@@ -65,7 +65,8 @@
                         <TextBlock Name="natalLng" Text="{Binding userLng}" Margin="30,0,0,0"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,3,0,0">
-                        <Button x:Name="changeUserButton" Content="Change" Margin="0,0,0,0" Click="changeUserButton_Click"></Button>
+                        <Button x:Name="changeUserButton" Content="User1" Margin="0,0,5,0" Click="changeUserButton_Click"></Button>
+                        <Button x:Name="user2Button" Content="User2" Click="user2Button_Click" ></Button>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -112,7 +113,8 @@
                         <TextBlock Name="transitLng" Text="{Binding transitLng}" Margin="30,0,0,0"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,3,0,0">
-                        <Button x:Name="changeButton" Content="Change" Margin="0,0,0,0" Click="changeButton_Click"> </Button>
+                        <Button x:Name="changeButton" Content="Event1" Margin="0,0,5,0" Click="changeButton_Click"> </Button>
+                        <Button x:Name="event2Button" Content="Event2" Click="event2Button_Click"></Button>
                     </StackPanel>
                 </StackPanel>
             </Border>

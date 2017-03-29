@@ -70,6 +70,22 @@ namespace microcosm
                         main.tempSettings.firstHouseDiv = TempSetting.HouseDivide.USER1;
                         break;
                 }
+                switch (data1.SelectedIndex)
+                {
+                    case 0:
+                        main.calcTargetUser[0] = 1;
+                        break;
+                    case 1:
+                        main.calcTargetUser[0] = 2;
+                        break;
+                    case 2:
+                        main.calcTargetEvent[0] = 1;
+                        break;
+                    default:
+                        main.calcTargetEvent[0] = 2;
+                        break;
+                }
+
             }
             else if (ringSelector.SelectedIndex == 1)
             {
@@ -133,6 +149,21 @@ namespace microcosm
                         break;
                     default:
                         main.tempSettings.secondHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                }
+                switch (data2.SelectedIndex)
+                {
+                    case 0:
+                        main.calcTargetUser[1] = 1;
+                        break;
+                    case 1:
+                        main.calcTargetUser[1] = 2;
+                        break;
+                    case 2:
+                        main.calcTargetEvent[1] = 1;
+                        break;
+                    default:
+                        main.calcTargetEvent[1] = 2;
                         break;
                 }
             }
@@ -230,6 +261,21 @@ namespace microcosm
                         break;
                     default:
                         main.tempSettings.thirdHouseDiv = TempSetting.HouseDivide.USER1;
+                        break;
+                }
+                switch (data3.SelectedIndex)
+                {
+                    case 0:
+                        main.calcTargetUser[2] = 1;
+                        break;
+                    case 1:
+                        main.calcTargetUser[2] = 2;
+                        break;
+                    case 2:
+                        main.calcTargetEvent[2] = 1;
+                        break;
+                    default:
+                        main.calcTargetEvent[2] = 2;
                         break;
                 }
             }
