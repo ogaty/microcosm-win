@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace microcosm.DB
 {
+    /// <summary>
+    /// Database windowのツリーアイテム
+    /// </summary>
     public class DbItem
     {
         public string fileName;

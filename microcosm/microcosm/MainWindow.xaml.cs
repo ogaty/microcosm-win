@@ -1089,9 +1089,18 @@ namespace microcosm
                 }
                 else if (tempSettings.firstHouseDiv == TempSetting.HouseDivide.EVENT1)
                 {
-                    houseList1 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
-                        userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
-                        userdata.lat, userdata.lng, (int)config.houseCalc);
+                    if (calcTargetEvent[1] == 1)
+                    {
+                        houseList1 = calc.CuspCalc(userdata.birth_year, userdata.birth_month, userdata.birth_day,
+                            userdata.birth_hour, userdata.birth_minute, userdata.birth_second,
+                            userdata.lat, userdata.lng, (int)config.houseCalc);
+                    }
+                    else
+                    {
+                        houseList1 = calc.CuspCalc(userdata2.birth_year, userdata2.birth_month, userdata2.birth_day,
+                            userdata2.birth_hour, userdata2.birth_minute, userdata2.birth_second,
+                            userdata2.lat, userdata2.lng, (int)config.houseCalc);
+                    }
                 }
             }
             if (list2Data != null)
@@ -3176,6 +3185,7 @@ namespace microcosm
         /// <summary>
         /// 現在時刻を開く
         /// targetUserを現在時刻にする
+        /// targetUser2は不要
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -3193,6 +3203,7 @@ namespace microcosm
         /// <summary>
         /// 現在時刻を開く
         /// userdataを現在時刻にする
+        /// userdata2は不要
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -3210,6 +3221,7 @@ namespace microcosm
         /// <summary>
         /// 現在時刻を開く
         /// 両方とも現在時刻にする
+        /// userdata2は不要
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -3227,6 +3239,9 @@ namespace microcosm
             ReRender();
         }
 
+        /// <summary>
+        /// 現在時刻セット
+        /// </summary>
         public void natalSet()
         {
             mainWindowVM.userName = "現在時刻";
@@ -3261,6 +3276,9 @@ namespace microcosm
             targetUser.timezone = config.defaultTimezone;
         }
 
+        /// <summary>
+        /// 現在時刻セット
+        /// </summary>
         public void transitSet()
         {
             mainWindowVM.transitName = "現在時刻";
@@ -4275,7 +4293,7 @@ namespace microcosm
         }
 
         /// <summary>
-        /// イベントインフォ　イベント１クリック
+        /// イベントインフォ(右上枠)　イベント１クリック
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -4292,7 +4310,7 @@ namespace microcosm
         }
 
         /// <summary>
-        /// イベントインフォ　イベント２クリック
+        /// イベントインフォ(右上枠)　イベント２クリック
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -4309,7 +4327,7 @@ namespace microcosm
         }
 
         /// <summary>
-        /// ユーザーインフォ　ユーザー１クリック
+        /// ユーザーインフォ(左上枠)　ユーザー１クリック
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -4326,7 +4344,7 @@ namespace microcosm
         }
 
         /// <summary>
-        /// ユーザーインフォ　ユーザー２クリック
+        /// ユーザーインフォ(左上枠)　ユーザー２クリック
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

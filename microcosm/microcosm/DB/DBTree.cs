@@ -8,6 +8,9 @@ using System.Windows.Controls;
 
 namespace microcosm.DB
 {
+    /// <summary>
+    /// Database windowのツリー情報
+    /// </summary>
     public class DBTree
     {
         public TreeViewItem CreateDirectoryNode(DirectoryInfo directoryInfo)

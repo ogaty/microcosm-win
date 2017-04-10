@@ -109,8 +109,22 @@ namespace microcosm
             {
                 return;
             }
-            // FIXME 間違ってるよ！
+
+            mainwindow.targetUser = (UserData)UserEvent.Items[0];
+            mainwindow.mainWindowVM.userName = mainwindow.targetUser.name;
+            mainwindow.mainWindowVM.userBirthStr = mainwindow.targetUser.birth_str;
+            mainwindow.mainWindowVM.userBirthPlace = mainwindow.targetUser.birth_place;
+            mainwindow.mainWindowVM.userLat = mainwindow.targetUser.lat.ToString("00.0000");
+            mainwindow.mainWindowVM.userLng = mainwindow.targetUser.lng.ToString("000.0000");
+
+
             mainwindow.userdata = (UserEventData)UserEvent.SelectedItem;
+            mainwindow.mainWindowVM.transitName = mainwindow.userdata.name.Replace("- ", "");
+            mainwindow.mainWindowVM.transitBirthStr = mainwindow.userdata.birth_str;
+            mainwindow.mainWindowVM.transitPlace = mainwindow.userdata.birth_place;
+            mainwindow.mainWindowVM.transitLat = mainwindow.userdata.lat.ToString("00.0000");
+            mainwindow.mainWindowVM.transitLng = mainwindow.userdata.lng.ToString("000.0000");
+
 
             this.Visibility = Visibility.Hidden;
         }
