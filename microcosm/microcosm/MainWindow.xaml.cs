@@ -855,13 +855,30 @@ namespace microcosm
                 listEventData.Add(edata);
                 for (int i = 1; i < 7; i++)
                 {
-                    if (calcTargetUser[1] == 1)
+                    UserEventData tempEdata;
+                    if (tempSettings.secondBand == TempSetting.BandKind.NATAL)
                     {
-                        listEventData.Add(userdata);
+                        if (calcTargetUser[1] == 1)
+                        {
+                            tempEdata = CommonData.udata2event(targetUser);
+                            listEventData.Add(tempEdata);
+                        }
+                        else
+                        {
+                            tempEdata = CommonData.udata2event(targetUser2);
+                            listEventData.Add(tempEdata);
+                        }
                     }
                     else
                     {
-                        listEventData.Add(userdata2);
+                        if (calcTargetEvent[1] == 1)
+                        {
+                            listEventData.Add(userdata);
+                        }
+                        else
+                        {
+                            listEventData.Add(userdata2);
+                        }
                     }
                 }
                 ReCalc(listEventData);

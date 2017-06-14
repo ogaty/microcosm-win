@@ -267,6 +267,11 @@ namespace microcosm
                         return;
                     }
 
+                    if (planet.sensitive)
+                    {
+                        return;
+                    }
+
                     PointF point;
                     int absolute_position = getNewAbsPosition(planet);
                     int index = boxSet(absolute_position);
@@ -300,6 +305,12 @@ namespace microcosm
                     {
                         return;
                     }
+
+                    if (planet.sensitive)
+                    {
+                        return;
+                    }
+
 
                     PointF point;
                     int absolute_position = getNewAbsPosition(planet);
@@ -700,11 +711,24 @@ namespace microcosm
 
         private Explanation getExp(PlanetData planet)
         {
+            bool retrograde;
+            if (planet.speed < 0)
+            {
+                retrograde = true;
+            }
+            else
+            {
+                retrograde = false;
+            }
+
             return new Explanation()
             {
                 degree = planet.absolute_position % 30,
                 sign = CommonData.getSignTextJp(planet.absolute_position),
-                planetNo = planet.no
+                planetNo = planet.no,
+                planet = CommonData.getPlanetText(planet.no),
+                retrograde = retrograde,
+
             };
         }
 

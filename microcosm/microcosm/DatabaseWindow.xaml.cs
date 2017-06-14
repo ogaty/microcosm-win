@@ -61,7 +61,11 @@ namespace microcosm
             vm.SelectionChanged((ListView)sender);
         }
 
-        // 決定ボタン
+        /// <summary>
+        /// 決定ボタンクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             mainwindow.targetUser = (UserData)u1.Tag;
@@ -73,6 +77,12 @@ namespace microcosm
 
             mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
             edata.name, edata.birth_str, edata.birth_place, edata.lat.ToString(), edata.lng.ToString(), udata.timezone, edata.timezone);
+            mainwindow.setYear.Text = ((UserData)u1.Tag).birth_year.ToString();
+            mainwindow.setMonth.Text = ((UserData)u1.Tag).birth_month.ToString();
+            mainwindow.setDay.Text = ((UserData)u1.Tag).birth_day.ToString();
+            mainwindow.setHour.Text = ((UserData)u1.Tag).birth_hour.ToString();
+            mainwindow.setMinute.Text = ((UserData)u1.Tag).birth_minute.ToString();
+            mainwindow.setSecond.Text = ((UserData)u1.Tag).birth_second.ToString();
             mainwindow.ReCalc();
             mainwindow.ReRender();
 
@@ -257,6 +267,8 @@ namespace microcosm
                 };
                 mainwindow.userdata = edata;
                 mainwindow.targetUser = udata;
+                u1.Tag = udata;
+                u1.Text = udata.name + "\n" + udata.birth_str_ymd + "\n" + udata.birth_str_his;
             }
             else
             {
@@ -278,6 +290,8 @@ namespace microcosm
                     memo = edata.memo,
                 };
                 mainwindow.targetUser = udata;
+                t1.Tag = edata;
+                t1.Text = edata.name.Replace("- ", "") + "\n" + edata.birth_str_ymd + "\n" + edata.birth_str_his;
             }
             mainwindow.userdata = edata;
             mainwindow.mainWindowVM.ReSet(udata.name, udata.birth_str, udata.birth_place, udata.lat.ToString(), udata.lng.ToString(),
@@ -1496,28 +1510,11 @@ namespace microcosm
             this.Visibility = Visibility.Hidden;
         }
 
-        private void data2Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (UserEvent.SelectedItem == null)
-            {
-                return;
-            }
-            UserEventTag utag = (UserEventTag)UserEvent.Tag;
-            UserData udata;
-            if (utag.ecsm)
-            {
-                udata = (UserData)UserEvent.SelectedItem;
-            }
-            else
-            {
-                udata = (UserData)utag.udata;
-            }
-            udata.timezone = CommonData.getTimezoneShortText(udata.timezone);
-
-            u2.Tag = udata;
-            u2.Text = udata.name + "\n" + udata.birth_str_ymd + "\n" + udata.birth_str_his;
-        }
-
+        /// <summary>
+        /// ユーザー１
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void data1Button_Click(object sender, RoutedEventArgs e)
         {
             if (UserEvent.SelectedItem == null)
@@ -1540,6 +1537,33 @@ namespace microcosm
             u1.Text = udata.name + "\n" + udata.birth_str_ymd + "\n" + udata.birth_str_his;
         }
 
+        /// <summary>
+        /// ユーザー２
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void data2Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserEvent.SelectedItem == null)
+            {
+                return;
+            }
+            UserEventTag utag = (UserEventTag)UserEvent.Tag;
+            UserData udata;
+            if (utag.ecsm)
+            {
+                udata = (UserData)UserEvent.SelectedItem;
+            }
+            else
+            {
+                udata = (UserData)utag.udata;
+            }
+            udata.timezone = CommonData.getTimezoneShortText(udata.timezone);
+
+            u2.Tag = udata;
+            u2.Text = udata.name + "\n" + udata.birth_str_ymd + "\n" + udata.birth_str_his;
+        }
+
         private void data3Button_Click(object sender, RoutedEventArgs e)
         {
             if (UserEvent.SelectedItem == null)
@@ -1549,7 +1573,7 @@ namespace microcosm
             UserEventData edata;
             if (UserEvent.SelectedItem is UserData)
             {
-                // edataは変更しない（でいいよね）
+                // udataは変更しない（でいいよね）
                 edata = (UserEventData)((UserData)UserEvent.SelectedItem);
             }
             else
@@ -1570,8 +1594,7 @@ namespace microcosm
             UserEventData edata;
             if (UserEvent.SelectedItem is UserData)
             {
-                // edataは変更しない（でいいよね）
-                UserData u = (UserData)UserEvent.SelectedItem;
+                // udataは変更しない（でいいよね）
                 edata = (UserEventData)((UserData)UserEvent.SelectedItem);
             }
             else
