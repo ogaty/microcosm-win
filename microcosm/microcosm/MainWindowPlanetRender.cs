@@ -44,6 +44,10 @@ namespace microcosm
                     {
                         return;
                     }
+                    if (currentSetting.dispPlanet[0][planet.no] == false)
+                    {
+                        return;
+                    }
 
                     PointF point;
                     PointF pointdegree;
@@ -181,6 +185,10 @@ namespace microcosm
                     {
                         return;
                     }
+                    if (currentSetting.dispPlanet[0][planet.no] == false)
+                    {
+                        return;
+                    }
 
                     PointF point;
                     int absolute_position = getNewAbsPosition(planet);
@@ -201,6 +209,10 @@ namespace microcosm
                 {
                     // 天体表示させない
                     if (!planet.isDisp)
+                    {
+                        return;
+                    }
+                    if (currentSetting.dispPlanet[1][planet.no] == false)
                     {
                         return;
                     }
@@ -243,6 +255,11 @@ namespace microcosm
                         return;
                     }
 
+                    if (currentSetting.dispPlanet[0][planet.no] == false)
+                    {
+                        return;
+                    }
+
                     PointF point;
                     int absolute_position = getNewAbsPosition(planet);
                     int index = boxSet(absolute_position);
@@ -263,6 +280,11 @@ namespace microcosm
                 {
                     // 天体表示させない
                     if (!planet.isDisp)
+                    {
+                        return;
+                    }
+
+                    if (currentSetting.dispPlanet[1][planet.no] == false)
                     {
                         return;
                     }
@@ -302,6 +324,11 @@ namespace microcosm
                 {
                     // 天体表示させない
                     if (!planet.isDisp)
+                    {
+                        return;
+                    }
+
+                    if (currentSetting.dispPlanet[2][planet.no] == false)
                     {
                         return;
                     }

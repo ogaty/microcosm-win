@@ -452,11 +452,11 @@ namespace microcosm.Calc
                     progressdata.isDisp = false;
                     progressdata.isAspectDisp = false;
                 }
-                if (config.centric == ECentric.HELIO_CENTRIC && pair.Key == 14)
+                if (config.centric == ECentric.GEO_CENTRIC && pair.Key == 14)
                 {
                     // ヘリオセントリック地球
-                    progressdata.isDisp = true;
-                    progressdata.isAspectDisp = true;
+                    progressdata.isDisp = false;
+                    progressdata.isAspectDisp = false;
                 }
 
                 progressdata.absolute_position += years;
