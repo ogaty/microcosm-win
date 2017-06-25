@@ -189,45 +189,74 @@ namespace microcosm
             if (UserEvent.SelectedItem is UserData)
             {
                 UserData data = (UserData)UserEvent.SelectedItem;
-                DateTime currentDate = new DateTime(
-                    data.birth_year,
-                    data.birth_month,
-                    data.birth_day,
-                    data.birth_hour,
-                    data.birth_minute,
-                    data.birth_second
-                    );
-                Dictionary<int, PlanetData> currentPlanet = mainwindow.calc.PositionCalc(data.birth_year,
-                    data.birth_month,
-                    data.birth_day,
-                    data.birth_hour,
-                    data.birth_minute,
-                    data.birth_second,
+                DateTime currentDate = mainwindow.udataTime(data);
+                Dictionary<int, PlanetData> currentPlanet = mainwindow.calc.PositionCalc(currentDate,
                     data.lat,
                     data.lng,
                     (int)mainwindow.config.houseCalc, 0);
 
                 DateTime calcDate = currentDate.AddDays(364.5);
-                for (int i = 0; i < 40; i++)
+                int addOver = 0;
+                for (int i = 0; i < 1000; i++)
                 {
-                    calcDate = calcDate.AddHours(1);
-                    Dictionary<int, PlanetData> planet = mainwindow.calc.PositionCalc(calcDate.Year,
-                        calcDate.Month,
-                        calcDate.Day,
-                        calcDate.Hour,
-                        calcDate.Minute,
-                        calcDate.Day,
+                    if (addOver == 3)
+                    {
+                        calcDate = calcDate.AddDays(0.5);
+                    }
+                    else if (addOver == 2)
+                    {
+                        calcDate = calcDate.AddDays(0.1);
+                    }
+                    else if (addOver == 1)
+                    {
+                        calcDate = calcDate.AddDays(0.01);
+                    }
+                    else
+                    {
+                        calcDate = calcDate.AddDays(0.001);
+                    }
+                    Dictionary<int, PlanetData> planet = mainwindow.calc.PositionCalc(calcDate,
                         data.lat,
                         data.lng,
                         (int)mainwindow.config.houseCalc, 0);
-                    if (Math.Abs(currentPlanet[0].absolute_position - planet[0].absolute_position) < 0.01)
+                    double diff = Math.Abs(currentPlanet[0].absolute_position - planet[0].absolute_position);
+                    if (diff < 0.001)
                     {
-                        Console.WriteLine(currentPlanet[0].absolute_position.ToString());
-                        Console.WriteLine(planet[0].absolute_position.ToString());
+//                        Console.WriteLine(currentPlanet[0].absolute_position.ToString());
+//                        Console.WriteLine(planet[0].absolute_position.ToString());
+//                        Console.WriteLine(i.ToString());
                         break;
                     }
+                    else if (diff > 0.5)
+                    {
+                        addOver = 3;
+                    }
+                    else if (diff > 0.1)
+                    {
+                        addOver = 2;
+                    }
+                    else if (diff > 0.01)
+                    {
+                        addOver = 1;
+                    }
+                    else
+                    {
+                        addOver = 0;
+//                        Console.WriteLine(Math.Abs(currentPlanet[0].absolute_position - planet[0].absolute_position));
+                    }
                 }
-                MessageBox.Show(calcDate.ToString());
+                //                MessageBox.Show(calcDate.ToString());
+                newEvent_Click_CB("太陽回帰",
+                    calcDate,
+                    calcDate.Hour,
+                    calcDate.Minute,
+                    calcDate.Second,
+                    data.birth_place,
+                    data.lat,
+                    data.lng,
+                    "",
+                    data.timezone);
+                    
             }
 
 
@@ -445,19 +474,11 @@ namespace microcosm
             string eventTimezone
         )
         {
-            UserData udata = (UserData)UserEvent.Tag;
-            string evTxt = "";
-            if (eventName.IndexOf("- ") == 0)
-            {
-                evTxt = eventName;
-            }
-            else
-            {
-                evTxt = "- " + eventName;
-            }
+            UserEventTag tag = (UserEventTag)UserEvent.Tag;
+            UserData udata = tag.udata;
             UserEvent uevent = new UserEvent()
             {
-                event_name = evTxt,
+                event_name = eventName,
                 event_year = eventBirth.Year,
                 event_month = eventBirth.Month,
                 event_day = eventBirth.Day,
@@ -472,7 +493,7 @@ namespace microcosm
             };
             UserEventData ueventdata = new UserEventData()
             {
-                name = evTxt,
+                name = eventName,
                 birth_year = eventBirth.Year,
                 birth_month = eventBirth.Month,
                 birth_day = eventBirth.Day,
@@ -488,7 +509,12 @@ namespace microcosm
                 lat_lng = String.Format("{0:00.000}/{1:000.000}", eventLat, eventLng)
             };
             udata.userevent.Add(uevent);
-            UserEvent.Tag = udata;
+            tag = new UserEventTag()
+            {
+                ecsm = false,
+                udata = (UserData)uevent
+            };
+            UserEvent.Tag = tag;
 
             UserEvent.Items.Add(ueventdata);
             XmlSerializer serializer = new XmlSerializer(typeof(UserData));
@@ -500,7 +526,21 @@ namespace microcosm
 
         }
 
-        // イベント編集コールバック
+        /// <summary>
+        /// イベント編集コールバック
+        /// 今のところecsmの編集はできない
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="eventName"></param>
+        /// <param name="eventBirth"></param>
+        /// <param name="eventHour"></param>
+        /// <param name="eventMinute"></param>
+        /// <param name="eventSecond"></param>
+        /// <param name="eventPlace"></param>
+        /// <param name="eventLat"></param>
+        /// <param name="eventLng"></param>
+        /// <param name="eventMemo"></param>
+        /// <param name="eventTimezone"></param>
         public void editEvent_Click_CB(
             int index,
             string eventName,
@@ -515,19 +555,11 @@ namespace microcosm
             string eventTimezone
             )
         {
-            UserData udata = (UserData)UserEvent.Tag;
-            string evTxt = "";
-            if (eventName.IndexOf("- ") == 0)
-            {
-                evTxt = eventName;
-            }
-            else
-            {
-                evTxt = "- " + eventName;
-            }
+            UserEventTag tag = (UserEventTag)UserEvent.Tag;
+            UserData udata = tag.udata;
             UserEvent uevent = new UserEvent()
             {
-                event_name = evTxt,
+                event_name = eventName,
                 event_year = eventBirth.Year,
                 event_month = eventBirth.Month,
                 event_day = eventBirth.Day,
@@ -542,7 +574,7 @@ namespace microcosm
             };
             UserEventData ueventdata = new UserEventData()
             {
-                name = evTxt,
+                name = eventName,
                 birth_year = eventBirth.Year,
                 birth_month = eventBirth.Month,
                 birth_day = eventBirth.Day,
@@ -610,6 +642,13 @@ namespace microcosm
         // 右クリックイベントデータ追加
         public void newEventData()
         {
+            UserEventTag tag = (UserEventTag)UserEvent.Tag;
+            if (tag.ecsm)
+            {
+                MessageBox.Show("現在のバージョンではインポートフォルダ内のデータは編集できません。");
+                return;
+            }
+
             setDisable();
             DbItem item = new DbItem()
             {
@@ -640,6 +679,12 @@ namespace microcosm
         {
             if (UserEvent.SelectedItem == null)
             {
+                return;
+            }
+            UserEventTag tag = (UserEventTag)UserEvent.Tag;
+            if (tag.ecsm)
+            {
+                MessageBox.Show("現在のバージョンではインポートフォルダ内のデータは編集できません。");
                 return;
             }
             DbItem item;
@@ -1529,7 +1574,14 @@ namespace microcosm
             }
             else
             {
-                udata = (UserData)utag.udata;
+                if (UserEvent.SelectedItem is UserData)
+                {
+                    udata = (UserData)utag.udata;
+                }
+                else
+                {
+                    udata = (UserData)((UserEventData)UserEvent.SelectedItem);
+                }
             }
             udata.timezone = CommonData.getTimezoneShortText(udata.timezone);
 
@@ -1556,7 +1608,14 @@ namespace microcosm
             }
             else
             {
-                udata = (UserData)utag.udata;
+                if (UserEvent.SelectedItem is UserData)
+                {
+                    udata = (UserData)utag.udata;
+                }
+                else
+                {
+                    udata = (UserData)((UserEventData)UserEvent.SelectedItem);
+                }
             }
             udata.timezone = CommonData.getTimezoneShortText(udata.timezone);
 

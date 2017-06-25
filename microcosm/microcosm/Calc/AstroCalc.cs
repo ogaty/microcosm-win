@@ -50,7 +50,7 @@ namespace microcosm.Calc
         }
 
         // 天体の位置を計算する
-        public Dictionary<int, PlanetData> PositionCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind, int subIndex)
+        public Dictionary<int, PlanetData> PositionCalc(DateTime d, double lat, double lng, int houseKind, int subIndex)
         {
             Dictionary<int, PlanetData> planetdata = new Dictionary<int, PlanetData>(); ;
 
@@ -71,7 +71,7 @@ namespace microcosm.Calc
             int ii = 0;
 
             // utcに変換
-            s.swe_utc_time_zone(year, month, day, hour, min, sec, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
+            s.swe_utc_time_zone(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second, 0.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
 
             // 10天体ループ
@@ -225,7 +225,7 @@ namespace microcosm.Calc
 
             s.swe_close();
             // ハウスを後ろにくっつける
-            double[] houses = CuspCalc(year, month, day, hour, min, sec, lat, lng, houseKind);
+            double[] houses = CuspCalc(d, lat, lng, houseKind);
             planetdata = setHouse(planetdata, houses, main.currentSetting, subIndex);
 
             return planetdata;
@@ -248,7 +248,7 @@ namespace microcosm.Calc
             double[] dret = { 0.0, 0.0 };
 
             // utcに変換
-            s.swe_utc_time_zone(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
+            s.swe_utc_time_zone(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second, 0.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
 
 
@@ -275,6 +275,7 @@ namespace microcosm.Calc
 
             PlanetData planetData = new PlanetData();
             planetData.no = no;
+            planetData.absolute_position = x[0];
 
             return planetData;
         }
@@ -356,7 +357,7 @@ namespace microcosm.Calc
         }
 
         // カスプを計算
-        public double[] CuspCalc(int year, int month, int day, int hour, int min, double sec, double lat, double lng, int houseKind)
+        public double[] CuspCalc(DateTime d, double lat, double lng, int houseKind)
         {
             int utc_year = 0;
             int utc_month = 0;
@@ -371,7 +372,7 @@ namespace microcosm.Calc
             SwissEph s = new SwissEph();
 
             // utcに変換
-            s.swe_utc_time_zone(year, month, day, hour, min, sec, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
+            s.swe_utc_time_zone(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second, 0.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
 
             double[] cusps = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -513,7 +514,7 @@ namespace microcosm.Calc
             double[] dret = { 0.0, 0.0 };
 
             // utcに変換
-            s.swe_utc_time_zone(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
+            s.swe_utc_time_zone(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, 0.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
 
             foreach (KeyValuePair<int, PlanetData> pair in natallist)
@@ -597,7 +598,7 @@ namespace microcosm.Calc
             DateTime newTime = natalTime + add;
 
 
-            double[] retHouse = CuspCalc(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, lat, lng, (int)main.config.houseCalc);
+            double[] retHouse = CuspCalc(newTime, lat, lng, (int)main.config.houseCalc);
 
             return retHouse;
         }
@@ -635,7 +636,7 @@ namespace microcosm.Calc
             double[] dret = { 0.0, 0.0 };
 
             // utcに変換
-            s.swe_utc_time_zone(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, 9.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
+            s.swe_utc_time_zone(newTime.Year, newTime.Month, newTime.Day, newTime.Hour, newTime.Minute, newTime.Second, 0.0, ref utc_year, ref utc_month, ref utc_day, ref utc_hour, ref utc_minute, ref utc_second);
             s.swe_utc_to_jd(utc_year, utc_month, utc_day, utc_hour, utc_minute, utc_second, 1, dret, ref serr);
 
             foreach (KeyValuePair<int, PlanetData> pair in natallist)

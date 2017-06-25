@@ -116,17 +116,8 @@ namespace microcosm.DB
             }
             else
             {
-                string evTxt = "";
-                if (eventName.Text.IndexOf("- ") == 0)
-                {
-                    evTxt = eventName.Text;
-                }
-                else
-                {
-                    evTxt = "- " + eventName.Text;
-                }
                 dbwindow.newEvent_Click_CB(
-                    evTxt,
+                    eventName.Text,
                     eventBirth.DisplayDate,
                     int.Parse(eventHour.Text),
                     int.Parse(eventMinute.Text),
