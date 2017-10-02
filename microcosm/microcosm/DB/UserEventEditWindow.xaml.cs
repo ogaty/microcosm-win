@@ -92,14 +92,7 @@ namespace microcosm.DB
             if (isEdit)
             {
                 string evTxt = "";
-                if (eventName.Text.IndexOf("- ") == 0)
-                {
-                    evTxt = eventName.Text;
-                }
-                else
-                {
-                    evTxt = "- " + eventName.Text;
-                }
+                evTxt = eventName.Text;
                 dbwindow.editEvent_Click_CB(
                     index,
                     evTxt,
