@@ -141,6 +141,9 @@
     </Compile>
     <Compile Include="DB\XMLDBManager.cs" />
     <Compile Include="Dispositor.cs" />
+    <Compile Include="KaikiWindow.xaml.cs">
+      <DependentUpon>KaikiWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindowPlanetRender.cs" />
     <Compile Include="Planet\PlanetData.cs" />
     <Compile Include="Planet\PlanetDisplay.cs" />
@@ -199,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DB\PlaceSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KaikiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

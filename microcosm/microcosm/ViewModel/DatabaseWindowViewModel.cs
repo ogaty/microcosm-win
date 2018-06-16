@@ -194,9 +194,9 @@ namespace microcosm.ViewModel
             MenuItem deleteEventItem = new MenuItem { Header = "イベント削除" };
             deleteEventItem.Click += dbwindow.deleteEvent_Click;
             context.Items.Add(deleteEventItem);
-                        MenuItem returnEventItem = new MenuItem { Header = "回帰計算" };
-                        returnEventItem.Click += dbwindow.returnEvent_Click;
-                        context.Items.Add(returnEventItem);
+            MenuItem returnEventItem = new MenuItem { Header = "回帰計算" };
+            returnEventItem.Click += dbwindow.returnEvent_Click;
+            context.Items.Add(returnEventItem);
 
             dbwindow.UserEvent.ContextMenu = context;
             dbwindow.UserEvent.MouseDoubleClick += dbwindow.userEvent_DoubleClick;

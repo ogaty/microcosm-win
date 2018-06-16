@@ -4363,6 +4363,7 @@ namespace microcosm
         {
             if (CommonData.getTimezoneIndex(u.timezone) == 0)
             {
+                // JSTね
                 DateTime d = new DateTime(u.birth_year,
                     u.birth_month,
                     u.birth_day,

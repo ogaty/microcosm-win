@@ -33,6 +33,8 @@ namespace microcosm
         public UserEditWindow editwindow;
         public UserEventEditWindow eventEditWindow;
         public DatabaseProcessWindow processWindow;
+        public KaikiWindow kaikiwindow;
+
         public DatabaseWindow(MainWindow mainwindow)
         {
             this.mainwindow = mainwindow;
@@ -163,7 +165,8 @@ namespace microcosm
                 MessageBox.Show("出生時刻は削除できません。");
             }
 
-            UserData udata = (UserData)UserEvent.Tag;
+            UserEventTag tag = (UserEventTag)UserEvent.Tag;
+            UserData udata = tag.udata;
             udata.userevent.RemoveAt(UserEvent.SelectedIndex - 1);
 
             UserEvent.Items.RemoveAt(UserEvent.SelectedIndex);
@@ -180,6 +183,14 @@ namespace microcosm
         public void returnEvent_Click(object sender, EventArgs e)
         {
             // ソーラーリターン
+            /*
+            if (kaikiwindow == null)
+            {
+                kaikiwindow = new KaikiWindow();
+            }
+            kaikiwindow.Visibility = Visibility.Visible;
+            */
+
             // 誕生日1日前から1時間ごとに計算
             // 原始的だけどとりあえずいいや
             if (UserEvent.SelectedItem == null)
