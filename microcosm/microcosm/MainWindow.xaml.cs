@@ -102,6 +102,11 @@ namespace microcosm
             {
                 string exePath = Environment.GetCommandLineArgs()[0];
                 string exeDir = System.IO.Path.GetDirectoryName(exePath);
+                string dirName = @"system";
+                if (!Directory.Exists(dirName))
+                {
+                    Directory.CreateDirectory(dirName);
+                }
                 string filename = @"system\config.csm";
                 if (!File.Exists(filename))
                 {

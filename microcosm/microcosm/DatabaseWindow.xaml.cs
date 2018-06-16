@@ -763,10 +763,11 @@ namespace microcosm
                 DateTime.Now.Second.ToString("00");
             TreeViewItem newItem = new TreeViewItem { Header = newDir };
             string parentPath;
-            if (iteminfo.isDir)
+            if (iteminfo == null)
             {
-                // ディレクトリを選択していた場合はその下に
-                string dirName = iteminfo.fileName + @"\" + newDir;
+                string exePath = Environment.GetCommandLineArgs()[0];
+                string exeDir = System.IO.Path.GetDirectoryName(exePath);
+                string dirName = exeDir + @"\data" + @"\" + newDir;
                 newItem.Tag = new DbItem
                 {
                     fileName = dirName,
@@ -778,11 +779,10 @@ namespace microcosm
             }
             else
             {
-                // ファイルを選択していた場合は並列に
-                if (item.Parent is TreeView)
+                if (iteminfo.isDir)
                 {
-                    // 親が存在する
-                    string dirName = @"data\" + newDir;
+                    // ディレクトリを選択していた場合はその下に
+                    string dirName = iteminfo.fileName + @"\" + newDir;
                     newItem.Tag = new DbItem
                     {
                         fileName = dirName,
@@ -794,27 +794,44 @@ namespace microcosm
                 }
                 else
                 {
-                    // 親が存在しない
-                    TreeViewItem parentItem = (TreeViewItem)item.Parent;
-                    DbItem parentIteminfo = (DbItem)parentItem.Tag;
-                    if (parentIteminfo == null)
+                    // ファイルを選択していた場合は並列に
+                    if (item.Parent is TreeView)
                     {
-                        // dataを選択している
-                        parentPath = "data";
+                        // 親が存在する
+                        string dirName = @"data\" + newDir;
+                        newItem.Tag = new DbItem
+                        {
+                            fileName = dirName,
+                            fileNameNoExt = dirName,
+                            isDir = true
+                        };
+                        item.Items.Add(newItem);
+                        Directory.CreateDirectory(dirName);
                     }
                     else
                     {
-                        parentPath = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
+                        // 親が存在しない
+                        TreeViewItem parentItem = (TreeViewItem)item.Parent;
+                        DbItem parentIteminfo = (DbItem)parentItem.Tag;
+                        if (parentIteminfo == null)
+                        {
+                            // dataを選択している
+                            parentPath = "data";
+                        }
+                        else
+                        {
+                            parentPath = System.IO.Path.GetDirectoryName(parentIteminfo.fileName);
+                        }
+                        string dirName = parentPath + @"\" + newDir;
+                        newItem.Tag = new DbItem
+                        {
+                            fileName = dirName,
+                            fileNameNoExt = dirName,
+                            isDir = true
+                        };
+                        parentItem.Items.Add(newItem);
+                        Directory.CreateDirectory(dirName);
                     }
-                    string dirName = parentPath + @"\" + newDir;
-                    newItem.Tag = new DbItem
-                    {
-                        fileName = dirName,
-                        fileNameNoExt = dirName,
-                        isDir = true
-                    };
-                    parentItem.Items.Add(newItem);
-                    Directory.CreateDirectory(dirName);
                 }
             }
         }
